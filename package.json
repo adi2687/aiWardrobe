@@ -10,7 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie": "^1.0.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.12"
   }
 }
