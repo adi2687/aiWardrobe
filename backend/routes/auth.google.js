@@ -43,19 +43,24 @@ router.get("/profile", async (req, res) => {
   if (!req.user) {
     return res.redirect('/google/login');
   }
+  // console.log(req.user)
   
-  const {username,email}=[req.user.displayName,req.user.emails[0].value]
-  const newuser=await User.find({email:display.email})
-  if (!username){
-    const newusercreate=User.create({username:username,email:email,password:'google'})
+  const username=(req.user.displayName)
+  const email=req.user.emails[0].value
+  
+  const newuser=await User.find({email:email})
+  if (newuser){
+    const newusercreate=await User.create({username:username,email:email,password:'google'})
     if (newusercreate){
       res.json({message:'user created',data:newusercreate})
+      return
     }
     else{
       res.json({message:'user not created',data:newusercreate})
+      return
     }
   }
-  const token=jwt.sign({username:details.username,email:details.email},SECRET_KEY,{'expiresIn':'6h'})
+  const token=jwt.sign({username:username,email:email},SECRET_KEY,{'expiresIn':'6h'})
   res.cookie('tokenlogin',token)
   res.json({msg:'user logged in ', token})
 });
