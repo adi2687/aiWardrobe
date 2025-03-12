@@ -4,10 +4,12 @@ const router=express.Router()
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
+import jwt from 'jsonwebtoken';
+import User from '../model/user.js'
 router.get("/login",async (req,res)=>{
 console.log(req.cookies.tokenlogin)
 const tokenlogin = req.cookies.tokenlogin 
+const SECRET_KEY=process.env.secret_key
 if (tokenlogin){
     res.send("<h2>the user is already login </h3>")
 }
@@ -38,6 +40,7 @@ router.post("/login",async (req,res) => {
     }
     const passwordindb = req.body.password 
     if (passwordindb===user.password){
+        const SECRET_KEY=process.env.secret_key
         const token=jwt.sign({username:user.username,email:email},SECRET_KEY,{expiresIn:'6h'})
         res.cookie('tokenlogin',token)
         res.json({message:"user logged in " , token})
