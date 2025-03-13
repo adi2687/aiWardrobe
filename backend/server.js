@@ -21,12 +21,11 @@ const app = express();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow frontend origin
+    origin: "http://localhost:5173", // Allow frontend origin
     credentials: true, // Allow cookies to be sent
   })
 );
 const PORT = process.env.PORT;
-
 
 app.use(
   session({

@@ -1,50 +1,12 @@
-import { useEffect, useState } from "react";
-
-function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/user/profilemain", {
-      method: "GET",
-      credentials: "include", // Important to send cookies
-    })
-      .then((response) => {
-        console.log("Raw Response:", response);
-        return response.json(); // Convert response to JSON
-      })
-      .then((data) => {
-        console.log("Received Data:", data);
-        setData(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-  
-  
-
+import React from 'react'
+import Navbar from './components/Navbar'
+const App = () => {
   return (
     <div>
-      <h1>React + Node.js Connection</h1>
-      {data ? (
-        <div>
-          <p>
-            <strong>Message:</strong> {data.message}
-          </p>
-          {data.user && (
-            <div>
-              <p>
-                <strong>Username:</strong> {data.user.username}
-              </p>
-              <p>
-                <strong>Email:</strong> {data.user.email}
-              </p>
-            </div>
-          )}
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <Navbar />
+      {/* <Api /> */}
     </div>
-  );
+  )
 }
-
-export default App;
+  
+export default App
