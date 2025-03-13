@@ -27,7 +27,6 @@ app.use(
 );
 const PORT = process.env.PORT;
 
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "your_secret_key",

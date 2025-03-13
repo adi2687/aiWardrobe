@@ -1,13 +1,12 @@
 import React from 'react'
-import Navbar from './components/navbar'
-import Api from './components/apifetch'
+import Navbar from './components/Navbar'
 const App = () => {
   return (
     <div>
       <Navbar />
-      <Api />
+      {/* <Api /> */}
     </div>
   )
 }
-
+  
 export default App
