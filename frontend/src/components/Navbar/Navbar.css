@@ -1,0 +1,134 @@
+/* Navbar container */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 50;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Flexbox container */
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  /* Logo */
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  
+  .logo-image {
+    height: 50px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Desktop Navigation */
+  .navbar-menu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #f0f0f0;
+  }
+  
+  /* Navbar Icons */
+  .navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .icon {
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .icon:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Mobile Menu Button */
+  .navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+  }
+  
+  /* Mobile Menu (Hidden by Default) */
+  .navbar-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 15px 0;
+  }
+  
+  .mobile-link {
+    display: block;
+    color: white;
+    padding: 12px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  
+  .mobile-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar-menu {
+      display: none;
+    }
+  
+    .navbar-toggle {
+      display: block;
+    }
+  
+    .navbar-mobile-menu {
+      display: block;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease-in-out;
+    }
+  
+    .navbar-mobile-menu.open {
+      height: auto;
+      padding: 15px 0;
+    }
+  }
+  
