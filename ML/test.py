@@ -47,7 +47,7 @@ Your response should be **only a comma-separated list** of the detected clothing
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index1.html')
 
 @app.route('/classify', methods=['POST'])
 def classify_images():

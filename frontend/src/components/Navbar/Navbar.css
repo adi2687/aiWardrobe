@@ -3,13 +3,17 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100%;   
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.6);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom:none;
     z-index: 50;
     transition: all 0.3s ease-in-out;
+    position: relative;
+    background-color: rgba(22,22,22,254);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* border:2px solid red */
   }
   
   /* Flexbox container */
@@ -30,6 +34,14 @@
   
   .logo-image {
     height: 50px;
+    /* border:1px solid grey */
+  }
+  .ham {
+    font-size: 22px;
+    width: 40px;  
+    cursor: pointer; 
+    color: white;
+    margin-left:10px
   }
   
   .navbar-brand {
@@ -42,6 +54,10 @@
   .navbar-menu {
     display: flex;
     gap: 20px;
+    margin-left:auto;
+    align-items: center;
+    /* border:1px solid red; */
+    margin-right:20px
   }
   
   .nav-link {
@@ -68,11 +84,12 @@
     color: white;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
+    text-decoration: none;
+    font-size: 19px;
+    margin-bottom:3.5px
   }
   
-  .icon:hover {
-    transform: scale(1.1);
-  }
+  
   
   /* Mobile Menu Button */
   .navbar-toggle {
