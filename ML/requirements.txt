@@ -1,0 +1,6 @@
+google.generativeai
+python-dotenv
+pathlib
+googletrans==4.0.0-rc1
+deepL
+flask
