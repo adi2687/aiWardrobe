@@ -1,40 +1,55 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ShoppingBag, User } from "lucide-react";
-import Logo from "../../assets/Logo.png";
+import { Menu, X } from "lucide-react";
+import Logo from "../../assets/logo_main.png";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [check, setCheck] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+
+  useEffect(() => {
+    fetch("http://localhost:5000/user/profile", {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCheck(data);
+        if (data?.message === "Success") {
+          setIsLoggedIn(true);
+          console.log("User logged in");
+        } else {
+          setIsLoggedIn(false);
+          console.log("User is not logged in");
+        }
+      })
+      .catch((error) => console.error("Error fetching profile:", error));
+  }, []);
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Logo */}
-        <Link to="/" className="navbar-logo">
-          <img src={Logo} alt="Outfit AI" className="logo-image" />
-          {/* <span className="navbar-brand">Outfit AI</span> */}
-        </Link>
+        <div className="navbar-logo">
+          <Link to="/">
+            <img src={Logo} alt="Outfit AI" className="logo-image" />
+          </Link>
+        </div>
 
-        {/* Desktop Menu */}
         <div className={`navbar-menu ${isOpen ? "active" : ""}`}>
-          <Link to="/" className="nav-link" onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/wardrobe" className="nav-link" onClick={() => setIsOpen(false)}>Wardrobe</Link>
           <Link to="/recommendations" className="nav-link" onClick={() => setIsOpen(false)}>Recommendations</Link>
           <Link to="/ar-preview" className="nav-link" onClick={() => setIsOpen(false)}>AR Preview</Link>
           <Link to="/shop" className="nav-link" onClick={() => setIsOpen(false)}>Shop</Link>
         </div>
 
-        {/* Icons & Mobile Toggle */}
         <div className="navbar-icons">
-          <Link to="/cart" className="icon">
-            <ShoppingBag size={24} />
-          </Link>
-          <Link to="/profile" className="icon">
-            <User size={24} />
-          </Link>
-
-          {/* Mobile Menu Button */}
+          {isLoggedIn ? (
+            <Link to="/profile" className="icon">Profile</Link>
+          ) : (
+            <Link to="/auth" className="icon">Login / SignUp</Link>
+          )}
           <button onClick={() => setIsOpen(!isOpen)} className="navbar-toggle">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -43,7 +58,6 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div className={`navbar-mobile-menu ${isOpen ? "open" : ""}`}>
-        <Link to="/" className="mobile-link" onClick={() => setIsOpen(false)}>Home</Link>
         <Link to="/wardrobe" className="mobile-link" onClick={() => setIsOpen(false)}>Wardrobe</Link>
         <Link to="/recommendations" className="mobile-link" onClick={() => setIsOpen(false)}>Recommendations</Link>
         <Link to="/ar-preview" className="mobile-link" onClick={() => setIsOpen(false)}>AR Preview</Link>

@@ -1,22 +1,17 @@
 import "./Home.css";
 
-export default function FindYourVibe() {
+ function FindYourVibe() {
   return (
     <div className="container">
       <h1 className="title">
-        FIND <br /> YOUR <br /> VIBE
+        <div>FIND</div>
+        <div>YOUR</div>
+        <div>VIBE</div>
+      <div className="caption">No more outfit dilemmas! Let AI mix, match, and style your perfect look every day</div>
+
       </h1>
-      <p className="subtitle">
-        Check out our Captivating Cities shirt collection
-      </p>
-      <button className="explore-button">
-        EXPLORE HERE
-      </button>
-      <img
-        src="/your-shirt-image.png"
-        alt="T-Shirt"
-        className="shirt-image"
-      />
     </div>
   );
 }
+
+export default FindYourVibe
