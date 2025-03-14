@@ -36,6 +36,7 @@ const Auth = () => {
         window.location.href='/profile'
       } else {
         setError(data.message || "Invalid email or password.");
+      
       }
     } catch (err) {
       console.error("Error during login:", err);
@@ -74,6 +75,14 @@ const Auth = () => {
     }
   };
 
+  const LoginWithGoogle=async (e) =>
+  {
+    e.preventDefault();
+    window.location.href = "http://localhost:5000/google/login";
+    
+
+    const dat=await response.json()
+  }
   return (
     <div className="auth-container">
       {!toggle ? (
@@ -110,6 +119,7 @@ const Auth = () => {
             Don't have an account?{" "}
             <button className="toggle-btn" onClick={() => setToggle(!toggle)}>Sign up</button>
           </p>
+          <div><button onClick={LoginWithGoogle}>Login with google</button></div>
         </div>
       ) : (
         // Signup Form
