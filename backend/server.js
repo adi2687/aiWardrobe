@@ -10,13 +10,18 @@ import GoogleLoginRoutes from './routes/auth.google.js'
 import jwt from 'jsonwebtoken';
 import session from "express-session";
 import passport from "passport";
-
+import path from 'path';
 import cors from 'cors'
-
 dotenv.config();
 
 const SECRET_KEY = process.env.secret_key;
 const app = express();
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(cookieParser());
 app.use(
@@ -45,6 +50,7 @@ connect();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Main route
 app.get('/', (req, res) => {

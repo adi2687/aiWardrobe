@@ -16,35 +16,33 @@ const Auth = () => {
     setError("");
 
     if (!email || !password) {
-      setError("Please enter both email and password.");
-      return;
+        setError("Please enter both email and password.");
+        return;
     }
 
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ email, password }),
-      });
+        const response = await fetch("http://localhost:5000/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ email, password }),
+        });
 
-      const data = await response.json();
+        const data = await response.json();
+        
+        if (!response.ok) {
+            // Display backend error message
+            setError(data.msg || "Invalid email or password.");
+            return;
+        }
 
-      if (response.ok) {
         console.log("Login successful:", data);
-        // navigate("/profile");
-        window.location.href='/profile'
-      } else {
-        setError(data.message || "Invalid email or password.");
-      
-      }
+        window.location.href = "/profile";
     } catch (err) {
-      console.error("Error during login:", err);
-      setError("Something went wrong. Please try again.");
+        console.error("Error during login:", err);
+        setError("Something went wrong. Please try again.");
     }
-  };
-
-  // Signup Handler
+};
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
@@ -65,7 +63,7 @@ const Auth = () => {
 
       if (response.ok) {
         console.log("Signup successful:", data);
-        setToggle(false);
+        setToggle(false); // Switch to Login after successful signup
       } else {
         setError(data.message || "Signup failed.");
       }
@@ -75,14 +73,12 @@ const Auth = () => {
     }
   };
 
-  const LoginWithGoogle=async (e) =>
-  {
+  // Google Login
+  const LoginWithGoogle = async (e) => {
     e.preventDefault();
     window.location.href = "http://localhost:5000/google/login";
-    
+  };
 
-    const dat=await response.json()
-  }
   return (
     <div className="auth-container">
       {!toggle ? (
@@ -119,7 +115,9 @@ const Auth = () => {
             Don't have an account?{" "}
             <button className="toggle-btn" onClick={() => setToggle(!toggle)}>Sign up</button>
           </p>
-          <div><button onClick={LoginWithGoogle}>Login with google</button></div>
+          <button className="google-btn" onClick={LoginWithGoogle}>
+            Login with Google
+          </button>
         </div>
       ) : (
         // Signup Form

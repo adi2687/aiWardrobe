@@ -36,9 +36,10 @@ router.post("/login",async (req,res) => {
     const {email,password}=req.body 
     const user=await User.findOne({email:email})
     if (!user){
-        res.json({msg : 'no user found'})
+        res.status(404).json({msg : 'No user found with given email'})
         return
     }
+    console.log(user)
     const passwordindb = req.body.password 
     if (passwordindb===user.password){
         const SECRET_KEY=process.env.secret_key
@@ -47,7 +48,7 @@ router.post("/login",async (req,res) => {
         res.json({message:"user logged in " , token})
     }
     else{
-        res.send("incorrect passwperd")
+        res.status(404).json({msg:"Incorrect password"})
     }
 })
 
