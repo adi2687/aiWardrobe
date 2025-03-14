@@ -1,8 +1,9 @@
 import express from 'express';
 import jwt from 'jsonwebtoken'; // No need to import SECRET_KEY, as it's already in `server.js` and passed as env
-
+import multer from 'multer'
 const router = express.Router();
-
+import User from '../model/user.js'
+import path from 'path';
 router.get("/profile", (req, res) => {
     console.log("Cookies received:", req.cookies);
     const tokenlogin = req.cookies.tokenlogin;
@@ -27,6 +28,74 @@ router.post("/logout", (req, res) => {
     });
 
     res.status(200).json({ message: "Logout successful" });
+});
+router.get("/images", async (req, res) => {
+    const tokenlogin = req.cookies.tokenlogin;
+    if (!tokenlogin) {
+        return res.status(401).json({ error: "No token provided" });
+    }
+
+    const decoded = jwt.verify(tokenlogin, process.env.secret_key); // You can use SECRET_KEY from environment
+    req.user=decoded
+    // res.send(decoded)
+    console.log(req.user)
+    try {
+      const user = await User.findOne({username:req.user.username}); // Fetch user from DB
+      if (!user) return res.status(404).json({ error: "User not found" });
+  
+      // Convert filenames to full URLs
+      const wardrobeImages = user.wardrobe;
+      res.send(wardrobeImages)
+    } catch (error) {
+      res.status(500).json({ error: "Error fetching profile" });
+    }
+  });
+
+  
+import { fileURLToPath } from 'url';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      const uploadPath = path.join(__dirname, "../uploads");
+      console.log("Saving file to:", uploadPath);
+      cb(null, uploadPath);
+    },
+    filename: (req, file, cb) => {
+      const filename = `${Date.now()}-${file.originalname}`;
+      console.log("Generated filename:", filename);
+      cb(null, filename);
+    },
+  });
+  
+  const upload = multer({ storage });
+  
+router.post("/upload-image", upload.single("wardrobeImage"), async (req, res) => {
+    try {
+        if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+
+        const token = req.cookies.tokenlogin;
+        if (!token) return res.status(401).json({ error: "No token provided" });
+
+        const decoded = jwt.verify(token, process.env.secret_key);
+        console.log("decoded data :", decoded);
+
+        const user = await User.findOne({ username: decoded.username });
+        if (!user) return res.status(404).json({ error: "User not found" });
+
+        if (!user.wardrobe) user.wardrobe = [];
+
+        const imageUrl = `/uploads/${req.file.filename}`;
+        user.wardrobe.push(imageUrl);
+        await user.save();
+
+        res.json({ message: "Upload successful", imageUrl });
+    } catch (error) {
+        console.error("Upload error:", error);
+        res.status(500).json({ error: "Upload failed", details: error.message });
+    }
 });
 
 export default router;

@@ -19,9 +19,11 @@
     "express-session": "^1.18.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.1",
+    "multer": "^1.4.5-lts.1",
     "passport": "^0.7.0",
     "passport-facebook": "^3.0.0",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
