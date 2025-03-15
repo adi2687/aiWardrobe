@@ -45,9 +45,11 @@ router.get("/images", async (req, res) => {
   
       // Convert filenames to full URLs
       const wardrobeImages = user.wardrobe;
-      res.send(wardrobeImages)
+      const wardrobeClothes=user.clothes
+      const Wardrobe=({wardrobeImg:wardrobeImages,wardrobeClothes:wardrobeClothes})
+      res.send(Wardrobe)
     } catch (error) {
-      res.status(500).json({ error: "Error fetching profile" });
+      res.status(500).json({ error: "Error fetching Wardrobe" });
     }
   });
 
@@ -97,5 +99,40 @@ router.post("/upload-image", upload.single("wardrobeImage"), async (req, res) =>
         res.status(500).json({ error: "Upload failed", details: error.message });
     }
 });
+
+router.post("/clothesUpload", async (req, res) => {
+  console.log("Clothes upload data:", req.body.clothes); // ✅ Debugging log
+
+  if (!req.body.clothes) {
+    return res.status(400).json({ error: "No clothes data received" });
+  }
+
+  const uploadclothes = req.body.clothes;
+  const token = req.cookies.tokenlogin;
+
+  if (!token) {
+    return res.status(401).json({ error: "No token in the headers" }); // ✅ Fixed status code
+  }
+
+  try {
+    const decode = jwt.verify(token, process.env.SECRET_KEY); // ✅ Ensure SECRET_KEY is defined in .env
+    console.log("Decoded token:", decode);
+
+    const user = await User.findOne({ username: decode.username });
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    user.clothes.push(uploadclothes)
+    await user.save()
+    res.status(200).json({
+      message: "Clothes data received successfully",
+      data: uploadclothes,
+    });
+  } catch (error) {
+    console.error("JWT verification failed:", error);
+    return res.status(403).json({ error: "Invalid or expired token" }); // ✅ Handle JWT errors
+  }
+});
+
 
 export default router;

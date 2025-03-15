@@ -7,7 +7,8 @@ const userSchema=new mongoose.Schema({
     email:{type:String,required:true,unique:true},
     password:{type:String,required:true},
     profileImageURL:{type:String , default:'./profileImage/default.png'},
-    wardrobe:{type:[String],default: []}
+    wardrobe:{type:[String],default: []},
+    clothes:{type:[String],default:[]}
 },{timestamps:true})
 
 const User=mongoose.model('User',userSchema)

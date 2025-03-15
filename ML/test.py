@@ -2,11 +2,13 @@ from flask import Flask, request, jsonify, render_template
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
-
+from flask_cors import CORS
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+
 
 def get_gemini_response(input_prompt, image):
     model = genai.GenerativeModel('gemini-1.5-flash-8b')
@@ -70,4 +72,4 @@ def classify_images():
     return jsonify({"results": results}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=5001)
