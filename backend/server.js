@@ -7,6 +7,7 @@ import UserRoutes from './routes/user_routes.js';
 import AuthRoutes from './routes/auth_routes.js';
 import GoogleLoginRoutes from './routes/auth.google.js'
 // import facebookLoginRoutes from './routes/auth.facebook.js'
+import ShopRoutes from './routes/shop.routes.js'
 import jwt from 'jsonwebtoken';
 import session from "express-session";
 import passport from "passport";
@@ -61,6 +62,7 @@ app.get('/', (req, res) => {
 app.use('/user', UserRoutes);
 app.use('/auth', AuthRoutes);
 app.use("/google",GoogleLoginRoutes)
+app.use("/shop",ShopRoutes)
 // app.use('/auth/facebook',facebookLoginRoutes)
 // Start the server
 app.get("/api/message", (req, res) => {

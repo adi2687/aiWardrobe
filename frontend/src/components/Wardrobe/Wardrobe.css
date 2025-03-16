@@ -1,0 +1,273 @@
+.wardrobe-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .wardrobe-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .wardrobe-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .wardrobe-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .clothes-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .clothes-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .clothes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .clothes-item {
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    border-radius: 16px;
+    font-size: 0.9rem;
+  }
+  
+  .no-images {
+    color: #777;
+    font-size: 0.9rem;
+  }
+  
+  .scanning-message {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #ff6600;
+    font-weight: bold;
+  }
+  
+  .spinner {
+    width: 25px;
+    height: 25px;
+    border: 3px solid transparent;
+    border-top: 3px solid #ff6600;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+.zoom-image{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .zoomed-image {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+  }
+  .wardrobe-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .wardrobe-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .wardrobe-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .wardrobe-image:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Zoomed Image Modal */
+  .zoomed-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+  }
+  
+  .zoomed-image {
+    max-width: 90%;
+    max-height: 90%;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+
+  /* General Styles */
+.wardrobe-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Toggle Buttons */
+.toggle-button {
+  display: block;
+  width: 200px;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+/* Gallery Styling */
+.wardrobe-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.wardrobe-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wardrobe-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Clothes Container */
+.clothes-container {
+  margin-top: 30px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.clothes-title {
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.clothes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.clothes-item {
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.clothes-item:hover {
+  background: #0056b3;
+}
+
+/* Zoomed Image Modal */
+.zoomed-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.zoomed-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wardrobe-gallery {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .wardrobe-image {
+      height: 150px;
+  }
+
+  .clothes-list {
+      flex-direction: column;
+  }
+
+  .clothes-item {
+      width: 100%;
+      text-align: center;
+  }
+}

@@ -145,28 +145,7 @@
 }
 
 /* Dark overlay */
-.zoom-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-  cursor: pointer;
-}
 
-/* Centered image using absolute positioning */
-.zoomed-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Moves the image back by half of its width and height */
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-}
 
 .file-label {
   background: #007bff;
@@ -217,24 +196,6 @@
   transform: scale(1.05);
 }
 
-.zoom-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.zoomed-image {
-  max-width: 80vw;
-  max-height: 80vh;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-}
 /* Wardrobe Gallery */
 .wardrobe-gallery {
   margin-top: 20px;
@@ -429,23 +390,7 @@
   font-size: 14px;
 }
 
-.zoom-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.zoomed-image {
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 10px;
-}
 
 .loading-text {
   font-size: 18px;
