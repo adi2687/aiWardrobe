@@ -3,6 +3,7 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 from flask_cors import CORS
+from amazon_test import scrape_amazon
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
@@ -70,6 +71,16 @@ def classify_images():
             results.append({"filename": file.filename, "error": str(e)})
 
     return jsonify({"results": results}), 200
+@app.route('/shop',methods=['GET'])
+
+def shop():
+    # return render_template('shop.html')
+    query = request.args.get("query")
+    if not query:
+        return jsonify({"error": "Query parameter is required"}), 400
+
+    data = scrape_amazon(query)
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True,port=5001)

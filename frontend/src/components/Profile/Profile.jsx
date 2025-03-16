@@ -6,29 +6,10 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const [wardrobeImages, setWardrobeImages] = useState([]);
   const [imageFile, setImageFile] = useState(null);
-  const [imageName, setImageName] = useState("No file chosen"); // New state for filename
-  const [zoomedImage, setZoomedImage] = useState(null); // New state for zoomed image
-  const [clothes, setClothes] = useState([]);
+  const [imageName, setImageName] = useState("No file chosen"); 
+  const [zoomedImage, setZoomedImage] = useState(null); 
   const [isScanning, setIsScanning] = useState(false);
-
   const navigate = useNavigate();
-  // function getClothes(){
-  const clothesUser = useEffect(() => {
-    fetch("http://localhost:5000/user/images", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setWardrobeImages(data.wardrobeImg || []);
-        // console.log(data)
-        setClothes(data.wardrobeClothes);
-        // console.log(data)
-        // console.log(JSON.stringify(data.clot))
-      })
-      .catch((error) => console.error("Error fetching images:", error));
-  }, []);
-  // }
   useEffect(() => {
     fetch("http://localhost:5000/user/profile", {
       method: "GET",
@@ -58,7 +39,7 @@ const Profile = () => {
 
   const handleImageUpload = async (e) => {
     e.preventDefault();
-    if (!imageFile) return;
+    if (!imageFile) alert("Upload an image !");
 
     const formData = new FormData();
     formData.append("wardrobeImage", imageFile);
@@ -76,6 +57,12 @@ const Profile = () => {
         setImageFile(null);
         setImageName("No file chosen");
         document.getElementById("image-upload-input").value = "";
+        setIsScanning(true); // Start scanning
+
+    setTimeout(() => {
+        setIsScanning(false); // Stop scanning
+        navigate('/wardrobe'); // Navigate only after 5s
+    }, 5000);
       } else {
         console.error("Upload failed:", data.error || "Unknown error");
       }
@@ -83,12 +70,12 @@ const Profile = () => {
       console.error("Error uploading image:", error);
     }
 
-    formData.append("images", imageFile); // Ensure correct key for Flask backend
+    formData.append("images", imageFile); 
 
     try {
       const response = await fetch("http://localhost:5001/classify", {
         method: "POST",
-        body: formData, // ❌ Remove credentials (no need for authentication)
+        body: formData,
         headers: {
           Accept: "application/json",
         },
@@ -102,9 +89,7 @@ const Profile = () => {
       console.log("Image classification result:", data);
       console.log("clothes", data.results[0].raw_response);
 
-      // thsi is the clothesuploading route
       const clothes = data.results[0].raw_response;
-      // setClothes(clothes)
       const clothesData = clothes;
       console.log("Sending clothes data:", clothesData);
 
@@ -123,23 +108,15 @@ const Profile = () => {
       );
       if (!clothesres.ok) {
         throw new Error(`Http error! status:${clothesres.status}`);
-        // console.log
       }
       const clothesdata = await clothesres.json();
       console.log("clothes save data : ", clothesdata);
-      // this is rhe dnd
     } catch (error) {
       console.error("Error classifying image:", error);
     }
   };
 
-  const handleImageClick = (imgSrc) => {
-    setZoomedImage(imgSrc);
-  };
-
-  const closeZoom = () => {
-    setZoomedImage(null);
-  };
+  
 
   return (
     <div className="profile-container">
@@ -181,46 +158,13 @@ const Profile = () => {
             </button>
           </div>
 
-          {/* Wardrobe Gallery */}
-          <div className="wardrobe-gallery">
-            {wardrobeImages.length > 0 ? (
-              wardrobeImages.map((img, index) => (
-                <img
-                  key={index}
-                  src={`http://localhost:5000${img}`}
-                  alt={`Wardrobe ${index}`}
-                  className="wardrobe-image"
-                  onClick={() =>
-                    handleImageClick(`http://localhost:5000${img}`)
-                  }
-                />
-              ))
-            ) : (
-              <p className="no-images">No wardrobe images uploaded.</p>
-            )}
-          </div>
-
-          {/* Clothes Display */}
-          <div className="clothes-container">
-            <h3 className="clothes-title">Your Wardrobe Items</h3>
-            {clothes.length > 0 ? (
-              <div className="clothes-list">
-                {clothes.map((item, index) => (
-                  <span key={index} className="clothes-item">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            ) : (
-              <p className="no-images">No clothes data available.</p>
-            )}
-          </div>
+          
           {isScanning && (
-            <div className="scanning-message">
-              Scanning wardrobe image... Please wait.
-              <div className="spinner"></div>
-            </div>
-          )}
+  <div className="loading-screen">
+    <p>Uploading & Scanning...</p>
+  </div>
+)}
+
         </div>
       ) : (
         <p className="loading-text">Loading profile...</p>
