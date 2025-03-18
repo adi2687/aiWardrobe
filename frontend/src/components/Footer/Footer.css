@@ -64,6 +64,7 @@
 h3 a {
     color:white;
     text-decoration: underline;
+    font-size: 1.1rem;
 }
 /* Responsive */
 @media (min-width: 768px) {

@@ -5,7 +5,7 @@ const Home5 = () => {
 
   return (
     <div className="home5-container" >
-      <div className="quotehome5">Ditch the Guesswork—Let AI Define Your Look.</div>
+      <div className="quotehome5">Ditch the <div className="red">Guesswork</div>—Let <div className="green">AI </div>Define Your Look.</div>
       <div className="cta-button">
         <button>Try Now</button>
       </div>
