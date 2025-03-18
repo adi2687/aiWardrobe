@@ -23,7 +23,7 @@ const Footer = () => {
         </div>
       </div>
       
-      <h3>Made by <a href="https://www.linkedin.com/in/aditya-kurani-818668176/">Aditya Kurani</a> and <a href="https://linkedin.com/in/paras-rana-696b7731b/">Paras Rana</a></h3>
+      <h3>a Production of  <a href="https://www.linkedin.com/in/aditya-kurani-818668176/">Aditya Kurani</a> & <a href="https://linkedin.com/in/paras-rana-696b7731b/">Paras Rana</a></h3>
       <div className="footer-bottom">
          
         © {new Date().getFullYear()} Outfit AI. All rights reserved.

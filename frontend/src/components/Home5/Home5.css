@@ -94,7 +94,15 @@
         flex: 1 1 calc(33.33% - 20px); /* 3 in a row on medium screens */
     }
 }
-
+.red{
+    color:Red;
+}
+.green{
+    color:darkgreen
+}
+.red,.green{
+    display: inline;
+}
 @media (max-width: 768px) {
     .home5-container{
         height:auto;
