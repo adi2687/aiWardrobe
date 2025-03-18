@@ -1,81 +1,207 @@
-/* General Styling */
 .home5-container {
-    height: 100vh;
-    background-color: rgba(22, 22, 22, 255);
+    height: auto;
+    background: rgba(22,22,22,254);
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
 }
 
-/* Visible state */
-.home5-container.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 
-/* Quote Section */
-.quote {
-    font-size: clamp(3rem, 7vw, 7rem);
-    font-weight: 600;
-    text-align: center;
-    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+/* quotehom5hom5 Section */
+.quotehome5 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 700;
     max-width: 80%;
+    line-height: 1.2;
+    transform: scaleY(1.1);
+    line-height: 1;
+    
 }
 
-/* CTA Button */
 .cta-button {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 
 .cta-button button {
-    background: white;
-    color: black;
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    color: white;
     font-size: 1.5rem;
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
     border: none;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 15px rgba(255, 64, 100, 0.4);
 }
 
 .cta-button button:hover {
-    background: gray;
-    color: white;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
     transform: scale(1.1);
+    box-shadow: 0px 6px 20px rgba(255, 64, 100, 0.6);
+}
+
+
+.features_page5 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.features_page5 div {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    flex: 1 1 calc(25% - 20px); /* Makes sure 4 items fit in a row */
+    max-width: 350px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.features_page5 div:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Adjusting the last row (3 items centered) */
+.features_page5 div:nth-last-child(-n+3) {
+    flex: 1 1 calc(33.33% - 20px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .features_page5 div {
+        flex: 1 1 calc(33.33% - 20px); /* 3 in a row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .home5-container{
+        height:auto;
+    }
+    .features_page5{
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .features_page5 div {
+        /* border:1px solid red; */
+
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .features_page5 div {
+        flex: 1 1 100%; /* 1 per row on mobile */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .features_page5 {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .features_page5 {
+        grid-template-columns: repeat(1, 1fr); /* Single column for mobile */
+    }
+}
+
+/* Keyframe Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .home5-container {
-        padding: 10px 5vw;
+        padding: 15px;
+        width:92vw;
+
     }
 
-    .quote {
-        font-size: clamp(2rem, 6vw, 5rem);
+    .quotehome5 {
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        display: inline;
     }
 
     .cta-button button {
-        font-size: 1.2rem;
-        padding: 0.8rem 1.5rem;
+        font-size: 1.3rem;
+        padding: 0.8rem 2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .quote {
-        font-size: clamp(1.5rem, 5vw, 4rem);
+    .quotehome5 {
+        font-size: clamp(2rem, 4vw, 4rem);
     }
 
     .cta-button button {
-        font-size: 1rem;
-        padding: 0.8rem 1.2rem;
+        font-size: 1.1rem;
+        padding: 0.7rem 1.8rem;
     }
 }
