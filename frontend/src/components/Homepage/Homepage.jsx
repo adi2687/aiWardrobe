@@ -3,6 +3,7 @@ import Home from "../Home/Home";
 import Homemain from "../Homemain/Homemain";
 import Home3 from "../Home3/Home3";
 import Home4 from "../Home4/Home4";
+import Home5 from "../Home5/Home5";
 const Homepage = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const Homepage = () => {
       <Homemain />
       <Home3 />
       <Home4 />
+      <Home5 />
     </div>
   );
 };
