@@ -1,0 +1,81 @@
+/* General Styling */
+.home5-container {
+    height: 100vh;
+    background-color: rgba(22, 22, 22, 255);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Visible state */
+.home5-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Quote Section */
+.quote {
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+    max-width: 80%;
+}
+
+/* CTA Button */
+.cta-button {
+    margin-top: 2rem;
+}
+
+.cta-button button {
+    background: white;
+    color: black;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.cta-button button:hover {
+    background: gray;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .home5-container {
+        padding: 10px 5vw;
+    }
+
+    .quote {
+        font-size: clamp(2rem, 6vw, 5rem);
+    }
+
+    .cta-button button {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quote {
+        font-size: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .cta-button button {
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+    }
+}
