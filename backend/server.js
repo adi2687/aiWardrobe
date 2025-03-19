@@ -52,6 +52,7 @@ connect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use('/models', express.static(path.join(__dirname, 'models')));
 
 // Main route
 app.get('/', (req, res) => {

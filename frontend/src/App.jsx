@@ -8,6 +8,8 @@ import Auth from './components/Auth/Auth'
 import Wardrobe from "./components/Wardrobe/Wardrobe";
 import Homepage from './components/Homepage/Homepage'
 import Shop from './components/Shop/Shop'
+import AR from './components/AR/AR_try'
+// import models from '../public/models/main_model'
 const App = () => {
   return (
     <>
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/wardrobe" element={<Wardrobe />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/ar-preview" element={<AR />} />
+        {/* <Route path="/model" element={<models />} /> */}
       </Routes>
       
     </>
