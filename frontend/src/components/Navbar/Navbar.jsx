@@ -43,7 +43,7 @@ const Navbar = () => {
           <Link to="/ar-preview" className="nav-link" onClick={() => setIsOpen(false)}>AR Preview</Link>
           <Link to="/shop" className="nav-link" onClick={() => setIsOpen(false)}>Shop</Link>
         </div>
-
+ 
         <div className="navbar-icons">
           {isLoggedIn ? (
             <Link to="/profile" className="icon">Profile</Link>
