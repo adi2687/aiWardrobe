@@ -9,7 +9,8 @@ import Wardrobe from "./components/Wardrobe/Wardrobe";
 import Homepage from './components/Homepage/Homepage'
 import Shop from './components/Shop/Shop'
 import AR from './components/AR/AR_try'
-// import models from '../public/models/main_model'
+import Footer from "./components/Footer/Footer";
+import Recommendations from "./components/Recommendations/Recommendations";
 const App = () => {
   return (
     <>
@@ -22,9 +23,9 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/ar-preview" element={<AR />} />
-        {/* <Route path="/model" element={<models />} /> */}
+        <Route path='/recommendations' element={<Recommendations />} />
       </Routes>
-      
+      <Footer />
     </>
   );
 };

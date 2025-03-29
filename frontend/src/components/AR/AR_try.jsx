@@ -18,5 +18,5 @@ const ARViewer = () => {
     </Canvas>
   );
 };
-
+ 
 export default ARViewer;
