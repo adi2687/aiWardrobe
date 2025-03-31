@@ -1,0 +1,36 @@
+/* src/components/CelebrityNews/CelebrityNews.css */
+.news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2d2d2d;
+    color: white;
+    border-radius: 8px;
+  }
+  
+  .news-article {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #424242;
+    border-radius: 5px;
+  }
+  
+  .news-article h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .news-article p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+  
+  .news-article a {
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  
+  .news-article a:hover {
+    text-decoration: underline;
+  }
+  

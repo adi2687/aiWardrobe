@@ -11,10 +11,14 @@ import Shop from './components/Shop/Shop'
 import AR from './components/AR/AR_try'
 import Footer from "./components/Footer/Footer";
 import Recommendations from "./components/Recommendations/Recommendations";
+import Chatbot from './components/Chatbot/Chatbot'
+import ChatButton from "./components/ChatbotButton/ChatButton";
+import CelebrityNews from "./components/Profile/News/CelebrityNews";
 const App = () => {
   return (
     <>
       <Navbar /> {/* Always visible */}
+      <ChatButton />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
@@ -24,6 +28,8 @@ const App = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/ar-preview" element={<AR />} />
         <Route path='/recommendations' element={<Recommendations />} />
+        <Route path='/chatbot' element={<Chatbot />} />
+        <Route path='/celebrity-news' element={<CelebrityNews />} />
       </Routes>
       <Footer />
     </>

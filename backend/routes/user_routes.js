@@ -38,7 +38,7 @@ router.get("/images", async (req, res) => {
   const decoded = jwt.verify(tokenlogin, process.env.secret_key); // You can use SECRET_KEY from environment
   req.user = decoded;
   // res.send(decoded)
-  console.log(req.user);
+  // console.log(req.user);
   try {
     const user = await User.findOne({ username: req.user.username }); // Fetch user from DB
     if (!user) return res.status(404).json({ error: "User not found" });
@@ -46,7 +46,7 @@ router.get("/images", async (req, res) => {
     // Convert filenames to full URLs
     const wardrobeImages = user.wardrobe;
     const wardrobeClothes = user.clothes;
-    console.log("all cloths", wardrobeClothes);
+    // console.log("all cloths", wardrobeClothes);
     const allClothes = [];
     let comma = false;
     let cloth = "";
@@ -63,7 +63,7 @@ router.get("/images", async (req, res) => {
     if (cloth) {
       allClothes[k++] = cloth.trim();
     }
-    console.log("allclothes", allClothes);
+    // console.log("allclothes", allClothes);
     const Wardrobe = {
       wardrobeImg: wardrobeImages,
       wardrobeClothes: wardrobeClothes,

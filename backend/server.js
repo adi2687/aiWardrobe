@@ -8,6 +8,7 @@ import AuthRoutes from './routes/auth_routes.js';
 import GoogleLoginRoutes from './routes/auth.google.js'
 // import facebookLoginRoutes from './routes/auth.facebook.js'
 import ShopRoutes from './routes/shop.routes.js'
+import Chatbot from './routes/chat.js'
 import jwt from 'jsonwebtoken';
 import session from "express-session";
 import passport from "passport";
@@ -53,7 +54,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use('/models', express.static(path.join(__dirname, 'models')));
-
+app.use("/chat",Chatbot)
 // Main route
 app.get('/', (req, res) => {
     res.send('This is the main page');
