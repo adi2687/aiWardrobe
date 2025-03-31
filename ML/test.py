@@ -37,7 +37,7 @@ USER_AGENTS = [
 ]
 
 input_prompt = """
-You are an advanced AI fashion classifier. Analyze the provided image and identify all clothing items present, using only its category name and color.
+You are an advanced AI fashion classifier. Analyze the provided image and list clothing items using only the type and color in the format: "<Clothing Type>: <Color>". Provide no additional details or accessories.
 """
 
 @app.route('/')
@@ -76,6 +76,7 @@ def scrape_myntra():
 def classify_images():
     files = request.files.getlist('images')
     results = []
+    # print("here")
     for file in files:
         image_data = [{"mime_type": file.content_type, "data": file.read()}]
         model = genai.GenerativeModel('gemini-1.5-flash-8b')

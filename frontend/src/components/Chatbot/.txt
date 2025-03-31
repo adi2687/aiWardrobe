@@ -1,0 +1,73 @@
+import React, { useState } from "react";
+import "./Chatbot.css";
+import {useEffect} from "react"
+const API_KEY = "AIzaSyB0aSbmzg8eDP9ZCRpzaJQIDlGk_ewBgnU";
+const API_URL = "https://api.gemini.com/v1/ai/completions";
+
+const Chatbot = () => {
+  const [messages, setMessages] = useState([]);
+  const [userInput, setUserInput] = useState("");
+  
+const [clothes,setCloth]=useState([])
+  useEffect(()=>{
+    fetch("http://localhost:5000/user/images",{method:"GET",credentials:"include"})
+    .then((response)=>response.json())
+    .then((data)=>setCloth(data.allclothes))
+
+  })
+  const getOutfitSuggestion = async (input) => {
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "text-davinci-003",
+          prompt: `Suggest an outfit for: ${input}`,
+          max_tokens: 100
+        })
+      });
+      const data = await response.json();
+      return data.choices[0].text.trim();
+    } catch (error) {
+      return "Error fetching suggestion.";
+    }
+  };
+
+  const handleSend = async () => {
+    if (!userInput.trim()) alert("Enter a question for us");return;
+    const newMessages = [...messages, { sender: "user", text: userInput }];
+    setMessages(newMessages);
+    setUserInput("");
+
+    const reply = await getOutfitSuggestion(userInput);
+    setMessages([...newMessages, { sender: "bot", text: reply }]);
+  };
+
+  return (
+    <div className="chatbot-container">
+      {/* <div className="clothes">{clothes}</div> */}
+      <h2>Outfit Recommender</h2>
+      <div className="messages-container">
+        {messages.map((msg, index) => (
+          <div key={index} className={`message ${msg.sender}`}>
+            {msg.text}
+          </div>
+        ))}
+      </div>
+      <div className="input-container">
+        <input
+          type="text"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Describe the event..."
+        />
+        <button onClick={handleSend}>Send</button>
+      </div>
+    </div>
+  );
+};
+
+export default Chatbot;

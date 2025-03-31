@@ -1,1 +1,172 @@
-    
+/* Recommendations.css - Enhanced Grey Theme with Improved Responsiveness */
+
+
+
+
+
+/* Container for centering */
+.recommendations-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #2f2f2f, #d2d1d1);
+  
+}
+
+/* Card styling */
+.recommendations-card {
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: var(--max-width);
+  transition: box-shadow 0.3s ease;
+
+}
+
+.recommendations-card:hover {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+h2 {
+  color: var(--accent-color);
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Input Styling */
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: var(--input-bg);
+  color: var(--primary-color);
+  font-size: 16px;
+  margin-bottom: 15px;
+  box-shadow: var(--box-shadow);
+  transition: box-shadow 0.2s, background-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  background-color: #666666;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Button Styling */
+button {
+  width: auto;
+  padding: 15px;
+  background-color: var(--button-bg);
+  color: white;
+  font-size: 18px;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #4a4a4a;
+  cursor: not-allowed;
+}
+
+/* Messages Section */
+.messages-container {
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.message {
+  padding: 12px;
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
+  color: var(--text-color);
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: #555555;
+  text-align: right;
+}
+
+.message.bot {
+  background-color: #434343;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #666666;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2f2f2f;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .recommendations-card {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+
+  .messages-container {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recommendations-container {
+    padding: 10px;
+  }
+
+  .recommendations-card {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .messages-container {
+    max-height: 180px;
+  }
+}
