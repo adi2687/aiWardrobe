@@ -1,0 +1,95 @@
+.sellclothcontainer * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  .sellclothcontainer {
+    padding: 40px;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    min-height: 100vh;
+  }
+  
+  .sellclothcontainer h1, .sellclothcontainer h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 28px;
+  }
+  
+  .sellclothcontainer form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sellclothcontainer input, .sellclothcontainer button {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .sellclothcontainer button {
+    background: linear-gradient(135deg, #4CAF50, #66bb6a);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .sellclothcontainer button:hover {
+    background: linear-gradient(135deg, #66bb6a, #4CAF50);
+  }
+  
+  .sellclothcontainer .sellclothlist, .sellclothcontainer ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .sellclothcontainer li {
+    list-style-type: none;
+    background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    width: 220px;
+    transition: 0.3s;
+  }
+  
+  .sellclothcontainer li:hover {
+    transform: scale(1.05);
+  }
+  
+  .sellclothcontainer img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .sellclothcontainer p {
+    margin-top: 10px;
+    color: #555;
+    font-size: 14px;
+  }
+  .sellclothlist .price{
+    font-size: 30px;
+  }
+    .allcloths .pricecloth  {
+    font-size: 40px;
+  }
+.allcloths h4{
+    font-size: 12px;
+}
+  .allcloths button{
+padding:10px;
+  }
+  .allcloths ul li{
+    cursor: pointer;
+  }

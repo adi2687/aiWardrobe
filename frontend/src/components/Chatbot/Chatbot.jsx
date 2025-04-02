@@ -57,7 +57,7 @@ const Chatbot = () => {
           <div key={index} className={`message ${msg.sender}`}>
             {msg.text}
           </div>
-        ))}
+        ))} 
         {isLoading && <div className="message bot">Loading...</div>}
       </div>
       <form onSubmit={handleSend} className="input-container">
