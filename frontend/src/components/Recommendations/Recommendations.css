@@ -12,7 +12,7 @@
   justify-content: center;
   padding: 20px;
   background: linear-gradient(135deg, #2f2f2f, #d2d1d1);
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Card styling */
@@ -50,6 +50,10 @@ input {
   margin-bottom: 15px;
   box-shadow: var(--box-shadow);
   transition: box-shadow 0.2s, background-color 0.3s;
+  border:2px solid white;
+  cursor: pointer;
+  margin-top:20px;
+  border-radius:23px
 }
 
 input:focus {
@@ -69,6 +73,8 @@ button {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  bordeR:2px solid white;
+  border-radius: 23px;
 }
 
 button:hover {

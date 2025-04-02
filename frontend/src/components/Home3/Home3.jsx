@@ -10,14 +10,14 @@ const Home3 = () => {
         <div>INTO THE RIGHT GEAR</div>
       </div>
 
-      {/* Features Section */}
+      {/* Features Section */} 
       <div className="features">
-        <div className="feature-item">👗 AI Outfit Suggestions</div>
-        <div className="feature-item">🤖 AI Fashion Chatbot</div>
-        <div className="feature-item">🔥 Discover New Trends</div>
-        <div className="feature-item">🛍️ Personalized Shopping</div>
-        <div className="feature-item">💰 Compare Prices Across Platforms</div>
-        <div className="feature-item">🌟 Celebrity Fashion Trends</div>
+        <div className="feature-item"> AI Outfit Suggestions</div>
+        <div className="feature-item"> AI Fashion Chatbot</div>
+        <div className="feature-item"> Discover New Trends</div>
+        <div className="feature-item"> Personalized Shopping</div>
+        <div className="feature-item"> Compare Prices Across Platforms</div>
+        <div className="feature-item"> Celebrity Fashion Trends</div>
       </div>
     </div>
   );

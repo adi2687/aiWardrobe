@@ -37,6 +37,10 @@ const Profile = () => {
     }
   };
 
+  // const SellCloth=()=>{
+    // const navigate=useNavigate()
+    const handleNav=()=>{navigate("/sellcloth")}
+  // }
   const handleImageUpload = async (e) => {
     e.preventDefault();
     if (!imageFile) alert("Upload an image !");
@@ -116,67 +120,69 @@ const Profile = () => {
     }
   };
 
+
   
 
   return (
     <div className="profile-container">
-      {user ? (
-        <div className="profile-card">
-          <button className="logout-btn" onClick={LogOut}>
-            Logout
-          </button>
-
-          {/* Profile Image */}
-          <img
-            src={
-              user.profilePicture ||
-              `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(
-                user.username
-              )}`
-            }
-            alt="Profile"
-            className="profile-image"
-          />
-
+  {user ? (
+    <div className="profile-card">
+<button className="logout" onClick={LogOut}>Logout</button>
+      <div className="profile-header">
+        <img
+          src={
+            user.profilePicture ||
+            `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(user.username)}`
+          }
+          alt="Profile"
+          className="profile-image"
+        />
+        
+        <div className="user-info">
           <h2 className="profile-name">{user.username}</h2>
           <p className="profile-email">{user.email}</p>
-
-          {/* Wardrobe Upload Section */}
-          <div className="upload-section">
-            <label htmlFor="image-upload-input" className="file-label">
-              Choose Image
-            </label>
-            <input
-              type="file"
-              id="image-upload-input"
-              onChange={handleImageChange}
-              className="file-input"
-            />
-            <span className="file-name">{imageName}</span>
-            <button onClick={handleImageUpload} className="upload-btn">
-              Upload
-            </button>
+          <div className="sellClothes">
+            <button onClick={handleNav}>Sell old Clothes</button>
           </div>
-
-          
-          {isScanning && (
-  <div className="loading-screen">
-    <p>Uploading & Scanning...</p>
-  </div>
-)}
-
         </div>
-      ) : (
-        <p className="loading-text">Loading profile...</p>
-      )}
+        
+      </div>
 
-      {/* Zoomed Image Overlay */}
-      {zoomedImage && (
-        <div className="zoom-overlay" onClick={closeZoom}>
-          <img src={zoomedImage} alt="Zoomed" className="zoomed-image" />
+      <div className="upload-section">
+        <label htmlFor="image-upload-input" className="file-label">
+          Choose Image
+        </label>
+        
+        <input
+          type="file"
+          id="image-upload-input"
+          onChange={handleImageChange}
+          className="file-input"
+        />
+        {imageName && <span className="file-name">{imageName}</span>}
+        <button onClick={handleImageUpload} className="upload-btn" disabled={!imageName}>
+          {isScanning ? "Uploading..." : "Upload"}
+        </button>
+      </div>
+
+      {isScanning && (
+        <div className="loading-screen">
+          <p>Uploading & Scanning...</p>
         </div>
       )}
     </div>
+  ) : (
+    <p className="loading-text">Loading profile... <br />Try logging or Signing Up</p>
+  )}
+
+  {zoomedImage && (
+    <div className="zoom-overlay" onClick={closeZoom}>
+      <img src={zoomedImage} alt="Zoomed" className="zoomed-image" />
+    </div>
+  )}
+</div>
+
+
   );
 };
 

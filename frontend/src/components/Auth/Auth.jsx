@@ -97,7 +97,7 @@ const Auth = () => {
                 required
               />
             </div>
-
+   
             <div className="form-group">
               <label>Password:</label>
               <input

@@ -158,4 +158,123 @@ router.post("/clothesUpload", async (req, res) => {
   }
 });
 
+import cloth from '../model/cloth.js'
+
+const authenticate = (req, res, next) => {
+  const token = req.cookies.tokenlogin;
+  // console.log("toke is ", token)
+  if (!token) {
+    return res.status(401).json({ msg: "No token, authorization denied" });
+  }
+
+  try {
+
+
+    // console.log(process.en.secret_key)
+    const decoded = jwt.verify(token, process.env.secret_key);
+    console.log('suser detail',decoded)
+    req.user = decoded;  
+    console.log('user is ',req.user)// Attach the user object to the request
+    next();
+  } catch (error) {
+    console.log('error')
+    res.status(401).json({ msg: "Token is not valid" });
+  }
+};
+
+const storagecloth = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadPath = path.join(__dirname, "../uploadscloths");
+    console.log("Saving file to:", uploadPath);
+    cb(null, uploadPath);
+  },
+  filename: (req, file, cb) => {
+    const filename = `${Date.now()}-${file.originalname}`;
+    console.log("Generated filename:", filename);
+    cb(null, filename);
+  },
+});
+
+const uploadcloth = multer({ storage: storagecloth });
+
+router.post("/sellcloth", authenticate,uploadcloth.single("image"), async (req, res) => {
+
+  const file = req.file.filename; 
+  const description=req.body.description
+const price=req.body.price
+console.log(req.body)
+  console.log("File info:", file);
+console.log("description",description)
+console.log('user info',req.user)
+const uploadclothdb=await cloth.create({userid:req.user.id,username:req.user.username,price:price,clothImage:file,description:description})
+if (!uploadclothdb){
+  console.log("couldnt")
+  res.json({msg:"cant insert in the database"})
+}
+console.log("done")
+  res.json("File uploaded successfully");
+});
+
+router.get("/allClothesSell",authenticate,async (req,res)=>{
+  console.log('userdetaios',req.user)
+  const userid=req.user.id 
+  const cloths=await cloth.find({userid:{$ne:userid}})
+
+  const usercloth=await cloth.find({userid:userid})
+  const clothsdata={cloths,usercloth}
+  res.send(clothsdata)
+})
+
+import message from '../model/message.js'
+
+
+// Use in Route
+// In user_routes.js
+router.post("/message", authenticate, async (req, res) => {
+  try {
+    const sender = req.user.username;
+    const { message: messagebody, recipient } = req.body;
+
+    // Store in DB
+    const messageInsert = await message.create({
+      message: messagebody,
+      sender,
+      recipient,
+    });
+
+    // Emit message if recipient is online
+   
+
+    res.json({ msg: "Message sent successfully", message: messageInsert });
+  } catch (error) {
+    console.error("Error in /message route:", error);
+    res.status(500).json({ error: "Message sending failed", details: error.message });
+  }
+});
+
+
+
+
+// Fetch Cloth Details
+router.get("/sellcloth/find/:id", async (req, res) => {
+  const id = req.params.id;
+  const clothid = await cloth.findById(id);
+  res.send(clothid);
+});
+
+// Fetch Messages
+router.get("/message/:username", authenticate, async (req, res) => {
+  const receivername = req.params.username;
+  const sendername = req.user.username;
+
+  const messages = await message.find({
+    $or: [
+      { recipient: receivername, sender: sendername },
+      { recipient: sendername, sender: receivername },
+    ],
+  });
+
+  res.send(messages);
+});
 export default router;
+

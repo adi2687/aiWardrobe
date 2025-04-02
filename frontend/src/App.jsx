@@ -14,6 +14,8 @@ import Recommendations from "./components/Recommendations/Recommendations";
 import Chatbot from './components/Chatbot/Chatbot'
 import ChatButton from "./components/ChatbotButton/ChatButton";
 import CelebrityNews from "./components/Profile/News/CelebrityNews";
+import SellCloth from './components/Sellcloth/Sellcloth'
+import Message from './components/message/message'
 const App = () => {
   return (
     <>
@@ -30,6 +32,8 @@ const App = () => {
         <Route path='/recommendations' element={<Recommendations />} />
         <Route path='/chatbot' element={<Chatbot />} />
         <Route path='/celebrity-news' element={<CelebrityNews />} />
+        <Route path='/sellcloth' element={<SellCloth />} />
+        <Route path='/message/:username/:id' element={<Message />} />
       </Routes>
       <Footer />
     </>

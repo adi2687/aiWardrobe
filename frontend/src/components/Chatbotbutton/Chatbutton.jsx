@@ -13,6 +13,6 @@ const FloatingButton = ({ onClick }) => {
             Ai<br />
         </button>
     );
- } ;
+ } ; 
 
     export default FloatingButton;
