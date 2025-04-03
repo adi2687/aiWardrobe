@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "/node_modules/axios";
 
 const API_KEY = "b5cc8330c1324e7886e6021e6dcd4c2e"; 
 const BASE_URL = "https://newsapi.org/v2";
