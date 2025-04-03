@@ -12,7 +12,7 @@ import AR from './components/AR/AR_try'
 import Footer from "./components/Footer/Footer";
 import Recommendations from "./components/Recommendations/Recommendations";
 import Chatbot from './components/Chatbot/Chatbot'
-import ChatButton from "./components/ChatbotButton/ChatButton";
+// import ChatButton from "./components/ChatbotButton/ChatButton";
 import CelebrityNews from "./components/Profile/News/CelebrityNews";
 import SellCloth from './components/Sellcloth/Sellcloth'
 import Message from './components/message/message'
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/ar-preview" element={<AR />} />
         <Route path='/recommendations' element={<Recommendations />} />
-        <Route path='/chatbot' element={<Chatbot />} />
+        {/* <Route path='/chatbot' element={<Chatbot />} /> */}
         <Route path='/celebrity-news' element={<CelebrityNews />} />
         <Route path='/sellcloth' element={<SellCloth />} />
         <Route path='/message/:username/:id' element={<Message />} />
