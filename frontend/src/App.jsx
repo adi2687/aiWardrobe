@@ -20,7 +20,7 @@ const App = () => {
   return (
     <>
       <Navbar /> {/* Always visible */}
-      <ChatButton />
+      {/* <ChatButton /> */}
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/ar-preview" element={<AR />} />
         <Route path='/recommendations' element={<Recommendations />} />
-        {/* <Route path='/chatbot' element={<Chatbot />} /> */}
+        <Route path='/chatbot' element={<Chatbot />} />
         <Route path='/celebrity-news' element={<CelebrityNews />} />
         <Route path='/sellcloth' element={<SellCloth />} />
         <Route path='/message/:username/:id' element={<Message />} />
