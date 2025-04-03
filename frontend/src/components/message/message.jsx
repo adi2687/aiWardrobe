@@ -1,28 +1,7 @@
 // Message.js
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-// Add this line before importing socket.io-client
-
-import { io } from "socket.io-client"; // Import socket.io-client
 import "./messageMain.css";
-
-const socket = io("http://localhost:5000"); // Connect to server
-useEffect(() => {
-  // Inform the server of the connected user
-  socket.emit("user_online", username);
-
-  // Listen for incoming messages
-  socket.on("receive_message", (data) => {
-    console.log("New message received:", data);
-    setFetchedMessages((prev) => [...prev, data]);
-  });
-
-  // Cleanup on component unmount
-  return () => {
-    socket.emit("user_offline", username); // Optional if needed
-    socket.disconnect();
-  };
-}, [username]);
 
 const Message = () => {
   const { username, id } = useParams();
@@ -47,6 +26,7 @@ const Message = () => {
       const data = await response.json();
       if (response.ok) {
         setMessage("");
+        fetchmessages(); // Fetch messages after sending
       } else {
         alert(data.error || "Failed to send message");
       }
@@ -98,19 +78,14 @@ const Message = () => {
     }
   };
 
-  // Listen for real-time messages
+  // Polling for New Messages
   useEffect(() => {
-    socket.on("receive_message", (data) => {
-      console.log("New message received:", data);
-      setFetchedMessages((prev) => [...prev, data]);
-    });
-
     fetchClothDetails();
     fetchmessages();
 
-    return () => {
-      socket.off("receive_message"); // Clean up on unmount
-    };
+    const intervalId = setInterval(fetchmessages, 3000); // Poll every 3 seconds
+
+    return () => clearInterval(intervalId); // Clean up on unmount
   }, []);
 
   return (
