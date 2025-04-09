@@ -153,6 +153,7 @@
   background: #f8f9fa;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 /* Toggle Buttons */
@@ -252,6 +253,57 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.wardrobe-container{
+  min-height:100vh
+}
+.wardrobe-container .clothes{
+  color:black
+}
+.wardrobe-container .addcloths{
+  border:2px solid #333;
+  display: flex;
+/* gap:20px; */
+border-radius:23px;
+padding:10px;
+flex-direction: column;
+}
+.wardrobe-container .addcloths button{
+  
+  background-color: grey;
+  padding:10px;
+  max-height:50px;
+  margin-top:2%;
+  width:20%;
+}
+.wardrobe-container .addcloths input{
+  background-color:lightgrey;
+  width:40%;
+  color:#333;
+  font-weight: bolder;
+}
+.addcloths div{color:black;font-weight:bolder;}
+.addcloths .addcloths-actions{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  /* border:2px solid red */
+}
+
+.history button{
+  color:black;
+  border:2px solid #ffffff;
+  padding:8px;
+  margin-top:10px;
+  color:white;
+}
+.history div{
+  border:1px solid white;
+  color:white;
+  padding:5px;
+  border-radius: 12px;
+margin-top: 10px;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .wardrobe-gallery {

@@ -99,16 +99,32 @@ const Sellcloth = () => {
   const messageuser=(username,id)=>{
     navigate(`/message/${username}/${id}`)
   }
+  const sold=(clothid)=>{
+    fetch(`http://localhost:5000/user/soldcloth/delete/${clothid}`,{
+      method:"POST",
+      credentials:"include",
+      body:JSON.stringify({clothid:clothid})
+    })
+    .then(response=>response.json())
+    .then(data=>{
+      // console.log(data)
+      if (data.message==="cloth deleted successfully"){
+        fetchClothes()
+      }
+  })
+    .catch(error=>console.error("Error:", error));
+
+  }
   return (
     <div className="sellclothcontainer">
       <h1>Sell Your Clothes</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          type="file"
-          id="image-input"
-          onChange={handleImageChange}
-          accept="image/*"
-        />
+          <input
+            type="file"
+            id="image-input"
+            onChange={handleImageChange}
+            accept="image/*"
+          />
         <input
           type="text"
           value={description}
@@ -121,7 +137,7 @@ const Sellcloth = () => {
           onChange={handlepricechange}
           placeholder="Enter price"
         />
-        <button type="submit">Sell Clothes</button>
+        <button type="submit" style={{color:"white",backgroundColor:"red"}}>Sell Clothes</button>
       </form>
       <h2>Your Clothes</h2>
       {loading ? (
@@ -139,11 +155,12 @@ const Sellcloth = () => {
                 <p>{item.description}</p>
                 <p>{item.username}</p>
                 <p className="price">{item.price}</p>
+                <button className="soldbutton" onClick={()=>sold(item._id)} style={{backgroundColor:"Red"}}>Sold?</button>
               </li>
             ))}
           </ul>
         </div>
-      )}
+      )} 
       <h2>Available Clothes</h2>
       <div className="allcloths">
       {loading ? (

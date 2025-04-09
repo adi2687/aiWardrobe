@@ -1,0 +1,165 @@
+.planner-container {
+    padding: 2rem;
+    color: #fff;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    height: auto;
+    min-width: 40vw;
+    margin-top: 3%;
+    margin: 70px
+}
+
+input[type="date"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.weather-summary {
+    margin-top: 20px;
+    padding: 1rem;
+    background: #222;
+    border-radius: 10px;
+    color: #fff;
+    border: 1px solid red;
+    min-height: 10vh;
+    color: blue
+}
+
+.planner-container {
+    padding: 20px;
+    color: white;
+    /* or black if background is light */
+    font-family: sans-serif;
+}
+
+.planner-container .toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+    border: 2px solid black
+}
+
+.planner-container .toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.toggle input:checked+.slider {
+    background-color: #363e45;
+    /* green-400 */
+}
+
+.toggle input:checked+.slider::before {
+    transform: translateX(26px);
+}
+
+.toggleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2px;
+    align-content: center;
+}
+
+label {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    top: 4%;
+    transform: translate(-50%,-50%);
+    /* border:2px solid green */
+}
+
+.planner-container textarea {
+    width: 80%;
+    margin-left: -4%;
+    /* border:2px solid green; */
+    background-color: transparent;
+    color:white;
+    border-radius:10px;
+    height:130px;
+    font-size: 18px;
+}
+
+textarea::placeholder {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.planner-container .recommendation{
+    min-width:50%;
+    /* border:2px solid blue; */
+    background-color: transparent;
+    color:white;
+    font-weight: bold;
+/* border:2px solid red; */
+max-width: 50%;
+}
+.planner-container{
+    display: flex;
+min-width:87vw;
+gap:3%;
+padding:40px;
+color:white;
+}
+.planner-container > div{
+    border:2px solid wheat;
+    border-radius: 22px;
+}
+.toggleContainer{
+    display: flex;
+    flex-direction: column;
+    width:auto;
+    padding:20px
+}
+.recommendation .buttonsdiv{
+    display: flex;
+    gap:13%;
+justify-content: center;
+}
+@media  (max-width: 600px) {
+    .planner-container{
+        flex-direction: column;
+        margin-left : 0px;
+        /* border:3px solid green; */
+        min-width: 100vw;
+        padding:0px;
+    }
+    .planner-container .recommendation{
+        /* border:2px solid red; */
+        min-width:93%;
+    }
+}

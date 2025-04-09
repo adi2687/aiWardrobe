@@ -67,7 +67,7 @@ router.get("/images", async (req, res) => {
     const Wardrobe = {
       wardrobeImg: wardrobeImages,
       wardrobeClothes: wardrobeClothes,
-      allclothes:allClothes
+      allclothes: allClothes,
     };
     res.send(Wardrobe);
   } catch (error) {
@@ -158,7 +158,7 @@ router.post("/clothesUpload", async (req, res) => {
   }
 });
 
-import cloth from '../model/cloth.js'
+import cloth from "../model/cloth.js";
 
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
@@ -168,16 +168,14 @@ const authenticate = (req, res, next) => {
   }
 
   try {
-
-
     // console.log(process.en.secret_key)
     const decoded = jwt.verify(token, process.env.secret_key);
-    console.log('suser detail',decoded)
-    req.user = decoded;  
-    console.log('user is ',req.user)// Attach the user object to the request
+    console.log("suser detail", decoded);
+    req.user = decoded;
+    console.log("user is ", req.user); // Attach the user object to the request
     next();
   } catch (error) {
-    console.log('error')
+    console.log("error");
     res.status(401).json({ msg: "Token is not valid" });
   }
 };
@@ -197,36 +195,45 @@ const storagecloth = multer.diskStorage({
 
 const uploadcloth = multer({ storage: storagecloth });
 
-router.post("/sellcloth", authenticate,uploadcloth.single("image"), async (req, res) => {
+router.post(
+  "/sellcloth",
+  authenticate,
+  uploadcloth.single("image"),
+  async (req, res) => {
+    const file = req.file.filename;
+    const description = req.body.description;
+    const price = req.body.price;
+    console.log(req.body);
+    console.log("File info:", file);
+    console.log("description", description);
+    console.log("user info", req.user);
+    const uploadclothdb = await cloth.create({
+      userid: req.user.id,
+      username: req.user.username,
+      price: price,
+      clothImage: file,
+      description: description,
+    });
+    if (!uploadclothdb) {
+      console.log("couldnt");
+      res.json({ msg: "cant insert in the database" });
+    }
+    console.log("done");
+    res.json("File uploaded successfully");
+  }
+);
 
-  const file = req.file.filename; 
-  const description=req.body.description
-const price=req.body.price
-console.log(req.body)
-  console.log("File info:", file);
-console.log("description",description)
-console.log('user info',req.user)
-const uploadclothdb=await cloth.create({userid:req.user.id,username:req.user.username,price:price,clothImage:file,description:description})
-if (!uploadclothdb){
-  console.log("couldnt")
-  res.json({msg:"cant insert in the database"})
-}
-console.log("done")
-  res.json("File uploaded successfully");
+router.get("/allClothesSell", authenticate, async (req, res) => {
+  console.log("userdetaios", req.user);
+  const userid = req.user.id;
+  const cloths = await cloth.find({ userid: { $ne: userid } });
+
+  const usercloth = await cloth.find({ userid: userid });
+  const clothsdata = { cloths, usercloth };
+  res.send(clothsdata);
 });
 
-router.get("/allClothesSell",authenticate,async (req,res)=>{
-  console.log('userdetaios',req.user)
-  const userid=req.user.id 
-  const cloths=await cloth.find({userid:{$ne:userid}})
-
-  const usercloth=await cloth.find({userid:userid})
-  const clothsdata={cloths,usercloth}
-  res.send(clothsdata)
-})
-
-import message from '../model/message.js'
-
+import message from "../model/message.js";
 
 // Use in Route
 // In user_routes.js
@@ -243,18 +250,66 @@ router.post("/message", authenticate, async (req, res) => {
     });
 
     // Emit message if recipient is online
-   
 
     res.json({ msg: "Message sent successfully", message: messageInsert });
   } catch (error) {
     console.error("Error in /message route:", error);
-    res.status(500).json({ error: "Message sending failed", details: error.message });
+    res
+      .status(500)
+      .json({ error: "Message sending failed", details: error.message });
+  }
+});
+router.get("/clothsforweek", authenticate, async (req, res) => {
+  const userid = req.user.id;
+
+  try {
+    const user = await User.findById(userid);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const clothforweekdata = user.clothessuggestionforweek;
+    const favourites=user.favourites
+    res.json({ clothforweek: clothforweekdata,favourites:favourites });
+  } catch (err) {
+    console.error("Error fetching clothes for week:", err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
+router.post("/copytoprofileweekcloths", authenticate, async (req, res) => {
+  const userid = req.user.username;
+  console.log('User details of clothes:', userid);
 
+  const user = await User.findOne({ username: userid }); // <- changed to findOne
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
 
+  // console.log('User is final:', user);
+  // console.log('Weekly clothes to save:', req.body.clothesforweek);
 
+  user.clothessuggestionforweek = req.body.clothesforweek;
+  await user.save();
+
+  res.status(200).json({ message: "Weekly clothing suggestion saved!" });
+});
+
+router.post("/addnewcloths", authenticate, async (req, res) => {
+  const userid = req.user.id;
+  console.log(req.body);
+  const user = await User.findById(userid);
+  const clothdata = req.body.clothname;
+  if (user.clothes[0]) {
+    user.clothes[0] += `\n , ${clothdata} , `;
+  } else {
+    user.clothes[0] = clothdata + " ";
+  }
+  await user.save();
+
+  res.json({ message: "cloth saved to the user" });
+});
 // Fetch Cloth Details
 router.get("/sellcloth/find/:id", async (req, res) => {
   const id = req.params.id;
@@ -276,5 +331,41 @@ router.get("/message/:username", authenticate, async (req, res) => {
 
   res.send(messages);
 });
-export default router;
 
+router.post("/soldcloth/delete/:clothid", async (req, res) => {
+  const clothid = req.params.clothid;
+  console.log(clothid);
+  const clothfind = await cloth.findByIdAndDelete(clothid);
+  res.json({ message: "cloth deleted successfully" });
+});
+// prevent
+router.post("/cloth/lovesuggestion/save", authenticate, async (req, res) => {
+  const userid = req.user.id;
+  console.log(userid);
+  const cloths = req.body.clothsuggestion;
+  console.log(cloths);
+  const user = await User.findById(userid);
+  if (!user) {
+    res.status(404).json({ msg: "no user found" });
+    return;
+  }
+  if (!user.favourites.includes(cloths)) {
+    user.favourites.push(cloths);
+  }
+
+  await user.save();
+  res.status(200).json({ msg: "Suggestion saved to favourites" });
+});
+
+router.post("/cloth/deletefavourite",authenticate,async (req,res)=>{
+  const userid=req.user.id;
+  const cloths=req.body.clothsuggestion;
+  const user=await User.findById(userid)
+  if(!user){
+    res.status(404).json({msg:"no user found"})
+    }
+    user.favourites.pull(cloths);
+    await user.save();
+    res.status(200).json({favourite:user.favourites});
+})
+export default router;

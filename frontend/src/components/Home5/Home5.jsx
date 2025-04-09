@@ -1,25 +1,44 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home5.css";
 
 const Home5 = () => {
+  const navigate = useNavigate();
+
+  const handleTryNow = () => navigate("/try");
+
+  const featureRoutes = {
+    "Weather based recommendations": "/recommendations",
+    "Daily outfit planner": "/planner",
+    "Sell your old clothes": "/sellcloth",
+    "Accessories guider": "/accessories",
+    "Augmented Reality (AR) preview": "/ar-preview",
+    "Location-Based Outfit Suggestions": "/recommendations",
+  };
+
+  const handleFeatureClick = (feature) => {
+    const path = featureRoutes[feature];
+    if (path) navigate(path);
+  };
+
+  const features = Object.keys(featureRoutes);
 
   return (
-    <div className="home5-container" >
-      <div className="quotehome5">Ditch the <div className="red">Guesswork</div>—Let <div className="green">AI </div>Define Your Look.</div>
-      <div className="cta-button">
-        <button>Try Now</button>
+    <div className="home5-container">
+      <div className="quotehome5">
+        Ditch the <div className="red">Guesswork</div>—Let <div className="green">AI </div>Define Your Look.
       </div>
+
+      <div className="cta-button">
+        <button onClick={handleTryNow}>Try Now</button>
+      </div>
+
       <div className="features_page5">
-        <div>Weather based recommendations</div>
-        <div>Daily outfit planner</div>
-        <div>Sell your old clothes </div>
-        <div>Accessories guider</div>
-        {/* <br /> */}
-        <div>Augmented Reality (AR)</div>
-        <div>AI-Generated Fashion Reels</div>
-        {/* <div> Fashion Community & Social Feed</div> */}
-        <div>Location-Based Outfit Suggestions</div>
-        {/* <div>AR Prev</div> */}
+        {features.map((feature, index) => (
+          <div key={index} onClick={() => handleFeatureClick(feature)}>
+            {feature}
+          </div>
+        ))}
       </div>
     </div>
   );
