@@ -79,7 +79,7 @@ router.get(
     }
 console.log('user details',req.user)
     const token = jwt.sign({ id: req.user._id,username:req.user.username,email: req.user.email , profilePicture:req.user.profileImageURL}, SECRET_KEY, {
-      expiresIn: "6h",
+      expiresIn: "24h",
     });
 
     res.cookie("tokenlogin", token, { httpOnly: true, secure: false, sameSite: "Strict" });

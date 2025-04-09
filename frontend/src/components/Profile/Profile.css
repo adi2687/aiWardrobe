@@ -172,3 +172,107 @@
 .sellClothes button:hover{
   background-color: darkgreen;
 }
+
+.clothforweek{
+  color:black;
+  text-wrap:inherit;
+  /* background-color: black; */
+}
+.weekly-outfits-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+  color:#ffffff;
+  font-weight: 600;
+  /* background-color:; */
+}
+
+.weekly-outfits-container.visible {
+  max-height: 500px;
+  opacity: 1;
+}
+.clothforweek button{
+  background-color: grey;
+  margin-top:10px
+}
+
+.upload-section label{
+  /* background-color: red; */
+  color:white;
+  display: block;
+  /* margin-top:35%; */
+  /* margin-left:30%; */
+  position: relative;
+  /* top:50%; */
+  /* left:50%; */
+  /* transform: translate(-50%,-.); */
+} 
+
+.sellClothes{
+  display: flex;
+  /* justify-content: center; */
+  /* flex-direction: row; */
+  gap:20px;
+  flex-wrap: wrap;
+}
+.sellClothes button{
+  background-color: rgb(84, 83, 83);
+}
+.sellClothes button:hover{background-color: darkgrey;}
+.profile-container{
+  background-color: #272626;
+}
+.profile-card,.user-info,.upload-section{
+  background-color: #333;
+  color:white
+}
+.profile-header{
+  background-color: #333333;
+}
+.weekly-outfits-container p{
+  /* background-color: #333; */
+  color:white
+}
+.weekly-outfits-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  border:2px solid white;
+  /* padding:0px */
+  overflow-y: auto;
+}
+.user-info h2{
+  color: white;
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fav-item {
+  animation: slideFadeIn 0.4s ease forwards;
+}
+
+.favouritebutton{
+  margin-left:20px
+}
+
+.sharebutton{
+  padding:10px;
+  margin-top:20px;
+  font-weight: bold;
+}
+.sharebutton:hoveR{
+  color:#333;
+  background-color: whitesmoke;
+}

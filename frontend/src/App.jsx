@@ -12,15 +12,17 @@ import AR from './components/AR/AR_try'
 import Footer from "./components/Footer/Footer";
 import Recommendations from "./components/Recommendations/Recommendations";
 import Chatbot from './components/Chatbot/Chatbot'
-// import ChatButton from "./components/Chatbotbutton/ChatButton";
+import ChatButton from "./components/Chatbotbutton/ChatButton";
 import CelebrityNews from "./components/Profile/News/CelebrityNews";
 import SellCloth from './components/Sellcloth/Sellcloth'
 import Message from './components/message/message'
+import Planner from './components/Planner/Planner'
+import Image from './components/Image/Image'
 const App = () => {
   return (
     <>
       <Navbar /> {/* Always visible */}
-      {/* <ChatButton />   */}
+      <ChatButton />  
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
@@ -34,6 +36,8 @@ const App = () => {
         <Route path='/celebrity-news' element={<CelebrityNews />} />
         <Route path='/sellcloth' element={<SellCloth />} />
         <Route path='/message/:username/:id' element={<Message />} />
+        <Route path='/planner' element={<Planner />} />
+        <Route path='/Image' element={<Image />} />
       </Routes>
       <Footer />
     </>

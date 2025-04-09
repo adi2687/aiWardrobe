@@ -43,7 +43,7 @@ router.post("/login",async (req,res) => {
     const passwordindb = req.body.password 
     if (passwordindb===user.password){
         const SECRET_KEY=process.env.secret_key
-        const token=jwt.sign({username:user.username,email:email,profilePicture:user.profileImageURL},SECRET_KEY,{expiresIn:'6h'})
+        const token=jwt.sign({username:user.username,id:user._id,email:email,profilePicture:user.profileImageURL},SECRET_KEY,{expiresIn:'24h'})
         res.cookie('tokenlogin',token)
         res.json({message:"user logged in " , token})
     }
