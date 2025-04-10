@@ -196,7 +196,7 @@
 router.get("/chathistory",authenticatemain,async (req,res)=>{
 const userid=req.user.id 
 console.log('userid',userid)
-const chatHistory=await ChatMessage.find({userId:userid})
+const chatHistory=await ChatMessage.find({userId:userid}).sort({ createdAt: -1 })
 res.json({chatHistory:chatHistory})
 })
   export default router;

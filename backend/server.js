@@ -11,7 +11,8 @@ import AuthRoutes from './routes/auth_routes.js';
 import GoogleLoginRoutes from './routes/auth.google.js';
 import ShopRoutes from './routes/shop.routes.js';
 import Chatbot from './routes/chat.js';
-// import imagegenerate from './routes/image.js'
+import ShareRoutes from './routes/share.js'
+import imageGenerateRoute from './routes/image.js'
 import jwt from 'jsonwebtoken';
 import session from "express-session";
 import passport from "passport";
@@ -62,23 +63,8 @@ app.use('/user', UserRoutes);
 app.use('/auth', AuthRoutes);
 app.use("/google", GoogleLoginRoutes);
 app.use("/shop", ShopRoutes);
-// app.use("/image",imageRoutes)
-
-// app.post("/get-image", async (req, res) => {
-//   try {
-//     console.log(req.body)
-//     const { actor } = req.body;
-
-//     if (!actor) {
-//       return res.status(400).json({ error: "Actor name is required." });
-//     }
-
-//     const film = await imagegenerate(actor);
-//     res.json(film);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
+app.use("/share", ShareRoutes);
+app.use("/imagegenerate",imageGenerateRoute)
 
 app.get("/", (req, res) => {
   res.send("This is the main page");

@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
-// import AR from "../AR/AR_try"; // Import AR component
+import React, { useState } from "react";
+import "./Shop.css"; // Import the CSS file
 
 const Shop = () => {
-  const [shopData, setShopData] = useState([]); // Initialize with an empty array
-  const [visibleProducts, setVisibleProducts] = useState(5); // Show 5 items initially
-  const modelURL="/models/main_model.glb"
-  useEffect(() => {
-    fetch("http://localhost:5001/shop?query=shirts", {
+  const [shopData, setShopData] = useState([]);
+  const [visibleProducts, setVisibleProducts] = useState(5);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+const [visible,setVisible]=useState(false)
+  const search = () => {
+    setLoading(true);
+    fetch(`http://localhost:5001/shop?query=${input}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -14,95 +17,74 @@ const Shop = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Fetched data: ", data);
+       
+
         setShopData(data);
+        setVisibleProducts(5); // Reset visible products on new search
+        setLoading(false);
+        setVisible(true)
       })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);  
+      });
+  };
 
   const loadMore = () => {
-    setVisibleProducts((prev) => prev + 5); // Load 5 more products
+    setVisibleProducts((prev) => prev + 5);
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
+    <div className="shop-container">
       <h2>Shop Our Collection</h2>
-
-      {shopData.length === 0 ? (
-        <p>Loading...</p> // Show loading message when data is not available
+      {/* <form onSubmit={search}>  */}
+      <input
+        type="text"
+        onChange={(e) => {setInput(e.target.value);; setVisible(false)}}
+        placeholder="Enter the clothes you wanna search"
+        className="shop-search-input"
+      />
+      <button onClick={()=>{search()}} className="shop-search-button" type="submit">
+        Search
+      </button>
+      {/* </form> */}
+      {visible ? (
+<h2>Amazon Search results for {input}</h2>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "20px",
-            justifyContent: "center",
-          }}
-        >
+        <h2>Search for products</h2>
+      )
+    }
+
+      {loading ? (
+        <p className="shop-message">Loading...</p>
+      ) : shopData.length === 0 ? (
+        <p className="shop-message">No products found. Try searching something!</p>
+      ) : (
+        <div className="shop-products-grid">
           {shopData.slice(0, visibleProducts).map((item, index) => (
-            <div
-              key={index}
-              style={{
-                border: "1px solid #ddd",
-                padding: "20px",
-                borderRadius: "10px",
-                textAlign: "center",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              }}
-            >
+            <div key={index} className="shop-product-card">
               <img
                 src={item.image_url}
                 alt={item.name}
-                style={{ width: "100%", height: "auto", borderRadius: "8px" }}
+                className="shop-product-image"
               />
-              <h3>{item.name}</h3>
-              <p
-                style={{
-                  fontSize: "18px",
-                  fontWeight: "bold",
-                  color: "#007600",
-                }}
-              >
-                {item.price}
-              </p>
+              <h3 className="shop-product-name">{item.name}</h3>
+              <p className="shop-product-name">{item.price}</p>
               <a
                 href={item.product_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  textDecoration: "none",
-                  color: "#fff",
-                  background: "#ff9900",
-                  padding: "10px 16px",
-                  borderRadius: "5px",
-                  display: "inline-block",
-                  marginTop: "10px",
-                }}
+                className="shop-buy-button"
               >
                 Buy Now
               </a>
-
-              
             </div>
           ))}
         </div>
       )}
 
-      {/* ✅ Fix Load More Button Logic */}
       {visibleProducts < shopData.length && (
-        <button
-          onClick={loadMore}
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
+        <button onClick={loadMore} className="shop-load-more-button">
           Load More
         </button>
       )}
