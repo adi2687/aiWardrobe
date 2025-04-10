@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import { div } from "three/tsl";
-
+import { FaShare } from "react-icons/fa";
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [wardrobeImages, setWardrobeImages] = useState([]);
@@ -11,6 +11,7 @@ const Profile = () => {
   const [zoomedImage, setZoomedImage] = useState(null);
   const [isScanning, setIsScanning] = useState(false);
   const navigate = useNavigate();
+  const [sharecloths, setshare] = useState("");
   // const [isVisible,setIsVisible]=useState(false)
   useEffect(() => {
     fetch("http://localhost:5000/user/profile", {
@@ -204,6 +205,36 @@ const Profile = () => {
         console.error("Error deleting favourite:", error);
       });
   };
+
+  const SharetoFriends = async (clothesToShare) => {
+    const res = await fetch("http://localhost:5000/share", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ clothes: clothesToShare }),
+      credentials: "include",
+    });
+    const data = await res.json();
+    const shareLink = `http://localhost:5173/share/${data.id}`;
+    setshare(shareLink);
+    // console.log("Share this link:", shareLink);
+  };
+const reset_link=()=>{
+  console.log('reset is cliked')
+  setshare("")
+}
+
+const previewoutfit=async (clothesToShare)=>{
+  const res = await fetch("http://localhost:5000/share", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ clothes: clothesToShare }),
+    credentials: "include",
+  });
+  const data = await res.json();
+  console.log(data)
+  const shareLink = `../share/${data.id}`;
+  navigate(shareLink)
+}
   return (
     <div className="profile-container">
       {user ? (
@@ -296,6 +327,24 @@ const Profile = () => {
                           >
                             Delete favourite
                           </button>
+
+                          <button
+                            className="sharefriends"
+                            onClick={() => SharetoFriends(ele)}
+                          >
+                            Share to friends
+                          </button>
+                          <button className="previewbutton" onClick={()=>{previewoutfit(ele)}}>Preview outfit</button>
+
+                          <div className="sharedclothes">
+                            {sharecloths ? (
+                              <a href={sharecloths} onClick={reset_link}>
+                                Share clothes <FaShare />
+                              </a>
+                            ) : (
+                              <p>Share cloths link not available</p>
+                            )}
+                          </div>
                         </div>
                       ))
                     ) : (

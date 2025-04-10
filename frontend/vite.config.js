@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   assetsInclude: ['**/*.glb'],
   optimizeDeps: {
-    include: ['axios']
+    include: ['axios', 'three', 'three-stdlib'], // Add 'three' and 'three-stdlib'
   },
-  build: {
-    rollupOptions: {
-      external: ['axios']
-    }
-  }
+  server: {
+    proxy: {
+      '/api': 'https://api.gemini.com', // Adjust this to match your backend API
+    },
+  },
 });

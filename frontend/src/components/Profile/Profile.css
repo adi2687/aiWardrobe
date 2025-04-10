@@ -267,12 +267,31 @@
   margin-left:20px
 }
 
-.sharebutton{
-  padding:10px;
+.sharebutton,.sharefriends{
+  padding:8px;
   margin-top:20px;
   font-weight: bold;
+  margin-left:10px
 }
 .sharebutton:hoveR{
   color:#333;
   background-color: whitesmoke;
+}
+.sharedclothes a{
+  margin-top:0px;
+  color:white;
+  font-size: 19px;
+ /* border:2px solid red */
+
+}
+.sharedclothes{
+  margin-top:20px;
+}
+.sharedclothes a:hover{
+  color:darkgrey
+}
+.previewbutton{
+  margin-left:10px;
+  padding: 7px;
+  border:3px solid white
 }

@@ -5,14 +5,13 @@ import "./Home5.css";
 const Home5 = () => {
   const navigate = useNavigate();
 
-  const handleTryNow = () => navigate("/try");
+  const handleTryNow = () => navigate("/recommendations");
 
   const featureRoutes = {
     "Weather based recommendations": "/recommendations",
     "Daily outfit planner": "/planner",
     "Sell your old clothes": "/sellcloth",
     "Accessories guider": "/accessories",
-    "Augmented Reality (AR) preview": "/ar-preview",
     "Location-Based Outfit Suggestions": "/recommendations",
   };
 

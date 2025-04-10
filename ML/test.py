@@ -15,7 +15,7 @@ import random
 import logging
 from flask_cors import CORS
 from amazon_test import scrape_amazon
-
+# from mynbtra import scrape_mynttr
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
@@ -44,34 +44,48 @@ You are an advanced AI fashion classifier. Analyze the provided image and list c
 def home():
     return render_template('index1.html')
 
-@app.route('/scrape', methods=['GET'])
-def scrape_myntra():
+# def scrape_myntra():
+#     query = request.args.get("query")
+#     if not query:
+#         return jsonify({"error": "Query parameter is required"}), 400
+
+#     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+#     url = f"https://www.myntra.com/search/{query}"
+
+#     driver.get(url)
+#     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".results-base")))
+
+#     for _ in range(5):
+#         driver.execute_script("window.scrollBy(0, 1000);")
+#         time.sleep(random.uniform(1.5, 2.5))
+
+#     soup = BeautifulSoup(driver.page_source, "html.parser")
+#     products = []
+#     for product in soup.select(".product-base"):
+#         name = product.select_one(".product-product").text.strip()
+#         price = product.select_one(".product-discountedPrice").text.strip()
+#         img_url = product.select_one("img").get("data-src")
+#         link = "https://www.myntra.com" + product.select_one("a")["href"]
+#         products.append({"name": name, "price": price, "image_url": img_url, "product_url": link})
+
+#     driver.quit()
+#     return jsonify(products)'
+# @app.route('/scrape', methods=['GET'])
+# def scrape_myntra():
+#     query = request.args.get("query")
+#     if not query:
+#         return jsonify({"error": "Query parameter is required"}), 400
+#     data = scrape_myntra(query)
+#     return jsonify(data)
+from myntra import scrape_myntra
+@app.route('/shop_myntra',methods=['GET'])
+def myntra():
     query = request.args.get("query")
     if not query:
         return jsonify({"error": "Query parameter is required"}), 400
-
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-    url = f"https://www.myntra.com/search/{query}"
-
-    driver.get(url)
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".results-base")))
-
-    for _ in range(5):
-        driver.execute_script("window.scrollBy(0, 1000);")
-        time.sleep(random.uniform(1.5, 2.5))
-
-    soup = BeautifulSoup(driver.page_source, "html.parser")
-    products = []
-    for product in soup.select(".product-base"):
-        name = product.select_one(".product-product").text.strip()
-        price = product.select_one(".product-discountedPrice").text.strip()
-        img_url = product.select_one("img").get("data-src")
-        link = "https://www.myntra.com" + product.select_one("a")["href"]
-        products.append({"name": name, "price": price, "image_url": img_url, "product_url": link})
-
-    driver.quit()
-    return jsonify(products)
-
+    # scrape_myntra(query)
+    data=scrape_myntra(query)
+    return jsonify(data)
 @app.route('/classify', methods=['POST'])
 def classify_images():
     files = request.files.getlist('images')

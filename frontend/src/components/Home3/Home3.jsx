@@ -17,7 +17,7 @@ const Home3 = () => {
         <div className="feature-item"> Discover New Trends</div>
         <div className="feature-item"> Personalized Shopping</div>
         <div className="feature-item"> Compare Prices Across Platforms</div>
-        <div className="feature-item"> Celebrity Fashion Trends</div>
+        {/* <div className="feature-item"> Celebrity Fashion Trends</div> */}
       </div>
     </div>
   );

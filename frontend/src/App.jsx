@@ -18,6 +18,8 @@ import SellCloth from './components/Sellcloth/Sellcloth'
 import Message from './components/message/message'
 import Planner from './components/Planner/Planner'
 import Image from './components/Image/Image'
+import ShareClothes from './components/ShareCloths/ShareCloths'
+import DiscoverTrends from "./components/DiscoverTrends/DiscoverTrends";
 const App = () => {
   return (
     <>
@@ -38,6 +40,8 @@ const App = () => {
         <Route path='/message/:username/:id' element={<Message />} />
         <Route path='/planner' element={<Planner />} />
         <Route path='/Image' element={<Image />} />
+        <Route path="/share/:id" element={<ShareClothes />} />
+        <Route path="/discover-trends" element={<DiscoverTrends />} />
       </Routes>
       <Footer />
     </>

@@ -1,0 +1,87 @@
+/* Shop.css */
+
+/* Main Shop container */
+.shop-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Search input field */
+  .shop-search-input {
+    padding: 10px;
+    width: 250px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Search button */
+  .shop-search-button {
+    padding: 10px 16px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Message when loading or no products found */
+  .shop-message {
+    margin-top: 20px;
+  }
+  
+  /* Grid layout for products */
+  .shop-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  /* Product card */
+  .shop-product-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #fdfdfd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Product image */
+  .shop-product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  /* Product name */
+  .shop-product-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007600;
+  }
+  
+  /* Buy Now button */
+  .shop-buy-button {
+    text-decoration: none;
+    color: #fff;
+    background: #ff9900;
+    padding: 10px 16px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  /* Load More button */
+  .shop-load-more-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
