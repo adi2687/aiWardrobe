@@ -3,7 +3,7 @@
     import "./Chatbutton.css";
     import { useNavigate } from "react-router-dom";
 
-const FloatingButton = ({ onClick }) => {
+    const ChatButton = ({ onClick }) => {
 
         const Navigate=useNavigate()
          const handleNavigate=()=>{   Navigate("/chatbot")}
@@ -15,4 +15,4 @@ const FloatingButton = ({ onClick }) => {
     );
  } ; 
 
-    export default FloatingButton;
+    export default ChatButton;
