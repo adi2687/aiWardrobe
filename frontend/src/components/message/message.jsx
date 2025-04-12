@@ -9,12 +9,12 @@ const Message = () => {
   const [clothdetail, setClothDetail] = useState({});
   const [loading, setLoading] = useState(true);
   const [fetchedMessages, setFetchedMessages] = useState([]);
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   // Send Message Function
   const sendmessage = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/user/message", {
+      const response = await fetch(`${apiUrl}/user/message`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -40,7 +40,7 @@ const Message = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/user/sellcloth/find/${id}`,
+        `${apiUrl}/user/sellcloth/find/${id}`,
         {
           method: "GET",
           credentials: "include",
@@ -62,7 +62,7 @@ const Message = () => {
   const fetchmessages = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/user/message/${username}`,
+        `${apiUrl}/user/message/${username}`,
         {
           method: "GET",
           credentials: "include",
@@ -122,7 +122,7 @@ const Message = () => {
           <img
             src={
               clothdetail?.clothImage
-                ? `http://localhost:5000/uploadscloths/${clothdetail.clothImage}`
+                ? `${apiUrl}/uploadscloths/${clothdetail.clothImage}`
                 : "default-image.jpg"
             }
             alt={clothdetail?.description || "Cloth image"}

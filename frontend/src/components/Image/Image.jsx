@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Image = () => {
   const [imageUrl, setImageUrl] = useState("");
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const imageGenerate = async () => {
     const prompt = `
     Generate an image of a mannequin wearing all of the following outfits:
@@ -14,7 +14,7 @@ const Image = () => {
     Each outfit should be clearly visible on the mannequin, and the mannequin should be standing in a neutral pose to showcase the different styles.
     `;
     try {
-      const response = await fetch("http://localhost:5000/getimage", {
+      const response = await fetch(`${apiUrl}/getimage`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json",

@@ -18,9 +18,9 @@ const Wardrobe = () => {
   const [showClothes, setShowClothes] = useState(true);
 
   const navigate = useNavigate();
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL
   useEffect(() => {
-    fetch("http://localhost:5000/user/images", {
+    fetch(`${apiUrl}/user/images`, {
       method: "GET",
       credentials: "include",
     })
@@ -34,7 +34,7 @@ const Wardrobe = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/user/profile", {
+    fetch(`${apiUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
     })
@@ -65,7 +65,7 @@ const Wardrobe = () => {
     if (!newcloth.trim()) {return};
 
     try {
-      const response = await fetch("http://localhost:5000/user/addnewcloths", {
+      const response = await fetch(`${apiUrl}/user/addnewcloths`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -115,10 +115,10 @@ const Wardrobe = () => {
             wardrobeImages.map((img, index) => (
               <img
                 key={index}
-                src={`http://localhost:5000${img}`}
+                src={`${apiUrl}${img}`}
                 alt={`Wardrobe ${index}`}
                 className="wardrobe-image"
-                onClick={() => handleImageClick(`http://localhost:5000${img}`)}
+                onClick={() => handleImageClick(`${apiUrl}${img}`)}
               />
             ))
           ) : (

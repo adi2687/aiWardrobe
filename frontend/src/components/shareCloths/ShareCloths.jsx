@@ -8,10 +8,11 @@ const ShareCloths = () => {
   const [sharecloth, setSharedCloth] = useState([]);
   const [username, setUsername] = useState("Users");
   const [imageUrl, setImageUrl] = useState("");
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL
+  const frontendUrl=import.meta.env.VITE_FRONTEND_URL
   // Fetch the username of the logged-in user
   useEffect(() => {
-    fetch("http://localhost:5000/user/profile", {
+    fetch(`${apiUrl}/user/profile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +30,7 @@ const ShareCloths = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/share/${id}`, {
+        const response = await fetch(`${apiUrl}/share/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -67,7 +68,7 @@ const ShareCloths = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/imagegenerate/generate-image",
+        `${apiUrl}/imagegenerate/generate-image`,
         {
           method: "POST",
           headers: {
@@ -97,7 +98,7 @@ const ShareCloths = () => {
   const [copyurl, setcopyurl] = useState(false);
 
   const CopyToClipboard = (id) => {
-    const url = `http://localhost:5173/share/${id}`;
+    const url = `${frontendUrl}/share/${id}`;
     navigator.clipboard
       .writeText(url)
       .then(() => {
@@ -113,7 +114,7 @@ const ShareCloths = () => {
   };
 
   const sharewithfriends = () => {
-    const link = `http://localhost:5173/share/${id}`;
+    const link = `${frontendUrl}/share/${id}`;
 
     // Example: open WhatsApp share
     const whatsappUrl = `https://wa.me/?text=Check%20out%20this%20outfit%20I%20shared%20with%20you!%20${encodeURIComponent(
@@ -123,7 +124,7 @@ const ShareCloths = () => {
     // You can add other platforms similarly
     window.open(whatsappUrl, "_blank");
   };
-const url=`http://localhost:5173/share/${id}`
+const url=`${frontendUrl}/share/${id}`
 const [showOptions, setShowOptions] = useState(false);
 
   return (
