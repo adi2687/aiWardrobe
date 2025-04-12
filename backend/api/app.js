@@ -21,6 +21,7 @@ import cors from 'cors';
 
 dotenv.config();
 const frontendUrl=process.env.FRONTEND_URL
+const mongoUri=process.env.MONGO_URI
 const app = express();
 const httpServer = http.createServer(app);
 
@@ -53,7 +54,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-connect();
+connect(mongoUri);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const connect = async () => {
+const connect = async (mongoUrl) => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/aiWardrobe');
+        await mongoose.connect(mongoUrl);
         console.log('Connected to the database');
     } catch (err) {
         console.log('Could not connect to the database. Error:', err);
