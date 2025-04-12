@@ -4,6 +4,25 @@ import multer from "multer";
 const router = express.Router();
 import User from "../model/user.js";
 import path from "path";
+const authenticate = (req, res, next) => {
+  const token = req.cookies.tokenlogin;
+  // console.log("toke is ", token)
+  if (!token) {
+    return res.status(401).json({ msg: "No token, authorization denied" });
+  }
+
+  try {
+    // console.log(process.en.secret_key)
+    const decoded = jwt.verify(token, process.env.secret_key);
+    console.log("suser detail", decoded);
+    req.user = decoded;
+    console.log("user is ", req.user); // Attach the user object to the request
+    next();
+  } catch (error) {
+    console.log("error");
+    res.status(401).json({ msg: "Token is not valid" });
+  }
+};
 router.get("/profile", (req, res) => {
   console.log("Cookies received:", req.cookies);
   const tokenlogin = req.cookies.tokenlogin;
@@ -74,6 +93,63 @@ router.get("/images", async (req, res) => {
     res.status(500).json({ error: "Error fetching Wardrobe" });
   }
 });
+
+
+router.post("/updatepassword",authenticate,async (req,res)=>{
+  const userid=req.user.id 
+  
+  const newpassword=req.body.newpassword
+  if(!newpassword){
+    return res.status(400).json({error:"Please enter new password"})
+  }
+  const user=await User.findById(userid)
+  user.password=newpassword
+  user.save()
+  res.json({status:true,msg:"Password done"})
+})
+
+router.post("/updateinfo",authenticate,async (req,res)=>{
+const userid=req.user.id 
+console.log(req.body)
+const age=req.body.age 
+const gender=req.body.gender 
+const prefference=req.body.preferences
+const user=await User.findById(userid)
+user.age=age
+user.gender=gender
+user.preferences=prefference
+user.save()
+res.json({status:true,msg:"Info done"})
+
+})
+
+
+
+
+
+router.get("/getuserdetails",authenticate,async (req,res)=>{
+  const userid=req.user.id
+  const user=await User.findById(userid)
+  if(!user){
+    return res.status(404).json({error:"User not found"})
+  }
+  res.json({age:user.age,preferences:user.preferences,gender:user.gender})
+})
+
+import Wishlist from '../model/addtowishlist.js'
+router.get("/getwishlist",authenticate,async (req,res)=>{
+const id=req.user.id 
+console.log(id)
+const wishlist=await Wishlist.find({userid:id})
+res.json(wishlist)
+
+})
+
+
+
+
+
+
 
 import { fileURLToPath } from "url";
 
@@ -160,25 +236,7 @@ router.post("/clothesUpload", async (req, res) => {
 
 import cloth from "../model/cloth.js";
 
-const authenticate = (req, res, next) => {
-  const token = req.cookies.tokenlogin;
-  // console.log("toke is ", token)
-  if (!token) {
-    return res.status(401).json({ msg: "No token, authorization denied" });
-  }
 
-  try {
-    // console.log(process.en.secret_key)
-    const decoded = jwt.verify(token, process.env.secret_key);
-    console.log("suser detail", decoded);
-    req.user = decoded;
-    console.log("user is ", req.user); // Attach the user object to the request
-    next();
-  } catch (error) {
-    console.log("error");
-    res.status(401).json({ msg: "Token is not valid" });
-  }
-};
 
 const storagecloth = multer.diskStorage({
   destination: (req, file, cb) => {

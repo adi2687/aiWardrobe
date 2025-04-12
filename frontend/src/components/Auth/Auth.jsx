@@ -9,7 +9,7 @@ const Auth = () => {
   const [error, setError] = useState("");
   const [toggle, setToggle] = useState(false); // Toggle between Login & Signup
   const navigate = useNavigate();
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   // Login Handler
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const Auth = () => {
     }
 
     try {
-        const response = await fetch("http://localhost:5000/auth/login", {
+        const response = await fetch(`${apiUrl}/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
@@ -53,7 +53,7 @@ const Auth = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/auth/register", {
+      const response = await fetch(`${apiUrl}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
@@ -76,7 +76,7 @@ const Auth = () => {
   // Google Login
   const LoginWithGoogle = async (e) => {
     e.preventDefault();
-    window.location.href = "http://localhost:5000/google/login";
+    window.location.href = `${apiUrl}/google/login`;
   };
 
   return (

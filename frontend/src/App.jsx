@@ -20,9 +20,13 @@ import Planner from './components/Planner/Planner'
 import Image from './components/Image/Image'
 import ShareClothes from './components/ShareCloths/ShareCloths'
 import DiscoverTrends from "./components/DiscoverTrends/DiscoverTrends";
+import DevelopersPage from './components/Developers/Developers'
+import Features from './components/Developers/Features'
+import About from './components/Developers/Aboutus'
+import Wishlist from './components/Wishlist/Wishlist'
 const App = () => {
   return (
-    <>
+    <>    
       <Navbar /> {/* Always visible */}
       <ChatButton />  
       <Routes>
@@ -42,6 +46,10 @@ const App = () => {
         <Route path='/Image' element={<Image />} />
         <Route path="/share/:id" element={<ShareClothes />} />
         <Route path="/discover-trends" element={<DiscoverTrends />} />
+        <Route path="/developers" element={<DevelopersPage />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/aboutus" element={<About />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
       <Footer />
     </>

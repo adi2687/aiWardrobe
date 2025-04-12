@@ -4,12 +4,13 @@
 .shop-container {
     text-align: center;
     padding: 20px;
+    min-height: 100vh;
   }
   
   /* Search input field */
   .shop-search-input {
     padding: 10px;
-    width: 250px;
+    width: 400px;
     margin-right: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -22,6 +23,7 @@
     background-color: #000;
     color: #fff;
     cursor: pointer;
+    margin:10px
   }
   
   /* Message when loading or no products found */
@@ -85,3 +87,197 @@
     cursor: pointer;
   }
   
+
+  .addtowishlist {
+    padding:10px;
+    background-color:white;
+    border-radius: 8px;
+    font-weight: bold;
+    /* height */
+    color:Red;
+  }
+ 
+  .getairecommendations{
+    padding:9px;
+    border-radius: 4px;
+  }
+  .suggestion-container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  .pill-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .suggestion-pill {
+    padding: 8px 18px;
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 999px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .suggestion-pill:hover {
+    background-color: #222;
+    transform: scale(1.05);
+  }
+  
+   .suggestion-heading {
+    color: #aaa;
+    font-size: 18px;
+    font-weight: 500;
+    border:2px solid white;
+    padding: 10px;
+    border-radius:23px
+  }
+  .suggestion-container{
+    /* border:3px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+  }
+  
+  .pill-wrapper div:nth-child(2) button{
+    margin:10px;
+    font-weight: bolder;
+    border:2px solid grey
+  }
+
+  .shop-products-grid{
+    
+    max-width: 50%;
+  }
+  .search{
+    display:flex;
+    flex-direction: row;
+  }
+  .search div {
+    min-width:50%;
+    padding: 10px;
+  } 
+  .search div div{
+    max-width:100%;
+  }
+  .search div div div{
+    /* border:2px solid red; */
+    height:540px;
+    background-color: #333;
+    color:white;
+font-weight: bolder;
+  }
+  .search div div div h3{
+    color:whitesmoke
+  }
+  .search div div div img{
+    max-height: 55%;
+    border:2px solid white
+  }
+  .searchonboth{
+    padding:9px;
+    border-radius: 6px;margin:10px
+  }
+  .addtowishlist {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border:2px solid white;
+    /* max-height: 10px; */
+    color: white;
+  }
+  
+  .addtowishlist:hover {
+    transform: scale(1.04);
+    background-color: grey;
+  }
+  
+  @media (max-width:720px){
+.search{
+  width:100vw;
+  padding:0px;
+  margin:0;
+  margin-left:-23px
+  
+}
+.search > div{
+  /* border:2px solid green; */
+margin:0;
+padding: 0px;
+}
+.search > div > div{
+  border:2px solid blue;
+
+  padding:0px;
+  margin:0px;
+  margin-top:10px;
+  width:50%;
+}
+
+  }
+  /* LoadingAnimation.css */
+
+/* The loader (spinner) style */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: AUTO;
+  text-align: center;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.loading-message {
+  font-size: 1.3rem;
+  color: #444;
+  max-width: 600px;
+  padding: 10px 20px;
+}
+
+/* Loader Container */
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+/* Circle Spinner */
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+.loading h2{
+  font-size: 20px;
+}

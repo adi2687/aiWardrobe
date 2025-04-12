@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import { div } from "three/tsl";
 import { FaShare } from "react-icons/fa";
+// import { response } from "express";
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [wardrobeImages, setWardrobeImages] = useState([]);
@@ -218,23 +219,100 @@ const Profile = () => {
     setshare(shareLink);
     // console.log("Share this link:", shareLink);
   };
-const reset_link=()=>{
-  console.log('reset is cliked')
-  setshare("")
-}
+  const reset_link = () => {
+    console.log("reset is cliked");
+    setshare("");
+  };
 
-const previewoutfit=async (clothesToShare)=>{
-  const res = await fetch("http://localhost:5000/share", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ clothes: clothesToShare }),
-    credentials: "include",
-  });
-  const data = await res.json();
-  console.log(data)
-  const shareLink = `../share/${data.id}`;
-  navigate(shareLink)
-}
+  const previewoutfit = async (clothesToShare) => {
+    const res = await fetch("http://localhost:5000/share", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ clothes: clothesToShare }),
+      credentials: "include",
+    });
+    const data = await res.json();
+    console.log(data);
+    const shareLink = `../share/${data.id}`;
+    navigate(shareLink);
+  };
+  const [newPassword, setnewPassword] = useState("");
+
+  const setnewpass = (password) => {
+    console.log(newPassword);
+    console.log("new pass", password);
+    if (!password) {
+      alert("Please enter a new password");
+    }
+    fetch("http://localhost:5000/user/updatepassword", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ newpassword: password }),
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data.status);
+        if (data.status === true) {
+          alert("Password updated successfully");
+          setnewPassword("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error setting new password:", error);
+      });
+  };
+  const [showPassword, setShowPassword] = useState(false);
+  const [age, setAge] = useState(0);
+  const [preferences, setPreferences] = useState("");
+  const [gender, setGender] = useState("");
+  
+  const personalinfosubmit = () => {
+    console.log("Info clicked");
+    console.log(age, preferences, gender);
+  
+  
+    fetch("http://localhost:5000/user/updateinfo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ age, preferences, gender }),
+      credentials: "include"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.status === true) {
+          alert("Info updated successfully!");
+          // setAge(0);
+          // setPreferences("");
+          // setGender("");
+        } else {
+          alert("Something went wrong while updating info.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating info:", error);
+        alert("An error occurred. Please try again later.");
+      });
+  };
+  
+
+  // const loadwishlist=()=>{
+  //   fetch("http://localhost:5000/user/wishlist", {
+  //     method: "GET",
+  //     credentials: "include"
+  //     })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data)
+
+  // }
+
+  const navigatewishlist=()=>{
+    navigate("/wishlist");
+  }
   return (
     <div className="profile-container">
       {user ? (
@@ -257,6 +335,62 @@ const previewoutfit=async (clothesToShare)=>{
             <div className="user-info">
               <h2 className="profile-name">{user.username}</h2>
               <p className="profile-email">{user.email}</p>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter new password"
+                onChange={(e) => setnewPassword(e.target.value)}
+              />
+              <div className="passbuttons">
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="showpassword"
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+
+                <button
+                  type="button"
+                  className="changepassbutton"
+                  onClick={() => setnewpass(newPassword)}
+                >
+                  Change Password
+                </button>
+              </div>
+              <div class="ai-form-container">
+                <h3>Get Personalized Outfit Suggestions</h3>
+
+                <input
+                  type="number"
+                  placeholder="Enter your age"
+                  class="ai-input"
+                  style={{border:"2px solid white"}}
+                  min={10}
+                  max={80}
+                  onChange={(e)=>setAge(e.target.value)}
+                />
+
+                <select class="ai-input" onChange={(e)=>setGender(e.target.value)}>
+                  <option value="" disabled selected>
+                    Select Gender
+                  </option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+
+                <input
+                  type="text"
+                  placeholder="Style Preferences (e.g. streetwear, ethnic, casual)"
+                  class="ai-input"
+                  style={{border:"2px solid white",marginTop:"10px"}}
+                  onChange={(e)=>setPreferences(e.target.value)}
+                />
+
+                <button class="ai-btn" onClick={personalinfosubmit}>Submit</button>
+              </div>
+
+              <br />
+              <br />
               <div className="sellClothes">
                 <button onClick={handleNav}>Sell old Clothes</button>
                 <button onClick={wardrobenav}>Wardrobe</button>
@@ -265,6 +399,7 @@ const previewoutfit=async (clothesToShare)=>{
                 <button onClick={recommedationforweek}>
                   Recommedation for week
                 </button>
+                <button onClick={navigatewishlist}>Your wishlist</button>
               </div>
               <div className="clothforweek">
                 <button onClick={toggleClothesForWeek}>
@@ -334,7 +469,14 @@ const previewoutfit=async (clothesToShare)=>{
                           >
                             Share to friends
                           </button>
-                          <button className="previewbutton" onClick={()=>{previewoutfit(ele)}}>Preview outfit</button>
+                          <button
+                            className="previewbutton"
+                            onClick={() => {
+                              previewoutfit(ele);
+                            }}
+                          >
+                            Preview outfit
+                          </button>
 
                           <div className="sharedclothes">
                             {sharecloths ? (
