@@ -12,7 +12,7 @@ import AR from './components/AR/AR_try'
 import Footer from "./components/Footer/Footer";
 import Recommendations from "./components/Recommendations/Recommendations";
 import Chatbot from './components/Chatbot/Chatbot'
-import ChatButton from "./components/Chatbotbutton/ChatButton";
+import ChatButton from "./components/ChatbotButton/ChatButton";
 import CelebrityNews from "./components/Profile/News/CelebrityNews";
 import SellCloth from './components/Sellcloth/Sellcloth'
 import Message from './components/message/message'
