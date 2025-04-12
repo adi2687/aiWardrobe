@@ -9,11 +9,14 @@ const Navbar = () => {
   const [check, setCheck] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
   const apiUrl = import.meta.env.VITE_BACKEND_URL
+  console.log(apiUrl)
   useEffect(() => {
     fetch(`${apiUrl}/user/profile`, {
       method: "GET",
+      headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
+    // console.log(`${apiUrl}/user/profile`)
       .then((response) => response.json())
       .then((data) => {
         setCheck(data);
