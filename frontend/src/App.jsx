@@ -18,7 +18,7 @@ import SellCloth from './components/Sellcloth/Sellcloth'
 import Message from './components/message/message'
 import Planner from './components/Planner/Planner'
 import Image from './components/Image/Image'
-import ShareClothes from './components/ShareCloths/ShareCloths'
+import ShareClothes from './components/ShareClothes/ShareClothes'
 import DiscoverTrends from "./components/DiscoverTrends/DiscoverTrends";
 import DevelopersPage from './components/Developers/Developers'
 import Features from './components/Developers/Features'
