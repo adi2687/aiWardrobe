@@ -1,4 +1,4 @@
-import OpenAI from 'openai/index.mjs';
+import { OpenAI } from 'openai';
 import express from 'express';
 import Sharecloth from '../model/Sharecloths.js';
 import fs from 'fs';
