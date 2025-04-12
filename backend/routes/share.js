@@ -7,17 +7,17 @@ import jwt from "jsonwebtoken"
 
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
-  // console.log("toke is ", token)
+  
   if (!token) {
     return res.status(401).json({ msg: "No token, authorization denied" });
   }
 
   try {
-    // console.log(process.en.secret_key)
+    
     const decoded = jwt.verify(token, process.env.secret_key);
-    // console.log("suser detail", decoded);
+    
     req.user = decoded;
-    // console.log("user is ", req.user); // Attach the user object to the request
+    
     next();
   } catch (error) {
     console.log("error");

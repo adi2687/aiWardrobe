@@ -1,0 +1,97 @@
+/* About Us Page CSS */
+.aboutus-container {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+  }
+  
+  .aboutus-header {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .aboutus-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  .aboutus-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  .aboutus-section {
+    padding: 20px 40px;
+    margin: 20px 0;
+    background-color: rgb(76, 74, 74);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color:whitesmoke;
+    font-weight: bolder;
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .aboutus-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .aboutus-section p {
+    font-size: 1rem;
+    color: white;
+    line-height: 1.5;
+  }
+  
+  .aboutus-section ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .aboutus-section li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .aboutus-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+  .email {
+    color: #1a73e8;
+    text-decoration: none;
+  }
+  
+  .email:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+  }
+  
+  @media (max-width: 768px) {
+    .aboutus-header h1 {
+      font-size: 2rem;
+    }
+  
+    .aboutus-section h2 {
+      font-size: 1.6rem;
+    }
+  
+    .aboutus-section p {
+      font-size: 0.9rem;
+    }
+  
+    .aboutus-section li {
+      font-size: 0.9rem;
+    }
+  }
+  

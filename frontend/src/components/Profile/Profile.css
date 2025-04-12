@@ -295,3 +295,81 @@
   padding: 7px;
   border:3px solid white
 }
+
+.user-info input{
+  margin-top:0px;
+width:60%;
+padding:10px;
+border:2px solid grey
+}
+
+.showpassword{
+  margin-left:10px;
+  width:8%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items:center;
+  padding:0px;
+  border-radius:50%
+}
+
+
+.changepassbutton{
+  width:auto;
+  max-width: 40%;
+}
+.passbuttons{
+  display: flex;
+  flex-direction: row;
+  gap:3%;
+}
+.passbuttons button{padding:10px;}
+.ai-form-container{
+  border:2px solid white;
+  display: flex;
+  flex-direction: column;
+  padding:10px;
+border-radius: 20px;
+margin-top:10px;
+
+}
+.ai-form-container select{
+  width:80%;
+  border:2px solid wheat;
+
+}
+.ai-form-container button{
+  width:20%;
+  padding:10px
+}
+.ai-form-container button:hover{
+  background-color: grey;
+}
+.ai-form-container select {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color:white;
+  font-size: 14px;
+  appearance: none; /* Removes default arrow styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  transition: border 0.3s ease;
+  color:white;
+  background-color: #333;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.ai-form-container select option{
+  color:white;
+  background-color: grey;
+  font-weight: 600;
+  cursor: pointer;
+}

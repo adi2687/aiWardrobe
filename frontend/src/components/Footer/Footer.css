@@ -5,6 +5,7 @@
     text-align: center;
     font-size: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* border:2px solid green */
 }
 
 .footer-content {
@@ -26,6 +27,8 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    /* border:2px solid red; */
+    margin-left:23px
 }
 
 .footer-links a {
