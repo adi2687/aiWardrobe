@@ -104,7 +104,7 @@ def scrape():
         return jsonify({"error": "Query parameter is required"}), 400
 
     data = scrape_amazon(query)
-    return jsonify(data)
+    return jsonify(data) 
 
 # if __name__ == '__main__':
 #     app.run(debug=True,port=5001)
