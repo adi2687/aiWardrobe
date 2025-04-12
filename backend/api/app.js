@@ -3,29 +3,30 @@
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
-import connect from './db/connection.js';
+import connect from '../db/connection.js';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
-import UserRoutes from './routes/user_routes.js';
-import AuthRoutes from './routes/auth_routes.js';
-import GoogleLoginRoutes from './routes/auth.google.js';
-import ShopRoutes from './routes/shop.routes.js';
-import Chatbot from './routes/chat.js';
-import ShareRoutes from './routes/share.js'
-import imageGenerateRoute from './routes/image.js'
-import jwt from 'jsonwebtoken';
+import UserRoutes from '../routes/user_routes.js';
+import AuthRoutes from '../routes/auth_routes.js';
+import GoogleLoginRoutes from '../routes/auth.google.js';
+import ShopRoutes from '../routes/shop.routes.js';
+import Chatbot from '../routes/chat.js';
+import ShareRoutes from '../routes/share.js'
+import imageGenerateRoute from '../routes/image.js'
 import session from "express-session";
 import passport from "passport";
 import path from 'path';
 import cors from 'cors';
 
+
 dotenv.config();
+const frontendUrl=process.env.FRONTEND_URL
 const app = express();
 const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: frontendUrl,
     credentials: true,
   },
 });
@@ -35,7 +36,7 @@ export { io }; // ✅ Exporting io instance
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: frontendUrl,
     credentials: true,
   })
 );
