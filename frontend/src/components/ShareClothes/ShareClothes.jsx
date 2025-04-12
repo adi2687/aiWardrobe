@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./sharecloths.css"; // Import the CSS file
 import { FaWhatsapp, FaTwitter, FaEnvelope } from "react-icons/fa"
-const ShareCloths = () => {
+const ShareClothes = () => {
   const { id } = useParams();
 
   const [sharecloth, setSharedCloth] = useState([]);
@@ -202,4 +202,4 @@ const [showOptions, setShowOptions] = useState(false);
   );
 };
 
-export default ShareCloths;
+export default ShareClothes;
