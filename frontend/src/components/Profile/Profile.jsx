@@ -13,9 +13,12 @@ const Profile = () => {
   const [isScanning, setIsScanning] = useState(false);
   const navigate = useNavigate();
   const [sharecloths, setshare] = useState("");
+  const apiUrl=import.meta.env.VITE_BACKEND_URL
+  const mlUrl=import.meta.env.VITE_ML_URL
+  const frontedUrl=import.meta.env.VITE_FRONTEND_URL
   // const [isVisible,setIsVisible]=useState(false)
   useEffect(() => {
-    fetch("http://localhost:5000/user/profile", {
+    fetch(`${apiUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
     })
@@ -25,7 +28,7 @@ const Profile = () => {
   }, []);
 
   const LogOut = () => {
-    fetch("http://localhost:5000/user/logout", {
+    fetch(`${apiUrl}/user/logout`, {
       method: "POST",
       credentials: "include",
     })
@@ -55,7 +58,7 @@ const Profile = () => {
     formData.append("wardrobeImage", imageFile);
 
     try {
-      const response = await fetch("http://localhost:5000/user/upload-image", {
+      const response = await fetch(`${apiUrl}/user/upload-image`, {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -83,7 +86,7 @@ const Profile = () => {
     formData.append("images", imageFile);
 
     try {
-      const response = await fetch("http://localhost:5001/classify", {
+      const response = await fetch(`${mlUrl}/classify`, {
         method: "POST",
         body: formData,
         headers: {
@@ -105,7 +108,7 @@ const Profile = () => {
 
       console.log("colthes data ", clothesData);
       const clothesres = await fetch(
-        "http://localhost:5000/user/clothesUpload",
+        `${apiUrl}/user/clothesUpload`,
         {
           method: "POST",
           credentials: "include",
@@ -133,7 +136,7 @@ const Profile = () => {
     if (!isVisible) {
       console.log(isVisible);
       setIsLoadingClothes(true);
-      fetch("http://localhost:5000/user/clothsforweek", {
+      fetch(`${apiUrl}/user/clothsforweek`, {
         method: "GET",
         credentials: "include",
       })
@@ -154,7 +157,7 @@ const Profile = () => {
   };
   const [favourites, setFavourites] = useState([]);
   const clothesforweek = () => {
-    fetch("http://localhost:5000/user/clothsforweek", {
+    fetch(`${apiUrl}/user/clothsforweek`, {
       method: "GET",
       credentials: "include",
     })
@@ -189,7 +192,7 @@ const Profile = () => {
     setfavouritevivile(!favoritevisible);
   };
   const deletefavourite = (clothsuggestion) => {
-    fetch("http://localhost:5000/user/cloth/deletefavourite", {
+    fetch(`${apiUrl}/user/cloth/deletefavourite`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -208,14 +211,14 @@ const Profile = () => {
   };
 
   const SharetoFriends = async (clothesToShare) => {
-    const res = await fetch("http://localhost:5000/share", {
+    const res = await fetch(`${apiUrl}/share`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ clothes: clothesToShare }),
       credentials: "include",
     });
     const data = await res.json();
-    const shareLink = `http://localhost:5173/share/${data.id}`;
+    const shareLink = `${frontedUrl}/share/${data.id}`;
     setshare(shareLink);
     // console.log("Share this link:", shareLink);
   };
@@ -225,7 +228,7 @@ const Profile = () => {
   };
 
   const previewoutfit = async (clothesToShare) => {
-    const res = await fetch("http://localhost:5000/share", {
+    const res = await fetch(`${apiUrl}/share`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ clothes: clothesToShare }),
@@ -244,7 +247,7 @@ const Profile = () => {
     if (!password) {
       alert("Please enter a new password");
     }
-    fetch("http://localhost:5000/user/updatepassword", {
+    fetch(`${apiUrl}/user/updatepassword`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ newpassword: password }),
@@ -272,7 +275,7 @@ const Profile = () => {
     console.log(age, preferences, gender);
   
   
-    fetch("http://localhost:5000/user/updateinfo", {
+    fetch(`${apiUrl}/user/updateinfo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

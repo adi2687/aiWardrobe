@@ -5,12 +5,12 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const getOutfitSuggestion = async (input) => {
     try {
       setIsLoading(true);
 
-      const response = await fetch("http://localhost:5000/chat/chatbot", {
+      const response = await fetch(`${apiUrl}/chat/chatbot`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -16,11 +16,11 @@ const Sellcloth = () => {
   const handlepricechange = (e) => {
     setPrice(e.target.value);
   };
-
+const apiUrl=import.meta.env.VITE_BACKEND_URL
   const fetchClothes = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/user/allClothesSell", {
+      const response = await fetch(`${apiUrl}/user/allClothesSell`, {
         method: "GET",
         credentials: "include",
       });
@@ -71,7 +71,7 @@ const Sellcloth = () => {
     formData.append("price", price);
 
     try {
-      const response = await fetch("http://localhost:5000/user/sellcloth", {
+      const response = await fetch(`${apiUrl}/user/sellcloth`, {
         method: "POST",
         credentials: "include",
         body: formData,
@@ -100,7 +100,7 @@ const Sellcloth = () => {
     navigate(`/message/${username}/${id}`)
   }
   const sold=(clothid)=>{
-    fetch(`http://localhost:5000/user/soldcloth/delete/${clothid}`,{
+    fetch(`${apiUrl}/user/soldcloth/delete/${clothid}`,{
       method:"POST",
       credentials:"include",
       body:JSON.stringify({clothid:clothid})
@@ -148,7 +148,7 @@ const Sellcloth = () => {
             {clothuser.map((item, index) => (
               <li key={index}>
                 <img
-                  src={`http://localhost:5000/uploadscloths/${item.clothImage}`}
+                  src={`${apiUrl}/uploadscloths/${item.clothImage}`}
                   alt="Cloth"
                   width="100"
                 />
@@ -171,7 +171,7 @@ const Sellcloth = () => {
             clothall.map((item, index) => (
               <li key={index}>
                 <img
-                  src={`http://localhost:5000/uploadscloths/${item.clothImage}`}
+                  src={`${apiUrl}/uploadscloths/${item.clothImage}`}
                   alt="Cloth"
                   width="100"
                 />

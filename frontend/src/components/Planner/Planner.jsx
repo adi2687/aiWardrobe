@@ -93,15 +93,16 @@ const DailyWeather = () => {
       }
     });
   };
-
+  const apiUrl = import.meta.env.VITE_BACKEND_URL
   const fetchClothes = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/user/images", {
+      const response = await fetch(`${apiUrl}/user/images`, {
         method: "GET",
         credentials: "include",
       });
       const data = await response.json();
+      // console.log(data)
       setClothes(data.allclothes);
     } catch (error) {
       console.error("Clothes could not be fetched", error);
@@ -119,7 +120,7 @@ const DailyWeather = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:5000/chat/suggestionforweek",
+        `${apiUrl}/chat/suggestionforweek`,
         {
           method: "POST",
           credentials: "include",
@@ -162,7 +163,7 @@ const DailyWeather = () => {
   };
   const copytoprofile = () => {
     console.log("clicked");
-    fetch("http://localhost:5000/user/copytoprofileweekcloths", {
+    fetch(`${apiUrl}/user/copytoprofileweekcloths`, {
       method: "POST",
       credentials: "include",
       headers: {

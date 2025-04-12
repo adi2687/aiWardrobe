@@ -29,7 +29,7 @@ const App = () => {
     <>    
       <Navbar /> {/* Always visible */}
       <ChatButton />  
-      <Routes>
+      <Routes> 
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
         <Route path="/auth" element={<Auth />} />

@@ -9,9 +9,9 @@ const Recommendations = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
   const [enabled, setEnabled] = useState(false);
-
+const apiUrl=import.meta.env.VITE_BACKEND_URL
   useEffect(() => {
-    fetch("http://localhost:5000/user/images", {
+    fetch(`${apiUrl}/user/images`, {
       method: "GET",
       credentials: "include",
     })
@@ -88,7 +88,7 @@ const Recommendations = () => {
         weather = weatherData; // Send weather data only if enabled
       }
 
-      const response = await fetch("http://localhost:5000/chat/chatbot", {
+      const response = await fetch(`${apiUrl}/chat/chatbot`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -141,7 +141,7 @@ const Recommendations = () => {
 
   const loadchatmain = async () => {
     try {
-      const response = await fetch("http://localhost:5000/chat/chathistory", {
+      const response = await fetch(`${apiUrl}/chat/chathistory`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -162,7 +162,7 @@ const Recommendations = () => {
   const lovesuggestion = (clothsuggestion) => {
     console.log("this is cliekd ");
     console.log(clothsuggestion);
-    fetch("http://localhost:5000/user/cloth/lovesuggestion/save", {
+    fetch(`${apiUrl}/user/cloth/lovesuggestion/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

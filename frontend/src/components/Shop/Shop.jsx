@@ -11,9 +11,10 @@ const Shop = () => {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [userdetails, setuserdetails] = useState({});
-
+const apiUrl=import.meta.env.VITE_FRONTEND_URL
+const mlUrl=import.meta.env.VITE_ML_URL
   const fetchuserdetails = () => {
-    fetch("http://localhost:5000/user/getuserdetails", {
+    fetch( `${apiUrl}/user/getuserdetails`, {
       method: "GET",
       credentials: "include",
     })
@@ -53,7 +54,7 @@ const Shop = () => {
     console.log("search query is ", searchQuery);
     setAmazonLoading(true);
     fetch(
-      `http://localhost:5001/shop?query=${encodeURIComponent(searchQuery)}`,
+      `${mlUrl}/shop?query=${encodeURIComponent(searchQuery)}`,
       {
         method: "GET",
         headers: {
@@ -82,7 +83,7 @@ const Shop = () => {
       `Styles for ${userdetails.gender || "male and female"}`;
     setMyntraLoading(true);
     fetch(
-      `http://localhost:5001/shop_myntra?query=${encodeURIComponent(
+      `${mlUrl}/shop_myntra?query=${encodeURIComponent(
         searchQuery
       )}`,
       {
@@ -109,7 +110,7 @@ const Shop = () => {
   const addtowishlist = (item) => {
     console.log("Wishlist item:", item);
 
-    fetch("http://localhost:5000/shop/addtowishlist", {
+    fetch(`${apiUrl}/shop/addtowishlist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -137,7 +138,7 @@ const Shop = () => {
 
   const [usercloths, setuserclothes] = useState("");
   const userclothes = () => {
-    fetch("http://localhost:5000/user/images", {
+    fetch(`${apiUrl}/user/images`, {
       method: "GET",
       credentials: "include",
     })
@@ -155,7 +156,7 @@ const Shop = () => {
 
   const shoppingsuggestions = () => {
     setloaded(true);
-    fetch("http://localhost:5000/chat/getshoppingsuggestions", {
+    fetch(`${apiUrl}/user/addnewcloths`, {
       method: "POST",
       credentials: "include",
     })
