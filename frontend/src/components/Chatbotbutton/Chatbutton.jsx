@@ -3,7 +3,7 @@
     import "./Chatbutton.css";
     import { useNavigate } from "react-router-dom";
 
-    const ChatButton = ({ onClick }) => {
+    const ChatButton = () => {
 
         const Navigate=useNavigate()
          const handleNavigate=()=>{   Navigate("/chatbot")}
