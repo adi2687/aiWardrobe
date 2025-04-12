@@ -6,15 +6,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import jwt from 'jsonwebtoken';
 import User from '../model/user.js'
-router.get("/login",async (req,res)=>{
-console.log(req.cookies.tokenlogin)
-const tokenlogin = req.cookies.tokenlogin 
-const SECRET_KEY=process.env.secret_key
-if (tokenlogin){
-    res.send("<h2>the user is already login </h3>")
-}
-    res.sendFile(path.join(__dirname,'../public/login.html'))
-})
+// router.get("/login",async (req,res)=>{
+// console.log(req.cookies.tokenlogin)
+// const tokenlogin = req.cookies.tokenlogin 
+// const SECRET_KEY=process.env.secret_key
+// if (tokenlogin){
+//     res.send("<h2>the user is already login </h3>")
+// }
+//     res.sendFile(path.join(__dirname,'../public/login.html'))
+// })
 
 // router.get("/register",(req,res)=>{res.sendFile(path.join(__dirname,"../public.register.html"))})
 
