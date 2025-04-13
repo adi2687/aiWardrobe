@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import User from "../model/user.js";
 import jwt from "jsonwebtoken";
 import { profile } from "console";
-
+ 
 dotenv.config();
 const router = express.Router();
 const SECRET_KEY = process.env.SECRET_KEY;
