@@ -44,7 +44,7 @@ const Navbar = () => {
           <Link to="/wardrobe" className="nav-link" onClick={() => setIsOpen(false)}>Wardrobe</Link>
           <Link to="/recommendations" className="nav-link" onClick={() => setIsOpen(false)}>Recommendations</Link>
           <Link to="/sellcloth" className="nav-link" onClick={() => setIsOpen(false)}>Sell Clothes</Link>
-          <Link to="/shop" className="nav-link" onClick={() => setIsOpen(false)}>Shop</Link>
+          {/* <Link to="/shop" className="nav-link" onClick={() => setIsOpen(false)}>Shop</Link> */}
         </div>
  
         <div className="navbar-icons">
@@ -64,7 +64,7 @@ const Navbar = () => {
         <Link to="/wardrobe" className="mobile-link" onClick={() => setIsOpen(false)}>Wardrobe</Link>
         <Link to="/recommendations" className="mobile-link" onClick={() => setIsOpen(false)}>Recommendations</Link>
         <Link to="/sellcloth" class  Name="mobile-link" onClick={() => setIsOpen(false)}>Sell Clothes</Link>
-        <Link to="/shop" className="mobile-link" onClick={() => setIsOpen(false)}>Shop</Link>
+        {/* <Link to="/shop" className="mobile-link" onClick={() => setIsOpen(false)}>Shop</Link> */}
       </div>
     </nav>
   );
