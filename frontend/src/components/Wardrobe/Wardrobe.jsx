@@ -129,7 +129,7 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
               <img
                 key={index}
                 src={`${backendUrl}${img}`}
-                alt={`Wardrobe ${img}`}
+                alt={`Wardrobe ${backendUrl}${img}`}
                 className="wardrobe-image"
                 onClick={() => handleImageClick(`${backendUrl}${img}`)}
               />
