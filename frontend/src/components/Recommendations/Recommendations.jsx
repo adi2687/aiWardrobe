@@ -16,7 +16,7 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
       credentials: "include",
     })
       .then((response) => response.json())
-      .then((data) => setClothes(data.allclothes))
+      .then((data) => setClothes(data.Wardrobe.allclothes))
       .catch((error) => console.error("Error fetching clothes:", error));
   }, []);
 

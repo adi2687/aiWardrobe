@@ -360,8 +360,10 @@ router.post("/addnewcloths", authenticate, async (req, res) => {
   const user = await User.findById(userid);
   const clothdata = req.body.clothname;
   if (user.clothes[0]) {
+    console.log("saved")
     user.clothes[0] += `\n , ${clothdata} , `;
   } else {
+    console.log("not saved")
     user.clothes[0] = clothdata + " ";
   }
   await user.save();

@@ -10,11 +10,13 @@ import { profile } from "console";
 dotenv.config();
 const router = express.Router();
 const SECRET_KEY = process.env.SECRET_KEY;
+const backendUrl=process.env.BACKEND_URL
+const frontendurl=process.env.FRONTEND_URL
 
 // Session Middleware (Required for `req.user` to persist)
 router.use(
   session({
-    secret: SECRET_KEY,
+    secret: SECRET_KEY, 
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false }, // Change to `true` in production (HTTPS required)
@@ -31,7 +33,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "http://localhost:5000/google/callback",
+      callbackURL:  `${backendUrl}/google/callback`,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -84,7 +86,7 @@ console.log('user details',req.user)
 
     res.cookie("tokenlogin", token, { httpOnly: true, secure: false, sameSite: "Strict" });
 
-    res.redirect("http://localhost:5173/profile");
+    res.redirect(`${frontendurl}/profile`);
   }
 );
 

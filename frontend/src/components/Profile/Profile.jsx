@@ -304,17 +304,6 @@ const Profile = () => {
   };
   
 
-  // const loadwishlist=()=>{
-  //   fetch("http://localhost:5000/user/wishlist", {
-  //     method: "GET",
-  //     credentials: "include"
-  //     })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data)
-
-  // }
-
   const navigatewishlist=()=>{
     navigate("/wishlist");
   }
