@@ -11,20 +11,20 @@ const ShareClothes = () => {
   const apiUrl = import.meta.env.VITE_BACKEND_URL
   const frontendUrl=import.meta.env.VITE_FRONTEND_URL
   // Fetch the username of the logged-in user
-  useEffect(() => {
-    fetch(`${apiUrl}/user/profile`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setUsername(data.user.username);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${apiUrl}/user/profile`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     credentials: "include",
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setUsername(data.user.username);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
 
   // Fetch shared clothes for the user based on 'id' and 'usernamemain'
   useEffect(() => {
