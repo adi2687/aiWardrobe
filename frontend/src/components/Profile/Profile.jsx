@@ -362,20 +362,20 @@ const Profile = () => {
                   Change Password
                 </button>
               </div>
-              <div class="ai-form-container">
+              <div className="ai-form-container">
                 <h3>Get Personalized Outfit Suggestions</h3>
 
                 <input
                   type="number"
                   placeholder="Enter your age"
-                  class="ai-input"
+                  className="ai-input"
                   style={{border:"2px solid white"}}
                   min={10}
                   max={80}
                   onChange={(e)=>setAge(e.target.value)}
                 />
 
-                <select class="ai-input" onChange={(e)=>setGender(e.target.value)}>
+                <select className="ai-input" onChange={(e)=>setGender(e.target.value)}>
                   <option value="" disabled selected>
                     Select Gender
                   </option>
@@ -386,12 +386,12 @@ const Profile = () => {
                 <input
                   type="text"
                   placeholder="Style Preferences (e.g. streetwear, ethnic, casual)"
-                  class="ai-input"
+                  className="ai-input"
                   style={{border:"2px solid white",marginTop:"10px"}}
                   onChange={(e)=>setPreferences(e.target.value)}
                 />
 
-                <button class="ai-btn" onClick={personalinfosubmit}>Submit</button>
+                <button className="ai-btn" onClick={personalinfosubmit}>Submit</button>
               </div>
 
               <br />

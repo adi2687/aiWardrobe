@@ -88,7 +88,7 @@ router.get("/images", async (req, res) => {
       wardrobeClothes: wardrobeClothes,
       allclothes: allClothes,
     };
-    res.send(Wardrobe);
+    res.json({Wardrobe});
   } catch (error) {
     res.status(500).json({ error: "Error fetching Wardrobe" });
   }
