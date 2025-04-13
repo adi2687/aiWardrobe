@@ -44,6 +44,7 @@ const Message = () => {
         {
           method: "GET",
           credentials: "include",
+          headers: { "Content-Type": "application/json" }
         }
       );
 
@@ -66,6 +67,7 @@ const Message = () => {
         {
           method: "GET",
           credentials: "include",
+          headers: { "Content-Type": "application/json" }
         }
       );
 
