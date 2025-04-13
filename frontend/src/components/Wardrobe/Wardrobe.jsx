@@ -118,7 +118,7 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
       >
         {showClothes ? "Hide Clothes" : "Show Clothes"}
       </button>
-      {JSON.stringify(wardrobeImages)}
+      {/* {JSON.stringify(wardrobeImages)} */}
  
       {/* Wardrobe Images Section */}
       {showWardrobe && (

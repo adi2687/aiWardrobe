@@ -34,6 +34,7 @@ const Profile = () => {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
+    .then((response) => response.json())
       .then(() => (window.location.href = "/"))
       .catch((error) => console.log("Couldn't logout", error));
   };
