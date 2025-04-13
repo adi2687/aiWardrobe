@@ -35,7 +35,9 @@ const Profile = () => {
       credentials: "include",
     })
     .then((response) => response.json())
-      .then(() => (window.location.href = "/"))
+      .then(() => {
+        console.log("cliked")
+        navigate("/")})
       .catch((error) => console.log("Couldn't logout", error));
   };
 
