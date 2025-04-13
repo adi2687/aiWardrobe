@@ -21,6 +21,7 @@ const Profile = () => {
     fetch(`${apiUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
+      headers: { "Content-Type": "application/json" }
     })
       .then((response) => response.json())
       .then((data) => setUser(data.user))
@@ -30,6 +31,7 @@ const Profile = () => {
   const LogOut = () => {
     fetch(`${apiUrl}/user/logout`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
       .then(() => (window.location.href = "/"))

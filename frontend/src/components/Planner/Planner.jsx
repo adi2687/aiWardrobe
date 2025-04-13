@@ -100,6 +100,7 @@ const DailyWeather = () => {
       const response = await fetch(`${apiUrl}/user/images`, {
         method: "GET",
         credentials: "include",
+        headers: { "Content-Type": "application/json" }
       });
       const data = await response.json();
       // console.log(data)
