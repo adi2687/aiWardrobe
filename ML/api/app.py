@@ -14,7 +14,9 @@ import time
 import random   
 import logging
 from flask_cors import CORS
-from amazon_test import scrape_amazon
+from amazon_test.py import scrape_amazon
+from myntra.py import scrape_myntra
+
 # from mynbtra import scrape_mynttr
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -77,7 +79,6 @@ def home():
 #         return jsonify({"error": "Query parameter is required"}), 400
 #     data = scrape_myntra(query)
 #     return jsonify(data)
-from myntra import scrape_myntra
 @app.route('/shop_myntra',methods=['GET'])
 def myntra():
     query = request.args.get("query")
