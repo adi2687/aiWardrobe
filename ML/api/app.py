@@ -11,10 +11,10 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 import time
-import random
+import random   
 import logging
 from flask_cors import CORS
-from amazon import scrape_amazon
+from amazon_test import scrape_amazon
 # from mynbtra import scrape_mynttr
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
