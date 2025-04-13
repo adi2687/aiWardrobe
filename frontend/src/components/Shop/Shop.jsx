@@ -8,13 +8,14 @@ import { FaCheck } from "react-icons/fa";
 const Shop = () => {
   const [shopData, setShopData] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState(5);
+
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [userdetails, setuserdetails] = useState({});
-const apiUrl=import.meta.env.VITE_FRONTEND_URL
-const mlUrl=import.meta.env.VITE_ML_URL
+const backendurl=import.meta.env.VITE_BACKEND_URL 
+const mlurl=import.meta.env.VITE_ML_URL
   const fetchuserdetails = () => {
-    fetch( `${apiUrl}/user/getuserdetails`, {
+    fetch(`${backendurl}/user/getuserdetails`, {
       method: "GET",
       credentials: "include",
     })
@@ -54,7 +55,7 @@ const mlUrl=import.meta.env.VITE_ML_URL
     console.log("search query is ", searchQuery);
     setAmazonLoading(true);
     fetch(
-      `${mlUrl}/shop?query=${encodeURIComponent(searchQuery)}`,
+      `${mlurl}/shop?query=${encodeURIComponent(searchQuery)}`,
       {
         method: "GET",
         headers: {
@@ -83,7 +84,7 @@ const mlUrl=import.meta.env.VITE_ML_URL
       `Styles for ${userdetails.gender || "male and female"}`;
     setMyntraLoading(true);
     fetch(
-      `${mlUrl}/shop_myntra?query=${encodeURIComponent(
+      `${mlurl}/shop_myntra?query=${encodeURIComponent(
         searchQuery
       )}`,
       {
@@ -110,7 +111,7 @@ const mlUrl=import.meta.env.VITE_ML_URL
   const addtowishlist = (item) => {
     console.log("Wishlist item:", item);
 
-    fetch(`${apiUrl}/shop/addtowishlist`, {
+    fetch(`${backendurl}/shop/addtowishlist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -138,7 +139,7 @@ const mlUrl=import.meta.env.VITE_ML_URL
 
   const [usercloths, setuserclothes] = useState("");
   const userclothes = () => {
-    fetch(`${apiUrl}/user/images`, {
+    fetch(`${backendurl}/user/images`, {
       method: "GET",
       credentials: "include",
     })
@@ -156,7 +157,7 @@ const mlUrl=import.meta.env.VITE_ML_URL
 
   const shoppingsuggestions = () => {
     setloaded(true);
-    fetch(`${apiUrl}/user/addnewcloths`, {
+    fetch(`${backendurl}/chat/getshoppingsuggestions`, {
       method: "POST",
       credentials: "include",
     })
@@ -188,6 +189,7 @@ const mlUrl=import.meta.env.VITE_ML_URL
   return (
     <div className="shop-container">
       <h2>Personalised Shopping based on your clothes , age and preferences</h2>
+
       <input
         type="text"
         onChange={(e) => setInput(e.target.value)}
@@ -415,4 +417,5 @@ const mlUrl=import.meta.env.VITE_ML_URL
   );
 };
 
-export default Shop;
+
+export default Shop
