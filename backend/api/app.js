@@ -65,7 +65,7 @@ connect(mongoUri);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(path.resolve(), "../uploads")));
-app.use('/uploadscloths', express.static(path.join(path.resolve(), 'uploadscloths')));
+app.use('/uploadscloths', express.static(path.join(path.resolve(), '../uploadscloths')));
 
 app.use("/chat", Chatbot);
 app.use('/user', UserRoutes);
