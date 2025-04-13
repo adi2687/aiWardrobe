@@ -22,7 +22,7 @@ const Profile = () => {
       method: "GET",
       credentials: "include",
     })
-      .then((response) => response.json())
+      .then((response) => response.json()).then(console.log(response.json()))
       .then((data) => setUser(data.user))
       .catch((error) => console.error("Error fetching profile:", error));
   }, []);
