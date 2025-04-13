@@ -18,8 +18,8 @@
     }
   
     try {
-      // console.log(process.en.secret_key)
-      const decoded = jwt.verify(token, process.env.secret_key);
+      // console.log(process.en.SECRET_KEY)
+      const decoded = jwt.verify(token, process.env.SECRET_KEY);
       console.log("suser detail", decoded);
       req.user = decoded;
       console.log("user is ", req.user); // Attach the user object to the request
@@ -39,7 +39,7 @@
     try {
       const token = req.cookies.tokenlogin;
       if (!token) return null;
-      const decoded = jwt.verify(token, process.env.secret_key);
+      const decoded = jwt.verify(token, process.env.SECRET_KEY);
       return decoded.id;
     } catch (err) {
       console.error("Invalid token:", err.message);
