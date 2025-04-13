@@ -1,6 +1,8 @@
-google.generativeai
+Flask
+flask-cors
+selenium
+webdriver-manager
+beautifulsoup4
 python-dotenv
-pathlib
+google-generativeai
 googletrans==4.0.0-rc1
-deepL
-flask
