@@ -9,7 +9,7 @@ import User from '../model/user.js'
 // router.get("/login",async (req,res)=>{
 // console.log(req.cookies.tokenlogin)
 // const tokenlogin = req.cookies.tokenlogin 
-// const SECRET_KEY=process.env.secret_key
+// const SECRET_KEY=process.env.SECRET_KEY
 // if (tokenlogin){
 //     res.send("<h2>the user is already login </h3>")
 // }

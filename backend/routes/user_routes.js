@@ -12,8 +12,8 @@ const authenticate = (req, res, next) => {
   }
 
   try {
-    // console.log(process.en.secret_key)
-    const decoded = jwt.verify(token, process.env.secret_key);
+    // console.log(process.en.SECRET_KEY)
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
     console.log("suser detail", decoded);
     req.user = decoded;
     console.log("user is ", req.user); // Attach the user object to the request
@@ -32,7 +32,7 @@ router.get("/profile", (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(tokenlogin, process.env.secret_key); // You can use SECRET_KEY from environment
+    const decoded = jwt.verify(tokenlogin, process.env.SECRET_KEY); // You can use SECRET_KEY from environment
     return res.json({ message: "Success", user: decoded });
   } catch (error) {
     return res.status(401).json({ error: "Invalid or expired token", error });
@@ -54,7 +54,7 @@ router.get("/images", async (req, res) => {
     return res.status(401).json({ error: "No token provided" });
   }
 
-  const decoded = jwt.verify(tokenlogin, process.env.secret_key); // You can use SECRET_KEY from environment
+  const decoded = jwt.verify(tokenlogin, process.env.SECRET_KEY); // You can use SECRET_KEY from environment
   req.user = decoded;
   // res.send(decoded)
   // console.log(req.user);
@@ -180,7 +180,7 @@ router.post(
       const token = req.cookies.tokenlogin;
       if (!token) return res.status(401).json({ error: "No token provided" });
 
-      const decoded = jwt.verify(token, process.env.secret_key);
+      const decoded = jwt.verify(token, process.env.SECRET_KEY);
       console.log("decoded data :", decoded);
 
       const user = await User.findOne({ username: decoded.username });
