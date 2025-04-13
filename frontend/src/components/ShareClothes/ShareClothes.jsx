@@ -71,7 +71,7 @@ const ShareClothes = () => {
         `${apiUrl}/imagegenerate/generate-image`,
         {
           method: "POST",
-          headers: {
+          headers: {    
             "Content-Type": "application/json",
             Accept: "application/json",
           },

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
-
+import { FaGoogle } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,39 +10,45 @@ const Auth = () => {
   const [error, setError] = useState("");
   const [toggle, setToggle] = useState(false); // Toggle between Login & Signup
   const navigate = useNavigate();
+  const [logging, setlogging] = useState(false);
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   // Login Handler
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
-
+    setlogging(true);
     if (!email || !password) {
-        setError("Please enter both email and password.");
-        return;
+      setlogging(false);
+
+      setError("Please enter both email and password.");
+      return;
     }
 
     try {
-        const response = await fetch(`${apiUrl}/auth/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
-        
-        if (!response.ok) {
-            // Display backend error message
-            setError(data.msg || "Invalid email or password.");
-            return;
-        }
+      setlogging(true)
+      const response = await fetch(`${apiUrl}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
 
-        console.log("Login successful:", data);
-        window.location.href = "/profile";
+      if (!response.ok) {
+        // Display backend error message
+        setError(data.msg || "Invalid email or password.");
+        setlogging(false);
+        return;
+      }
+
+      console.log("Login successful:", data);
+      setlogging(false);
+      window.location.href = "/profile";
     } catch (err) {
-        console.error("Error during login:", err);
-        setError("Something went wrong. Please try again.");
+      console.error("Error during login:", err);
+      setError("Something went wrong. Please try again.");
     }
-};
+  };
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
@@ -78,6 +85,9 @@ const Auth = () => {
     window.location.href = `${apiUrl}/google/login`;
   };
 
+  const facebooklogin = () => {
+    console.log("cliekced");
+  };
   return (
     <div className="auth-container">
       {!toggle ? (
@@ -96,7 +106,7 @@ const Auth = () => {
                 required
               />
             </div>
-   
+
             <div className="form-group">
               <label>Password:</label>
               <input
@@ -108,15 +118,24 @@ const Auth = () => {
               />
             </div>
 
-            <button type="submit" className="auth-btn">Login</button>
+            <button type="submit" className="auth-btn">
+              {logging ? <p>Loading</p> : <p>Login</p>}
+            </button>
           </form>
           <p className="toggle-text">
             Don't have an account?{" "}
-            <button className="toggle-btn" onClick={() => setToggle(!toggle)}>Sign up</button>
+            <button className="toggle-btn" onClick={() => setToggle(!toggle)}>
+              Sign up
+            </button>
           </p>
-          <button className="google-btn" onClick={LoginWithGoogle}>
-            Login with Google
-          </button>
+          <div className="loginwithauth">
+            <button className="google-btn" onClick={LoginWithGoogle}>
+              <FaGoogle />
+            </button>
+            <button className="facebook-btn" onClick={facebooklogin}>
+              <FaFacebook />
+            </button>
+          </div>
         </div>
       ) : (
         // Signup Form
@@ -157,11 +176,15 @@ const Auth = () => {
               />
             </div>
 
-            <button type="submit" className="auth-btn">Sign Up</button>
+            <button type="submit" className="auth-btn">
+              Sign Up
+            </button>
           </form>
           <p className="toggle-text">
             Already have an account?{" "}
-            <button className="toggle-btn" onClick={() => setToggle(!toggle)}>Login</button>
+            <button className="toggle-btn" onClick={() => setToggle(!toggle)}>
+              Login
+            </button>
           </p>
         </div>
       )}

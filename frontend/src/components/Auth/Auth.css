@@ -51,17 +51,25 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-
+.auth-btn{
+  padding:0px;
+  background-color: #333;
+  
+}
 .google-btn {
-  width: 100%;
+  width: 50%;
   padding: 0.75rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   background-color: #4285F4;
   color: #ffffff;
   border-radius: 0.5rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
+  color:  linear-gradient(45deg, #4285F4, #DB4437, #F4B400, #0F9D58);
+  background: linear-gradient(45deg, #4285F4, #DB4437, #F4B400, #0F9D58);
+  font-size: 30px;
+  height:60px
 }
 
 .auth-btn:hover, .google-btn:hover, .toggle-btn:hover {
@@ -82,4 +90,60 @@
 .form-group input{
   width: 90%;
   /* border:1px solid red */
+}
+.facebook-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #1877f2;
+  background-color: #1877f2;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  /* margin-top: 20px; */
+  width:50%;
+  padding:30px;
+  font-size: 120px;
+  /* display: inline; */
+}
+
+.facebook-btn:hover {
+  background-color: #155e96;
+}
+
+.facebook-btn svg {
+  /* width: 2.5rem; */
+  height: 2rem;
+}
+.loginwithauth{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:2px solid transparent
+}
+.loginwithauth button{
+  height:70px
+}
+.loading-spinner {
+  border: 4px solid #f3f3f3; /* Light grey background */
+  border-top: 4px solid #3498db; /* Blue color for the spinner */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite; /* Animation for spinning */
+}
+
+/* Keyframes to make the spinner rotate */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

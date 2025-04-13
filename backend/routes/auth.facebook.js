@@ -1,29 +1,32 @@
-require("dotenv").config();
-const express = require("express");
-const passport = require("passport");
-const session = require("express-session");
-const FacebookStrategy = require("passport-facebook").Strategy;
+import express from "express";
+import passport from "passport";
+import session from "express-session";
+import dotenv from "dotenv";
+import { Strategy as FacebookStrategy } from "passport-facebook";
 
-const app = express();
+// Load environment variables from .env file
+dotenv.config();
+
+const router = express.Router();
 
 // Middleware for sessions
-app.use(
+router.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
+router.use(passport.initialize());
+router.use(passport.session());
 
 // Configure Passport.js Facebook Strategy
 passport.use(
   new FacebookStrategy(
     {
-      clientID: process.env.FACEBOOK_APP_ID || "2450931771911994",
-      clientSecret: process.env.FACEBOOK_APP_SECRET || "4daadd07d1d8c95ee7e934c6e208f983",
-      callbackURL: process.env.CALLBACK_URL,
+      clientID: "2450931771911994", // Corrected env variable
+      clientSecret: "4daadd07d1d8c95ee7e934c6e208f983", // Corrected env variable
+      callbackURL: "http://lcoalhost:5000/user/profile",
       profileFields: ["id", "displayName", "photos", "email"], // Request additional info
     },
     function (accessToken, refreshToken, profile, done) {
@@ -42,15 +45,16 @@ passport.deserializeUser((obj, done) => {
 });
 
 // Routes
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
+  console.log("hey")
   res.send('<a href="/auth/facebook">Login with Facebook</a>');
 });
 
 // Auth Route
-app.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email"] }));
+router.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email"] }));
 
 // Callback Route
-app.get(
+router.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", {
     successRedirect: "/profile",
@@ -59,7 +63,7 @@ app.get(
 );
 
 // Profile Route (after login)
-app.get("/profile", (req, res) => {
+router.get("/profile", (req, res) => {
   if (!req.isAuthenticated()) {
     return res.redirect("/");
   }
@@ -67,13 +71,11 @@ app.get("/profile", (req, res) => {
 });
 
 // Logout Route
-app.get("/logout", (req, res) => {
-  req.logout((err) => {
-    if (err) return next(err);
+router.get("/logout", (req, res) => {
+  req.logout(() => {
     res.redirect("/");
   });
 });
 
-// Start Server
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+// Export router
+export default router;

@@ -104,7 +104,7 @@ const DailyWeather = () => {
       });
       const data = await response.json();
       // console.log(data)
-      setClothes(data.allclothes);
+      setClothes(data.Wardrobe.allclothes[0]);
     } catch (error) {
       console.error("Clothes could not be fetched", error);
     } finally {

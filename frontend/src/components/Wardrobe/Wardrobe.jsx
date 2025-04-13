@@ -18,23 +18,24 @@ const Wardrobe = () => {
   const [showClothes, setShowClothes] = useState(true);
 
   const navigate = useNavigate();
-  const apiUrl = import.meta.env.VITE_BACKEND_URL
+const backendUrl=import.meta.env.VITE_BACKEND_URL
   useEffect(() => {
-    fetch(`${apiUrl}/user/images`, {
+    fetch(`${backendUrl}/user/images`, {
       method: "GET",
       credentials: "include",
     })
       .then((response) => response.json())
       .then((data) => {
-        setWardrobeImages(data.wardrobeImg || []);
-        setClothes(data.wardrobeClothes || []);
-        setAllCloth(data.allclothes || []);
+        console.log(data)
+        setWardrobeImages(data.Wardrobe.wardrobeImg || []);
+        setClothes(data.Wardrobe.wardrobeClothes || []);
+        setAllCloth(data.Wardrobe.allclothes[0] || []);
       })
       .catch((error) => console.error("Error fetching images:", error));
   }, []);
 
   useEffect(() => {
-    fetch(`${apiUrl}/user/profile`, {
+    fetch(`${backendUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
     })
@@ -65,7 +66,7 @@ const Wardrobe = () => {
     if (!newcloth.trim()) {return};
 
     try {
-      const response = await fetch(`${apiUrl}/user/addnewcloths`, {
+      const response = await fetch(`${backendUrl}/user/addnewcloths`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -83,14 +84,24 @@ const Wardrobe = () => {
 
       //   navigate("/wardrobe");
       window.location.href = "../wardrobe";
+      // let newclothes=data.Wardrobe.allclothes[0]
+      // newclothes.append(newcloth)
+      // setAllCloth(newclothes);
     } catch (error) {
       console.error("Error adding cloth:", error);
     }
   };
 
-  useEffect(() => {
-    addcloth();
-  }, []);
+  // useEffect(() => {
+  //   addcloth();
+  // }, []);
+
+
+
+
+
+
+
   return (
     <div className="wardrobe-container">
       {/* Toggle Buttons */}
@@ -107,23 +118,27 @@ const Wardrobe = () => {
       >
         {showClothes ? "Hide Clothes" : "Show Clothes"}
       </button>
-
+      {JSON.stringify(wardrobeImages)}
+ 
       {/* Wardrobe Images Section */}
       {showWardrobe && (
         <div className="wardrobe-gallery">
           {wardrobeImages.length > 0 ? (
             wardrobeImages.map((img, index) => (
+              // console.log(`${backendUrl}${img}`);
               <img
                 key={index}
-                src={`${apiUrl}${img}`}
-                alt={`Wardrobe ${index}`}
+                src={`${backendUrl}${img}`}
+                alt={`Wardrobe ${img}`}
                 className="wardrobe-image"
-                onClick={() => handleImageClick(`${apiUrl}${img}`)}
+                onClick={() => handleImageClick(`${backendUrl}${img}`)}
               />
+              
             ))
           ) : (
             <p className="no-images">No wardrobe images uploaded.</p>
           )}
+          
         </div>
       )}
       <div className="addcloths">
@@ -184,5 +199,4 @@ const Wardrobe = () => {
     </div>
   );
 };
-
-export default Wardrobe;
+export default Wardrobe

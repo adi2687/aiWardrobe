@@ -145,8 +145,8 @@ const mlurl=import.meta.env.VITE_ML_URL
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.allclothes[0]);
-        setuserclothes(data.allclothes[0]);
+        console.log(data.Wardrobe.allclothes[0]);
+        setuserclothes(data.Wardrobe.allclothes[0]);
       })
       .catch((error) => {
         console.error("Error fetching user clothes:", error);
