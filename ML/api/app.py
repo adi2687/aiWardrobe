@@ -19,7 +19,7 @@ from flask_cors import CORS
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
+app = Flask(__name__, static_folder='static')
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
 logging.basicConfig(level=logging.INFO)
 
@@ -40,9 +40,9 @@ input_prompt = """
 You are an advanced AI fashion classifier. Analyze the provided image and list clothing items using only the type and color in the format: "<Clothing Type>: <Color>". Provide no additional details or accessories.
 """
 
-@app.route('/')
+@app.route('/',methods=['GET'])
 def home():
-    return render_template('index1.html')
+    return "Home"
 
 
 def scrape_amazon(query):
