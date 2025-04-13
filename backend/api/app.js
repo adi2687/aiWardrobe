@@ -21,6 +21,7 @@ import cors from 'cors';
 
 dotenv.config();
 const frontendUrl=process.env.FRONTEND_URL
+console.log(frontendUrl)
 const mongoUri=process.env.MONGO_URI
 const app = express();
 const httpServer = http.createServer(app);
@@ -47,7 +48,7 @@ app.use(
     secret: process.env.SESSION_SECRET || "your_secret_key",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
+    cookie: { secure: process.env.NODE_ENV === "production" }
   })
 );
 
