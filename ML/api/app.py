@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 import logging
 from flask_cors import CORS
+import re
 
 # Load environment variables
 load_dotenv()
@@ -31,6 +32,19 @@ def home():
 
 @app.route('/classify', methods=['POST'])
 @app.route('/classify', methods=['POST'])
+
+def parse_clothing_list(text):
+    items = []
+    lines = text.splitlines()
+    for line in lines:
+        # Match lines that start with "* Item: Color"
+        match = re.match(r"\*\s*(\w+):\s*(.+)", line.strip())
+        if match:
+            item = match.group(1).strip()
+            color = match.group(2).strip()
+            items.append({"item": item, "color": color})
+    return items
+
 def classify_images():
     files = request.files.getlist('images')
     results = []
