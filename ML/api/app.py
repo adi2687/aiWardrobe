@@ -46,15 +46,16 @@ def parse_clothing_list(text):
             items.append({"item": item, "color": color})
     return items
 
+@app.route('/classify', methods=['POST'])
 def classify_images():
     files = request.files.getlist('images')
     results = []
 
     for file in files:
-        image_bytes = file.read()
-        image_data = [{"mime_type": file.content_type, "data": image_bytes}]
-
         try:
+            image_data = [{"mime_type": file.content_type, "data": file.read()}]
+            model = genai.GenerativeModel('gemini-1.5-flash-8b')
+
             response = model.generate_content(
                 [input_prompt, image_data[0]],
                 generation_config={
@@ -65,7 +66,10 @@ def classify_images():
                 }
             )
 
-            structured_items = parse_clothing_list(response.text)
+            response_text = getattr(response, "text", "")
+            logging.info("Gemini raw response: " + response_text)
+
+            structured_items = parse_clothing_list(response_text)
 
             results.append({
                 "filename": file.filename,
@@ -73,13 +77,14 @@ def classify_images():
             })
 
         except Exception as e:
-            logging.error(f"Error processing {file.filename}: {e}")
+            logging.exception(f"Exception while processing {file.filename}")
             results.append({
                 "filename": file.filename,
                 "error": str(e)
             })
 
     return jsonify({"results": results})
+
 
 
 if __name__ == '__main__':
