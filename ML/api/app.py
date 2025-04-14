@@ -15,7 +15,7 @@ CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_cred
 logging.basicConfig(level=logging.INFO)
 
 # Define your prompt here
-input_prompt = "Classify the clothing item in this image and describe it briefly."
+input_prompt = "Classify the clothing item in this image and list only the clothes mentioned no extra things just the clothes in the image."
 
 @app.route('/', methods=['GET'])
 def home():
