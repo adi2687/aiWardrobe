@@ -11,7 +11,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 frontendurl=os.getenv("FRONTEND_URL")
 # Flask app setup
 app = Flask(__name__, static_folder='static')
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": frontendurl}}, supports_credentials=True)
 logging.basicConfig(level=logging.INFO)
 
 # Define your prompt here
