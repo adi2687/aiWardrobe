@@ -88,6 +88,7 @@
     color:#f9cd98;
     font-weight:bold;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 }
 
 /* Hover Effect */
@@ -121,15 +122,28 @@
     .quotemain {
         font-size: clamp(2rem, 6vw, 5rem);
     }
+.main{
+    /* border:2px solid green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
 
+}
     .features {
         flex-direction: column;
         gap: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border:2px solid green; */
+width:100%;
     }
 
     .feature-item {
         font-size: 1.2rem;
         padding: 1rem 1.5rem;
+        min-width:80%;
     }
 }
 
