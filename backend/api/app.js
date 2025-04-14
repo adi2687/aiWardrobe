@@ -79,6 +79,10 @@ app.get("/", (req, res) => {
   res.send("This is the main page");
 });
 
+
+
+import clothidentification from '../routes/clothid.js'
+app.use('/clothid', clothidentification)
 const onlineUsers = {};
 
 io.on("connection", (socket) => {
