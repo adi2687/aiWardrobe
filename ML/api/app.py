@@ -13,6 +13,7 @@ frontendurl = os.getenv("FRONTEND_URL")
 
 # Flask app setup
 app = Flask(__name__, static_folder='static')
+app.config['PROPAGATE_EXCEPTIONS'] = True
 CORS(app, resources={r"/*": {"origins": frontendurl}}, supports_credentials=True)
 logging.basicConfig(level=logging.INFO)
 
