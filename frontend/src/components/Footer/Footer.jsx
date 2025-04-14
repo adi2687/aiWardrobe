@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-content">
         <div className="footer-logo">
-          <h2>Outfit AI</h2>
+          <h2>Outfit AI</h2> 
         </div>
         <div className="footer-links">
           <a href="/">Home</a>

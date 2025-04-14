@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Shop.css"; // Import the CSS file
-import { useEffect } from "react";
-import { FaHeart, FaSalesforce } from "react-icons/fa";
-import { FaCheck } from "react-icons/fa";
-<FaHeart />;
 
 const Shop = () => {
   const [userdetails, setuserdetails] = useState({});
+  const [shoppingsuggestionsmain, setshoppingsuggestions] = useState([]);
+  const [input, setInput] = useState("");
+  const [loaded, setloaded] = useState(false);
+  const [amazonandmyntra, setamazonandmyntra] = useState("");
+
   const backendurl = import.meta.env.VITE_BACKEND_URL;
-  const mlurl = import.meta.env.VITE_ML_URL;
+
+  // Fetch user details
   const fetchuserdetails = () => {
     fetch(`${backendurl}/user/getuserdetails`, {
       method: "GET",
@@ -16,39 +18,18 @@ const Shop = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setuserdetails(data);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
       });
   };
-  const [input, setInput] = useState("");
-  const [loaded, setloaded] = useState(false);
 
-  // fetchuserdetails()
   useEffect(() => {
     fetchuserdetails();
   }, []);
 
-  const [usercloths, setuserclothes] = useState("");
-  const userclothes = () => {
-    fetch(`${backendurl}/user/images`, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.Wardrobe.allclothes[0]);
-        setuserclothes(data.Wardrobe.allclothes[0]);
-      })
-      .catch((error) => {
-        console.error("Error fetching user clothes:", error);
-      });
-  };
-
-  const [shoppingsuggestionsmain, setshoppingsuggestions] = useState([]);
-
+  // Fetch shopping suggestions
   const shoppingsuggestions = () => {
     setloaded(true);
     fetch(`${backendurl}/chat/getshoppingsuggestions`, {
@@ -72,7 +53,6 @@ const Shop = () => {
           }
         }
         setloaded(false);
-        console.log("clothssuggestion array", cloths);
         setshoppingsuggestions(cloths);
       })
       .catch((error) => {
@@ -80,29 +60,32 @@ const Shop = () => {
       });
   };
 
-  const [amazonandmyntra, setamazonandmyntra] = useState("");
+  // Open URLs for Amazon and Myntra
+  const openSearch = (platform, query) => {
+    const gender = userdetails?.gender;
+    let url = "";
+
+    if (platform === "amazon") {
+      url = `https://www.amazon.in/s?k=${query} for ${gender}`;
+    } else if (platform === "myntra") {
+      url = `https://www.myntra.com/${query} for ${gender}`;
+    }
+
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="shop-container">
-      <h2>Personalised Shopping based on your clothes , age and preferences</h2>
-      <br />
+      <h2>Personalized Shopping based on your clothes, age, and preferences</h2>
+
       <button
         className="getairecommendations"
         onClick={() => {
           fetchuserdetails();
           shoppingsuggestions();
-          userclothes();
         }}
       >
         Get AI Recommendations
-      </button>
-      <button
-        className="searchonboth"
-        onClick={() => {
-          amazonSearch(input);
-          myntraSearch(input);
-        }}
-      >
-        Search on amazon and myntra
       </button>
 
       <div className="loading">
@@ -112,8 +95,7 @@ const Shop = () => {
           </div>
         ) : (
           <h2 className="loading-message">
-            Discover the perfect product or let AI inspire your next outfit
-            choice!
+            Discover the perfect product or let AI inspire your next outfit choice!
           </h2>
         )}
       </div>
@@ -121,18 +103,10 @@ const Shop = () => {
       <div className="suggestion-container">
         {shoppingsuggestionsmain.length > 0 ? (
           <div className="pill-wrapper">
-            <div>
-              <h2>
-                AI suggestions for your clothes based on your wardrobe, age, and
-                preferences.
-              </h2>
-              <h4>
-                Click on any button to get search results from Amazon and
-                Myntra.
-              </h4>
-            </div>
-            <div>
-              <br />
+            <h2>AI suggestions for your clothes based on your wardrobe, age, and preferences.</h2>
+            <h4>Click on any button to get search results from Amazon and Myntra.</h4>
+
+            <div className="pill-buttons">
               {shoppingsuggestionsmain.map((ele, i) => (
                 <button
                   key={i}
@@ -145,43 +119,27 @@ const Shop = () => {
                   {ele}
                 </button>
               ))}
-              {amazonandmyntra ? (
-                <div>
-                  <button
-                    onClick={() => {
-                      window.open(
-                        `https://www.amazon.in/s?k=${amazonandmyntra}`,
-                        "_blank"
-                      );
-                    }}
-                  >
-                    Go to Amazon for {amazonandmyntra}
-                  </button>
-                  <button
-                    onClick={() => {
-                      window.open(
-                        `https://www.myntra.com/${amazonandmyntra}`,
-                        "_blank"
-                      );
-                    }}
-                  >
-                    Go to Myntra for {amazonandmyntra}
-                  </button>
-                </div>
-              ) : (
-                <div className="amazonandmyntra">
-                  Click on any button and go to Amazon and Myntra to complete
-                  your outfit
-                </div>
-              )}
             </div>
+
+            {amazonandmyntra && (
+              <div className="buttons">
+                <button
+                  onClick={() => openSearch("amazon", amazonandmyntra)}
+                >
+                  Go to Amazon for {amazonandmyntra}
+                </button>
+                <button
+                  onClick={() => openSearch("myntra", amazonandmyntra)}
+                >
+                  Go to Myntra for {amazonandmyntra}
+                </button>
+              </div>
+            )}
           </div>
         ) : (
-          <div></div>
+          <div>No suggestions available</div>
         )}
       </div>
-
-      {/* Amazon Results Section */}
     </div>
   );
 };
