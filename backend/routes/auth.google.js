@@ -68,9 +68,13 @@ passport.deserializeUser(async (id, done) => {
   } catch (error) {
     done(error, null);
   }
+}); 
+
+router.get("/login", (req, res, next) => {
+  console.log("google login try");  // Log before the authentication process
+  passport.authenticate("google", { scope: ["profile", "email"] })(req, res, next);
 });
 
-router.get("/login", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 router.get(
   "/callback",

@@ -21,7 +21,7 @@ import cors from 'cors';
 import connectCloudinary from '../db/cloudinary.js'
 
 dotenv.config();
-console.log("GOOGLE_CLIENT from env:", process.env.GOOGLE_CLIENT);
+// console.log("GOOGLE_CLIENT from env:", process.env.GOOGLE_CLIENT);
 const frontendUrl=process.env.FRONTEND_URL
 console.log(frontendUrl)
 const mongoUri=process.env.MONGO_URI

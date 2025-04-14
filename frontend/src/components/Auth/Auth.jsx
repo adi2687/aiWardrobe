@@ -77,7 +77,7 @@ const Auth = () => {
       console.error("Error during signup:", err);
       setError("Something went wrong. Please try again.");
     }
-  };
+  };   
 
   // Google Login
   const LoginWithGoogle = async (e) => {
