@@ -4,7 +4,7 @@ import multer from "multer";
 const router = express.Router();
 import User from "../model/user.js";
 import path from "path";
-import {v2 as cloudinary} from 'cloudinary'
+import { v2 as cloudinary } from "cloudinary";
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
   // console.log("toke is ", token)
@@ -195,9 +195,9 @@ router.post(
           folder: "uploads",
         });
         imageUrl = result.secure_url;
-        console.log(imageUrl)
+        console.log(imageUrl);
       } catch (error) {
-      console.log("Image upload failed",error);
+        console.log("Image upload failed", error);
       }
       user.wardrobe.push(imageUrl);
       await user.save();
@@ -211,8 +211,9 @@ router.post(
 );
 
 router.post("/clothesUpload", async (req, res) => {
-  console.log("Clothes upload data:", req.body.clothes); // ✅ Debugging log
+  // console.log("Clothes upload data:", req.body.clothes); // ✅ Debugging log
 
+  // Check if clothes data is sent in the request body
   if (!req.body.clothes) {
     return res.status(400).json({ error: "No clothes data received" });
   }
@@ -220,27 +221,40 @@ router.post("/clothesUpload", async (req, res) => {
   const uploadclothes = req.body.clothes;
   const token = req.cookies.tokenlogin;
 
+  // If token is missing, return an error
   if (!token) {
-    return res.status(401).json({ error: "No token in the headers" }); // ✅ Fixed status code
+    return res.status(401).json({ error: "No token in the headers" });
   }
 
   try {
-    const decode = jwt.verify(token, process.env.SECRET_KEY); // ✅ Ensure SECRET_KEY is defined in .env
-    console.log("Decoded token:", decode);
+    // Decode the JWT token
+    const decoded = jwt.verify(token, process.env.SECRET_KEY); // Ensure SECRET_KEY is defined in .env
+    // console.log("Decoded token:", decoded);
 
-    const user = await User.findOne({ username: decode.username });
+    // Find the user by their username
+    const user = await User.findOne({ username: decoded.username });
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
-    user.clothes.push(uploadclothes);
+
+    console.log("upload clothes:", uploadclothes);
+    let finalclothestoupload = "";
+
+    uploadclothes.map((cloth) => {
+      finalclothestoupload += `${cloth.item} (${cloth.color}), `;
+    });
+    console.log('final is ', finalclothestoupload)
+    user.clothes.push(finalclothestoupload);
     await user.save();
+
+    // Send success response
     res.status(200).json({
       message: "Clothes data received successfully",
       data: uploadclothes,
     });
   } catch (error) {
     console.error("JWT verification failed:", error);
-    return res.status(403).json({ error: "Invalid or expired token" }); // ✅ Handle JWT errors
+    return res.status(403).json({ error: "Invalid or expired token" }); // Handle JWT errors
   }
 });
 

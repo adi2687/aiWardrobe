@@ -14,7 +14,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const [sharecloths, setshare] = useState("");
   const apiUrl=import.meta.env.VITE_BACKEND_URL
-  const mlUrl=import.meta.env.VITE_ML_URL
+  // const mlUrl=import.meta.env.VITE_ML_URL
   const frontedUrl=import.meta.env.VITE_FRONTEND_URL
   // const [isVisible,setIsVisible]=useState(false)
   useEffect(() => {
@@ -55,85 +55,104 @@ const Profile = () => {
     navigate("/sellcloth");
   };
   // }
+
+
+const [userclothes,setuserclothes]=useState({})
   const handleImageUpload = async (e) => {
     e.preventDefault();
-    if (!imageFile) alert("Upload an image !");
-setIsScanning(true)
-    const formData = new FormData();
-    formData.append("wardrobeImage", imageFile);
-
+    if (!imageFile) return alert("Upload an image!");
+  
+    setIsScanning(true);
+  
+    // ----- Upload to wardrobe -----
+    const uploadForm = new FormData();
+    uploadForm.append("wardrobeImage", imageFile);
+  
     try {
-      const response = await fetch(`${apiUrl}/user/upload-image`, {
+      const uploadRes = await fetch(`${apiUrl}/user/upload-image`, {
         method: "POST",
         credentials: "include",
-        body: formData,
+        body: uploadForm,
       });
-
-      const data = await response.json();
-      if (response.ok) {
-        setWardrobeImages([...wardrobeImages, data.imageUrl]);
-        setImageFile(null);
-        setImageName("No file chosen");
-        document.getElementById("image-upload-input").value = "";
-        setIsScanning(true); // Start scanning
-
-        setTimeout(() => {
-          setIsScanning(false); // Stop scanning
-          navigate("/wardrobe"); // Navigate only after 5s
-        }, 5000);
-      } else {
-        console.error("Upload failed:", data.error || "Unknown error");
+  
+      const uploadData = await uploadRes.json();
+  
+      if (!uploadRes.ok) {
+        console.error("Upload failed:", uploadData.error || "Unknown error");
+        setIsScanning(false);
+        return;
       }
+  
+      // Set image in wardrobe state
+      setWardrobeImages((prev) => [...prev, uploadData.imageUrl]);
+      setImageFile(null);
+      setImageName("No file chosen");
+      document.getElementById("image-upload-input").value = "";
+  
     } catch (error) {
       console.error("Error uploading image:", error);
+      setIsScanning(false);
+      return;
     }
-
-    formData.append("images", imageFile);
-
+  
+    // ----- Send to /classify -----
+    const classifyForm = new FormData();
+    classifyForm.append("images", imageFile);
+  
     try {
-      console.log(`${mlUrl}/classify`)
-      const response = await fetch(`${mlUrl}/classify`, {
+      const classifyRes = await fetch(`${apiUrl}/clothid/classify`, {
         method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
+        body: classifyForm,
       });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+  
+      if (!classifyRes.ok) {
+        throw new Error(`HTTP error! Status: ${classifyRes.status}`);
       }
-
-      const data = await response.json();
-      console.log("Image classification result:", data);
-      console.log("clothes", data.results[0].raw_response);
-
-      const clothes = data.results[0].raw_response;
-      const clothesData = clothes;
-      console.log("Sending clothes data:", clothesData);
-
-      console.log("colthes data ", clothesData);
-      const clothesres = await fetch(
-        `${apiUrl}/user/clothesUpload`,
-        {
-          method: "POST",
-          credentials: "include",
-          body: JSON.stringify({ clothes: clothesData }),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (!clothesres.ok) {
-        throw new Error(`Http error! status:${clothesres.status}`);
+  
+      const classifyData = await classifyRes.json();
+      console.log("Image classification result:", classifyData);
+      console.log(classifyData.clothing_items)
+  setuserclothes(classifyData.clothing_items)
+      const clothes =classifyData.clothing_items ;
+  
+      console.log("Sending clothes data:", clothes);
+  
+      const saveRes = await fetch(`${apiUrl}/user/clothesUpload`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ clothes }),
+      });
+  
+      if (!saveRes.ok) {
+        throw new Error(`Http error! status: ${saveRes.status}`);
       }
-      const clothesdata = await clothesres.json();
-      console.log("clothes save data : ", clothesdata);
+  
+      const savedData = await saveRes.json();
+      console.log("Clothes saved:", savedData);
+  
+      // Wait 5s before redirect
+      setTimeout(() => {
+        setIsScanning(false);
+        navigate("/wardrobe");
+      }, 5000);
+  
     } catch (error) {
       console.error("Error classifying image:", error);
+      setIsScanning(false);
     }
   };
+  
+
+
+
+
+
+
+
+
   const [clothsForWeek, setClothesForWeek] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [isLoadingClothes, setIsLoadingClothes] = useState(false);
