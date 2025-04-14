@@ -7,7 +7,7 @@ import NotFound from './components/NotFound/NotFound'
 import Auth from './components/Auth/Auth'
 import Wardrobe from "./components/Wardrobe/Wardrobe";
 import Homepage from './components/Homepage/Homepage'
-// import Shop from './components/Shop/Shop'
+import Shop from './components/Shop/Shop'
 import AR from './components/AR/AR_try'
 import Footer from "./components/Footer/Footer";
 import Recommendations from "./components/Recommendations/Recommendations";
@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/auth" element={<Auth />} />
         <Route path="/wardrobe" element={<Wardrobe />} />
         <Route path="*" element={<NotFound />} />
-        {/* <Route path="/shop" element={<Shop />} /> */}
+        <Route path="/shop" element={<Shop />} />
         <Route path="/ar-preview" element={<AR />} />
         <Route path='/recommendations' element={<Recommendations />} />
         <Route path='/chatbot' element={<Chatbot />} />
