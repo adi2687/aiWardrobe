@@ -8,7 +8,7 @@ from flask_cors import CORS
 # Load environment variables
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-
+frontendurl=os.getenv("FRONTEND_URL")
 # Flask app setup
 app = Flask(__name__, static_folder='static')
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
@@ -23,6 +23,7 @@ def home():
 
 @app.route('/classify', methods=['POST'])
 def classify_images():
+    print("here")
     files = request.files.getlist('images')
     results = []
 
