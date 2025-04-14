@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from '../../assets/project2_image.jpg';
+import Img from '/project2_image.jpg';
 import './Homemain.css';
 
 const Homemain = () => {

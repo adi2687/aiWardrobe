@@ -7,7 +7,7 @@ import Home5 from "../Home5/Home5";
 // import Footer from "../Footer/Footer";
 const Homepage = () => {
   return (
-    <div>
+    <div> 
       <Home />
       <Homemain />
       <Home3 />
