@@ -23,7 +23,7 @@ const Auth = () => {
       setError("Please enter both email and password.");
       return;
     }
-
+  
     try {
       setlogging(true)
       const response = await fetch(`${apiUrl}/auth/login`, {
@@ -128,14 +128,14 @@ const Auth = () => {
               Sign up
             </button>
           </p>
-          <div className="loginwithauth">
+          {/* <div className="loginwithauth"> */}
             <button className="google-btn" onClick={LoginWithGoogle}>
               <FaGoogle />
             </button>
             <button className="facebook-btn" onClick={facebooklogin}>
               <FaFacebook />
             </button>
-          </div>
+          {/* </div> */}
         </div>
       ) : (
         // Signup Form

@@ -57,7 +57,7 @@
   
 }
 .google-btn {
-  width: 50%;
+  width: 100%;
   padding: 0.75rem;
   /* margin-top: 1rem; */
   background-color: #4285F4;
@@ -69,7 +69,8 @@
   color:  linear-gradient(45deg, #4285F4, #DB4437, #F4B400, #0F9D58);
   background: linear-gradient(45deg, #4285F4, #DB4437, #F4B400, #0F9D58);
   font-size: 30px;
-  height:60px
+  height:60px;
+  margin-bottom:10px
 }
 
 .auth-btn:hover, .google-btn:hover, .toggle-btn:hover {
@@ -110,7 +111,7 @@
   overflow: hidden;
   z-index: 1;
   /* margin-top: 20px; */
-  width:50%;
+  width:100%;
   padding:30px;
   font-size: 120px;
   /* display: inline; */
