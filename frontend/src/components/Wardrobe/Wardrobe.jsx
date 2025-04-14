@@ -126,7 +126,7 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
           {wardrobeImages.length > 0 ? (
             wardrobeImages.map((img, index) => (
               // console.log(`${backendUrl}${img}`);
-              <img
+              <img 
                 key={index}
                 src={`${img}`}
                 alt={`Wardrobe ${img}`}
@@ -172,7 +172,7 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
           )}
         </div>
       )}
-      <div className="clothes">
+      <div className="clothes" style={{color:"white",fontWeight:"500px"}}>
         <h2>All clothes</h2>
         {allCloth}
       </div>

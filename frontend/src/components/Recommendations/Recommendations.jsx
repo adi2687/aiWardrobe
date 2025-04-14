@@ -245,14 +245,15 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
           >
             {showHistory
               ? "Hide Previous Conversations"
-              : "Show Previous Conversations"}
+              : "Like a suggested outfit ? "}
           </button>
-
+ 
           {showHistory && history.length > 0 && (
             <div style={{ marginTop: "2rem" }} className="history">
               <h2>Previous Conversations</h2>
               {history.map((msg, i) => (
                 <div key={i}>
+                
                 <strong>Message:</strong> {msg.message} <br />
                 <strong>Response:</strong> {msg.response} <br />
                 <small>{new Date(msg.createdAt).toLocaleString()}</small>

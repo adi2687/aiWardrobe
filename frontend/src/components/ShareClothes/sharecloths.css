@@ -142,6 +142,9 @@ padding:10px
   .share-btn .icon {
     font-size: 28px;
   }
+  .share-cloths-container button{
+    color:white
+  }
 @media (max-width:780px){
   .share-dropdown {
     flex-direction: column;

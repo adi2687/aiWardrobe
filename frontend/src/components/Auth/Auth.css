@@ -60,18 +60,17 @@
   width: 100%;
   padding: 0.75rem;
   /* margin-top: 1rem; */
-  background-color: #4285F4;
-  color: #ffffff;
+  
   border-radius: 0.5rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
-  color:  linear-gradient(45deg, #4285F4, #DB4437, #F4B400, #0F9D58);
-  background: linear-gradient(45deg, #4285F4, #DB4437, #F4B400, #0F9D58);
+  
   font-size: 30px;
   height:60px;
   margin-bottom:10px
 }
+
 
 .auth-btn:hover, .google-btn:hover, .toggle-btn:hover {
   background-color: #e6e6e6;
@@ -142,7 +141,10 @@
   height: 50px;
   animation: spin 2s linear infinite; /* Animation for spinning */
 }
-
+.auth-btn{
+  padding:10px;
+  color:white
+}
 /* Keyframes to make the spinner rotate */
 @keyframes spin {
   0% { transform: rotate(0deg); }

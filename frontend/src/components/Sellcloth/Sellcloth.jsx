@@ -142,7 +142,7 @@ const Sellcloth = () => {
         />
         <button type="submit" className="upload-btn">
           {uploading ? (
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center",color:"white" }}>
               <h3 style={{ marginRight: "8px" }}>Uploading</h3>
               <div className="dots">
                 <span className="dot" />
@@ -160,7 +160,7 @@ const Sellcloth = () => {
         <p>Loading...</p>
       ) : clothuser.length ? (
         <div className="sellclothlist">
-          <ul>
+          <ul> 
             {clothuser.map((item, index) => (
               <li key={index}>
                 <img src={`${item.clothImage}`} alt="Cloth" width="100" />

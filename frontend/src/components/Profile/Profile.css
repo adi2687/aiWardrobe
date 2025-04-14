@@ -4,77 +4,213 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f2f5;
+  background-color: #333;
   font-family: Arial, sans-serif;
+
 }
 
 .profile-card {
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  width: 800px;
-  overflow: hidden;
-}
-
-/* Profile Header Styles */
-.profile-header {
+  width: 40%;
+  background-color: #333;
   display: flex;
-  align-items: center;
-  padding: 20px;
-  background-color: #ffffff;
-  /* border-bottom: 1px solid red; */
-  position: relative;
+  flex-direction: column;
+  /* border:2px solid red; */
+  margin:12px
+
 }
 
-.profile-image {
+.profile-header {
+  /* border: 2px solid green; */
+  padding: 10px;
+
+}
+
+.profile-container .upload-section {
+  /* border: 2px solid blue; */
+  margin: 0;
+  padding: 0px;
+
+}
+
+.profile-header img {
+  border-radius: 49%;
   width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #ffffff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  margin-right: 20px;
-  background-color: #e4e6eb;
+  height: 150px
 }
 
 .user-info {
-  flex: 1;
-  /* border:2px solid green; */
+  border: 2px solid white;
+  padding:10px
+}
+
+.details {
   display: flex;
+  justify-content: center;
+  gap:10%;
+  /* displ */
+  padding:10px;
+  border:2px solid white;
+  border-radius: 19px;
+}
+
+.details div {
+  display: flex;
+  justify-content: center;
   flex-direction: column;
+  color:white
+}
+.passdiv{
+  border:2px solid white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding:10px;
+  margin:20px;
+  border-radius:10px;
+  width:90%;
+  margin-left:3%
+}
+.passdiv input{
+  width:90%
+}
+.passdiv div{
+  /* border:2px solid red; */
+  width:100%;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: flex-end; */
+  gap:10px;
+  margin-left:4%
+}
+.passdiv .showpassword{
+  width:60px;
+  height:60px;
+  border-radius: 50%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.passdiv .changepassbutton{
+  display: inline;
+
+}
+.ai-form-container{
+  border:2px solid white;
+  margin:10px;
+  padding:30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+border-radius: 20px;
+}
+.ai-form-container input{
+  border:2px solid white
+}
+.ai-form-container select{
+  width:80%;
+  padding:10px;
+border-radius:10px;
+font-weight: bolder;
+font-display:auto;
+background-color:transparent;
+color:white
+}
+select option{
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #333;
 }
 
-.profile-name {
-  font-size: 28px;
-  font-weight: 700;
-  color: #050505;
-  margin-bottom: 5px;
-  margin-right: auto;
+.ai-form-container button{
+  padding:10px;
+  width:auto;
+  background-color: #333;
 }
-
-.profile-email {
-  font-size: 16px;
-  color: #65676b;
+.ai-form-container h3{
+  font-size: 20px;
 }
+.sellClothes .buttons{
+  /* border:2px solid red; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap:0px;
+  align-items: center;
+}
+.sellClothes .buttons button{
+  min-width:70%;
+  /* border:2px solid red; */
+}
+.sellClothes .buttons div{
+  /* border:2px solid red; */
+  margin:0px;
 
-/* Upload Section Styles */
+}
+.clothforweek{
+  display: flex;
+  justify-content: center;
+  gap:10px;
+  flex-direction: column;
+  align-items: center;
+}
+.clothforweek button{
+  width:60%;
+}
+.favourite .fav-item b {
+  padding:10px;
+color:white;
+
+}
+.favourite .fav-item{
+  /* border:1px solid red; */
+padding:10px;
+display: flex;
+justify-self: center;
+align-items: center;
+flex-direction: column;
+}
+.fav-item div{
+  display: flex;
+  gap:20px
+}
+.fav-item .sharedclothes a {
+  text-decoration: none;
+  margin:10px;
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+}
 .upload-section {
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: #f0f2f5;
-  border-top: 1px solid #ddd;
+  align-items: center;
+  padding: 2rem;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.upload-section:hover {
+  border-color: #888;
 }
 
 .file-label {
-  padding: 10px 20px;
-  background-color: #1877f2;
-  color: #ffffff;
-  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
   cursor: pointer;
-  text-align: center;
-  font-weight: 600;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.file-label:hover {
+  background-color: #555;
 }
 
 .file-input {
@@ -82,294 +218,87 @@
 }
 
 .file-name {
-  font-size: 14px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
   color: #444;
 }
 
 .upload-btn {
-  padding: 10px 20px;
-  background-color: #42b72a;
-  color: #ffffff;
+  padding: 0.6rem 1.5rem;
+  background-color: #007bff;
+  color: white;
   border: none;
-  border-radius: 5px;
-  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
-}
-
-.upload-btn:hover {
-  background-color: #36a420;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .upload-btn:disabled {
-  background-color: #c4c4c4;
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
-/* Loading Screen Styles */
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+.upload-btn:hover:not(:disabled) {
+  background-color: #0056b3;
 }
 
-.loading-screen p {
-  font-size: 20px;
-  color: #ffffff;
+/* Optional success/error message styles */
+.success-msg {
+  margin-top: 1rem;
+  color: green;
+  font-weight: 500;
 }
 
-/* Zoomed Image Overlay Styles */
-.zoom-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+.error-msg {
+  margin-top: 1rem;
+  color: red;
+  font-weight: 500;
 }
 
-.zoomed-image {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
-
-/* Loading Text */
-.loading-text {
-  font-size: 18px;
-  color: #65676b;
-  text-align: center;
-}
-.logout{
-  margin-left:auto;
-  background-color: red;
-  display: flex;
-  margin-top:10px;
-  margin-right:20px
-}
-.logout:hover{
-  background-color: #b80505;
-}
-.sellClothes button{
-  background-color: #4CAF50;
-  /* color: white; */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+/* Custom CSS (if not using Tailwind completely) */
+.file-label {
+  padding: 0.6rem 1.2rem;
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border-radius: 8px;
   cursor: pointer;
-
-}
-.sellClothes button:hover{
-  background-color: darkgreen;
-}
-
-.clothforweek{
-  color:black;
-  text-wrap:inherit;
-  /* background-color: black; */
-}
-.weekly-outfits-container {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
-  opacity: 0;
-  color:#ffffff;
   font-weight: 600;
-  /* background-color:; */
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
-
-.weekly-outfits-container.visible {
-  max-height: 500px;
-  opacity: 1;
-}
-.clothforweek button{
-  background-color: grey;
-  margin-top:10px
-}
-
-.upload-section label{
-  /* background-color: red; */
-  color:white;
-  display: block;
-  /* margin-top:35%; */
-  /* margin-left:30%; */
-  position: relative;
-  /* top:50%; */
-  /* left:50%; */
-  /* transform: translate(-50%,-.); */
-} 
-
-.sellClothes{
-  display: flex;
-  /* justify-content: center; */
-  /* flex-direction: row; */
-  gap:20px;
-  flex-wrap: wrap;
-}
-.sellClothes button{
-  background-color: rgb(84, 83, 83);
-}
-.sellClothes button:hover{background-color: darkgrey;}
-.profile-container{
-  background-color: #272626;
-}
-.profile-card,.user-info,.upload-section{
-  background-color: #333;
-  color:white
-}
-.profile-header{
-  background-color: #333333;
-}
-.weekly-outfits-container p{
-  /* background-color: #333; */
-  color:white
-}
-.weekly-outfits-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  border:2px solid white;
-  /* padding:0px */
-  overflow-y: auto;
-}
-.user-info h2{
-  color: white;
-}
-
-@keyframes slideFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fav-item {
-  animation: slideFadeIn 0.4s ease forwards;
-}
-
-.favouritebutton{
-  margin-left:20px
-}
-
-.sharebutton,.sharefriends{
-  padding:8px;
-  margin-top:20px;
-  font-weight: bold;
-  margin-left:10px
-}
-.sharebutton:hoveR{
-  color:#333;
-  background-color: whitesmoke;
-}
-.sharedclothes a{
-  margin-top:0px;
-  color:white;
-  font-size: 19px;
- /* border:2px solid red */
-
-}
-.sharedclothes{
-  margin-top:20px;
-}
-.sharedclothes a:hover{
-  color:darkgrey
-}
-.previewbutton{
-  margin-left:10px;
-  padding: 7px;
+.upload-section{
+  padding:20px;
   border:3px solid white
 }
-
-.user-info input{
-  margin-top:0px;
-width:60%;
-padding:10px;
-border:2px solid grey
-}
-
-.showpassword{
-  margin-left:10px;
-  width:8%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items:center;
-  padding:0px;
-  border-radius:50%
-}
-
-
-.changepassbutton{
-  width:auto;
-  max-width: 40%;
-}
-.passbuttons{
-  display: flex;
-  flex-direction: row;
-  gap:3%;
-}
-.passbuttons button{padding:10px;}
-.ai-form-container{
-  border:2px solid white;
-  display: flex;
-  flex-direction: column;
-  padding:10px;
-border-radius: 20px;
-margin-top:10px;
-
-}
-.ai-form-container select{
+.upload-section input{
   width:80%;
-  border:2px solid wheat;
+  padding:10px;
+}
+.upload-section button{
+background-color: black;
+width:40%;
+margin:10px
+}
 
+.ai-form-container h3{
+  width:100%;
+  /* border:2px solid red; */
 }
-.ai-form-container button{
-  width:20%;
-  padding:10px
-}
-.ai-form-container button:hover{
-  background-color: grey;
-}
-.ai-form-container select {
-  width: 100%;
-  padding: 12px 15px;
-  margin: 12px 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  color:white;
-  font-size: 14px;
-  appearance: none; /* Removes default arrow styling */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 16px 16px;
-  transition: border 0.3s ease;
-  color:white;
-  background-color: #333;
-  font-weight: bolder;
-  cursor: pointer;
-}
-.ai-form-container select option{
-  color:white;
-  background-color: grey;
-  font-weight: 600;
-  cursor: pointer;
+
+
+
+
+@media (max-width:770px){
+  .profile-card{
+    min-width: 100vw;
+  }
+  .ai-form-container h3{
+    width:100%;
+    /* border:2px solid red */
+  }
+  .user-info .details{
+    /* border:2px solid blue; */
+    gap:0px
+  }
 }

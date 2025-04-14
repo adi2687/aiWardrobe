@@ -50,10 +50,10 @@ input {
   margin-bottom: 15px;
   box-shadow: var(--box-shadow);
   transition: box-shadow 0.2s, background-color 0.3s;
-  border:2px solid white;
+  border: 2px solid white;
   cursor: pointer;
-  margin-top:20px;
-  border-radius:23px
+  margin-top: 20px;
+  border-radius: 23px
 }
 
 input:focus {
@@ -73,7 +73,7 @@ button {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  bordeR:2px solid white;
+  bordeR: 2px solid white;
   border-radius: 23px;
 }
 
@@ -92,8 +92,8 @@ button:disabled {
   margin-top: 20px;
   max-height: 300px;
   overflow-y: auto;
-max-width:95%;
-margin-left:1%
+  max-width: 95%;
+  margin-left: 1%
 }
 
 .message {
@@ -102,7 +102,7 @@ margin-left:1%
   margin-bottom: 10px;
   color: var(--text-color);
   word-wrap: break-word;
-  width:100%;
+  width: 100%;
 
 }
 
@@ -139,9 +139,9 @@ margin-left:1%
   display: flex;
   align-items: center;
   justify-content: center;
-  width:12%;
+  width: 12%;
   /* border:1px solid blue; */
-  align-items:flex-start;
+  align-items: flex-start;
 }
 
 .toggle {
@@ -154,8 +154,8 @@ margin-left:1%
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
-  margin-top:10%;
-  margin-right:Auto
+  margin-top: 10%;
+  margin-right: Auto
 }
 
 .toggle.enabled {
@@ -173,18 +173,20 @@ margin-left:1%
 .toggle.enabled .toggle-circle {
   transform: translateX(25px);
 }
-.recommendations-card input::placeholder{
-  color:white;
+
+.recommendations-card input::placeholder {
+  color: white;
   opacity: 0.6;
 }
 
-.recommendations-card input{
+.recommendations-card input {
   /* margin-right:200px; */
   position: relative;
-  width:90%;
+  width: 90%;
   /* right:10%; */
   /* border:1px solid red; */
 }
+
 .messages-container {
   display: flex;
   flex-direction: column;
@@ -196,30 +198,34 @@ margin-left:1%
 }
 
 .message {
-  max-width: max-content; /* Ensures message width is only as wide as content */
+  max-width: max-content;
+  /* Ensures message width is only as wide as content */
   padding: 10px 14px;
   border-radius: 18px;
   word-wrap: break-word;
   font-size: 16px;
   line-height: 1.4;
   display: inline-block;
-  white-space: pre-wrap; 
+  white-space: pre-wrap;
   font-weight: 600;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   /* Wraps text naturally */
 }
 
 .message.user {
-  display: inline-block;  /* Makes width fit content */
-  max-width: 70%;  /* Prevents too long messages */
-  background-color: #3b82f6; /* Blue background */
+  display: inline-block;
+  /* Makes width fit content */
+  max-width: 70%;
+  /* Prevents too long messages */
+  background-color: #3b82f6;
+  /* Blue background */
   color: white;
   padding: 10px 15px;
   border-radius: 20px;
   word-wrap: break-word;
   text-align: left;
   display: flex;
-    justify-content: flex-end; 
+  justify-content: flex-end;
 }
 
 .message.bot {
@@ -235,30 +241,38 @@ margin-left:1%
   padding: 8px 12px;
   border-radius: 10px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  width: max-content; /* Prevents unnecessary width */
+  width: max-content;
+  /* Prevents unnecessary width */
   max-width: 75%;
   display: inline-block;
   white-space: pre-wrap;
 }
-.copy-btn{
+
+.copy-btn {
   border-radius: 20px;
-  padding:10px;
-  border:none;
-border:3px solid white;
-color:grey;
+  padding: 10px;
+  border: none;
+  border: 3px solid white;
+  color: grey;
 }
-.copy-btn.user{
-  margin-top:30px;
-  color:white;
+
+.copy-btn.user {
+  margin-top: 30px;
+  color: white;
   /* margin-right: auto; */
-  padding:9px
+  padding: 9px
 }
-.copy-btn.bot{
-  margin-left:auto;
+
+.copy-btn.bot {
+  margin-left: auto;
   display: flex;
-  color:darkgray
+  color: darkgray
 }
-.copy-btn.bot:hover{background-color: white;}
+
+.copy-btn.bot:hover {
+  background-color: white;
+}
+
 .weather-summary {
   background-color: #f3f3f3;
   padding: 10px;
@@ -268,6 +282,7 @@ color:grey;
   color: #333;
   display: none;
 }
+
 .love-button {
   font-size: 2rem;
   color: white;
@@ -293,10 +308,27 @@ color:grey;
 .love-button:active {
   transform: scale(0.95);
 }
+
 .button-row {
   display: flex;
   gap: 10px;
   margin-top: 8px;
+}
+
+.messages-container .message.user {
+  /* border:2px solid whitesmoke; */
+  background-color: darkgray;
+  border-bottom-right-radius: 0px;
+}
+
+.messages-container .message.bot {
+  background-color: #333;
+  color: white
+}
+
+.messages-container {
+  border: 2px solid gray;
+  background: linear-gradient(135deg, #333333, #f0f0f0)
 }
 
 /* Media Queries for Responsiveness */
@@ -313,20 +345,34 @@ color:grey;
     font-size: 14px;
 
   }
-  
-  .recommendations-card .toggle{
-    margin-top:20px;
-    min-width:50px
+
+  .recommendations-card .toggle {
+    margin-top: 20px;
+    min-width: 50px
   }
+
   /* .recommendations-card  */
-  .recommendations-card  button {
+  .recommendations-card button {
     font-size: 16px;
   }
 
-  .recommendations-card  .messages-container {
+  .recommendations-card .messages-container {
     max-height: 200px;
   }
-  
+
+  .messages-container {
+    max-width: 87%;
+  }
+
+  .messages-container .message.user {
+    /* border: 2px solid red; */
+    /* max-width: 20vw; */
+    min-width:0px
+  }
+.love-button{
+  /* background-color: red; */
+  font-size: 10px;
+}
 }
 
 @media (max-width: 480px) {
@@ -356,5 +402,3 @@ color:grey;
     max-height: 180px;
   }
 }
-
-
