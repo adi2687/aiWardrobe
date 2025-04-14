@@ -19,7 +19,7 @@ router.use(
     secret: SECRET_KEY, 
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }, // Change to `true` in production (HTTPS required)
+    cookie: { secure: true }, // Change to `true` in production (HTTPS required)
   })
 );
 
@@ -88,7 +88,7 @@ console.log('user details',req.user)
       expiresIn: "24h",
     });
 
-    res.cookie("tokenlogin", token, { httpOnly: true, secure: false, sameSite: "Strict" });
+    res.cookie("tokenlogin", token, { httpOnly: true, secure: true  });
 
     res.redirect(`${frontendurl}/profile`);
   }
