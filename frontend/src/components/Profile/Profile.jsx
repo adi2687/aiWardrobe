@@ -58,7 +58,7 @@ const Profile = () => {
   const handleImageUpload = async (e) => {
     e.preventDefault();
     if (!imageFile) alert("Upload an image !");
-
+setIsScanning(true)
     const formData = new FormData();
     formData.append("wardrobeImage", imageFile);
 
@@ -91,6 +91,7 @@ const Profile = () => {
     formData.append("images", imageFile);
 
     try {
+      console.log(`${mlUrl}/classify`)
       const response = await fetch(`${mlUrl}/classify`, {
         method: "POST",
         body: formData,
@@ -314,9 +315,9 @@ const Profile = () => {
     <div className="profile-container">
       {user ? (
         <div className="profile-card">
-          <button className="logout" onClick={LogOut}>
+          {/* <button className="logout" onClick={LogOut}>
             Logout
-          </button>
+          </button> */}
           <div className="profile-header">
             <img
               src={
@@ -396,7 +397,7 @@ const Profile = () => {
                 <button onClick={recommedationforweek}>
                   Recommedation for week
                 </button>
-                <button onClick={navigatewishlist}>Your wishlist</button>
+                {/* <button onClick={navigatewishlist}>Your wishlist</button> */}
               </div>
               <div className="clothforweek">
                 <button onClick={toggleClothesForWeek}>

@@ -4,6 +4,7 @@ import multer from "multer";
 const router = express.Router();
 import User from "../model/user.js";
 import path from "path";
+import {v2 as cloudinary} from 'cloudinary'
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
   // console.log("toke is ", token)
@@ -88,83 +89,82 @@ router.get("/images", async (req, res) => {
       wardrobeClothes: wardrobeClothes,
       allclothes: allClothes,
     };
-    res.json({Wardrobe});
+    res.json({ Wardrobe });
   } catch (error) {
     res.status(500).json({ error: "Error fetching Wardrobe" });
   }
 });
 
+router.post("/updatepassword", authenticate, async (req, res) => {
+  const userid = req.user.id;
 
-router.post("/updatepassword",authenticate,async (req,res)=>{
-  const userid=req.user.id 
-  
-  const newpassword=req.body.newpassword
-  if(!newpassword){
-    return res.status(400).json({error:"Please enter new password"})
+  const newpassword = req.body.newpassword;
+  if (!newpassword) {
+    return res.status(400).json({ error: "Please enter new password" });
   }
-  const user=await User.findById(userid)
-  user.password=newpassword
-  user.save()
-  res.json({status:true,msg:"Password done"})
-})
+  const user = await User.findById(userid);
+  user.password = newpassword;
+  user.save();
+  res.json({ status: true, msg: "Password done" });
+});
 
-router.post("/updateinfo",authenticate,async (req,res)=>{
-const userid=req.user.id 
-console.log(req.body)
-const age=req.body.age 
-const gender=req.body.gender 
-const prefference=req.body.preferences
-const user=await User.findById(userid)
-user.age=age
-user.gender=gender
-user.preferences=prefference
-user.save()
-res.json({status:true,msg:"Info done"})
+router.post("/updateinfo", authenticate, async (req, res) => {
+  const userid = req.user.id;
+  console.log(req.body);
+  const age = req.body.age;
+  const gender = req.body.gender;
+  const prefference = req.body.preferences;
+  const user = await User.findById(userid);
+  user.age = age;
+  user.gender = gender;
+  user.preferences = prefference;
+  user.save();
+  res.json({ status: true, msg: "Info done" });
+});
 
-})
-
-
-
-
-
-router.get("/getuserdetails",authenticate,async (req,res)=>{
-  const userid=req.user.id
-  const user=await User.findById(userid)
-  if(!user){
-    return res.status(404).json({error:"User not found"})
+router.get("/getuserdetails", authenticate, async (req, res) => {
+  const userid = req.user.id;
+  const user = await User.findById(userid);
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
   }
-  res.json({age:user.age,preferences:user.preferences,gender:user.gender})
-})
+  res.json({
+    age: user.age,
+    preferences: user.preferences,
+    gender: user.gender,
+  });
+});
 
-import Wishlist from '../model/addtowishlist.js'
-router.get("/getwishlist",authenticate,async (req,res)=>{
-const id=req.user.id 
-console.log(id)
-const wishlist=await Wishlist.find({userid:id})
-res.json(wishlist)
+import Wishlist from "../model/addtowishlist.js";
+router.get("/getwishlist", authenticate, async (req, res) => {
+  const id = req.user.id;
+  console.log(id);
+  const wishlist = await Wishlist.find({ userid: id });
+  res.json(wishlist);
+});
 
-})
+// import { fileURLToPath } from "url";
 
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     const uploadPath = path.join(__dirname, "../uploads");
+//     console.log("Saving file to:", uploadPath);
+//     cb(null, uploadPath);
+//   },
+//   filename: (req, file, cb) => {
+//     const filename = `${Date.now()}-${file.originalname}`;
+//     console.log("Generated filename:", filename);
+//     cb(null, filename);
+//   },
+// });
 
+// const upload = multer({ storage });
 
-
-
-
-
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const uploadPath = path.join(__dirname, "../uploads");
-    console.log("Saving file to:", uploadPath);
-    cb(null, uploadPath);
-  },
-  filename: (req, file, cb) => {
-    const filename = `${Date.now()}-${file.originalname}`;
-    console.log("Generated filename:", filename);
-    cb(null, filename);
+  filename: function (req, file, callback) {
+    callback(null, file.originalname);
   },
 });
 
@@ -188,7 +188,17 @@ router.post(
 
       if (!user.wardrobe) user.wardrobe = [];
 
-      const imageUrl = `/uploads/${req.file.filename}`;
+      let imageUrl;
+      try {
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          resource_type: "image",
+          folder: "uploads",
+        });
+        imageUrl = result.secure_url;
+        console.log(imageUrl)
+      } catch (error) {
+      console.log("Image upload failed",error);
+      }
       user.wardrobe.push(imageUrl);
       await user.save();
 
@@ -235,41 +245,33 @@ router.post("/clothesUpload", async (req, res) => {
 });
 
 import cloth from "../model/cloth.js";
-
-
-
-const storagecloth = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const uploadPath = path.join(__dirname, "../uploadscloths");
-    console.log("Saving file to:", uploadPath);
-    cb(null, uploadPath);
-  },
-  filename: (req, file, cb) => {
-    const filename = `${Date.now()}-${file.originalname}`;
-    console.log("Generated filename:", filename);
-    cb(null, filename);
-  },
-});
-
-const uploadcloth = multer({ storage: storagecloth });
-
+const uploadcloth = multer({ storage });
 router.post(
   "/sellcloth",
   authenticate,
   uploadcloth.single("image"),
   async (req, res) => {
-    const file = req.file.filename;
+    let imageUrl;
+    try {
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        resource_type: "image",
+        folder: "uploadscloths",
+      });
+      imageUrl = result.secure_url;
+    } catch (error) {
+      throw new BadRequestError("Image upload failed");
+    }
     const description = req.body.description;
     const price = req.body.price;
     console.log(req.body);
-    console.log("File info:", file);
+    // console.log("File info:", file);
     console.log("description", description);
     console.log("user info", req.user);
     const uploadclothdb = await cloth.create({
       userid: req.user.id,
       username: req.user.username,
       price: price,
-      clothImage: file,
+      clothImage: imageUrl,
       description: description,
     });
     if (!uploadclothdb) {
@@ -328,8 +330,8 @@ router.get("/clothsforweek", authenticate, async (req, res) => {
     }
 
     const clothforweekdata = user.clothessuggestionforweek;
-    const favourites=user.favourites
-    res.json({ clothforweek: clothforweekdata,favourites:favourites });
+    const favourites = user.favourites;
+    res.json({ clothforweek: clothforweekdata, favourites: favourites });
   } catch (err) {
     console.error("Error fetching clothes for week:", err);
     res.status(500).json({ error: "Server error" });
@@ -338,7 +340,7 @@ router.get("/clothsforweek", authenticate, async (req, res) => {
 
 router.post("/copytoprofileweekcloths", authenticate, async (req, res) => {
   const userid = req.user.username;
-  console.log('User details of clothes:', userid);
+  console.log("User details of clothes:", userid);
 
   const user = await User.findOne({ username: userid }); // <- changed to findOne
   if (!user) {
@@ -360,10 +362,10 @@ router.post("/addnewcloths", authenticate, async (req, res) => {
   const user = await User.findById(userid);
   const clothdata = req.body.clothname;
   if (user.clothes[0]) {
-    console.log("saved")
+    console.log("saved");
     user.clothes[0] += `\n , ${clothdata} , `;
   } else {
-    console.log("not saved")
+    console.log("not saved");
     user.clothes[0] = clothdata + " ";
   }
   await user.save();
@@ -417,15 +419,15 @@ router.post("/cloth/lovesuggestion/save", authenticate, async (req, res) => {
   res.status(200).json({ msg: "Suggestion saved to favourites" });
 });
 
-router.post("/cloth/deletefavourite",authenticate,async (req,res)=>{
-  const userid=req.user.id;
-  const cloths=req.body.clothsuggestion;
-  const user=await User.findById(userid)
-  if(!user){
-    res.status(404).json({msg:"no user found"})
-    }
-    user.favourites.pull(cloths);
-    await user.save();
-    res.status(200).json({favourite:user.favourites});
-})
+router.post("/cloth/deletefavourite", authenticate, async (req, res) => {
+  const userid = req.user.id;
+  const cloths = req.body.clothsuggestion;
+  const user = await User.findById(userid);
+  if (!user) {
+    res.status(404).json({ msg: "no user found" });
+  }
+  user.favourites.pull(cloths);
+  await user.save();
+  res.status(200).json({ favourite: user.favourites });
+});
 export default router;

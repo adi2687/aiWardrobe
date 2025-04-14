@@ -1,8 +1,7 @@
-import { OpenAI } from 'openai';
-import express from 'express'; 
-import Sharecloth from '../model/Sharecloths.js';
-import fs from 'fs';
-import path from 'path';
+import { OpenAI } from "openai";
+import express from "express";
+import Sharecloth from "../model/Sharecloths.js";
+import { v2 as cloudinary } from "cloudinary";
 
 const nebiusClient = new OpenAI({
   baseURL: "https://api.studio.nebius.com/v1/",
@@ -22,17 +21,14 @@ router.post("/generate-image", async (req, res) => {
     const sharecloth = await Sharecloth.findOne({ shareId: shareid });
 
     if (!sharecloth) {
-      return res.status(404).json({ message: "No cloth found with this shareid" });
+      return res
+        .status(404)
+        .json({ message: "No cloth found with this shareid" });
     }
 
-    // Check if image is already generated
+    // If image already exists, return it
     if (sharecloth.image) {
-      const imagePath = path.resolve('images', sharecloth.image);
-      if (fs.existsSync(imagePath)) {
-        const imageBase64 = fs.readFileSync(imagePath, { encoding: "base64" });
-        const imageUrl = `data:image/png;base64,${imageBase64}`;
-        return res.json({ image: imageUrl });
-      }
+      return res.json({ image: sharecloth.image });
     }
 
     // Generate image using Nebius API
@@ -51,26 +47,28 @@ router.post("/generate-image", async (req, res) => {
     });
 
     const imageBase64 = response.data[0].b64_json;
-    const imageBuffer = Buffer.from(imageBase64, "base64");
 
-    // Save image locally
-    const filename = `${shareid}_${Date.now()}.png`;
-    const imageDir = path.resolve('images');
+    // Convert base64 to Data URI for Cloudinary
+    const dataUri = `data:image/png;base64,${imageBase64}`;
 
-    if (!fs.existsSync(imageDir)) {
-      fs.mkdirSync(imageDir);
+    // Upload to Cloudinary
+    let imageUrl;
+    try {
+      const result = await cloudinary.uploader.upload(dataUri, {
+        resource_type: "image",
+        folder: "images",
+      });
+      imageUrl = result.secure_url;
+    } catch (error) {
+      console.error("Image upload to Cloudinary failed:", error);
+      return res.status(500).json({ error: "Image upload failed." });
     }
 
-    const filePath = path.join(imageDir, filename);
-    fs.writeFileSync(filePath, imageBuffer);
-
-    // Update DB
-    sharecloth.image = filename;
+    // Save URL in DB
+    sharecloth.image = imageUrl;
     await sharecloth.save();
 
-    const imageUrl = `data:image/png;base64,${imageBase64}`;
     res.json({ image: imageUrl });
-
   } catch (error) {
     console.error("Error generating or handling image:", error);
     res.status(500).json({ error: error.message || "Something went wrong." });

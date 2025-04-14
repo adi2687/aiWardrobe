@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Sellcloth.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Sellcloth = () => {
   const [imageFile, setImageFile] = useState(null);
@@ -10,13 +10,13 @@ const Sellcloth = () => {
   const [clothall, setClothall] = useState([]);
   const [clothuser, setClothuser] = useState([]);
   const [price, setPrice] = useState("");
-
-  const navigate=useNavigate()
+  const [uploading, setuploading] = useState(false);
+  const navigate = useNavigate();
 
   const handlepricechange = (e) => {
     setPrice(e.target.value);
   };
-const apiUrl=import.meta.env.VITE_BACKEND_URL
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const fetchClothes = async () => {
     setLoading(true);
     try {
@@ -59,9 +59,10 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setuploading(true);
     if (!imageFile || !description || !price) {
       alert("Please fill all the fields");
+      setuploading(false);
       return;
     }
 
@@ -70,6 +71,7 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
     formData.append("description", description);
     formData.append("price", price);
 
+    setuploading(true);
     try {
       const response = await fetch(`${apiUrl}/user/sellcloth`, {
         method: "POST",
@@ -81,12 +83,14 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
       console.log("Response Data:", data);
 
       if (response.ok) {
-        alert("Cloth listed for sale successfully");
+        // alert("Cloth listed for sale successfully");
         setImageFile(null);
         setDescription("");
         setPrice("");
+        setuploading(false);
         fetchClothes(); // Refresh list after submission
       } else {
+        setuploading(false);
         alert(data.error || "Error listing clothes for sale");
       }
     } catch (error) {
@@ -95,36 +99,35 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
     }
   };
 
-  
-  const messageuser=(username,id)=>{
-    navigate(`/message/${username}/${id}`)
-  }
-  const sold=(clothid)=>{
-    fetch(`${apiUrl}/user/soldcloth/delete/${clothid}`,{
-      method:"POST",
-      credentials:"include",
-      body:JSON.stringify({clothid:clothid})
+  const messageuser = (username, id) => {
+    navigate(`/message/${username}/${id}`);
+  };
+  const sold = (clothid) => {
+    fetch(`${apiUrl}/user/soldcloth/delete/${clothid}`, {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({ clothid: clothid }),
     })
-    .then(response=>response.json())
-    .then(data=>{
-      // console.log(data)
-      if (data.message==="cloth deleted successfully"){
-        fetchClothes()
-      }
-  })
-    .catch(error=>console.error("Error:", error));
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data)
+        if (data.message === "cloth deleted successfully") {
+          fetchClothes();
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  };
 
-  }
   return (
     <div className="sellclothcontainer">
       <h1>Sell Your Clothes</h1>
       <form onSubmit={handleSubmit}>
-          <input
-            type="file"
-            id="image-input"
-            onChange={handleImageChange}
-            accept="image/*"
-          />
+        <input
+          type="file"
+          id="image-input"
+          onChange={handleImageChange}
+          accept="image/*"
+        />
         <input
           type="text"
           value={description}
@@ -137,61 +140,106 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
           onChange={handlepricechange}
           placeholder="Enter price"
         />
-        <button type="submit" style={{color:"white",backgroundColor:"red"}}>Sell Clothes</button>
+        <button type="submit" className="upload-btn">
+          {uploading ? (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <h3 style={{ marginRight: "8px" }}>Uploading</h3>
+              <div className="dots">
+                <span className="dot" />
+                <span className="dot" />
+                <span className="dot" />
+              </div>
+            </div>
+          ) : (
+            <h3 style={{color:"white"}}>Upload</h3>
+          )}
+        </button>
       </form>
       <h2>Your Clothes</h2>
       {loading ? (
         <p>Loading...</p>
-      ) : (
+      ) : clothuser.length ? (
         <div className="sellclothlist">
           <ul>
             {clothuser.map((item, index) => (
               <li key={index}>
-                <img
-                  src={`${apiUrl}/uploadscloths/${item.clothImage}`}
-                  alt="Cloth"
-                  width="100"
-                />
-                <p>{item.description}</p>
-                <p>{item.username}</p>
-                <p className="price">{item.price}</p>
-                <button className="soldbutton" onClick={()=>sold(item._id)} style={{backgroundColor:"Red"}}>Sold?</button>
+                <img src={`${item.clothImage}`} alt="Cloth" width="100" />
+                <p>
+                  <h3>Prodcut description</h3>{item.description}</p>
+                <p>
+                  <h3>Product seller</h3>{item.username}</p>
+                <p className="price">
+                  <h4 style={{fontSize:"18px"}}>Product price</h4>{item.price}</p>
+                  {/* <br /> */}
+                <button
+                  className="soldbutton"
+                  onClick={() => sold(item._id)}
+                >
+                  Sold?
+                </button>
               </li>
             ))}
           </ul>
         </div>
-      )} 
+      ) : (
+        <p
+          style={{
+            fontSize: "26px",
+            display: "flex",
+            justifyContent: "center",
+            margin: "20px",
+          }}
+        >
+          No clothes uploaded yet
+        </p>
+      )}
       <h2>Available Clothes</h2>
       <div className="allcloths">
-      {loading ? (
-        <p>Loading clothes...</p>
-      ) : (
-        <ul>
-          {clothall.length > 0 ? (
-            clothall.map((item, index) => (
-              <li key={index}>
-                <img
-                  src={`${apiUrl}/uploadscloths/${item.clothImage}`}
-                  alt="Cloth"
-                  width="100"
-                />
-                <p><h4>Product description:</h4>
-                  {item.description}
+        {loading ? (
+          <p>Loading clothes...</p>
+        ) : (
+          <ul>
+            {clothall.length > 0 ? (
+              clothall.map((item, index) => (
+                <li key={index}>
+                  <img
+                    src={`${item.clothImage}`}
+                    alt="Cloth"
+                    width="100"
+                  />
+                  <p>
+                    <h4>Product description:</h4>
+                    {item.description}
+                  </p>
+                  <p>
+                    <h4>Product seller</h4>
+                    {item.username}
+                  </p>
+                  <p className="pricecloth">
+                    <h4>Product price</h4>₹ {item.price}
+                  </p>
+                  <button onClick={() => messageuser(item.username, item._id)}>
+                    Message {item.username}
+                  </button>
+                </li>
+              ))
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: "20px",
+                  width: "100%",
+                }}
+              >
+                <p style={{ fontSize: "26px" }}>
+                  No clothes available for sale
                 </p>
-                <p>
-                  <h4>Product seller</h4>
-                  {item.username}</p>
-                <p className="pricecloth">
-                  <h4>Product price</h4>
-                  ₹ {item.price}</p>
-                <button onClick={()=>messageuser(item.username,item._id)}>Message {item.username}</button>
-              </li>
-            ))
-          ) : (
-            <p>No clothes available for sale</p>
-          )}
-        </ul>
-      )}
+              </div>
+            )}
+          </ul>
+        )}
       </div>
     </div>
   );

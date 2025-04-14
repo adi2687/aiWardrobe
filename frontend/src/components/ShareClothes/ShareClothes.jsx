@@ -70,7 +70,7 @@ const ShareClothes = () => {
       const response = await fetch(
         `${apiUrl}/imagegenerate/generate-image`,
         {
-          method: "POST",
+          method: "POST",   
           headers: {    
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -131,7 +131,7 @@ const [showOptions, setShowOptions] = useState(false);
     <div className="share-cloths-container">
       <h3>{username}'s Outfits</h3>
       <div className="share-cloths-list">{sharecloth}</div>
-
+{/* {imageUrl} */}
       <div className="imagecontainer">
         <h3>Outfits preview</h3>
         {imageUrl ? (

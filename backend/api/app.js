@@ -18,7 +18,7 @@ import session from "express-session";
 import passport from "passport";
 import path from 'path';
 import cors from 'cors';
-
+import connectCloudinary from '../db/cloudinary.js'
 
 dotenv.config();
 console.log("GOOGLE_CLIENT from env:", process.env.GOOGLE_CLIENT);
@@ -60,7 +60,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+connectCloudinary();
 connect(mongoUri);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
