@@ -129,11 +129,11 @@ const [showOptions, setShowOptions] = useState(false);
 
   return (
     <div className="share-cloths-container">
-      <h3>{username}'s Outfits</h3>
+      <h3 style={{color:"white"}}>{username}'s Outfits</h3>
       <div className="share-cloths-list">{sharecloth}</div>
 {/* {imageUrl} */}
       <div className="imagecontainer">
-        <h3>Outfits preview</h3>
+        <h3 style={{color:"white"}}>Outfits preview</h3>
         {imageUrl ? (
           <img
             src={imageUrl}
@@ -145,7 +145,7 @@ const [showOptions, setShowOptions] = useState(false);
         )}
       </div>
 
-      <button onClick={() => CopyToClipboard(id)} className="copybutton">
+      <button onClick={() => CopyToClipboard(id)} className="copybutton" style={{padding:"0px",height:"45px",display:"flex",justifyContent:"center",alignItems:"center",width:"120px",fontSize:"20px",fontWeight:"bold",borderRadius:"16px",color:"white"}}>
         {copyurl ? <p>Copied</p> : <p>Copy link</p>}
       </button>
       {/* <button onClick={sharewithfriends}>
@@ -155,7 +155,8 @@ const [showOptions, setShowOptions] = useState(false);
       <button
         className="share-button"
         onClick={() => setShowOptions((prev) => !prev)}
-      >
+        style={{padding:"10px"}}
+      > 
         Share to Friends
       </button>
 

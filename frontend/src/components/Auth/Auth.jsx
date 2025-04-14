@@ -118,19 +118,19 @@ const Auth = () => {
               />
             </div>
 
-            <button type="submit" className="auth-btn">
+            <button type="submit" className="auth-btn" style={{color:"white",padding:"0px"}}>
               {logging ? <p>Loading</p> : <p>Login</p>}
             </button>
           </form>
           <p className="toggle-text">
             Don't have an account?{" "}
-            <button className="toggle-btn" onClick={() => setToggle(!toggle)}>
+            <button className="toggle-btn" onClick={() => setToggle(!toggle)} >
               Sign up
             </button>
           </p>
           {/* <div className="loginwithauth"> */}
             <button className="google-btn" onClick={LoginWithGoogle}>
-              <FaGoogle />
+              <img src="/Google.png" height={30}/>
             </button>
             <button className="facebook-btn" onClick={facebooklogin}>
               <FaFacebook />
@@ -177,7 +177,7 @@ const Auth = () => {
             </div>
 
             <button type="submit" className="auth-btn">
-              Sign Up
+              Sign Up 
             </button>
           </form>
           <p className="toggle-text">

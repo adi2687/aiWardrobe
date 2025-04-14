@@ -13,15 +13,15 @@ const Profile = () => {
   const [isScanning, setIsScanning] = useState(false);
   const navigate = useNavigate();
   const [sharecloths, setshare] = useState("");
-  const apiUrl=import.meta.env.VITE_BACKEND_URL
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
   // const mlUrl=import.meta.env.VITE_ML_URL
-  const frontedUrl=import.meta.env.VITE_FRONTEND_URL
+  const frontedUrl = import.meta.env.VITE_FRONTEND_URL;
   // const [isVisible,setIsVisible]=useState(false)
   useEffect(() => {
     fetch(`${apiUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     })
       .then((response) => response.json())
       .then((data) => setUser(data.user))
@@ -34,10 +34,11 @@ const Profile = () => {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     })
-    .then((response) => response.json())
+      .then((response) => response.json())
       .then(() => {
-        console.log("cliked")
-        navigate("/")})
+        console.log("cliked");
+        navigate("/");
+      })
       .catch((error) => console.log("Couldn't logout", error));
   };
 
@@ -56,67 +57,65 @@ const Profile = () => {
   };
   // }
 
-
-const [userclothes,setuserclothes]=useState({})
+  const [userclothes, setuserclothes] = useState({});
   const handleImageUpload = async (e) => {
     e.preventDefault();
     if (!imageFile) return alert("Upload an image!");
-  
+
     setIsScanning(true);
-  
+
     // ----- Upload to wardrobe -----
     const uploadForm = new FormData();
     uploadForm.append("wardrobeImage", imageFile);
-  
+
     try {
       const uploadRes = await fetch(`${apiUrl}/user/upload-image`, {
         method: "POST",
         credentials: "include",
         body: uploadForm,
       });
-  
+
       const uploadData = await uploadRes.json();
-  
+
       if (!uploadRes.ok) {
         console.error("Upload failed:", uploadData.error || "Unknown error");
         setIsScanning(false);
         return;
       }
-  
+
       // Set image in wardrobe state
       setWardrobeImages((prev) => [...prev, uploadData.imageUrl]);
       setImageFile(null);
       setImageName("No file chosen");
       document.getElementById("image-upload-input").value = "";
-  
     } catch (error) {
       console.error("Error uploading image:", error);
       setIsScanning(false);
       return;
     }
-  
+
     // ----- Send to /classify -----
     const classifyForm = new FormData();
     classifyForm.append("images", imageFile);
-  
+
     try {
       const classifyRes = await fetch(`${apiUrl}/clothid/classify`, {
         method: "POST",
         body: classifyForm,
       });
-  
+
       if (!classifyRes.ok) {
         throw new Error(`HTTP error! Status: ${classifyRes.status}`);
       }
-  
+
       const classifyData = await classifyRes.json();
       console.log("Image classification result:", classifyData);
-      console.log(classifyData.clothing_items)
-  setuserclothes(classifyData.clothing_items)
-      const clothes =classifyData.clothing_items ;
-  
+      console.log(classifyData.clothing_items);
+      setuserclothes(classifyData.clothing_items);
+      const clothes = classifyData.clothing_items;
+
       console.log("Sending clothes data:", clothes);
-  
+
       const saveRes = await fetch(`${apiUrl}/user/clothesUpload`, {
         method: "POST",
         credentials: "include",
@@ -125,33 +124,24 @@ const [userclothes,setuserclothes]=useState({})
         },
         body: JSON.stringify({ clothes }),
       });
-  
+
       if (!saveRes.ok) {
         throw new Error(`Http error! status: ${saveRes.status}`);
       }
-  
+
       const savedData = await saveRes.json();
       console.log("Clothes saved:", savedData);
-  
+
       // Wait 5s before redirect
       setTimeout(() => {
         setIsScanning(false);
         navigate("/wardrobe");
       }, 5000);
-  
     } catch (error) {
       console.error("Error classifying image:", error);
       setIsScanning(false);
     }
   };
-  
-
-
-
-
-
-
-
 
   const [clothsForWeek, setClothesForWeek] = useState("");
   const [isVisible, setIsVisible] = useState(false);
@@ -294,19 +284,18 @@ const [userclothes,setuserclothes]=useState({})
   const [age, setAge] = useState(0);
   const [preferences, setPreferences] = useState("");
   const [gender, setGender] = useState("");
-  
+
   const personalinfosubmit = () => {
     console.log("Info clicked");
     console.log(age, preferences, gender);
-  
-  
+
     fetch(`${apiUrl}/user/updateinfo`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ age, preferences, gender }),
-      credentials: "include"
+      credentials: "include",
     })
       .then((response) => response.json())
       .then((data) => {
@@ -325,55 +314,90 @@ const [userclothes,setuserclothes]=useState({})
         alert("An error occurred. Please try again later.");
       });
   };
-  
 
-  const navigatewishlist=()=>{
+  const navigatewishlist = () => {
     navigate("/wishlist");
-  }
+  };
+  const [passwordshow, setpassword] = useState(false);
+  const [personalinfovisible,changepersonalinfo]=useState(false)
   return (
     <div className="profile-container">
       {user ? (
         <div className="profile-card">
-          {/* <button className="logout" onClick={LogOut}>
-            Logout
-          </button> */}
           <div className="profile-header">
-            <img
-              src={
-                user.profilePicture ||
-                `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(
-                  user.username
-                )}`
-              }
-              alt="Profile"
-              className="profile-image"
-            />
-
             <div className="user-info">
-              <h2 className="profile-name">{user.username}</h2>
-              <p className="profile-email">{user.email}</p>
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter new password"
-                onChange={(e) => setnewPassword(e.target.value)}
-              />
-              <div className="passbuttons">
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="showpassword"
-                >
-                  {showPassword ? "🙈" : "👁️"}
-                </button>
-
-                <button
-                  type="button"
-                  className="changepassbutton"
-                  onClick={() => setnewpass(newPassword)}
-                >
-                  Change Password
-                </button>
+              {/* details */}
+              <div className="details">
+                <img
+                  src={
+                    user.profilePicture ||
+                    `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(
+                      user.username
+                    )}`
+                  }
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div>
+                  <h2 className="profile-name">{user.username}</h2>
+                  <p className="profile-email" style={{ color: "white" }}>
+                    {user.email}
+                  </p>
+                </div>
               </div>
+              <button
+                onClick={() => {
+                  setpassword(!passwordshow);
+                }}
+                style={{margin:"10px"}}
+              >
+                {passwordshow ? (
+                  <div>Hide password details</div>
+                ) : (
+                  <div>Change password</div>
+                )}
+              </button>
+              <button onClick={()=>{
+                changepersonalinfo(!personalinfovisible)
+              }}>
+                {personalinfovisible ? (
+                  <div>Hide personal info</div>
+                ) : ( 
+                  <div>Change personal info</div>
+                )}
+              </button>
+              {passwordshow ? (
+              <div className="passdiv">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter new password"
+                  onChange={(e) => setnewPassword(e.target.value)}
+                />
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="showpassword"
+                  >
+                    {showPassword ? "🙈" : "👁️"}
+                  </button>
+
+                  <button
+                    type="button"
+                    className="changepassbutton"
+                    onClick={() => setnewpass(newPassword)}
+                  >
+                    Change Password
+                  </button>
+                </div>
+                
+              </div>
+              ) : ( 
+                <div>
+                  
+                </div>
+              )}
+            {personalinfovisible ? (
               <div className="ai-form-container">
                 <h3>Get Personalized Outfit Suggestions</h3>
 
@@ -381,13 +405,16 @@ const [userclothes,setuserclothes]=useState({})
                   type="number"
                   placeholder="Enter your age"
                   className="ai-input"
-                  style={{border:"2px solid white"}}
                   min={10}
                   max={80}
-                  onChange={(e)=>setAge(e.target.value)}
+                  onChange={(e) => setAge(e.target.value)}
+                  style={{ border: "2px solid white" }}
                 />
 
-                <select className="ai-input" onChange={(e)=>setGender(e.target.value)}>
+                <select
+                  className="ai-input"
+                  onChange={(e) => setGender(e.target.value)}
+                >
                   <option value="" disabled selected>
                     Select Gender
                   </option>
@@ -399,24 +426,31 @@ const [userclothes,setuserclothes]=useState({})
                   type="text"
                   placeholder="Style Preferences (e.g. streetwear, ethnic, casual)"
                   className="ai-input"
-                  style={{border:"2px solid white",marginTop:"10px"}}
-                  onChange={(e)=>setPreferences(e.target.value)}
+                  onChange={(e) => setPreferences(e.target.value)}
+                  style={{ border: "2px solid white" }}
                 />
 
-                <button className="ai-btn" onClick={personalinfosubmit}>Submit</button>
+                <button className="ai-btn" onClick={personalinfosubmit}>
+                  Upload your preferences
+                </button>
               </div>
+            ) : (
+              <div>
+                </div>
+            )
+          }
 
               <br />
               <br />
               <div className="sellClothes">
-                <button onClick={handleNav}>Sell old Clothes</button>
-                <button onClick={wardrobenav}>Wardrobe</button>
-                <button onClick={recommedationnav}>Recommendations</button>
-                <br />
-                <button onClick={recommedationforweek}>
-                  Recommedation for week
-                </button>
-                {/* <button onClick={navigatewishlist}>Your wishlist</button> */}
+                <div className="buttons">
+                  <button onClick={handleNav}>Sell old Clothes</button>
+                  <button onClick={wardrobenav}>Wardrobe</button>
+                  <button onClick={recommedationnav}>Recommendations</button>
+                  <button onClick={recommedationforweek}>
+                    Recommedation for week
+                  </button>
+                </div>
               </div>
               <div className="clothforweek">
                 <button onClick={toggleClothesForWeek}>
@@ -424,11 +458,7 @@ const [userclothes,setuserclothes]=useState({})
                     ? "▲ Hide weekly outfits"
                     : "▼ Show your outfits for the week"}
                 </button>
-                <button
-                  onClick={togglefavourite}
-                  style={{ marginBottom: "10px" }}
-                  className="favouritebutton "
-                >
+                <button onClick={togglefavourite} className="favouritebutton ">
                   {favoritevisible ? "Hide Favourites" : "Show Favourites"}
                 </button>
 
@@ -436,21 +466,13 @@ const [userclothes,setuserclothes]=useState({})
                   className={`weekly-outfits-container ${
                     isVisible ? "visible" : ""
                   }`}
-                  style={{
-                    background: "white",
-                    padding: "1rem",
-                    borderRadius: "8px",
-                    marginTop: "0.5rem",
-                    backgroundColor: "#333",
-                    color: "blue",
-                  }}
                 >
                   {isVisible && (
                     <>
                       {isLoadingClothes ? (
                         <p>Loading your weekly outfits...</p>
                       ) : clothsForWeek && clothsForWeek.clothforweek ? (
-                        <p style={{ whiteSpace: "pre-line" }}>
+                        <p>
                           <h2>Your weekly clothes</h2>
                           {clothsForWeek.clothforweek}
                         </p>
@@ -461,39 +483,37 @@ const [userclothes,setuserclothes]=useState({})
                   )}
                 </div>
               </div>
-              <div>
+              <div className="favourite">
                 {favoritevisible && (
                   <div>
                     {favourites.length > 0 ? (
                       favourites?.map((ele, i) => (
-                        <div
-                          key={i}
-                          className="fav-item"
-                          style={{ padding: "8px 0" }}
-                        >
+                        <div key={i} className="fav-item">
                           <b>{ele}</b>
                           <br />
-                          <button
-                            className="sharebutton"
-                            onClick={() => deletefavourite(ele)}
-                          >
-                            Delete favourite
-                          </button>
+                          <div>
+                            <button
+                              className="sharebutton"
+                              onClick={() => deletefavourite(ele)}
+                            >
+                              Delete favourite
+                            </button>
 
-                          <button
-                            className="sharefriends"
-                            onClick={() => SharetoFriends(ele)}
-                          >
-                            Share to friends
-                          </button>
-                          <button
-                            className="previewbutton"
-                            onClick={() => {
-                              previewoutfit(ele);
-                            }}
-                          >
-                            Preview outfit
-                          </button>
+                            <button
+                              className="sharefriends"
+                              onClick={() => SharetoFriends(ele)}
+                            >
+                              Share to friends
+                            </button>
+                            <button
+                              className="previewbutton"
+                              onClick={() => {
+                                previewoutfit(ele);
+                              }}
+                            >
+                              Preview outfit
+                            </button>
+                          </div>
 
                           <div className="sharedclothes">
                             {sharecloths ? (
@@ -516,19 +536,20 @@ const [userclothes,setuserclothes]=useState({})
           </div>
 
           <div className="upload-section">
-            <br />
-            <br />
-            <br />
-            <label htmlFor="image-upload-input" className="file-label">
-              Choose Image
-            </label>
+            {/* <label htmlFor="image-upload-input" className="custom-file-label">
+  Choose Image
+</label> */}
+            {/* <p className="file-description">Upload your clothes images</p> */}
 
             <input
               type="file"
               id="image-upload-input"
               onChange={handleImageChange}
-              className="file-input"
+              className="custom-file-input"
+              accept="image/*"
+              aria-label="Upload clothing image"
             />
+
             {imageName && <span className="file-name">{imageName}</span>}
             <button
               onClick={handleImageUpload}

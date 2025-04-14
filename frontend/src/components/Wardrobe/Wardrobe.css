@@ -2,7 +2,7 @@
     max-width: 900px;
     margin: 20px auto;
     padding: 20px;
-    background: #f9f9f9;
+    background: transparent;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -307,7 +307,51 @@ flex-direction: column;
   border-radius: 12px;
 margin-top: 10px;
 }
-/* Responsive Design */
+.wardrobe-container{
+  background-color: transparent;
+  border:2px solid white;
+  /* background-color: #333; */
+}
+.clothes-container{
+  color:white;
+  background-color: transparent;
+}
+.clothes-title{
+  color:whitesmoke
+}
+.clothes-list span{background-color: transparent;border:2px solid white;padding: 10px;margin:10px;font-size:16px}
+.clothes-list span:hover{
+  background-color: #333;
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.addcloths input{
+  min-width:10%;
+}
+.addcloths{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+color:white;
+  border:2px solid red
+}
+.addcloths button{
+  min-width:200px
+}
+.wardrobe-container button{
+  background-color: grey;
+  font-size: 17px;  
+}
+.wardrobe-container button:hover{
+  background-color: #333;
+  
+}
+.wardrobe-gallery img{
+  border:3px solid white;
+  padding:10px
+}
+  /* Responsive Design */
 @media (max-width: 768px) {
   .wardrobe-gallery {
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
