@@ -124,7 +124,7 @@ const Message = () => {
           <img
             src={
               clothdetail?.clothImage
-                ? `${apiUrl}/uploadscloths/${clothdetail.clothImage}`
+                ? `${clothdetail.clothImage}`
                 : "default-image.jpg"
             }
             alt={clothdetail?.description || "Cloth image"}
