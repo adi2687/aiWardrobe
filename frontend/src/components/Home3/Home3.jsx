@@ -12,13 +12,16 @@ const Home3 = () => {
 
       {/* Features Section */} 
       <div className="features">
-        <div className="feature-item"> AI Outfit Suggestions</div>
+        <div className="feature-item" > AI Outfit Suggestions</div>
         <div className="feature-item"> AI Fashion Chatbot</div>
-        <div className="feature-item"> Discover New Trends</div>
+        {/* <div className="feature-item"> Discover New Trends</div> */}
         <div className="feature-item"> Personalized Shopping</div>
-        <div className="feature-item"> Compare Prices Across Platforms</div>
+        <div className="feature-item">Weather and location based recommendations</div>
+        <div className="feature-item">Daily outfit planner</div>
+        <div className="feature-item">Sell your old clothes</div>
+        {/* <div className="feature-item"> Compare Prices Across Platforms</div> */}
         {/* <div className="feature-item"> Celebrity Fashion Trends</div> */}
-      </div>
+      </div> 
     </div>
   );
 };

@@ -7,20 +7,20 @@ const Home5 = () => {
 
   const handleTryNow = () => navigate("/recommendations");
 
-  const featureRoutes = {
-    "Weather based recommendations": "/recommendations",
-    "Daily outfit planner": "/planner",
-    "Sell your old clothes": "/sellcloth",
-    "Accessories guider": "/accessories",
-    "Location-Based Outfit Suggestions": "/recommendations",
-  };
+  // const featureRoutes = {
+  //   "Weather based recommendations": "/recommendations",
+  //   "Daily outfit planner": "/planner",
+  //   "Sell your old clothes": "/sellcloth",
+  //   "Accessories guider": "/accessories",
+  //   "Location-Based Outfit Suggestions": "/recommendations",
+  // };
 
   const handleFeatureClick = (feature) => {
     const path = featureRoutes[feature];
     if (path) navigate(path);
   };
 
-  const features = Object.keys(featureRoutes);
+  // const features = Object.keys(featureRoutes);
 
   return (
     <div className="home5-container">
@@ -32,13 +32,13 @@ const Home5 = () => {
         <button onClick={handleTryNow}>Try Now</button>
       </div>
 
-      <div className="features_page5">
+      {/* <div className="features_page5">
         {features.map((feature, index) => (
           <div key={index} onClick={() => handleFeatureClick(feature)}>
             {feature}
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
