@@ -123,17 +123,24 @@ const Shop = () => {
 
             {amazonandmyntra && (
               <div className="buttons">
-                <button
-                  onClick={() => openSearch("amazon", amazonandmyntra)}
-                >
-                  Go to Amazon for {amazonandmyntra}
-                </button>
-                <button
-                  onClick={() => window.location.href=`https://www.myntra.com/shirt?rawQuery=${amazonandmyntra}`}
-                >
-                  Go to Myntra for {amazonandmyntra}
-                </button>
-              </div>
+              <button
+                onClick={() => openSearch("amazon", amazonandmyntra)}
+                aria-label={`Search for ${amazonandmyntra} on Amazon`}
+              >
+                Go to Amazon for {amazonandmyntra}
+              </button>
+            
+              <button
+                onClick={() => {
+                  const query = encodeURIComponent(amazonandmyntra);
+                  window.location.href = `https://www.myntra.com/${query}?rawQuery=${query}`;
+                }}
+                aria-label={`Search for ${amazonandmyntra} on Myntra`}
+              >
+                Go to Myntra for {amazonandmyntra}
+              </button>
+            </div>
+            
             )}
           </div>
         ) : (
