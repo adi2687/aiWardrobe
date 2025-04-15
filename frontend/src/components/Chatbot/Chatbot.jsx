@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Chatbot.css";
 
 const Chatbot = () => {
@@ -6,6 +6,27 @@ const Chatbot = () => {
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
+  const [userClothes, setUserClothes] = useState([]);
+
+  const userCloths = () => {
+    fetch(`${apiUrl}/user/images`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials:"include"
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUserClothes(data.Wardrobe.allclothes[0]); // Store the clothes list
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  useEffect(()=>{
+    userCloths()
+  },[])
   const getOutfitSuggestion = async (input) => {
     try {
       setIsLoading(true);
@@ -22,9 +43,9 @@ const Chatbot = () => {
       setIsLoading(false);
       // console.log(data);
       const cleanedResponse = data.response
-  .replace(/\*/g, "") // Remove all stars
-  .replace(/\s{2,}/g, " ") // Remove extra spaces
-  .replace(/\n\s*\n/g, "\n");
+        .replace(/\*/g, "") // Remove all stars
+        .replace(/\s{2,}/g, " ") // Remove extra spaces
+        .replace(/\n\s*\n/g, "\n");
       return cleanedResponse || "No suggestion available.";
     } catch (error) {
       console.error("Error:", error);
@@ -51,13 +72,13 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
-      <h2>Outfit Recommender</h2>
+      <h2>Need a fashion recommendation ?</h2>
       <div className="messages-container">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
             {msg.text}
           </div>
-        ))} 
+        ))}
         {isLoading && <div className="message bot">Loading...</div>}
       </div>
       <form onSubmit={handleSend} className="input-container">
