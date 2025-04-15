@@ -99,7 +99,7 @@ const Shop = () => {
           </h2>
         )}
       </div>
-
+ 
       <div className="suggestion-container">
         {shoppingsuggestionsmain.length > 0 ? (
           <div className="pill-wrapper">
@@ -129,7 +129,7 @@ const Shop = () => {
                   Go to Amazon for {amazonandmyntra}
                 </button>
                 <button
-                  onClick={() => openSearch("myntra", amazonandmyntra)}
+                  onClick={() => window.location.href=`https://www.myntra.com/shirt?rawQuery=${amazonandmyntra}`}
                 >
                   Go to Myntra for {amazonandmyntra}
                 </button>
