@@ -1,18 +1,29 @@
-    // FloatingButton.jsx
-    import React from "react";
-    import "./Chatbutton.css";
-    import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import "./ChatButton.css";
+import { useNavigate, useLocation } from "react-router-dom";
 
-    const ChatButton = () => {
+const ChatButton = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [onChatPage, setOnChatPage] = useState(false);
 
-        const Navigate=useNavigate()
-         const handleNavigate=()=>{   Navigate("/chatbot")}
-        
-    return (
-        <button className="floating-button" onClick={handleNavigate}>
-            Ai<br />
-        </button>
-    );
- } ; 
+  useEffect(() => {
+    // Update state when the route changes
+    setOnChatPage(location.pathname === "/chatbot");
+  }, [location]);
 
-    export default ChatButton;
+  const handleNavigate = () => {
+    navigate("/chatbot");
+  };
+
+  return (
+    <div className="chat-button-wrapper">
+      <button className="floating-button" onClick={handleNavigate}>
+        {onChatPage ? "👋" : "🤖"}
+        <span className="tooltip">Chat with AI</span>
+      </button>
+    </div>
+  );
+};
+
+export default ChatButton;
