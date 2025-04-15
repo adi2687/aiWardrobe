@@ -48,7 +48,7 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
     setZoomedImage(imgSrc);
     setZoomScale(1);
   };
-
+ 
   const closeZoom = () => {
     setZoomedImage(null);
   };
