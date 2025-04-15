@@ -47,78 +47,80 @@ const getUserId = (req) => {
 
 router.post("/chatbot", async (req, res) => {
   try {
-    const userId = getUserId(req);
+    const userid=getUserId(req)
+    console.log(userid)
+    const title = "clothes";
     const prompt = req.body.input;
-    const clothes = req.body.userClothes || "";
-    const weather = req.body.weather;
 
-    const clothesPrompt = clothes
-      ? `I have the following clothes with me: ${clothes}. Suggest me a short and concise outfit recommendation based on this.`
-      : "";
-
-    const weatherPrompt = weather
-      ? `Weather details:
-    - Date: ${weather.date}
-    - Temperature: ${weather.temp}°C (Min: ${weather.temp_min}°C, Max: ${weather.temp_max}°C)
-    - Feels Like: ${weather.feels_like}°C
-    - Condition: ${weather.weather}
-    - Wind Speed: ${weather.wind} m/s
-    - Humidity: ${weather.humidity}%
-    - Rain Probability: ${weather.rain_probability}%
-    - Cloud Cover: ${weather.cloud_cover}%
+    const clothes = req.body.clothes || "";
     
-    Suggest clothing suitable for these conditions.`
+    let clothesfinal = clothes
+      ? `I have the following clothes with me: ${clothes}. Suggest me an outfit based on this.`
       : "";
+// console.log('clotheslist',clothesfinal)
+    let weather = req.body.weather;
+    let weatherinprompt = "";
+    if (weather) {
+      weatherinprompt = `Weather details:
+                - Date: ${weather.date}
+                - Temperature: ${weather.temp}°C (Min: ${weather.temp_min}°C, Max: ${weather.temp_max}°C)
+                - Feels Like: ${weather.feels_like}°C
+                - Condition: ${weather.weather}
+                - Wind Speed: ${weather.wind} m/s
+                - Humidity: ${weather.humidity}%
+                - Rain Probability: ${weather.rain_probability}%
+                - Cloud Cover: ${weather.cloud_cover}%
+                
+                Suggest clothing suitable for these conditions.`;
+    }
 
-    // 🗨️ Fetch last 5 messages from this user to continue context
-    const previousMessages = await ChatMessage.find({ userId })
-      .sort({ createdAt: -1 })
-      .limit(5)
-      .lean();
-
-    // 🧠 Convert previous messages into Gemini format
-    const history = previousMessages
-      .reverse() // Chronological order
-      .map((msg) => [
-        { role: "user", parts: [{ text: msg.message }] },
-        { role: "model", parts: [{ text: msg.response }] },
-      ])
-      .flat();
-
-    // Add the new message
-    const currentPrompt = `
-${prompt}
-${clothesPrompt}
-${weatherPrompt}
-
-Respond in a short, clear sentence and suggets some outfits or any question that the user asks
-`;
-    console.log(currentPrompt);
-    history.push({ role: "user", parts: [{ text: currentPrompt }] });
-
-    // 🎯 Call Gemini
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const generationConfig = {
       temperature: 0.9,
-      topK: 5,
-      topP: 0.9,
+      topK: 1,
+      topP: 1,
       maxOutputTokens: 2048,
     };
 
+    const promptContent = `
+            You are now operating as the world's foremost expert on ${title}. You possess comprehensive knowledge equivalent to decades of specialized study and practical experience in this field.
+    
+            Drawing on this exceptional expertise, please provide me with:
+            ${prompt}
+            Specifically, I want to understand: ${prompt}.
+            ${clothesfinal}
+            ${weatherinprompt}
+    
+            Please be thorough, precise, and explain in clear terms. 
+            Keep responses short, direct, and without unnecessary explanations. Provide only the necessary recommendations.
+            `;
+
+    console.log("Final Prompt:", promptContent);
+
     const result = await model.generateContent({
-      contents: history,
+      contents: [{ role: "user", parts: [{ text: promptContent }] }],
       generationConfig,
     });
 
+
     const response = result.response;
-    const rawText = response.text();
-    const cleanedText = rawText.replace(/\*/g, "").replace(/<.*?>/g, "").trim();
-
-    // 📝 Save to chat history
-   
-
-    res.json({ response: cleanedText });
+    const text = response.text();
+    const cleanedText = text
+      .replace(/\*/g, "")
+      .replace(/<.*?>/g, "")
+      .trim();
+    const chatmessage=await ChatMessage.create({message:prompt,response:cleanedText,userId:userid})
+    await chatmessage.save()
+    if (weather) {
+      res.json({
+        response: `According to weather my recommendation is ${text}`,
+      });
+      weather = "";
+      return;
+    }
+    weather = "";
+    res.json({ response: text });
   } catch (err) {
     console.error("Server Error:", err);
     res.status(500).send("Server Error");
