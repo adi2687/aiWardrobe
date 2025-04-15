@@ -540,7 +540,7 @@ const Profile = () => {
   Choose Image
 </label> */}
             {/* <p className="file-description">Upload your clothes images</p> */}
-
+<h3 >Upload your clothes and get the best recommedation !!!</h3>
             <input
               type="file"
               id="image-upload-input"
@@ -561,10 +561,12 @@ const Profile = () => {
           </div>
 
           {isScanning && (
-            <div className="loading-screen">
-              <p>Uploading & Scanning...</p>
-            </div>
-          )}
+  <div className="loading-screen">
+    <div className="spinner"></div>
+    <p>Uploading & Scanning...</p>
+  </div>
+)}
+
         </div>
       ) : (
         <p className="loading-text">

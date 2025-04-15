@@ -10,53 +10,52 @@ const Auth = () => {
   const [error, setError] = useState("");
   const [toggle, setToggle] = useState(false); // Toggle between Login & Signup
   const navigate = useNavigate();
-  const [signingup,setsigning]=useState(false)
+  const [signingup, setsigning] = useState(false);
 
   const [logging, setlogging] = useState(false);
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   // Login Handler
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
-    setlogging(true);
-    if (!email || !password) {
-      setlogging(false);
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError("");
 
-      setError("Please enter both email and password.");
-      return;
-    }
-  
-    try {
-      setlogging(true)
-      const response = await fetch(`${apiUrl}/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
+  if (!email || !password) {
+    setError("Please enter both email and password.");
+    return;
+  }
 
-      if (!response.ok) {
-        // Display backend error message
-        setError(data.msg || "Invalid email or password.");
-        setlogging(false);
-        return;
-      }
+  setlogging(true); // Move here
 
+  try {
+    const response = await fetch(`${apiUrl}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setError(data.msg || "Invalid email or password.");
+    } else {
       console.log("Login successful:", data);
-      setlogging(false);
       window.location.href = "/profile";
-    } catch (err) {
-      console.error("Error during login:", err);
-      setError("Something went wrong. Please try again.");
     }
-  };
+  } catch (err) {
+    console.error("Error during login:", err);
+    setError("Something went wrong. Please try again.");
+  } finally {
+    setlogging(false);
+  }
+};
+
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
-setsigning(true)
+    setsigning(true);
     if (!username || !email || !password) {
-      setsigning(false)
+      setsigning(false);
       setError("All fields are required.");
       return;
     }
@@ -67,20 +66,23 @@ setsigning(true)
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
       });
-
+    
       const data = await response.json();
-setsigning(true)
+    
       if (response.ok) {
         console.log("Signup successful:", data);
-        setToggle(false); // Switch to Login after successful signup
+        setToggle(false); // Switch to login
       } else {
         setError(data.message || "Signup failed.");
       }
     } catch (err) {
       console.error("Error during signup:", err);
       setError("Something went wrong. Please try again.");
+    } finally {
+      setsigning(false);
     }
-  };   
+    
+  };
 
   // Google Login
   const LoginWithGoogle = async (e) => {
@@ -121,18 +123,22 @@ setsigning(true)
               />
             </div>
 
-            <button type="submit" className="auth-btn" style={{color:"white",padding:"0px"}}>
+            <button
+              type="submit"
+              className="auth-btn"
+              style={{ color: "white", padding: "0px" }}
+            >
               {logging ? <p>Loading</p> : <p>Login</p>}
             </button>
           </form>
           <p className="toggle-text">
             Don't have an account?{" "}
-            <button className="toggle-btn" onClick={() => setToggle(!toggle)} >
+            <button className="toggle-btn" onClick={() => setToggle(!toggle)}>
               Sign up
             </button>
           </p>
           {/* <div className="loginwithauth"> */}
-            {/* <button className="google-btn" onClick={LoginWithGoogle}>
+          {/* <button className="google-btn" onClick={LoginWithGoogle}>
               <img src="/Google.png" height={30}/>
             </button>
             <button className="facebook-btn" onClick={facebooklogin}>
@@ -154,7 +160,12 @@ setsigning(true)
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-                style={{border:"2px solid white",borderRadius:"20px",padding:"15px",backgroundColor:"transparent"}}
+                style={{
+                  border: "2px solid white",
+                  borderRadius: "20px",
+                  padding: "12px",
+                  backgroundColor: "transparent",
+                }}
               />
             </div>
 
@@ -181,16 +192,7 @@ setsigning(true)
             </div>
 
             <button type="submit" className="auth-btn">
-              {signingup ? (
-<div>
-Signing you Up 
-</div>
-              ) : (
-<div>
-  Sign Up
-</div>
-              )}
-              
+              {signingup ? <div>Signing you Up</div> : <div>Sign Up</div>}
             </button>
           </form>
           <p className="toggle-text">
