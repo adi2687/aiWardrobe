@@ -351,6 +351,7 @@ color:white;
   border:3px solid white;
   padding:10px
 }
+
   /* Responsive Design */
 @media (max-width: 768px) {
   .wardrobe-gallery {
@@ -369,4 +370,34 @@ color:white;
       width: 100%;
       text-align: center;
   }
+  .wardrobe-container .addcloths input{
+    /* border:2px solid red; */
+    width:80%;
+  }
+  .wardrobe-container .addcloths .addcloths-actions {
+    /* border:2px solid red; */
+    max-width:40px;
+    min-width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .wardrobe-container .addcloths button {
+    /* border:2px solid red; */
+    width:40%;
+  }
+  .clothes-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  /* border:2px solid blue */
+}
+.clothes-container .clothes-item{
+  width:94%;
+  margin-left:auto;
+  /* margin-right: auto */
+}
 }
