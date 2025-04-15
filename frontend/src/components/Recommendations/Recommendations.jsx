@@ -91,7 +91,7 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
       const response = await fetch(`${apiUrl}/chat/chatbot`, {
         method: "POST",
         credentials: "include",
-        headers: {
+        headers: { 
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ input, clothes, weather }), // Send only if enabled
