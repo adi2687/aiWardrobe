@@ -10,6 +10,8 @@ const Auth = () => {
   const [error, setError] = useState("");
   const [toggle, setToggle] = useState(false); // Toggle between Login & Signup
   const navigate = useNavigate();
+  const [signingup,setsigning]=useState(false)
+
   const [logging, setlogging] = useState(false);
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   // Login Handler
@@ -52,8 +54,9 @@ const Auth = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
-
+setsigning(true)
     if (!username || !email || !password) {
+      setsigning(false)
       setError("All fields are required.");
       return;
     }
@@ -66,7 +69,7 @@ const Auth = () => {
       });
 
       const data = await response.json();
-
+setsigning(true)
       if (response.ok) {
         console.log("Signup successful:", data);
         setToggle(false); // Switch to Login after successful signup
@@ -93,7 +96,7 @@ const Auth = () => {
       {!toggle ? (
         // Login Form
         <div className="auth-card">
-          <h2>Login</h2>
+          <h2>Login to outfit-AI</h2>
           {error && <p className="error-message">{error}</p>}
           <form onSubmit={handleLogin}>
             <div className="form-group">
@@ -129,18 +132,18 @@ const Auth = () => {
             </button>
           </p>
           {/* <div className="loginwithauth"> */}
-            <button className="google-btn" onClick={LoginWithGoogle}>
+            {/* <button className="google-btn" onClick={LoginWithGoogle}>
               <img src="/Google.png" height={30}/>
             </button>
             <button className="facebook-btn" onClick={facebooklogin}>
               <FaFacebook />
-            </button>
+            </button> */}
           {/* </div> */}
         </div>
       ) : (
         // Signup Form
         <div className="auth-card">
-          <h2>Sign Up</h2>
+          <h2>Sign Up to outfit-AI</h2>
           {error && <p className="error-message">{error}</p>}
           <form onSubmit={handleSignup}>
             <div className="form-group">
@@ -151,6 +154,7 @@ const Auth = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
+                style={{border:"2px solid white",borderRadius:"20px",padding:"15px",backgroundColor:"transparent"}}
               />
             </div>
 
@@ -177,7 +181,16 @@ const Auth = () => {
             </div>
 
             <button type="submit" className="auth-btn">
-              Sign Up 
+              {signingup ? (
+<div>
+Signing you Up 
+</div>
+              ) : (
+<div>
+  Sign Up
+</div>
+              )}
+              
             </button>
           </form>
           <p className="toggle-text">
