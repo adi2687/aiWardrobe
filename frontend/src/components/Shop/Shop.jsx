@@ -124,7 +124,10 @@ const Shop = () => {
             {amazonandmyntra && (
               <div className="buttons">
               <button
-                onClick={() => openSearch("amazon", amazonandmyntra)}
+                onClick={() => {
+                  const query = encodeURIComponent(amazonandmyntra);
+                  openSearch("amazon", query);
+                }}
                 aria-label={`Search for ${amazonandmyntra} on Amazon`}
               >
                 Go to Amazon for {amazonandmyntra}
@@ -133,13 +136,25 @@ const Shop = () => {
               <button
                 onClick={() => {
                   const query = encodeURIComponent(amazonandmyntra);
-                  window.location.href = `https://www.myntra.com/${query}?rawQuery=${query}`;
+                  window.open(`https://www.myntra.com/${query}?rawQuery=${query}`, '_blank');
                 }}
                 aria-label={`Search for ${amazonandmyntra} on Myntra`}
               >
                 Go to Myntra for {amazonandmyntra}
               </button>
+            
+              <button
+                onClick={() => {
+                  const query = encodeURIComponent(amazonandmyntra);
+                  window.open(`https://www.flipkart.com/search?q=${query}`, '_blank');
+                }}
+                aria-label={`Search for ${amazonandmyntra} on Flipkart`}
+              >
+                Go to Flipkart for {amazonandmyntra}
+              </button>
             </div>
+            
+            
             
             )}
           </div>
