@@ -1,2 +1,19 @@
+Introducing OUTFIT_AI
+🔗 Try OUTFIT_AI: https://lnkd.in/g_yyNag5
+Ever stood in front of your wardrobe thinking, "I have nothing to wear"?
+We’ve got you covered.
+OUTFIT_AI is your smart wardrobe assistant, offering:
+🌦️ Weather and location-based outfit recommendations
+📅 Weekly outfit suggestions
+🛍️ The ability to sell clothes
+🤖 Personalized shopping with AI-powered suggestions to complete outfits on Amazon, Myntra, and Flipkart
+🎯 Outfit recommendations tailored to your age, gender, and preferences
+🧺 Upload your clothes and get personalized outfit suggestions
+🧍‍♂️ Share your outfits with friends using a mannequin preview
+👕 Preview outfits on a mannequin before trying them on
+💬 Chat with our AI fashion assistant for any style queries
+💡 Compare prices from Amazon & Myntra through smart scraping, add to wishlist, and buy later
+Made by me and Paras Rana and launched with the help of by Mohit Bhalotia
+Stay stylish. Stay smart.
+🔗 Preview outfit sharing: https://lnkd.in/gY2XSSKb
 
-eyJhbGciOiJIUzI1NiIsImtpZCI6IlV6SXJWd1h0dnprLVRvdzlLZWstc0M1akptWXBvX1VaVkxUZlpnMDRlOFUiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJnb29nbGUtb2F1dGgyfDExMjU4OTcwOTg0NDMwOTUxMDczNCIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIiwiaXNzIjoiYXBpX2tleV9pc3N1ZXIiLCJhdWQiOlsiaHR0cHM6Ly9uZWJpdXMtaW5mZXJlbmNlLmV1LmF1dGgwLmNvbS9hcGkvdjIvIl0sImV4cCI6MTkwMTk2MjA2MywidXVpZCI6ImI3ZDNlNmQ5LTlhYmUtNDVkOS04MWE0LTNhNjVhMTRjMGJmOCIsIm5hbWUiOiJVbm5hbWVkIGtleSIsImV4cGlyZXNfYXQiOiIyMDMwLTA0LTA5VDEwOjQ3OjQzKzAwMDAifQ.4nFnzL9IJgGrnApTO1DBRchOIunWKNWNuWkpyC1-Nxo
