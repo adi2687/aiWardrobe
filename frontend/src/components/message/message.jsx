@@ -92,7 +92,7 @@ const Message = () => {
 
   return (
     <div className="messageContainer">
-      <h1>Message Component</h1>
+      {/* <h1>Message </h1> */}
       <h3>Previous Messages</h3>
       {fetchedMessages.length > 0 ? (
         <ul>

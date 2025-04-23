@@ -333,24 +333,24 @@ router.post("/message", authenticate, async (req, res) => {
       .json({ error: "Message sending failed", details: error.message });
   }
 });
-router.get("/clothsforweek", authenticate, async (req, res) => {
-  const userid = req.user.id;
+  router.get("/clothsforweek", authenticate, async (req, res) => {
+    const userid = req.user.id;
 
-  try {
-    const user = await User.findById(userid);
+    try {
+      const user = await User.findById(userid);
 
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const clothforweekdata = user.clothessuggestionforweek;
+      const favourites = user.favourites;
+      res.json({ clothforweek: clothforweekdata, favourites: favourites });
+    } catch (err) {
+      console.error("Error fetching clothes for week:", err);
+      res.status(500).json({ error: "Server error" });
     }
-
-    const clothforweekdata = user.clothessuggestionforweek;
-    const favourites = user.favourites;
-    res.json({ clothforweek: clothforweekdata, favourites: favourites });
-  } catch (err) {
-    console.error("Error fetching clothes for week:", err);
-    res.status(500).json({ error: "Server error" });
-  }
-});
+  });
 
 router.post("/copytoprofileweekcloths", authenticate, async (req, res) => {
   const userid = req.user.username;
