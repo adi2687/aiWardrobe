@@ -39,7 +39,7 @@ router.post("/login",async (req,res) => {
         res.status(404).json({msg : 'No user found with given email'})
         return
     }
-    console.log(user)
+    // console.log(user)
     const passwordindb = req.body.password 
     if (passwordindb===user.password){
         const SECRET_KEY=process.env.SECRET_KEY
