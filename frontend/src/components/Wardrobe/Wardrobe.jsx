@@ -7,8 +7,6 @@ const Wardrobe = () => {
   const [wardrobeImages, setWardrobeImages] = useState([]);
   const [clothes, setClothes] = useState([]);
   const [allCloth, setAllCloth] = useState([]);
-  const [imageFile, setImageFile] = useState(null);
-  const [imageName, setImageName] = useState("No file chosen");
   const [zoomedImage, setZoomedImage] = useState(null);
   const [zoomScale, setZoomScale] = useState(1);
   const [isScanning, setIsScanning] = useState(false);
@@ -16,9 +14,13 @@ const Wardrobe = () => {
   // Toggle states
   const [showWardrobe, setShowWardrobe] = useState(true);
   const [showClothes, setShowClothes] = useState(true);
+  const [showAllClothes, setShowAllClothes] = useState(true);
+  const [newcloth, setNewCloth] = useState("");
 
   const navigate = useNavigate();
-const backendUrl=import.meta.env.VITE_BACKEND_URL
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+  // Fetch wardrobe data
   useEffect(() => {
     fetch(`${backendUrl}/user/images`, {
       method: "GET",
@@ -26,14 +28,14 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setWardrobeImages(data.Wardrobe.wardrobeImg || []);
         setClothes(data.Wardrobe.wardrobeClothes || []);
         setAllCloth(data.Wardrobe.allclothes[0] || []);
       })
       .catch((error) => console.error("Error fetching images:", error));
-  }, []);
+  }, [backendUrl]);
 
+  // Fetch user profile
   useEffect(() => {
     fetch(`${backendUrl}/user/profile`, {
       method: "GET",
@@ -42,8 +44,9 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
       .then((response) => response.json())
       .then((data) => setUser(data.user))
       .catch((error) => console.error("Error fetching profile:", error));
-  }, []);
+  }, [backendUrl]);
 
+  // Handle image zoom functionality
   const handleImageClick = (imgSrc) => {
     setZoomedImage(imgSrc);
     setZoomScale(1);
@@ -60,10 +63,9 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
     );
   };
 
-  const [newcloth, setaddcloth] = useState("");
-
-  const addcloth = async () => {
-    if (!newcloth.trim()) {return};
+  // Add new clothing item
+  const addCloth = async () => {
+    if (!newcloth.trim()) return;
 
     try {
       const response = await fetch(`${backendUrl}/user/addnewcloths`, {
@@ -77,85 +79,82 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
         }),
       });
 
-      const data = await response.json();
-      console.log("Cloth added:", data);
-
-      setaddcloth("");
-
-      //   navigate("/wardrobe");
+      await response.json();
+      setNewCloth("");
       window.location.href = "../wardrobe";
-      // let newclothes=data.Wardrobe.allclothes[0]
-      // newclothes.append(newcloth)
-      // setAllCloth(newclothes);
     } catch (error) {
       console.error("Error adding cloth:", error);
     }
   };
 
-  // useEffect(() => {
-  //   addcloth();
-  // }, []);
-
-
-
-
-
-
-
   return (
     <div className="wardrobe-container">
-      {/* Toggle Buttons */}
-      <button
-        className="toggle-button"
-        onClick={() => setShowWardrobe(!showWardrobe)}
-      >
-        {showWardrobe ? "Hide Wardrobe" : "Show Wardrobe"}
-      </button>
+      <h1>My Wardrobe</h1>
+      
+      {/* Control Panel */}
+      <div className="wardrobe-controls">
+        <button
+          className="toggle-button"
+          onClick={() => setShowWardrobe(!showWardrobe)}
+        >
+          {showWardrobe ? "Hide Wardrobe" : "Show Wardrobe"}
+        </button>
 
-      <button
-        className="toggle-button"
-        onClick={() => setShowClothes(!showClothes)}
-      >
-        {showClothes ? "Hide Clothes" : "Show Clothes"}
-      </button>
-      {/* {JSON.stringify(wardrobeImages)} */}
+        <button
+          className="toggle-button"
+          onClick={() => setShowClothes(!showClothes)}
+        >
+          {showClothes ? "Hide Clothes List" : "Show Clothes List"}
+        </button>
+        
+        <button
+          className="toggle-button"
+          onClick={() => setShowAllClothes(!showAllClothes)}
+        >
+          {showAllClothes ? "Hide All Clothes" : "Show All Clothes"}
+        </button>
+      </div>
  
-      {/* Wardrobe Images Section */}
-      {showWardrobe && (
-        <div className="wardrobe-gallery">
-          {wardrobeImages.length > 0 ? (
-            wardrobeImages.map((img, index) => (
-              // console.log(`${backendUrl}${img}`);
-              <img 
-                key={index}
-                src={`${img}`}
-                alt={`Wardrobe ${img}`}
-                className="wardrobe-image"
-                onClick={() => handleImageClick(`${img}`)}
-              />
-              
-            ))
-          ) : (
-            <p className="no-images">No wardrobe images uploaded.</p>
-          )}
-          
-        </div>
-      )}
+      {/* Add New Clothes Section */}
       <div className="addcloths">
+        <h3>Add New Clothing Item</h3>
         <input
           type="text"
           value={newcloth}
-          onChange={(e) => setaddcloth(e.target.value)}
+          onChange={(e) => setNewCloth(e.target.value)}
           placeholder="Enter new clothes you purchased"
         />
         <div className="addcloths-actions">
-          <button onClick={addcloth}>Add Clothes</button>
+          <button onClick={addCloth}>Add Clothes</button>
           <div>or</div>
           <button onClick={() => navigate("/profile")}>Upload Photo</button>
         </div>
       </div>
 
-      {/* Clothes Section */}
+      {/* Wardrobe Images Section */}
+      {showWardrobe && (
+        <div className="section-container">
+          <h2>My Wardrobe Photos</h2>
+          <div className="wardrobe-gallery">
+            {wardrobeImages.length > 0 ? (
+              wardrobeImages.map((img, index) => (
+                <img 
+                  key={index}
+                  src={img}
+                  alt={`Wardrobe item ${index + 1}`}
+                  className="wardrobe-image"
+                  onClick={() => handleImageClick(img)}
+                  loading="lazy"
+                />
+              ))
+            ) : (
+              <p className="no-images">No wardrobe images uploaded yet. Add some from your profile!</p>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Clothes Items Section */}
       {showClothes && (
         <div className="clothes-container">
           <h3 className="clothes-title">Your Wardrobe Items</h3>
@@ -168,18 +167,25 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
               ))}
             </div>
           ) : (
-            <p className="no-images">No clothes data available.</p>
+            <p className="no-images">No clothes data available. Add some items to get started!</p>
           )}
         </div>
       )}
-      <div className="clothes" style={{color:"white",fontWeight:"500px"}}>
-        <h2>All clothes</h2>
-        {allCloth}
-      </div>
+      
+      {/* All Clothes Section */}
+      {showAllClothes && (
+        <div className="clothes">
+          <h2>All Clothes</h2>
+          <div className="all-clothes-content">
+            {allCloth ? allCloth : "No clothes added yet"}
+          </div>
+        </div>
+      )}
+      
       {/* Scanning Message */}
       {isScanning && (
         <div className="scanning-message">
-          Scanning wardrobe image... Please wait.
+          <p>Scanning wardrobe image... Please wait.</p>
           <div className="spinner"></div>
         </div>
       )}
@@ -189,7 +195,7 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
         <div className="zoomed-modal" onClick={closeZoom}>
           <img
             src={zoomedImage}
-            alt="Zoomed Wardrobe"
+            alt="Zoomed Wardrobe Item"
             className="zoomed-image"
             style={{ transform: `scale(${zoomScale})` }}
             onWheel={handleWheelZoom}
@@ -199,4 +205,5 @@ const backendUrl=import.meta.env.VITE_BACKEND_URL
     </div>
   );
 };
-export default Wardrobe
+
+export default Wardrobe;
