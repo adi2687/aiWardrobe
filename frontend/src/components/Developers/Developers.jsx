@@ -30,7 +30,7 @@ const DeveloperPage = () => {
         <div className="team-cards">
           <div className="dev-card">
             <div className="dev-avatar">
-              <img src="/dev-aditya.jpg" alt="Aditya Kurani" onError={(e) => {e.target.src = 'https://via.placeholder.com/150?text=AK'}} />
+              <img src="https://media.licdn.com/dms/image/v2/D4D03AQGn67fd2HNTSQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718897120688?e=1750896000&v=beta&t=p6HIOIFH4TbxR4GbTaMzuH1DWpy9vUlfenM68Eqy_OA" alt="Aditya Kurani" onError={(e) => {e.target.src = 'https://via.placeholder.com/150?text=AK'}} />
             </div>
             <h3>Aditya Kurani</h3>
             <p className="dev-role">Full Stack Developer</p>
@@ -45,7 +45,7 @@ const DeveloperPage = () => {
 
           <div className="dev-card">
             <div className="dev-avatar">
-              <img src="/dev-paras.jpg" alt="Paras Rana" onError={(e) => {e.target.src = 'https://via.placeholder.com/150?text=PR'}} />
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQGqnKZID6kAMg/profile-displayphoto-shrink_400_400/B4EZYb0VoOGYAg-/0/1744223428297?e=1750896000&v=beta&t=HzW9OBo2PkryPoebaLMaxcUDmpW_2Dia2qDsePE_pvM" alt="Paras Rana" onError={(e) => {e.target.src = 'https://via.placeholder.com/150?text=PR'}} />
             </div>
             <h3>Paras Rana</h3>
             <p className="dev-role">AI/ML Engineer</p>
@@ -55,6 +55,34 @@ const DeveloperPage = () => {
             <div className="dev-social">
               <a href="https://github.com/parasrana" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
               <a href="https://linkedin.com/in/paras-rana" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+            </div>
+          </div>
+          <div className="dev-card">
+            <div className="dev-avatar">
+              <img src="https://media.licdn.com/dms/image/v2/D4D03AQHuvicXIK9uuQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1693829075896?e=1750896000&v=beta&t=qp-JgYm_Yvds3s63xv7z3lS6v44oijSX83k7nxI4eXA" alt="Naresh Mahiya" onError={(e) => {e.target.src = 'https://via.placeholder.com/150?text=NM'}} />
+            </div>
+            <h3>Naresh Mahiya</h3>
+            <p className="dev-role">Mobile App Developer</p>
+            <p className="dev-description">
+              Leads the mobile application development using React Native. Specializes in creating seamless cross-platform experiences with AR integration.
+            </p>
+            <div className="dev-social">
+              <a href="https://github.com/nareshmahiya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+              <a href="https://www.linkedin.com/in/naresh-mahiya-1ba039254/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+            </div>
+          </div>
+          <div className="dev-card">
+            <div className="dev-avatar">
+              <img src="https://media.licdn.com/dms/image/v2/D4D03AQG8ZwJoYGX22w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1731494094403?e=1750896000&v=beta&t=Zb8hncvxnLOi8_sKg_P9qqs0SzQ8f03hT_kzc00XmOE" alt="Sanjana Patel" onError={(e) => {e.target.src = 'https://via.placeholder.com/150?text=SP'}} />
+            </div>
+            <h3>Mohit Bhalotia</h3>
+            <p className="dev-role">DevOps Engineer</p>
+            <p className="dev-description">
+              Handles the deployment and maintenance of the application. Ensures smooth operation and scalability.
+            </p>
+            <div className="dev-social">
+              <a href="https://www.linkedin.com/in/mohit-bhalotia/" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+              <a href="https://linkedin.com/in/mohit-bhalotia" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
             </div>
           </div>
         </div>
@@ -112,7 +140,7 @@ const DeveloperPage = () => {
           </div>
           <div className="feature-card">
             <div className="feature-icon">👕</div>
-            <p>Virtual Wardrobe Management</p>
+            <h3>Virtual Wardrobe Management</h3>
             <p>Upload and organize your clothing items for easy outfit planning.</p>
           </div>
           <div className="feature-card">
@@ -134,6 +162,16 @@ const DeveloperPage = () => {
             <div className="feature-icon">📱</div>
             <h3>Outfit Sharing</h3>
             <p>Share your outfits with friends and get feedback.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🔍</div>
+            <h3>Cloth Identification</h3>
+            <p>Identify clothing items from images using our advanced AI technology.</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">🌈</div>
+            <h3>Color Coordination</h3>
+            <p>Get suggestions for color-coordinated outfits that match your style.</p>
           </div>
         </div>
       </section>

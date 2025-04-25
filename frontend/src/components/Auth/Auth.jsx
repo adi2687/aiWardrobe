@@ -1,64 +1,89 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
-import { FaGoogle } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
+import { FaGoogle, FaFacebook, FaEnvelope, FaLock, FaUser, FaEye, FaEyeSlash, FaTshirt } from "react-icons/fa";
+
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [toggle, setToggle] = useState(false); // Toggle between Login & Signup
+  const [showPassword, setShowPassword] = useState(false);
+  const [signingup, setSigning] = useState(false);
+  const [logging, setLogging] = useState(false);
+  const [formValid, setFormValid] = useState(false);
+  
   const navigate = useNavigate();
-  const [signingup, setsigning] = useState(false);
-
-  const [logging, setlogging] = useState(false);
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
-  // Login Handler
-const handleLogin = async (e) => {
-  e.preventDefault();
-  setError("");
 
-  if (!email || !password) {
-    setError("Please enter both email and password.");
-    return;
-  }
-
-  setlogging(true); // Move here
-
-  try {
-    const response = await fetch(`${apiUrl}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      setError(data.msg || "Invalid email or password.");
+  // Form validation
+  useEffect(() => {
+    if (!toggle) {
+      // Login validation
+      setFormValid(email.trim() !== "" && password.trim() !== "");
     } else {
-      console.log("Login successful:", data);
-      window.location.href = "/profile";
+      // Signup validation
+      setFormValid(
+        email.trim() !== "" && 
+        password.trim() !== "" && 
+        username.trim() !== "" &&
+        password.length >= 6
+      );
     }
-  } catch (err) {
-    console.error("Error during login:", err);
-    setError("Something went wrong. Please try again.");
-  } finally {
-    setlogging(false);
-  }
-};
+  }, [email, password, username, toggle]);
+
+  // Login Handler
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!email || !password) {
+      setError("Please enter both email and password.");
+      return;
+    }
+
+    setLogging(true);
+
+    try {
+      const response = await fetch(`${apiUrl}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.msg || "Invalid email or password.");
+      } else {
+        console.log("Login successful:", data);
+        window.location.href = "/profile";
+      }
+    } catch (err) {
+      console.error("Error during login:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLogging(false);
+    }
+  };
 
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
-    setsigning(true);
+    
     if (!username || !email || !password) {
-      setsigning(false);
       setError("All fields are required.");
       return;
     }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
+
+    setSigning(true);
 
     try {
       const response = await fetch(`${apiUrl}/auth/register`, {
@@ -72,6 +97,16 @@ const handleLogin = async (e) => {
       if (response.ok) {
         console.log("Signup successful:", data);
         setToggle(false); // Switch to login
+        setError("");
+        // Show success message
+        const successMessage = document.createElement("div");
+        successMessage.className = "success-message";
+        successMessage.textContent = "Account created successfully! Please log in.";
+        document.querySelector(".auth-card").prepend(successMessage);
+        
+        // Clear form
+        setEmail("");
+        setPassword("");
       } else {
         setError(data.message || "Signup failed.");
       }
@@ -79,31 +114,69 @@ const handleLogin = async (e) => {
       console.error("Error during signup:", err);
       setError("Something went wrong. Please try again.");
     } finally {
-      setsigning(false);
+      setSigning(false);
     }
-    
   };
 
   // Google Login
-  const LoginWithGoogle = async (e) => {
+  const loginWithGoogle = async (e) => {
     e.preventDefault();
     window.location.href = `${apiUrl}/google/login`;
   };
 
-  const facebooklogin = () => {
-    console.log("cliekced");
+  const loginWithFacebook = () => {
+    console.log("Facebook login clicked");
+    // Implement Facebook login functionality
   };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="auth-container">
-      {!toggle ? (
-        // Login Form
+      <div className="auth-wrapper">
+        <div className="auth-brand">
+          <div className="brand-logo">
+            <FaTshirt className="logo-icon" />
+            <h1>outfit-AI</h1>
+          </div>
+          <p className="brand-tagline">Your AI-powered wardrobe assistant</p>
+        </div>
+
         <div className="auth-card">
-          <h2>Login to outfit-AI</h2>
-          {error && <p className="error-message">{error}</p>}
-          <form onSubmit={handleLogin}>
+          <h2>{!toggle ? "Welcome Back" : "Create Account"}</h2>
+          <p className="auth-subtitle">
+            {!toggle ? "Sign in to access your AI wardrobe" : "Join outfit-AI today"}
+          </p>
+          
+          {error && <div className="error-message">{error}</div>}
+          
+          <form onSubmit={!toggle ? handleLogin : handleSignup}>
+            {toggle && (
+              <div className="form-group">
+                <label htmlFor="username">
+                  <FaUser className="input-icon" />
+                  <span>Username</span>
+                </label>
+                <input
+                  id="username"
+                  type="text"
+                  placeholder="Enter your username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+            )}
+
             <div className="form-group">
-              <label>Email:</label>
+              <label htmlFor="email">
+                <FaEnvelope className="input-icon" />
+                <span>Email</span>
+              </label>
               <input
+                id="email"
                 type="email"
                 placeholder="Enter your email"
                 value={email}
@@ -113,96 +186,75 @@ const handleLogin = async (e) => {
             </div>
 
             <div className="form-group">
-              <label>Password:</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <label htmlFor="password">
+                <FaLock className="input-icon" />
+                <span>Password</span>
+              </label>
+              <div className="password-input-container">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button 
+                  type="button" 
+                  className="password-toggle-btn"
+                  onClick={togglePasswordVisibility}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+              {toggle && (
+                <p className="password-hint">Password must be at least 6 characters long</p>
+              )}
             </div>
+
+            {!toggle && (
+              <div className="forgot-password">
+                <a href="#" onClick={(e) => e.preventDefault()}>Forgot password?</a>
+              </div>
+            )}
 
             <button
               type="submit"
-              className="auth-btn"
-              style={{ color: "white", padding: "0px" }}
+              className={`auth-btn ${formValid ? 'valid' : 'disabled'}`}
+              disabled={!formValid || logging || signingup}
             >
-              {logging ? <p>Loading</p> : <p>Login</p>}
+              {!toggle ? (
+                logging ? <span className="loading-spinner-small"></span> : "Sign In"
+              ) : (
+                signingup ? <span className="loading-spinner-small"></span> : "Create Account"
+              )}
             </button>
           </form>
-          <p className="toggle-text">
-            Don't have an account?{" "}
-            <button className="toggle-btn" onClick={() => setToggle(!toggle)}>
-              Sign up
+
+          <div className="auth-divider">
+            <span>or continue with</span>
+          </div>
+
+          <div className="social-login">
+            <button className="google-btn" onClick={loginWithGoogle}>
+              <FaGoogle />
+              <span>Google</span>
             </button>
-          </p>
-          {/* <div className="loginwithauth"> */}
-          {/* <button className="google-btn" onClick={LoginWithGoogle}>
-              <img src="/Google.png" height={30}/>
-            </button>
-            <button className="facebook-btn" onClick={facebooklogin}>
+            <button className="facebook-btn" onClick={loginWithFacebook}>
               <FaFacebook />
-            </button> */}
-          {/* </div> */}
-        </div>
-      ) : (
-        // Signup Form
-        <div className="auth-card">
-          <h2>Sign Up to outfit-AI</h2>
-          {error && <p className="error-message">{error}</p>}
-          <form onSubmit={handleSignup}>
-            <div className="form-group">
-              <label>Username:</label>
-              <input
-                type="text"
-                placeholder="Enter your username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                style={{
-                  border: "2px solid white",
-                  borderRadius: "20px",
-                  padding: "12px",
-                  backgroundColor: "transparent",
-                }}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Email:</label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Password:</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-
-            <button type="submit" className="auth-btn">
-              {signingup ? <div>Signing you Up</div> : <div>Sign Up</div>}
+              <span>Facebook</span>
             </button>
-          </form>
+          </div>
+
           <p className="toggle-text">
-            Already have an account?{" "}
+            {!toggle ? "Don't have an account?" : "Already have an account?"}
             <button className="toggle-btn" onClick={() => setToggle(!toggle)}>
-              Login
+              {!toggle ? "Sign Up" : "Sign In"}
             </button>
           </p>
         </div>
-      )}
+      </div>
     </div>
   );
 };
