@@ -24,6 +24,7 @@ import DevelopersPage from './components/Developers/Developers'
 import Features from './components/Developers/Features'
 import About from './components/Developers/Aboutus'
 import Wishlist from './components/Wishlist/Wishlist'
+import Download from './components/Download/Download'
 // import News from './components/profile/News/CelebrityNews'
 const App = () => {
   return (
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/features" element={<Features />} />
         <Route path="/aboutus" element={<About />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/download" element={<Download />} />
       </Routes>
       <Footer />
     </>

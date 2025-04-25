@@ -1,82 +1,370 @@
 /* Developer Page CSS */
 .developer-page-container {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(47, 46, 46);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 80px 0;
+  background-color: rgba(22, 22, 22, 254);
+  color: white;
+  min-height: 100vh;
+}
+
+.dev-header {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dev-header h1 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.dev-header p {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  opacity: 0.9;
+}
+
+.dev-section {
+  padding: 40px;
+  margin: 30px auto;
+  max-width: 1200px;
+  background-color: rgba(40, 40, 40, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dev-section h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+.dev-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: white;
+}
+
+/* Team Section */
+.team-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.dev-card {
+  background-color: rgba(50, 50, 50, 0.6);
+  border-radius: 12px;
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dev-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dev-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.dev-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dev-card h3 {
+  font-size: 1.5rem;
+  margin: 0 0 5px;
+}
+
+.dev-role {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.dev-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.dev-social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.dev-social a {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.dev-social a:hover {
+  color: #61dafb;
+}
+
+/* Tech Stack Section */
+.tech-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.tech-icon {
+  font-size: 3rem;
+  color: white;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.tech-icon:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  color: #61dafb;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.tech-category {
+  background-color: rgba(60, 60, 60, 0.6);
+  border-radius: 12px;
+  padding: 25px;
+  width: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-category h3 {
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.tech-category ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.tech-category li {
+  font-size: 1rem;
+  line-height: 1.8;
+  position: relative;
+  padding-left: 20px;
+}
+
+.tech-category li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #61dafb;
+}
+
+/* Features Section */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.feature-card {
+  background-color: rgba(60, 60, 60, 0.6);
+  border-radius: 12px;
+  padding: 25px;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(70, 70, 70, 0.6);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Roadmap Section */
+.roadmap {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 30px;
+}
+
+.roadmap:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.roadmap-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.roadmap-marker {
+  position: absolute;
+  left: -30px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(22, 22, 22, 254);
+}
+
+.roadmap-item.completed .roadmap-marker {
+  background-color: #4CAF50;
+}
+
+.roadmap-item.active .roadmap-marker {
+  background-color: #2196F3;
+}
+
+.roadmap-content {
+  padding-left: 15px;
+}
+
+.roadmap-content h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.roadmap-content p {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.roadmap-date {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.roadmap-item.completed .roadmap-date {
+  background-color: rgba(76, 175, 80, 0.2);
+}
+
+.roadmap-item.active .roadmap-date {
+  background-color: rgba(33, 150, 243, 0.2);
+}
+
+/* Contact Section */
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contact-button.email {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.contact-button.github {
+  background-color: #333;
+  color: white;
+}
+
+.contact-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dev-header h1 {
+    font-size: 2rem;
   }
   
-  .header {
-    background-color: #333;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
+  .dev-section {
+    padding: 25px;
   }
   
-  .header h1 {
-    font-size: 2.5rem;
-    margin: 0;
+  .dev-section h2 {
+    font-size: 1.6rem;
   }
   
-  .header p {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    
+  .team-cards {
+    flex-direction: column;
+    align-items: center;
   }
   
-  
-  .section {
-    padding: 20px 40px;
-    margin: 20px 0;
-    background-color: #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-weight: bolder;
-    border:3px solid white ;
-    color:white;
+  .tech-stack {
+    flex-direction: column;
+    align-items: center;
   }
   
-  .section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+  .features-grid {
+    grid-template-columns: 1fr;
   }
   
-  .section ul {
-    list-style-type: none;
-    padding-left: 0;
+  .tech-icons {
+    flex-wrap: wrap;
   }
-  
-  .section li {
-    font-size: 1rem;
-    line-height: 1.6;
-    /* color:white */
-  }
-  
-  .footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-  }
-  
-  .section p , header p{
-    color: whitesmoke;
-  }
-  @media (max-width: 768px) {
-    .header h1 {
-      font-size: 2rem;
-    }
-  
-    .section h2 {
-      font-size: 1.6rem;
-    }
-  
-    .section li {
-      font-size: 0.9rem;
-    }
-  }
-  
-  
+}

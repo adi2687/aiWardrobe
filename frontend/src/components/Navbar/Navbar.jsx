@@ -45,6 +45,8 @@ const Navbar = () => {
           <Link to="/recommendations" className="nav-link" onClick={() => setIsOpen(false)}>Recommendations</Link>
           <Link to="/sellcloth" className="nav-link" onClick={() => setIsOpen(false)}>Sell Clothes</Link>
           <Link to="/shop" className="nav-link" onClick={() => setIsOpen(false)}>Shop</Link>
+          <Link to='/Download' className="nav-link" onClick={()=>setIsOpen(false)}>App</Link>
+          <Link to='/Developers' className="nav-link" onClick={()=>setIsOpen(false)}>Developers</Link>
         </div>
  
         <div className="navbar-icons">
