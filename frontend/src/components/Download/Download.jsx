@@ -5,7 +5,6 @@ import { FaApple, FaAndroid, FaWindows, FaDownload, FaQrcode, FaArrowLeft, FaArr
 // Import all app images
 import appImage1 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.57_ade5304b.jpg';
 import appImage2 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.57_ca05be34.jpg';
-import appImage3 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.57_fe43f328.jpg';
 import appImage4 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.58_02c3f2fe.jpg';
 import appImage5 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.58_7e947977.jpg';
 import appImage6 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.58_e7a26521.jpg';
@@ -19,7 +18,6 @@ const Download = () => {
   const appImages = [
     { src: appImage1, alt: "OUTFIT_AI App Preview - Weather Recommendations" },
     { src: appImage2, alt: "OUTFIT_AI App Preview - Wardrobe Management" },
-    { src: appImage3, alt: "OUTFIT_AI App Preview - AI Fashion Assistant" },
     { src: appImage4, alt: "OUTFIT_AI App Preview - Outfit Sharing" },
     { src: appImage5, alt: "OUTFIT_AI App Preview - Smart Shopping" },
     { src: appImage6, alt: "OUTFIT_AI App Preview - Mannequin Preview" },

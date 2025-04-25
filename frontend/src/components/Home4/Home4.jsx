@@ -44,7 +44,10 @@ const Home4 = () => {
         <div>AI</div> Meets Aesthetic
         <div className="subtitle">Let AI Style You, So You Can Serve Looks</div>
       </div>
-      <div className="cta-button">
+      <div className="cta-button" style={{
+        borderRadius: "50px",
+        padding: "5px"
+      }}>
         <button onClick={() => navigate("/profile")}>Explore Now</button>
       </div>
 

@@ -1,404 +1,458 @@
-/* Recommendations.css - Enhanced Grey Theme with Improved Responsiveness */
+/* Recommendations.css - Modern UI with Enhanced User Experience */
 
-
-
-
-
-/* Container for centering */
 .recommendations-container {
-  min-height: 70vh;
+  --primary-color: #ffffff;
+  --secondary-color: #61dafb;
+  --accent-color: #ff4d4d;
+  --dark-bg: #1a1a1a;
+  --card-bg: rgba(30, 30, 30, 0.95);
+  --input-bg: rgba(50, 50, 50, 0.8);
+  --button-bg: #61dafb;
+  --button-hover-bg: #4db8e0;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  --max-width: 800px;
+  --text-color: #f0f0f0;
+  --transition-speed: 0.3s;
+
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #2f2f2f, #d2d1d1);
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #222222, #333333);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Card styling */
-.recommendations-card {
+.recommendations-container .recommendations-card {
   background-color: var(--card-bg);
   padding: 30px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   width: 100%;
   max-width: var(--max-width);
-  transition: box-shadow 0.3s ease;
-
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.recommendations-card:hover {
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+.recommendations-container .recommendations-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
 }
 
-h2 {
-  color: var(--accent-color);
-  font-size: 28px;
-  margin-bottom: 20px;
+/* Header Section */
+.recommendations-container .recommendations-header {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-/* Input Styling */
-input {
-  width: 100%;
-  padding: 15px;
-  border-radius: var(--border-radius);
-  border: none;
-  background-color: var(--input-bg);
+.recommendations-container .recommendations-header h1 {
   color: var(--primary-color);
-  font-size: 16px;
-  margin-bottom: 15px;
-  box-shadow: var(--box-shadow);
-  transition: box-shadow 0.2s, background-color 0.3s;
-  border: 2px solid white;
-  cursor: pointer;
-  margin-top: 20px;
-  border-radius: 23px
-}
-
-input:focus {
-  outline: none;
-  background-color: #666666;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7);
-}
-
-/* Button Styling */
-button {
-  width: auto;
-  padding: 15px;
-  background-color: var(--button-bg);
-  color: white;
-  font-size: 18px;
-  border-radius: var(--border-radius);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  bordeR: 2px solid white;
-  border-radius: 23px;
-}
-
-button:hover {
-  background-color: var(--button-hover-bg);
-  transform: translateY(-2px);
-}
-
-button:disabled {
-  background-color: #4a4a4a;
-  cursor: not-allowed;
-}
-
-/* Messages Section */
-.messages-container {
-  margin-top: 20px;
-  max-height: 300px;
-  overflow-y: auto;
-  max-width: 95%;
-  margin-left: 1%
-}
-
-.message {
-  padding: 12px;
-  border-radius: var(--border-radius);
+  font-size: 28px;
   margin-bottom: 10px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.recommendations-container .recommendations-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Weather Toggle Section */
+.recommendations-container .weather-toggle-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(40, 40, 40, 0.5);
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.recommendations-container .weather-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--text-color);
-  word-wrap: break-word;
-  width: 100%;
-
+  font-size: 14px;
 }
 
-.message.user {
-  background-color: #555555;
-  text-align: right;
-  /* border:2px solid blue; */
-  min-width: 80vw;
-  max-width: auto;
+.recommendations-container .weather-icon {
+  color: var(--secondary-color);
+  font-size: 18px;
 }
 
-.message.bot {
-  /* border:3px solid red; */
-
-  background-color: #434343;
-}
-
-/* Scrollbar customization */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #666666;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #2f2f2f;
-}
-
-
-.toggle-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 12%;
-  /* border:1px solid blue; */
-  align-items: flex-start;
-}
-
-.toggle {
+.recommendations-container .toggle {
   width: 50px;
-  height: 25px;
-  background-color: #dbd7d7;
-  border-radius: 25px;
-  padding: 3px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 2px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-speed) ease;
   display: flex;
   align-items: center;
-  margin-top: 10%;
-  margin-right: Auto
 }
 
-.toggle.enabled {
-  background-color: #4a7ede;
+.recommendations-container .toggle.enabled {
+  background-color: var(--secondary-color);
 }
 
-.toggle-circle {
+.recommendations-container .toggle-circle {
   width: 20px;
   height: 20px;
   background-color: #fff;
   border-radius: 50%;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-speed) ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-.toggle.enabled .toggle-circle {
-  transform: translateX(25px);
+.recommendations-container .toggle.enabled .toggle-circle {
+  transform: translateX(26px);
 }
 
-.recommendations-card input::placeholder {
-  color: white;
-  opacity: 0.6;
+.recommendations-container .weather-status {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.recommendations-card input {
-  /* margin-right:200px; */
-  position: relative;
-  width: 90%;
-  /* right:10%; */
-  /* border:1px solid red; */
-}
-
-.messages-container {
+.recommendations-container .weather-info {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Form Styling */
+.recommendations-container .recommendations-form {
+  margin-bottom: 25px;
+}
+
+.recommendations-container .input-container {
+  display: flex;
   gap: 10px;
-  margin-top: 20px;
-  max-height: 400px;
-  overflow-y: auto;
-  padding: 10px;
+  position: relative;
 }
 
-.message {
-  max-width: max-content;
-  /* Ensures message width is only as wide as content */
-  padding: 10px 14px;
-  border-radius: 18px;
-  word-wrap: break-word;
-  font-size: 16px;
-  line-height: 1.4;
-  display: inline-block;
-  white-space: pre-wrap;
-  font-weight: 600;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* Wraps text naturally */
+.recommendations-container input {
+  flex: 1;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--input-bg);
+  color: var(--primary-color);
+  font-size: 15px;
+  transition: all var(--transition-speed);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.message.user {
-  display: inline-block;
-  /* Makes width fit content */
-  max-width: 70%;
-  /* Prevents too long messages */
-  background-color: #3b82f6;
-  /* Blue background */
-  color: white;
-  padding: 10px 15px;
-  border-radius: 20px;
-  word-wrap: break-word;
-  text-align: left;
-  display: flex;
-  justify-content: flex-end;
+.recommendations-container input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(97, 218, 251, 0.2);
 }
 
-.message.bot {
-  align-self: flex-start;
-  background-color: #f1f1f1;
-  color: black;
-  border-bottom-left-radius: 5px;
+.recommendations-container input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.recommendation {
-  background-color: #ffffff;
-  border-left: 5px solid #007bff;
-  padding: 8px 12px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  width: max-content;
-  /* Prevents unnecessary width */
-  max-width: 75%;
-  display: inline-block;
-  white-space: pre-wrap;
+.recommendations-container input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-.copy-btn {
-  border-radius: 20px;
-  padding: 10px;
-  border: none;
-  border: 3px solid white;
-  color: grey;
-}
-
-.copy-btn.user {
-  margin-top: 30px;
-  color: white;
-  /* margin-right: auto; */
-  padding: 9px
-}
-
-.copy-btn.bot {
-  margin-left: auto;
-  display: flex;
-  color: darkgray
-}
-
-.copy-btn.bot:hover {
-  background-color: white;
-}
-
-.weather-summary {
-  background-color: #f3f3f3;
-  padding: 10px;
-  border-radius: 10px;
-  margin: 10px 0;
-  font-size: 0.9rem;
-  color: #333;
-  display: none;
-}
-
-.love-button {
-  font-size: 2rem;
-  color: white;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
+.recommendations-container .send-button {
   width: 50px;
   height: 50px;
+  border-radius: 50%;
+  background-color: var(--button-bg);
+  color: #111;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  font-size: 16px;
+  padding: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.love-button:hover {
-  background-color: lightgray;
-  color: red;
-  transform: scale(1.1);
+.recommendations-container .send-button:hover {
+  transform: translateY(-2px);
+  background-color: var(--button-hover-bg);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-.love-button:active {
-  transform: scale(0.95);
+.recommendations-container .send-button:disabled {
+  background-color: rgba(97, 218, 251, 0.4);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-.button-row {
+/* Messages Section */
+.recommendations-container .messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px 5px;
+  scrollbar-width: thin;
+}
+
+.recommendations-container .message {
+  max-width: 85%;
+  border-radius: 18px;
+  padding: 2px;
+  position: relative;
+}
+
+.recommendations-container .message.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #4a7ede, #61dafb);
+}
+
+.recommendations-container .message.bot {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #333333, #444444);
+}
+
+.recommendations-container .message-content {
+  padding: 12px 16px;
+  border-radius: 16px;
+  background-color: rgba(30, 30, 30, 0.95);
+  position: relative;
+}
+
+.recommendations-container .message-text {
+  color: var(--text-color);
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.recommendations-container .message-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  justify-content: flex-end;
+}
+
+.recommendations-container .action-button {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recommendations-container .action-button:hover {
+  color: var(--secondary-color);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.recommendations-container .like-button:hover {
+  color: var(--accent-color);
+}
+
+/* History Section */
+.recommendations-container .history-section {
+  margin-top: 20px;
+}
+
+.recommendations-container .history-toggle-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  transition: all var(--transition-speed);
+}
+
+.recommendations-container .history-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.recommendations-container .history-container {
+  margin-top: 25px;
+  background-color: rgba(40, 40, 40, 0.5);
+  border-radius: 12px;
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.recommendations-container .history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recommendations-container .history-header h2 {
+  font-size: 18px;
+  color: var(--secondary-color);
+  margin: 0;
+}
+
+.recommendations-container .close-history-button {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.recommendations-container .close-history-button:hover {
+  color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.recommendations-container .history-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recommendations-container .history-item {
+  background-color: rgba(30, 30, 30, 0.6);
+  border-radius: 10px;
+  padding: 15px;
+  border-left: 3px solid var(--secondary-color);
+}
+
+.recommendations-container .history-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.recommendations-container .history-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.recommendations-container .history-message {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.recommendations-container .history-response {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: var(--text-color);
+  padding: 10px;
+  background-color: rgba(50, 50, 50, 0.5);
+  border-radius: 8px;
+}
+
+.recommendations-container .history-actions {
   display: flex;
   gap: 10px;
-  margin-top: 8px;
+  justify-content: flex-end;
 }
 
-.messages-container .message.user {
-  /* border:2px solid whitesmoke; */
-  background-color: darkgray;
-  border-bottom-right-radius: 0px;
+.recommendations-container .no-history {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  padding: 20px 0;
 }
 
-.messages-container .message.bot {
-  background-color: #333;
-  color: white
+/* Scrollbar customization */
+.recommendations-container ::-webkit-scrollbar {
+  width: 6px;
 }
 
-.messages-container {
-  border: 2px solid gray;
-  background: linear-gradient(135deg, #333333, #f0f0f0)
+.recommendations-container ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
 }
 
-/* Media Queries for Responsiveness */
+.recommendations-container ::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .recommendations-card {
+  .recommendations-container .recommendations-card {
     padding: 20px;
   }
-
-  .recommendations-card h2 {
+  
+  .recommendations-container .recommendations-header h1 {
     font-size: 24px;
   }
-
-  .recommendations-card input {
-    font-size: 14px;
-
+  
+  .recommendations-container .weather-toggle-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
   }
-
-  .recommendations-card .toggle {
-    margin-top: 20px;
-    min-width: 50px
+  
+  .recommendations-container .weather-toggle-label {
+    width: 100%;
+    justify-content: space-between;
   }
-
-  /* .recommendations-card  */
-  .recommendations-card button {
-    font-size: 16px;
+  
+  .recommendations-container .message {
+    max-width: 90%;
   }
-
-  .recommendations-card .messages-container {
-    max-height: 200px;
-  }
-
-  .messages-container {
-    max-width: 87%;
-  }
-
-  .messages-container .message.user {
-    /* border: 2px solid red; */
-    /* max-width: 20vw; */
-    min-width:0px
-  }
-.love-button{
-  /* background-color: red; */
-  font-size: 10px;
-}
 }
 
 @media (max-width: 480px) {
   .recommendations-container {
-    padding: 10px;
+    padding: 15px 10px;
   }
-
-  .recommendations-card {
+  
+  .recommendations-container .recommendations-card {
     padding: 15px;
   }
-
-  h2 {
-    font-size: 22px;
+  
+  .recommendations-container .input-container {
+    flex-direction: column;
   }
-
-  input {
-    font-size: 14px;
-    padding: 12px;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 12px;
-  }
-
-  .messages-container {
-    max-height: 180px;
+  
+  .recommendations-container .send-button {
+    align-self: flex-end;
   }
 }

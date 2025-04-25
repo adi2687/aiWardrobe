@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Recommendations.css";
-import { div } from "three/tsl";
+import { FaCloudSun, FaHistory, FaHeart, FaCopy, FaPaperPlane, FaTimes } from "react-icons/fa";
 
 const Recommendations = () => {
   const [clothes, setClothes] = useState([]);
@@ -9,18 +9,31 @@ const Recommendations = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
   const [enabled, setEnabled] = useState(false);
-const apiUrl=import.meta.env.VITE_BACKEND_URL
+  const [copiedIndex, setCopiedIndex] = useState(null);
+  const [showHistory, setShowHistory] = useState(false);
+  const [history, setHistory] = useState([]);
+  
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
+
+  // Fetch user's clothes on component mount
   useEffect(() => {
-    fetch(`${apiUrl}/user/images`, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => setClothes(data.Wardrobe.allclothes))
-      .catch((error) => console.error("Error fetching clothes:", error));
+    fetchUserClothes();
   }, []);
 
-  // Fetch Weather Data (Whole Day)
+  const fetchUserClothes = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/user/images`, {
+        method: "GET",
+        credentials: "include",
+      });
+      const data = await response.json();
+      setClothes(data.Wardrobe.allclothes);
+    } catch (error) {
+      console.error("Error fetching clothes:", error);
+    }
+  };
+
+  // Fetch Weather Data
   const fetchWeather = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
@@ -38,7 +51,6 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
 
           const now = new Date();
           const today = now.toISOString().split("T")[0];
-          console.log(data);
           const closestForecast = data.list.find(
             (entry) => entry.dt_txt >= today
           );
@@ -64,14 +76,13 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
           };
 
           setWeatherData(weatherInfo);
-          console.log("Weather Forecast:", weatherInfo);
         })
         .catch((error) => console.error("Error fetching forecast:", error));
     });
   };
 
   // Toggle Weather Mode
-  const weather = () => {
+  const toggleWeather = () => {
     setEnabled(!enabled);
     if (!enabled) {
       fetchWeather();
@@ -85,7 +96,7 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
 
       let weather = null;
       if (enabled && weatherData) {
-        weather = weatherData; // Send weather data only if enabled
+        weather = weatherData;
       }
 
       const response = await fetch(`${apiUrl}/chat/chatbot`, {
@@ -94,7 +105,7 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
         headers: { 
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ input, clothes, weather }), // Send only if enabled
+        body: JSON.stringify({ input, clothes, weather }),
       });
 
       const data = await response.json();
@@ -108,12 +119,12 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
     } catch (error) {
       console.error("Error fetching suggestion:", error);
       setIsLoading(false);
-      return "Error fetching sug  gestion. Check your internet connection and try again";
+      return "Error fetching suggestion. Check your internet connection and try again.";
     }
   };
 
   // Handle Chat Input
-  const handle = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!userInput.trim()) {
@@ -128,150 +139,206 @@ const apiUrl=import.meta.env.VITE_BACKEND_URL
     const reply = await getSuggestion(userInput);
     setMessages([...newMessages, { sender: "bot", text: reply }]);
   };
-  const [copiedIndex, setCopiedIndex] = useState(null);
+
+  // Copy text to clipboard
   const copyToClipboard = (text, index) => {
     navigator.clipboard.writeText(text).then(() => {
-      setCopiedIndex(index); // Change button text after copying
-      setTimeout(() => setCopiedIndex(null), 2000); // Reset after 2 seconds
+      setCopiedIndex(index);
+      setTimeout(() => setCopiedIndex(null), 2000);
     });
   };
 
-  const [showHistory, setShowHistory] = useState(false);
-  const [history, setHistory] = useState([]);
-
-  const loadchatmain = async () => {
+  // Load chat history
+  const loadChatHistory = async () => {
     try {
       const response = await fetch(`${apiUrl}/chat/chathistory`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // important if using cookies for auth
+        credentials: "include",
       });
 
       const data = await response.json();
-      console.log(data);
       setHistory(data.chatHistory);
       setShowHistory(true);
     } catch (error) {
       console.error("Error fetching chat history:", error);
     }
   };
-  // useEffect(()=>{loadchatmain},[])
 
-  const lovesuggestion = (clothsuggestion) => {
-    console.log("this is cliekd ");
-    console.log(clothsuggestion);
+  // Save favorite suggestion
+  const saveFavoriteSuggestion = (suggestion) => {
     fetch(`${apiUrl}/user/cloth/lovesuggestion/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({ clothsuggestion }),
+      body: JSON.stringify({ clothsuggestion: suggestion }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        // Show feedback that suggestion was saved
+        alert("Suggestion saved to favorites!");
+      })
       .catch((error) => console.error("Error:", error));
   };
+
+  // Format date
+  const formatDate = (dateString) => {
+    const options = { 
+      year: 'numeric', 
+      month: 'short', 
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   return (
     <div className="recommendations-container">
       <div className="recommendations-card">
-        <h1>AI Outfit Recommender</h1>
-        <b>
-          The AI knows your uploaded clothes, so just ask for outfit
-          suggestions!
-        </b>
+        <div className="recommendations-header">
+          <h1>AI Outfit Recommender</h1>
+          <p className="recommendations-subtitle">
+            Get personalized outfit suggestions based on your wardrobe
+          </p>
+        </div>
 
-        <div className="toggle-container">
-          <div
-            onClick={weather}
+        <div className="weather-toggle-section">
+          <div className="weather-toggle-label">
+            <FaCloudSun className="weather-icon" />
+            <span>Weather-based recommendations</span>
+          </div>
+          <div 
+            onClick={toggleWeather}
             className={`toggle ${enabled ? "enabled" : ""}`}
           >
             <div className="toggle-circle" />
           </div>
+          <div className="weather-status">
+            {enabled ? (
+              weatherData ? (
+                <div className="weather-info">
+                  <span>{weatherData.temp}°C, {weatherData.weather}</span>
+                </div>
+              ) : "Fetching weather data..."
+            ) : ""}
+          </div>
         </div>
-        <br />
-        {enabled
-          ? "Weather and location-based recommendation ON"
-          : "Weather and location-based recommendation OFF"}
 
-        <form onSubmit={handle}>
-          <input
-            type="text"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Describe the event (e.g., Wedding, Casual Meetup)"
-          />
-          <br />
-          <button
-            type="submit"
-            className="recommendations-btn"
-            disabled={isLoading}
-          >
-            {isLoading ? "Loading..." : "Get Outfit"}
-          </button>
+        <form onSubmit={handleSubmit} className="recommendations-form">
+          <div className="input-container">
+            <input
+              type="text"
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              placeholder="Describe the event (e.g., Wedding, Casual Meetup)"
+              disabled={isLoading}
+            />
+            <button
+              type="submit"
+              className="send-button"
+              disabled={isLoading || !userInput.trim()}
+            >
+              {isLoading ? "..." : <FaPaperPlane />}
+            </button>
+          </div>
         </form>
 
         {messages.length > 0 && (
           <div className="messages-container">
             {messages.map((msg, index) => (
               <div key={index} className={`message ${msg.sender}`}>
-                <span className="message-text">{msg.text}</span>
-
-                <button
-                  className={`copy-btn ${msg.sender}`}
-                  onClick={() => copyToClipboard(msg.text, index)}
-                >
-                  {copiedIndex === index ? "Copied!" : "Copy"}
-                </button>
+                <div className="message-content">
+                  <span className="message-text">{msg.text}</span>
+                  <div className="message-actions">
+                    {msg.sender === "bot" && (
+                      <button
+                        className="action-button like-button"
+                        onClick={() => saveFavoriteSuggestion(msg.text)}
+                        title="Save to favorites"
+                      >
+                        <FaHeart />
+                      </button>
+                    )}
+                    <button
+                      className="action-button copy-button"
+                      onClick={() => copyToClipboard(msg.text, index)}
+                      title="Copy to clipboard"
+                    >
+                      {copiedIndex === index ? "Copied!" : <FaCopy />}
+                    </button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         )}
-        <div>
-          {/* <div>{JSON.stringify(history)}</div> */}
 
+        <div className="history-section">
           <button
-            className="recommendations-btn"
-            style={{ marginTop: "1rem" }}
+            className="history-toggle-button"
             onClick={() => {
               if (!showHistory) {
-                loadchatmain(); // fetch chat only the first time
+                loadChatHistory();
               } else {
-                setShowHistory(false); // just hide if already loaded
+                setShowHistory(false);
               }
             }}
           >
-            {showHistory
-              ? "Hide Previous Conversations"
-              : "Like a suggested outfit ? "}
+            <FaHistory /> {showHistory ? "Hide History" : "Show History"}
           </button>
- 
-          {showHistory && history.length > 0 && (
-            <div style={{ marginTop: "2rem" }} className="history">
-              <h2>Previous Conversations</h2>
-              {history.map((msg, i) => (
-                <div key={i}>
-                
-                <strong>Message:</strong> {msg.message} <br />
-                <strong>Response:</strong> {msg.response} <br />
-                <small>{new Date(msg.createdAt).toLocaleString()}</small>
-                <br />
-                <div style={{ display: "flex", gap: "10px", marginTop: "8px",border:"none" }}>
-                  <button
-                    onClick={() => lovesuggestion(msg.response)}
-                    className="love-button"
-                  >
-                    ♥
-                  </button>
-                  <button onClick={() => copyToClipboard(msg.response, i)}>
-                    {copiedIndex === i ? "Copied!" : "Copy AI Response"}
-                  </button>
-                </div>
+
+          {showHistory && (
+            <div className="history-container">
+              <div className="history-header">
+                <h2>Previous Conversations</h2>
+                <button 
+                  className="close-history-button"
+                  onClick={() => setShowHistory(false)}
+                >
+                  <FaTimes />
+                </button>
               </div>
               
-              ))}
+              {history.length > 0 ? (
+                <div className="history-items">
+                  {history.map((msg, i) => (
+                    <div key={i} className="history-item">
+                      <div className="history-item-header">
+                        <span className="history-date">{formatDate(msg.createdAt)}</span>
+                      </div>
+                      <div className="history-message">
+                        <strong>You asked:</strong> {msg.message}
+                      </div>
+                      <div className="history-response">
+                        <strong>AI suggested:</strong> {msg.response}
+                      </div>
+                      <div className="history-actions">
+                        <button
+                          onClick={() => saveFavoriteSuggestion(msg.response)}
+                          className="action-button like-button"
+                          title="Save to favorites"
+                        >
+                          <FaHeart />
+                        </button>
+                        <button 
+                          onClick={() => copyToClipboard(msg.response, `history-${i}`)}
+                          className="action-button copy-button"
+                          title="Copy to clipboard"
+                        >
+                          {copiedIndex === `history-${i}` ? "Copied!" : <FaCopy />}
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="no-history">No previous conversations found.</p>
+              )}
             </div>
           )}
         </div>
