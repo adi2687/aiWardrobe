@@ -7,6 +7,7 @@ const Shop = () => {
   const [input, setInput] = useState("");
   const [loaded, setloaded] = useState(false);
   const [amazonandmyntra, setamazonandmyntra] = useState("");
+  const [error, setError] = useState(null);
 
   const backendurl = import.meta.env.VITE_BACKEND_URL;
 
@@ -16,12 +17,18 @@ const Shop = () => {
       method: "GET",
       credentials: "include",
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch user details");
+        }
+        return response.json();
+      })
       .then((data) => {
         setuserdetails(data);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
+        setError("Failed to load user data. Please try again.");
       });
   };
 
@@ -32,11 +39,17 @@ const Shop = () => {
   // Fetch shopping suggestions
   const shoppingsuggestions = () => {
     setloaded(true);
+    setError(null);
     fetch(`${backendurl}/chat/getshoppingsuggestions`, {
       method: "POST",
       credentials: "include",
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch shopping suggestions");
+        }
+        return response.json();
+      })
       .then((data) => {
         const suggestion = data.suggestion;
         const cloths = [];
@@ -57,18 +70,28 @@ const Shop = () => {
       })
       .catch((error) => {
         console.error("Error fetching shopping suggestions:", error);
+        setloaded(false);
+        setError("Failed to load shopping suggestions. Please try again.");
       });
   };
 
-  // Open URLs for Amazon and Myntra
+  // Open URLs for shopping platforms
   const openSearch = (platform, query) => {
-    const gender = userdetails?.gender;
+    const gender = userdetails?.gender || '';
     let url = "";
 
-    if (platform === "amazon") {
-      url = `https://www.amazon.in/s?k=${query} for ${gender}`;
-    } else if (platform === "myntra") {
-      url = `https://www.myntra.com/${query} for ${gender}`;
+    switch(platform) {
+      case "amazon":
+        url = `https://www.amazon.in/s?k=${query} for ${gender}`;
+        break;
+      case "myntra":
+        url = `https://www.myntra.com/${query}?rawQuery=${query} for ${gender}`;
+        break;
+      case "flipkart":
+        url = `https://www.flipkart.com/search?q=${query} for ${gender}`;
+        break;
+      default:
+        url = `https://www.google.com/search?q=${query} for ${gender}`;
     }
 
     window.open(url, "_blank");
@@ -76,7 +99,8 @@ const Shop = () => {
 
   return (
     <div className="shop-container">
-      <h2>Personalized Shopping based on your clothes, age, and preferences</h2>
+      <h2>Personalized Shopping Based on Your Wardrobe</h2>
+      <h4>Get AI-powered clothing recommendations tailored to your style, age, and preferences</h4>
 
       <button
         className="getairecommendations"
@@ -84,33 +108,39 @@ const Shop = () => {
           fetchuserdetails();
           shoppingsuggestions();
         }}
+        disabled={loaded}
       >
-        Get AI Recommendations
+        {loaded ? 'Generating Recommendations...' : 'Get AI Recommendations'}
       </button>
+
+      {error && <div className="error-message">{error}</div>}
 
       <div className="loading">
         {loaded ? (
           <div className="loader-wrapper">
             <div className="loader"></div>
+            <p>Analyzing your wardrobe and preferences...</p>
           </div>
         ) : (
-          <h2 className="loading-message">
-            Discover the perfect product or let AI inspire your next outfit choice!
-          </h2>
+          !shoppingsuggestionsmain.length && !error && (
+            <h2 className="loading-message">
+              Discover the perfect items for your wardrobe or let AI inspire your next fashion choice!
+            </h2>
+          )
         )}
       </div>
  
       <div className="suggestion-container">
-        {shoppingsuggestionsmain.length > 0 ? (
+        {shoppingsuggestionsmain.length > 0 && (
           <div className="pill-wrapper">
-            <h2>AI suggestions for your clothes based on your wardrobe, age, and preferences.</h2>
-            <h4>Click on any button to get search results from Amazon and Myntra.</h4>
+            <h2>Your Personalized Fashion Recommendations</h2>
+            <h4>Click on any item below to explore shopping options from popular retailers</h4>
 
             <div className="pill-buttons">
               {shoppingsuggestionsmain.map((ele, i) => (
                 <button
                   key={i}
-                  className="suggestion-pill"
+                  className={`suggestion-pill ${amazonandmyntra === ele ? 'active' : ''}`}
                   onClick={() => {
                     setInput(ele);
                     setamazonandmyntra(ele);
@@ -122,44 +152,52 @@ const Shop = () => {
             </div>
 
             {amazonandmyntra && (
-              <div className="buttons">
-              <button
-                onClick={() => {
-                  const query = encodeURIComponent(amazonandmyntra);
-                  openSearch("amazon", query);
-                }}
-                aria-label={`Search for ${amazonandmyntra} on Amazon`}
-              >
-                Go to Amazon for {amazonandmyntra}
-              </button>
-            
-              <button
-                onClick={() => {
-                  const query = encodeURIComponent(amazonandmyntra);
-                  window.open(`https://www.myntra.com/${query}?rawQuery=${query}`, '_blank');
-                }}
-                aria-label={`Search for ${amazonandmyntra} on Myntra`}
-              >
-                Go to Myntra for {amazonandmyntra}
-              </button>
-            
-              <button
-                onClick={() => {
-                  const query = encodeURIComponent(amazonandmyntra);
-                  window.open(`https://www.flipkart.com/search?q=${query}`, '_blank');
-                }}
-                aria-label={`Search for ${amazonandmyntra} on Flipkart`}
-              >
-                Go to Flipkart for {amazonandmyntra}
-              </button>
-            </div>
-            
-            
-            
+              <>
+                <div className="amazonandmyntra">
+                  <p>You selected: <strong>{amazonandmyntra}</strong></p>
+                  <p>Choose a retailer to shop for this item:</p>
+                </div>
+                
+                <div className="buttons">
+                  <button
+                    onClick={() => {
+                      const query = encodeURIComponent(amazonandmyntra);
+                      openSearch("amazon", query);
+                    }}
+                    aria-label={`Search for ${amazonandmyntra} on Amazon`}
+                  >
+                    <span>Amazon</span>
+                  </button>
+                
+                  <button
+                    onClick={() => {
+                      const query = encodeURIComponent(amazonandmyntra);
+                      openSearch("myntra", query);
+                    }}
+                    aria-label={`Search for ${amazonandmyntra} on Myntra`}
+                  >
+                    <span>Myntra</span>
+                  </button>
+                
+                  <button
+                    onClick={() => {
+                      const query = encodeURIComponent(amazonandmyntra);
+                      openSearch("flipkart", query);
+                    }}
+                    aria-label={`Search for ${amazonandmyntra} on Flipkart`}
+                  >
+                    <span>Flipkart</span>
+                  </button>
+                </div>
+              </>
             )}
           </div>
-        ) : (
-          <div>No suggestions available</div>
+        )}
+        
+        {!shoppingsuggestionsmain.length && !loaded && error === null && (
+          <div className="empty-state">
+            <p>Click the button above to get personalized clothing recommendations</p>
+          </div>
         )}
       </div>
     </div>
