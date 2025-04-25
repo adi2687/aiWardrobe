@@ -1,97 +1,301 @@
 /* About Us Page CSS */
 .aboutus-container {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 80px 20px;
+  background-color: rgba(22, 22, 22, 254);
+  color: white;
+  min-height: 100vh;
+}
+
+.aboutus-header {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 60px 40px;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.aboutus-header h1 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+.aboutus-header h1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #61dafb;
+}
+
+.aboutus-header p {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+.aboutus-section {
+  padding: 40px;
+  margin: 30px auto;
+  max-width: 1000px;
+  background-color: rgba(40, 40, 40, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.aboutus-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.aboutus-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #61dafb;
+}
+
+.aboutus-section p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.aboutus-section ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 30px;
+}
+
+.aboutus-section li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: rgba(50, 50, 50, 0.6);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aboutus-section li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background-color: rgba(60, 60, 60, 0.6);
+}
+
+.aboutus-section strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #61dafb;
+}
+
+.email {
+  color: #61dafb;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  margin-left: 10px;
+}
+
+.email:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* Quote styling */
+.aboutus-quote {
+  font-style: italic;
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 800px;
+  background-color: rgba(97, 218, 251, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #61dafb;
+  position: relative;
+  line-height: 1.6;
+}
+
+.quote-author {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Vision list styling */
+.vision-list {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.vision-list li {
+  background: none;
+  border: none;
+  padding: 8px 0 8px 30px;
+  margin-bottom: 10px;
+  position: relative;
+  font-size: 1.1rem;
+}
+
+.vision-list li:hover {
+  transform: none;
+  box-shadow: none;
+  background: none;
+}
+
+.vision-list li:before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #61dafb;
+  font-weight: bold;
+}
+
+/* Team styling */
+.team-list li {
+  padding: 30px;
+}
+
+.team-role {
+  color: #61dafb;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.team-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.social-link:hover {
+  background-color: rgba(97, 218, 251, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Approach section styling */
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.approach-item {
+  background-color: rgba(50, 50, 50, 0.6);
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.approach-item:hover {
+  transform: translateY(-5px);
+  background-color: rgba(60, 60, 60, 0.6);
+}
+
+.approach-icon {
+  font-size: 2.5rem;
+  color: #61dafb;
+  margin-bottom: 15px;
+}
+
+.approach-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.approach-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .aboutus-container {
+    padding: 60px 15px;
   }
   
   .aboutus-header {
-    background-color: #333;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
+    padding: 40px 20px;
   }
   
   .aboutus-header h1 {
-    font-size: 2.5rem;
-    margin: 0;
-  }
-  
-  .aboutus-header p {
-    font-size: 1.2rem;
-    margin-top: 10px;
+    font-size: 2.2rem;
   }
   
   .aboutus-section {
-    padding: 20px 40px;
-    margin: 20px 0;
-    background-color: rgb(76, 74, 74);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color:whitesmoke;
-    font-weight: bolder;
-    display: flex ;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    padding: 25px;
   }
   
   .aboutus-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
   }
   
   .aboutus-section p {
     font-size: 1rem;
-    color: white;
-    line-height: 1.5;
-  }
-  
-  .aboutus-section ul {
-    list-style-type: none;
-    padding-left: 0;
   }
   
   .aboutus-section li {
     font-size: 1rem;
-    line-height: 1.6;
+    padding: 15px;
   }
   
-  .aboutus-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-  }
-  .email {
-    color: #1a73e8;
-    text-decoration: none;
+  .aboutus-quote {
+    font-size: 1.1rem;
+    padding: 20px;
   }
   
-  .email:hover {
-    text-decoration: underline;
-    opacity: 0.8;
+  .team-social {
+    flex-direction: column;
   }
   
-  @media (max-width: 768px) {
-    .aboutus-header h1 {
-      font-size: 2rem;
-    }
-  
-    .aboutus-section h2 {
-      font-size: 1.6rem;
-    }
-  
-    .aboutus-section p {
-      font-size: 0.9rem;
-    }
-  
-    .aboutus-section li {
-      font-size: 0.9rem;
-    }
+  .approach-grid {
+    grid-template-columns: 1fr;
   }
-  
+}

@@ -1,0 +1,254 @@
+.download-container {
+  background-color: rgba(22, 22, 22, 254);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.download-content {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+.download-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.download-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.app-features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.feature {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 12px;
+  width: 200px;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.feature p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.download-button {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.download-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.download-button.ios {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.download-button.android {
+  background-color: rgba(61, 220, 132, 0.2);
+  color: #fff;
+  border: 1px solid rgba(61, 220, 132, 0.5);
+}
+
+.download-button.windows {
+  background-color: rgba(0, 120, 215, 0.2);
+  color: #fff;
+  border: 1px solid rgba(0, 120, 215, 0.5);
+}
+
+.platform-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.small-text {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.large-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.app-preview {
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.preview-image-container {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preview-nav-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.preview-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.image-indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+.qr-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.qr-code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.qr-placeholder {
+  width: 150px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 8px;
+  font-size: 90px;
+  color: white;
+}
+
+.qr-image {
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.qr-code p {
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .download-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .download-content p {
+    font-size: 1rem;
+  }
+  
+  .app-features {
+    gap: 15px;
+  }
+  
+  .feature {
+    width: 150px;
+    padding: 15px;
+  }
+  
+  .download-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
