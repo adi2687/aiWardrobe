@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./sharecloths.css"; // Import the CSS file
-import { FaWhatsapp, FaTwitter, FaEnvelope } from "react-icons/fa"
+import { FaWhatsapp, FaTwitter, FaEnvelope, FaLink, FaShareAlt } from "react-icons/fa";
+import { FiCopy, FiCheck } from "react-icons/fi";
+
 const ShareClothes = () => {
   const { id } = useParams();
 
   const [sharecloth, setSharedCloth] = useState([]);
-  const [username, setUsername] = useState("Users");
+  const [username, setUsername] = useState("User's");
   const [imageUrl, setImageUrl] = useState("");
-  const apiUrl = import.meta.env.VITE_BACKEND_URL
-  const frontendUrl=import.meta.env.VITE_FRONTEND_URL
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false);
+  
+  const apiUrl = import.meta.env.VITE_BACKEND_URL;
+  const frontendUrl = import.meta.env.VITE_FRONTEND_URL;
   // Fetch the username of the logged-in user
   // useEffect(() => {
   //   fetch(`${apiUrl}/user/profile`, {
@@ -26,9 +32,11 @@ const ShareClothes = () => {
   //     .catch((error) => console.error(error));
   // }, []);
 
-  // Fetch shared clothes for the user based on 'id' and 'usernamemain'
+  // Fetch shared clothes for the user based on 'id'
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const response = await fetch(`${apiUrl}/share/${id}`, {
           method: "GET",
@@ -38,25 +46,33 @@ const ShareClothes = () => {
           },
         });
 
+        if (!response.ok) {
+          throw new Error("Failed to fetch shared clothes");
+        }
+
         const data = await response.json();
-        console.log("Shared clothes data:", data);
-        if (data && data.share) {
+        if (data && data.share && data.share.length > 0) {
           setSharedCloth(data.share[0].sharecloths);
-          setUsername(data.share[0].username);
+          setUsername(data.share[0].username + "");
         } else {
-          console.error("No shared clothes found");
+          setError("No shared clothes found");
         }
       } catch (error) {
         console.error("Error fetching shared clothes:", error);
+        setError("Failed to load shared clothes. Please try again later.");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [id]);
+  }, [id, apiUrl]);
 
   // Generate the image using the sharecloth data
   const imageGenerate = async () => {
     if (!sharecloth || sharecloth.length === 0) return;
+    
+    setImageLoading(true);
 
     const prompt = `
     Generate an image of a mannequin wearing all of the following outfits:
@@ -80,125 +96,188 @@ const ShareClothes = () => {
         }
       );
 
+      if (!response.ok) {
+        throw new Error("Failed to generate image");
+      }
+
       const data = await response.json();
 
       if (data.image) {
         setImageUrl(data.image);
+      } else {
+        throw new Error("No image received from server");
       }
     } catch (error) {
       console.error("Error generating image:", error);
+      setError("Failed to generate outfit preview. Please try again later.");
+    } finally {
+      setImageLoading(false);
     }
   };
 
   // Run image generation when sharecloth data is fetched
   useEffect(() => {
-    imageGenerate();
+    if (sharecloth && sharecloth.length > 0) {
+      imageGenerate();
+    }
   }, [sharecloth]); // Trigger image generation when sharecloth is updated
 
-  const [copyurl, setcopyurl] = useState(false);
+  const [copyUrl, setCopyUrl] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const shareUrl = `${frontendUrl}/share/${id}`;
 
-  const CopyToClipboard = (id) => {
-    const url = `${frontendUrl}/share/${id}`;
+  // Copy share link to clipboard
+  const copyToClipboard = () => {
     navigator.clipboard
-      .writeText(url)
+      .writeText(shareUrl)
       .then(() => {
-        // console.log("Link copied to clipboard:", url);
-        setcopyurl(true);
+        setCopyUrl(true);
         setTimeout(() => {
-          setcopyurl(false);
+          setCopyUrl(false);
         }, 2000);
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
+        setError("Failed to copy link. Please try again.");
       });
   };
 
-  const sharewithfriends = () => {
-    const link = `${frontendUrl}/share/${id}`;
-
-    // Example: open WhatsApp share
-    const whatsappUrl = `https://wa.me/?text=Check%20out%20this%20outfit%20I%20shared%20with%20you!%20${encodeURIComponent(
-      link
-    )}`;
-
-    // You can add other platforms similarly
-    window.open(whatsappUrl, "_blank");
+  // Toggle share options dropdown
+  const toggleShareOptions = () => {
+    setShowOptions(prev => !prev);
   };
-const url=`${frontendUrl}/share/${id}`
-const [showOptions, setShowOptions] = useState(false);
+
+  // Share to different platforms
+  const shareToSocial = (platform) => {
+    let shareLink = '';
+    const message = `Check out these amazing outfits shared by ${username}!`;
+    
+    switch(platform) {
+      case 'whatsapp':
+        shareLink = `https://wa.me/?text=${encodeURIComponent(`${message} ${shareUrl}`)}`;
+        break;
+      case 'twitter':
+        shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareUrl}`)}`;
+        break;
+      case 'email':
+        shareLink = `mailto:?subject=Check out these amazing outfits&body=${encodeURIComponent(`${message}
+
+${shareUrl}`)}`;
+        break;
+      default:
+        shareLink = shareUrl;
+    }
+    
+    if (shareLink) {
+      window.open(shareLink, '_blank');
+    }
+  };
 
   return (
     <div className="share-cloths-container">
-      <h3 style={{color:"white"}}>{username}'s Outfits</h3>
-      <div className="share-cloths-list">{sharecloth}</div>
-{/* {imageUrl} */}
-      <div className="imagecontainer">
-        <h3 style={{color:"white"}}>Outfits preview</h3>
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt="Generated Outfit"
-            className="w-full h-auto"
-          />
-        ) : (
-          <p>Loading preview of the outfits...</p>
-        )}
-      </div>
-
-      <button onClick={() => CopyToClipboard(id)} className="copybutton" style={{padding:"0px",height:"45px",display:"flex",justifyContent:"center",alignItems:"center",width:"120px",fontSize:"20px",fontWeight:"bold",borderRadius:"16px",color:"white"}}>
-        {copyurl ? <p>Copied</p> : <p>Copy link</p>}
-      </button>
-      {/* <button onClick={sharewithfriends}>
-        <p>Share to friends</p>
-      </button> */}
-      <div className="share-wrapper">
-      <button
-        className="share-button"
-        onClick={() => setShowOptions((prev) => !prev)}
-        style={{padding:"10px"}}
-      > 
-        Share to Friends
-      </button>
-
-      {showOptions && (
-        <div className="share-dropdown">
-        <button className="share-btn whatsapp" style={{backgroundColor:"green",color:"white"}}
-          onClick={() =>
-            window.open(
-              `https://wa.me/?text=${encodeURIComponent(`Check this out! ${url}`)}`,
-              "_blank"
-            )
-          }
-        >
-          <FaWhatsapp className="icon" />
-          WhatsApp
-        </button>
+      {/* Header with username */}
+      <h3>{username} Wardrobe Collection</h3>
       
-        <button className="share-btn twitter" style={{backgroundColor:"#1DA1F2",color:"white"}}
-          onClick={() =>
-            window.open(
-              `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Look at this outfit! ${url}`)}`,
-              "_blank"
-            )
-          }
-        >
-          <FaTwitter className="icon" />
-          Twitter
-        </button>
-      
-        <button className="share-btn email" style={{backgroundColor:"#FF6F61",color:"white"}}
-          onClick={() =>
-            window.open(
-              `mailto:?subject=Check this outfit&body=${encodeURIComponent(`Here’s the outfit link: ${url}`)}`
-            )
-          }
-        >
-          <FaEnvelope className="icon" />
-          Email
-        </button>
-      </div>
+      {loading ? (
+        <div className="loading-container">
+          <div className="loader"></div>
+          <p>Loading shared outfits...</p>
+        </div>
+      ) : error ? (
+        <div className="error-message">
+          <p>{error}</p>
+        </div>
+      ) : (
+        <>
+          {/* Clothes list */}
+          <div className="share-cloths-list">
+            {sharecloth && sharecloth.length > 0 ? (
+              sharecloth
+            ) : (
+              <p className="no-clothes-message">No outfits found in this collection</p>
+            )}
+          </div>
+          
+          {/* Image preview */}
+          <div className="imagecontainer">
+            <h3>Outfits Preview</h3>
+            {imageLoading ? (
+              <div className="loading-container">
+                <div className="loader"></div>
+                <p>Generating outfit preview...</p>
+              </div>
+            ) : imageUrl ? (
+              <img
+                src={imageUrl}
+                alt="Generated Outfit Preview"
+                loading="lazy"
+              />
+            ) : (
+              <p>No preview available</p>
+            )}
+          </div>
+          
+          {/* Share section */}
+          <div className="share-section">
+            {/* Copy link button */}
+            <button onClick={copyToClipboard} className="copybutton">
+              {copyUrl ? (
+                <>
+                  <FiCheck className="icon" /> 
+                  <span>Copied!</span>
+                </>
+              ) : (
+                <>
+                  <FiCopy className="icon" /> 
+                  <span>Copy Link</span>
+                </>
+              )}
+            </button>
+            
+            {/* Share dropdown */}
+            <div className="share-wrapper">
+              <button
+                className="share-button"
+                onClick={toggleShareOptions}
+              >
+                <FaShareAlt className="icon" style={{ fontSize: '1.3rem' }} />
+                <span>Share Collection</span>
+              </button>
+
+              {showOptions && (
+                <div className="share-dropdown">
+                  <button 
+                    className="share-btn whatsapp"
+                    style={{backgroundColor:"#25D366"}}
+                    onClick={() => shareToSocial('whatsapp')}
+                  >
+                    <FaWhatsapp className="icon" />
+                    <span>WhatsApp</span>
+                  </button>
+                
+                  <button 
+                    className="share-btn twitter"
+                    style={{backgroundColor:"#1DA1F2"}}
+                    onClick={() => shareToSocial('twitter')}
+                  >
+                    <FaTwitter className="icon" />
+                    <span>Twitter</span>
+                  </button>
+                
+                  <button 
+                    className="share-btn email"
+                    style={{backgroundColor:"#FF6F61"}}
+                    onClick={() => shareToSocial('email')}
+                  >
+                    <FaEnvelope className="icon" />
+                    <span>Email</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </>
       )}
-    </div>
     </div>
   );
 };

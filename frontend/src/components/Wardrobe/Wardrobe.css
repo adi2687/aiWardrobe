@@ -1,13 +1,16 @@
-/* Wardrobe Component - Main Styles */
+/* Wardrobe Component - Dark Theme Styles */
 :root {
-  --primary-color: #6366f1;
-  --primary-hover: #4f46e5;
-  --secondary-color: #f3f4f6;
-  --text-color: #1f2937;
-  --text-light: #6b7280;
+  --primary-color: #6c5ce7;
+  --primary-hover: #5649c0;
+  --secondary-color: #1e1e1e;
+  --text-color: #f5f6fa;
+  --text-light: #a0a0a0;
+  --background-color: #121212;
+  --card-bg: #1e1e1e;
   --border-radius: 12px;
-  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   --transition: all 0.3s ease;
+  --accent-color: #fd79a8;
 }
 
 /* Main Container */
@@ -15,13 +18,15 @@
   max-width: 1200px;
   margin: 40px auto;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--background-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   text-align: center;
   min-height: calc(100vh - 200px);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-color);
+  position: relative;
+  overflow: hidden;
 }
 
 /* Toggle Buttons */
@@ -38,13 +43,31 @@
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.toggle-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
 }
 
 .toggle-button:hover {
   background-color: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(99, 102, 241, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-button:hover::before {
+  transform: translateX(100%);
 }
 
 .toggle-button:active {
@@ -64,26 +87,29 @@
   width: 100%;
   height: 250px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border: none;
+  box-shadow: var(--box-shadow);
+  border: 2px solid rgba(108, 92, 231, 0.2);
   padding: 0;
+  filter: brightness(0.95);
 }
 
 .wardrobe-image:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border-color: rgba(108, 92, 231, 0.5);
+  filter: brightness(1.05);
 }
 
 /* Add Clothes Section */
 .addcloths {
   margin: 30px auto;
   padding: 25px;
-  background-color: var(--secondary-color);
+  background-color: var(--card-bg);
   border-radius: var(--border-radius);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 600px;
   display: flex;
   flex-direction: column;
@@ -91,14 +117,33 @@
   box-shadow: var(--box-shadow);
 }
 
+.addcloths h3 {
+  color: var(--text-color);
+  margin-bottom: 1.2rem;
+  font-size: 1.3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.addcloths h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
 .addcloths input {
   width: 80%;
   padding: 14px 20px;
   margin-bottom: 15px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
   font-size: 16px;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.2);
   color: var(--text-color);
   transition: var(--transition);
 }
@@ -106,7 +151,8 @@
 .addcloths input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .addcloths-actions {
@@ -134,21 +180,41 @@
   cursor: pointer;
   transition: var(--transition);
   min-width: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.addcloths button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
 }
 
 .addcloths button:hover {
   background-color: var(--primary-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.addcloths button:hover::before {
+  transform: translateX(100%);
 }
 
 /* Clothes Container */
 .clothes-container {
   margin: 30px auto;
   padding: 25px;
-  background-color: var(--secondary-color);
+  background-color: var(--card-bg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   max-width: 900px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .clothes-title {
@@ -156,6 +222,19 @@
   color: var(--text-color);
   font-weight: 600;
   margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.clothes-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
 }
 
 .clothes-list {
@@ -163,34 +242,37 @@
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
+  margin-top: 1.5rem;
 }
 
 .clothes-item {
   padding: 10px 16px;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.2);
   color: var(--text-color);
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   font-size: 15px;
   transition: var(--transition);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .clothes-item:hover {
   background-color: var(--primary-color);
   color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary-color);
 }
 
 /* All Clothes Section */
 .clothes {
   margin: 20px auto;
   padding: 20px;
-  background-color: var(--secondary-color);
+  background-color: var(--card-bg);
   border-radius: var(--border-radius);
   max-width: 800px;
   box-shadow: var(--box-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .clothes h2 {
@@ -198,6 +280,19 @@
   color: var(--text-color);
   font-weight: 600;
   margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.clothes h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
 }
 
 /* No Images Message */
@@ -206,36 +301,50 @@
   font-size: 16px;
   margin: 20px 0;
   font-style: italic;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Scanning Message */
 .scanning-message {
   margin: 20px auto;
-  padding: 15px;
-  background-color: #fff9db;
+  padding: 20px;
+  background-color: rgba(108, 92, 231, 0.1);
   border-radius: var(--border-radius);
-  color: #b45309;
+  color: var(--text-color);
   font-weight: 500;
   max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(108, 92, 231, 0.3);
 }
 
 .spinner {
-  width: 30px;
-  height: 30px;
-  border: 3px solid #f3f4f6;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
   border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 15px auto 5px;
+  margin: 15px auto 10px;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Zoomed Image Modal */
@@ -245,37 +354,65 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: zoom-out;
   z-index: 1000;
+  animation: fadeIn 0.3s ease;
 }
 
 .zoomed-image {
   max-width: 90%;
   max-height: 90%;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   transition: transform 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(108, 92, 231, 0.3);
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Section Container */
 .section-container {
   margin: 30px auto;
-  padding: 20px;
-  background-color: var(--secondary-color);
+  padding: 25px;
+  background-color: var(--card-bg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   max-width: 1100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .section-container h2 {
   font-size: 24px;
   color: var(--text-color);
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+.section-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
 }
 
 /* Wardrobe Controls */
@@ -292,7 +429,7 @@
   font-size: 32px;
   font-weight: 700;
   color: var(--text-color);
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   position: relative;
   display: inline-block;
 }
@@ -300,25 +437,27 @@
 .wardrobe-container h1:after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 80px;
   height: 3px;
-  background-color: var(--primary-color);
-  border-radius: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 3px;
 }
 
 /* All Clothes Content */
 .all-clothes-content {
-  padding: 15px;
-  background-color: white;
-  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
   white-space: pre-line;
   text-align: left;
   line-height: 1.6;
   color: var(--text-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 1rem;
 }
 
 /* Responsive Design */

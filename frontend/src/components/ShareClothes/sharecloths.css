@@ -1,154 +1,425 @@
 /* ShareCloths.css */
 
+:root {
+  --primary-color: #6c5ce7;
+  --secondary-color: #a29bfe;
+  --accent-color: #fd79a8;
+  --text-color: #f5f6fa;
+  --light-text: #f5f6fa;
+  --background-color: #121212;
+  --card-bg: #1e1e1e;
+  --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
 /* Container for the main component */
 .share-cloths-container {
-    font-family: Arial, sans-serif;
-    background-color: #181818;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 20px auto;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    min-height: 100vh;
-  }
-  
-  /* Heading for the username */
-  .share-cloths-container h3 {
-    font-size: 30px;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  /* List of clothes items */
-  .share-cloths-list {
-    display: grid;
-    gap: 20px;
-    padding: 0;
-    list-style-type: none;
-    
-    min-width:100%;
-    font-size: 20px;
-    /* color:grey */
-    text-align: center;
-  }
-  
-  .no-clothes-message {
-    font-size: 18px;
-    color: #888;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .share-cloths-container .imagecontainer{
-    display: flex;
-    flex-direction: column;
-  }
-  .imagecontainer img{
-    max-height: 100vh;
-    border-radius:23px
-  }
-  .share-cloths-container button{
-    padding:5px;
-    margin-left:20px;
-    
-    /* font-size: 120px; */
-  }
-  .share-wrapper {
-    position: relative;
-    display: inline-block;
-    margin-top: 10px;
-  }
-  
-  .share-button {
-    padding: 10px 16px;
-    background-color: transparent;
-    color: white;
-    font-weight: 500;
-    border:2px solid white;
-    border-radius: 18px;
-    cursor: pointer;
-    color: grey;
-  padding:10px
-  }
-  
-  .share-button:hover {
-    background-color: whitesmoke;
-  }
-  
-  .share-dropdown {
-    position: absolute;
-    top: 110%;
-    left: 0;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 19px;
-    padding: 8px 0;
-    width: 180px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    /* width:130% */
-padding:10px
-  }
-  
-  .share-dropdown button {
-    display: block;
-    width: 100%;
-    background: none;
-    border: none;
-    text-align: left;
-    padding: 10px 16px;
-    font-size: 14px;
-    color: #333;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    margin-left:0px;
-    border:2px solid darkgrey;
-    margin-top:10px;
-    font-weight: 600;
-  }
-  
-  .share-dropdown button:hover {
-    background-color: #f1f1f1;
-  }.share-dropdown {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin-top: 1rem;
-    width:auto
-  }
-  
-    .share-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-      transition: transform 0.2s;
-      min-width:140px;
-      justify-content: center;
-      text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: var(--shadow);
+  min-height: 100vh;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+}
 
-    }
-  
-  .share-btn:hover {
-    transform: scale(1.05);
+/* Heading for the username */
+.share-cloths-container h3 {
+  font-size: 2rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.share-cloths-container h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 3px;
+}
+
+/* List of clothes items */
+.share-cloths-list {
+  display: grid;
+  gap: 20px;
+  padding: 1rem;
+  list-style-type: none;
+  min-width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow);
+  line-height: 1.6;
+  color: var(--light-text);
+}
+
+.no-clothes-message {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.share-cloths-container .imagecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow);
+}
+
+.imagecontainer img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  border: 2px solid rgba(108, 92, 231, 0.3);
+}
+
+.imagecontainer img:hover {
+  transform: scale(1.02);
+}
+
+.imagecontainer p {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.share-cloths-container button {
+  padding: 12px 24px;
+  margin: 0.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.share-cloths-container button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+
+.share-cloths-container button:hover::before {
+  transform: translateX(100%);
+}
+
+.share-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.share-button {
+  padding: 14px 24px;
+  background-color: var(--accent-color);
+  color: var(--light-text);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.share-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.share-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  width: 100%;
+  box-shadow: var(--shadow);
+  z-index: 999;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: -0.8rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  .share-btn .icon {
-    font-size: 28px;
-  }
-  .share-cloths-container button{
-    color:white
-  }
-@media (max-width:780px){
-  .share-dropdown {
-    flex-direction: column;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-  
-  
+
+.share-dropdown button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font-size: 1rem;
+  color: var(--light-text);
+  cursor: pointer;
+  transition: var(--transition);
+  margin: 0;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  min-width: 140px;
+  gap: 8px;
+}
+
+.share-dropdown button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  padding: 12px 18px;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+  min-width: 140px;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.share-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+
+.share-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.share-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.share-btn .icon {
+  font-size: 1.5rem;
+}
+
+.copybutton {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 14px 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1.1rem;
+  gap: 10px;
+}
+
+.copybutton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+
+.copybutton:hover::before {
+  transform: translateX(100%);
+}
+
+.copybutton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading spinner */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow);
+}
+
+.loading-container .loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-container p {
+  margin-top: 1rem;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error message */
+.error-message {
+  background-color: rgba(211, 47, 47, 0.2);
+  color: #ff6b6b;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin: 1.5rem 0;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(211, 47, 47, 0.4);
+  text-align: center;
+}
+
+/* Share section */
+.share-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1.5rem;
+  width: 100%;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow);
+}
+
+/* Responsive styles */
+@media (max-width: 780px) {
+  .share-dropdown {
+    flex-direction: column;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .share-cloths-container {
+    padding: 20px;
+    margin: 10px;
+    width: auto;
+  }
+
+  .share-cloths-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .share-btn {
+    width: 100%;
+  }
+
+  .imagecontainer img {
+    max-width: 100%;
+  }
+
+  .copybutton {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .share-cloths-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .share-cloths-list {
+    font-size: 1rem;
+  }
+
+  .share-button, .copybutton {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
