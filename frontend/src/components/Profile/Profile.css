@@ -256,7 +256,7 @@
 }
 
 .profile-container .file-input {
-  display: none;
+  /* display: none; */
 }
 
 .profile-container .upload-button {
