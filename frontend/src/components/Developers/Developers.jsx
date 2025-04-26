@@ -1,7 +1,6 @@
 import React from 'react';
 import './DeveloperPage.css';
 import { FaGithub, FaLinkedin, FaCode, FaDatabase, FaServer, FaReact, FaNodeJs, FaAws } from 'react-icons/fa';
-
 const DeveloperPage = () => {
   return (
     <div className="developer-page-container">

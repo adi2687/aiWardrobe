@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Planner.css";
+import { FiSun, FiCloud, FiCloudRain, FiCloudSnow, FiWind, FiCopy, FiSave, FiRefreshCw } from "react-icons/fi";
 
 const DailyWeather = () => {
   const [weatherSummaries, setWeatherSummaries] = useState([]);
@@ -9,7 +10,8 @@ const DailyWeather = () => {
   const [isOn, setIsOn] = useState(false);
   const [weather, setWeather] = useState("Off");
   const [input, setInput] = useState("");
-  const [copiedIndex, setCopiedIndex] = useState(null); // Add this at top
+  const [copiedIndex, setCopiedIndex] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   const getWeatherDescription = (code) => {
     const descriptions = {
@@ -33,8 +35,25 @@ const DailyWeather = () => {
     return descriptions[code] || "Unknown";
   };
 
+  const getWeatherIcon = (description) => {
+    if (description.includes("clear") || description.includes("Clear")) {
+      return <FiSun className="weather-icon" />;
+    } else if (description.includes("cloud") || description.includes("Cloud") || description.includes("Overcast")) {
+      return <FiCloud className="weather-icon" />;
+    } else if (description.includes("rain") || description.includes("Rain") || description.includes("drizzle")) {
+      return <FiCloudRain className="weather-icon" />;
+    } else if (description.includes("snow") || description.includes("Snow")) {
+      return <FiCloudSnow className="weather-icon" />;
+    } else if (description.includes("fog") || description.includes("Fog")) {
+      return <FiWind className="weather-icon" />;
+    } else {
+      return <FiCloud className="weather-icon" />;
+    }
+  };
+
   const fetchWeather = () => {
     setLoading(true);
+    setRefreshing(true);
     navigator.geolocation.getCurrentPosition(async (position) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
@@ -90,12 +109,14 @@ const DailyWeather = () => {
         console.error("Error fetching weather:", err);
       } finally {
         setLoading(false);
+        setRefreshing(false);
       }
     });
   };
   const apiUrl = import.meta.env.VITE_BACKEND_URL
   const fetchClothes = async () => {
     setLoading(true);
+    setRefreshing(true);
     try {
       const response = await fetch(`${apiUrl}/user/images`, {
         method: "GET",
@@ -157,13 +178,19 @@ const DailyWeather = () => {
     fetchClothes();
   }, []);
   const copyToClipboard = (text) => {
+    if (!text) return;
+    
     navigator.clipboard.writeText(text).then(() => {
-      setCopiedIndex(0); // Only one block to copy, use 0 or any identifier
+      setCopiedIndex(0);
       setTimeout(() => setCopiedIndex(null), 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
     });
   };
   const copytoprofile = () => {
-    console.log("clicked");
+    if (!suggestionMain) return;
+    
+    setLoading(true);
     fetch(`${apiUrl}/user/copytoprofileweekcloths`, {
       method: "POST",
       credentials: "include",
@@ -173,59 +200,116 @@ const DailyWeather = () => {
       body: JSON.stringify({ clothesforweek: suggestionMain }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.error("Error saving to profile:", err));
+      .then((data) => {
+        console.log(data);
+        alert("Outfits saved to your profile successfully!");
+      })
+      .catch((err) => {
+        console.error("Error saving to profile:", err);
+        alert("Failed to save outfits to profile. Please try again.");
+      })
+      .finally(() => setLoading(false));
   };
   
   return (
     <div className="planner-container">
-      <div className="toggleContainer">
-        <p>Weather and location based recommendation: {isOn ? "On" : "Off"}</p>
-        <label className="toggle">
-          <input type="checkbox" checked={isOn} onChange={handleChange} />
-          <span className="slider"></span>
-        </label>
-        <h3>Get outfit suggestion from clothes you uploaded for a week.</h3>
-        <textarea
-          type="text"
-          placeholder="Enter events you might attend this week"
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <br />
-        <button onClick={getSuggestionForWeek} disabled={loading}>
-          {loading ? "Generating..." : "Get recommendation"}
-        </button>
-        <br />
+      <div className="planner-header">
+        <h2>Weekly Outfit Planner</h2>
+        <div className="refresh-btn" onClick={() => {
+          fetchWeather();
+          fetchClothes();
+        }} title="Refresh data">
+          <FiRefreshCw className={refreshing ? "refreshing" : ""} />
+        </div>
       </div>
 
-      <div className="recommendation">
-        {loading ? (
-          <p>Loading data...</p>
-        ) : suggestionMain ? (
-          <p>{suggestionMain}</p>
-        ) : (
-          <p>
-            Enter the week task and click get recommendation button to get
-            outfits.
-          </p>
-        )}
+      <div className="planner-content">
+        <div className="toggleContainer">
+          <div className="toggle-section">
+            <p>Weather-based recommendations</p>
+            <label className="toggle">
+              <input type="checkbox" checked={isOn} onChange={handleChange} />
+              <span className="slider"></span>
+            </label>
+            <span className="toggle-status">{isOn ? "On" : "Off"}</span>
+          </div>
+          
+          {weatherSummaries && weatherSummaries.length > 0 && (
+            <div className="weather-preview">
+              <h3>This Week's Weather</h3>
+              <div className="weather-cards">
+                {weatherSummaries.slice(0, 5).map((day, index) => (
+                  <div key={index} className="weather-day-card">
+                    <div className="weather-day">{new Date(day.date).toLocaleDateString('en-US', {weekday: 'short'})}</div>
+                    <div className="weather-icon-container">
+                      {getWeatherIcon(day.weather)}
+                    </div>
+                    <div className="weather-temp">{day.temp}°C</div>
+                    <div className="weather-desc">{day.weather}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          <div className="input-section">
+            <h3>Plan Your Week</h3>
+            <textarea
+              value={input}
+              placeholder="Enter events you might attend this week (e.g., office meetings, dinner date, casual outing)"
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <button 
+              className="generate-btn" 
+              onClick={getSuggestionForWeek} 
+              disabled={loading || !clothes || !clothes.length}
+            >
+              {loading ? "Generating..." : "Get Outfit Recommendations"}
+            </button>
+          </div>
+        </div>
 
-        <br />
-        <br />
-        <br />
+        <div className="recommendation">
+          <h3>Your Weekly Outfit Plan</h3>
+          <div className="recommendation-content">
+            {loading ? (
+              <div className="loading-container">
+                <div className="loading-spinner"></div>
+                <p>Creating your personalized outfit plan...</p>
+              </div>
+            ) : suggestionMain ? (
+              <div className="suggestion-result">
+                <p>{suggestionMain}</p>
+              </div>
+            ) : (
+              <div className="empty-state">
+                <p>
+                  Enter your weekly events and click the button to get personalized outfit recommendations
+                  based on your wardrobe and the weather forecast.
+                </p>
+              </div>
+            )}
+          </div>
 
-        <div className="buttonsdiv">
-          <button disabled={!suggestionMain} onClick={copytoprofile}>
-            {/* Like these outfits <br /> */}
-            Copy to profile?
-          </button>
+          {suggestionMain && (
+            <div className="action-buttons">
+              <button 
+                className="save-btn" 
+                disabled={!suggestionMain || loading} 
+                onClick={copytoprofile}
+              >
+                <FiSave /> Save to Profile
+              </button>
 
-          <button
-            onClick={() => copyToClipboard(suggestionMain)}
-            disabled={!suggestionMain}
-          >
-            {copiedIndex === 0 ? "Copied!" : "Copy outfits"}
-          </button>
+              <button
+                className="copy-btn"
+                onClick={() => copyToClipboard(suggestionMain)}
+                disabled={!suggestionMain || loading}
+              >
+                <FiCopy /> {copiedIndex === 0 ? "Copied!" : "Copy to Clipboard"}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

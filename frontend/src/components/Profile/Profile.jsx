@@ -26,6 +26,7 @@ const Profile = () => {
   const [wardrobeImages, setWardrobeImages] = useState([]);
   const [imageFile, setImageFile] = useState(null);
   const [imageName, setImageName] = useState("No file chosen");
+  const [imagePreview, setImagePreview] = useState(null);
   const [zoomedImage, setZoomedImage] = useState(null);
   const [isScanning, setIsScanning] = useState(false);
   const [sharecloths, setshare] = useState("");
@@ -89,6 +90,15 @@ const Profile = () => {
     if (file) {
       setImageFile(file);
       setImageName(file.name);
+      
+      // Create image preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
     }
   };
 
@@ -442,9 +452,7 @@ console.log("done ")
                 {/* <button className="action-button" onClick={navigateToWishlist}>
                   <FaHeart /> Wishlist
                 </button> */}
-                <button className="action-button logout-button" onClick={LogOut}>
-                  <FaSignOutAlt /> Log Out
-                </button>
+                
               </div>
             </div>
           )}
@@ -458,23 +466,67 @@ console.log("done ")
               </p>
 
               <form onSubmit={handleImageUpload} className="upload-form">
-                <div className="file-input-container">
-                  
-                  <span className="file-name">{imageName}</span>
-                  <input
-                    type="file"
+                <div className="upload-content">
+                  <div className="upload-left">
+                    <div className="file-input-container">
+                      <label className="file-upload-label">
+                        <span className="upload-icon">👕</span>
+                        <span className="upload-text">Select Clothing Item</span>
+                        <input
+                          type="file"
+                          className="file-input"
+                          accept="image/*"
+                          onChange={handleImageChange}
+                          id="clothing-upload"
+                        />
+                      </label>
+                      {imageName && <div className="file-name">Selected: {imageName}</div>}
+                    </div>
                     
-                    accept="image/*"
-                    onChange={handleImageChange}
-                  />
+                    <div className="upload-instructions">
+                      <h4>Tips for best results:</h4>
+                      <ul>
+                        <li>Use clear, well-lit photos</li>
+                        <li>Capture the entire clothing item</li>
+                        <li>Use a neutral background if possible</li>
+                      </ul>
+                    </div>
+                    
+                    <button
+                      type="submit"
+                      className="upload-button"
+                      disabled={isScanning || !imageFile}
+                    >
+                      {isScanning ? (
+                        <>
+                          <span className="processing-spinner"></span>
+                          <span>Processing...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="upload-icon-btn">🔍</span>
+                          <span>Upload & Analyze</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  
+                  <div className="upload-right">
+                    {imagePreview ? (
+                      <div className="image-preview-container">
+                        <h4>Preview</h4>
+                        <div className="image-preview">
+                          <img src={imagePreview} alt="Preview" />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="no-preview">
+                        <div className="no-preview-icon">🖼️</div>
+                        <p>Image preview will appear here</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <button
-                  type="submit"
-                  className="upload-button"
-                  disabled={isScanning || !imageFile}
-                >
-                  {isScanning ? "Processing..." : "Upload & Analyze"}
-                </button>
               </form>
 
               {isScanning && (
