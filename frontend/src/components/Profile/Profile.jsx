@@ -437,9 +437,9 @@ const Profile = () => {
                 <button className="action-button" onClick={handleNav}>
                   <FaStore /> Sell Clothes
                 </button>
-                <button className="action-button" onClick={navigateToWishlist}>
+                {/* <button className="action-button" onClick={navigateToWishlist}>
                   <FaHeart /> Wishlist
-                </button>
+                </button> */}
                 <button className="action-button logout-button" onClick={LogOut}>
                   <FaSignOutAlt /> Log Out
                 </button>
