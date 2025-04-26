@@ -2,7 +2,8 @@ import { OpenAI } from "openai";
 import express from "express";
 import Sharecloth from "../model/Sharecloths.js";
 import { v2 as cloudinary } from "cloudinary";
-
+import dotenv from 'dotenv'
+dotenv.config()
 const nebiusClient = new OpenAI({
   baseURL: "https://api.studio.nebius.com/v1/",
   apiKey: process.env.NEBIUS_API_KEY,
