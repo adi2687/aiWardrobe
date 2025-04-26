@@ -1,11 +1,11 @@
 import express from 'express';
 import multer from 'multer';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-
+import dotenv from 'dotenv'
+dotenv.config()
 const router = express.Router();  // Create a new router instance
 const upload = multer();  // Initialize multer for handling image uploads
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-
+const genAI = new GoogleGenerativeAI("AIzaSyCvp8svujinl7xbwemSZ-2ay0V2INaBV1E");
 // Prompt for the AI model
 const inputPrompt = `
 List all the clothing items visible in this image.
@@ -40,7 +40,7 @@ router.post("/classify", upload.single("images"), async (req, res) => {
   if (!file) {
     return res.status(400).json({ error: "No image uploaded" });
   }
-
+console.log("here ub te clasifuicaiton")
   try {
     // Get the generative model
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
