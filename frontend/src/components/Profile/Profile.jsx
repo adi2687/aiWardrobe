@@ -460,13 +460,14 @@ const Profile = () => {
                   {/* <label htmlFor="image-upload-input" className="file-label">
                     <FaUpload /> Choose File
                   </label> */}
-                  {/* <span className="file-name">{imageName}</span> */}
+                  <span className="file-name">{imageName}</span>
                   <input
                     type="file"
                     id="image-upload-input"
                     accept="image/*"
                     onChange={handleImageChange}
                     className="file-input"
+                    style={{display:"block"}}
                   />
                 </div>
                 <button
