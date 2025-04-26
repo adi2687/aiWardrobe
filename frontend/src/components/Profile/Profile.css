@@ -61,6 +61,23 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.profile-container .logout-button {
+  margin-top: auto;
+  background: linear-gradient(135deg, #ff4757, #ff6b81);
+  color: white;
+  border-left: none;
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.profile-container .logout-button:hover {
+  background: linear-gradient(135deg, #ff6b81, #ff4757);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .profile-container .tab-button svg {
   font-size: 1.2rem;
 }

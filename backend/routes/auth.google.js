@@ -84,7 +84,12 @@ router.get(
       { expiresIn: "24h" }
     );
 
-    res.cookie("tokenlogin", token, { httpOnly: true, secure: process.env.NODE_ENV === "production" });
+    res.cookie("tokenlogin", token, { 
+      httpOnly: true, 
+      secure: process.env.NODE_ENV === "production", 
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined
+    });
     res.redirect(`${frontendUrl}/profile`);
   }
 );
