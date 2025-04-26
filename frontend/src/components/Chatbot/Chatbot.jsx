@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Chatbot.css";
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
+  // Initialize with some test messages to demonstrate scrolling
+  const [messages, setMessages] = useState([
+    { sender: "bot", text: "Hello! I'm your fashion assistant. How can I help you today?" },
+    { sender: "user", text: "I need help with an outfit for a wedding" },
+    { sender: "bot", text: "Great! I'd be happy to help you find the perfect outfit for a wedding. Could you tell me a bit more about the wedding? Is it formal, semi-formal, or casual? And are you attending as a guest, part of the wedding party, or something else?" },
+    { sender: "user", text: "It's a formal evening wedding and I'm a guest" },
+    { sender: "bot", text: "Perfect! For a formal evening wedding as a guest, you have several elegant options. Based on your wardrobe, I recommend wearing your navy blue suit with a crisp white shirt and your burgundy tie. Complete the look with your black Oxford shoes and silver cufflinks for a sophisticated appearance. Would you like me to suggest alternative options?" },
+  ]);
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const [userClothes, setUserClothes] = useState([]);
+  const messagesEndRef = useRef(null);
 
   const userCloths = () => {
     fetch(`${apiUrl}/user/images`, {
@@ -24,9 +32,18 @@ const Chatbot = () => {
         console.error("Error:", error);
       });
   };
-  useEffect(()=>{
-    userCloths()
-  },[])
+  useEffect(() => {
+    userCloths();
+  }, []);
+  
+  // Scroll to bottom of messages container when new messages are added
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
   const getOutfitSuggestion = async (input) => {
     try {
       setIsLoading(true);
@@ -80,6 +97,8 @@ const Chatbot = () => {
           </div>
         ))}
         {isLoading && <div className="message bot">Loading...</div>}
+        {/* Empty div for scrolling to bottom */}
+        <div ref={messagesEndRef} />
       </div>
       <form onSubmit={handleSend} className="input-container">
         <input

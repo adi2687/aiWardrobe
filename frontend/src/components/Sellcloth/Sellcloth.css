@@ -1,242 +1,612 @@
-.sellclothcontainer * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  .sellclothcontainer {
-    padding: 40px;
-    background: linear-gradient(135deg, #e0eafc, #cfdef3);
-    min-height: 100vh;
-  }
-  
-  .sellclothcontainer h1, .sellclothcontainer h2 {
-    margin-bottom: 20px;
-    color: #2c3e50;
-    font-size: 28px;
-  }
-  
-  .sellclothcontainer form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sellclothcontainer input, .sellclothcontainer button {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
-  .sellclothcontainer button {
-    background: linear-gradient(135deg, #4CAF50, #66bb6a);
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  .sellclothcontainer button:hover {
-    background: linear-gradient(135deg, #66bb6a, #4CAF50);
-  }
-  
-  .sellclothcontainer .sellclothlist, .sellclothcontainer ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .sellclothcontainer li {
-    list-style-type: none;
-    background: #ffffff;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    width: 220px;
-    transition: 0.3s;
-  }
-  
-  .sellclothcontainer li:hover {
-    transform: scale(1.05);
-  }
-  
-  .sellclothcontainer img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  .sellclothcontainer p {
-    margin-top: 10px;
-    color: #555;
-    font-size: 14px;
-  }
-  .sellclothlist .price{
-    font-size: 30px;
-  }
-    .allcloths .pricecloth  {
-    font-size: 40px;
-  }
-.allcloths h4{
-    font-size: 12px;
+/* Sellcloth Component - Dark Theme Styles */
+:root {
+  --primary-color: #6c5ce7;
+  --primary-hover: #5649c0;
+  --secondary-color: #1e1e1e;
+  --text-color: #f5f6fa;
+  --text-light: #a0a0a0;
+  --background-color: #121212;
+  --card-bg: #1e1e1e;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s ease;
+  --accent-color: #fd79a8;
+  --error-color: #ff4757;
+  --success-color: #2ed573;
 }
-  .allcloths button{
-padding:10px;
-  } 
-  .allcloths ul li{
-    cursor: pointer;
-  }
-.sellclothlist .soldbutton{padding: 10px;display: flex;margin-left: auto;
-margin-top:auto}
+
+.sellclothcontainer * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.sellclothcontainer {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  min-height: calc(100vh - 200px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+}
+  
+.sellclothcontainer h1, .sellclothcontainer h2 {
+  margin-bottom: 20px;
+  color: var(--text-color);
+  font-size: 26px;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+  
+.sellclothcontainer h1:after, .sellclothcontainer h2:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 3px;
+}
+  
+.sell-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+  
+.header-icon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+  
+.sell-subtitle {
+  color: var(--text-light);
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+  
+.section-icon {
+  font-size: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+  
+.section-subtitle {
+  color: #a0a9b8;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+  
+.section-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 30px 0;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
+.upload-section {
+  margin-bottom: 20px;
+}
+  
+/* Compact Form Styles */
 .sellclothcontainer form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width:80%;
-  margin: auto;
-  padding: 2rem;
-  /* background-color: #111; */
-  border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-  /* min-width:60%; */
-
-  /* margin-right: -30%; */
-  /* border:2px solid red; */
-  position: relative;
-  left:10%
+  gap: 15px;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-.sellclothcontainer input[type="file"],
-input[type="text"],
-input[type="number"] {
-  background-color: #333;
-  color: white;
-  border: 1px solid #333;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  transition: border 0.3s ease;
-}
-
-input[type="file"]::file-selector-button {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  border:2px solid grey
-}
-
-input[type="file"]::file-selector-button:hover {
-  background-color: #555;
-
-}
-
-input:focus {
-  border-color: #fff;
-  outline: none;
-}
-
-.sellclothcontainer button[type="submit"] {
-  background-color: white;
-  color: black;
-  padding: 0.75rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.sellclothcontainer button[type="submit"]:hover {
-  background-color: #e6e6e6;
-}
-.sellclothcontainer {
-  font-size: 120px;
-  /* border:2px solid red; */
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.sellclothcontainer form{
-  width:100%;
-  display: flex;
-  justify-content: center;
-  margin-right:40%;
-  margin:10px;
-}
-@media  (max-width:769px) {
-  .sellclothcontainer form{
-/* border:2px solid red; */
-min-width:100%;
-margin-left:-10%
-}
-}
-.sellclothcontainer .upload-btn {
-  padding: 10px 20px;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.dots {
-  display: flex;
-}
-
-.dot {
-  width: 6px;
-  height: 6px;
-  margin: 0 2px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 50%;
-  animation: bounce 0.6s infinite alternate;
-}
-
-.dot:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.dot:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes bounce {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-4px);
-  }
-}
-@media (max-width:768px){
-  .sellclothcontainer .upload-btn {
-    padding: 10px 20px;
-  }
-  .sellclothlist{
-    margin:30px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    min-width: 100%;
-    margin-left:auto
-  }
-  .sellclothlist li{
-    width: 160px;
-  }
   
-  .allcloths li{
-    max-width: 163px;
+.file-upload-container {
+  position: relative;
+  margin-bottom: 5px;
+  height: 200px;
+}
+  
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 2px dashed rgba(108, 92, 231, 0.4);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  top:54%;
+}
+  
+.file-upload-label:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(108, 92, 231, 0.1);
+}
+  
+.file-upload-label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+  
+.file-upload-label:hover::before {
+  transform: translateX(100%);
+}
+  
+.upload-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  filter: drop-shadow(0 0 8px rgba(108, 92, 231, 0.5));
+}
+
+.upload-hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-light);
+}
+  
+.file-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+  
+.file-selected {
+  margin-top: 10px;
+  color: var(--primary-color);
+  font-weight: 500;
+  background-color: rgba(108, 92, 231, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
+  animation: fadeIn 0.3s ease;
+  font-size: 12px;
+}
+
+/* Image Preview Styles */
+.image-preview-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  transition: transform 0.3s ease;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 2;
+  font-size: 14px;
+}
+
+.remove-image-btn:hover {
+  background-color: var(--error-color);
+  transform: scale(1.1);
+}
+  
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+  
+.input-group {
+  position: relative;
+  width: 100%;
+}
+  
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  font-size: 16px;
+  filter: drop-shadow(0 0 3px rgba(108, 92, 231, 0.3));
+}
+  
+.text-input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  transition: var(--transition);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+}
+  
+.text-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3);
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+  
+.upload-btn {
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition);
+  padding: 12px;
+  border-radius: var(--border-radius);
+  border: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 5px;
+}
+  
+.upload-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+  
+.upload-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+  
+.upload-btn:hover::before {
+  transform: translateX(100%);
+}
+  
+.upload-btn:active {
+  transform: translateY(0);
+}
+  
+.btn-icon {
+  font-size: 16px;
+}
+  
+.uploading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+  
+.upload-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+}
+  
+.your-clothes-section, .marketplace-section {
+  margin-bottom: 30px;
+}
+  
+.sellclothlist ul, .marketplace-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  justify-content: center;
+}
+  
+.item-card {
+  list-style-type: none;
+  background: var(--card-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: var(--transition);
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+  
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+  
+.item-image-container {
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+  
+.item-image-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  pointer-events: none;
+}
+  
+.item-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+  
+.item-card:hover img {
+  transform: scale(1.05);
+}
+  
+.item-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 8px;
+}
+  
+.item-details h3 {
+  font-size: 12px;
+  color: #a0a9b8;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+  
+.item-details p {
+  color: #e6e6e6;
+  font-size: 14px;
+  margin: 0;
+}
+  
+.item-price p {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
+}
+  
+.marketplace-price p {
+  font-size: 18px;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+  
+.sold-button, .message-button {
+  margin-top: auto;
+  padding: 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  font-size: 13px;
+}
+  
+.sold-button::before, .message-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+  
+.sold-button:hover::before, .message-button:hover::before {
+  transform: translateX(100%);
+}
+  
+.sold-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+  
+.sold-button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+  
+.message-button {
+  background-color: var(--accent-color);
+  color: white;
+}
+  
+.message-button:hover {
+  background-color: #e84393;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+  
+.button-icon {
+  font-size: 14px;
+}
+  
+/* Upload button disabled state */
+.upload-btn:disabled {
+  background-color: var(--primary-hover);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.upload-btn:disabled:hover {
+  transform: translateY(0);
+  box-shadow: var(--box-shadow);
+}
+  
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+  
+.loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 10px;
+  box-shadow: 0 0 15px rgba(108, 92, 231, 0.3);
+}
+  
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+  
+.empty-state {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  margin: 20px auto;
+  max-width: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--box-shadow);
+  animation: fadeIn 0.5s ease;
+}
+  
+.empty-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+  
+.empty-state p {
+  font-size: 16px;
+  color: #e6e6e6;
+  margin-bottom: 8px;
+}
+  
+.empty-subtitle {
+  font-size: 13px !important;
+  color: #a0a9b8 !important;
+}
+  
+@media (max-width: 768px) {
+  .sellclothcontainer {
+    padding: 15px;
+    margin: 20px auto;
+  }
+    
+  .sellclothcontainer form {
+    padding: 15px;
+    max-width: 100%;
+  }
+    
+  .upload-btn {
+    padding: 10px;
+  }
+    
+  .item-card {
+    width: 100%;
+    max-width: 280px;
+  }
+    
+  .sellclothlist ul, .marketplace-grid {
+    gap: 15px;
+  }
+    
+  .file-upload-label {
+    padding: 15px;
+  }
+    
+  .text-input {
+    padding: 10px 10px 10px 35px;
+  }
+    
+  .input-icon {
+    font-size: 14px;
+    left: 10px;
+  }
+    
+  .item-image-container {
+    height: 200px;
+  }
+    
+  .item-details {
+    padding: 12px;
+  }
+    
+  .upload-icon {
+    font-size: 28px;
+  }
+
+  .file-upload-container,
+  .image-preview-container {
+    height: 180px;
   }
 }

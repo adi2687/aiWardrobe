@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Sellcloth.css";
 import { useNavigate } from "react-router-dom";
+import { FaUpload, FaCheckCircle, FaTimesCircle, FaShoppingBag, FaTag, FaMoneyBillWave, FaCommentAlt } from "react-icons/fa";
 
 const Sellcloth = () => {
   const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [description, setDescription] = useState("");
   const [cloth, setCloth] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -48,6 +50,7 @@ const Sellcloth = () => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
       setImageFile(file);
+      setImagePreview(URL.createObjectURL(file));
     } else {
       alert("Please select a valid image file");
     }
@@ -85,6 +88,7 @@ const Sellcloth = () => {
       if (response.ok) {
         // alert("Cloth listed for sale successfully");
         setImageFile(null);
+        setImagePreview(null);
         setDescription("");
         setPrice("");
         setuploading(false);
@@ -120,126 +124,184 @@ const Sellcloth = () => {
 
   return (
     <div className="sellclothcontainer">
-      <h1>Sell Your Clothes</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="file"
-          id="image-input"
-          onChange={handleImageChange}
-          accept="image/*"
-        />
-        <input
-          type="text"
-          value={description}
-          onChange={handleDescriptionChange}
-          placeholder="Describe your cloth"
-        />
-        <input
-          type="number"
-          value={price}
-          onChange={handlepricechange}
-          placeholder="Enter price"
-        />
-        <button type="submit" className="upload-btn">
-          {uploading ? (
-            <div style={{ display: "flex", alignItems: "center",color:"white" }}>
-              <h3 style={{ marginRight: "8px" }}>Uploading</h3>
-              <div className="dots">
-                <span className="dot" />
-                <span className="dot" />
-                <span className="dot" />
-              </div>
-            </div>
-          ) : (
-            <h3 style={{color:"white"}}>Upload</h3>
-          )}
-        </button>
-      </form>
-      <h2>Your Clothes</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : clothuser.length ? (
-        <div className="sellclothlist">
-          <ul> 
-            {clothuser.map((item, index) => (
-              <li key={index}>
-                <img src={`${item.clothImage}`} alt="Cloth" width="100" />
-                <p>
-                  <h3>Prodcut description</h3>{item.description}</p>
-                <p>
-                  <h3>Product seller</h3>{item.username}</p>
-                <p className="price">
-                  <h4 style={{fontSize:"18px"}}>Product price</h4>{item.price}</p>
-                  {/* <br /> */}
-                <button
-                  className="soldbutton"
-                  onClick={() => sold(item._id)}
-                >
-                  Sold?
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p
-          style={{
-            fontSize: "26px",
-            display: "flex",
-            justifyContent: "center",
-            margin: "20px",
-          }}
-        >
-          No clothes uploaded yet
-        </p>
-      )}
-      <h2>Available Clothes</h2>
-      <div className="allcloths">
-        {loading ? (
-          <p>Loading clothes...</p>
-        ) : (
-          <ul>
-            {clothall.length > 0 ? (
-              clothall.map((item, index) => (
-                <li key={index}>
-                  <img
-                    src={`${item.clothImage}`}
-                    alt="Cloth"
-                    width="100"
-                  />
-                  <p>
-                    <h4>Product description:</h4>
-                    {item.description}
-                  </p>
-                  <p>
-                    <h4>Product seller</h4>
-                    {item.username}
-                  </p>
-                  <p className="pricecloth">
-                    <h4>Product price</h4>₹ {item.price}
-                  </p>
-                  <button onClick={() => messageuser(item.username, item._id)}>
-                    Message {item.username}
-                  </button>
-                </li>
-              ))
+      <div className="sell-header">
+        <h1><FaShoppingBag className="header-icon" /> Sell Your Clothes</h1>
+        <p className="sell-subtitle">List your unused clothes and earn money</p>
+      </div>
+      
+      <div className="upload-section">
+        <form onSubmit={handleSubmit}>
+          <div className="file-upload-container">
+            {!imagePreview ? (
+              <label htmlFor="image-input" className="file-upload-label">
+                <FaUpload className="upload-icon" />
+                <span>Upload Image</span>
+                <span className="upload-hint">Click to select a photo of your item</span>
+              </label>
             ) : (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: "20px",
-                  width: "100%",
-                }}
-              >
-                <p style={{ fontSize: "26px" }}>
-                  No clothes available for sale
-                </p>
+              <div className="image-preview-container">
+                <img src={imagePreview} alt="Preview" className="image-preview" />
+                <button 
+                  type="button" 
+                  className="remove-image-btn"
+                  onClick={() => {
+                    setImageFile(null);
+                    setImagePreview(null);
+                  }}
+                >
+                  <FaTimesCircle />
+                </button>
               </div>
             )}
-          </ul>
+            <input
+              type="file"
+              id="image-input"
+              onChange={handleImageChange}
+              accept="image/*"
+              className="file-input"
+            />
+          </div>
+          
+          <div className="input-group">
+            <FaTag className="input-icon" />
+            <input
+              type="text"
+              value={description}
+              onChange={handleDescriptionChange}
+              placeholder="Describe your item (brand, condition, size, etc.)"
+              className="text-input"
+            />
+          </div>
+          
+          <div className="input-group">
+            <FaMoneyBillWave className="input-icon" />
+            <input
+              type="number"
+              value={price}
+              onChange={handlepricechange}
+              placeholder="Enter price (₹)"
+              className="text-input"
+            />
+          </div>
+          
+          <button type="submit" className="upload-btn" disabled={uploading}>
+            {uploading ? (
+              <div className="uploading-container">
+                <div className="upload-spinner"></div>
+                <span>Uploading...</span>
+              </div>
+            ) : (
+              <>
+                <FaUpload className="btn-icon" />
+                <span>List for Sale</span>
+              </>
+            )}
+          </button>
+        </form>
+      </div>
+
+      <div className="section-divider"></div>
+      
+      <div className="your-clothes-section">
+        <h2><span className="section-icon">👕</span> Your Listed Items</h2>
+        {loading ? (
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Loading your items...</p>
+          </div>
+        ) : clothuser.length ? (
+          <div className="sellclothlist">
+            <ul>
+              {clothuser.map((item, index) => (
+                <li key={index} className="item-card your-item">
+                  <div className="item-image-container">
+                    <img src={`${item.clothImage}`} alt="Clothing item" />
+                  </div>
+                  <div className="item-details">
+                    <div className="item-description">
+                      <h3>Description</h3>
+                      <p>{item.description}</p>
+                    </div>
+                    <div className="item-seller">
+                      <h3>Seller</h3>
+                      <p>{item.username}</p>
+                    </div>
+                    <div className="item-price">
+                      <h3>Price</h3>
+                      <p>₹ {item.price}</p>
+                    </div>
+                    <button
+                      className="sold-button"
+                      onClick={() => sold(item._id)}
+                    >
+                      <FaCheckCircle className="button-icon" /> Mark as Sold
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div className="empty-state">
+            <div className="empty-icon">📦</div>
+            <p>You haven't listed any clothes for sale yet</p>
+            <p className="empty-subtitle">Upload your first item using the form above</p>
+          </div>
         )}
+      </div>
+      
+      <div className="section-divider"></div>
+      
+      <div className="marketplace-section">
+        <h2><span className="section-icon">🛍️</span> Marketplace</h2>
+        <p className="section-subtitle">Browse items from other sellers</p>
+        
+        <div className="allcloths">
+          {loading ? (
+            <div className="loading-container">
+              <div className="loading-spinner"></div>
+              <p>Loading marketplace items...</p>
+            </div>
+          ) : (
+            <ul className="marketplace-grid">
+              {clothall.length > 0 ? (
+                clothall.map((item, index) => (
+                  <li key={index} className="item-card marketplace-item">
+                    <div className="item-image-container">
+                      <img src={`${item.clothImage}`} alt="Clothing item" />
+                    </div>
+                    <div className="item-details">
+                      <div className="item-description">
+                        <h3>Description</h3>
+                        <p>{item.description}</p>
+                      </div>
+                      <div className="item-seller">
+                        <h3>Seller</h3>
+                        <p>{item.username}</p>
+                      </div>
+                      <div className="item-price marketplace-price">
+                        <h3>Price</h3>
+                        <p>₹ {item.price}</p>
+                      </div>
+                      <button 
+                        className="message-button"
+                        onClick={() => messageuser(item.username, item._id)}
+                      >
+                        <FaCommentAlt className="button-icon" /> Message Seller
+                      </button>
+                    </div>
+                  </li>
+                ))
+              ) : (
+                <div className="empty-state">
+                  <div className="empty-icon">🏪</div>
+                  <p>No items available in the marketplace</p>
+                  <p className="empty-subtitle">Be the first to list your items for sale!</p>
+                </div>
+              )}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );
