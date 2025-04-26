@@ -46,7 +46,9 @@ router.post("/logout", (req, res) => {
   res.clearCookie("tokenlogin", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
+    path: "/"
   });
 
   res.status(200).json({ message: "Logout successful" });
