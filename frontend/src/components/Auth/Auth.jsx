@@ -155,41 +155,34 @@ const Auth = () => {
           <form onSubmit={!toggle ? handleLogin : handleSignup}>
             {toggle && (
               <div className="form-group">
-                <label htmlFor="username">
-                  <FaUser className="input-icon" />
-                  <span>Username</span>
-                </label>
+                    
                 <input
                   id="username"
                   type="text"
                   placeholder="Enter your username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  style={{width:"92%"}}
                   required
                 />
               </div>
             )}
 
             <div className="form-group">
-              <label htmlFor="email">
-                <FaEnvelope className="input-icon" />
-                <span>Email</span>
-              </label>
+              
               <input
                 id="email"
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{width:"92%"}}
                 required
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">
-                <FaLock className="input-icon" />
-                <span>Password</span>
-              </label>
+             
               <div className="password-input-container">
                 <input
                   id="password"
