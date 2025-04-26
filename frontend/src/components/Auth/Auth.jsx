@@ -124,9 +124,9 @@ const Auth = () => {
     window.location.href = `${apiUrl}/google/login`;
   };
 
-  const loginWithFacebook = () => {
-    console.log("Facebook login clicked");
-    // Implement Facebook login functionality
+  const loginWithFacebook = async (e) => {
+    e.preventDefault();
+    window.location.href = `${apiUrl}/facebook/login`;
   };
 
   const togglePasswordVisibility = () => {

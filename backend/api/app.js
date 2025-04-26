@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 import UserRoutes from '../routes/user_routes.js';
 import AuthRoutes from '../routes/auth_routes.js';
 import GoogleLoginRoutes from '../routes/auth.google.js';
-// import facebookRoutes from '../routes/auth.facebook.js'
+import facebookRoutes from '../routes/auth.facebook.js'
 import ShopRoutes from '../routes/shop.routes.js';
 import Chatbot from '../routes/chat.js';
 import ShareRoutes from '../routes/share.js'
@@ -74,7 +74,7 @@ app.use("/google", GoogleLoginRoutes);
 app.use("/shop", ShopRoutes);
 app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)
-// app.use("/auth/facebook",facebookRoutes)
+app.use("/facebook",facebookRoutes)
 app.get("/", (req, res) => {
   res.send("This is the main page");
 });
