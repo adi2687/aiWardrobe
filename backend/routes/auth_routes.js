@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import jwt from 'jsonwebtoken';
 import User from '../model/user.js'
+console.log(process.env.PORT)
 // router.get("/login",async (req,res)=>{
 // console.log(req.cookies.tokenlogin)
 // const tokenlogin = req.cookies.tokenlogin 
