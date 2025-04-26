@@ -104,7 +104,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Contact
 
-For any inquiries, please reach out to us at [adityakurani@gmail.com]
+For any inquiries, please reach out to us at [adityakurani26@gmail.com]
 
 ---
 
