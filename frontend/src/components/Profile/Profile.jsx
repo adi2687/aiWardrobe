@@ -72,14 +72,21 @@ const Profile = () => {
 
   const LogOut = async () => {
     try {
-      await fetch(`${apiUrl}/user/logout`, {
+      const response = await fetch(`${apiUrl}/user/logout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
-      console.log("cliekd")
-      // navigate("/");
-      window.location.storage="../"
+      
+      if (response.ok) {
+        console.log("Logout successful");
+        // Clear any local storage items if needed
+        localStorage.removeItem("user");
+        // Redirect to home page
+        window.location.href = "/";
+      } else {
+        console.log("Logout failed");
+      }
     } catch (error) {
       console.log("Couldn't logout", error);
     }
@@ -395,6 +402,12 @@ console.log("done ")
             onClick={() => setActiveTab('settings')}
           >
             <FaEdit /> Settings
+          </button>
+          <button 
+            className="tab-button logout-button"
+            onClick={LogOut}
+          >
+            <FaSignOutAlt /> Logout
           </button>
         </div>
 
