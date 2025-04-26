@@ -122,12 +122,12 @@ const Profile = () => {
         showNotification("Upload failed. Please try again.");
         return;
       }
-
+console.log("done ")
       // Set image in wardrobe state
       setWardrobeImages((prev) => [...prev, uploadData.imageUrl]);
       setImageFile(null);
       setImageName("No file chosen");
-      document.getElementById("image-upload-input").value = "";
+      // document.getElementById("image-upload-input").value = "";
 
       // Send to classify
       const classifyForm = new FormData();
@@ -461,9 +461,9 @@ const Profile = () => {
                   <span className="file-name">{imageName}</span>
                   <input
                     type="file"
+                    
                     accept="image/*"
                     onChange={handleImageChange}
-                    // className="file-input"
                   />
                 </div>
                 <button
