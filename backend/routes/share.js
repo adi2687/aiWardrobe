@@ -4,7 +4,8 @@ import Share from "../model/Sharecloths.js";
 import User from '../model/user.js'
 const router = express.Router();
 import jwt from "jsonwebtoken"
-
+import dotenv from 'dotenv'
+dotenv.config()
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
   

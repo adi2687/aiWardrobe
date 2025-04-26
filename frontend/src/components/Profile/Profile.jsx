@@ -76,7 +76,9 @@ const Profile = () => {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
-      navigate("/");
+      console.log("cliekd")
+      // navigate("/");
+      window.location.storage="../"
     } catch (error) {
       console.log("Couldn't logout", error);
     }
