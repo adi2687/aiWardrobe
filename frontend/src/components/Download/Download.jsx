@@ -11,6 +11,7 @@ import appImage6 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.58_e7a26521
 import appImage7 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.58_f7e8a2aa.jpg';
 import appImage8 from '/AppImages/WhatsApp Image 2025-04-25 at 15.31.59_e2c86a34.jpg';
 import appImage9 from '/AppImages/WhatsApp Image 2025-04-25 at 15.42.42_727e0789.jpg';
+import qr from '/qr_code.jpg'
 
 const Download = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -102,7 +103,7 @@ const Download = () => {
         
         <div className="qr-section">
           <div className="qr-code">
-            <img src="/public/qr_code.jpg" alt="qrcode" />
+            <img src={qr} alt="qrcode" />
             <p>Scan to download</p>
           </div>
         </div>

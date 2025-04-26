@@ -227,9 +227,91 @@
   padding: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-.file-input-container input{
-  display: block;
-  border:2px solid green
+.upload-form {
+  width: 100%;
+}
+
+.upload-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.upload-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.upload-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.file-input-container {
+  margin-bottom: 20px;
+}
+
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.file-upload-label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.file-upload-label:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.file-upload-label:hover::before {
+  left: 100%;
+}
+
+.file-upload-label:active {
+  transform: translateY(0);
+}
+
+.file-input-container input[type="file"] {
+  display: none;
+}
+
+.upload-icon {
+  font-size: 1.8rem;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.upload-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
 .profile-container .file-label {
@@ -245,42 +327,203 @@
 }
 
 .profile-container .file-label:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
+  background-color: #45a049;
 }
 
 .profile-container .file-name {
-  margin-left: 1rem;
-  font-size: 0.9rem;
-  color: #aaa;
+  margin-top: 10px;
+  display: block;
+  font-size: 14px;
+  color: #bbb;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.image-preview-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-preview-container h4, .upload-instructions h4 {
+  margin-bottom: 15px;
+  color: #eee;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.image-preview-container h4::after, .upload-instructions h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  border-radius: 3px;
+}
+
+.image-preview {
+  width: 100%;
+  height: 350px;
+  margin: 0 auto;
+  border-radius: 12px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   flex: 1;
 }
 
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.image-preview:hover img {
+  transform: scale(1.02);
+}
 
 .profile-container .upload-button {
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #9C27B0, #673AB7);
   color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 1.1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 25px;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
 }
 
-.profile-container .upload-button:disabled {
-  background: linear-gradient(135deg, #444 0%, #555 100%);
-  cursor: not-allowed;
+.upload-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
 }
 
 .profile-container .upload-button:hover:not(:disabled) {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #8E24AA, #5E35B1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.profile-container .upload-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.profile-container .upload-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-container .upload-button:disabled {
+  background: linear-gradient(135deg, #9E9E9E, #757575);
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
   transform: translateY(-2px);
+}
+
+.upload-instructions {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.upload-instructions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.upload-instructions li {
+  margin-bottom: 8px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.no-preview {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.no-preview-icon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  opacity: 0.5;
+  color: #aaa;
+}
+
+.no-preview p {
+  color: #aaa;
+  font-size: 16px;
+}
+
+.upload-icon-btn {
+  font-size: 1.2rem;
+}
+
+.processing-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+  margin-right: 5px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .upload-content {
+    flex-direction: column;
+  }
+  
+  .upload-left, .upload-right {
+    width: 100%;
+  }
+  
+  .image-preview {
+    height: 300px;
+  }
 }
 
 .profile-container .scanning-indicator {
@@ -645,9 +888,7 @@
     transform: rotate(360deg);
   }
 }
-.upload-form input{
-  border:2px solid blue
-}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
   .profile-container .profile-header {
