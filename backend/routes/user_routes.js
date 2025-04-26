@@ -5,6 +5,8 @@ const router = express.Router();
 import User from "../model/user.js";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
+import dotenv from 'dotenv'
+dotenv.config()
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
   // console.log("toke is ", token)
