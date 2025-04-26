@@ -3,10 +3,10 @@
 ![OUTFIT_AI Logo](frontend/public/logo_main.png)
 
 ## 🔗 Live Demo
-[Try OUTFIT_AI](https://lnkd.in/g_yyNag5)
+[Try OUTFIT_AI](https://outfit-ai-liart.vercel.app/)
 
 ## 📱 Download the App
-Scan the QR code on our [download page](https://lnkd.in/gY2XSSKb) to get OUTFIT_AI on your mobile device.
+Click here for [download page](https://expo.dev/accounts/nareshmahiya/projects/Outfitai/builds/164668d2-6251-456e-8436-3c7fc70f229b) to get OUTFIT_AI on your mobile device.
 
 ## 📖 Overview
 
@@ -56,7 +56,7 @@ Ever stood in front of your wardrobe thinking, "I have nothing to wear"? OUTFIT_
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/aiWardrobe.git
+   git clone https://github.com/adi2687/aiWardrobe.git
    cd aiWardrobe
    ```
 
@@ -79,7 +79,7 @@ Ever stood in front of your wardrobe thinking, "I have nothing to wear"? OUTFIT_
 5. Start the development servers
    ```bash
    # In backend directory
-   npm run dev
+   nodemon api/app.js or nodemon api/app.js
    
    # In frontend directory
    npm run dev
@@ -104,7 +104,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Contact
 
-For any inquiries, please reach out to us at [your-email@example.com]
+For any inquiries, please reach out to us at [adityakurani@gmail.com]
 
 ---
 
