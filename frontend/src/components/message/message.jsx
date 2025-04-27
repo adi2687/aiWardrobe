@@ -1,14 +1,18 @@
 // Message.js
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 import "./messageMain.css";
 
 const Message = () => {
   const { username, id } = useParams();
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [clothdetail, setClothDetail] = useState({});
   const [loading, setLoading] = useState(true);
   const [fetchedMessages, setFetchedMessages] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
+  const [user, setUser] = useState(null);
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   // Send Message Function
   const sendmessage = async (e) => {
@@ -80,19 +84,74 @@ const Message = () => {
     }
   };
 
-  // Polling for New Messages
+  // Check authentication status
   useEffect(() => {
-    fetchClothDetails();
-    fetchmessages();
+    fetch(`${apiUrl}/user/profile`, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "Success") {
+          setUser(data.user);
+          setIsAuthenticated(true);
+          // Only fetch data if authenticated
+          fetchClothDetails();
+          fetchmessages();
+          
+          // Set up polling for messages
+          const intervalId = setInterval(fetchmessages, 3000); // Poll every 3 seconds
+          return () => clearInterval(intervalId); // Clean up on unmount
+        } else {
+          setIsAuthenticated(false);
+          console.log("User not authenticated");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching profile:", error);
+        setIsAuthenticated(false);
+      });
+  }, [apiUrl]);
 
-    const intervalId = setInterval(fetchmessages, 3000); // Poll every 3 seconds
+  // If authentication status is still loading
+  if (isAuthenticated === null) {
+    return (
+      <div className="messageContainer">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading messages...</p>
+        </div>
+      </div>
+    );
+  }
 
-    return () => clearInterval(intervalId); // Clean up on unmount
-  }, []);
+  // If user is not authenticated
+  if (isAuthenticated === false) {
+    return (
+      <div className="messageContainer">
+        <div className="auth-required">
+          <FaUser className="auth-icon" />
+          <h2>Authentication Required</h2>
+          <p>You need to be logged in to send and receive messages.</p>
+          <div className="auth-buttons">
+            <button className="primary-button" onClick={() => navigate('/auth')}>
+              Log In
+            </button>
+            <button className="secondary-button" onClick={() => {
+              navigate('/auth');
+              // This will trigger the signup form in the Auth component
+              localStorage.setItem('showSignup', 'true');
+            }}>
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="messageContainer">
-      {/* <h1>Message </h1> */}
       <h3>Previous Messages</h3>
       {fetchedMessages.length > 0 ? (
         <ul>

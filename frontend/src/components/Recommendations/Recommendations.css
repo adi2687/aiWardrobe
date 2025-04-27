@@ -561,35 +561,160 @@
   
   .recommendations-container .recommendations-card {
     padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .recommendations-container .recommendations-header h1 {
+    font-size: 20px;
+  }
+  
+  .recommendations-container .recommendations-subtitle {
+    font-size: 14px;
   }
   
   .recommendations-container .input-container {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .recommendations-container input {
+    padding: 12px 15px;
+    font-size: 14px;
   }
   
   .recommendations-container .send-button {
-    align-self: flex-end;
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+  }
+  
+  .recommendations-container .message {
+    max-width: 95%;
+  }
+  
+  .recommendations-container .message-content {
+    padding: 10px 12px;
+  }
+  
+  .recommendations-container .message-text {
+    font-size: 14px;
+  }
+  
+  .recommendations-container .action-button {
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  .recommendations-container .history-toggle-button {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+  
+  .recommendations-container .history-container {
+    margin-top: 15px;
+  }
+  
+  .recommendations-container .history-header h2 {
+    font-size: 18px;
+  }
+  
+  .recommendations-container .history-item {
+    padding: 12px;
+  }
+  
+  .recommendations-container .history-message,
+  .recommendations-container .history-response {
+    font-size: 13px;
   }
   
   .recommendations-container .auth-required {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .recommendations-container .auth-icon {
+    font-size: 2.5rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
   }
   
   .recommendations-container .auth-required h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
   }
   
   .recommendations-container .auth-required p {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
   
   .recommendations-container .auth-buttons {
     flex-direction: column;
     width: 100%;
+    gap: 0.8rem;
   }
   
   .recommendations-container .primary-button,
   .recommendations-container .secondary-button {
     width: 100%;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .recommendations-container {
+    padding: 10px 5px;
+  }
+  
+  .recommendations-container .recommendations-card {
+    padding: 12px;
+  }
+  
+  .recommendations-container .recommendations-header h1 {
+    font-size: 18px;
+  }
+  
+  .recommendations-container .recommendations-subtitle {
+    font-size: 12px;
+  }
+  
+  .recommendations-container .weather-toggle-section {
+    padding: 10px;
+  }
+  
+  .recommendations-container .weather-toggle-label {
+    font-size: 12px;
+  }
+  
+  .recommendations-container input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .recommendations-container .send-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+  
+  .recommendations-container .message-text {
+    font-size: 13px;
+  }
+  
+  .recommendations-container .auth-required {
+    padding: 1.2rem 0.8rem;
+  }
+  
+  .recommendations-container .auth-icon {
+    font-size: 2rem;
+    padding: 0.7rem;
+  }
+  
+  .recommendations-container .auth-required h2 {
+    font-size: 1.2rem;
+  }
+  
+  .recommendations-container .auth-required p {
+    font-size: 0.8rem;
   }
 }

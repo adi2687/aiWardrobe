@@ -537,6 +537,7 @@
 }
 
 /* Responsive Design */
+/* Tablet Responsiveness */
 @media (max-width: 768px) {
   .wardrobe-container {
     padding: 20px 15px;
@@ -560,6 +561,8 @@
     width: 100%;
     max-width: 250px;
     margin: 8px auto;
+    font-size: 15px;
+    padding: 10px 16px;
   }
 
   .addcloths {
@@ -568,6 +571,7 @@
 
   .addcloths input {
     width: 100%;
+    padding: 12px 16px;
   }
 
   .addcloths-actions {
@@ -577,6 +581,7 @@
 
   .addcloths button {
     width: 100%;
+    padding: 10px 20px;
   }
 
   .clothes-container,
@@ -619,5 +624,121 @@
   .primary-button,
   .secondary-button {
     width: 100%;
+  }
+  
+  .section-container h2 {
+    font-size: 20px;
+  }
+  
+  .loading-container,
+  .scanning-message {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+  
+  .loading-spinner {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .wardrobe-container {
+    padding: 15px 10px;
+    margin: 15px auto;
+  }
+  
+  .wardrobe-container h1 {
+    font-size: 22px;
+  }
+  
+  .wardrobe-container h1:after {
+    width: 60px;
+    height: 2px;
+    bottom: -8px;
+  }
+  
+  .wardrobe-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+  
+  .wardrobe-image {
+    height: 150px;
+  }
+  
+  .toggle-button {
+    font-size: 14px;
+    padding: 8px 14px;
+    margin: 6px auto;
+  }
+  
+  .addcloths {
+    padding: 15px 10px;
+  }
+  
+  .addcloths h3 {
+    font-size: 1.1rem;
+  }
+  
+  .addcloths input {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .addcloths button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .clothes-item {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .section-container {
+    padding: 15px 10px;
+  }
+  
+  .section-container h2 {
+    font-size: 18px;
+  }
+  
+  .all-clothes-content {
+    padding: 15px;
+    font-size: 14px;
+  }
+  
+  .auth-required {
+    padding: 1.5rem 1rem;
+  }
+  
+  .auth-required h2 {
+    font-size: 1.3rem;
+  }
+  
+  .auth-required p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .auth-required .auth-icon {
+    font-size: 2.5rem;
+    padding: 0.8rem;
+  }
+  
+  .primary-button,
+  .secondary-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .modal-content {
+    max-width: 90%;
+  }
+  
+  .zoomed-image {
+    max-width: 95%;
   }
 }

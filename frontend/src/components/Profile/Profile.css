@@ -988,9 +988,18 @@
   .profile-container .profile-actions {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
+  
+  .profile-container .profile-image {
+    width: 120px;
+    height: 120px;
+  }
 }
 
 @media (max-width: 768px) {
+  .profile-container {
+    padding: 1rem 0.5rem;
+  }
+  
   .profile-container .profile-card {
     width: 100%;
   }
@@ -1002,6 +1011,29 @@
   .profile-container .weekly-actions {
     flex-direction: column;
   }
+  
+  .profile-container .settings-group {
+    padding: 1.2rem;
+  }
+  
+  .profile-container .favorite-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .profile-container .favorite-description {
+    margin-bottom: 1rem;
+    padding-right: 0;
+  }
+  
+  .profile-container .favorite-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .profile-container .auth-required {
+    padding: 2rem 1.5rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -1010,10 +1042,104 @@
   }
   
   .profile-container .tab-button {
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
   }
   
   .profile-container .profile-name {
     font-size: 1.5rem;
+  }
+  
+  .profile-container .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-container .profile-info {
+    font-size: 0.9rem;
+  }
+  
+  .profile-container .action-button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .profile-container .settings-group h3 {
+    font-size: 1.2rem;
+  }
+  
+  .profile-container .auth-required h2 {
+    font-size: 1.5rem;
+  }
+  
+  .profile-container .auth-required p {
+    font-size: 0.9rem;
+  }
+  
+  .profile-container .primary-button,
+  .profile-container .secondary-button {
+    width: 100%;
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 0.5rem;
+  }
+  
+  .profile-container .profile-card {
+    border-radius: 12px;
+  }
+  
+  .profile-container .profile-content {
+    padding: 0.8rem;
+  }
+  
+  .profile-container .profile-tabs {
+    padding: 0.3rem;
+  }
+  
+  .profile-container .tab-button {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.8rem;
+  }
+  
+  .profile-container .tab-button svg {
+    font-size: 1rem;
+  }
+  
+  .profile-container .profile-actions {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .profile-container .settings-group {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profile-container .form-row label {
+    font-size: 0.9rem;
+  }
+  
+  .profile-container .info-input {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .profile-container .update-button {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+  
+  .profile-container .auth-required {
+    padding: 1.5rem 1rem;
+  }
+  
+  .profile-container .auth-icon {
+    font-size: 2.5rem;
+    padding: 0.8rem;
   }
 }
