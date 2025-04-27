@@ -10,6 +10,7 @@ import UserRoutes from '../routes/user_routes.js';
 import AuthRoutes from '../routes/auth_routes.js';
 import GoogleLoginRoutes from '../routes/auth.google.js';
 import facebookRoutes from '../routes/auth.facebook.js'
+import PasswordResetRoutes from '../routes/password_reset.js';
 import ShopRoutes from '../routes/shop.routes.js';
 import Chatbot from '../routes/chat.js';
 import ShareRoutes from '../routes/share.js'
@@ -71,6 +72,7 @@ app.use("/chat", Chatbot);
 app.use('/user', UserRoutes);
 app.use('/auth', AuthRoutes);
 app.use("/google", GoogleLoginRoutes);
+app.use("/password", PasswordResetRoutes);
 app.use("/shop", ShopRoutes);
 app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)

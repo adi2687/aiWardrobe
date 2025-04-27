@@ -16,6 +16,11 @@ const Footer = () => {
           <a href="/features">Features</a>
           <a href="/developers">Developers</a>
           <a href="/download">Download</a>
+          <span className="footer-divider">|</span>
+          <a href="/policies">Legal</a>
+          <a href="/privacy-policy">Privacy</a>
+          <a href="/terms-of-service">Terms</a>
+          <a href="/data-deletion">Data Deletion</a>
         </div>
         
         <div className="footer-social">
@@ -28,7 +33,7 @@ const Footer = () => {
       </div>
       
       <div className="footer-bottom">
-        <p> {new Date().getFullYear()} Outfit AI. All rights reserved. | A Production of <a href="https://www.linkedin.com/in/aditya-kurani-818668176/">Aditya Kurani</a> & <a href="https://linkedin.com/in/paras-rana-696b7731b/">Paras Rana</a></p>
+        <p>{new Date().getFullYear()} Outfit AI. All rights reserved. | <a href="https://www.linkedin.com/in/aditya-kurani-818668176/">Aditya Kurani</a> & <a href="https://linkedin.com/in/paras-rana-696b7731b/">Paras Rana</a></p>
       </div>
     </footer>
   );

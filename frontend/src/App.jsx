@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile"
 import NotFound from './components/NotFound/NotFound'
 import Auth from './components/Auth/Auth'
+import ResetPassword from './components/Auth/ResetPassword'
 import Wardrobe from "./components/Wardrobe/Wardrobe";
 import Homepage from './components/Homepage/Homepage'
 import Shop from './components/Shop/Shop'
@@ -25,6 +26,12 @@ import Features from './components/Developers/Features'
 import About from './components/Developers/Aboutus'
 import Wishlist from './components/Wishlist/Wishlist'
 import Download from './components/Download/Download'
+
+// Policy pages
+import PrivacyPolicy from './components/Policies/PrivacyPolicy'
+import TermsOfService from './components/Policies/TermsOfService'
+import DataDeletion from './components/Policies/DataDeletion'
+import PoliciesHub from './components/Policies/PoliciesHub'
 // import News from './components/profile/News/CelebrityNews'
 const App = () => {
   return (
@@ -35,6 +42,7 @@ const App = () => {
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/wardrobe" element={<Wardrobe />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/shop" element={<Shop />} />
@@ -49,6 +57,12 @@ const App = () => {
         <Route path="/share/:id" element={<ShareClothes />} />
         <Route path="/discover-trends" element={<DiscoverTrends />} />
         <Route path="/developers" element={<DevelopersPage />} />
+        
+        {/* Policy Routes */}
+        <Route path="/policies" element={<PoliciesHub />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/data-deletion" element={<DataDeletion />} />
         <Route path="/features" element={<Features />} />
         <Route path="/aboutus" element={<About />} />
         <Route path="/wishlist" element={<Wishlist />} />
