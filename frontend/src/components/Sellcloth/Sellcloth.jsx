@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Sellcloth.css";
 import { useNavigate } from "react-router-dom";
-import { FaUpload, FaCheckCircle, FaTimesCircle, FaShoppingBag, FaTag, FaMoneyBillWave, FaCommentAlt } from "react-icons/fa";
+import { FaUpload, FaCheckCircle, FaTimesCircle, FaShoppingBag, FaTag, FaMoneyBillWave, FaCommentAlt, FaUser } from "react-icons/fa";
 
 const Sellcloth = () => {
   const [imageFile, setImageFile] = useState(null);
@@ -13,6 +13,8 @@ const Sellcloth = () => {
   const [clothuser, setClothuser] = useState([]);
   const [price, setPrice] = useState("");
   const [uploading, setuploading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   const handlepricechange = (e) => {
@@ -42,9 +44,29 @@ const Sellcloth = () => {
     }
   };
 
+  // Fetch user profile and check authentication
   useEffect(() => {
-    fetchClothes();
-  }, []);
+    fetch(`${apiUrl}/user/profile`, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "Success") {
+          setUser(data.user);
+          console.log('a', data.user);
+          setIsAuthenticated(true);
+          fetchClothes(); // Only fetch clothes if authenticated
+        } else {
+          setIsAuthenticated(false);
+          console.log("User not authenticated");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching profile:", error);
+        setIsAuthenticated(false);
+      });
+  }, [apiUrl]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -121,6 +143,43 @@ const Sellcloth = () => {
       })
       .catch((error) => console.error("Error:", error));
   };
+
+  // If authentication status is still loading
+  if (isAuthenticated === null) {
+    return (
+      <div className="sellclothcontainer">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading marketplace...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If user is not authenticated
+  if (isAuthenticated === false) {
+    return (
+      <div className="sellclothcontainer">
+        <div className="auth-required">
+          <FaUser className="auth-icon" />
+          <h2>Authentication Required</h2>
+          <p>You need to be logged in to buy or sell clothes in the marketplace.</p>
+          <div className="auth-buttons">
+            <button className="primary-button" onClick={() => navigate('/auth')}>
+              Log In
+            </button>
+            <button className="secondary-button" onClick={() => {
+              navigate('/auth');
+              // This will trigger the signup form in the Auth component
+              localStorage.setItem('showSignup', 'true');
+            }}>
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="sellclothcontainer">

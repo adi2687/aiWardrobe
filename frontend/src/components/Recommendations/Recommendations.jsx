@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Recommendations.css";
-import { FaCloudSun, FaHistory, FaHeart, FaCopy, FaPaperPlane, FaTimes } from "react-icons/fa";
+import { FaCloudSun, FaHistory, FaHeart, FaCopy, FaPaperPlane, FaTimes, FaUser } from "react-icons/fa";
 
 const Recommendations = () => {
   const [clothes, setClothes] = useState([]);
@@ -12,13 +13,35 @@ const Recommendations = () => {
   const [copiedIndex, setCopiedIndex] = useState(null);
   const [showHistory, setShowHistory] = useState(false);
   const [history, setHistory] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
+  const [user, setUser] = useState(null);
   
+  const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
-  // Fetch user's clothes on component mount
+  // Fetch user profile and check authentication
   useEffect(() => {
-    fetchUserClothes();
-  }, []);
+    fetch(`${apiUrl}/user/profile`, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "Success") {
+          setUser(data.user);
+          console.log('a', data.user);
+          setIsAuthenticated(true);
+          fetchUserClothes(); // Only fetch clothes if authenticated
+        } else {
+          setIsAuthenticated(false);
+          console.log("User not authenticated");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching profile:", error);
+        setIsAuthenticated(false);
+      });
+  }, [apiUrl]);
 
   const fetchUserClothes = async () => {
     try {
@@ -196,6 +219,43 @@ const Recommendations = () => {
     };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
+  // If authentication status is still loading
+  if (isAuthenticated === null) {
+    return (
+      <div className="recommendations-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading recommendations...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If user is not authenticated
+  if (isAuthenticated === false) {
+    return (
+      <div className="recommendations-container">
+        <div className="auth-required">
+          <FaUser className="auth-icon" />
+          <h2>Authentication Required</h2>
+          <p>You need to be logged in to get personalized outfit recommendations.</p>
+          <div className="auth-buttons">
+            <button className="primary-button" onClick={() => navigate('/auth')}>
+              Log In
+            </button>
+            <button className="secondary-button" onClick={() => {
+              navigate('/auth');
+              // This will trigger the signup form in the Auth component
+              localStorage.setItem('showSignup', 'true');
+            }}>
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="recommendations-container">

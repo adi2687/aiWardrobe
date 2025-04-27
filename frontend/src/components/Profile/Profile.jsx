@@ -45,6 +45,7 @@ const Profile = () => {
   const [personalinfovisible, changepersonalinfo] = useState(false);
   const [activeTab, setActiveTab] = useState("profile");
   const [linkCopied, setLinkCopied] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
   
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
@@ -64,9 +65,18 @@ const Profile = () => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await response.json();
-      setUser(data.user);
+      
+      if (data.message === "Success") {
+        setUser(data.user);
+        console.log('a', data.user);
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+        console.log("User not authenticated");
+      }
     } catch (error) {
       console.error("Error fetching profile:", error);
+      setIsAuthenticated(false);
     }
   };
 
@@ -358,12 +368,38 @@ console.log("done ")
   const navigateToPlanner = () => navigate("/planner");
   const navigateToWishlist = () => navigate("/wishlist");
 
-  if (!user) {
+  // If authentication status is still loading
+  if (isAuthenticated === null) {
     return (
       <div className="profile-container">
         <div className="profile-loading">
           <div className="loading-spinner"></div>
           <p>Loading your profile...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If user is not authenticated
+  if (isAuthenticated === false) {
+    return (
+      <div className="profile-container">
+        <div className="auth-required">
+          <FaUser className="auth-icon" />
+          <h2>Authentication Required</h2>
+          <p>You need to be logged in to view and manage your profile.</p>
+          <div className="auth-buttons">
+            <button className="primary-button" onClick={() => navigate('/auth')}>
+              Log In
+            </button>
+            <button className="secondary-button" onClick={() => {
+              navigate('/auth');
+              // This will trigger the signup form in the Auth component
+              localStorage.setItem('showSignup', 'true');
+            }}>
+              Sign Up
+            </button>
+          </div>
         </div>
       </div>
     );

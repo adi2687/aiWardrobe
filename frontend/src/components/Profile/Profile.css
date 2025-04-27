@@ -866,12 +866,14 @@
 
 /* Loading States */
 .profile-container .profile-loading,
-.profile-container .loading-indicator {
+.profile-container .loading-indicator,
+.profile-container .auth-required {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 3rem;
+  text-align: center;
 }
 
 .profile-container .loading-spinner {
@@ -887,6 +889,74 @@
 .profile-container .profile-loading p,
 .profile-container .loading-indicator p {
   color: #aaa;
+}
+
+/* Auth Required Styles */
+.profile-container .auth-required {
+  background-color: #1e1e1e;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 3rem;
+  max-width: 500px;
+  width: 90%;
+  animation: fadeIn 0.5s ease;
+}
+
+.profile-container .auth-required .auth-icon {
+  font-size: 3rem;
+  color: #6a11cb;
+  margin-bottom: 1.5rem;
+  background: rgba(106, 17, 203, 0.1);
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+.profile-container .auth-required h2 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.profile-container .auth-required p {
+  color: #aaa;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.profile-container .auth-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-container .primary-button,
+.profile-container .secondary-button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-container .primary-button {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+}
+
+.profile-container .secondary-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-container .primary-button:hover,
+.profile-container .secondary-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Animations */
