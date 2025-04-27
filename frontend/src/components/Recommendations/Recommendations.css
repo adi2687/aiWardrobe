@@ -413,6 +413,121 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Authentication Required Screen */
+.recommendations-container .auth-required {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 3rem;
+  max-width: 500px;
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.5s ease;
+}
+
+.recommendations-container .auth-icon {
+  font-size: 3rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  background: rgba(97, 218, 251, 0.1);
+  padding: 1rem;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.recommendations-container .auth-required h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.recommendations-container .auth-required p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.recommendations-container .auth-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recommendations-container .primary-button,
+.recommendations-container .secondary-button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.recommendations-container .primary-button {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+  color: white;
+}
+
+.recommendations-container .secondary-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.recommendations-container .primary-button:hover,
+.recommendations-container .secondary-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading Container */
+.recommendations-container .loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  max-width: 400px;
+  width: 90%;
+  margin: 40px auto;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.recommendations-container .loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--secondary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .recommendations-container .recommendations-card {
@@ -454,5 +569,27 @@
   
   .recommendations-container .send-button {
     align-self: flex-end;
+  }
+  
+  .recommendations-container .auth-required {
+    padding: 2rem 1.5rem;
+  }
+  
+  .recommendations-container .auth-required h2 {
+    font-size: 1.5rem;
+  }
+  
+  .recommendations-container .auth-required p {
+    font-size: 1rem;
+  }
+  
+  .recommendations-container .auth-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .recommendations-container .primary-button,
+  .recommendations-container .secondary-button {
+    width: 100%;
   }
 }

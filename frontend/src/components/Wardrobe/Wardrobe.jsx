@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Wardrobe.css";
+import { FaUser } from "react-icons/fa";
 
 const Wardrobe = () => {
   const [user, setUser] = useState(null);
@@ -10,6 +11,7 @@ const Wardrobe = () => {
   const [zoomedImage, setZoomedImage] = useState(null);
   const [zoomScale, setZoomScale] = useState(1);
   const [isScanning, setIsScanning] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
 
   // Toggle states
   const [showWardrobe, setShowWardrobe] = useState(true);
@@ -22,28 +24,42 @@ const Wardrobe = () => {
 
   // Fetch wardrobe data
   useEffect(() => {
-    fetch(`${backendUrl}/user/images`, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setWardrobeImages(data.Wardrobe.wardrobeImg || []);
-        setClothes(data.Wardrobe.wardrobeClothes || []);
-        setAllCloth(data.Wardrobe.allclothes[0] || []);
+    if (isAuthenticated) {
+      fetch(`${backendUrl}/user/images`, {
+        method: "GET",
+        credentials: "include",
       })
-      .catch((error) => console.error("Error fetching images:", error));
-  }, [backendUrl]);
+        .then((response) => response.json())
+        .then((data) => {
+          setWardrobeImages(data.Wardrobe.wardrobeImg || []);
+          setClothes(data.Wardrobe.wardrobeClothes || []);
+          setAllCloth(data.Wardrobe.allclothes[0] || []);
+        })
+        .catch((error) => console.error("Error fetching images:", error));
+    }
+  }, [backendUrl, isAuthenticated]);
 
-  // Fetch user profile
+  // Fetch user profile and check authentication
   useEffect(() => {
     fetch(`${backendUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
     })
       .then((response) => response.json())
-      .then((data) => setUser(data.user))
-      .catch((error) => console.error("Error fetching profile:", error));
+      .then((data) => {
+        if ( data.message === "Success") {
+          setUser(data.user);
+          console.log('a',data.user)
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+          console.log("User not authenticated");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching profile:", error);
+        setIsAuthenticated(false);
+      });
   }, [backendUrl]);
 
   // Handle image zoom functionality
@@ -86,6 +102,43 @@ const Wardrobe = () => {
       console.error("Error adding cloth:", error);
     }
   };
+
+  // If authentication status is still loading
+  if (isAuthenticated === null) {
+    return (
+      <div className="wardrobe-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading wardrobe...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If user is not authenticated
+  if (isAuthenticated === false) {
+    return (
+      <div className="wardrobe-container">
+        <div className="auth-required">
+          <FaUser className="auth-icon" />
+          <h2>Authentication Required</h2>
+          <p>You need to be logged in to view and manage your wardrobe.</p>
+          <div className="auth-buttons">
+            <button className="primary-button" onClick={() => navigate('/auth')}>
+              Log In
+            </button>
+            <button className="secondary-button" onClick={() => {
+              navigate('/auth');
+              // This will trigger the signup form in the Auth component
+              localStorage.setItem('showSignup', 'true');
+            }}>
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="wardrobe-container">
