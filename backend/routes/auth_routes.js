@@ -7,7 +7,9 @@ const __dirname = path.dirname(__filename);
 import jwt from 'jsonwebtoken';
 import User from '../model/user.js'
 import dotenv from 'dotenv'
+import { sendWelcomeEmail } from '../utils/emailService.js'
 dotenv.config()
+
 // router.get("/login",async (req,res)=>{
 // console.log(req.cookies.tokenlogin)
 // const tokenlogin = req.cookies.tokenlogin 
@@ -27,11 +29,39 @@ router.post("/register",async (req,res)=>{
     const {username,email,password}=req.body 
     console.log(username,email,password)
     const profileImage=`https://api.dicebear.com/7.x/initials/svg?seed=${username}`
-    const user=await User.create({username:username,email:email,password:password,profileImageURL:profileImage})
-    if (!user){
-        res.status(400).send({message:'User not created'})
+    
+    try {
+        const user = await User.create({
+            username: username,
+            email: email,
+            password: password,
+            profileImageURL: profileImage
+        })
+        
+        if (!user) {
+            return res.status(400).send({message:'User not created'})
+        }
+        
+        // Send welcome email
+        try {
+            await sendWelcomeEmail(email, username)
+            console.log(`Welcome email sent to ${email}`)
+        } catch (emailError) {
+            // Log the error but don't fail registration
+            console.error('Failed to send welcome email:', emailError)
+        }
+        
+        res.status(201).json({
+            message: 'User created successfully! Welcome email sent.',
+            Newuser: user
+        })
+    } catch (error) {
+        console.error('Registration error:', error)
+        res.status(500).json({
+            message: 'Registration failed',
+            error: error.message
+        })
     }
-    res.json({Newuser:user})
 })
 
 router.post("/login",async (req,res) => {
