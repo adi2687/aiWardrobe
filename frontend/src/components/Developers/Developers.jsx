@@ -38,7 +38,7 @@ const DeveloperPage = () => {
             </p>
             <div className="dev-social">
               <a href="https://github.com/adi2687" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-              <a href="https://linkedin.com/in/aditya-kurani" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+              <a href="https://www.linkedin.com/in/aditya-kurani-818668176/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
             </div>
           </div>
 
@@ -52,7 +52,7 @@ const DeveloperPage = () => {
               Leads the AI/ML development for cloth identification and shopping recommendations. Expert in computer vision and natural language processing.
             </p>
             <div className="dev-social">
-              <a href="https://github.com/parasrana" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+              <a href="https://github.com/ParasRana123" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
               <a href="https://linkedin.com/in/paras-rana" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
             </div>
           </div>
@@ -66,7 +66,7 @@ const DeveloperPage = () => {
               Leads the mobile application development using React Native. Specializes in creating seamless cross-platform experiences with AR integration.
             </p>
             <div className="dev-social">
-              <a href="https://github.com/nareshmahiya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+              <a href="https://github.com/naresh-mahiya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
               <a href="https://www.linkedin.com/in/naresh-mahiya-1ba039254/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
             </div>
           </div>
@@ -80,7 +80,7 @@ const DeveloperPage = () => {
               Handles the deployment and maintenance of the application. Ensures smooth operation and scalability.
             </p>
             <div className="dev-social">
-              <a href="https://www.linkedin.com/in/mohit-bhalotia/" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+              <a href="https://github.com/MohitBhalotia" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
               <a href="https://linkedin.com/in/mohit-bhalotia" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
             </div>
           </div>

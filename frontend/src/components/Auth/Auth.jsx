@@ -8,11 +8,15 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [toggle, setToggle] = useState(false); // Toggle between Login & Signup
   const [showPassword, setShowPassword] = useState(false);
   const [signingup, setSigning] = useState(false);
   const [logging, setLogging] = useState(false);
   const [formValid, setFormValid] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [resetEmailSent, setResetEmailSent] = useState(false);
+  const [sendingEmail, setSendingEmail] = useState(false);
   
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
@@ -133,6 +137,50 @@ const Auth = () => {
     setShowPassword(!showPassword);
   };
 
+  // Handle forgot password request
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+    
+    if (!email) {
+      setError("Please enter your email address");
+      return;
+    }
+
+    setSendingEmail(true);
+
+    try {
+      const response = await fetch(`${apiUrl}/password/forgot-password`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccess(data.message || "Password reset link sent to your email");
+        setResetEmailSent(true);
+      } else {
+        setError(data.message || "Failed to send reset email");
+      }
+    } catch (err) {
+      console.error("Error during password reset request:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSendingEmail(false);
+    }
+  };
+  
+  // Return to login form
+  const backToLogin = () => {
+    setShowForgotPassword(false);
+    setResetEmailSent(false);
+    setError("");
+    setSuccess("");
+  };
+
   return (
     <div className="auth-container">
       <div className="auth-wrapper">
@@ -145,14 +193,68 @@ const Auth = () => {
         </div>
 
         <div className="auth-card">
-          <h2>{!toggle ? "Welcome Back" : "Create Account"}</h2>
-          <p className="auth-subtitle">
-            {!toggle ? "Sign in to access your AI wardrobe" : "Join outfit-AI today"}
-          </p>
-          
-          {error && <div className="error-message">{error}</div>}
-          
-          <form onSubmit={!toggle ? handleLogin : handleSignup}>
+          {showForgotPassword ? (
+            // Forgot Password Form
+            <>
+              <h2>Reset Password</h2>
+              <p className="auth-subtitle">
+                {!resetEmailSent 
+                  ? "Enter your email to receive a password reset link" 
+                  : "Check your email"}
+              </p>
+              
+              {error && <div className="error-message">{error}</div>}
+              {success && <div className="success-message">{success}</div>}
+              
+              {!resetEmailSent ? (
+                <form onSubmit={handleForgotPassword}>
+                  <div className="form-group">
+                    <input
+                      id="reset-email"
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      style={{width:"92%"}}
+                      required
+                    />
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    className={`auth-btn ${email ? 'valid' : 'disabled'}`}
+                    disabled={!email || sendingEmail}
+                  >
+                    {sendingEmail ? <span className="loading-spinner-small"></span> : "Send Reset Link"}
+                  </button>
+                  
+                  <p className="toggle-text">
+                    <button className="toggle-btn" onClick={backToLogin}>
+                      Back to Login
+                    </button>
+                  </p>
+                </form>
+              ) : (
+                <div className="reset-success">
+                  <p>We've sent a password reset link to your email address. Please check your inbox and follow the instructions.</p>
+                  <button className="auth-btn valid" onClick={backToLogin}>
+                    Return to Login
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            // Regular Login/Signup Form
+            <>
+              <h2>{!toggle ? "Welcome Back" : "Create Account"}</h2>
+              <p className="auth-subtitle">
+                {!toggle ? "Sign in to access your AI wardrobe" : "Join outfit-AI today"}
+              </p>
+              
+              {error && <div className="error-message">{error}</div>}
+              
+              <form onSubmit={!toggle ? handleLogin : handleSignup}>
+
             {toggle && (
               <div className="form-group">
                     
@@ -208,7 +310,10 @@ const Auth = () => {
 
             {!toggle && (
               <div className="forgot-password">
-                <a href="#" onClick={(e) => e.preventDefault()}>Forgot password?</a>
+                <a href="#" onClick={(e) => {
+                  e.preventDefault();
+                  setShowForgotPassword(true);
+                }}>Forgot password?</a>
               </div>
             )}
 
@@ -234,10 +339,7 @@ const Auth = () => {
               <FaGoogle />
               <span>Google</span>
             </button>
-            <button className="facebook-btn" onClick={loginWithFacebook}>
-              <FaFacebook />
-              <span>Facebook</span>
-            </button>
+            
           </div>
 
           <p className="toggle-text">
@@ -246,6 +348,8 @@ const Auth = () => {
               {!toggle ? "Sign Up" : "Sign In"}
             </button>
           </p>
+            </>
+          )}
         </div>
       </div>
     </div>

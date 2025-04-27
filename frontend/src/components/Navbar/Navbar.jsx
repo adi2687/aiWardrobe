@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "/logo_main.png";
 import "./Navbar.css";
+import "./NavDropdown.css";
  
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,6 +68,10 @@ const Navbar = () => {
         <Link to="/recommendations" className="mobile-link" onClick={() => setIsOpen(false)}>Recommendations</Link>
         <Link to="/sellcloth" className="mobile-link" onClick={() => setIsOpen(false)}>Sell Clothes</Link>
         <Link to="/shop" className="mobile-link" onClick={() => setIsOpen(false)}>Shop</Link>
+        <Link to='/Download' className="mobile-link" onClick={()=>setIsOpen(false)}>App</Link>
+        <Link to='/Developers' className="mobile-link" onClick={()=>setIsOpen(false)}>Developers</Link>
+        
+        
       </div>
     </nav>
   );

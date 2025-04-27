@@ -493,6 +493,7 @@ console.log("done ")
                           id="clothing-upload"
                         />
                       </label>
+                      
                       {imageName && <div className="file-name">Selected: {imageName}</div>}
                     </div>
                     
