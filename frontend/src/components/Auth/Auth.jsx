@@ -104,6 +104,7 @@ const Auth = () => {
       const response = await fetch(`${apiUrl}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // Add this to allow cookies to be stored
         body: JSON.stringify({ username, email, password }),
       });
     
@@ -117,6 +118,12 @@ const Auth = () => {
           email
         });
         setSignupComplete(true);
+        
+        // Store token in localStorage
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+        }
+        
         // Show intro for new users
         setShowIntro(true);
       } else {

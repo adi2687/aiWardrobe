@@ -50,10 +50,18 @@ router.post("/register",async (req,res)=>{
             // Log the error but don't fail registration
             console.error('Failed to send welcome email:', emailError)
         }
-        
+        const SECRET_KEY=process.env.SECRET_KEY
+        const token=jwt.sign({username:user.username,id:user._id,email:email,profilePicture:user.profileImageURL},SECRET_KEY,{expiresIn:'24h'})
+        res.cookie('tokenlogin', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+          });
         res.status(201).json({
             message: 'User created successfully! Welcome email sent.',
-            Newuser: user
+            Newuser: user,
+            isNewUser: true,
+            token: token
         })
     } catch (error) {
         console.error('Registration error:', error)
