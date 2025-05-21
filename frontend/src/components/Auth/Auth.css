@@ -94,6 +94,8 @@
   opacity: 0.9;
   max-width: 80%;
   line-height: 1.6;
+  color:white;
+  font-weight: 500;
 }
 
 /* Auth Card */

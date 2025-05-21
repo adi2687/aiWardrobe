@@ -11,7 +11,8 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS
   }
 });
-
+const deployed="https://outfit-ai-liart.vercel.app"
+const frontendURL=deployed||process.env.FRONTEND_URL;
 /**
  * Send a welcome email to a newly registered user
  * @param {string} to - Recipient email address
@@ -44,7 +45,7 @@ export const sendWelcomeEmail = async (to, username) => {
             </ul>
             <p>If you have any questions or need assistance, feel free to contact our support team.</p>
             <div style="margin-top: 30px; text-align: center;">
-              <a href="${process.env.FRONTEND_URL}" style="background: linear-gradient(135deg, #6e8efb, #a777e3); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Start Exploring</a>
+              <a href="${frontendURL}" style="background: linear-gradient(135deg, #6e8efb, #a777e3); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Start Exploring</a>
             </div>
             <p style="margin-top: 30px; font-size: 12px; color: #666; text-align: center;">
               This email was sent to you because you registered for an account on Outfit AI.<br>

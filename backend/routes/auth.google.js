@@ -5,6 +5,7 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import dotenv from "dotenv";
 import User from "../model/user.js";
 import jwt from "jsonwebtoken";
+import { sendWelcomeEmail } from "../utils/emailService.js";
 
 dotenv.config();
 const router = express.Router();
@@ -12,7 +13,7 @@ const SECRET_KEY = process.env.SECRET_KEY;
 const backendUrl = process.env.BACKEND_URL;
 const frontendUrl = process.env.FRONTEND_URL;
 
-// ✅ Only passport logic here, no session middleware here
+// Only passport logic here, no session middleware here
 
 passport.use(
   new GoogleStrategy(
@@ -36,6 +37,15 @@ passport.use(
             profileImageURL: profilePicture
           });
           await user.save();
+          
+          // Send welcome email to new user
+          try {
+            await sendWelcomeEmail(email, profile.displayName);
+            console.log('Welcome email sent to Google user:', email);
+          } catch (emailError) {
+            console.error('Failed to send welcome email to Google user:', emailError);
+            // Continue with authentication even if email fails
+          }
         }
         return done(null, user);
       } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { FaHome, FaUser, FaTshirt, FaStore, FaLightbulb, FaUpload, FaHeart } from 'react-icons/fa';
+import { FaHome, FaUser, FaTshirt, FaStore, FaLightbulb, FaUpload, FaHeart, FaMagic } from 'react-icons/fa';
 import './FloatingNavbar.css';
 
 const FloatingNavbar = () => {
@@ -82,6 +82,13 @@ const FloatingNavbar = () => {
       >
         <FaHeart style={{ color: 'white' }} />
         <span>Favorites</span>
+      </div>
+      <div 
+        className={`nav-item ${isActive('/virtual-tryon') ? 'active' : ''}`} 
+        onClick={() => handleNavigation('/virtual-tryon')}
+      >
+        <FaMagic style={{ color: 'white' }} />
+        <span>Try-On</span>
       </div>
     </div>
   );

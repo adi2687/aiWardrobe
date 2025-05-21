@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { FaGoogle, FaFacebook, FaEnvelope, FaLock, FaUser, FaEye, FaEyeSlash, FaTshirt } from "react-icons/fa";
+import Intro from "../Intro/Intro";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,9 @@ const Auth = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [resetEmailSent, setResetEmailSent] = useState(false);
   const [sendingEmail, setSendingEmail] = useState(false);
+  const [showIntro, setShowIntro] = useState(false);
+  const [signupComplete, setSignupComplete] = useState(false);
+  const [newUser, setNewUser] = useState(null);
   
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
@@ -63,7 +67,14 @@ const Auth = () => {
         setError(data.msg || "Invalid email or password.");
       } else {
         console.log("Login successful:", data);
-        window.location.href = "/pro  file";
+        
+        // Check if this is a new user who just signed up
+        if (signupComplete && newUser && newUser.email === email) {
+          // Show intro for new users
+          setShowIntro(true);
+        } else {
+          window.location.href = "/profile";
+        }
       }
     } catch (err) {
       console.error("Error during login:", err);
@@ -100,17 +111,14 @@ const Auth = () => {
     
       if (response.ok) {
         console.log("Signup successful:", data);
-        setToggle(false); // Switch to login
         setError("");
-        // Show success message
-        const successMessage = document.createElement("div");
-        successMessage.className = "success-message";
-        successMessage.textContent = "Account created successfully! Please log in.";
-        document.querySelector(".auth-card").prepend(successMessage);
-        
-        // Clear form
-        setEmail("");
-        setPassword("");
+        setNewUser({
+          username,
+          email
+        });
+        setSignupComplete(true);
+        // Show intro for new users
+        setShowIntro(true);
       } else {
         setError(data.message || "Signup failed.");
       }
@@ -125,11 +133,15 @@ const Auth = () => {
   // Google Login
   const loginWithGoogle = async (e) => {
     e.preventDefault();
+    // Store a flag to show intro for new users after OAuth login
+    localStorage.setItem('checkForNewUser', 'true');
     window.location.href = `${apiUrl}/google/login`;
   };
 
   const loginWithFacebook = async (e) => {
     e.preventDefault();
+    // Store a flag to show intro for new users after OAuth login
+    localStorage.setItem('checkForNewUser', 'true');
     window.location.href = `${apiUrl}/facebook/login`;
   };
 
@@ -181,8 +193,16 @@ const Auth = () => {
     setSuccess("");
   };
 
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+    window.location.href = "/profile";
+  };
+
   return (
     <div className="auth-container">
+      {showIntro && (
+        <Intro onComplete={handleIntroComplete} />
+      )}
       <div className="auth-wrapper">
         <div className="auth-brand">
           <div className="brand-logo">
@@ -313,7 +333,7 @@ const Auth = () => {
                 <a href="#" onClick={(e) => {
                   e.preventDefault();
                   setShowForgotPassword(true);
-                }}>Forgot password?</a>
+                }} style={{color:"grey"}}>Forgot password?</a>
               </div>
             )}
 
@@ -347,7 +367,7 @@ const Auth = () => {
 
           <p className="toggle-text">
             {!toggle ? "Don't have an account?" : "Already have an account?"}
-            <button className="toggle-btn" onClick={() => setToggle(!toggle)}>
+            <button className="toggle-btn" onClick={() => setToggle(!toggle)} style={{color:"grey"}}>
               {!toggle ? "Sign Up" : "Sign In"}
             </button>
           </p>
