@@ -3,10 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 78vh;
   background-color: #121212;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 2rem 1rem;
+  /* border:2px solid red */
 }
 
 .profile-container .profile-card {
@@ -28,13 +29,16 @@
   background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
   padding: 0.5rem;
   scrollbar-width: none; /* Firefox */
+  align-items: center;
+  justify-content: space-between;
 }
 
 .profile-container .profile-tabs::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
 
-.profile-container .tab-button {
+.profile-container .tab-button,
+.profile-container .tab {
   background: transparent;
   color: rgba(255, 255, 255, 0.7);
   border: none;
@@ -50,12 +54,14 @@
   border-radius: 8px;
 }
 
-.profile-container .tab-button:hover {
+.profile-container .tab-button:hover,
+.profile-container .tab:hover {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.profile-container .tab-button.active {
+.profile-container .tab-button.active,
+.profile-container .tab.active {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -78,7 +84,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.profile-container .tab-button svg {
+.profile-container .tab-button svg,
+.profile-container .tab svg {
   font-size: 1.2rem;
 }
 

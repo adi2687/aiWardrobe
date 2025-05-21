@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./Profile.css";
 import { 
   FaShare, 
@@ -47,6 +47,9 @@ const Profile = () => {
   const [linkCopied, setLinkCopied] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
   
+  const location = useLocation();
+  const { tab } = useParams(); // Get tab from URL parameters
+  
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const frontedUrl = import.meta.env.VITE_FRONTEND_URL;
@@ -55,7 +58,19 @@ const Profile = () => {
   useEffect(() => {
     fetchUserProfile();
     fetchClothesForWeek();
-  }, []);
+    
+    // Set active tab based on URL path
+    const pathSegments = location.pathname.split('/');
+    const lastSegment = pathSegments[pathSegments.length - 1];
+    
+    // Check if the last segment is a valid tab
+    if (['profile', 'favorites', 'planner', 'upload', 'settings'].includes(lastSegment)) {
+      setActiveTab(lastSegment);
+    } else if (pathSegments[pathSegments.length - 2] === 'profile' && !lastSegment) {
+      // If we're at /profile/ with no tab specified, default to profile tab
+      setActiveTab('profile');
+    }
+  }, [location]);  // Re-run when location changes
 
   const fetchUserProfile = async () => {
     try {
@@ -164,6 +179,7 @@ console.log("done ")
 
       const classifyRes = await fetch(`${apiUrl}/clothid/classify`, {
         method: "POST",
+        credentials: "include",  // Add this to send cookies with the request
         body: classifyForm,
       });
 
@@ -409,36 +425,51 @@ console.log("done ")
     <div className="profile-container">
       <div className="profile-card">
         <div className="profile-tabs">
-          <button 
-            className={`tab-button ${activeTab === 'profile' ? 'active' : ''}`}
-            onClick={() => setActiveTab('profile')}
+          <div 
+            className={`tab ${activeTab === 'profile' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('profile');
+              navigate('/profile');
+            }}
           >
             <FaUser /> Profile
-          </button>
-          <button 
-            className={`tab-button ${activeTab === 'upload' ? 'active' : ''}`}
-            onClick={() => setActiveTab('upload')}
-          >
-            <FaUpload /> Upload
-          </button>
-          <button 
-            className={`tab-button ${activeTab === 'favorites' ? 'active' : ''}`}
-            onClick={() => setActiveTab('favorites')}
+          </div>
+          <div 
+            className={`tab ${activeTab === 'favorites' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('favorites');
+              navigate('/profile/favorites');
+            }}
           >
             <FaHeart /> Favorites
-          </button>
-          <button 
-            className={`tab-button ${activeTab === 'weekly' ? 'active' : ''}`}
-            onClick={() => setActiveTab('weekly')}
+          </div>
+          <div 
+            className={`tab ${activeTab === 'planner' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('planner');
+              navigate('/profile/planner');
+            }}
           >
-            <FaCalendarWeek /> Weekly
-          </button>
-          <button 
-            className={`tab-button ${activeTab === 'settings' ? 'active' : ''}`}
-            onClick={() => setActiveTab('settings')}
+            <FaCalendarWeek /> Weekly Plan
+          </div>
+          <div 
+            className={`tab ${activeTab === 'upload' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('upload');
+              navigate('/profile/upload');
+            }}
           >
-            <FaEdit /> Settings
-          </button>
+            <FaUpload /> Upload
+          </div>
+          <div 
+            className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('settings');
+              navigate('/profile/settings');
+            }}
+          >
+            <FaLock /> Settings
+          </div>
           <button 
             className="tab-button logout-button"
             onClick={LogOut}
@@ -667,7 +698,7 @@ console.log("done ")
           )}
 
           {/* Weekly Tab */}
-          {activeTab === 'weekly' && (
+          {activeTab === 'planner' && (
             <div className="weekly-section">
               <h2>Weekly Outfit Planning</h2>
               

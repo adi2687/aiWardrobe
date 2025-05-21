@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "/logo_main.png";
 import "./Navbar.css";
@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [check, setCheck] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+  const location = useLocation();
   const apiUrl = import.meta.env.VITE_BACKEND_URL
   console.log(apiUrl)
   useEffect(() => {
@@ -32,6 +33,11 @@ const Navbar = () => {
       .catch((error) => console.error("Error fetching profile:", error));
   }, []);
 
+  // Only show navbar on the landing page
+  if (location.pathname !== '/') {
+    return null;
+  }
+  
   return (
     <nav className="navbar">
       <div className="navbar-container">

@@ -14,7 +14,11 @@ const userSchema=new mongoose.Schema({
     favourites:{type:[String],default:[]},
     age:{type:Number},
     gender:{type:String},
-    preferences:{type:String}
+    preferences:{type:String},
+    upperwear:{type:[String],default:[]},
+    lowerwear:{type:[String],default:[]},
+    footwear:{type:[String],default:[]},
+    accessories:{type:[String],default:[]}
 },{timestamps:true})
 
 const User=mongoose.model('User',userSchema)

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Wardrobe.css";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaTshirt, FaSocks, FaShoppingBag } from "react-icons/fa";
+import { GiTrousers } from "react-icons/gi";
 
 const Wardrobe = () => {
   const [user, setUser] = useState(null);
@@ -12,6 +13,12 @@ const Wardrobe = () => {
   const [zoomScale, setZoomScale] = useState(1);
   const [isScanning, setIsScanning] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
+  
+  // Categorized clothing items
+  const [upperwear, setUpperwear] = useState([]);
+  const [lowerwear, setLowerwear] = useState([]);
+  const [footwear, setFootwear] = useState([]);
+  const [accessories, setAccessories] = useState([]);
 
   // Toggle states
   const [showWardrobe, setShowWardrobe] = useState(true);
@@ -25,6 +32,7 @@ const Wardrobe = () => {
   // Fetch wardrobe data
   useEffect(() => {
     if (isAuthenticated) {
+      // Fetch wardrobe images
       fetch(`${backendUrl}/user/images`, {
         method: "GET",
         credentials: "include",
@@ -36,6 +44,26 @@ const Wardrobe = () => {
           setAllCloth(data.Wardrobe.allclothes[0] || []);
         })
         .catch((error) => console.error("Error fetching images:", error));
+      
+      // Fetch categorized clothing items
+      fetch(`${backendUrl}/clothid/getitems`, {
+        method: "GET",
+        credentials: "include",
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Categorized items:", data);
+          setUpperwear(data.upperwear || []);
+          setLowerwear(data.lowerwear || []);
+          setFootwear(data.footwear || []);
+          setAccessories(data.accessories || []);
+        })
+        .catch((error) => console.error("Error fetching categorized items:", error));
     }
   }, [backendUrl, isAuthenticated]);
 
@@ -47,9 +75,9 @@ const Wardrobe = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if ( data.message === "Success") {
+        if (data.message === "Success") {
           setUser(data.user);
-          console.log('a',data.user)
+          console.log('a', data.user)
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
@@ -67,7 +95,7 @@ const Wardrobe = () => {
     setZoomedImage(imgSrc);
     setZoomScale(1);
   };
- 
+
   const closeZoom = () => {
     setZoomedImage(null);
   };
@@ -139,11 +167,12 @@ const Wardrobe = () => {
       </div>
     );
   }
+  // The getitems functionality has been moved to the main useEffect hook above
 
   return (
     <div className="wardrobe-container">
       <h1>My Wardrobe</h1>
-      
+
       {/* Control Panel */}
       <div className="wardrobe-controls">
         <button
@@ -159,7 +188,7 @@ const Wardrobe = () => {
         >
           {showClothes ? "Hide Clothes List" : "Show Clothes List"}
         </button>
-        
+
         <button
           className="toggle-button"
           onClick={() => setShowAllClothes(!showAllClothes)}
@@ -167,7 +196,7 @@ const Wardrobe = () => {
           {showAllClothes ? "Hide All Clothes" : "Show All Clothes"}
         </button>
       </div>
- 
+
       {/* Add New Clothes Section */}
       <div className="addcloths">
         <h3>Add New Clothing Item</h3>
@@ -191,7 +220,7 @@ const Wardrobe = () => {
           <div className="wardrobe-gallery">
             {wardrobeImages.length > 0 ? (
               wardrobeImages.map((img, index) => (
-                <img 
+                <img
                   key={index}
                   src={img}
                   alt={`Wardrobe item ${index + 1}`}
@@ -206,7 +235,7 @@ const Wardrobe = () => {
           </div>
         </div>
       )}
-
+      
       {/* Clothes Items Section */}
       {showClothes && (
         <div className="clothes-container">
@@ -224,17 +253,166 @@ const Wardrobe = () => {
           )}
         </div>
       )}
-      
+
       {/* All Clothes Section */}
       {showAllClothes && (
         <div className="clothes">
-          <h2>All Clothes</h2>
+          <h2>My Wardrobe Items</h2>
+          
+          {/* Categorized Clothing Display */}
+          <div className="categorized-wardrobe">
+            {/* Upperwear Section */}
+            <div className="category-section">
+              <h3>
+                <FaTshirt className="category-header-icon" />
+                Tops & Outerwear
+              </h3>
+              <div className="category-items">
+                {upperwear && upperwear.length > 0 ? (
+                  upperwear.map((item, index) => {
+                    // Extract item name and color from string like "Sweater (Orange)"
+                    const match = item.match(/(.*?)\s*\((.*)\)/);
+                    const itemName = match ? match[1] : item;
+                    const itemColor = match ? match[2] : '';
+                    
+                    return (
+                      <div key={`upper-${index}`} className="category-item">
+                        <div className="item-icon">
+                          <FaTshirt />
+                        </div>
+                        <div className="item-details">
+                          <span className="item-name">{itemName}</span>
+                          <div 
+                            className="color-dot" 
+                            style={{ backgroundColor: itemColor.toLowerCase() }}
+                            title={itemColor}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="empty-category">No tops or outerwear added yet</p>
+                )}
+              </div>
+            </div>
+            
+            {/* Lowerwear Section */}
+            <div className="category-section">
+              <h3>
+                <GiTrousers className="category-header-icon" />
+                Bottoms
+              </h3>
+              <div className="category-items">
+                {lowerwear && lowerwear.length > 0 ? (
+                  lowerwear.map((item, index) => {
+                    // Extract item name and color from string like "Jeans (Blue)"
+                    const match = item.match(/(.*?)\s*\((.*)\)/);
+                    const itemName = match ? match[1] : item;
+                    const itemColor = match ? match[2] : '';
+                    
+                    return (
+                      <div key={`lower-${index}`} className="category-item" >
+                        <div className="item-icon">
+                          <GiTrousers />
+                        </div>
+                        <div className="item-details">
+                          <span className="item-name">{itemName}</span>
+                          <div 
+                            className="color-dot" 
+                            style={{ backgroundColor: itemColor.toLowerCase() }}
+                            title={itemColor}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="empty-category">No bottoms added yet</p>
+                )}
+              </div>
+            </div>
+            
+            {/* Footwear Section */}
+            <div className="category-section">
+              <h3>
+                <FaSocks className="category-header-icon" />
+                Footwear
+              </h3>
+              <div className="category-items">
+                {footwear && footwear.length > 0 ? (
+                  footwear.map((item, index) => {
+                    // Extract item name and color from string like "Boots (Brown)"
+                    const match = item.match(/(.*?)\s*\((.*)\)/);
+                    const itemName = match ? match[1] : item;
+                    const itemColor = match ? match[2] : '';
+                    
+                    return (
+                      <div key={`foot-${index}`} className="category-item">
+                        <div className="item-icon">
+                          <FaSocks />
+                        </div>
+                        <div className="item-details">
+                          <span className="item-name">{itemName}</span>
+                          <div 
+                            className="color-dot" 
+                            style={{ backgroundColor: itemColor.toLowerCase() }}
+                            title={itemColor}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="empty-category">No footwear added yet</p>
+                )}
+              </div>
+            </div>
+            
+            {/* Accessories Section */}
+            <div className="category-section">
+              <h3>
+                <FaShoppingBag className="category-header-icon" />
+                Accessories
+              </h3>
+              <div className="category-items">
+                {accessories && accessories.length > 0 ? (
+                  accessories.map((item, index) => {
+                    // Extract item name and color from string like "Hat (Brown)"
+                    const match = item.match(/(.*?)\s*\((.*)\)/);
+                    const itemName = match ? match[1] : item;
+                    const itemColor = match ? match[2] : '';
+                    
+                    return (
+                      <div key={`acc-${index}`} className="category-item">
+                        <div className="item-icon">
+                          <FaShoppingBag />
+                        </div>
+                        <div className="item-details">
+                          <span className="item-name">{itemName}</span>
+                          <div 
+                            className="color-dot" 
+                            style={{ backgroundColor: itemColor.toLowerCase() }}
+                            title={itemColor}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="empty-category">No accessories added yet</p>
+                )}
+              </div>
+            </div>
+          </div>
+          
+          {/* Legacy All Clothes Display */}
           <div className="all-clothes-content">
             {allCloth ? allCloth : "No clothes added yet"}
           </div>
         </div>
       )}
-      
+
       {/* Scanning Message */}
       {isScanning && (
         <div className="scanning-message">

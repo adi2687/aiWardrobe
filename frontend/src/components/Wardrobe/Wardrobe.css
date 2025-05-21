@@ -304,7 +304,6 @@
   background-color: rgba(0, 0, 0, 0.2);
   padding: 15px;
   border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Scanning Message */
@@ -462,6 +461,183 @@
   box-shadow: var(--box-shadow);
   border: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: 1rem;
+}
+
+/* Categorized Wardrobe Styling */
+.categorized-wardrobe {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 25px 0 35px;
+}
+
+.category-section {
+  background: rgba(30, 30, 40, 0.7);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.category-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.category-section h3 {
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.2rem;
+  text-align: left;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-header-icon {
+  font-size: 1.4rem;
+  background: rgba(253, 121, 168, 0.15);
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.category-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+}
+
+.category-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.category-items::-webkit-scrollbar {
+  width: 4px;
+}
+
+.category-items::-webkit-scrollbar-thumb {
+  background-color: rgba(253, 121, 168, 0.5);
+  border-radius: 4px;
+}
+
+.category-item {
+  background: rgba(255, 255, 255, 0.08);
+  /* padding: 12px 15px; */
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  border-left: 3px solid transparent;
+  /* border:2px solid red */
+}
+
+.item-icon {
+  margin-right: 12px;
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(253, 121, 168, 0.1);
+  border-radius: 50%;
+  padding: 6px;
+}
+
+.item-details {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-weight: 500;
+}
+
+.color-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-left: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.category-item:hover {
+  background: rgba(253, 121, 168, 0.15);
+  transform: translateX(5px);
+  border-left-color: var(--accent-color);
+}
+
+.empty-category {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Responsive styling for categorized wardrobe */
+@media (max-width: 768px) {
+  .categorized-wardrobe {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0 30px;
+  }
+  
+  .category-section {
+    padding: 15px;
+  }
+  
+  .category-section h3 {
+    font-size: 1.1rem;
+    padding-bottom: 8px;
+  }
+  
+  .category-item {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categorized-wardrobe {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .category-section h3 {
+    font-size: 1rem;
+  }
+  
+  .category-items {
+    max-height: 200px;
+  }
+  
+  .category-item {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
 }
 
 /* Authentication Required Screen */
