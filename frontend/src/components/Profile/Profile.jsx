@@ -397,7 +397,7 @@ const Profile = () => {
   };
 
   const updatePersonalInfo = () => {
-    if (!age || !gender) {
+    if (!age && !gender) {
       showNotification("Please fill in all required fields");
       return;
     }
@@ -591,7 +591,7 @@ const Profile = () => {
                           onChange={(e) => setPreferences(e.target.value)}
                         />
                       )}
-                      {!  userdetails.age && !userdetails.gender && !userdetails.preferences && <button
+                      {(!userdetails.age || !userdetails.gender || !userdetails.preferences) && <button
                         className="profile-update-btn"
                         onClick={updatePersonalInfo}
                       >
@@ -603,6 +603,10 @@ const Profile = () => {
                   {(userdetails.age || userdetails.gender || userdetails.preferences) && (
                     <div className="profile-details-section">
                       <h3 className="profile-details-title">Personal Information</h3>
+                      <div className="profile-info-message">
+                        <FaInfoCircle className="info-icon" />
+                        <p>This information helps us provide personalized outfit recommendations based on your style preferences and demographics.</p>
+                      </div>
                       
                       {userdetails.age && (
                         <p className="profile-info">

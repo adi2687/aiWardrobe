@@ -29,60 +29,35 @@ const FloatingNavbar = () => {
     return null;
   }
 
+  // Define main navigation items for better organization and maintenance
+  const navItems = [
+    { path: '/', icon: <FaHome />, label: 'Home' },
+    { path: '/wardrobe', icon: <FaTshirt />, label: 'Wardrobe' },
+    { path: '/recommendations', icon: <FaLightbulb />, label: 'Outfits' },
+    { path: '/profile', icon: <FaUser />, label: 'Profile' },
+    { path: '/shop', icon: <FaStore />, label: 'Shop' }
+  ];
+  
+  // Add conditional items based on user state
+  if (isLoggedIn) {
+    // Only show these items to logged-in users
+    navItems.splice(3, 0, { path: '/profile/upload', icon: <FaUpload />, label: 'Upload' });
+    navItems.splice(4, 0, { path: '/profile/favorites', icon: <FaHeart />, label: 'Favorites' });
+  }
+  
   return (
     <div className="floating-navbar">
-      <div 
-        className={`nav-item ${isActive('/') ? 'active' : ''}`} 
-        onClick={() => handleNavigation('/')}
-      >
-        <FaHome style={{ color: 'white' }} />
-        <span>Home</span>
-      </div>
-      
-      <div 
-        className={`nav-item ${isActive('/wardrobe') ? 'active' : ''}`} 
-        onClick={() => handleNavigation('/wardrobe')}
-      >
-        <FaTshirt style={{ color: 'white' }} />
-        <span>Wardrobe</span>
-      </div>
-      
-      <div 
-        className={`nav-item ${isActive('/profile') ? 'active' : ''}`} 
-        onClick={() => handleNavigation('/profile')}
-      >
-        <FaUser style={{ color: 'white' }} />
-        <span>Profile</span>
-      </div>
-      
-      <div 
-        className={`nav-item ${isActive('/shop') ? 'active' : ''}`} 
-        onClick={() => handleNavigation('/shop')}
-      >
-        <FaStore style={{ color: 'white' }} />
-        <span>Shop</span>
-      </div>
-      <div 
-        className={`nav-item ${isActive('/recommendations') ? 'active' : ''}`} 
-        onClick={() => handleNavigation('/recommendations')}
-      >
-        <FaLightbulb style={{ color: 'white' }} />
-        <span>Recommendations</span>
-      </div>
-      <div 
-        className={`nav-item ${isActive('/upload') ? 'active' : ''}`} 
-        onClick={() => handleNavigation('/profile/upload')}
-      >
-        <FaUpload style={{ color: 'white' }} />
-        <span>Upload</span>
-      </div>
-      <div 
-        className={`nav-item ${isActive('/profile/favorites') ? 'active' : ''}`} 
-        onClick={() => handleNavigation('/profile/favorites')}
-      >
-        <FaHeart style={{ color: 'white' }} />
-        <span>Favorites</span>
-      </div>
+      {navItems.map((item, index) => (
+        <div 
+          key={`nav-${index}`}
+          className={`nav-item ${isActive(item.path) ? 'active' : ''}`} 
+          onClick={() => handleNavigation(item.path)}
+          title={item.label}
+        >
+          {React.cloneElement(item.icon, { style: { color: 'white' } })}
+          <span>{item.label}</span>
+        </div>
+      ))}
       
     </div>
   );
