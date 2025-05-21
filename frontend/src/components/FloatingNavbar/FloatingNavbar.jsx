@@ -83,13 +83,7 @@ const FloatingNavbar = () => {
         <FaHeart style={{ color: 'white' }} />
         <span>Favorites</span>
       </div>
-      <div 
-        className={`nav-item ${isActive('/virtual-tryon') ? 'active' : ''}`} 
-        onClick={() => handleNavigation('/virtual-tryon')}
-      >
-        <FaMagic style={{ color: 'white' }} />
-        <span>Try-On</span>
-      </div>
+      
     </div>
   );
 };

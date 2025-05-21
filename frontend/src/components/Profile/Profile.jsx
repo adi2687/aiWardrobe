@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./Profile.css";
-import { 
-  FaShare, 
-  FaUser, 
-  FaLock, 
-  FaSignOutAlt, 
-  FaUpload, 
-  FaHeart, 
-  FaCalendarWeek, 
-  FaTshirt, 
-  FaStore, 
-  FaLightbulb, 
+import {
+  FaShare,
+  FaUser,
+  FaLock,
+  FaSignOutAlt,
+  FaUpload,
+  FaHeart,
+  FaCalendarWeek,
+  FaTshirt,
+  FaStore,
+  FaLightbulb,
   FaEdit,
   FaEye,
   FaEyeSlash,
@@ -20,6 +20,7 @@ import {
   FaClipboard,
   FaInfoCircle
 } from "react-icons/fa";
+// No modal import needed
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -46,10 +47,11 @@ const Profile = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const [linkCopied, setLinkCopied] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
-  
+  // Profile setup state removed
+
   const location = useLocation();
   const { tab } = useParams(); // Get tab from URL parameters
-  
+
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const frontedUrl = import.meta.env.VITE_FRONTEND_URL;
@@ -58,11 +60,11 @@ const Profile = () => {
   useEffect(() => {
     fetchUserProfile();
     fetchClothesForWeek();
-    
+
     // Set active tab based on URL path
     const pathSegments = location.pathname.split('/');
     const lastSegment = pathSegments[pathSegments.length - 1];
-    
+
     // Check if the last segment is a valid tab
     if (['profile', 'favorites', 'planner', 'upload', 'settings'].includes(lastSegment)) {
       setActiveTab(lastSegment);
@@ -80,11 +82,13 @@ const Profile = () => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await response.json();
-      
+
       if (data.message === "Success") {
         setUser(data.user);
         console.log('a', data.user);
         setIsAuthenticated(true);
+
+        // User profile details check removed
       } else {
         setIsAuthenticated(false);
         console.log("User not authenticated");
@@ -95,6 +99,21 @@ const Profile = () => {
     }
   };
 
+  const [userdetails, setuserdetails] = useState({})
+  const getuserdetails = () => {
+    fetch(`${apiUrl}/user/getuserdetails`, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setuserdetails(data)
+        console.log(data)
+      })
+  }
+  useEffect(() => {
+    getuserdetails()
+  }, [])
   const LogOut = async () => {
     try {
       const response = await fetch(`${apiUrl}/user/logout`, {
@@ -102,7 +121,7 @@ const Profile = () => {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
-      
+
       if (response.ok) {
         console.log("Logout successful");
         // Clear any local storage items if needed
@@ -122,7 +141,7 @@ const Profile = () => {
     if (file) {
       setImageFile(file);
       setImageName(file.name);
-      
+
       // Create image preview
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -166,7 +185,7 @@ const Profile = () => {
         showNotification("Upload failed. Please try again.");
         return;
       }
-console.log("done ")
+      console.log("done ")
       // Set image in wardrobe state
       setWardrobeImages((prev) => [...prev, uploadData.imageUrl]);
       setImageFile(null);
@@ -205,7 +224,7 @@ console.log("done ")
       }
 
       showNotification("Clothing item successfully added to your wardrobe!");
-      
+
       // Wait before redirect
       setTimeout(() => {
         setIsScanning(false);
@@ -323,7 +342,7 @@ console.log("done ")
       showNotification("Please enter a new password");
       return;
     }
-    
+
     fetch(`${apiUrl}/user/updatepassword`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -344,12 +363,45 @@ console.log("done ")
       });
   };
 
+  const saveProfileInfo = async (profileData) => {
+    try {
+      const response = await fetch(`${apiUrl}/user/updateinfo`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(profileData),
+        credentials: "include",
+      });
+
+      const data = await response.json();
+
+      if (data.status === true) {
+        // Update local user state with the new data
+        setUser(prev => ({
+          ...prev,
+          age: profileData.age,
+          gender: profileData.gender,
+          preferences: profileData.preferences
+        }));
+
+        showNotification("Profile information saved successfully!");
+        return Promise.resolve();
+      } else {
+        return Promise.reject("Failed to save profile information");
+      }
+    } catch (error) {
+      console.error("Error saving profile info:", error);
+      return Promise.reject(error);
+    }
+  };
+
   const updatePersonalInfo = () => {
     if (!age || !gender) {
       showNotification("Please fill in all required fields");
       return;
     }
-    
+
     fetch(`${apiUrl}/user/updateinfo`, {
       method: "POST",
       headers: {
@@ -421,11 +473,16 @@ console.log("done ")
     );
   }
 
+  // Profile setup section removed
+
   return (
     <div className="profile-container">
+      {/* Inline profile setup section for new users */}
+
+
       <div className="profile-card">
         <div className="profile-tabs">
-          <div 
+          <div
             className={`tab ${activeTab === 'profile' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('profile');
@@ -434,7 +491,7 @@ console.log("done ")
           >
             <FaUser /> Profile
           </div>
-          <div 
+          <div
             className={`tab ${activeTab === 'favorites' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('favorites');
@@ -443,7 +500,7 @@ console.log("done ")
           >
             <FaHeart /> Favorites
           </div>
-          <div 
+          <div
             className={`tab ${activeTab === 'planner' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('planner');
@@ -452,7 +509,7 @@ console.log("done ")
           >
             <FaCalendarWeek /> Weekly Plan
           </div>
-          <div 
+          <div
             className={`tab ${activeTab === 'upload' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('upload');
@@ -461,7 +518,7 @@ console.log("done ")
           >
             <FaUpload /> Upload
           </div>
-          <div 
+          <div
             className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('settings');
@@ -470,7 +527,7 @@ console.log("done ")
           >
             <FaLock /> Settings
           </div>
-          <button 
+          <button
             className="tab-button logout-button"
             onClick={LogOut}
           >
@@ -498,20 +555,71 @@ console.log("done ")
                 <div className="profile-details">
                   <h2 className="profile-name">{user.username}</h2>
                   <p className="profile-email">{user.email}</p>
-                  {user.age && (
-                    <p className="profile-info">
-                      <span>Age:</span> {user.age}
-                    </p>
+                  {/* Only show input fields if user info is missing */}
+                  {(!user.age || !user.gender) && (
+                    <div className="profile-edit-fields">
+                      {!userdetails.age && (
+                        <input
+                          type="number"
+                          className="profile-input"
+                          placeholder="Age"
+                          value={age || ""}
+                          onChange={(e) => setAge(e.target.value)}
+                          min="13"
+                          max="100"
+                        />
+                      )}
+                      {!userdetails.gender && (
+                        <select
+                          className="profile-input"
+                          value={gender || ""}
+                          onChange={(e) => setGender(e.target.value)}
+                        >
+                          <option value="">Select Gender</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Non-binary">Non-binary</option>
+                          <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                      )}
+                      {!userdetails.preferences && (
+                        <input
+                          type="text"
+                          className="profile-input"
+                          placeholder="Style Preference"
+                          value={preferences || ""}
+                          onChange={(e) => setPreferences(e.target.value)}
+                        />
+                      )}
+                      {!  userdetails.age && !userdetails.gender && !userdetails.preferences && <button
+                        className="profile-update-btn"
+                        onClick={updatePersonalInfo}
+                      >
+                        Update Profile
+                      </button>
+                      }
+                    </div>
                   )}
-                  {user.gender && (
-                    <p className="profile-info">
-                      <span>Gender:</span> {user.gender}
-                    </p>
-                  )}
-                  {user.preferences && (
-                    <p className="profile-info">
-                      <span>Style:</span> {user.preferences}
-                    </p>
+                  {(userdetails.age || userdetails.gender || userdetails.preferences) && (
+                    <div className="profile-details-section">
+                      <h3 className="profile-details-title">Personal Information</h3>
+                      
+                      {userdetails.age && (
+                        <p className="profile-info">
+                          <span>Age</span> {userdetails.age}
+                        </p>
+                      )}
+                      {userdetails.gender && (
+                        <p className="profile-info">
+                          <span>Gender</span> {userdetails.gender}
+                        </p>
+                      )}
+                      {userdetails.preferences && (
+                        <p className="profile-info">
+                          <span>Style</span> {userdetails.preferences}
+                        </p>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>
@@ -532,7 +640,7 @@ console.log("done ")
                 {/* <button className="action-button" onClick={navigateToWishlist}>
                   <FaHeart /> Wishlist
                 </button> */}
-                
+
               </div>
             </div>
           )}
@@ -560,10 +668,10 @@ console.log("done ")
                           id="clothing-upload"
                         />
                       </label>
-                      
+
                       {imageName && <div className="file-name">Selected: {imageName}</div>}
                     </div>
-                    
+
                     <div className="upload-instructions">
                       <h4>Tips for best results:</h4>
                       <ul>
@@ -572,7 +680,7 @@ console.log("done ")
                         <li>Use a neutral background if possible</li>
                       </ul>
                     </div>
-                    
+
                     <button
                       type="submit"
                       className="upload-button"
@@ -591,7 +699,7 @@ console.log("done ")
                       )}
                     </button>
                   </div>
-                  
+
                   <div className="upload-right">
                     {imagePreview ? (
                       <div className="image-preview-container">
@@ -623,7 +731,7 @@ console.log("done ")
           {activeTab === 'favorites' && (
             <div className="favorites-section">
               <h2>Your Favorite Outfits</h2>
-              
+
               {favourites.length > 0 ? (
                 <div className="favorites-list">
                   {favourites.map((outfit, index) => (
@@ -658,8 +766,8 @@ console.log("done ")
               ) : (
                 <div className="empty-state">
                   <p>You haven't saved any favorite outfits yet.</p>
-                  <button 
-                    className="action-button" 
+                  <button
+                    className="action-button"
                     onClick={navigateToRecommendations}
                   >
                     <FaLightbulb /> Get Outfit Recommendations
@@ -671,21 +779,21 @@ console.log("done ")
                 <div className="share-link-container">
                   <h3>Share this outfit</h3>
                   <div className="share-link-box">
-                    <input 
-                      type="text" 
-                      value={sharecloths} 
-                      readOnly 
+                    <input
+                      type="text"
+                      value={sharecloths}
+                      readOnly
                       className="share-link-input"
                     />
-                    <button 
-                      className="copy-link-button" 
+                    <button
+                      className="copy-link-button"
                       onClick={copyShareLink}
                       title="Copy to clipboard"
                     >
                       {linkCopied ? <FaClipboard /> : <FaLink />}
                     </button>
-                    <button 
-                      className="reset-link-button" 
+                    <button
+                      className="reset-link-button"
                       onClick={resetLink}
                       title="Close"
                     >
@@ -701,10 +809,10 @@ console.log("done ")
           {activeTab === 'planner' && (
             <div className="weekly-section">
               <h2>Weekly Outfit Planning</h2>
-              
+
               <div className="weekly-actions">
-                <button 
-                  className="action-button" 
+                <button
+                  className="action-button"
                   onClick={toggleClothesForWeek}
                 >
                   {isVisible ? (
@@ -717,8 +825,8 @@ console.log("done ")
                     </>
                   )}
                 </button>
-                <button 
-                  className="action-button" 
+                <button
+                  className="action-button"
                   onClick={navigateToPlanner}
                 >
                   <FaCalendarWeek /> Open Weekly Planner
@@ -740,8 +848,8 @@ console.log("done ")
                   ) : (
                     <div className="empty-state">
                       <p>No weekly outfit plan found.</p>
-                      <button 
-                        className="action-button" 
+                      <button
+                        className="action-button"
                         onClick={navigateToPlanner}
                       >
                         <FaCalendarWeek /> Create Weekly Plan
@@ -757,7 +865,7 @@ console.log("done ")
           {activeTab === 'settings' && (
             <div className="settings-section">
               <h2>Account Settings</h2>
-              
+
               <div className="settings-group">
                 <h3><FaLock /> Change Password</h3>
                 <div className="password-form">
@@ -786,7 +894,7 @@ console.log("done ")
                   </button>
                 </div>
               </div>
-              
+
               <div className="settings-group">
                 <h3><FaInfoCircle /> Personal Information</h3>
                 <div className="personal-info-form">
@@ -802,7 +910,7 @@ console.log("done ")
                       className="info-input"
                     />
                   </div>
-                  
+
                   <div className="form-row">
                     <label>Gender</label>
                     <select
@@ -816,7 +924,7 @@ console.log("done ")
                       <option value="other">Other</option>
                     </select>
                   </div>
-                  
+
                   <div className="form-row">
                     <label>Style Preferences</label>
                     <input
@@ -827,7 +935,7 @@ console.log("done ")
                       className="info-input"
                     />
                   </div>
-                  
+
                   <button
                     type="button"
                     className="update-button"

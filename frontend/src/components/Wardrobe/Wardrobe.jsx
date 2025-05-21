@@ -22,7 +22,7 @@ const Wardrobe = () => {
 
   // Toggle states
   const [showWardrobe, setShowWardrobe] = useState(true);
-  const [showClothes, setShowClothes] = useState(true);
+  const [showClothes, setShowClothes] = useState(false);
   const [showAllClothes, setShowAllClothes] = useState(true);
   const [newcloth, setNewCloth] = useState("");
 

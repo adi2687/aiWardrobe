@@ -124,6 +124,8 @@ const Auth = () => {
           localStorage.setItem('token', data.token);
         }
         
+        // User profile setup flag removed
+        
         // Show intro for new users
         setShowIntro(true);
       } else {
