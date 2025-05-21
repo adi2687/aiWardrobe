@@ -1,26 +1,37 @@
-/* ShareCloths.css */
+/* ShareCloths.css - Modern UI with Glassmorphism */
 
 :root {
-  --primary-color: #6c5ce7;
-  --secondary-color: #a29bfe;
+  --primary-color: #2d2d2d;
+  --primary-gradient: linear-gradient(135deg, #333333, #1a1a1a);
+  --secondary-color: #444444;
   --accent-color: #fd79a8;
+  --accent-gradient: linear-gradient(135deg, #fd79a8, #ff6b9d);
   --text-color: #f5f6fa;
   --light-text: #f5f6fa;
+  --muted-text: rgba(245, 246, 250, 0.7);
   --background-color: #121212;
-  --card-bg: #1e1e1e;
-  --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  --border-radius: 12px;
+  --card-bg: rgba(30, 30, 30, 0.8);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --border-radius: 16px;
   --transition: all 0.3s ease;
+  --whatsapp: #25D366;
+  --twitter: #1DA1F2;
+  --facebook: #4267B2;
+  --instagram: #E1306C;
+  --email: #FF6F61;
 }
 
 /* Container for the main component */
 .share-cloths-container {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background-color);
-  padding: 30px;
+  background-image: radial-gradient(circle at top right, rgba(50, 50, 50, 0.1), transparent 70%), 
+                    radial-gradient(circle at bottom left, rgba(253, 121, 168, 0.1), transparent 70%);
+  padding: 40px 30px;
   border-radius: var(--border-radius);
-  max-width: 800px;
-  margin: 20px auto;
+  max-width: 900px;
+  margin: 30px auto;
   box-shadow: var(--shadow);
   min-height: 100vh;
   color: var(--text-color);
@@ -28,172 +39,245 @@
   overflow: hidden;
 }
 
-/* Heading for the username */
-.share-cloths-container h3 {
-  font-size: 2rem;
-  color: var(--text-color);
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
+/* Header styling with decorative elements */
+.share-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
-.share-cloths-container h3::after {
+.share-header h2 {
+  font-size: 2.2rem;
+  color: var(--text-color);
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  margin: 0 20px;
+  padding-bottom: 10px;
+}
+
+.share-header h2::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background: var(--accent-gradient);
   border-radius: 3px;
+  box-shadow: 0 2px 10px rgba(253, 121, 168, 0.3);
 }
 
-/* List of clothes items */
-.share-cloths-list {
-  display: grid;
-  gap: 20px;
-  padding: 1rem;
-  list-style-type: none;
-  min-width: 100%;
-  font-size: 1.2rem;
-  text-align: center;
+.accent-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.header-decoration {
+  height: 2px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
+  position: relative;
+}
+
+.header-decoration.left {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
+}
+
+.header-decoration.right {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* Card styling for content sections */
+.content-card {
   background-color: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
-  margin-bottom: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
+  overflow: hidden;
   box-shadow: var(--shadow);
-  line-height: 1.6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+  background: var(--primary-gradient);
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-header h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Share content wrapper */
+.share-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Outfit details styling */
+.share-cloths-list {
+  padding: 25px;
+  font-size: 1.1rem;
+  line-height: 1.8;
   color: var(--light-text);
+}
+
+.outfit-description {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 3px solid #444;
+  white-space: pre-line;
 }
 
 .no-clothes-message {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted-text);
   text-align: center;
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.share-cloths-container .imagecontainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0;
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow);
-}
-
-.imagecontainer img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--border-radius);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-  border: 2px solid rgba(108, 92, 231, 0.3);
-}
-
-.imagecontainer img:hover {
-  transform: scale(1.02);
-}
-
-.imagecontainer p {
-  margin-top: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  padding: 30px;
   font-style: italic;
 }
 
-.share-cloths-container button {
-  padding: 12px 24px;
-  margin: 0.5rem;
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 1rem;
-  position: relative;
-  overflow: hidden;
+/* Image styling */
+.image-wrapper {
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.share-cloths-container button::before {
+.image-wrapper img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(50, 50, 50, 0.3);
+  object-fit: cover;
+}
+
+.no-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.no-preview p {
+  color: var(--muted-text);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* Button styling */
+.copybutton {
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 16px 30px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1.1rem;
+  gap: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copybutton:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.1);
+}
+
+.copybutton:active {
+  transform: scale(0.98);
+}
+
+.copybutton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.copybutton:hover::before {
+  left: 100%;
+}
+
+/* Social share buttons */
+.share-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.share-btn::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transform: translateX(-100%);
   transition: 0.6s;
 }
 
-.share-cloths-container button:hover::before {
+.share-btn:hover::before {
   transform: translateX(100%);
 }
 
-.share-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  max-width: 300px;
-  margin: 0.5rem 0;
-  text-align: center;
+.share-btn:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.share-button {
-  padding: 14px 24px;
-  background-color: var(--accent-color);
-  color: var(--light-text);
-  font-weight: 600;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.share-button:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.share-dropdown {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  right: 0;
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius);
-  padding: 1rem;
-  width: 100%;
-  box-shadow: var(--shadow);
-  z-index: 999;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin-top: -0.8rem;
-  animation: fadeIn 0.3s ease;
-}
+/* Social button colors */
+.share-btn.whatsapp { background-color: var(--whatsapp); }
+.share-btn.twitter { background-color: var(--twitter); }
+.share-btn.facebook { background-color: var(--facebook); }
+.share-btn.instagram { background-color: var(--instagram); }
+.share-btn.email { background-color: var(--email); }
 
 @keyframes fadeIn {
   from {
@@ -272,6 +356,7 @@
 
 .share-btn .icon {
   font-size: 1.5rem;
+  color: white;
 }
 
 .copybutton {
@@ -320,27 +405,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  background-color: var(--card-bg);
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: var(--border-radius);
-  margin: 1.5rem 0;
+  margin: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow);
+  width: 100%;
 }
 
 .loading-container .loader {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(255, 255, 255, 0.1);
-  border-top: 5px solid var(--primary-color);
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid var(--primary-color);
+  border-left: 4px solid var(--accent-color);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 1.2s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
 }
 
 .loading-container p {
-  margin-top: 1rem;
-  color: var(--text-color);
-  font-size: 1rem;
+  margin-top: 20px;
+  color: var(--muted-text);
+  font-size: 1.1rem;
 }
 
 @keyframes spin {
@@ -350,53 +436,109 @@
 
 /* Error message */
 .error-message {
-  background-color: rgba(211, 47, 47, 0.2);
+  background-color: rgba(211, 47, 47, 0.15);
   color: #ff6b6b;
-  padding: 1.5rem;
+  padding: 25px;
   border-radius: var(--border-radius);
-  margin: 1.5rem 0;
+  margin: 30px 0;
   font-weight: 500;
   box-shadow: var(--shadow);
-  border: 1px solid rgba(211, 47, 47, 0.4);
+  border-left: 4px solid #ff6b6b;
   text-align: center;
 }
 
-/* Share section */
+/* Share section styling */
 .share-section {
+  margin-bottom: 50px;
+}
+
+.share-options {
+  padding: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
-  gap: 1.5rem;
+  gap: 25px;
+}
+
+.social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
   width: 100%;
-  background-color: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow);
+  max-width: 500px;
+  margin-top: 10px;
 }
 
 /* Responsive styles */
 @media (max-width: 780px) {
-  .share-dropdown {
-    flex-direction: column;
-    width: 100%;
-    left: 0;
-    right: 0;
+  .share-header h2 {
+    font-size: 1.8rem;
   }
 
   .share-cloths-container {
-    padding: 20px;
+    padding: 25px 15px;
     margin: 10px;
     width: auto;
   }
 
-  .share-cloths-container h3 {
-    font-size: 1.5rem;
+  .card-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .social-buttons {
+    gap: 10px;
   }
 
   .share-btn {
-    width: 100%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .copybutton {
+    font-size: 1rem;
+    padding: 14px 20px;
+  }
+
+  .outfit-description {
+    font-size: 1rem;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .share-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-decoration {
+    width: 80%;
+    height: 1px;
+  }
+
+  .share-header h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+
+  .card-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .share-options {
+    padding: 20px 15px;
+  }
+
+  .social-buttons {
+    gap: 8px;
+  }
+
+  .share-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
   }
 
   .imagecontainer img {
