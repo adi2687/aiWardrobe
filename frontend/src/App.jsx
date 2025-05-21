@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
@@ -25,8 +25,10 @@ import DevelopersPage from './components/Developers/Developers'
 import Features from './components/Developers/Features'
 import About from './components/Developers/Aboutus'
 import Wishlist from './components/Wishlist/Wishlist'
+import VirtualTryOn from './components/VirtualTryOn/VirtualTryOn'
 import Download from './components/Download/Download'
 import FloatingNavbar from './components/FloatingNavbar/FloatingNavbar'
+import Intro from './components/Intro/Intro'
 // Policy pages
 import PrivacyPolicy from './components/Policies/PrivacyPolicy'
 import TermsOfService from './components/Policies/TermsOfService'
@@ -34,8 +36,32 @@ import DataDeletion from './components/Policies/DataDeletion'
 import PoliciesHub from './components/Policies/PoliciesHub'
 // import News from './components/profile/News/CelebrityNews'
 const App = () => {
+  const [showIntro, setShowIntro] = useState(false);
+
+  useEffect(() => {
+    // Check if user is coming from OAuth login and is a new user
+    const checkForNewUser = localStorage.getItem('checkForNewUser');
+    const introComplete = localStorage.getItem('introComplete');
+    
+    if (checkForNewUser === 'true' && introComplete !== 'true') {
+      // Check if user is logged in (has token)
+      const token = localStorage.getItem('token') || document.cookie.includes('tokenlogin');
+      
+      if (token) {
+        setShowIntro(true);
+        // Clear the flag
+        localStorage.removeItem('checkForNewUser');
+      }
+    }
+  }, []);
+
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+    localStorage.setItem('introComplete', 'true');
+  };
   return (
     <>    
+      {showIntro && <Intro onComplete={handleIntroComplete} />}
       <Navbar /> {/* Always visible */}
       <ChatButton />  
       <Routes> 
@@ -71,6 +97,7 @@ const App = () => {
         <Route path="/aboutus" element={<About />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/download" element={<Download />} />
+        <Route path="/virtual-tryon" element={<VirtualTryOn />} />
       </Routes>
       <FloatingNavbar />
       <Footer />

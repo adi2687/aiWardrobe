@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { Strategy as FacebookStrategy } from "passport-facebook";
 import User from "../model/user.js";
 import jwt from "jsonwebtoken";
+import { sendWelcomeEmail } from "../utils/emailService.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -51,6 +52,15 @@ passport.use(
             profileImageURL: profilePicture
           });
           await user.save();
+          
+          // Send welcome email to new user
+          try {
+            await sendWelcomeEmail(email, profile.displayName);
+            console.log('Welcome email sent to Facebook user:', email);
+          } catch (emailError) {
+            console.error('Failed to send welcome email to Facebook user:', emailError);
+            // Continue with authentication even if email fails
+          }
         }
         return done(null, user);
       } catch (error) {
