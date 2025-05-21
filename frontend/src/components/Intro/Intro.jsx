@@ -10,9 +10,9 @@ const Intro = ({ onComplete }) => {
   const navigate = useNavigate();
 
   const floatingMessages = [
-    { text: "Upload your clothes" },
-    { text: "Get personalized recommendations" },
-    { text: "Try on outfits virtually" },
+    { text: "Digitize Your Wardrobe" },
+    { text: "Discover Perfect Outfits" },
+    { text: "Experience Virtual Try-On" },
   ];
 
   
@@ -75,10 +75,7 @@ const Intro = ({ onComplete }) => {
         </div>
       )}
       
-      {/* Skip button */}
-      <button className="intro-skip-button" onClick={handleComplete}>
-        Skip Intro
-      </button>
+      
     </div>
   );
 };
