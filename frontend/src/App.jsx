@@ -26,7 +26,7 @@ import Features from './components/Developers/Features'
 import About from './components/Developers/Aboutus'
 import Wishlist from './components/Wishlist/Wishlist'
 import Download from './components/Download/Download'
-
+import FloatingNavbar from './components/FloatingNavbar/FloatingNavbar'
 // Policy pages
 import PrivacyPolicy from './components/Policies/PrivacyPolicy'
 import TermsOfService from './components/Policies/TermsOfService'
@@ -41,6 +41,10 @@ const App = () => {
       <Routes> 
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/profile/favorites' element={<Profile />} />
+        <Route path='/profile/planner' element={<Profile />} />
+        <Route path='/profile/upload' element={<Profile />} />
+        <Route path='/profile/settings' element={<Profile />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/wardrobe" element={<Wardrobe />} />
@@ -68,6 +72,7 @@ const App = () => {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/download" element={<Download />} />
       </Routes>
+      <FloatingNavbar />
       <Footer />
     </>
   );

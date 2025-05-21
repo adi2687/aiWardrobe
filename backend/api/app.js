@@ -62,6 +62,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 connectCloudinary();
+console.log(mongoUri)
 connect(mongoUri);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

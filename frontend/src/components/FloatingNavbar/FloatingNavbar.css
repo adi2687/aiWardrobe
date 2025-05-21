@@ -1,0 +1,125 @@
+/* FloatingNavbar.css */
+.floating-navbar {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  z-index: 1000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  width: auto;
+  max-width: 800px;
+  height: 50px;
+  padding: 0 15px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 20px;
+  min-width: 70px;
+  height: 35px;
+}
+
+.nav-item svg {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.nav-item span {
+  display: block;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  margin-top: 4px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.nav-item:hover svg,
+.nav-item.active svg {
+  transform: scale(1.2);
+  color: #fd79a8 !important;
+}
+
+.nav-item:hover span,
+.nav-item.active span {
+  color: #fd79a8;
+}
+
+.nav-item.active {
+  background-color: rgba(253, 121, 168, 0.2);
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: #fd79a8;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #fd79a8;
+}
+
+/* No need for bottom padding since the navbar is floating */
+body {
+  padding-bottom: 20px;
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 600px) {
+  .floating-navbar {
+    max-width: 92%;
+height:60px
+  }
+  
+  .nav-item {
+    min-width: 40px;
+    height: 40px;
+    padding: 5px;
+    margin: 0 2px;
+    border-radius: 50%;
+    margin-left:0px
+  }
+  
+  .nav-item svg {
+    font-size: 1.1rem;
+  }
+  
+  .nav-item span {
+    display: none;
+  }
+}
+
+/* Animation for the navbar */
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.floating-navbar {
+  animation: floatIn 0.5s ease-out forwards;
+}
