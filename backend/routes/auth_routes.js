@@ -26,7 +26,7 @@ dotenv.config()
 
 router.post("/register",async (req,res)=>{
     console.log('user login info : ' , (req.body))
-    const {username,email,password}=req.body 
+    const {username,email,password}=req.body
     console.log(username,email,password)
     const profileImage=`https://api.dicebear.com/7.x/initials/svg?seed=${username}`
     

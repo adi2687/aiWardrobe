@@ -63,7 +63,7 @@ const Auth = () => {
         setError(data.msg || "Invalid email or password.");
       } else {
         console.log("Login successful:", data);
-        window.location.href = "/profile";
+        window.location.href = "/pro  file";
       }
     } catch (err) {
       console.error("Error during login:", err);
@@ -257,7 +257,7 @@ const Auth = () => {
 
             {toggle && (
               <div className="form-group">
-                    
+                      
                 <input
                   id="username"
                   type="text"
