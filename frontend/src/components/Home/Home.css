@@ -74,7 +74,6 @@
 /* Small screens (mobile) */
 @media (max-width: 768px) {
   .container{
-    border:2px solid green;
     max-height: 400px;
     min-height: 80px;
   }
