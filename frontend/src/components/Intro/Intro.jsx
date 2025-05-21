@@ -1,60 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaTshirt, FaRobot, FaCamera, FaShoppingBag, FaHeart, FaArrowRight } from 'react-icons/fa';
+import { FaTshirt, FaRobot, FaCamera, FaShoppingBag, FaClipboardCheck } from 'react-icons/fa';
 import './Intro.css';
 
 const Intro = ({ onComplete }) => {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [showFloatingMessage, setShowFloatingMessage] = useState(false);
+  const [floatingMessageIndex, setFloatingMessageIndex] = useState(0);
+  const [floatingMessagePosition, setFloatingMessagePosition] = useState({ top: '50%', left: '50%' });
   const navigate = useNavigate();
 
-  const steps = [
-    {
-      title: "Welcome to Outfit AI",
-      description: "Your personal AI-powered wardrobe assistant",
-      icon: <FaRobot className="step-icon" />,
-      color: "#6a11cb"
-    },
-    {
-      title: "Organize Your Wardrobe",
-      description: "Upload and categorize your clothing items to create your digital wardrobe",
-      icon: <FaTshirt className="step-icon" />,
-      color: "#2575fc"
-    },
-    {
-      title: "Get AI Recommendations",
-      description: "Receive personalized outfit recommendations based on your style, weather, and occasions",
-      icon: <FaRobot className="step-icon" />,
-      color: "#fd79a8"
-    },
-    {
-      title: "Virtual Try-On",
-      description: "See how clothes look on you before buying with our virtual try-on feature",
-      icon: <FaCamera className="step-icon" />,
-      color: "#6c5ce7"
-    },
-    {
-      title: "Shop Smart",
-      description: "Buy and sell clothes in our marketplace with AI-powered suggestions",
-      icon: <FaShoppingBag className="step-icon" />,
-      color: "#00b894"
-    }
+  const floatingMessages = [
+    { text: "Upload your clothes" },
+    { text: "Get personalized recommendations" },
+    { text: "Try on outfits virtually" },
   ];
 
-  const handleNext = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      // Mark intro as complete
-      localStorage.setItem('introComplete', 'true');
-      if (onComplete) {
-        onComplete();
-      } else {
-        navigate('/profile');
-      }
-    }
-  };
+  
 
-  const handleSkip = () => {
+  // Handle floating messages animation
+  useEffect(() => {
+    // Start showing floating messages when component mounts
+    const showMessage = () => {
+      setShowFloatingMessage(true);
+      
+      // Hide message after 3 seconds (matching the CSS animation duration)
+      setTimeout(() => {
+        setShowFloatingMessage(false);
+        
+        // Move to next message after hiding
+        setTimeout(() => {
+          // Move to next message index
+          const nextIndex = (floatingMessageIndex + 1) % floatingMessages.length;
+          setFloatingMessageIndex(nextIndex);
+          
+          // If we've gone through all messages once, complete the intro
+          if (nextIndex === 0) {
+            // After showing all messages once, complete the intro
+            setTimeout(() => {
+              handleComplete();
+            }, 500);
+          } else {
+            showMessage();
+          }
+        }, 500);
+      }, 3000);
+    };
+    
+    showMessage();
+    
+    return () => {
+      // Clean up any timeouts when component unmounts
+      setShowFloatingMessage(false);
+    };
+  }, [floatingMessageIndex]);
+
+  const handleComplete = () => {
     // Mark intro as complete
     localStorage.setItem('introComplete', 'true');
     if (onComplete) {
@@ -66,35 +66,19 @@ const Intro = ({ onComplete }) => {
 
   return (
     <div className="intro-container">
-      <div className="intro-content">
-        <div className="progress-bar">
-          {steps.map((_, index) => (
-            <div 
-              key={index} 
-              className={`progress-dot ${index <= currentStep ? 'active' : ''}`}
-              onClick={() => setCurrentStep(index)}
-            />
-          ))}
-        </div>
-        
-        <div className="step-content" style={{ '--accent-color': steps[currentStep].color }}>
-          <div className="step-icon-container">
-            {steps[currentStep].icon}
+      {/* Floating animated messages */}
+      {showFloatingMessage && (
+        <div className="floating-message">
+          <div className="floating-message-text">
+            {floatingMessages[floatingMessageIndex].text}
           </div>
-          <h1>{steps[currentStep].title}</h1>
-          <p>{steps[currentStep].description}</p>
         </div>
-        
-        <div className="intro-buttons">
-          <button className="skip-button" onClick={handleSkip}>
-            Skip
-          </button>
-          <button className="next-button" onClick={handleNext}>
-            {currentStep === steps.length - 1 ? 'Get Started' : 'Next'} 
-            <FaArrowRight className="button-icon" />
-          </button>
-        </div>
-      </div>
+      )}
+      
+      {/* Skip button */}
+      <button className="intro-skip-button" onClick={handleComplete}>
+        Skip Intro
+      </button>
     </div>
   );
 };
