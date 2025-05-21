@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./sharecloths.css"; // Import the CSS file
-import { FaWhatsapp, FaTwitter, FaEnvelope, FaLink, FaShareAlt } from "react-icons/fa";
-import { FiCopy, FiCheck } from "react-icons/fi";
+import { FaWhatsapp, FaTwitter, FaEnvelope, FaShareAlt, FaInstagram, FaFacebook } from "react-icons/fa";
+import { FiCopy, FiCheck, FiLink } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const ShareClothes = () => {
   const { id } = useParams();
@@ -175,108 +176,157 @@ ${shareUrl}`)}`;
 
   return (
     <div className="share-cloths-container">
-      {/* Header with username */}
-      <h3>{username} Wardrobe Collection</h3>
+      {/* Header with username and decorative elements */}
+      <div className="share-header">
+        <div className="header-decoration left"></div>
+        <h2>{username}'s <span className="accent-text">Wardrobe</span> Collection</h2>
+        <div className="header-decoration right"></div>
+      </div>
       
       {loading ? (
-        <div className="loading-container">
+        <motion.div 
+          className="loading-container"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="loader"></div>
           <p>Loading shared outfits...</p>
-        </div>
+        </motion.div>
       ) : error ? (
-        <div className="error-message">
+        <motion.div 
+          className="error-message"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <p>{error}</p>
-        </div>
+        </motion.div>
       ) : (
-        <>
-          {/* Clothes list */}
-          <div className="share-cloths-list">
-            {sharecloth && sharecloth.length > 0 ? (
-              sharecloth
-            ) : (
-              <p className="no-clothes-message">No outfits found in this collection</p>
-            )}
-          </div>
-          
-          {/* Image preview */}
-          <div className="imagecontainer">
-            <h3>Outfits Preview</h3>
-            {imageLoading ? (
-              <div className="loading-container">
-                <div className="loader"></div>
-                <p>Generating outfit preview...</p>
-              </div>
-            ) : imageUrl ? (
-              <img
-                src={imageUrl}
-                alt="Generated Outfit Preview"
-                loading="lazy"
-              />
-            ) : (
-              <p>No preview available</p>
-            )}
-          </div>
-          
-          {/* Share section */}
-          <div className="share-section">
-            {/* Copy link button */}
-            <button onClick={copyToClipboard} className="copybutton">
-              {copyUrl ? (
-                <>
-                  <FiCheck className="icon" /> 
-                  <span>Copied!</span>
-                </>
+        <motion.div 
+          className="share-content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Clothes list with improved styling */}
+          <div className="content-card">
+            <div className="card-header">
+              <h3>Outfit Details</h3>
+            </div>
+            <div className="share-cloths-list">
+              {sharecloth && sharecloth.length > 0 ? (
+                <div className="outfit-description">{sharecloth}</div>
               ) : (
-                <>
-                  <FiCopy className="icon" /> 
-                  <span>Copy Link</span>
-                </>
+                <p className="no-clothes-message">No outfits found in this collection</p>
               )}
-            </button>
-            
-            {/* Share dropdown */}
-            <div className="share-wrapper">
-              <button
-                className="share-button"
-                onClick={toggleShareOptions}
-              >
-                <FaShareAlt className="icon" style={{ fontSize: '1.3rem' }} />
-                <span>Share Collection</span>
-              </button>
-
-              {showOptions && (
-                <div className="share-dropdown">
-                  <button 
-                    className="share-btn whatsapp"
-                    style={{backgroundColor:"#25D366"}}
-                    onClick={() => shareToSocial('whatsapp')}
-                  >
-                    <FaWhatsapp className="icon" />
-                    <span>WhatsApp</span>
-                  </button>
-                
-                  <button 
-                    className="share-btn twitter"
-                    style={{backgroundColor:"#1DA1F2"}}
-                    onClick={() => shareToSocial('twitter')}
-                  >
-                    <FaTwitter className="icon" />
-                    <span>Twitter</span>
-                  </button>
-                
-                  <button 
-                    className="share-btn email"
-                    style={{backgroundColor:"#FF6F61"}}
-                    onClick={() => shareToSocial('email')}
-                  >
-                    <FaEnvelope className="icon" />
-                    <span>Email</span>
-                  </button>
+            </div>
+          </div>
+          
+          {/* Image preview with improved styling */}
+          <div className="content-card">
+            <div className="card-header">
+              <h3>Outfit Preview</h3>
+            </div>
+            <div className="image-wrapper">
+              {imageLoading ? (
+                <div className="loading-container">
+                  <div className="loader"></div>
+                  <p>Generating outfit preview...</p>
+                </div>
+              ) : imageUrl ? (
+                <motion.img
+                  src={imageUrl}
+                  alt="Generated Outfit Preview"
+                  loading="lazy"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                />
+              ) : (
+                <div className="no-preview">
+                  <p>No preview available</p>
                 </div>
               )}
             </div>
           </div>
-        </>
+          
+          {/* Share section with improved styling */}
+          <div className="content-card share-section">
+            <div className="card-header">
+              <h3>Share This Collection</h3>
+            </div>
+            
+            <div className="share-options">
+              {/* Copy link button */}
+              <motion.button 
+                onClick={copyToClipboard} 
+                className="copybutton"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {copyUrl ? (
+                  <>
+                    <FiCheck className="icon" style={{ color: 'white' }} /> 
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <FiLink className="icon" style={{ color: 'white' }} /> 
+                    <span>Copy Link</span>
+                  </>
+                )}
+              </motion.button>
+              
+              {/* Social share buttons */}
+              <div className="social-buttons">
+                <motion.button 
+                  className="share-btn whatsapp"
+                  onClick={() => shareToSocial('whatsapp')}
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaWhatsapp className="icon" style={{ color: 'white' }} />
+                </motion.button>
+                
+                <motion.button 
+                  className="share-btn twitter"
+                  onClick={() => shareToSocial('twitter')}
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaTwitter className="icon" style={{ color: 'white' }} />
+                </motion.button>
+                
+                <motion.button 
+                  className="share-btn facebook"
+                  onClick={() => shareToSocial('facebook')}
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaFacebook className="icon" style={{ color: 'white' }} />
+                </motion.button>
+                
+                <motion.button 
+                  className="share-btn instagram"
+                  onClick={() => shareToSocial('instagram')}
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaInstagram className="icon" style={{ color: 'white' }} />
+                </motion.button>
+                
+                <motion.button 
+                  className="share-btn email"
+                  onClick={() => shareToSocial('email')}
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaEnvelope className="icon" style={{ color: 'white' }} />
+                </motion.button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       )}
     </div>
   );
