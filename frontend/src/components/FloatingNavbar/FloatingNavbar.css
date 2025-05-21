@@ -7,17 +7,17 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: rgba(18, 18, 18, 0.85);
+  background: linear-gradient(135deg, rgba(30, 30, 40, 0.9), rgba(18, 18, 18, 0.95));
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50px;
   z-index: 1000;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(106, 17, 203, 0.1);
   width: auto;
   max-width: 800px;
-  height: 50px;
-  padding: 0 15px;
+  height: 60px;
+  padding: 0 20px;
 }
 
 .nav-item {
@@ -25,57 +25,83 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
-  margin: 0 5px;
+  padding: 8px 15px;
+  margin: 0 6px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  border-radius: 20px;
+  border-radius: 16px;
   min-width: 70px;
-  height: 35px;
+  height: 42px;
+  overflow: hidden;
 }
 
 .nav-item svg {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-item span {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   transition: all 0.3s ease;
   margin-top: 4px;
   text-align: center;
   white-space: nowrap;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.nav-item:hover::before,
+.nav-item.active::before {
+  opacity: 0.15;
 }
 
 .nav-item:hover svg,
 .nav-item.active svg {
-  transform: scale(1.2);
-  color: #fd79a8 !important;
+  transform: translateY(-2px);
+  color: #6a11cb !important;
 }
 
 .nav-item:hover span,
 .nav-item.active span {
-  color: #fd79a8;
+  color: #6a11cb;
 }
 
 .nav-item.active {
-  background-color: rgba(253, 121, 168, 0.2);
+  background-color: rgba(106, 17, 203, 0.08);
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.1);
 }
 
 .nav-item.active::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 4px;
-  height: 4px;
-  background-color: #fd79a8;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #fd79a8;
+  width: 20px;
+  height: 3px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
+  z-index: 2;
 }
 
 /* No need for bottom padding since the navbar is floating */
@@ -84,10 +110,35 @@ body {
 }
 
 /* Media queries for different screen sizes */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .floating-navbar {
     max-width: 92%;
-height:60px
+    padding: 0 15px;
+    height: 65px;
+  }
+  
+  .nav-item {
+    min-width: 45px;
+    height: 45px;
+    padding: 8px;
+    margin: 0 3px;
+    border-radius: 12px;
+  }
+  
+  .nav-item svg {
+    font-size: 1.2rem;
+  }
+  
+  .nav-item span {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .floating-navbar {
+    max-width: 90%;
+    height: 60px;
+    bottom: 20px;
   }
   
   .nav-item {
@@ -96,7 +147,6 @@ height:60px
     padding: 5px;
     margin: 0 2px;
     border-radius: 50%;
-    margin-left:0px
   }
   
   .nav-item svg {
@@ -105,6 +155,12 @@ height:60px
   
   .nav-item span {
     display: none;
+  }
+  
+  .nav-item.active::after {
+    width: 10px;
+    height: 2px;
+    bottom: 3px;
   }
 }
 

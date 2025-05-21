@@ -120,9 +120,9 @@ router.post("/updateinfo", authenticate, async (req, res) => {
   const gender = req.body.gender;
   const prefference = req.body.preferences;
   const user = await User.findById(userid);
-  user.age = age;
-  user.gender = gender;
-  user.preferences = prefference;
+  if (age) user.age = age;
+  if (gender) user.gender = gender;
+  if (prefference) user.preferences = prefference;
   user.save();
   res.json({ status: true, msg: "Info done" });
 });

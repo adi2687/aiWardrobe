@@ -190,9 +190,19 @@ router.post("/classify", upload.single("images"), async (req, res) => {
 
 
 
-router.get("/getitems",async (req,res)=>{
-  // Get token from cookies
-  const token = req.cookies.tokenlogin;
+
+
+
+
+
+
+
+
+
+
+
+router.get("/getitems",authenticate,async (req,res)=>{
+const token = req.cookies.tokenlogin;
   if (!token) {
     return res.status(401).json({ error: "Not authenticated" });
   }
