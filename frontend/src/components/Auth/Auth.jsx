@@ -339,7 +339,10 @@ const Auth = () => {
               <FaGoogle />
               <span>Google</span>
             </button>
-            
+            <button className="facebook-btn" onClick={loginWithFacebook}>
+              <FaFacebook />
+              <span>Facebook</span>
+            </button>
           </div>
 
           <p className="toggle-text">

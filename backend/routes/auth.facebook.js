@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
 
 // Load environment variables from .env file
 dotenv.config();
-
+ 
 const router = express.Router();
 const SECRET_KEY = process.env.SECRET_KEY;
 const backendUrl = process.env.BACKEND_URL;
@@ -29,8 +29,8 @@ router.use(passport.session());
 passport.use(
   new FacebookStrategy(
     {
-      clientID: process.env.FACEBOOK_APP_ID || "2450931771911994",
-      clientSecret: process.env.FACEBOOK_APP_SECRET || "4daadd07d1d8c95ee7e934c6e208f983",
+      clientID: process.env.FACEBOOK_APP_ID || "1785939628619411",
+      clientSecret: process.env.FACEBOOK_APP_SECRET || "fee7787307c68bd51e513c6c6eb00d6a",
       callbackURL: `${backendUrl}/facebook/callback`,
       profileFields: ["id", "displayName", "photos", "email"], // Request additional info
     },
