@@ -109,8 +109,19 @@ router.get(
       httpOnly: true, 
       secure: process.env.NODE_ENV === "production", 
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined
+      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
+      path: "/"
     });
+    
+    // Log cookie settings for debugging
+    console.log("Setting cookie with options:", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
+      path: "/"
+    });
+    
     res.redirect(`${frontendUrl}/profile`);
   }
 );
@@ -131,7 +142,24 @@ router.get("/profile", (req, res) => {
 // Logout Route
 router.get("/logout", (req, res) => {
   req.logout(() => {
-    res.redirect("/");
+    // Clear the authentication cookie with proper settings for production
+    res.clearCookie("tokenlogin", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
+      path: "/"
+    });
+    
+    console.log("Clearing cookie with options:", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
+      path: "/"
+    });
+    
+    res.redirect(frontendUrl);
   });
 });
 
