@@ -52,6 +52,7 @@
   align-items: center;
   gap: 0.5rem;
   border-radius: 8px;
+font-size: 14px;
 }
 
 .profile-container .tab-button:hover,
@@ -573,6 +574,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
 }
 
 .profile-container .action-button:hover {

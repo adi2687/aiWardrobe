@@ -583,13 +583,23 @@ const Profile = () => {
                         </select>
                       )}
                       {!userdetails.preferences && (
-                        <input
-                          type="text"
+                        <select
                           className="profile-input"
-                          placeholder="Style Preference"
                           value={preferences || ""}
                           onChange={(e) => setPreferences(e.target.value)}
-                        />
+                        >
+                          <option value="">Select Style Preference</option>
+                          <option value="Casual">Casual</option>
+                          <option value="Formal">Formal</option>
+                          <option value="Streetwear">Streetwear</option>
+                          <option value="Vintage">Vintage</option>
+                          <option value="Minimalist">Minimalist</option>
+                          <option value="Bohemian">Bohemian</option>
+                          <option value="Athletic">Athletic</option>
+                          <option value="Business Casual">Business Casual</option>
+                          <option value="Preppy">Preppy</option>
+                          <option value="Eclectic">Eclectic</option>
+                        </select>
                       )}
                       {(!userdetails.age || !userdetails.gender || !userdetails.preferences) && <button
                         className="profile-update-btn"
