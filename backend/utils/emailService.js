@@ -43,6 +43,13 @@ export const sendWelcomeEmail = async (to, username) => {
               <li>Shop for new clothes with personalized suggestions</li>
               <li>Connect with other fashion enthusiasts</li>
             </ul>
+            
+            <div style="background-color: #f0f7ff; border-left: 4px solid #6e8efb; padding: 15px; margin: 20px 0; border-radius: 4px;">
+              <h4 style="margin: 0 0 10px; color: #333;">Login Information</h4>
+              <p>If you login using google then your password is <b>google</b></p>
+              <p>If you login using facebook then your password is <b>facebook</b></p>
+            </div>
+            
             <p>If you have any questions or need assistance, feel free to contact our support team.</p>
             <div style="margin-top: 30px; text-align: center;">
               <a href="${frontendURL}" style="background: linear-gradient(135deg, #6e8efb, #a777e3); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Start Exploring</a>
@@ -52,6 +59,7 @@ export const sendWelcomeEmail = async (to, username) => {
               Created by Aditya Kurani<br>
               © ${new Date().getFullYear()} Outfit AI. All rights reserved.
             </p>
+            
           </div>
         </div>
       `
