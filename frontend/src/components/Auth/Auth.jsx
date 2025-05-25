@@ -50,6 +50,9 @@ const Auth = () => {
       setError("Please enter both email and password.");
       return;
     }
+    
+    // Check if intro has been completed before
+    const introComplete = localStorage.getItem('introComplete');
 
     setLogging(true);
 
@@ -68,11 +71,21 @@ const Auth = () => {
       } else {
         console.log("Login successful:", data);
         
-        // Check if this is a new user who just signed up
-        if (signupComplete && newUser && newUser.email === email) {
-          // Show intro for new users
-          setShowIntro(true);
+        // Store token if provided
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+        }
+        
+        // Check if intro has been completed before
+        const introComplete = localStorage.getItem('introComplete');
+        
+        if (introComplete !== 'true') {
+          // For first-time or returning users who haven't seen the intro
+          // Set flag to false to ensure intro is shown
+          localStorage.removeItem('introComplete');
+          window.location.href = "/";
         } else {
+          // For users who have already seen the intro
           window.location.href = "/profile";
         }
       }
@@ -142,14 +155,18 @@ const Auth = () => {
   // Google Login
   const loginWithGoogle = async (e) => {
     e.preventDefault();
-    // Store a flag to show intro for new users after OAuth login
+    // Always remove the introComplete flag to ensure intro is shown
+    localStorage.removeItem('introComplete');
+    // Store a flag to show intro after OAuth login
     localStorage.setItem('checkForNewUser', 'true');
     window.location.href = `${apiUrl}/google/login`;
   };
 
   const loginWithFacebook = async (e) => {
     e.preventDefault();
-    // Store a flag to show intro for new users after OAuth login
+    // Always remove the introComplete flag to ensure intro is shown
+    localStorage.removeItem('introComplete');
+    // Store a flag to show intro after OAuth login
     localStorage.setItem('checkForNewUser', 'true');
     window.location.href = `${apiUrl}/facebook/login`;
   };

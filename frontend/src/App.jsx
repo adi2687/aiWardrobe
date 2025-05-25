@@ -40,17 +40,20 @@ const App = () => {
   const [showIntro, setShowIntro] = useState(false);
 
   useEffect(() => {
-    // Check if user is coming from OAuth login and is a new user
-    const checkForNewUser = localStorage.getItem('checkForNewUser');
+    // Check if the user is logged in and should see the intro
+    const token = localStorage.getItem('token') || document.cookie.includes('tokenlogin');
     const introComplete = localStorage.getItem('introComplete');
     
-    if (checkForNewUser === 'true' && introComplete !== 'true') {
-      // Check if user is logged in (has token)
-      const token = localStorage.getItem('token') || document.cookie.includes('tokenlogin');
+    // Check for OAuth login flag
+    const checkForNewUser = localStorage.getItem('checkForNewUser');
+    
+    // Show intro if user is logged in and hasn't completed intro yet
+    if (token && introComplete !== 'true') {
+      // For all login methods (regular, Google, Facebook)
+      setShowIntro(true);
       
-      if (token) {
-        setShowIntro(true);
-        // Clear the flag
+      // Clear the OA uth flag if it exists
+      if (checkForNewUser === 'true') {
         localStorage.removeItem('checkForNewUser');
       }
     }
@@ -89,6 +92,7 @@ const App = () => {
         <Route path="/discover-trends" element={<DiscoverTrends />} />
         <Route path="/developers" element={<DevelopersPage />} />
         <Route path="/social" element={<SocialCollections />} />
+        <Route path="/intro" element={<Intro />} />
         {/* Policy Routes */}
         <Route path="/policies" element={<PoliciesHub />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
