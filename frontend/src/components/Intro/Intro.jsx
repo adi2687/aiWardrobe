@@ -38,7 +38,7 @@ const Intro = ({ onComplete }) => {
             // After showing all messages once, complete the intro
             setTimeout(() => {
               handleComplete();
-            }, 500);
+            }, 200);
           } else {
             showMessage();
           }
