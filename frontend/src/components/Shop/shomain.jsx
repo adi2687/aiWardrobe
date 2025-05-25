@@ -318,12 +318,7 @@ const Shop = () => {
             {(!amazonData.length && !myntraData.length) && (
               <div className="connection-status">
                 <p>We're now using a backend proxy to communicate with the ML service.</p>
-                <p>If you're still having issues, please make sure:</p>
-                <ul>
-                  <li>The backend server is running</li>
-                  <li>The ML service is running and accessible from your backend</li>
-                  <li>The ML_SERVICE_URL in your backend is correctly set</li>
-                </ul>
+                
               </div>
             )}
           </div>

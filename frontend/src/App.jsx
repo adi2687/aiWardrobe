@@ -8,7 +8,7 @@ import Auth from './components/Auth/Auth'
 import ResetPassword from './components/Auth/ResetPassword'
 import Wardrobe from "./components/Wardrobe/Wardrobe";
 import Homepage from './components/Homepage/Homepage'
-import Shop from './components/Shop/ShopNew'
+import Shop from './components/Shop/shomain'
 import AR from './components/AR/AR_try'
 import Footer from "./components/Footer/Footer";
 import Recommendations from "./components/Recommendations/Recommendations";
