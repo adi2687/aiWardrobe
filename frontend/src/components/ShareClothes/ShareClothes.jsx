@@ -177,31 +177,38 @@ ${shareUrl}`)}`;
 
     
   };  
+  const [isSharing, setIsSharing] = useState(false);
+  const [shareSuccess, setShareSuccess] = useState(false);
+
   const shareToSocialcollection = async () => {
-    console.log("Sharing to collection");
-    console.log("Share URL:", shareUrl);
+    setIsSharing(true);
+    setShareSuccess(false);
     
     try {
       const response = await fetch(`${apiUrl}/sharetosocial/sharecollection`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ shareurl: id })
+        body: JSON.stringify({ shareurl: id }),
       });
       
       const data = await response.json();
-      console.log("Response from server:", data);
+      console.log(data);
       
-      if (data.id) {
-        alert("Successfully shared to collection!");
-      } else {
-        alert("Failed to share to collection. Please try again.");
-      }
+      // Show success state
+      setShareSuccess(true);
+      
+      // Reset success state after 3 seconds
+      setTimeout(() => {
+        setShareSuccess(false);
+      }, 3000);
+      
     } catch (error) {
-      console.error("Error sharing to collection:", error);
-      alert("An error occurred while sharing to collection.");
+      console.error("Error sharing collection:", error);
+    } finally {
+      setIsSharing(false);
     }
   }
 
@@ -291,11 +298,29 @@ ${shareUrl}`)}`;
             <div className="share-to-social-content">
               <p>Add this outfit to the community collections for others to see and like.</p>
               <button 
-                className="share-to-social-button" 
+                className={`share-to-social-button ${isSharing ? 'sharing' : ''} ${shareSuccess ? 'success' : ''}`}
                 onClick={shareToSocialcollection}
+                disabled={isSharing || shareSuccess}
               >
-                <i className="fas fa-users"></i> Share to Community
+                {isSharing ? (
+                  <>
+                    <div className="button-spinner"></div> Sharing...
+                  </>
+                ) : shareSuccess ? (
+                  <>
+                    <i className="fas fa-check"></i> Shared Successfully!
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-users"></i> Share to Community
+                  </>
+                )}
               </button>
+              {shareSuccess && (
+                <div className="share-success-message">
+                  Your outfit has been shared to the community collection!
+                </div>
+              )}
             </div>
           </div>
 

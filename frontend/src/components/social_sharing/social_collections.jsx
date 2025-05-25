@@ -12,6 +12,7 @@ const SocialCollections = () => {
     const [copyNotification, setCopyNotification] = useState(false);
     const [likedCollections, setLikedCollections] = useState([]);
     const [alreadyLikedCollections, setAlreadyLikedCollections] = useState([]);
+    const [shareSuccess, setShareSuccess] = useState(false);
     const apiUrl = import.meta.env.VITE_BACKEND_URL;
     const frontendurl = import.meta.env.VITE_FRONTEND_URL;
     // Open image viewer with the selected image
