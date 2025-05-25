@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Shop.css"; // Import the CSS file
-import { useEffect } from "react";
-import { FaHeart, FaSalesforce } from "react-icons/fa";
-import { FaCheck } from "react-icons/fa";
-<FaHeart />;
+import { FaHeart, FaSalesforce, FaCheck, FaSearch, FaShoppingBag, FaAmazon, FaTshirt, FaShoppingCart, FaStore } from "react-icons/fa";
 
 const Shop = () => {
   const [shopData, setShopData] = useState([]);
@@ -12,8 +9,9 @@ const Shop = () => {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [userdetails, setuserdetails] = useState({});
-const backendurl=import.meta.env.VITE_BACKEND_URL 
-const mlurl=import.meta.env.VITE_ML_URL
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
+  const mlurl = import.meta.env.VITE_ML_URL;
+
   const fetchuserdetails = () => {
     fetch(`${backendurl}/user/getuserdetails`, {
       method: "GET",
@@ -28,6 +26,7 @@ const mlurl=import.meta.env.VITE_ML_URL
         console.error("Error fetching user data:", error);
       });
   };
+
   const [input, setInput] = useState("");
   const [amazon, setamazon] = useState(false);
   const [myntra, setmyntra] = useState(false);
@@ -39,10 +38,10 @@ const mlurl=import.meta.env.VITE_ML_URL
   const [visibleMyntraProducts, setVisibleMyntraProducts] = useState(5);
   const [loaded, setloaded] = useState(false);
 
-  // fetchuserdetails()
   useEffect(() => {
     fetchuserdetails();
   }, []);
+
   const amazonSearch = (customInput) => {
     setloaded(true);
     console.log(userdetails);
@@ -54,25 +53,59 @@ const mlurl=import.meta.env.VITE_ML_URL
       }`;
     console.log("search query is ", searchQuery);
     setAmazonLoading(true);
+    
+    // Use backend proxy instead of direct ML service call
     fetch(
-      `${mlurl}/shop?query=${encodeURIComponent(searchQuery)}`,
+      `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include", // Include cookies for authentication
       }
     )
-      .then((response) => response.json())
+      .then((response) => {
+        // Check if the response is valid before parsing
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
-        setAmazonData(data);
-        setVisibleAmazonProducts(7);
+        console.log("Amazon data received:", data);
+        
+        // Handle both array and object responses
+        if (Array.isArray(data)) {
+          setAmazonData(data);
+          setVisibleAmazonProducts(7);
+        } else if (data.error) {
+          console.error("Error from API:", data.error);
+          setAmazonData([]);
+          alert(`Error from Amazon search: ${data.error}`);
+        } else {
+          // If it's an object but not an error, try to use it
+          const products = Object.values(data).filter(item => 
+            typeof item === 'object' && item.name && item.image_url
+          );
+          
+          if (products.length > 0) {
+            setAmazonData(products);
+            setVisibleAmazonProducts(7);
+          } else {
+            console.error("Unexpected data format:", data);
+            setAmazonData([]);
+          }
+        }
         setAmazonLoading(false);
         setloaded(false);
       })
       .catch((error) => {
         console.error("Error fetching Amazon data:", error);
+        setAmazonData([]);
         setAmazonLoading(false);
+        setloaded(false);
+        alert("Unable to connect to Amazon search service. Please try again later.");
       });
   };
 
@@ -83,8 +116,9 @@ const mlurl=import.meta.env.VITE_ML_URL
       input ||
       `Styles for ${userdetails.gender || "male and female"}`;
     setMyntraLoading(true);
+    // Use backend proxy instead of direct ML service call
     fetch(
-      `${mlurl}/shop_myntra?query=${encodeURIComponent(
+      `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(
         searchQuery
       )}`,
       {
@@ -92,19 +126,50 @@ const mlurl=import.meta.env.VITE_ML_URL
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include", // Include cookies for authentication
       }
     )
-      .then((response) => response.json())
+      .then((response) => {
+        // Check if the response is valid before parsing
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
-        setMyntraData(data);
-        setVisibleMyntraProducts(5);
+        console.log("Myntra data received:", data);
+        
+        // Handle both array and object responses
+        if (Array.isArray(data)) {
+          setMyntraData(data);
+          setVisibleMyntraProducts(5);
+        } else if (data.error) {
+          console.error("Error from API:", data.error);
+          setMyntraData([]);
+          alert(`Error from Myntra search: ${data.error}`);
+        } else {
+          // If it's an object but not an error, try to use it
+          const products = Object.values(data).filter(item => 
+            typeof item === 'object' && item.name && item.image_url
+          );
+          
+          if (products.length > 0) {
+            setMyntraData(products);
+            setVisibleMyntraProducts(5);
+          } else {
+            console.error("Unexpected data format:", data);
+            setMyntraData([]);
+          }
+        }
         setMyntraLoading(false);
-        setloaded(FaSalesforce);
-        setloaded(false)
+        setloaded(false);
       })
       .catch((error) => {
         console.error("Error fetching Myntra data:", error);
+        setMyntraData([]);
         setMyntraLoading(false);
+        setloaded(false);
+        alert("Unable to connect to Myntra search service. Please try again later.");
       });
   };
 
@@ -188,63 +253,82 @@ const mlurl=import.meta.env.VITE_ML_URL
 
   return (
     <div className="shop-container">
-      <h2>Personalised Shopping based on your clothes , age and preferences</h2>
+      <h2 className="shop-title">Personalized Shopping based on your clothes, age and preferences</h2>
 
-      <input
-        type="text"
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Enter the clothes you wanna search"
-        className="shop-search-input"
-      />
-      <br />
-      <button
-        onClick={() => {
-          amazonSearch(input);
-        }}
-        className="shop-search-button"
-      >
-        Search Amazon
-      </button>
+      <div className="search-section">
+        <div className="search-input-container">
+          <input
+            type="text"
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Enter the clothes you want to search for..."
+            className="shop-search-input"
+          />
+        </div>
+        
+        <div className="button-container">
+          <button
+            onClick={() => {
+              amazonSearch(input);
+            }}
+            className="shop-search-button"
+          >
+            <FaAmazon style={{ marginRight: '8px' }} /> Search Amazon
+          </button>
 
-      <button
-        onClick={() => myntraSearch(input)}
-        className="shop-search-button"
-      >
-        Search Myntra
-      </button>
-      <br />
-      <button
-        className="getairecommendations"
-        onClick={() => {
-          fetchuserdetails();
-          shoppingsuggestions();
-          userclothes();
-        }}
-      >
-        Get AI Recommendations
-      </button>
-      <button
-        className="searchonboth"
-        onClick={() => {
-          amazonSearch(input);
-          myntraSearch(input);
-        }}
-      >
-        Search on amazon and myntra
-      </button>
+          <button
+            onClick={() => myntraSearch(input)}
+            className="shop-search-button"
+          >
+            <FaStore style={{ marginRight: '8px' }} /> Search Myntra
+          </button>
+          
+          <button
+            className="searchonboth"
+            onClick={() => {
+              amazonSearch(input);
+              myntraSearch(input);
+            }}
+          >
+            <FaShoppingBag style={{ marginRight: '8px' }} /> Search Both
+          </button>
+          
+          <button
+            className="getairecommendations"
+            onClick={() => {
+              fetchuserdetails();
+              shoppingsuggestions();
+              userclothes();
+            }}
+          >
+            <FaTshirt style={{ marginRight: '8px' }} /> Get AI Recommendations
+          </button>
+        </div>
+      </div>
 
       <div className="loading">
-  {loaded ? (
-    <div className="loader-wrapper">
-      <div className="loader"></div>
-    </div>
-  ) : (
-    <h2 className="loading-message">
-      Discover the perfect product or let AI inspire your next outfit choice!
-    </h2>
-  )}
-</div>
-
+        {loaded ? (
+          <div className="loader-wrapper">
+            <div className="loader"></div>
+          </div>
+        ) : (
+          <div>
+            <h3 className="loading-message">
+              Discover the perfect product or let AI inspire your next outfit choice!
+            </h3>
+            {(!amazonData.length && !myntraData.length) && (
+              <div className="connection-status">
+                <p>We're now using a backend proxy to communicate with the ML service.</p>
+                <p>If you're still having issues, please make sure:</p>
+                <ul>
+                  <li>The backend server is running</li>
+                  <li>The ML service is running and accessible from your backend</li>
+                  <li>The ML_SERVICE_URL in your backend is correctly set</li>
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       <div className="suggestion-container">
         {shoppingsuggestionsmain.length > 0 ? (
@@ -259,8 +343,7 @@ const mlurl=import.meta.env.VITE_ML_URL
                 Myntra.
               </h4>
             </div>
-            <div>
-              <br />
+            <div className="suggestion-pill-container">
               {shoppingsuggestionsmain.map((ele, i) => (
                 <button
                   key={i}
@@ -282,7 +365,7 @@ const mlurl=import.meta.env.VITE_ML_URL
       </div>
 
       {/* Amazon Results Section */}
-      <div className="search">
+      <div className="search-results-container">
         {/* Amazon Results Section */}
         {amazonData.length > 0 && (
           <div className="amazon-results">
@@ -300,7 +383,7 @@ const mlurl=import.meta.env.VITE_ML_URL
               <>
                 <div className="shop-products-grid">
                   {amazonData
-                    .slice(2, visibleAmazonProducts)
+                    .slice(0, visibleAmazonProducts)
                     .map((item, index) => (
                       <div key={index} className="shop-product-card">
                         <img
@@ -309,26 +392,26 @@ const mlurl=import.meta.env.VITE_ML_URL
                           className="shop-product-image"
                         />
                         <h3 className="shop-product-name">
-                          {item.name === "/" ? item.name : <p>Amazon search</p>}
+                          {item.name === "/" ? "Amazon Product" : item.name}
                         </h3>
                         <p className="shop-product-price">{item.price}</p>
-                        <a
-                          href={item.product_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shop-buy-button"
-                        >
-                          Buy Now
-                        </a>
-                        <br />
-                        <br />
-                        <button
-                          className="addtowishlist"
-                          onClick={() => addtowishlist(item)}
-                          aria-label="Add to wishlist"
-                        >
-                          Add to wishlist
-                        </button>
+                        <div className="product-actions">
+                          <a
+                            href={item.product_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="shop-buy-button"
+                          >
+                            <FaShoppingBag style={{ marginRight: '5px' }} /> Buy Now
+                          </a>
+                          <button
+                            className="addtowishlist"
+                            onClick={() => addtowishlist(item)}
+                            aria-label="Add to wishlist"
+                          >
+                            <FaHeart /> Add to wishlist
+                          </button>
+                        </div>
                       </div>
                     ))}
                 </div>
@@ -378,23 +461,23 @@ const mlurl=import.meta.env.VITE_ML_URL
                         />
                         <h3 className="shop-product-name">{item.name}</h3>
                         <p className="shop-product-price">{item.price}</p>
-                        <a
-                          href={item.product_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shop-buy-button"
-                        >
-                          Buy Now
-                        </a>
-                        <br />
-                        <br />
-                        <button
-                          className="addtowishlist"
-                          onClick={() => addtowishlist(item)}
-                          aria-label="Add to wishlist"
-                        >
-                          Add to wishlist
-                        </button>
+                        <div className="product-actions">
+                          <a
+                            href={item.product_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="shop-buy-button"
+                          >
+                            <FaShoppingBag style={{ marginRight: '5px' }} /> Buy Now
+                          </a>
+                          <button
+                            className="addtowishlist"
+                            onClick={() => addtowishlist(item)}
+                            aria-label="Add to wishlist"
+                          >
+                            <FaHeart /> Add to wishlist
+                          </button>
+                        </div>
                       </div>
                     ))}
                 </div>
@@ -417,5 +500,4 @@ const mlurl=import.meta.env.VITE_ML_URL
   );
 };
 
-
-export default Shop
+export default Shop;
