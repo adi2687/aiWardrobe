@@ -2,14 +2,12 @@
 
 /* Main Shop container */
 .shop-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 0;
   font-family: 'Poppins', Arial, sans-serif;
   color: #333;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
   text-align: center;
 }
 
@@ -158,6 +156,7 @@
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+  margin-top:50px
 }
 
 .load-more:hover {
@@ -195,7 +194,7 @@
 }
 
 .getairecommendations {
-  padding: 12px 20px;
+  padding: 0px 20px;
   border-radius: 30px;
   background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
   color: #fff;
@@ -204,6 +203,10 @@
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* padding:0px 20px */
+  height:56px;
+  margin-top:2.5%;
+  border-radius: 9px;
 }
 
 .getairecommendations:hover {
@@ -451,9 +454,30 @@
   font-size: 18px;
 }
   .searchonboth{
-    padding:9px;
-    border-radius: 6px;margin:10px
+    padding:19px;
+    border-radius: 6px;
+    margin:10px
   }
+  
+.view-wishlist-button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #FF416C 0%, #FF4B2B 100%);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  display: block;
+  font-size: 16px;
+}
+
+.view-wishlist-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
   /* Product actions container */
 .product-actions {
   display: flex;
@@ -488,6 +512,27 @@
   border-color: transparent;
   color: white;
   box-shadow: 0 4px 8px rgba(106, 17, 203, 0.3);
+}
+
+.addtowishlist.loading {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border-color: transparent;
+  position: relative;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.addtowishlist.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 10px;
 }
   
   @media (max-width:720px){

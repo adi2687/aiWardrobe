@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Shop.css"; // Import the CSS file
 import { FaHeart, FaSalesforce, FaCheck, FaSearch, FaShoppingBag, FaAmazon, FaTshirt, FaShoppingCart, FaStore } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
 const Shop = () => {
+  const navigate = useNavigate();
   const [shopData, setShopData] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(5);
+  const [visibleProducts, setVisibleProducts] = useState(0);
 
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -78,7 +79,7 @@ const Shop = () => {
         // Handle both array and object responses
         if (Array.isArray(data)) {
           setAmazonData(data);
-          setVisibleAmazonProducts(7);
+          // setVisibleAmazonProducts(7);
         } else if (data.error) {
           console.error("Error from API:", data.error);
           setAmazonData([]);
@@ -91,7 +92,7 @@ const Shop = () => {
           
           if (products.length > 0) {
             setAmazonData(products);
-            setVisibleAmazonProducts(7);
+            // setVisibleAmazonProducts(7);
           } else {
             console.error("Unexpected data format:", data);
             setAmazonData([]);
@@ -172,10 +173,11 @@ const Shop = () => {
         alert("Unable to connect to Myntra search service. Please try again later.");
       });
   };
-
+const [adding,setadding]=useState(false);
   const addtowishlist = (item) => {
     console.log("Wishlist item:", item);
 
+    setadding(true);
     fetch(`${backendurl}/shop/addtowishlist`, {
       method: "POST",
       headers: {
@@ -190,16 +192,21 @@ const Shop = () => {
 
         if (data.status) {
           alert("Item added to wishlist!");
+          setadding(false);
         } else if (data.msg === "Already in wishlist") {
           alert("This item is already in your wishlist.");
+          setadding(false);
         } else {
           alert("Failed to add item. Try again.");
+          setadding(false);
         }
       })
       .catch((error) => {
         console.error("Error adding to wishlist:", error);
         alert("Server error. Please try again later.");
+        setadding(false);
       });
+
   };
 
   const [usercloths, setuserclothes] = useState("");
@@ -266,7 +273,7 @@ const Shop = () => {
         </div>
         
         <div className="button-container">
-          <button
+          {/* <button
             onClick={() => {
               amazonSearch(input);
             }}
@@ -280,7 +287,7 @@ const Shop = () => {
             className="shop-search-button"
           >
             <FaStore style={{ marginRight: '8px' }} /> Search Myntra
-          </button>
+          </button> */}
           
           <button
             className="searchonboth"
@@ -289,7 +296,7 @@ const Shop = () => {
               myntraSearch(input);
             }}
           >
-            <FaShoppingBag style={{ marginRight: '8px' }} /> Search Both
+            <FaShoppingBag style={{ marginRight: '8px' }} /> Search on Amazon and Myntra
           </button>
           
           <button
@@ -303,6 +310,12 @@ const Shop = () => {
             <FaTshirt style={{ marginRight: '8px' }} /> Get AI Recommendations
           </button>
         </div>
+        <button 
+          className="view-wishlist-button"
+          onClick={()=>navigate("/wishlist")}
+        >
+          <FaHeart style={{ marginRight: '8px' }} /> View Your Wishlist
+        </button>
       </div>
 
       <div className="loading">
@@ -400,11 +413,12 @@ const Shop = () => {
                             <FaShoppingBag style={{ marginRight: '5px' }} /> Buy Now
                           </a>
                           <button
-                            className="addtowishlist"
+                            className={`addtowishlist ${adding ? 'loading' : ''}`}
                             onClick={() => addtowishlist(item)}
                             aria-label="Add to wishlist"
+                            disabled={adding}
                           >
-                            <FaHeart /> Add to wishlist
+                            <FaHeart /> {adding ? "Adding..." : "Add to wishlist"}
                           </button>
                         </div>
                       </div>
@@ -466,11 +480,12 @@ const Shop = () => {
                             <FaShoppingBag style={{ marginRight: '5px' }} /> Buy Now
                           </a>
                           <button
-                            className="addtowishlist"
+                            className={`addtowishlist ${adding ? 'loading' : ''}`}
                             onClick={() => addtowishlist(item)}
                             aria-label="Add to wishlist"
+                            disabled={adding}
                           >
-                            <FaHeart /> Add to wishlist
+                            <FaHeart /> {adding ? "Adding..." : "Add to wishlist"}
                           </button>
                         </div>
                       </div>
