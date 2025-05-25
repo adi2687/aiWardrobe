@@ -16,6 +16,9 @@ Format each item as:
 Only list items. Do not describe the background or image style.
 `;
 
+
+
+
 // Utility function to parse the classified text
 function parseClothingList(text) {
   const items = [];
@@ -189,17 +192,25 @@ router.post("/classify", upload.single("images"), async (req, res) => {
 
 
 
+const authenticate = (req, res, next) => {
+  const token = req.cookies.tokenlogin;
+  // console.log("toke is ", token)
+  if (!token) {
+    return res.status(401).json({ msg: "No token, authorization denied" });
+  }
 
-
-
-
-
-
-
-
-
-
-
+  try {
+    // console.log(process.en.SECRET_KEY)
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    console.log("suser detail", decoded);
+    req.user = decoded;
+    console.log("user is ", req.user); // Attach the user object to the request
+    next();
+  } catch (error) {
+    console.log("error");
+    res.status(401).json({ msg: "Token is not valid" });
+  }
+};
 
 router.get("/getitems",authenticate,async (req,res)=>{
 const token = req.cookies.tokenlogin;
