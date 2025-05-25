@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Intro.css';
 
@@ -6,6 +6,7 @@ const Intro = ({ onComplete }) => {
   const [currentMessage, setCurrentMessage] = useState(0);
   const [nextMessage, setNextMessage] = useState(null);
   const [fadeState, setFadeState] = useState('in'); // 'in', 'out', or 'between'
+  const [complete, setComplete] = useState(false);
   const navigate = useNavigate();
 
   const floatingMessages = [
@@ -15,39 +16,53 @@ const Intro = ({ onComplete }) => {
     { text: "OUTFIT-AI" }
   ];
 
-  
+  const handleComplete = useCallback(() => {
+    console.log('Completing intro');
+    
+    // Only use the callback, don't navigate directly
+    // This prevents the infinite loop
+    if (onComplete) {
+      onComplete();
+    }
+    
+    // Mark as complete
+    setComplete(true);
+    
+    // Don't set localStorage here - let the parent component handle it
+    // Don't navigate directly - let the parent component handle it
+  }, [onComplete]);
 
-  // Handle message animation with crossfade effect
+
+
   useEffect(() => {
     let fadeTimer, nextMessageTimer, completeTimer;
-    
-    // Initial fade in
+
     if (fadeState === 'in') {
-      // Show current message for 2 seconds before starting to fade out
       fadeTimer = setTimeout(() => {
         setFadeState('out');
       }, 2000);
     }
-    
-    // Handle fade out and prepare next message
+
     if (fadeState === 'out') {
       fadeTimer = setTimeout(() => {
-        // Calculate next message index
         const next = (currentMessage + 1) % floatingMessages.length;
-        
-        // If we've gone through all messages, complete the intro
+
         if (next === 0 && currentMessage === floatingMessages.length - 1) {
+          console.log("here")
+          navigate('/profile');
+          console.log("profile")
           setFadeState('between');
-          completeTimer = setTimeout(handleComplete, 400);
+          completeTimer = setTimeout(() => {
+            handleComplete();
+          }, 400);
         } else {
-          // Otherwise prepare for next message
           setNextMessage(next);
           setFadeState('between');
         }
-      }, 500); // Time to fade out
+        console.log("next")
+      }, 500);
     }
-    
-    // Handle between state - when one message is gone and next is coming
+
     if (fadeState === 'between') {
       nextMessageTimer = setTimeout(() => {
         if (nextMessage !== null) {
@@ -55,26 +70,15 @@ const Intro = ({ onComplete }) => {
           setNextMessage(null);
           setFadeState('in');
         }
-      }, 300); // Short pause between messages
+      }, 300);
     }
-    
-    // Clean up all timeouts when component unmounts or when state changes
+
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(nextMessageTimer);
       clearTimeout(completeTimer);
     };
-  }, [currentMessage, fadeState, nextMessage, floatingMessages.length]);
-
-  const handleComplete = () => {
-    // Mark intro as complete
-    localStorage.setItem('introComplete', 'true');
-    if (onComplete) {
-      onComplete();
-    } else {
-      navigate('/profile');
-    }
-  };
+  }, [currentMessage, fadeState, nextMessage, floatingMessages.length, handleComplete]);
 
   return (
     <div className="intro-container">
@@ -83,7 +87,9 @@ const Intro = ({ onComplete }) => {
           {floatingMessages[currentMessage].text}
         </div>
       </div>
+      
     </div>
+    
   );
 };
 
