@@ -41,7 +41,7 @@ const App = () => {
 
   useEffect(() => {
     // Check if the user is logged in and should see the intro
-    const token = localStorage.getItem('token') || document.cookie.includes('tokenlogin');
+    const token = localStorage.getItem('tokenlogin') || document.cookie.includes('tokenlogin');
     const introComplete = localStorage.getItem('introComplete');
     
     // Check for OAuth login flag
@@ -92,7 +92,7 @@ const App = () => {
         <Route path="/discover-trends" element={<DiscoverTrends />} />
         <Route path="/developers" element={<DevelopersPage />} />
         <Route path="/social" element={<SocialCollections />} />
-        <Route path="/intro" element={<Intro />} />
+        {/* <Route path="/intro" element={<Intro />} /> */}
         {/* Policy Routes */}
         <Route path="/policies" element={<PoliciesHub />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
