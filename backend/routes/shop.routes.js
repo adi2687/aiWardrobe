@@ -1,9 +1,13 @@
 import express from "express";
+import axios from "axios";
 
 const router = express.Router();
 import jwt from "jsonwebtoken";
 import dotenv from 'dotenv'
 dotenv.config()
+
+// ML service URL from environment variables
+const ML_SERVICE_URL = process.env.ML_SERVICE_URL || "https://3e2c-103-179-0-241.ngrok-free.app";
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
 
@@ -34,6 +38,84 @@ router.post("/addtowishlist", authenticate, async (req, res) => {
   });
   addtowishlistmain.save();
   res.status(200).json({ status: true, msg: "Added to wishlist" });
+});
+
+// Proxy endpoint for Amazon search
+router.get("/proxy/amazon", async (req, res) => {
+  try {
+    const query = req.query.query;
+    if (!query) {
+      return res.status(400).json({ error: "Query parameter is required" });
+    }
+
+    console.log(`Proxying Amazon search request for query: ${query}`);
+    
+    // Make request to ML service
+    const response = await axios.get(`${ML_SERVICE_URL}/shop`, {
+      params: { query },
+      timeout: 30000 // 30 second timeout
+    });
+
+    // Return the data from ML service
+    return res.json(response.data);
+  } catch (error) {
+    console.error("Error proxying Amazon search:", error.message);
+    
+    // Handle different types of errors
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      return res.status(error.response.status).json({
+        error: `ML service responded with status: ${error.response.status}`,
+        details: error.response.data
+      });
+    } else if (error.request) {
+      // The request was made but no response was received
+      return res.status(504).json({ error: "ML service timeout or no response" });
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      return res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+// Proxy endpoint for Myntra search
+router.get("/proxy/myntra", async (req, res) => {
+  try {
+    const query = req.query.query;
+    if (!query) {
+      return res.status(400).json({ error: "Query parameter is required" });
+    }
+
+    console.log(`Proxying Myntra search request for query: ${query}`);
+    
+    // Make request to ML service
+    const response = await axios.get(`${ML_SERVICE_URL}/shop_myntra`, {
+      params: { query },
+      timeout: 30000 // 30 second timeout
+    });
+
+    // Return the data from ML service
+    return res.json(response.data);
+  } catch (error) {
+    console.error("Error proxying Myntra search:", error.message);
+    
+    // Handle different types of errors
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      return res.status(error.response.status).json({
+        error: `ML service responded with status: ${error.response.status}`,
+        details: error.response.data
+      });
+    } else if (error.request) {
+      // The request was made but no response was received
+      return res.status(504).json({ error: "ML service timeout or no response" });
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      return res.status(500).json({ error: error.message });
+    }
+  }
 });
 
 export default router;
