@@ -28,8 +28,9 @@ const authenticate = (req, res, next) => {
 
 router.post("/", authenticate,async (req, res) => {
   const clothes  = req.body.clothes;
-  console.log(clothes);
-  console.log(req.user.id)
+  // console.log(clothes);
+  console.log("hello")
+  // console.log(req.user.id)
   const id = uuidv4().slice(0, 6); // short ID
   const findcloth=await Share.findOne({sharecloths:clothes})
   if(findcloth){

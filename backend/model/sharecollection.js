@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const sharecollectionSchema = new mongoose.Schema({
     username: String,
-    shareid: String,
+    shareid: {type:String,required:true,unique:true},
     sharecloths:String,
     image:String,
     like:{type:Number,default:0},
