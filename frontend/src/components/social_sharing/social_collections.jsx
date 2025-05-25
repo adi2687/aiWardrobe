@@ -13,7 +13,7 @@ const SocialCollections = () => {
     const [likedCollections, setLikedCollections] = useState([]);
     const [alreadyLikedCollections, setAlreadyLikedCollections] = useState([]);
     const apiUrl = import.meta.env.VITE_BACKEND_URL;
-    
+    const frontendurl = import.meta.env.VITE_FRONTEND_URL;
     // Open image viewer with the selected image
     const openImageViewer = (imageUrl) => {
         setSelectedImage(imageUrl);
@@ -238,7 +238,7 @@ const SocialCollections = () => {
                                             <button 
                                                 className="copy-link-button"
                                                 onClick={() => {
-                                                    navigator.clipboard.writeText(`${apiUrl}/share/${link}`);
+                                                    navigator.clipboard.writeText(`${frontendurl}/share/${link}`);
                                                     setCopyNotification(true);
                                                     setTimeout(() => setCopyNotification(false), 2000);
                                                 }}

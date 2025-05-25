@@ -284,9 +284,19 @@ ${shareUrl}`)}`;
           </div>
           
 
-          <div>
-            share this to the collection
-            <button onClick={shareToSocialcollection}>share</button>
+          <div className="content-card share-to-social">
+            <div className="card-header">
+              <h3>Share to Community Collection</h3>
+            </div>
+            <div className="share-to-social-content">
+              <p>Add this outfit to the community collections for others to see and like.</p>
+              <button 
+                className="share-to-social-button" 
+                onClick={shareToSocialcollection}
+              >
+                <i className="fas fa-users"></i> Share to Community
+              </button>
+            </div>
           </div>
 
           {/* Share section with improved styling */}
