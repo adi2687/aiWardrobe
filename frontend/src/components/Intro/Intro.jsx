@@ -72,7 +72,7 @@ const Intro = ({ onComplete }) => {
     if (onComplete) {
       onComplete();
     } else {
-      // navigate('/profile');
+      navigate('/profile');
     }
   };
 
