@@ -141,3 +141,51 @@
 2025-05-26 00:50:42,553 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
 2025-05-26 00:50:43,474 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=White+sneakers&ref=nb_sb_noss&sprefix=White+sneakers%2Caps%2C283
 2025-05-26 00:50:43,684 - myntra - INFO - Opening URL: https://www.myntra.com/White+sneakers?rawQuery=White+sneakers&sort=popularity
+2025-05-26 00:50:50,572 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 00:50:50,667 - myntra - INFO - Found 50 product items in the page
+2025-05-26 00:50:50,671 - myntra - INFO - Product 1: Smashic Casual Sneakers... | Price: Rs. 1799
+2025-05-26 00:50:50,676 - myntra - INFO - Product 2: Men Perforations Sneakers... | Price: Rs. 951
+2025-05-26 00:50:50,686 - myntra - INFO - Product 3: Men Colourblocked PU Sneakers... | Price: Rs. 1189
+2025-05-26 00:50:50,691 - myntra - INFO - Product 4: Men Perforations Sneakers... | Price: Rs. 2639
+2025-05-26 00:50:50,696 - myntra - INFO - Product 5: Men COURT VISION Sneakers... | Price: Rs. 4995
+2025-05-26 00:50:50,701 - myntra - INFO - Product 6: Killshot 2 Leather Men's Shoes... | Price: Rs. 6876
+2025-05-26 00:50:50,706 - myntra - INFO - Product 7: Women Carina Slim Sneakers... | Price: Rs. 1799
+2025-05-26 00:50:50,709 - myntra - INFO - Product 8: Men Galaxium Sneakers... | Price: Rs. 2639
+2025-05-26 00:50:50,715 - myntra - INFO - Product 9: Round Toe Lace-Ups Sneakers... | Price: Rs. 1119
+2025-05-26 00:50:50,719 - myntra - INFO - Product 10: Men Courtismo Sneakers... | Price: Rs. 2639
+2025-05-26 00:50:50,724 - myntra - INFO - Product 11: Men Colourblocked IDP Sneakers... | Price: Rs. 1799
+2025-05-26 00:50:50,729 - myntra - INFO - Product 12: Women Carina Slim Sneakers... | Price: Rs. 1799
+2025-05-26 00:50:50,734 - myntra - INFO - Product 13: Men Classic Sneakers... | Price: Rs. 1439
+2025-05-26 00:50:50,738 - myntra - INFO - Product 14: Air Force 1 '07 Men's Shoes... | Price: Rs. 9695
+2025-05-26 00:50:50,742 - myntra - INFO - Product 15: X-Ray 2 Contrast Sole Sneakers... | Price: Rs. 3199
+2025-05-26 00:50:50,747 - myntra - INFO - Product 16: Men PU Sneakers... | Price: Rs. 1206
+2025-05-26 00:50:50,752 - myntra - INFO - Product 17: Men Dunk Leather Sneakers... | Price: Rs. 8295
+2025-05-26 00:50:50,758 - myntra - INFO - Product 18: Women Lace-Up Sneakers... | Price: Rs. 949
+2025-05-26 00:50:50,762 - myntra - INFO - Product 19: Women Carina 2.0 Sneakers... | Price: Rs. 1999
+2025-05-26 00:50:50,767 - myntra - INFO - Product 20: Men Ebernon Low Sneakers... | Price: Rs. 3547
+2025-05-26 00:50:50,770 - myntra - INFO - Product 21: Blazer Low '77 Vintage Shoes... | Price: Rs. 5756
+2025-05-26 00:50:50,776 - myntra - INFO - Product 22: Men Perforations Sneakers... | Price: Rs. 2639
+2025-05-26 00:50:50,780 - myntra - INFO - Product 23: Women PU Sneakers... | Price: Rs. 999
+2025-05-26 00:50:50,784 - myntra - INFO - Product 24: Dunk Low Retro Men's Shoes... | Price: Rs. 8695
+2025-05-26 00:50:50,790 - myntra - INFO - Product 25: Men Perforations Sneakers... | Price: Rs. 2399
+2025-05-26 00:50:50,798 - myntra - INFO - Product 36: Men Round Toe Sneakers... | Price: Rs. 1247
+2025-05-26 00:50:50,802 - myntra - INFO - Product 37: Air Jordan 5 Retro Shoes... | Price: Rs. 19295
+2025-05-26 00:50:50,807 - myntra - INFO - Product 38: Men Round Toe Sneakers... | Price: Rs. 1119
+2025-05-26 00:50:50,811 - myntra - INFO - Product 39: Men Slip Resistant Sneakers... | Price: Rs. 1138
+2025-05-26 00:50:50,816 - myntra - INFO - Product 40: Men Samba Og Sneakers... | Price: Rs. 10999
+2025-05-26 00:50:50,820 - myntra - INFO - Product 41: Women Round Toe Sneakers... | Price: Rs. 999
+2025-05-26 00:50:50,824 - myntra - INFO - Product 42: Men Air Max Bolt Sneakers... | Price: Rs. 4097
+2025-05-26 00:50:50,829 - myntra - INFO - Product 43: Men Textured Sneakers... | Price: Rs. 1138
+2025-05-26 00:50:50,834 - myntra - INFO - Product 44: Men PU Lace-Ups Sneakers... | Price: Rs. 1119
+2025-05-26 00:50:50,838 - myntra - INFO - Product 45: Men BLAZER MID '77 VNTGl Shoes... | Price: Rs. 7995
+2025-05-26 00:50:50,843 - myntra - INFO - Product 46: Men Grand Court 2.0 Sneakers... | Price: Rs. 3599
+2025-05-26 00:50:50,848 - myntra - INFO - Product 47: Men Colourblocked Sneakers... | Price: Rs. 1119
+2025-05-26 00:50:50,851 - myntra - INFO - Product 48: Men Lace-Ups PU Sneakers... | Price: Rs. 1759
+2025-05-26 00:50:50,856 - myntra - INFO - Product 49: Men PU Sneakers... | Price: Rs. 1599
+2025-05-26 00:50:50,861 - myntra - INFO - Product 50: Men Sneakers... | Price: Rs. 1869
+2025-05-26 00:50:50,865 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 00:50:50,870 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:50:50,874 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:50:50] "GET /shop_myntra?query=White+sneakers HTTP/1.1" 200 -
+2025-05-26 00:50:50,946 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 00:50:50,948 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:50:50,948 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:50:50] "GET /shop?query=White+sneakers HTTP/1.1" 200 -
