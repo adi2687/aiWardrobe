@@ -17,6 +17,7 @@ const ShareClothes = () => {
   
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const frontendUrl = import.meta.env.VITE_FRONTEND_URL;
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
   // Fetch the username of the logged-in user
   // useEffect(() => {
   //   fetch(`${apiUrl}/user/profile`, {
@@ -172,8 +173,40 @@ ${shareUrl}`)}`;
     if (shareLink) {
       window.open(shareLink, '_blank');
     }
-  };
 
+
+    
+  };  
+  const shareToSocialcollection = async () => {
+    console.log("Sharing to collection");
+    console.log("Share URL:", shareUrl);
+    
+    try {
+      const response = await fetch(`${apiUrl}/sharetosocial/sharecollection`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({ shareurl: id })
+      });
+      
+      const data = await response.json();
+      console.log("Response from server:", data);
+      
+      if (data.id) {
+        alert("Successfully shared to collection!");
+      } else {
+        alert("Failed to share to collection. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sharing to collection:", error);
+      alert("An error occurred while sharing to collection.");
+    }
+  }
+
+
+  
   return (
     <div className="share-cloths-container">
       {/* Header with username and decorative elements */}
@@ -250,8 +283,16 @@ ${shareUrl}`)}`;
             </div>
           </div>
           
+
+          <div>
+            share this to the collection
+            <button onClick={shareToSocialcollection}>share</button>
+          </div>
+
           {/* Share section with improved styling */}
           <div className="content-card share-section">
+
+          
             <div className="card-header">
               <h3>Share This Collection</h3>
             </div>

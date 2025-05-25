@@ -29,6 +29,7 @@ import VirtualTryOn from './components/VirtualTryOn/VirtualTryOn'
 import Download from './components/Download/Download'
 import FloatingNavbar from './components/FloatingNavbar/FloatingNavbar'
 import Intro from './components/Intro/Intro'
+import SocialCollections from './components/social_sharing/social_collections'
 // Policy pages
 import PrivacyPolicy from './components/Policies/PrivacyPolicy'
 import TermsOfService from './components/Policies/TermsOfService'
@@ -87,7 +88,7 @@ const App = () => {
         <Route path="/share/:id" element={<ShareClothes />} />
         <Route path="/discover-trends" element={<DiscoverTrends />} />
         <Route path="/developers" element={<DevelopersPage />} />
-        
+        <Route path="/social" element={<SocialCollections />} />
         {/* Policy Routes */}
         <Route path="/policies" element={<PoliciesHub />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

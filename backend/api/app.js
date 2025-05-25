@@ -14,7 +14,9 @@ import PasswordResetRoutes from '../routes/password_reset.js';
 import ShopRoutes from '../routes/shop.routes.js';
 import Chatbot from '../routes/chat.js';
 import ShareRoutes from '../routes/share.js'
+import ShareToSocialRoutes from '../routes/sharetosocial.js'
 import imageGenerateRoute from '../routes/image.js'
+import sharetosocial from '../routes/sharetosocial.js'
 import session from "express-session";
 import passport from "passport";
 import path from 'path';
@@ -78,6 +80,7 @@ app.use("/shop", ShopRoutes);
 app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)
 app.use("/facebook",facebookRoutes)
+app.use("/sharetosocial",sharetosocial)
 app.get("/", (req, res) => {
   res.send("This is the main page");
 });

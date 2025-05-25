@@ -5,7 +5,7 @@ import User from '../model/user.js'
 const router = express.Router();
 import jwt from "jsonwebtoken"
 import dotenv from 'dotenv'
-dotenv.config()
+dotenv.config()  
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
   
@@ -48,5 +48,6 @@ router.get("/:id",async (req, res) => {
   const share = await Share.find({ shareId: shareId });
   res.json({username:share.username,share:share});
 });
+
 
 export default router;
