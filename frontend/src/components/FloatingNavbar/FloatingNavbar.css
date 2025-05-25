@@ -136,17 +136,24 @@ body {
 
 @media (max-width: 600px) {
   .floating-navbar {
-    max-width: 90%;
+    max-width: 100%;
     height: 60px;
     bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width:90%
   }
   
   .nav-item {
-    min-width: 40px;
+    /* margin-right:12px; */
+    min-width: 38px;
     height: 40px;
-    padding: 5px;
-    margin: 0 2px;
+    padding: 0px;
+    margin: 0 0px;
     border-radius: 50%;
+    /* border:2px solid red */
   }
   
   .nav-item svg {
