@@ -1630,3 +1630,32 @@
 2025-05-26 02:09:03,781 - myntra - INFO - Product 49: Striped Casual Shirt... | Price: Rs. 740
 2025-05-26 02:09:03,782 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
 2025-05-26 02:09:03,782 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 02:14:14,007 - myntra - INFO - Scraping Myntra for query: Light wash denim jacket
+2025-05-26 02:14:17,397 - myntra - INFO - Opening URL: https://www.myntra.com/Light+wash+denim+jacket?rawQuery=Light+wash+denim+jacket&sort=popularity
+2025-05-26 02:14:24,282 - myntra - INFO - Found 25 product items in the page
+2025-05-26 02:14:24,283 - myntra - INFO - Product 1: Washed Denim Jacket... | Price: Rs. 1599
+2025-05-26 02:14:24,284 - myntra - INFO - Product 2: Washed Denim Jacket... | Price: Rs. 2299
+2025-05-26 02:14:24,285 - myntra - INFO - Product 3: Washed Crop Denim Jacket... | Price: Rs. 1599
+2025-05-26 02:14:24,286 - myntra - INFO - Product 4: Windcheater Outdoor Denim Jack... | Price: Rs. 1221
+2025-05-26 02:14:24,288 - myntra - INFO - Product 5: Men Washed Denim Jacket... | Price: Rs. 870
+2025-05-26 02:14:24,289 - myntra - INFO - Product 6: Distressed Denim Jacket... | Price: Rs. 1187
+2025-05-26 02:14:24,291 - myntra - INFO - Product 7: Washed Outdoor Denim Jacket... | Price: Rs. 1091
+2025-05-26 02:14:24,292 - myntra - INFO - Product 8: Washed Striped Windcheater Den... | Price: Rs. 831
+2025-05-26 02:14:24,294 - myntra - INFO - Product 9: Denim Jacket with Embroidered... | Price: Rs. 2299
+2025-05-26 02:14:24,294 - myntra - INFO - Product 10: Light Weight Crop Denim Jacket... | Price: Rs. 489
+2025-05-26 02:14:24,295 - myntra - INFO - Product 11: Men Light-Wash Trucker Jacket... | Price: Rs. 1187
+2025-05-26 02:14:24,296 - myntra - INFO - Product 12: Washed Crop Denim Jacket... | Price: Rs. 4149
+2025-05-26 02:14:24,296 - myntra - INFO - Product 13: Washed Denim Jacket... | Price: Rs. 4049
+2025-05-26 02:14:24,297 - myntra - INFO - Product 14: Washed Denim Jacket... | Price: Rs. 3849
+2025-05-26 02:14:24,298 - myntra - INFO - Product 15: Washed Cotton Denim Jacket... | Price: Rs. 4049
+2025-05-26 02:14:24,300 - myntra - INFO - Product 16: Hooded Denim Jacket... | Price: Rs. 1091
+2025-05-26 02:14:24,300 - myntra - INFO - Product 17: Colourblocked Tailored Jacket... | Price: Rs. 1299
+2025-05-26 02:14:24,301 - myntra - INFO - Product 18: Windcheater Outdoor Tailored J... | Price: Rs. 1299
+2025-05-26 02:14:24,302 - myntra - INFO - Product 19: Washed Colourblocked Windcheat... | Price: Rs. 1221
+2025-05-26 02:14:24,303 - myntra - INFO - Product 20: Women Solid Denim Jacket... | Price: Rs. 983
+2025-05-26 02:14:24,304 - myntra - INFO - Product 21: Solid Light Fade Denim Jacket... | Price: Rs. 1331
+2025-05-26 02:14:24,304 - myntra - INFO - Product 22: Women Cotton Denim Jacket... | Price: Rs. 970
+2025-05-26 02:14:24,305 - myntra - INFO - Product 23: Men Pure Cotton Denim Jacket... | Price: Rs. 2469
+2025-05-26 02:14:24,305 - myntra - INFO - Product 24: Light Weight Bomber Jacket... | Price: Rs. 2349
+2025-05-26 02:14:24,306 - myntra - INFO - Product 25: Colourblocked Windcheater Outd... | Price: Rs. 961
+2025-05-26 02:14:24,306 - myntra - INFO - Successfully scraped 25 products from Myntra
