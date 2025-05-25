@@ -189,3 +189,308 @@
 2025-05-26 00:50:50,946 - amazon_test - INFO - Successfully scraped 60 products from Amazon
 2025-05-26 00:50:50,948 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
 2025-05-26 00:50:50,948 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:50:50] "GET /shop?query=White+sneakers HTTP/1.1" 200 -
+2025-05-26 00:53:22,144 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:53:22,144 - __main__ - INFO - Processing Myntra search for query: Fitted crop top (black or a bold color)
+2025-05-26 00:53:22,144 - myntra - INFO - Scraping Myntra for query: Fitted crop top (black or a bold color)
+2025-05-26 00:53:22,144 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:53:22,238 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:53:22,238 - __main__ - INFO - Processing Amazon search for query: Fitted crop top (black or a bold color)
+2025-05-26 00:53:22,238 - amazon_test - INFO - Scraping Amazon for query: Fitted crop top (black or a bold color)
+2025-05-26 00:53:22,238 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:53:23,189 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:23,369 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:23,388 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:23,487 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:53:23,527 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:23,682 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:53:24,565 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crop+top+%28black+or+a+bold+color%29?rawQuery=Fitted+crop+top+%28black+or+a+bold+color%29&sort=popularity
+2025-05-26 00:53:24,882 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Fitted+crop+top+%28black+or+a+bold+color%29&ref=nb_sb_noss&sprefix=Fitted+crop+top+%28black+or+a+bold+color%29%2Caps%2C283
+2025-05-26 00:53:31,819 - amazon_test - INFO - Found 58 product items in the page
+2025-05-26 00:53:32,006 - amazon_test - INFO - Product 30: Women's Ribbed Knit Crop Top -... | Price: N/A
+2025-05-26 00:53:32,176 - amazon_test - INFO - Successfully scraped 58 products from Amazon
+2025-05-26 00:53:32,179 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:53:32,180 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:53:32] "GET /shop?query=Fitted+crop+top+(black+or+a+bold+color) HTTP/1.1" 200 -
+2025-05-26 00:53:38,945 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:53:38,945 - __main__ - INFO - Processing Amazon search for query: Leather pants (if comfortable)
+2025-05-26 00:53:38,945 - amazon_test - INFO - Scraping Amazon for query: Leather pants (if comfortable)
+2025-05-26 00:53:38,945 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:53:39,969 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:40,069 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:40,166 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:53:40,659 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:53:40,659 - __main__ - INFO - Processing Myntra search for query: Leather pants (if comfortable)
+2025-05-26 00:53:40,659 - myntra - INFO - Scraping Myntra for query: Leather pants (if comfortable)
+2025-05-26 00:53:40,659 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:53:41,230 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Leather+pants+%28if+comfortable%29&ref=nb_sb_noss&sprefix=Leather+pants+%28if+comfortable%29%2Caps%2C283
+2025-05-26 00:53:41,826 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:41,988 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:42,087 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:53:43,194 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:53:43,246 - myntra - INFO - Opening URL: https://www.myntra.com/Leather+pants+%28if+comfortable%29?rawQuery=Leather+pants+%28if+comfortable%29&sort=popularity
+2025-05-26 00:53:45,387 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:53:46,694 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:46,790 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:53:46,886 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:53:47,962 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crop+top+%28black+or+a+bold+color%29?rawQuery=Fitted+crop+top+%28black+or+a+bold+color%29&sort=popularity
+2025-05-26 00:53:48,316 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 00:53:48,444 - amazon_test - INFO - Product 31: Men's Casual and Dress Non-Rev... | Price: N/A
+2025-05-26 00:53:48,532 - amazon_test - INFO - Product 50: womens Straight... | Price: N/A
+2025-05-26 00:53:48,581 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 00:53:48,582 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:53:48,584 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:53:48] "GET /shop?query=Leather+pants+(if+comfortable) HTTP/1.1" 200 -
+2025-05-26 00:54:01,863 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:03,997 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:54:04,972 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:54:05,129 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:54:05,228 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:54:06,259 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:06,317 - myntra - INFO - Opening URL: https://www.myntra.com/Leather+pants+%28if+comfortable%29?rawQuery=Leather+pants+%28if+comfortable%29&sort=popularity
+2025-05-26 00:54:08,415 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:54:09,424 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:54:09,523 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:54:09,938 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:54:11,119 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crop+top+%28black+or+a+bold+color%29?rawQuery=Fitted+crop+top+%28black+or+a+bold+color%29&sort=popularity
+2025-05-26 00:54:25,318 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:27,433 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:54:28,719 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:54:28,822 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:54:28,918 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:54:29,638 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:29,987 - myntra - INFO - Opening URL: https://www.myntra.com/Leather+pants+%28if+comfortable%29?rawQuery=Leather+pants+%28if+comfortable%29&sort=popularity
+2025-05-26 00:54:31,833 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-26 00:54:31,834 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:54:31,834 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:54:31] "[35m[1mGET /shop_myntra?query=Fitted+crop+top+(black+or+a+bold+color) HTTP/1.1[0m" 500 -
+2025-05-26 00:54:48,024 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:50,194 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-26 00:54:50,197 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:54:50,197 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:54:50] "[35m[1mGET /shop_myntra?query=Leather+pants+(if+comfortable) HTTP/1.1[0m" 500 -
+2025-05-26 00:55:01,993 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:55:01,993 - __main__ - INFO - Processing Amazon search for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:01,994 - amazon_test - INFO - Scraping Amazon for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:01,994 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:55:02,075 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 54 (char 53)
+2025-05-26 00:55:02,076 - __main__ - INFO - Processing Myntra search for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:02,076 - myntra - INFO - Scraping Myntra for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:02,076 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:55:03,186 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:55:03,266 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:55:03,338 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:55:03,422 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:55:03,495 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:55:03,572 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:55:04,554 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Fitted+crewneck+sweater+%28similar+dark+colors%29&ref=nb_sb_noss&sprefix=Fitted+crewneck+sweater+%28similar+dark+colors%29%2Caps%2C283
+2025-05-26 00:55:04,709 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crewneck+sweater+%28similar+dark+colors%29?rawQuery=Fitted+crewneck+sweater+%28similar+dark+colors%29&sort=popularity
+2025-05-26 00:55:12,227 - myntra - INFO - Found 50 product items in the page
+2025-05-26 00:55:12,229 - myntra - INFO - Product 1: Women Fine-knit cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,229 - myntra - INFO - Product 2: Acrylic Pullover Sweater... | Price: Rs. 1239
+2025-05-26 00:55:12,230 - myntra - INFO - Product 3: Fine-Knit Turtleneck Jumper... | Price: Rs. 749
+2025-05-26 00:55:12,230 - myntra - INFO - Product 4: Men Self-Striped Pullover... | Price: Rs. 849
+2025-05-26 00:55:12,231 - myntra - INFO - Product 5: Women Cable Knit Pullover... | Price: Rs. 854
+2025-05-26 00:55:12,232 - myntra - INFO - Product 6: Textured-Knit Cardigan... | Price: Rs. 1899
+2025-05-26 00:55:12,232 - myntra - INFO - Product 7: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,232 - myntra - INFO - Product 8: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,234 - myntra - INFO - Product 9: Fine-Knit V-Neck Jumper... | Price: Rs. 1499
+2025-05-26 00:55:12,235 - myntra - INFO - Product 10: Women Colourblocked Pullover... | Price: Rs. 1999
+2025-05-26 00:55:12,235 - myntra - INFO - Product 11: Longline Acrylic Pullover... | Price: Rs. 529
+2025-05-26 00:55:12,236 - myntra - INFO - Product 12: Extended Sleeves Pullover... | Price: Rs. 1914
+2025-05-26 00:55:12,237 - myntra - INFO - Product 13: Geometric Textured Pullover... | Price: Rs. 409
+2025-05-26 00:55:12,237 - myntra - INFO - Product 14: Men Solid Mock Collar Pullover... | Price: Rs. 1809
+2025-05-26 00:55:12,238 - myntra - INFO - Product 15: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,238 - myntra - INFO - Product 16: Solid Ribbed Pullover... | Price: Rs. 889
+2025-05-26 00:55:12,239 - myntra - INFO - Product 17: Woollen Sweater Vest... | Price: Rs. 799
+2025-05-26 00:55:12,239 - myntra - INFO - Product 18: Knitted Cardigan... | Price: Rs. 1499
+2025-05-26 00:55:12,239 - myntra - INFO - Product 19: Cable-Knit Cardigan... | Price: Rs. 1899
+2025-05-26 00:55:12,241 - myntra - INFO - Product 20: V-Neck Pullover... | Price: Rs. 2084
+2025-05-26 00:55:12,242 - myntra - INFO - Product 21: Striped Pullover... | Price: Rs. 881
+2025-05-26 00:55:12,242 - myntra - INFO - Product 22: Round Neck Cardigan... | Price: Rs. 1199
+2025-05-26 00:55:12,244 - myntra - INFO - Product 23: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,245 - myntra - INFO - Product 24: Men Colourblocked Pullover... | Price: Rs. 560
+2025-05-26 00:55:12,246 - myntra - INFO - Product 25: Men Ribbed Sweater... | Price: Rs. 379
+2025-05-26 00:55:12,248 - myntra - INFO - Product 31: Men Acrylic Solid Cardigan... | Price: Rs. 449
+2025-05-26 00:55:12,248 - myntra - INFO - Product 32: Women Cable Knit Sweater... | Price: Rs. 1809
+2025-05-26 00:55:12,248 - myntra - INFO - Product 33: Men Ribbed Pullover... | Price: Rs. 399
+2025-05-26 00:55:12,249 - myntra - INFO - Product 34: Men Colourblocked Pullover... | Price: Rs. 664
+2025-05-26 00:55:12,250 - myntra - INFO - Product 35: Men Acrylic Solid Cardigan... | Price: Rs. 799
+2025-05-26 00:55:12,250 - myntra - INFO - Product 36: Men Speckled Pullover... | Price: Rs. 1249
+2025-05-26 00:55:12,251 - myntra - INFO - Product 37: Rib-knit Polo-Neck Jumper... | Price: Rs. 1599
+2025-05-26 00:55:12,252 - myntra - INFO - Product 38: Colourblocked Acrylic Pullover... | Price: Rs. 545
+2025-05-26 00:55:12,252 - myntra - INFO - Product 39: Women Striped Pullover... | Price: Rs. 719
+2025-05-26 00:55:12,252 - myntra - INFO - Product 40: Men Self-Striped Pullover... | Price: Rs. 689
+2025-05-26 00:55:12,254 - myntra - INFO - Product 41: Women Pink Woolen Sweater... | Price: Rs. 2099
+2025-05-26 00:55:12,254 - myntra - INFO - Product 42: Women Pullover Sweater... | Price: Rs. 896
+2025-05-26 00:55:12,255 - myntra - INFO - Product 43: Acrylic Pullover Sweater... | Price: Rs. 1049
+2025-05-26 00:55:12,256 - myntra - INFO - Product 44: Soft-Touch Zip-Through Jacket... | Price: Rs. 1499
+2025-05-26 00:55:12,257 - myntra - INFO - Product 45: Men Cable Knit Sweater Vest... | Price: Rs. 703
+2025-05-26 00:55:12,257 - myntra - INFO - Product 46: Women Striped Pullover... | Price: Rs. 719
+2025-05-26 00:55:12,258 - myntra - INFO - Product 47: Women Colourblocked Pullover... | Price: Rs. 2253
+2025-05-26 00:55:12,258 - myntra - INFO - Product 48: Acrylic Striped Pullover... | Price: Rs. 759
+2025-05-26 00:55:12,259 - myntra - INFO - Product 49: Shoulder-Pad Cardigan... | Price: Rs. 1499
+2025-05-26 00:55:12,261 - myntra - INFO - Product 50: Men Solid Pullover Sweater... | Price: Rs. 599
+2025-05-26 00:55:12,261 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 00:55:12,263 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:55:12,263 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:55:12] "GET /shop_myntra?query=Fitted+crewneck+sweater+(similar+dark+colors) HTTP/1.1" 200 -
+2025-05-26 00:55:15,597 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 00:55:15,669 - amazon_test - INFO - Product 10: Women's Acrylic Crew Neck Full... | Price: N/A
+2025-05-26 00:55:15,737 - amazon_test - INFO - Product 19: Women's Viscose Crew Neck Puff... | Price: N/A
+2025-05-26 00:55:15,817 - amazon_test - INFO - Product 28: Men's Cable Knit Sweater Casua... | Price: N/A
+2025-05-26 00:55:15,837 - amazon_test - INFO - Product 31: Women's Viscose Crew Neck Puff... | Price: N/A
+2025-05-26 00:55:15,944 - amazon_test - INFO - Product 45: Women's Viscose High Neck Full... | Price: N/A
+2025-05-26 00:55:15,957 - amazon_test - INFO - Product 47: Womens Cropped Crewneck Sweats... | Price: N/A
+2025-05-26 00:55:15,967 - amazon_test - INFO - Product 49: Women's Viscose Turtle Neck Ra... | Price: N/A
+2025-05-26 00:55:15,988 - amazon_test - INFO - Product 52: Womens Sweatshirt Casual Long ... | Price: N/A
+2025-05-26 00:55:16,048 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 00:55:16,050 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:55:16,052 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:55:16] "GET /shop?query=Fitted+crewneck+sweater+(similar+dark+colors) HTTP/1.1" 200 -
+2025-05-26 00:55:24,495 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 00:55:24,518 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.1.3:8000
+2025-05-26 00:55:24,518 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-26 00:55:24,527 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-26 00:55:26,394 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 00:55:26,409 - werkzeug - WARNING -  * Debugger is active!
+2025-05-26 00:55:26,415 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 00:55:38,270 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:55:38,270 - __main__ - INFO - Processing Myntra search for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:38,270 - myntra - INFO - Scraping Myntra for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:38,270 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:55:38,303 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:55:38,303 - __main__ - INFO - Processing Amazon search for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:38,303 - amazon_test - INFO - Scraping Amazon for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:38,304 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:55:39,348 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:55:39,348 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:55:39,461 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:55:39,508 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:55:39,608 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:55:39,609 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:55:41,114 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Fitted+crewneck+sweater+%28similar+dark+colors%29&ref=nb_sb_noss&sprefix=Fitted+crewneck+sweater+%28similar+dark+colors%29%2Caps%2C283
+2025-05-26 00:55:41,117 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crewneck+sweater+%28similar+dark+colors%29?rawQuery=Fitted+crewneck+sweater+%28similar+dark+colors%29&sort=popularity
+2025-05-26 00:55:47,347 - myntra - INFO - Found 50 product items in the page
+2025-05-26 00:55:47,348 - myntra - INFO - Product 1: Women Fine-knit cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,350 - myntra - INFO - Product 2: Acrylic Pullover Sweater... | Price: Rs. 1239
+2025-05-26 00:55:47,350 - myntra - INFO - Product 3: Fine-Knit Turtleneck Jumper... | Price: Rs. 749
+2025-05-26 00:55:47,351 - myntra - INFO - Product 4: Men Self-Striped Pullover... | Price: Rs. 849
+2025-05-26 00:55:47,352 - myntra - INFO - Product 5: Women Cable Knit Pullover... | Price: Rs. 854
+2025-05-26 00:55:47,352 - myntra - INFO - Product 6: Textured-Knit Cardigan... | Price: Rs. 1899
+2025-05-26 00:55:47,353 - myntra - INFO - Product 7: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,353 - myntra - INFO - Product 8: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,354 - myntra - INFO - Product 9: Fine-Knit V-Neck Jumper... | Price: Rs. 1499
+2025-05-26 00:55:47,354 - myntra - INFO - Product 10: Women Colourblocked Pullover... | Price: Rs. 1999
+2025-05-26 00:55:47,354 - myntra - INFO - Product 11: Longline Acrylic Pullover... | Price: Rs. 529
+2025-05-26 00:55:47,356 - myntra - INFO - Product 12: Extended Sleeves Pullover... | Price: Rs. 1914
+2025-05-26 00:55:47,356 - myntra - INFO - Product 13: Geometric Textured Pullover... | Price: Rs. 409
+2025-05-26 00:55:47,357 - myntra - INFO - Product 14: Men Solid Mock Collar Pullover... | Price: Rs. 1809
+2025-05-26 00:55:47,359 - myntra - INFO - Product 15: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,359 - myntra - INFO - Product 16: Solid Ribbed Pullover... | Price: Rs. 889
+2025-05-26 00:55:47,360 - myntra - INFO - Product 17: Woollen Sweater Vest... | Price: Rs. 799
+2025-05-26 00:55:47,360 - myntra - INFO - Product 18: Knitted Cardigan... | Price: Rs. 1499
+2025-05-26 00:55:47,361 - myntra - INFO - Product 19: Cable-Knit Cardigan... | Price: Rs. 1899
+2025-05-26 00:55:47,362 - myntra - INFO - Product 20: V-Neck Pullover... | Price: Rs. 2084
+2025-05-26 00:55:47,362 - myntra - INFO - Product 21: Striped Pullover... | Price: Rs. 881
+2025-05-26 00:55:47,362 - myntra - INFO - Product 22: Round Neck Cardigan... | Price: Rs. 1199
+2025-05-26 00:55:47,363 - myntra - INFO - Product 23: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,364 - myntra - INFO - Product 24: Men Colourblocked Pullover... | Price: Rs. 560
+2025-05-26 00:55:47,364 - myntra - INFO - Product 25: Men Ribbed Sweater... | Price: Rs. 379
+2025-05-26 00:55:47,366 - myntra - INFO - Product 31: Men Acrylic Solid Cardigan... | Price: Rs. 449
+2025-05-26 00:55:47,367 - myntra - INFO - Product 32: Women Cable Knit Sweater... | Price: Rs. 1809
+2025-05-26 00:55:47,367 - myntra - INFO - Product 33: Men Ribbed Pullover... | Price: Rs. 399
+2025-05-26 00:55:47,367 - myntra - INFO - Product 34: Men Colourblocked Pullover... | Price: Rs. 664
+2025-05-26 00:55:47,368 - myntra - INFO - Product 35: Men Acrylic Solid Cardigan... | Price: Rs. 799
+2025-05-26 00:55:47,369 - myntra - INFO - Product 36: Men Speckled Pullover... | Price: Rs. 1249
+2025-05-26 00:55:47,369 - myntra - INFO - Product 37: Rib-knit Polo-Neck Jumper... | Price: Rs. 1599
+2025-05-26 00:55:47,371 - myntra - INFO - Product 38: Colourblocked Acrylic Pullover... | Price: Rs. 545
+2025-05-26 00:55:47,371 - myntra - INFO - Product 39: Women Striped Pullover... | Price: Rs. 719
+2025-05-26 00:55:47,372 - myntra - INFO - Product 40: Men Self-Striped Pullover... | Price: Rs. 689
+2025-05-26 00:55:47,372 - myntra - INFO - Product 41: Women Pink Woolen Sweater... | Price: Rs. 2099
+2025-05-26 00:55:47,373 - myntra - INFO - Product 42: Women Pullover Sweater... | Price: Rs. 896
+2025-05-26 00:55:47,374 - myntra - INFO - Product 43: Acrylic Pullover Sweater... | Price: Rs. 1049
+2025-05-26 00:55:47,374 - myntra - INFO - Product 44: Soft-Touch Zip-Through Jacket... | Price: Rs. 1499
+2025-05-26 00:55:47,375 - myntra - INFO - Product 45: Men Cable Knit Sweater Vest... | Price: Rs. 703
+2025-05-26 00:55:47,375 - myntra - INFO - Product 46: Women Striped Pullover... | Price: Rs. 719
+2025-05-26 00:55:47,376 - myntra - INFO - Product 47: Women Colourblocked Pullover... | Price: Rs. 2253
+2025-05-26 00:55:47,376 - myntra - INFO - Product 48: Acrylic Striped Pullover... | Price: Rs. 759
+2025-05-26 00:55:47,377 - myntra - INFO - Product 49: Shoulder-Pad Cardigan... | Price: Rs. 1499
+2025-05-26 00:55:47,377 - myntra - INFO - Product 50: Men Solid Pullover Sweater... | Price: Rs. 599
+2025-05-26 00:55:47,377 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 00:55:47,379 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:55:47,380 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:55:47] "GET /shop_myntra?query=Fitted+crewneck+sweater+(similar+dark+colors) HTTP/1.1" 200 -
+2025-05-26 00:55:50,542 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 00:55:50,547 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\flask\\app.py', reloading
+2025-05-26 00:55:50,582 - amazon_test - INFO - Product 12: Women's Acrylic Crew Neck Full... | Price: N/A
+2025-05-26 00:55:50,643 - amazon_test - INFO - Product 31: Men's Cable Knit Sweater Casua... | Price: N/A
+2025-05-26 00:55:50,656 - amazon_test - INFO - Product 36: Women's Viscose Crew Neck Puff... | Price: N/A
+2025-05-26 00:55:50,671 - amazon_test - INFO - Product 41: Women's Viscose Crew Neck Puff... | Price: N/A
+2025-05-26 00:55:50,739 - amazon_test - INFO - Product 52: Womens Sweatshirt Casual Long ... | Price: N/A
+2025-05-26 00:55:50,784 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 00:55:50,787 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:55:50,787 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:55:50] "GET /shop?query=Fitted+crewneck+sweater+(similar+dark+colors) HTTP/1.1" 200 -
+2025-05-26 00:55:53,155 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-26 00:55:55,098 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 00:55:55,111 - werkzeug - WARNING -  * Debugger is active!
+2025-05-26 00:55:55,116 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 00:56:30,270 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:56:30,271 - __main__ - INFO - Processing Myntra search for query: White t-shirts (various sleeve lengths)
+2025-05-26 00:56:30,271 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 00:56:30,271 - __main__ - INFO - Processing Amazon search for query: White t-shirts (various sleeve lengths)
+2025-05-26 00:56:30,271 - myntra - INFO - Scraping Myntra for query: White t-shirts (various sleeve lengths)
+2025-05-26 00:56:30,272 - amazon_test - INFO - Scraping Amazon for query: White t-shirts (various sleeve lengths)
+2025-05-26 00:56:30,272 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:56:30,272 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 00:56:31,606 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:56:31,606 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:56:31,720 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:56:31,720 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 00:56:31,825 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:56:31,871 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 00:56:32,944 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=White+t-shirts+%28various+sleeve+lengths%29&ref=nb_sb_noss&sprefix=White+t-shirts+%28various+sleeve+lengths%29%2Caps%2C283
+2025-05-26 00:56:33,021 - myntra - INFO - Opening URL: https://www.myntra.com/White+t-shirts+%28various+sleeve+lengths%29?rawQuery=White+t-shirts+%28various+sleeve+lengths%29&sort=popularity
+2025-05-26 00:56:39,138 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 00:56:39,434 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 00:56:39,436 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:56:39,437 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:56:39] "GET /shop?query=White+t-shirts+(various+sleeve+lengths) HTTP/1.1" 200 -
+2025-05-26 00:56:40,432 - myntra - INFO - Found 50 product items in the page
+2025-05-26 00:56:40,434 - myntra - INFO - Product 1: Men Pack Of 3 T-Shirts... | Price: Rs. 1199
+2025-05-26 00:56:40,434 - myntra - INFO - Product 2: 5-Pack Regular Fit T-shirts... | Price: Rs. 1999
+2025-05-26 00:56:40,434 - myntra - INFO - Product 3: Printed Relaxed Cotton T-shirt... | Price: Rs. 489
+2025-05-26 00:56:40,436 - myntra - INFO - Product 4: Men's Slim Fit Polo T-shirt... | Price: Rs. 679
+2025-05-26 00:56:40,437 - myntra - INFO - Product 5: Men Divide Regular Fit Polo... | Price: Rs. 1539
+2025-05-26 00:56:40,438 - myntra - INFO - Product 6: Men Printed Polo T-shirt... | Price: Rs. 679
+2025-05-26 00:56:40,438 - myntra - INFO - Product 7: 3-Striped Cotton T-shirt... | Price: Rs. 755
+2025-05-26 00:56:40,438 - myntra - INFO - Product 8: Pure Cotton T-shirt... | Price: Rs. 489
+2025-05-26 00:56:40,439 - myntra - INFO - Product 9: Polo Collar Slim Fit T-shirt... | Price: Rs. 914
+2025-05-26 00:56:40,439 - myntra - INFO - Product 10: Polo Collar Pure Cotton Tshirt... | Price: Rs. 1049
+2025-05-26 00:56:40,439 - myntra - INFO - Product 11: 5-Pack Regular Fit T-Shirts... | Price: Rs. 1999
+2025-05-26 00:56:40,441 - myntra - INFO - Product 12: Polo Collar Slim Fit T-shirt... | Price: Rs. 1124
+2025-05-26 00:56:40,442 - myntra - INFO - Product 13: Polo Collar Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 00:56:40,442 - myntra - INFO - Product 14: Polo Collar Slim Fit T-shirt... | Price: Rs. 991
+2025-05-26 00:56:40,443 - myntra - INFO - Product 15: Men Printed Polo T-shirt... | Price: Rs. 679
+2025-05-26 00:56:40,443 - myntra - INFO - Product 16: Women Printed T-shirt... | Price: Rs. 503
+2025-05-26 00:56:40,444 - myntra - INFO - Product 17: Striped Cotton T-shirt... | Price: Rs. 987
+2025-05-26 00:56:40,444 - myntra - INFO - Product 18: Striped Round Neck T-shirt... | Price: Rs. 470
+2025-05-26 00:56:40,444 - myntra - INFO - Product 19: Polo Collar Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 00:56:40,444 - myntra - INFO - Product 20: 5-Pack Regular Fit T-shirts... | Price: Rs. 1999
+2025-05-26 00:56:40,446 - myntra - INFO - Product 21: Mercedes Printed T-Shirt... | Price: Rs. 9599
+2025-05-26 00:56:40,446 - myntra - INFO - Product 22: Printed Cotton T-Shirt... | Price: Rs. 1080
+2025-05-26 00:56:40,447 - myntra - INFO - Product 23: V-Neck Casual T-Shirt... | Price: Rs. 399
+2025-05-26 00:56:40,447 - myntra - INFO - Product 24: Polo Collar Slim Fit T-shirt... | Price: Rs. 991
+2025-05-26 00:56:40,448 - myntra - INFO - Product 25: Boys Pack Of 3 Cotton T-shirt... | Price: Rs. 499
+2025-05-26 00:56:40,451 - myntra - INFO - Product 36: Oversized Printed T-shirt... | Price: Rs. 503
+2025-05-26 00:56:40,452 - myntra - INFO - Product 37: Boys Printed T-shirt... | Price: Rs. 349
+2025-05-26 00:56:40,452 - myntra - INFO - Product 38: Polo Collar Slim Fit T-shirt... | Price: Rs. 927
+2025-05-26 00:56:40,452 - myntra - INFO - Product 39: Men Polo Collar T-shirt... | Price: Rs. 2799
+2025-05-26 00:56:40,453 - myntra - INFO - Product 40: Men Slim Fit Polo T-shirt... | Price: Rs. 1754
+2025-05-26 00:56:40,454 - myntra - INFO - Product 41: Printed Oversized T-shirt... | Price: Rs. 299
+2025-05-26 00:56:40,454 - myntra - INFO - Product 42: Striped Polo Collar T-shirt... | Price: Rs. 549
+2025-05-26 00:56:40,454 - myntra - INFO - Product 43: Men Digiwaves2 Graphic T-Shirt... | Price: Rs. 1103
+2025-05-26 00:56:40,456 - myntra - INFO - Product 44: Cotton T-shirt... | Price: Rs. 699
+2025-05-26 00:56:40,456 - myntra - INFO - Product 45: Men Solid Slim Fit T-shirt... | Price: Rs. 1724
+2025-05-26 00:56:40,457 - myntra - INFO - Product 46: Adi Trn Mes Training T-Shirt... | Price: Rs. 1039
+2025-05-26 00:56:40,457 - myntra - INFO - Product 47: Loose Fit Printed T-shirt... | Price: Rs. 799
+2025-05-26 00:56:40,457 - myntra - INFO - Product 48: Pure Cotton T-shirt... | Price: Rs. 1194
+2025-05-26 00:56:40,459 - myntra - INFO - Product 49: Regular Fit Round-Neck T-shirt... | Price: Rs. 399
+2025-05-26 00:56:40,460 - myntra - INFO - Product 50: Women Solid Cotton T-shirt... | Price: Rs. 299
+2025-05-26 00:56:40,460 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 00:56:40,461 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 00:56:40,462 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 00:56:40] "GET /shop_myntra?query=White+t-shirts+(various+sleeve+lengths) HTTP/1.1" 200 -
