@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import WebDriverException, TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import google.generativeai as genai
@@ -15,11 +16,18 @@ import random
 import logging
 import json
 import hashlib
+import traceback
+import requests
 from datetime import datetime, timedelta
 from functools import wraps
 from flask_cors import CORS
+
+# Import primary scrapers
 from amazon_test import scrape_amazon
 from myntra import scrape_myntra
+
+# Import backup scrapers
+from backup_scraper import backup_amazon_scrape, backup_myntra_scrape, get_ai_product_suggestions
 
 # Load environment variables and configure Google Generative AI
 load_dotenv()
@@ -142,18 +150,68 @@ def home():
 def myntra_shop():
     query = request.args.get("query")
     logger.info(f"Processing Myntra search for query: {query}")
-    data = scrape_myntra(query)
     
-    # Validate the response data
-    if isinstance(data, dict) and 'error' in data:
-        return jsonify({"error": data['error'], "status": "error"}), 500
+    try:
+        # Try the primary scraper first
+        data = scrape_myntra(query)
+        
+        # Validate the response data
+        if isinstance(data, dict) and 'error' in data:
+            logger.warning(f"Primary Myntra scraper returned error: {data['error']}")
+            logger.info("Falling back to backup Myntra scraper")
+            data = backup_myntra_scrape(query)
+        
+        # Ensure we have a valid list of products
+        if not isinstance(data, list):
+            logger.warning(f"Unexpected data format from Myntra scraper: {type(data)}")
+            logger.info("Falling back to backup Myntra scraper")
+            data = backup_myntra_scrape(query)
+            
+        # If we still don't have valid data, return an error
+        if not isinstance(data, list) or len(data) == 0:
+            logger.error("Both primary and backup Myntra scrapers failed to return valid data")
+            return jsonify({
+                "error": "Failed to retrieve product data", 
+                "status": "error",
+                "message": "Our systems are currently experiencing difficulties. Please try again later."
+            }), 500
+        
+        return jsonify(data)
+        
+    except (WebDriverException, TimeoutException) as e:
+        # Handle Selenium-specific exceptions
+        logger.error(f"Selenium error in Myntra scraper: {str(e)}")
+        logger.info("Falling back to backup Myntra scraper due to Selenium error")
+        
+        try:
+            # Try the backup scraper
+            data = backup_myntra_scrape(query)
+            return jsonify(data)
+        except Exception as backup_error:
+            logger.error(f"Backup Myntra scraper also failed: {str(backup_error)}")
+            return jsonify({
+                "error": "Failed to retrieve product data", 
+                "status": "error",
+                "message": "Our systems are currently experiencing difficulties. Please try again later."
+            }), 500
     
-    # Ensure we have a valid list of products
-    if not isinstance(data, list):
-        logger.warning(f"Unexpected data format from Myntra scraper: {type(data)}")
-        return jsonify({"error": "Invalid data format from scraper", "status": "error"}), 500
-    
-    return jsonify(data)
+    except Exception as e:
+        # Handle any other exceptions
+        logger.error(f"Unexpected error in Myntra scraper: {str(e)}")
+        logger.error(traceback.format_exc())
+        logger.info("Falling back to backup Myntra scraper due to unexpected error")
+        
+        try:
+            # Try the backup scraper
+            data = backup_myntra_scrape(query)
+            return jsonify(data)
+        except Exception as backup_error:
+            logger.error(f"Backup Myntra scraper also failed: {str(backup_error)}")
+            return jsonify({
+                "error": "Failed to retrieve product data", 
+                "status": "error",
+                "message": "Our systems are currently experiencing difficulties. Please try again later."
+            }), 500
 
 @app.route('/classify', methods=['POST'])
 @handle_errors
@@ -184,18 +242,68 @@ def classify_images():
 def amazon_shop():
     query = request.args.get("query")
     logger.info(f"Processing Amazon search for query: {query}")
-    data = scrape_amazon(query)
     
-    # Validate the response data
-    if isinstance(data, dict) and 'error' in data:
-        return jsonify({"error": data['error'], "status": "error"}), 500
+    try:
+        # Try the primary scraper first
+        data = scrape_amazon(query)
+        
+        # Validate the response data
+        if isinstance(data, dict) and 'error' in data:
+            logger.warning(f"Primary Amazon scraper returned error: {data['error']}")
+            logger.info("Falling back to backup Amazon scraper")
+            data = backup_amazon_scrape(query)
+        
+        # Ensure we have a valid list of products
+        if not isinstance(data, list):
+            logger.warning(f"Unexpected data format from Amazon scraper: {type(data)}")
+            logger.info("Falling back to backup Amazon scraper")
+            data = backup_amazon_scrape(query)
+            
+        # If we still don't have valid data, return an error
+        if not isinstance(data, list) or len(data) == 0:
+            logger.error("Both primary and backup Amazon scrapers failed to return valid data")
+            return jsonify({
+                "error": "Failed to retrieve product data", 
+                "status": "error",
+                "message": "Our systems are currently experiencing difficulties. Please try again later."
+            }), 500
+        
+        return jsonify(data)
+        
+    except (WebDriverException, TimeoutException) as e:
+        # Handle Selenium-specific exceptions
+        logger.error(f"Selenium error in Amazon scraper: {str(e)}")
+        logger.info("Falling back to backup Amazon scraper due to Selenium error")
+        
+        try:
+            # Try the backup scraper
+            data = backup_amazon_scrape(query)
+            return jsonify(data)
+        except Exception as backup_error:
+            logger.error(f"Backup Amazon scraper also failed: {str(backup_error)}")
+            return jsonify({
+                "error": "Failed to retrieve product data", 
+                "status": "error",
+                "message": "Our systems are currently experiencing difficulties. Please try again later."
+            }), 500
     
-    # Ensure we have a valid list of products
-    if not isinstance(data, list):
-        logger.warning(f"Unexpected data format from Amazon scraper: {type(data)}")
-        return jsonify({"error": "Invalid data format from scraper", "status": "error"}), 500
-    
-    return jsonify(data)
+    except Exception as e:
+        # Handle any other exceptions
+        logger.error(f"Unexpected error in Amazon scraper: {str(e)}")
+        logger.error(traceback.format_exc())
+        logger.info("Falling back to backup Amazon scraper due to unexpected error")
+        
+        try:
+            # Try the backup scraper
+            data = backup_amazon_scrape(query)
+            return jsonify(data)
+        except Exception as backup_error:
+            logger.error(f"Backup Amazon scraper also failed: {str(backup_error)}")
+            return jsonify({
+                "error": "Failed to retrieve product data", 
+                "status": "error",
+                "message": "Our systems are currently experiencing difficulties. Please try again later."
+            }), 500
 
 # New endpoint for AI-based shopping suggestions
 @app.route('/shopping_suggestions', methods=['POST'])
@@ -230,26 +338,141 @@ def get_shopping_suggestions():
         suggestions_text = response.text.strip()
         suggestions = [item.strip() for item in suggestions_text.split('*') if item.strip()]
         
+        # Validate suggestions
+        if not suggestions or len(suggestions) < 3:
+            logger.warning("Gemini API returned insufficient suggestions, using backup")
+            raise ValueError("Insufficient suggestions from AI model")
+        
         return jsonify({
             "suggestions": suggestions,
             "status": "success"
         })
     except Exception as e:
         logger.error(f"Error generating shopping suggestions: {str(e)}")
-        return jsonify({
-            "error": "Failed to generate shopping suggestions",
-            "message": str(e),
-            "status": "error"
-        }), 500
+        logger.info("Falling back to backup AI suggestions")
+        
+        try:
+            # Use our backup suggestion generator
+            backup_suggestions = get_ai_product_suggestions(user_preferences, wardrobe_items)
+            
+            return jsonify({
+                "suggestions": backup_suggestions,
+                "status": "success",
+                "source": "backup"
+            })
+        except Exception as backup_error:
+            logger.error(f"Backup suggestion generator also failed: {str(backup_error)}")
+            return jsonify({
+                "error": "Failed to generate shopping suggestions",
+                "message": "Our AI recommendation system is currently unavailable. Please try again later.",
+                "status": "error"
+            }), 500
 
-# Health check endpoint
+# Health check endpoint with detailed service status
 @app.route('/health', methods=['GET'])
 def health_check():
-    return jsonify({
+    health_status = {
         "status": "healthy",
-        "version": "1.0.0",
-        "timestamp": datetime.now().isoformat()
-    })
+        "version": "1.0.1",  # Updated version with backup functionality
+        "timestamp": datetime.now().isoformat(),
+        "services": {}
+    }
+    
+    # Check Google API connectivity
+    try:
+        # Simple test of Gemini API
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content("Hello")
+        if response and hasattr(response, 'text'):
+            health_status["services"]["gemini_api"] = {
+                "status": "available",
+                "last_checked": datetime.now().isoformat()
+            }
+        else:
+            health_status["services"]["gemini_api"] = {
+                "status": "degraded",
+                "last_checked": datetime.now().isoformat(),
+                "message": "API returned unexpected response format"
+            }
+    except Exception as e:
+        health_status["services"]["gemini_api"] = {
+            "status": "unavailable",
+            "last_checked": datetime.now().isoformat(),
+            "error": str(e)
+        }
+        # If Gemini API is down, overall status is degraded
+        health_status["status"] = "degraded"
+    
+    # Check if we can access Amazon (just the website, not scraping)
+    try:
+        response = requests.get("https://www.amazon.in", 
+                              headers={"User-Agent": random.choice(USER_AGENTS)},
+                              timeout=5)
+        if response.status_code == 200:
+            health_status["services"]["amazon_access"] = {
+                "status": "available",
+                "last_checked": datetime.now().isoformat()
+            }
+        else:
+            health_status["services"]["amazon_access"] = {
+                "status": "degraded",
+                "last_checked": datetime.now().isoformat(),
+                "status_code": response.status_code
+            }
+    except Exception as e:
+        health_status["services"]["amazon_access"] = {
+            "status": "unavailable",
+            "last_checked": datetime.now().isoformat(),
+            "error": str(e)
+        }
+    
+    # Check if we can access Myntra (just the website, not scraping)
+    try:
+        response = requests.get("https://www.myntra.com", 
+                              headers={"User-Agent": random.choice(USER_AGENTS)},
+                              timeout=5)
+        if response.status_code == 200:
+            health_status["services"]["myntra_access"] = {
+                "status": "available",
+                "last_checked": datetime.now().isoformat()
+            }
+        else:
+            health_status["services"]["myntra_access"] = {
+                "status": "degraded",
+                "last_checked": datetime.now().isoformat(),
+                "status_code": response.status_code
+            }
+    except Exception as e:
+        health_status["services"]["myntra_access"] = {
+            "status": "unavailable",
+            "last_checked": datetime.now().isoformat(),
+            "error": str(e)
+        }
+    
+    # Check if cache directory is accessible and working
+    try:
+        cache_test_file = os.path.join(app.config['CACHE_DIR'], 'health_check_test.txt')
+        with open(cache_test_file, 'w') as f:
+            f.write(f"Health check at {datetime.now().isoformat()}")
+        os.remove(cache_test_file)
+        health_status["services"]["cache_system"] = {
+            "status": "available",
+            "last_checked": datetime.now().isoformat()
+        }
+    except Exception as e:
+        health_status["services"]["cache_system"] = {
+            "status": "unavailable",
+            "last_checked": datetime.now().isoformat(),
+            "error": str(e)
+        }
+        # If cache system is down, overall status is degraded
+        health_status["status"] = "degraded"
+    
+    # If any critical service is unavailable, mark the overall status as degraded
+    if any(service["status"] == "unavailable" for service in health_status["services"].values()):
+        health_status["status"] = "degraded"
+    
+    return jsonify(health_status)
 
 if __name__ == '__main__':
     logger.info("Starting ML service on port 8000")

@@ -2,39 +2,28 @@
 
 /* Main Shop container */
 .shop-container {
-  max-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0;
+  padding: 30px 20px;
   font-family: 'Poppins', Arial, sans-serif;
   color: #333;
-  background-color: #fff;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 
-/* Hero section with banner */
-.shop-hero {
-  width: 100%;
-  background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
-  padding: 60px 20px;
-  margin-bottom: 40px;
-  position: relative;
-}
-
 .shop-title {
-  margin-bottom: 20px;
-  color: #fff;
-  font-size: 32px;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.shop-subtitle {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 18px;
   margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  color: #333;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
   
   /* Search section */
@@ -42,40 +31,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: -50px auto 40px;
+  margin-bottom: 30px;
   background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   position: relative;
-  max-width: 1200px;
-  z-index: 10;
+  overflow: hidden;
+}
+
+.search-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
 }
 
 /* Search input container */
 .search-input-container {
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   position: relative;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 /* Search input field */
 .shop-search-input {
-  padding: 18px 20px 18px 50px;
+  padding: 16px 20px 16px 50px;
   width: 100%;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  border-radius: 30px;
+  border: 1px solid #e0e0e0;
   font-size: 16px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  background-color: #fff;
-}
-
-.shop-search-input:focus {
-  outline: none;
-  border-color: #13547a;
-  box-shadow: 0 0 0 2px rgba(19, 84, 122, 0.2);
+  background-color: #f8f9fa;
 }
 
 .search-input-container::before {
@@ -86,7 +78,7 @@
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  color: #13547a;
+  color: #6a11cb;
   font-size: 18px;
   z-index: 1;
 }
@@ -102,23 +94,21 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   margin-top: 10px;
-  width: 100%;
-  max-width: 700px;
 }
 
 /* Search button */
 .shop-search-button {
-  padding: 14px 20px;
-  border-radius: 4px;
-  background-color: #13547a;
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
   color: #fff;
   border: none;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .shop-search-button:hover {
@@ -206,18 +196,19 @@
 }
 
 .getairecommendations {
-  padding: 14px 20px;
-  border-radius: 4px;
-  background-color: #00a699;
+  padding: 0px 20px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
   color: #fff;
   border: none;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* padding:0px 20px */
+  height:56px;
+  margin-top:2.5%;
+  border-radius: 9px;
 }
 
 .getairecommendations:hover {
@@ -465,37 +456,24 @@
   font-size: 18px;
 }
   .searchonboth{
-  padding: 14px 20px;
-  border-radius: 4px;
-  background-color: #13547a;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
+    padding:19px;
+    border-radius: 6px;
+    margin:10px
+  }
   
 .view-wishlist-button {
-  padding: 14px 25px;
-  border-radius: 4px;
-  background-color: #ff3e6c;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #FF416C 0%, #FF4B2B 100%);
   color: #fff;
   border: none;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  margin: 30px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  display: block;
   font-size: 16px;
-  max-width: 250px;
 }
 
 .view-wishlist-button:hover {
