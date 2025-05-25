@@ -35,7 +35,8 @@ const FloatingNavbar = () => {
     { path: '/wardrobe', icon: <FaTshirt />, label: 'Wardrobe' },
     { path: '/recommendations', icon: <FaLightbulb />, label: 'Outfits' },
     { path: '/profile', icon: <FaUser />, label: 'Profile' },
-    { path: '/shop', icon: <FaStore />, label: 'Shop' }
+    { path: '/shop', icon: <FaStore />, label: 'Shop' },
+    { path: '/social', icon: <FaMagic />, label: 'Social' },
   ];
   
   // Add conditional items based on user state
