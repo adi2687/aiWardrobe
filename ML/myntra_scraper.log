@@ -91,3 +91,161 @@
 2025-05-26 00:50:50,856 - myntra - INFO - Product 49: Men PU Sneakers... | Price: Rs. 1599
 2025-05-26 00:50:50,861 - myntra - INFO - Product 50: Men Sneakers... | Price: Rs. 1869
 2025-05-26 00:50:50,865 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 00:53:22,144 - myntra - INFO - Scraping Myntra for query: Fitted crop top (black or a bold color)
+2025-05-26 00:53:24,565 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crop+top+%28black+or+a+bold+color%29?rawQuery=Fitted+crop+top+%28black+or+a+bold+color%29&sort=popularity
+2025-05-26 00:53:40,659 - myntra - INFO - Scraping Myntra for query: Leather pants (if comfortable)
+2025-05-26 00:53:43,194 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:53:43,246 - myntra - INFO - Opening URL: https://www.myntra.com/Leather+pants+%28if+comfortable%29?rawQuery=Leather+pants+%28if+comfortable%29&sort=popularity
+2025-05-26 00:53:47,962 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crop+top+%28black+or+a+bold+color%29?rawQuery=Fitted+crop+top+%28black+or+a+bold+color%29&sort=popularity
+2025-05-26 00:54:01,863 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:06,259 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:06,317 - myntra - INFO - Opening URL: https://www.myntra.com/Leather+pants+%28if+comfortable%29?rawQuery=Leather+pants+%28if+comfortable%29&sort=popularity
+2025-05-26 00:54:11,119 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crop+top+%28black+or+a+bold+color%29?rawQuery=Fitted+crop+top+%28black+or+a+bold+color%29&sort=popularity
+2025-05-26 00:54:25,318 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:29,638 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:29,987 - myntra - INFO - Opening URL: https://www.myntra.com/Leather+pants+%28if+comfortable%29?rawQuery=Leather+pants+%28if+comfortable%29&sort=popularity
+2025-05-26 00:54:31,833 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-26 00:54:48,024 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-26 00:54:50,194 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-26 00:55:02,076 - myntra - INFO - Scraping Myntra for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:04,709 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crewneck+sweater+%28similar+dark+colors%29?rawQuery=Fitted+crewneck+sweater+%28similar+dark+colors%29&sort=popularity
+2025-05-26 00:55:12,227 - myntra - INFO - Found 50 product items in the page
+2025-05-26 00:55:12,229 - myntra - INFO - Product 1: Women Fine-knit cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,229 - myntra - INFO - Product 2: Acrylic Pullover Sweater... | Price: Rs. 1239
+2025-05-26 00:55:12,230 - myntra - INFO - Product 3: Fine-Knit Turtleneck Jumper... | Price: Rs. 749
+2025-05-26 00:55:12,230 - myntra - INFO - Product 4: Men Self-Striped Pullover... | Price: Rs. 849
+2025-05-26 00:55:12,231 - myntra - INFO - Product 5: Women Cable Knit Pullover... | Price: Rs. 854
+2025-05-26 00:55:12,232 - myntra - INFO - Product 6: Textured-Knit Cardigan... | Price: Rs. 1899
+2025-05-26 00:55:12,232 - myntra - INFO - Product 7: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,232 - myntra - INFO - Product 8: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,234 - myntra - INFO - Product 9: Fine-Knit V-Neck Jumper... | Price: Rs. 1499
+2025-05-26 00:55:12,235 - myntra - INFO - Product 10: Women Colourblocked Pullover... | Price: Rs. 1999
+2025-05-26 00:55:12,235 - myntra - INFO - Product 11: Longline Acrylic Pullover... | Price: Rs. 529
+2025-05-26 00:55:12,236 - myntra - INFO - Product 12: Extended Sleeves Pullover... | Price: Rs. 1914
+2025-05-26 00:55:12,237 - myntra - INFO - Product 13: Geometric Textured Pullover... | Price: Rs. 409
+2025-05-26 00:55:12,237 - myntra - INFO - Product 14: Men Solid Mock Collar Pullover... | Price: Rs. 1809
+2025-05-26 00:55:12,238 - myntra - INFO - Product 15: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,238 - myntra - INFO - Product 16: Solid Ribbed Pullover... | Price: Rs. 889
+2025-05-26 00:55:12,239 - myntra - INFO - Product 17: Woollen Sweater Vest... | Price: Rs. 799
+2025-05-26 00:55:12,239 - myntra - INFO - Product 18: Knitted Cardigan... | Price: Rs. 1499
+2025-05-26 00:55:12,239 - myntra - INFO - Product 19: Cable-Knit Cardigan... | Price: Rs. 1899
+2025-05-26 00:55:12,241 - myntra - INFO - Product 20: V-Neck Pullover... | Price: Rs. 2084
+2025-05-26 00:55:12,242 - myntra - INFO - Product 21: Striped Pullover... | Price: Rs. 881
+2025-05-26 00:55:12,242 - myntra - INFO - Product 22: Round Neck Cardigan... | Price: Rs. 1199
+2025-05-26 00:55:12,244 - myntra - INFO - Product 23: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:12,245 - myntra - INFO - Product 24: Men Colourblocked Pullover... | Price: Rs. 560
+2025-05-26 00:55:12,246 - myntra - INFO - Product 25: Men Ribbed Sweater... | Price: Rs. 379
+2025-05-26 00:55:12,248 - myntra - INFO - Product 31: Men Acrylic Solid Cardigan... | Price: Rs. 449
+2025-05-26 00:55:12,248 - myntra - INFO - Product 32: Women Cable Knit Sweater... | Price: Rs. 1809
+2025-05-26 00:55:12,248 - myntra - INFO - Product 33: Men Ribbed Pullover... | Price: Rs. 399
+2025-05-26 00:55:12,249 - myntra - INFO - Product 34: Men Colourblocked Pullover... | Price: Rs. 664
+2025-05-26 00:55:12,250 - myntra - INFO - Product 35: Men Acrylic Solid Cardigan... | Price: Rs. 799
+2025-05-26 00:55:12,250 - myntra - INFO - Product 36: Men Speckled Pullover... | Price: Rs. 1249
+2025-05-26 00:55:12,251 - myntra - INFO - Product 37: Rib-knit Polo-Neck Jumper... | Price: Rs. 1599
+2025-05-26 00:55:12,252 - myntra - INFO - Product 38: Colourblocked Acrylic Pullover... | Price: Rs. 545
+2025-05-26 00:55:12,252 - myntra - INFO - Product 39: Women Striped Pullover... | Price: Rs. 719
+2025-05-26 00:55:12,252 - myntra - INFO - Product 40: Men Self-Striped Pullover... | Price: Rs. 689
+2025-05-26 00:55:12,254 - myntra - INFO - Product 41: Women Pink Woolen Sweater... | Price: Rs. 2099
+2025-05-26 00:55:12,254 - myntra - INFO - Product 42: Women Pullover Sweater... | Price: Rs. 896
+2025-05-26 00:55:12,255 - myntra - INFO - Product 43: Acrylic Pullover Sweater... | Price: Rs. 1049
+2025-05-26 00:55:12,256 - myntra - INFO - Product 44: Soft-Touch Zip-Through Jacket... | Price: Rs. 1499
+2025-05-26 00:55:12,257 - myntra - INFO - Product 45: Men Cable Knit Sweater Vest... | Price: Rs. 703
+2025-05-26 00:55:12,257 - myntra - INFO - Product 46: Women Striped Pullover... | Price: Rs. 719
+2025-05-26 00:55:12,258 - myntra - INFO - Product 47: Women Colourblocked Pullover... | Price: Rs. 2253
+2025-05-26 00:55:12,258 - myntra - INFO - Product 48: Acrylic Striped Pullover... | Price: Rs. 759
+2025-05-26 00:55:12,259 - myntra - INFO - Product 49: Shoulder-Pad Cardigan... | Price: Rs. 1499
+2025-05-26 00:55:12,261 - myntra - INFO - Product 50: Men Solid Pullover Sweater... | Price: Rs. 599
+2025-05-26 00:55:12,261 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 00:55:38,270 - myntra - INFO - Scraping Myntra for query: Fitted crewneck sweater (similar dark colors)
+2025-05-26 00:55:41,117 - myntra - INFO - Opening URL: https://www.myntra.com/Fitted+crewneck+sweater+%28similar+dark+colors%29?rawQuery=Fitted+crewneck+sweater+%28similar+dark+colors%29&sort=popularity
+2025-05-26 00:55:47,347 - myntra - INFO - Found 50 product items in the page
+2025-05-26 00:55:47,348 - myntra - INFO - Product 1: Women Fine-knit cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,350 - myntra - INFO - Product 2: Acrylic Pullover Sweater... | Price: Rs. 1239
+2025-05-26 00:55:47,350 - myntra - INFO - Product 3: Fine-Knit Turtleneck Jumper... | Price: Rs. 749
+2025-05-26 00:55:47,351 - myntra - INFO - Product 4: Men Self-Striped Pullover... | Price: Rs. 849
+2025-05-26 00:55:47,352 - myntra - INFO - Product 5: Women Cable Knit Pullover... | Price: Rs. 854
+2025-05-26 00:55:47,352 - myntra - INFO - Product 6: Textured-Knit Cardigan... | Price: Rs. 1899
+2025-05-26 00:55:47,353 - myntra - INFO - Product 7: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,353 - myntra - INFO - Product 8: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,354 - myntra - INFO - Product 9: Fine-Knit V-Neck Jumper... | Price: Rs. 1499
+2025-05-26 00:55:47,354 - myntra - INFO - Product 10: Women Colourblocked Pullover... | Price: Rs. 1999
+2025-05-26 00:55:47,354 - myntra - INFO - Product 11: Longline Acrylic Pullover... | Price: Rs. 529
+2025-05-26 00:55:47,356 - myntra - INFO - Product 12: Extended Sleeves Pullover... | Price: Rs. 1914
+2025-05-26 00:55:47,356 - myntra - INFO - Product 13: Geometric Textured Pullover... | Price: Rs. 409
+2025-05-26 00:55:47,357 - myntra - INFO - Product 14: Men Solid Mock Collar Pullover... | Price: Rs. 1809
+2025-05-26 00:55:47,359 - myntra - INFO - Product 15: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,359 - myntra - INFO - Product 16: Solid Ribbed Pullover... | Price: Rs. 889
+2025-05-26 00:55:47,360 - myntra - INFO - Product 17: Woollen Sweater Vest... | Price: Rs. 799
+2025-05-26 00:55:47,360 - myntra - INFO - Product 18: Knitted Cardigan... | Price: Rs. 1499
+2025-05-26 00:55:47,361 - myntra - INFO - Product 19: Cable-Knit Cardigan... | Price: Rs. 1899
+2025-05-26 00:55:47,362 - myntra - INFO - Product 20: V-Neck Pullover... | Price: Rs. 2084
+2025-05-26 00:55:47,362 - myntra - INFO - Product 21: Striped Pullover... | Price: Rs. 881
+2025-05-26 00:55:47,362 - myntra - INFO - Product 22: Round Neck Cardigan... | Price: Rs. 1199
+2025-05-26 00:55:47,363 - myntra - INFO - Product 23: Fine-Knit Cardigan... | Price: Rs. 999
+2025-05-26 00:55:47,364 - myntra - INFO - Product 24: Men Colourblocked Pullover... | Price: Rs. 560
+2025-05-26 00:55:47,364 - myntra - INFO - Product 25: Men Ribbed Sweater... | Price: Rs. 379
+2025-05-26 00:55:47,366 - myntra - INFO - Product 31: Men Acrylic Solid Cardigan... | Price: Rs. 449
+2025-05-26 00:55:47,367 - myntra - INFO - Product 32: Women Cable Knit Sweater... | Price: Rs. 1809
+2025-05-26 00:55:47,367 - myntra - INFO - Product 33: Men Ribbed Pullover... | Price: Rs. 399
+2025-05-26 00:55:47,367 - myntra - INFO - Product 34: Men Colourblocked Pullover... | Price: Rs. 664
+2025-05-26 00:55:47,368 - myntra - INFO - Product 35: Men Acrylic Solid Cardigan... | Price: Rs. 799
+2025-05-26 00:55:47,369 - myntra - INFO - Product 36: Men Speckled Pullover... | Price: Rs. 1249
+2025-05-26 00:55:47,369 - myntra - INFO - Product 37: Rib-knit Polo-Neck Jumper... | Price: Rs. 1599
+2025-05-26 00:55:47,371 - myntra - INFO - Product 38: Colourblocked Acrylic Pullover... | Price: Rs. 545
+2025-05-26 00:55:47,371 - myntra - INFO - Product 39: Women Striped Pullover... | Price: Rs. 719
+2025-05-26 00:55:47,372 - myntra - INFO - Product 40: Men Self-Striped Pullover... | Price: Rs. 689
+2025-05-26 00:55:47,372 - myntra - INFO - Product 41: Women Pink Woolen Sweater... | Price: Rs. 2099
+2025-05-26 00:55:47,373 - myntra - INFO - Product 42: Women Pullover Sweater... | Price: Rs. 896
+2025-05-26 00:55:47,374 - myntra - INFO - Product 43: Acrylic Pullover Sweater... | Price: Rs. 1049
+2025-05-26 00:55:47,374 - myntra - INFO - Product 44: Soft-Touch Zip-Through Jacket... | Price: Rs. 1499
+2025-05-26 00:55:47,375 - myntra - INFO - Product 45: Men Cable Knit Sweater Vest... | Price: Rs. 703
+2025-05-26 00:55:47,375 - myntra - INFO - Product 46: Women Striped Pullover... | Price: Rs. 719
+2025-05-26 00:55:47,376 - myntra - INFO - Product 47: Women Colourblocked Pullover... | Price: Rs. 2253
+2025-05-26 00:55:47,376 - myntra - INFO - Product 48: Acrylic Striped Pullover... | Price: Rs. 759
+2025-05-26 00:55:47,377 - myntra - INFO - Product 49: Shoulder-Pad Cardigan... | Price: Rs. 1499
+2025-05-26 00:55:47,377 - myntra - INFO - Product 50: Men Solid Pullover Sweater... | Price: Rs. 599
+2025-05-26 00:55:47,377 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 00:56:30,271 - myntra - INFO - Scraping Myntra for query: White t-shirts (various sleeve lengths)
+2025-05-26 00:56:33,021 - myntra - INFO - Opening URL: https://www.myntra.com/White+t-shirts+%28various+sleeve+lengths%29?rawQuery=White+t-shirts+%28various+sleeve+lengths%29&sort=popularity
+2025-05-26 00:56:40,432 - myntra - INFO - Found 50 product items in the page
+2025-05-26 00:56:40,434 - myntra - INFO - Product 1: Men Pack Of 3 T-Shirts... | Price: Rs. 1199
+2025-05-26 00:56:40,434 - myntra - INFO - Product 2: 5-Pack Regular Fit T-shirts... | Price: Rs. 1999
+2025-05-26 00:56:40,434 - myntra - INFO - Product 3: Printed Relaxed Cotton T-shirt... | Price: Rs. 489
+2025-05-26 00:56:40,436 - myntra - INFO - Product 4: Men's Slim Fit Polo T-shirt... | Price: Rs. 679
+2025-05-26 00:56:40,437 - myntra - INFO - Product 5: Men Divide Regular Fit Polo... | Price: Rs. 1539
+2025-05-26 00:56:40,438 - myntra - INFO - Product 6: Men Printed Polo T-shirt... | Price: Rs. 679
+2025-05-26 00:56:40,438 - myntra - INFO - Product 7: 3-Striped Cotton T-shirt... | Price: Rs. 755
+2025-05-26 00:56:40,438 - myntra - INFO - Product 8: Pure Cotton T-shirt... | Price: Rs. 489
+2025-05-26 00:56:40,439 - myntra - INFO - Product 9: Polo Collar Slim Fit T-shirt... | Price: Rs. 914
+2025-05-26 00:56:40,439 - myntra - INFO - Product 10: Polo Collar Pure Cotton Tshirt... | Price: Rs. 1049
+2025-05-26 00:56:40,439 - myntra - INFO - Product 11: 5-Pack Regular Fit T-Shirts... | Price: Rs. 1999
+2025-05-26 00:56:40,441 - myntra - INFO - Product 12: Polo Collar Slim Fit T-shirt... | Price: Rs. 1124
+2025-05-26 00:56:40,442 - myntra - INFO - Product 13: Polo Collar Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 00:56:40,442 - myntra - INFO - Product 14: Polo Collar Slim Fit T-shirt... | Price: Rs. 991
+2025-05-26 00:56:40,443 - myntra - INFO - Product 15: Men Printed Polo T-shirt... | Price: Rs. 679
+2025-05-26 00:56:40,443 - myntra - INFO - Product 16: Women Printed T-shirt... | Price: Rs. 503
+2025-05-26 00:56:40,444 - myntra - INFO - Product 17: Striped Cotton T-shirt... | Price: Rs. 987
+2025-05-26 00:56:40,444 - myntra - INFO - Product 18: Striped Round Neck T-shirt... | Price: Rs. 470
+2025-05-26 00:56:40,444 - myntra - INFO - Product 19: Polo Collar Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 00:56:40,444 - myntra - INFO - Product 20: 5-Pack Regular Fit T-shirts... | Price: Rs. 1999
+2025-05-26 00:56:40,446 - myntra - INFO - Product 21: Mercedes Printed T-Shirt... | Price: Rs. 9599
+2025-05-26 00:56:40,446 - myntra - INFO - Product 22: Printed Cotton T-Shirt... | Price: Rs. 1080
+2025-05-26 00:56:40,447 - myntra - INFO - Product 23: V-Neck Casual T-Shirt... | Price: Rs. 399
+2025-05-26 00:56:40,447 - myntra - INFO - Product 24: Polo Collar Slim Fit T-shirt... | Price: Rs. 991
+2025-05-26 00:56:40,448 - myntra - INFO - Product 25: Boys Pack Of 3 Cotton T-shirt... | Price: Rs. 499
+2025-05-26 00:56:40,451 - myntra - INFO - Product 36: Oversized Printed T-shirt... | Price: Rs. 503
+2025-05-26 00:56:40,452 - myntra - INFO - Product 37: Boys Printed T-shirt... | Price: Rs. 349
+2025-05-26 00:56:40,452 - myntra - INFO - Product 38: Polo Collar Slim Fit T-shirt... | Price: Rs. 927
+2025-05-26 00:56:40,452 - myntra - INFO - Product 39: Men Polo Collar T-shirt... | Price: Rs. 2799
+2025-05-26 00:56:40,453 - myntra - INFO - Product 40: Men Slim Fit Polo T-shirt... | Price: Rs. 1754
+2025-05-26 00:56:40,454 - myntra - INFO - Product 41: Printed Oversized T-shirt... | Price: Rs. 299
+2025-05-26 00:56:40,454 - myntra - INFO - Product 42: Striped Polo Collar T-shirt... | Price: Rs. 549
+2025-05-26 00:56:40,454 - myntra - INFO - Product 43: Men Digiwaves2 Graphic T-Shirt... | Price: Rs. 1103
+2025-05-26 00:56:40,456 - myntra - INFO - Product 44: Cotton T-shirt... | Price: Rs. 699
+2025-05-26 00:56:40,456 - myntra - INFO - Product 45: Men Solid Slim Fit T-shirt... | Price: Rs. 1724
+2025-05-26 00:56:40,457 - myntra - INFO - Product 46: Adi Trn Mes Training T-Shirt... | Price: Rs. 1039
+2025-05-26 00:56:40,457 - myntra - INFO - Product 47: Loose Fit Printed T-shirt... | Price: Rs. 799
+2025-05-26 00:56:40,457 - myntra - INFO - Product 48: Pure Cotton T-shirt... | Price: Rs. 1194
+2025-05-26 00:56:40,459 - myntra - INFO - Product 49: Regular Fit Round-Neck T-shirt... | Price: Rs. 399
+2025-05-26 00:56:40,460 - myntra - INFO - Product 50: Women Solid Cotton T-shirt... | Price: Rs. 299
+2025-05-26 00:56:40,460 - myntra - INFO - Successfully scraped 40 products from Myntra
