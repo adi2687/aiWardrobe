@@ -617,9 +617,8 @@ textarea::placeholder {
 
 @media (max-width: 600px) {
     .planner-container {
-        width: 100%;
-        margin-right:0%
-        /* margin: 15px auto; */
+        width: 95%;
+        margin: 15px auto;
     }
     
     .planner-header {
