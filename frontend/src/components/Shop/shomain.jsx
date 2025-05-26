@@ -55,15 +55,15 @@ const Shop = () => {
     console.log("search query is ", searchQuery);
     setAmazonLoading(true);
     
-    // Use backend proxy instead of direct ML service call
+    // Use direct ML service call
     fetch(
-      `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`,
+      `${mlurl}/shop?query=${encodeURIComponent(searchQuery)}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies for authentication
+        // Don't include credentials for cross-origin requests to ML service
       }
     )
       .then((response) => {
@@ -120,9 +120,9 @@ const Shop = () => {
 
       console.log(`${mlurl}/shop_myntra?query=${encodeURIComponent(searchQuery)}`)
     setMyntraLoading(true);
-    // Use backend proxy instead of direct ML service call
+    // Use direct ML service call
     fetch(
-      `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(
+      `${mlurl}/shop_myntra?query=${encodeURIComponent(
         searchQuery
       )}`,
       {
@@ -130,7 +130,7 @@ const Shop = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies for authentication
+        // Don't include credentials for cross-origin requests to ML service
       }
     )
       .then((response) => {
