@@ -6413,3 +6413,497 @@
 2025-05-26 07:24:40,767 - __main__ - INFO - Starting ML service on port 8000
 2025-05-26 07:24:40,780 - werkzeug - WARNING -  * Debugger is active!
 2025-05-26 07:24:40,785 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 07:25:48,441 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:25:48,441 - __main__ - INFO - Processing Amazon search for query: Oversized t-shirts
+2025-05-26 07:25:48,441 - amazon_test - INFO - Scraping Amazon for query: Oversized t-shirts
+2025-05-26 07:25:48,441 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:25:48,480 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:25:48,480 - __main__ - INFO - Processing Myntra search for query: Oversized t-shirts
+2025-05-26 07:25:48,480 - myntra - INFO - Scraping Myntra for query: Oversized t-shirts
+2025-05-26 07:25:48,480 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:25:49,692 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:25:49,724 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:25:49,797 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:25:49,876 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:25:49,897 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:25:50,022 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:25:51,002 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Oversized+t-shirts&ref=nb_sb_noss&sprefix=Oversized+t-shirts%2Caps%2C283
+2025-05-26 07:25:51,157 - myntra - INFO - Opening URL: https://www.myntra.com/Oversized+t-shirts?rawQuery=Oversized+t-shirts&sort=popularity
+2025-05-26 07:25:56,654 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:25:56,914 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:25:56,918 - myntra - INFO - Product 1: Pure Cotton T-shirt... | Price: Rs. 489
+2025-05-26 07:25:56,923 - myntra - INFO - Product 2: Women Printed T-shirt... | Price: Rs. 503
+2025-05-26 07:25:56,927 - myntra - INFO - Product 3: Striped Round Neck T-shirt... | Price: Rs. 470
+2025-05-26 07:25:56,931 - myntra - INFO - Product 4: Graphic Printed T-shirt... | Price: Rs. 249
+2025-05-26 07:25:56,935 - myntra - INFO - Product 5: Oversized Printed T-shirt... | Price: Rs. 503
+2025-05-26 07:25:56,940 - myntra - INFO - Product 6: Printed Oversized T-shirt... | Price: Rs. 299
+2025-05-26 07:25:56,944 - myntra - INFO - Product 7: Women Solid Cotton T-shirt... | Price: Rs. 299
+2025-05-26 07:25:56,949 - myntra - INFO - Product 8: Women Printed Oversized Tshirt... | Price: Rs. 455
+2025-05-26 07:25:56,953 - myntra - INFO - Product 9: Women Printed T-shirt... | Price: Rs. 274
+2025-05-26 07:25:56,958 - myntra - INFO - Product 10: Oversized Round Neck T-shirt... | Price: Rs. 779
+2025-05-26 07:25:56,963 - myntra - INFO - Product 11: Women Oversized T-Shirt... | Price: Rs. 299
+2025-05-26 07:25:56,967 - myntra - INFO - Product 12: Oversized Motif-Detail T-shir... | Price: Rs. 799
+2025-05-26 07:25:56,971 - myntra - INFO - Product 13: Men Printed Oversized T-shirt... | Price: Rs. 599
+2025-05-26 07:25:56,977 - myntra - INFO - Product 14: Men Printed Oversized T-shirt... | Price: Rs. 521
+2025-05-26 07:25:56,982 - myntra - INFO - Product 15: Oversized Pure Cotton T-shirt... | Price: Rs. 479
+2025-05-26 07:25:56,987 - myntra - INFO - Product 16: Women Printed Loose T-shirt... | Price: Rs. 335
+2025-05-26 07:25:56,992 - myntra - INFO - Product 17: Women Oversized T-Shirt... | Price: Rs. 299
+2025-05-26 07:25:56,996 - myntra - INFO - Product 18: Women Oversized T-Shirt... | Price: Rs. 299
+2025-05-26 07:25:57,000 - myntra - INFO - Product 19: Printed Pure Cotton T-Shirt... | Price: Rs. 475
+2025-05-26 07:25:57,002 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:25:57,003 - myntra - INFO - Product 20: Cotton Oversized T-shirt... | Price: Rs. 949
+2025-05-26 07:25:57,006 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:25:57,005 - myntra - INFO - Product 21: Cotton Oversized T-Shirt... | Price: Rs. 539
+2025-05-26 07:25:57,006 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:25:57] "GET /shop?query=Oversized+t-shirts HTTP/1.1" 200 -
+2025-05-26 07:25:57,007 - myntra - INFO - Product 22: Printed Cotton T-shirts... | Price: Rs. 799
+2025-05-26 07:25:57,008 - myntra - INFO - Product 23: Women Typography Printed Loose... | Price: Rs. 480
+2025-05-26 07:25:57,009 - myntra - INFO - Product 24: Printed Pure Cotton T-Shirt... | Price: Rs. 461
+2025-05-26 07:25:57,009 - myntra - INFO - Product 25: Printed Oversized T-shirt... | Price: Rs. 497
+2025-05-26 07:25:57,012 - myntra - INFO - Product 31: Oversized Motif-Detail T-shir... | Price: Rs. 799
+2025-05-26 07:25:57,012 - myntra - INFO - Product 32: Printed Oversized T-shirt... | Price: Rs. 899
+2025-05-26 07:25:57,013 - myntra - INFO - Product 33: Women Printed Oversized T-shir... | Price: Rs. 549
+2025-05-26 07:25:57,013 - myntra - INFO - Product 34: Cotton Oversized Fit T-shirt... | Price: Rs. 549
+2025-05-26 07:25:57,015 - myntra - INFO - Product 35: Polo Collar T-shirt... | Price: Rs. 643
+2025-05-26 07:25:57,015 - myntra - INFO - Product 36: Unisex Printed T-shirt... | Price: Rs. 1099
+2025-05-26 07:25:57,016 - myntra - INFO - Product 37: Cotton Oversized T-shirt... | Price: Rs. 349
+2025-05-26 07:25:57,016 - myntra - INFO - Product 38: Graphic Printed Cotton T-shirt... | Price: Rs. 859
+2025-05-26 07:25:57,017 - myntra - INFO - Product 39: Printed Pure Cotton T-shirt... | Price: Rs. 1304
+2025-05-26 07:25:57,017 - myntra - INFO - Product 40: Colourblocked Cotton T-Shirt... | Price: Rs. 497
+2025-05-26 07:25:57,018 - myntra - INFO - Product 41: Women Oversized Cotton T-shirt... | Price: Rs. 299
+2025-05-26 07:25:57,018 - myntra - INFO - Product 42: Oversized T-Shirt... | Price: Rs. 699
+2025-05-26 07:25:57,019 - myntra - INFO - Product 43: Women Cotton Oversized T-shirt... | Price: Rs. 601
+2025-05-26 07:25:57,020 - myntra - INFO - Product 44: Men Polo Collar T-shirt... | Price: Rs. 663
+2025-05-26 07:25:57,020 - myntra - INFO - Product 45: Printed Oversized T-shirt... | Price: Rs. 407
+2025-05-26 07:25:57,022 - myntra - INFO - Product 46: Women Oversized Cotton T-shirt... | Price: Rs. 299
+2025-05-26 07:25:57,022 - myntra - INFO - Product 47: Oversized Fit Cotton T-shirt... | Price: Rs. 599
+2025-05-26 07:25:57,022 - myntra - INFO - Product 48: Pure Cotton Oversized T-shirt... | Price: Rs. 649
+2025-05-26 07:25:57,023 - myntra - INFO - Product 49: Textured Oversized T-Shirt... | Price: Rs. 455
+2025-05-26 07:25:57,023 - myntra - INFO - Product 50: Women Oversized Cotton T-shirt... | Price: Rs. 1349
+2025-05-26 07:25:57,023 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:25:57,025 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:25:57,026 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:25:57] "GET /shop_myntra?query=Oversized+t-shirts HTTP/1.1" 200 -
+2025-05-26 07:26:17,100 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:26:17,100 - __main__ - INFO - Processing Amazon search for query: jeans
+2025-05-26 07:26:17,100 - amazon_test - INFO - Scraping Amazon for query: jeans
+2025-05-26 07:26:17,101 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:26:18,396 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:26:18,502 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:26:18,600 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:26:19,754 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=jeans&ref=nb_sb_noss&sprefix=jeans%2Caps%2C283
+2025-05-26 07:26:24,350 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:26:24,350 - __main__ - INFO - Processing Myntra search for query: Oversized t-shirts
+2025-05-26 07:26:24,350 - myntra - INFO - Scraping Myntra for query: Oversized t-shirts
+2025-05-26 07:26:24,350 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:26:24,650 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:26:24,651 - __main__ - INFO - Processing Amazon search for query: Oversized t-shirts
+2025-05-26 07:26:24,651 - amazon_test - INFO - Scraping Amazon for query: Oversized t-shirts
+2025-05-26 07:26:24,651 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:26:25,957 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:26:26,145 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:26:26,171 - amazon_test - INFO - Product 5: Jeans... | Price: N/A
+2025-05-26 07:26:26,183 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:26:26,341 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:26:26,482 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:26:26,486 - amazon_test - INFO - Product 43: Thenali... | Price: N/A
+2025-05-26 07:26:26,530 - amazon_test - INFO - Product 51: Dum Dum Dum... | Price: N/A
+2025-05-26 07:26:26,588 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:26:26,591 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:26:26,592 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:26:26] "GET /shop?query=jeans HTTP/1.1" 200 -
+2025-05-26 07:26:26,647 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:26:26,795 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:26:27,489 - myntra - INFO - Opening URL: https://www.myntra.com/Oversized+t-shirts?rawQuery=Oversized+t-shirts&sort=popularity
+2025-05-26 07:26:27,901 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Oversized+t-shirts&ref=nb_sb_noss&sprefix=Oversized+t-shirts%2Caps%2C283
+2025-05-26 07:26:35,570 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:26:35,816 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:26:35,818 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:26:35,818 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:26:35] "GET /shop?query=Oversized+t-shirts HTTP/1.1" 200 -
+2025-05-26 07:26:41,641 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:26:41,642 - myntra - INFO - Product 1: Pure Cotton T-shirt... | Price: Rs. 489
+2025-05-26 07:26:41,643 - myntra - INFO - Product 2: Women Printed T-shirt... | Price: Rs. 503
+2025-05-26 07:26:41,644 - myntra - INFO - Product 3: Striped Round Neck T-shirt... | Price: Rs. 470
+2025-05-26 07:26:41,644 - myntra - INFO - Product 4: Graphic Printed T-shirt... | Price: Rs. 249
+2025-05-26 07:26:41,645 - myntra - INFO - Product 5: Oversized Printed T-shirt... | Price: Rs. 503
+2025-05-26 07:26:41,645 - myntra - INFO - Product 6: Printed Oversized T-shirt... | Price: Rs. 299
+2025-05-26 07:26:41,647 - myntra - INFO - Product 7: Women Solid Cotton T-shirt... | Price: Rs. 299
+2025-05-26 07:26:41,648 - myntra - INFO - Product 8: Women Printed Oversized Tshirt... | Price: Rs. 455
+2025-05-26 07:26:41,648 - myntra - INFO - Product 9: Women Printed T-shirt... | Price: Rs. 274
+2025-05-26 07:26:41,648 - myntra - INFO - Product 10: Oversized Round Neck T-shirt... | Price: Rs. 779
+2025-05-26 07:26:41,650 - myntra - INFO - Product 11: Women Oversized T-Shirt... | Price: Rs. 299
+2025-05-26 07:26:41,650 - myntra - INFO - Product 12: Oversized Motif-Detail T-shir... | Price: Rs. 799
+2025-05-26 07:26:41,651 - myntra - INFO - Product 13: Men Printed Oversized T-shirt... | Price: Rs. 599
+2025-05-26 07:26:41,651 - myntra - INFO - Product 14: Men Printed Oversized T-shirt... | Price: Rs. 521
+2025-05-26 07:26:41,652 - myntra - INFO - Product 15: Oversized Pure Cotton T-shirt... | Price: Rs. 479
+2025-05-26 07:26:41,652 - myntra - INFO - Product 16: Women Printed Loose T-shirt... | Price: Rs. 335
+2025-05-26 07:26:41,653 - myntra - INFO - Product 17: Women Oversized T-Shirt... | Price: Rs. 299
+2025-05-26 07:26:41,654 - myntra - INFO - Product 18: Women Oversized T-Shirt... | Price: Rs. 299
+2025-05-26 07:26:41,654 - myntra - INFO - Product 19: Printed Pure Cotton T-Shirt... | Price: Rs. 475
+2025-05-26 07:26:41,654 - myntra - INFO - Product 20: Cotton Oversized T-shirt... | Price: Rs. 949
+2025-05-26 07:26:41,655 - myntra - INFO - Product 21: Cotton Oversized T-Shirt... | Price: Rs. 539
+2025-05-26 07:26:41,656 - myntra - INFO - Product 22: Printed Cotton T-shirts... | Price: Rs. 799
+2025-05-26 07:26:41,656 - myntra - INFO - Product 23: Women Typography Printed Loose... | Price: Rs. 480
+2025-05-26 07:26:41,656 - myntra - INFO - Product 24: Printed Pure Cotton T-Shirt... | Price: Rs. 461
+2025-05-26 07:26:41,658 - myntra - INFO - Product 25: Printed Oversized T-shirt... | Price: Rs. 497
+2025-05-26 07:26:41,662 - myntra - INFO - Product 36: Unisex Printed T-shirt... | Price: Rs. 1099
+2025-05-26 07:26:41,662 - myntra - INFO - Product 37: Cotton Oversized T-shirt... | Price: Rs. 349
+2025-05-26 07:26:41,663 - myntra - INFO - Product 38: Graphic Printed Cotton T-shirt... | Price: Rs. 859
+2025-05-26 07:26:41,664 - myntra - INFO - Product 39: Printed Pure Cotton T-shirt... | Price: Rs. 1304
+2025-05-26 07:26:41,664 - myntra - INFO - Product 40: Colourblocked Cotton T-Shirt... | Price: Rs. 497
+2025-05-26 07:26:41,664 - myntra - INFO - Product 41: Women Oversized Cotton T-shirt... | Price: Rs. 299
+2025-05-26 07:26:41,665 - myntra - INFO - Product 42: Oversized T-Shirt... | Price: Rs. 699
+2025-05-26 07:26:41,666 - myntra - INFO - Product 43: Women Cotton Oversized T-shirt... | Price: Rs. 601
+2025-05-26 07:26:41,666 - myntra - INFO - Product 44: Men Polo Collar T-shirt... | Price: Rs. 663
+2025-05-26 07:26:41,668 - myntra - INFO - Product 45: Printed Oversized T-shirt... | Price: Rs. 407
+2025-05-26 07:26:41,668 - myntra - INFO - Product 46: Women Oversized Cotton T-shirt... | Price: Rs. 299
+2025-05-26 07:26:41,668 - myntra - INFO - Product 47: Oversized Fit Cotton T-shirt... | Price: Rs. 599
+2025-05-26 07:26:41,669 - myntra - INFO - Product 48: Pure Cotton Oversized T-shirt... | Price: Rs. 649
+2025-05-26 07:26:41,669 - myntra - INFO - Product 49: Textured Oversized T-Shirt... | Price: Rs. 455
+2025-05-26 07:26:41,670 - myntra - INFO - Product 50: Women Oversized Cotton T-shirt... | Price: Rs. 1349
+2025-05-26 07:26:41,671 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:26:41,672 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:26:41,673 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:26:41] "GET /shop_myntra?query=Oversized+t-shirts HTTP/1.1" 200 -
+2025-05-26 07:27:37,742 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:27:37,743 - __main__ - INFO - Processing Amazon search for query: Linen pants
+2025-05-26 07:27:37,743 - amazon_test - INFO - Scraping Amazon for query: Linen pants
+2025-05-26 07:27:37,743 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:27:37,998 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:27:37,998 - __main__ - INFO - Processing Myntra search for query: Linen pants
+2025-05-26 07:27:37,998 - myntra - INFO - Scraping Myntra for query: Linen pants
+2025-05-26 07:27:37,999 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:27:38,932 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:27:39,034 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:27:39,130 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:27:39,241 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:27:39,396 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:27:39,545 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:27:40,216 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Linen+pants&ref=nb_sb_noss&sprefix=Linen+pants%2Caps%2C283
+2025-05-26 07:27:40,678 - myntra - INFO - Opening URL: https://www.myntra.com/Linen+pants?rawQuery=Linen+pants&sort=popularity
+2025-05-26 07:27:47,159 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:27:47,492 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:27:47,494 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:27:47,495 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:27:47] "GET /shop?query=Linen+pants HTTP/1.1" 200 -
+2025-05-26 07:27:54,042 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:27:54,044 - myntra - INFO - Product 1: Relaxed-Fit Regular Trousers... | Price: Rs. 839
+2025-05-26 07:27:54,045 - myntra - INFO - Product 2: Relaxed-Fit Regular Trousers... | Price: Rs. 839
+2025-05-26 07:27:54,046 - myntra - INFO - Product 3: Men Relaxed Fit Trousers... | Price: Rs. 839
+2025-05-26 07:27:54,047 - myntra - INFO - Product 4: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:27:54,047 - myntra - INFO - Product 5: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:27:54,048 - myntra - INFO - Product 6: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:27:54,049 - myntra - INFO - Product 7: Wide Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:27:54,049 - myntra - INFO - Product 8: Relaxed-Fit Regular Trousers... | Price: Rs. 839
+2025-05-26 07:27:54,051 - myntra - INFO - Product 9: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:27:54,051 - myntra - INFO - Product 10: Women Pleated Trousers... | Price: Rs. 2274
+2025-05-26 07:27:54,053 - myntra - INFO - Product 11: Linen Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:27:54,053 - myntra - INFO - Product 12: Men Relaxed Fit Trousers... | Price: Rs. 839
+2025-05-26 07:27:54,054 - myntra - INFO - Product 13: Men Regular Fit Trousers... | Price: Rs. 2799
+2025-05-26 07:27:54,055 - myntra - INFO - Product 14: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:27:54,055 - myntra - INFO - Product 15: Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:27:54,056 - myntra - INFO - Product 16: Men Relaxed Fit Trousers... | Price: Rs. 811
+2025-05-26 07:27:54,056 - myntra - INFO - Product 17: Men Regular Fit Trousers... | Price: Rs. 2799
+2025-05-26 07:27:54,057 - myntra - INFO - Product 18: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:27:54,058 - myntra - INFO - Product 19: Linen-Blend Drawstring Trouser... | Price: Rs. 1999
+2025-05-26 07:27:54,059 - myntra - INFO - Product 20: Regular Fit Trousers... | Price: Rs. 2799
+2025-05-26 07:27:54,059 - myntra - INFO - Product 21: Regular Fit Trousers... | Price: Rs. 2799
+2025-05-26 07:27:54,060 - myntra - INFO - Product 22: Straight Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:27:54,061 - myntra - INFO - Product 23: Relaxed Trousers... | Price: Rs. 879
+2025-05-26 07:27:54,061 - myntra - INFO - Product 24: Linen Drawstring Trousers... | Price: Rs. 2999
+2025-05-26 07:27:54,062 - myntra - INFO - Product 25: Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:27:54,066 - myntra - INFO - Product 36: Men Linen Slim Fit Chinos... | Price: Rs. 4053
+2025-05-26 07:27:54,067 - myntra - INFO - Product 37: Men Slim Fit Pleated Trousers... | Price: Rs. 3353
+2025-05-26 07:27:54,067 - myntra - INFO - Product 38: Regular Fit Trousers... | Price: Rs. 1285
+2025-05-26 07:27:54,068 - myntra - INFO - Product 39: Women Loose Fit Trousers... | Price: Rs. 1699
+2025-05-26 07:27:54,069 - myntra - INFO - Product 40: Straight Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:27:54,070 - myntra - INFO - Product 41: Women High-Rise Trousers... | Price: Rs. 1799
+2025-05-26 07:27:54,070 - myntra - INFO - Product 42: Women Relaxed Fit Trousers... | Price: Rs. 1699
+2025-05-26 07:27:54,071 - myntra - INFO - Product 43: Wide Linen-Blend Trousers... | Price: Rs. 2699
+2025-05-26 07:27:54,072 - myntra - INFO - Product 44: Women Tapered Fit High-Rise Tr... | Price: Rs. 2699
+2025-05-26 07:27:54,072 - myntra - INFO - Product 45: Straight Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:27:54,073 - myntra - INFO - Product 46: Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:27:54,073 - myntra - INFO - Product 47: Men  Liberal Pleated Trousers... | Price: Rs. 1121
+2025-05-26 07:27:54,074 - myntra - INFO - Product 48: Linen Drawstring Trousers... | Price: Rs. 2999
+2025-05-26 07:27:54,074 - myntra - INFO - Product 49: Wide Linen-Blend Trousers... | Price: Rs. 1799
+2025-05-26 07:27:54,075 - myntra - INFO - Product 50: Women Relaxed Fit Trousers... | Price: Rs. 1699
+2025-05-26 07:27:54,075 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:27:54,077 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:27:54,078 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:27:54] "GET /shop_myntra?query=Linen+pants HTTP/1.1" 200 -
+2025-05-26 07:28:07,335 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:28:07,335 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:28:07,335 - __main__ - INFO - Processing Myntra search for query: Linen pants
+2025-05-26 07:28:07,335 - __main__ - INFO - Processing Amazon search for query: Linen pants
+2025-05-26 07:28:07,335 - myntra - INFO - Scraping Myntra for query: Linen pants
+2025-05-26 07:28:07,337 - amazon_test - INFO - Scraping Amazon for query: Linen pants
+2025-05-26 07:28:07,337 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:28:07,337 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:28:08,609 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:28:08,609 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:28:08,717 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:28:08,771 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:28:08,818 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:28:08,927 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:28:09,880 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Linen+pants&ref=nb_sb_noss&sprefix=Linen+pants%2Caps%2C283
+2025-05-26 07:28:10,064 - myntra - INFO - Opening URL: https://www.myntra.com/Linen+pants?rawQuery=Linen+pants&sort=popularity
+2025-05-26 07:28:17,274 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:28:17,275 - myntra - INFO - Product 1: Relaxed-Fit Regular Trousers... | Price: Rs. 839
+2025-05-26 07:28:17,276 - myntra - INFO - Product 2: Relaxed-Fit Regular Trousers... | Price: Rs. 839
+2025-05-26 07:28:17,278 - myntra - INFO - Product 3: Men Relaxed Fit Trousers... | Price: Rs. 839
+2025-05-26 07:28:17,279 - myntra - INFO - Product 4: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:28:17,281 - myntra - INFO - Product 5: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:28:17,282 - myntra - INFO - Product 6: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:28:17,284 - myntra - INFO - Product 7: Wide Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:28:17,285 - myntra - INFO - Product 8: Relaxed-Fit Regular Trousers... | Price: Rs. 839
+2025-05-26 07:28:17,286 - myntra - INFO - Product 9: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:28:17,287 - myntra - INFO - Product 10: Women Pleated Trousers... | Price: Rs. 2274
+2025-05-26 07:28:17,289 - myntra - INFO - Product 11: Linen Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:28:17,290 - myntra - INFO - Product 12: Men Relaxed Fit Trousers... | Price: Rs. 839
+2025-05-26 07:28:17,291 - myntra - INFO - Product 13: Men Regular Fit Trousers... | Price: Rs. 2799
+2025-05-26 07:28:17,292 - myntra - INFO - Product 14: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:28:17,294 - myntra - INFO - Product 15: Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:28:17,294 - myntra - INFO - Product 16: Men Relaxed Fit Trousers... | Price: Rs. 811
+2025-05-26 07:28:17,295 - myntra - INFO - Product 17: Men Regular Fit Trousers... | Price: Rs. 2799
+2025-05-26 07:28:17,297 - myntra - INFO - Product 18: Linen-Blend Trousers... | Price: Rs. 1899
+2025-05-26 07:28:17,299 - myntra - INFO - Product 19: Linen-Blend Drawstring Trouser... | Price: Rs. 1999
+2025-05-26 07:28:17,300 - myntra - INFO - Product 20: Regular Fit Trousers... | Price: Rs. 2799
+2025-05-26 07:28:17,302 - myntra - INFO - Product 21: Regular Fit Trousers... | Price: Rs. 2799
+2025-05-26 07:28:17,304 - myntra - INFO - Product 22: Straight Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:28:17,305 - myntra - INFO - Product 23: Relaxed Trousers... | Price: Rs. 879
+2025-05-26 07:28:17,306 - myntra - INFO - Product 24: Linen Drawstring Trousers... | Price: Rs. 2999
+2025-05-26 07:28:17,308 - myntra - INFO - Product 25: Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:28:17,312 - myntra - INFO - Product 31: Men Regular Fit Trousers... | Price: Rs. 1253
+2025-05-26 07:28:17,312 - myntra - INFO - Product 32: Linen Drawstring Trousers... | Price: Rs. 2999
+2025-05-26 07:28:17,313 - myntra - INFO - Product 33: Linen Relaxed-Fit Trousers... | Price: Rs. 839
+2025-05-26 07:28:17,314 - myntra - INFO - Product 34: Wide Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:28:17,316 - myntra - INFO - Product 35: Relaxed Fit Casual Trousers... | Price: Rs. 839
+2025-05-26 07:28:17,316 - myntra - INFO - Product 36: Men Linen Slim Fit Chinos... | Price: Rs. 4053
+2025-05-26 07:28:17,318 - myntra - INFO - Product 37: Men Slim Fit Pleated Trousers... | Price: Rs. 3353
+2025-05-26 07:28:17,319 - myntra - INFO - Product 38: Regular Fit Trousers... | Price: Rs. 1285
+2025-05-26 07:28:17,321 - myntra - INFO - Product 39: Women Loose Fit Trousers... | Price: Rs. 1699
+2025-05-26 07:28:17,322 - myntra - INFO - Product 40: Straight Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:28:17,323 - myntra - INFO - Product 41: Women High-Rise Trousers... | Price: Rs. 1799
+2025-05-26 07:28:17,324 - myntra - INFO - Product 42: Women Relaxed Fit Trousers... | Price: Rs. 1699
+2025-05-26 07:28:17,325 - myntra - INFO - Product 43: Wide Linen-Blend Trousers... | Price: Rs. 2699
+2025-05-26 07:28:17,327 - myntra - INFO - Product 44: Women Tapered Fit High-Rise Tr... | Price: Rs. 2699
+2025-05-26 07:28:17,328 - myntra - INFO - Product 45: Straight Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:28:17,329 - myntra - INFO - Product 46: Linen-Blend Trousers... | Price: Rs. 1999
+2025-05-26 07:28:17,329 - myntra - INFO - Product 47: Men  Liberal Pleated Trousers... | Price: Rs. 1121
+2025-05-26 07:28:17,330 - myntra - INFO - Product 48: Linen Drawstring Trousers... | Price: Rs. 2999
+2025-05-26 07:28:17,332 - myntra - INFO - Product 49: Wide Linen-Blend Trousers... | Price: Rs. 1799
+2025-05-26 07:28:17,334 - myntra - INFO - Product 50: Women Relaxed Fit Trousers... | Price: Rs. 1699
+2025-05-26 07:28:17,335 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:28:17,337 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:28:17,338 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:28:17] "GET /shop_myntra?query=Linen+pants HTTP/1.1" 200 -
+2025-05-26 07:28:18,341 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:28:18,374 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-26 07:28:18,458 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-26 07:28:18,458 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:28:18,459 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:28:18,459 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-26 07:28:18,460 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-26 07:28:18,460 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:28:19,634 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:28:19,638 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:28:19,744 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:28:19,800 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:28:19,899 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:28:19,904 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:28:21,161 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-26 07:28:21,205 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-26 07:28:22,880 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:28:23,589 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:28:23,592 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:28:23,595 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:28:23] "GET /shop?query=Linen+pants HTTP/1.1" 200 -
+2025-05-26 07:28:27,406 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:28:27,407 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-26 07:28:27,408 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-26 07:28:27,408 - myntra - INFO - Product 3: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-26 07:28:27,410 - myntra - INFO - Product 4: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-26 07:28:27,410 - myntra - INFO - Product 5: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-26 07:28:27,412 - myntra - INFO - Product 6: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-26 07:28:27,412 - myntra - INFO - Product 7: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-26 07:28:27,413 - myntra - INFO - Product 8: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-26 07:28:27,414 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-26 07:28:27,416 - myntra - INFO - Product 10: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-26 07:28:27,417 - myntra - INFO - Product 11: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-26 07:28:27,418 - myntra - INFO - Product 12: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-26 07:28:27,419 - myntra - INFO - Product 13: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-26 07:28:27,420 - myntra - INFO - Product 14: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-26 07:28:27,421 - myntra - INFO - Product 15: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-26 07:28:27,422 - myntra - INFO - Product 16: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-26 07:28:27,423 - myntra - INFO - Product 17: Men Checkered Shirt... | Price: Rs. 797
+2025-05-26 07:28:27,424 - myntra - INFO - Product 18: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-26 07:28:27,425 - myntra - INFO - Product 19: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-26 07:28:27,426 - myntra - INFO - Product 20: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-26 07:28:27,427 - myntra - INFO - Product 21: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-26 07:28:27,427 - myntra - INFO - Product 22: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-26 07:28:27,428 - myntra - INFO - Product 23: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-26 07:28:27,430 - myntra - INFO - Product 24: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-26 07:28:27,430 - myntra - INFO - Product 25: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-26 07:28:27,432 - myntra - INFO - Product 31: Slim Fit Opaque Casual Shirt... | Price: Rs. 993
+2025-05-26 07:28:27,432 - myntra - INFO - Product 32: Slim Fit Opaque Casual Shirt... | Price: Rs. 993
+2025-05-26 07:28:27,435 - myntra - INFO - Product 33: Relaxed Fit Band Collar Shirt... | Price: Rs. 1272
+2025-05-26 07:28:27,436 - myntra - INFO - Product 34: Relaxed Fit Band Collar Shirt... | Price: Rs. 1234
+2025-05-26 07:28:27,436 - myntra - INFO - Product 35: Relaxed Fit Pattern Shirt... | Price: Rs. 1234
+2025-05-26 07:28:27,437 - myntra - INFO - Product 36: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:28:27,438 - myntra - INFO - Product 37: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:28:27,438 - myntra - INFO - Product 38: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:28:27,440 - myntra - INFO - Product 39: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-26 07:28:27,440 - myntra - INFO - Product 40: Men Checkered Shirt... | Price: Rs. 759
+2025-05-26 07:28:27,441 - myntra - INFO - Product 41: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-26 07:28:27,442 - myntra - INFO - Product 42: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-26 07:28:27,442 - myntra - INFO - Product 43: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-26 07:28:27,442 - myntra - INFO - Product 44: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-26 07:28:27,444 - myntra - INFO - Product 45: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-26 07:28:27,445 - myntra - INFO - Product 46: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-26 07:28:27,446 - myntra - INFO - Product 47: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-26 07:28:27,447 - myntra - INFO - Product 48: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-26 07:28:27,448 - myntra - INFO - Product 49: Striped Casual Shirt... | Price: Rs. 740
+2025-05-26 07:28:27,448 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-26 07:28:27,450 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:28:27,453 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:28:27,453 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:28:27] "GET /shop_myntra?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-26 07:28:29,673 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:28:30,075 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:28:30,079 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:28:30,080 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:28:30] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-26 07:31:47,823 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:31:47,823 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-26 07:31:47,823 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-26 07:31:47,824 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:31:47,856 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:31:47,857 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-26 07:31:47,857 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-26 07:31:47,857 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:31:49,211 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:31:49,211 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:31:49,311 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:31:49,406 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:31:50,324 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:31:50,426 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:31:50,714 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-26 07:31:51,519 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-26 07:31:58,285 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:31:58,285 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-26 07:31:58,288 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-26 07:31:58,288 - myntra - INFO - Product 3: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-26 07:31:58,289 - myntra - INFO - Product 4: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-26 07:31:58,290 - myntra - INFO - Product 5: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-26 07:31:58,291 - myntra - INFO - Product 6: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-26 07:31:58,291 - myntra - INFO - Product 7: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-26 07:31:58,292 - myntra - INFO - Product 8: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-26 07:31:58,292 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-26 07:31:58,293 - myntra - INFO - Product 10: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-26 07:31:58,294 - myntra - INFO - Product 11: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-26 07:31:58,294 - myntra - INFO - Product 12: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-26 07:31:58,295 - myntra - INFO - Product 13: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-26 07:31:58,295 - myntra - INFO - Product 14: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-26 07:31:58,295 - myntra - INFO - Product 15: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-26 07:31:58,297 - myntra - INFO - Product 16: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-26 07:31:58,298 - myntra - INFO - Product 17: Men Checkered Shirt... | Price: Rs. 797
+2025-05-26 07:31:58,298 - myntra - INFO - Product 18: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-26 07:31:58,298 - myntra - INFO - Product 19: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-26 07:31:58,300 - myntra - INFO - Product 20: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-26 07:31:58,300 - myntra - INFO - Product 21: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-26 07:31:58,300 - myntra - INFO - Product 22: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-26 07:31:58,301 - myntra - INFO - Product 23: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-26 07:31:58,301 - myntra - INFO - Product 24: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-26 07:31:58,302 - myntra - INFO - Product 25: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-26 07:31:58,305 - myntra - INFO - Product 31: Slim Fit Opaque Casual Shirt... | Price: Rs. 993
+2025-05-26 07:31:58,305 - myntra - INFO - Product 32: Slim Fit Opaque Casual Shirt... | Price: Rs. 993
+2025-05-26 07:31:58,306 - myntra - INFO - Product 33: Relaxed Fit Band Collar Shirt... | Price: Rs. 1272
+2025-05-26 07:31:58,307 - myntra - INFO - Product 34: Relaxed Fit Band Collar Shirt... | Price: Rs. 1234
+2025-05-26 07:31:58,307 - myntra - INFO - Product 35: Relaxed Fit Pattern Shirt... | Price: Rs. 1234
+2025-05-26 07:31:58,308 - myntra - INFO - Product 36: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:31:58,308 - myntra - INFO - Product 37: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:31:58,309 - myntra - INFO - Product 38: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:31:58,310 - myntra - INFO - Product 39: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-26 07:31:58,311 - myntra - INFO - Product 40: Men Checkered Shirt... | Price: Rs. 759
+2025-05-26 07:31:58,312 - myntra - INFO - Product 41: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-26 07:31:58,312 - myntra - INFO - Product 42: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-26 07:31:58,312 - myntra - INFO - Product 43: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-26 07:31:58,313 - myntra - INFO - Product 44: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-26 07:31:58,313 - myntra - INFO - Product 45: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-26 07:31:58,314 - myntra - INFO - Product 46: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-26 07:31:58,315 - myntra - INFO - Product 47: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-26 07:31:58,315 - myntra - INFO - Product 48: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-26 07:31:58,317 - myntra - INFO - Product 49: Striped Casual Shirt... | Price: Rs. 740
+2025-05-26 07:31:58,317 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-26 07:31:58,318 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:31:58,319 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:31:58,319 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:31:58] "GET /shop_myntra?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-26 07:32:07,417 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 07:32:07,447 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.1.3:8000
+2025-05-26 07:32:07,447 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-26 07:32:07,462 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-26 07:32:09,079 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 07:32:09,091 - werkzeug - WARNING -  * Debugger is active!
+2025-05-26 07:32:09,097 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 07:32:18,967 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:32:18,967 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:32:18,968 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-26 07:32:18,968 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-26 07:32:18,968 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-26 07:32:18,968 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:32:18,968 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-26 07:32:18,969 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:32:20,013 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:32:20,014 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:32:20,127 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:32:20,289 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:32:21,193 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:32:21,351 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:32:21,448 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-26 07:32:22,502 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-26 07:32:27,985 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:32:27,987 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-26 07:32:27,987 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-26 07:32:27,989 - myntra - INFO - Product 3: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-26 07:32:27,990 - myntra - INFO - Product 4: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-26 07:32:27,990 - myntra - INFO - Product 5: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-26 07:32:27,991 - myntra - INFO - Product 6: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-26 07:32:27,992 - myntra - INFO - Product 7: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-26 07:32:27,992 - myntra - INFO - Product 8: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-26 07:32:27,994 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-26 07:32:27,994 - myntra - INFO - Product 10: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-26 07:32:27,995 - myntra - INFO - Product 11: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-26 07:32:27,995 - myntra - INFO - Product 12: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-26 07:32:27,997 - myntra - INFO - Product 13: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-26 07:32:27,998 - myntra - INFO - Product 14: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-26 07:32:27,998 - myntra - INFO - Product 15: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-26 07:32:27,999 - myntra - INFO - Product 16: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-26 07:32:27,999 - myntra - INFO - Product 17: Men Checkered Shirt... | Price: Rs. 797
+2025-05-26 07:32:28,001 - myntra - INFO - Product 18: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-26 07:32:28,002 - myntra - INFO - Product 19: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-26 07:32:28,003 - myntra - INFO - Product 20: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-26 07:32:28,004 - myntra - INFO - Product 21: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-26 07:32:28,006 - myntra - INFO - Product 22: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-26 07:32:28,007 - myntra - INFO - Product 23: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-26 07:32:28,008 - myntra - INFO - Product 24: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-26 07:32:28,008 - myntra - INFO - Product 25: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-26 07:32:28,009 - myntra - INFO - Product 26: Self Design Casual Shirt... | Price: Rs. 1439
+2025-05-26 07:32:28,010 - myntra - INFO - Product 27: Men Opaque Casual Shirt... | Price: Rs. 1439
+2025-05-26 07:32:28,011 - myntra - INFO - Product 28: Spread Collar Casual Shirt... | Price: Rs. 1319
+2025-05-26 07:32:28,012 - myntra - INFO - Product 29: Men Opaque Casual Shirt... | Price: Rs. 1319
+2025-05-26 07:32:28,013 - myntra - INFO - Product 30: Opaque Casual Shirt... | Price: Rs. 1874
+2025-05-26 07:32:28,016 - myntra - INFO - Product 36: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:32:28,016 - myntra - INFO - Product 37: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:32:28,017 - myntra - INFO - Product 38: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 07:32:28,018 - myntra - INFO - Product 39: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-26 07:32:28,018 - myntra - INFO - Product 40: Men Checkered Shirt... | Price: Rs. 759
+2025-05-26 07:32:28,019 - myntra - INFO - Product 41: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-26 07:32:28,020 - myntra - INFO - Product 42: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-26 07:32:28,020 - myntra - INFO - Product 43: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-26 07:32:28,022 - myntra - INFO - Product 44: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-26 07:32:28,023 - myntra - INFO - Product 45: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-26 07:32:28,024 - myntra - INFO - Product 46: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-26 07:32:28,025 - myntra - INFO - Product 47: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-26 07:32:28,026 - myntra - INFO - Product 48: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-26 07:32:28,027 - myntra - INFO - Product 49: Striped Casual Shirt... | Price: Rs. 740
+2025-05-26 07:32:28,028 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-26 07:32:28,029 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:32:28,031 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:32:28,034 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:32:28] "GET /shop_myntra?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-26 07:32:31,655 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:32:31,878 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:32:31,880 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:32:31,881 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:32:31] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -

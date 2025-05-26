@@ -63,7 +63,8 @@ const Shop = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies for authentication
+        // Don't send credentials for the proxy endpoints
+        credentials: "same-origin",
       }
     )
       .then((response) => {
@@ -122,15 +123,14 @@ const Shop = () => {
     setMyntraLoading(true);
     // Use backend proxy to avoid CORS and HTML parsing issues
     fetch(
-      `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(
-        searchQuery
-      )}`,
+      `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies for authentication
+        // Don't send credentials for the proxy endpoints
+        credentials: "same-origin",
       }
     )
       .then((response) => {
