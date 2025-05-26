@@ -3798,3 +3798,5 @@
 2025-05-26 07:15:13,229 - myntra - INFO - Product 49: Striped Casual Shirt... | Price: Rs. 740
 2025-05-26 07:15:13,230 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
 2025-05-26 07:15:13,230 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:24:28,693 - myntra - INFO - Scraping Myntra for query: Oversized t-shirts
+2025-05-26 07:24:31,450 - myntra - INFO - Opening URL: https://www.myntra.com/Oversized+t-shirts?rawQuery=Oversized+t-shirts&sort=popularity
