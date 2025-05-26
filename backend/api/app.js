@@ -40,7 +40,7 @@ const io = new Server(httpServer, {
 
 // Expanded allowedOrigins array to include all possible frontend URLs
 const expandedAllowedOrigins = [
-  ...allowedOrigins,
+  // ...allowedOrigins,
   'https://outfit-ai-liart.vercel.app',
   'https://outfit-ai.vercel.app',
   'https://ai-wardrobe.vercel.app',

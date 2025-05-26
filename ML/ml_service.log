@@ -6383,3 +6383,19 @@
 2025-05-26 07:21:38,000 - __main__ - INFO - Starting ML service on port 8000
 2025-05-26 07:21:38,015 - werkzeug - WARNING -  * Debugger is active!
 2025-05-26 07:21:38,021 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 07:24:28,456 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:24:28,456 - __main__ - INFO - Processing Amazon search for query: Oversized t-shirts
+2025-05-26 07:24:28,456 - amazon_test - INFO - Scraping Amazon for query: Oversized t-shirts
+2025-05-26 07:24:28,456 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:24:28,692 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:24:28,693 - __main__ - INFO - Processing Myntra search for query: Oversized t-shirts
+2025-05-26 07:24:28,693 - myntra - INFO - Scraping Myntra for query: Oversized t-shirts
+2025-05-26 07:24:28,693 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:24:29,797 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:24:29,905 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:24:30,015 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:24:30,064 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:24:30,165 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:24:30,318 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:24:31,227 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Oversized+t-shirts&ref=nb_sb_noss&sprefix=Oversized+t-shirts%2Caps%2C283
+2025-05-26 07:24:31,450 - myntra - INFO - Opening URL: https://www.myntra.com/Oversized+t-shirts?rawQuery=Oversized+t-shirts&sort=popularity
