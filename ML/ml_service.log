@@ -6399,3 +6399,17 @@
 2025-05-26 07:24:30,318 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
 2025-05-26 07:24:31,227 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Oversized+t-shirts&ref=nb_sb_noss&sprefix=Oversized+t-shirts%2Caps%2C283
 2025-05-26 07:24:31,450 - myntra - INFO - Opening URL: https://www.myntra.com/Oversized+t-shirts?rawQuery=Oversized+t-shirts&sort=popularity
+2025-05-26 07:24:37,651 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:24:37,656 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\logging\\__init__.py', reloading
+2025-05-26 07:24:37,668 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\encodings\\cp1252.py', reloading
+2025-05-26 07:24:37,675 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\amazon_test.py', reloading
+2025-05-26 07:24:37,683 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\flask\\app.py', reloading
+2025-05-26 07:24:37,691 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\werkzeug\\debug\\__init__.py', reloading
+2025-05-26 07:24:37,700 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\werkzeug\\serving.py', reloading
+2025-05-26 07:24:37,707 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\http\\server.py', reloading
+2025-05-26 07:24:37,715 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\socketserver.py', reloading
+2025-05-26 07:24:37,722 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\threading.py', reloading
+2025-05-26 07:24:38,609 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-26 07:24:40,767 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 07:24:40,780 - werkzeug - WARNING -  * Debugger is active!
+2025-05-26 07:24:40,785 - werkzeug - INFO -  * Debugger PIN: 807-569-661
