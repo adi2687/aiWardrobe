@@ -57,7 +57,7 @@ const Shop = () => {
     
     // Use backend proxy instead of direct ML service call
     fetch(
-      `${mlurl}/shop?query=${encodeURIComponent(searchQuery)}`,
+      `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`,
       {
         method: "GET",
         headers: {
@@ -122,7 +122,7 @@ const Shop = () => {
     setMyntraLoading(true);
     // Use backend proxy instead of direct ML service call
     fetch(
-      `${mlurl}/shop_myntra?query=${encodeURIComponent(
+      `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(
         searchQuery
       )}`,
       {
