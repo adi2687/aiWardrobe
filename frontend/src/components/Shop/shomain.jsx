@@ -111,11 +111,14 @@ const Shop = () => {
   };
 
   const myntraSearch = (customInput) => {
+
     setloaded(true);
     const searchQuery =
       customInput ||
       input ||
       `Styles for ${userdetails.gender || "male and female"}`;
+
+      console.log(`${mlurl}/shop_myntra?query=${encodeURIComponent(searchQuery)}`)
     setMyntraLoading(true);
     // Use backend proxy instead of direct ML service call
     fetch(
