@@ -209,7 +209,7 @@ const Wardrobe = () => {
         <div className="addcloths-actions">
           <button onClick={addCloth}>Add Clothes</button>
           <div>or</div>
-          <button onClick={() => navigate("/profile")}>Upload Photo</button>
+          <button onClick={() => navigate("/profile/upload")}>Upload Photo</button>
         </div>
       </div>
 
