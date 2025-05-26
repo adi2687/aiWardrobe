@@ -7482,3 +7482,166 @@
 2025-05-26 19:43:06,413 - __main__ - INFO - Starting ML service on port 8000
 2025-05-26 19:43:06,429 - werkzeug - WARNING -  * Debugger is active!
 2025-05-26 19:43:06,434 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 23:50:07,332 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 23:50:07,334 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-26 23:50:07,334 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-26 23:50:07,335 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 23:50:07,357 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 23:50:07,357 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-26 23:50:07,357 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-26 23:50:07,357 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 23:50:09,078 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:50:09,078 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:50:09,247 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:50:09,649 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 23:50:10,522 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:50:10,654 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 23:50:10,775 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-26 23:50:11,720 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-26 23:50:17,405 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 23:50:17,412 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\logging\\__init__.py', reloading
+2025-05-26 23:50:17,464 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\encodings\\cp1252.py', reloading
+2025-05-26 23:50:17,469 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\amazon_test.py', reloading
+2025-05-26 23:50:17,473 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\test.py', reloading
+2025-05-26 23:50:17,478 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\flask\\app.py', reloading
+2025-05-26 23:50:17,484 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\werkzeug\\debug\\__init__.py', reloading
+2025-05-26 23:50:17,488 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\werkzeug\\serving.py', reloading
+2025-05-26 23:50:17,493 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\http\\server.py', reloading
+2025-05-26 23:50:17,499 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\socketserver.py', reloading
+2025-05-26 23:50:17,503 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\threading.py', reloading
+2025-05-26 23:50:17,782 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 23:50:17,786 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 23:50:17,787 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 23:50:17] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-26 23:50:20,766 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-26 23:50:23,487 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 23:50:23,510 - werkzeug - WARNING -  * Debugger is active!
+2025-05-26 23:50:23,516 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 23:50:52,164 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 23:50:52,164 - __main__ - INFO - Processing Myntra search for query: Styles for male and female
+2025-05-26 23:50:52,164 - myntra - INFO - Scraping Myntra for query: Styles for male and female
+2025-05-26 23:50:52,164 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 23:50:52,629 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 23:50:52,629 - __main__ - INFO - Processing Amazon search for query: Styles for male and female which are trending
+2025-05-26 23:50:52,629 - amazon_test - INFO - Scraping Amazon for query: Styles for male and female which are trending
+2025-05-26 23:50:52,629 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 23:50:53,039 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:50:53,115 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:50:53,189 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 23:50:54,252 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+male+and+female?rawQuery=Styles+for+male+and+female&sort=popularity
+2025-05-26 23:51:00,798 - myntra - INFO - Found 50 product items in the page
+2025-05-26 23:51:00,799 - myntra - INFO - Product 1: Women Cotton Jogger... | Price: Rs. 901
+2025-05-26 23:51:00,800 - myntra - INFO - Product 2: Self Design A-Line Midi Dress... | Price: Rs. 1804
+2025-05-26 23:51:00,801 - myntra - INFO - Product 3: PU Shoulder Bag... | Price: Rs. 622
+2025-05-26 23:51:00,802 - myntra - INFO - Product 4: Front Slit Midi A-Line Skirt... | Price: Rs. 675
+2025-05-26 23:51:00,803 - myntra - INFO - Product 5: Set of 3 Radiance Cream... | Price: Rs. 304
+2025-05-26 23:51:00,803 - myntra - INFO - Product 6: Instant Radiance Face Wash... | Price: Rs. 191
+2025-05-26 23:51:00,804 - myntra - INFO - Product 7: V-Neck Wrap Midi Length Dress... | Price: Rs. 1799
+2025-05-26 23:51:00,804 - myntra - INFO - Product 8: Printed Chiffon Peplum Top... | Price: Rs. 485
+2025-05-26 23:51:00,804 - myntra - INFO - Product 9: Women Flared Track Pants... | Price: Rs. 996
+2025-05-26 23:51:00,805 - myntra - INFO - Product 10: V-Neck Fit & Flare Maxi Dress... | Price: Rs. 1851
+2025-05-26 23:51:00,805 - myntra - INFO - Product 11: Interlocked Open Toe Flats... | Price: Rs. 949
+2025-05-26 23:51:00,805 - myntra - INFO - Product 12: Midi Cotton A-Line Dress... | Price: Rs. 2046
+2025-05-26 23:51:00,807 - myntra - INFO - Product 13: Instant Radiance Face Wash... | Price: Rs. 104
+2025-05-26 23:51:00,807 - myntra - INFO - Product 14: Floral Printed Maxi Dress... | Price: Rs. 1460
+2025-05-26 23:51:00,807 - myntra - INFO - Product 15: Printed Pure Cotton  Co-ords... | Price: Rs. 999
+2025-05-26 23:51:00,807 - myntra - INFO - Product 16: Printed Basic Jumpsuit... | Price: Rs. 1376
+2025-05-26 23:51:00,809 - myntra - INFO - Product 17: Puff Sleeves A-line Midi Dress... | Price: Rs. 1244
+2025-05-26 23:51:00,809 - myntra - INFO - Product 18: Floral Maxi Dress... | Price: Rs. 876
+2025-05-26 23:51:00,810 - myntra - INFO - Product 19: Denim Mini Skirt... | Price: Rs. 524
+2025-05-26 23:51:00,810 - myntra - INFO - Product 20: Printed Three Piece Co-Ords... | Price: Rs. 2396
+2025-05-26 23:51:00,810 - myntra - INFO - Product 21: Puff Sleeves Sheath Dress... | Price: Rs. 1644
+2025-05-26 23:51:00,812 - myntra - INFO - Product 22: Embroidered Co-Ords... | Price: Rs. 1699
+2025-05-26 23:51:00,812 - myntra - INFO - Product 23: A-Line Maxi Puff Sleeve Dress... | Price: Rs. 1979
+2025-05-26 23:51:00,813 - myntra - INFO - Product 24: Floral Print Maxi Dress... | Price: Rs. 1424
+2025-05-26 23:51:00,813 - myntra - INFO - Product 25: Women Printed A-Line Dress... | Price: Rs. 1715
+2025-05-26 23:51:00,816 - myntra - INFO - Product 36: Men Contrast Sole Sneakers... | Price: Rs. 819
+2025-05-26 23:51:00,817 - myntra - INFO - Product 37: Men Comfort Insole Espadrilles... | Price: Rs. 939
+2025-05-26 23:51:00,817 - myntra - INFO - Product 38: Off Shoulder Cotton Midi Dress... | Price: Rs. 1375
+2025-05-26 23:51:00,818 - myntra - INFO - Product 39: Women A-Line Midi Dress... | Price: Rs. 1631
+2025-05-26 23:51:00,818 - myntra - INFO - Product 40: Women Floral Embroidery Shirt... | Price: Rs. 899
+2025-05-26 23:51:00,819 - myntra - INFO - Product 41: Puff Sleeves Tiered Maxi Dress... | Price: Rs. 2199
+2025-05-26 23:51:00,819 - myntra - INFO - Product 42: Floral Printed Straight Kurta... | Price: Rs. 799
+2025-05-26 23:51:00,819 - myntra - INFO - Product 43: Belted Shirt Dress... | Price: Rs. 3231
+2025-05-26 23:51:00,820 - myntra - INFO - Product 44: Women Love Muse Deo - 200 ml... | Price: Rs. 134
+2025-05-26 23:51:00,820 - myntra - INFO - Product 45: Round Neck Solid Cotton Top... | Price: Rs. 796
+2025-05-26 23:51:00,821 - myntra - INFO - Product 46: Shibori Printed V-Neck Kurta... | Price: Rs. 799
+2025-05-26 23:51:00,821 - myntra - INFO - Product 47: Women Striped Maxi Dress... | Price: Rs. 1859
+2025-05-26 23:51:00,822 - myntra - INFO - Product 48: Floral Print A-Line Maxi Tie-U... | Price: Rs. 1461
+2025-05-26 23:51:00,823 - myntra - INFO - Product 49: Glitter Wrap Midi Dress... | Price: Rs. 2367
+2025-05-26 23:51:00,823 - myntra - INFO - Product 50: Halter Neck Top & Trousers... | Price: Rs. 3493
+2025-05-26 23:51:00,823 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 23:51:00,825 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 23:51:00,826 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 23:51:00] "GET /shop_myntra?query=Styles+for+male+and+female HTTP/1.1" 200 -
+2025-05-26 23:51:18,473 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 23:51:18,473 - __main__ - INFO - Processing Amazon search for query: baggy jeans
+2025-05-26 23:51:18,473 - amazon_test - INFO - Scraping Amazon for query: baggy jeans
+2025-05-26 23:51:18,474 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 23:51:19,278 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:51:19,412 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:51:19,828 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 23:51:20,116 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 23:51:20,116 - __main__ - INFO - Processing Myntra search for query: baggy jeans
+2025-05-26 23:51:20,117 - myntra - INFO - Scraping Myntra for query: baggy jeans
+2025-05-26 23:51:20,117 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 23:51:20,883 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=baggy+jeans&ref=nb_sb_noss&sprefix=baggy+jeans%2Caps%2C283
+2025-05-26 23:51:21,140 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:51:21,214 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:51:21,339 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 23:51:22,417 - myntra - INFO - Opening URL: https://www.myntra.com/baggy+jeans?rawQuery=baggy+jeans&sort=popularity
+2025-05-26 23:51:28,491 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:51:28,621 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 23:51:28,746 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 23:51:29,039 - myntra - INFO - Found 50 product items in the page
+2025-05-26 23:51:29,039 - myntra - INFO - Product 1: Relaxed Fit Mid-Rise Jeans... | Price: Rs. 2079
+2025-05-26 23:51:29,040 - myntra - INFO - Product 2: Women Straight High Jeans... | Price: Rs. 1499
+2025-05-26 23:51:29,041 - myntra - INFO - Product 3: Women Straight Fit Jeans... | Price: Rs. 574
+2025-05-26 23:51:29,042 - myntra - INFO - Product 4: Women Relaxed Fit Jeans... | Price: Rs. 1349
+2025-05-26 23:51:29,043 - myntra - INFO - Product 5: Pure Cotton Jeans... | Price: Rs. 1615
+2025-05-26 23:51:29,043 - myntra - INFO - Product 6: Women Straight High Jeans... | Price: Rs. 1499
+2025-05-26 23:51:29,044 - myntra - INFO - Product 7: Wide Jeans... | Price: Rs. 1999
+2025-05-26 23:51:29,045 - myntra - INFO - Product 8: Women Skinny Fit Jeans... | Price: Rs. 1899
+2025-05-26 23:51:29,046 - myntra - INFO - Product 9: Women Cotton High-Rise Jeans... | Price: Rs. 879
+2025-05-26 23:51:29,047 - myntra - INFO - Product 10: Women Relaxed Fit Jeans... | Price: Rs. 1022
+2025-05-26 23:51:29,048 - myntra - INFO - Product 11: Women Cotton Straight Jeans... | Price: Rs. 2274
+2025-05-26 23:51:29,049 - myntra - INFO - Product 12: Women High-Rise Cotton Jeans... | Price: Rs. 659
+2025-05-26 23:51:29,050 - myntra - INFO - Product 13: Women Cotton Cargos Trousers... | Price: Rs. 1311
+2025-05-26 23:51:29,051 - myntra - INFO - Product 14: Women Pure Cotton Jeans... | Price: Rs. 987
+2025-05-26 23:51:29,052 - myntra - INFO - Product 15: Women Straight Fit Jeans... | Price: Rs. 2463
+2025-05-26 23:51:29,053 - myntra - INFO - Product 16: Slim Fit High Rise Jeans... | Price: Rs. 1799
+2025-05-26 23:51:29,054 - myntra - INFO - Product 17: Women Straight Fit Jeans... | Price: Rs. 839
+2025-05-26 23:51:29,055 - myntra - INFO - Product 18: Women High-Rise Jeans... | Price: Rs. 827
+2025-05-26 23:51:29,056 - myntra - INFO - Product 19: Women Straight Fit Jeans... | Price: Rs. 659
+2025-05-26 23:51:29,057 - myntra - INFO - Product 20: Women Straight High Jeans... | Price: Rs. 1499
+2025-05-26 23:51:29,057 - myntra - INFO - Product 21: Women Straight High-Rise Jeans... | Price: Rs. 1449
+2025-05-26 23:51:29,059 - myntra - INFO - Product 22: Women Straight Fit Jeans... | Price: Rs. 399
+2025-05-26 23:51:29,060 - myntra - INFO - Product 23: Women Slim Fit Cropped Jeans... | Price: Rs. 659
+2025-05-26 23:51:29,060 - myntra - INFO - Product 24: Women Straight Fit High-Rise J... | Price: Rs. 749
+2025-05-26 23:51:29,061 - myntra - INFO - Product 25: Women Straight Fit Jeans... | Price: Rs. 769
+2025-05-26 23:51:29,069 - myntra - INFO - Product 36: Flared High Jeans... | Price: Rs. 1499
+2025-05-26 23:51:29,070 - myntra - INFO - Product 37: Women High-Rise Jeans... | Price: Rs. 559
+2025-05-26 23:51:29,070 - myntra - INFO - Product 38: Women Washed Straight Jeans... | Price: Rs. 725
+2025-05-26 23:51:29,072 - myntra - INFO - Product 39: Women Skinny Fit Jeans... | Price: Rs. 959
+2025-05-26 23:51:29,073 - myntra - INFO - Product 40: Women 711 Skinny Fit  Jeans... | Price: Rs. 1169
+2025-05-26 23:51:29,074 - myntra - INFO - Product 41: Women Loose Fit Jeans... | Price: Rs. 574
+2025-05-26 23:51:29,075 - myntra - INFO - Product 42: Women Elle Straight Fit Jeans... | Price: Rs. 1795
+2025-05-26 23:51:29,075 - myntra - INFO - Product 43: Women Straight Fit Jeans... | Price: Rs. 1705
+2025-05-26 23:51:29,077 - myntra - INFO - Product 44: Women Tapered Fit Jeans... | Price: Rs. 1899
+2025-05-26 23:51:29,078 - myntra - INFO - Product 45: Women New Mom Fit Jeans... | Price: Rs. 1795
+2025-05-26 23:51:29,078 - myntra - INFO - Product 46: Women StraightFit Cotton Jeans... | Price: Rs. 1199
+2025-05-26 23:51:29,079 - myntra - INFO - Product 47: Women Straight Fit Jeans... | Price: Rs. 1241
+2025-05-26 23:51:29,080 - myntra - INFO - Product 48: Women Skinny Fit Jeans... | Price: Rs. 791
+2025-05-26 23:51:29,080 - myntra - INFO - Product 49: Women Slim Fit High-Rise Jeans... | Price: Rs. 2889
+2025-05-26 23:51:29,082 - myntra - INFO - Product 50: Women Skinny Fit Jeans... | Price: Rs. 683
+2025-05-26 23:51:29,082 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 23:51:29,084 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 23:51:29,085 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 23:51:29] "GET /shop_myntra?query=baggy+jeans HTTP/1.1" 200 -
+2025-05-26 23:51:29,812 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+male+and+female+which+are+trending&ref=nb_sb_noss&sprefix=Styles+for+male+and+female+which+are+trending%2Caps%2C283
+2025-05-26 23:51:30,550 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 23:51:30,934 - amazon_test - INFO - Product 38: Jeans for Women | Bootcut Jean... | Price: N/A
+2025-05-26 23:51:31,153 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 23:51:31,156 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 23:51:31,157 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 23:51:31] "GET /shop?query=baggy+jeans HTTP/1.1" 200 -
+2025-05-26 23:51:38,744 - amazon_test - INFO - Found 16 product items in the page
+2025-05-26 23:51:38,839 - amazon_test - INFO - Successfully scraped 16 products from Amazon
+2025-05-26 23:51:38,841 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 23:51:38,842 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 23:51:38] "GET /shop?query=Styles+for+male+and+female+which+are+trending HTTP/1.1" 200 -

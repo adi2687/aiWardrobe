@@ -107,7 +107,8 @@ router.post("/classify", upload.single("images"), async (req, res) => {
       'joggers',
       'leggings',
       'chinos',
-      'cargo pants'
+      'cargo pants',
+      'pants'
     ];
 
     const checkforfootwear = [
