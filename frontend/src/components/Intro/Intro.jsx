@@ -48,9 +48,10 @@ const Intro = ({ onComplete }) => {
         const next = (currentMessage + 1) % floatingMessages.length;
 
         if (next === 0 && currentMessage === floatingMessages.length - 1) {
-          console.log("here")
-          navigate('/profile');
-          console.log("profile")
+          console.log("Intro sequence completed - navigating to profile")
+          // Use window.location.href instead of navigate to ensure a full page reload
+          window.location.href = "/profile";
+          // No need to call navigate as well, as it will cause conflicts
           setFadeState('between');
           completeTimer = setTimeout(() => {
             handleComplete();
