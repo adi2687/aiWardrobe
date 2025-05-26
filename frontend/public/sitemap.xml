@@ -5,7 +5,7 @@
     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
     xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
-        <loc>https://outfut-ai-liart.vercel.app</loc>
+        <loc>https://outfit-ai-liart.vercel.app</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
