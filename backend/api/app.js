@@ -52,7 +52,7 @@ app.options('*', cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
     if (expandedAllowedOrigins.includes(origin)) {
-      callback(null, true);
+      callback(null, origin); // ✅ Set actual origin, not true
     } else {
       console.log('Blocked by CORS:', origin);
       callback(new Error('Not allowed by CORS'));
@@ -61,6 +61,7 @@ app.options('*', cors({
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }));
+
 
 
 export { io }; // ✅ Exporting io instance
@@ -73,7 +74,7 @@ app.use(
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
       if (expandedAllowedOrigins.includes(origin)) {
-        callback(null, true);
+        callback(null, origin);
       } else {
         console.log('Blocked by CORS:', origin);
         callback(null, false);

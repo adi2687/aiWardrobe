@@ -75,8 +75,9 @@ router.post("/removefromwishlist", authenticate, async (req, res) => {
 
 // Proxy endpoint for Amazon search
 router.get("/proxy/amazon", async (req, res) => {
-  // Add CORS headers
-  res.header('Access-Control-Allow-Origin', '*');
+  // Add CORS headers - use specific origin when credentials are included
+  const origin = req.headers.origin;
+  res.header('Access-Control-Allow-Origin', origin || 'http://localhost:5173');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -120,8 +121,9 @@ router.get("/proxy/amazon", async (req, res) => {
 
 // Proxy endpoint for Myntra search
 router.get("/proxy/myntra", async (req, res) => {
-  // Add CORS headers
-  res.header('Access-Control-Allow-Origin', '*');
+  // Add CORS headers - use specific origin when credentials are included
+  const origin = req.headers.origin;
+  res.header('Access-Control-Allow-Origin', origin || 'http://localhost:5173');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
