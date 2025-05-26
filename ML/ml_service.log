@@ -6907,3 +6907,578 @@
 2025-05-26 07:32:31,878 - amazon_test - INFO - Successfully scraped 60 products from Amazon
 2025-05-26 07:32:31,880 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
 2025-05-26 07:32:31,881 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:32:31] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-26 07:33:50,619 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:33:50,620 - __main__ - INFO - Processing Amazon search for query: Styles for male and female which are trending
+2025-05-26 07:33:50,620 - amazon_test - INFO - Scraping Amazon for query: Styles for male and female which are trending
+2025-05-26 07:33:50,620 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:33:51,617 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:33:51,766 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:33:51,911 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:33:52,572 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:33:52,572 - __main__ - INFO - Processing Myntra search for query: Styles for male and female
+2025-05-26 07:33:52,572 - myntra - INFO - Scraping Myntra for query: Styles for male and female
+2025-05-26 07:33:52,572 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:33:53,088 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+male+and+female+which+are+trending&ref=nb_sb_noss&sprefix=Styles+for+male+and+female+which+are+trending%2Caps%2C283
+2025-05-26 07:33:53,804 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:33:53,955 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:33:54,077 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:33:55,159 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+male+and+female?rawQuery=Styles+for+male+and+female&sort=popularity
+2025-05-26 07:34:01,324 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:34:01,325 - myntra - INFO - Product 1: Self Design A-Line Midi Dress... | Price: Rs. 1804
+2025-05-26 07:34:01,325 - myntra - INFO - Product 2: Women Cotton Jogger... | Price: Rs. 901
+2025-05-26 07:34:01,325 - myntra - INFO - Product 3: PU Shoulder Bag... | Price: Rs. 622
+2025-05-26 07:34:01,327 - myntra - INFO - Product 4: Women Flared Track Pants... | Price: Rs. 996
+2025-05-26 07:34:01,327 - myntra - INFO - Product 5: Instant Radiance Face Wash... | Price: Rs. 174
+2025-05-26 07:34:01,328 - myntra - INFO - Product 6: Set of 3 Radiance Cream... | Price: Rs. 315
+2025-05-26 07:34:01,328 - myntra - INFO - Product 7: Front Slit Midi A-Line Skirt... | Price: Rs. 675
+2025-05-26 07:34:01,329 - myntra - INFO - Product 8: Printed Chiffon Peplum Top... | Price: Rs. 485
+2025-05-26 07:34:01,329 - myntra - INFO - Product 9: V-Neck Wrap Midi Length Dress... | Price: Rs. 1457
+2025-05-26 07:34:01,330 - myntra - INFO - Product 10: Interlocked Open Toe Flats... | Price: Rs. 949
+2025-05-26 07:34:01,330 - myntra - INFO - Product 11: V-Neck Fit & Flare Maxi Dress... | Price: Rs. 1851
+2025-05-26 07:34:01,331 - myntra - INFO - Product 12: Midi Cotton A-Line Dress... | Price: Rs. 2046
+2025-05-26 07:34:01,331 - myntra - INFO - Product 13: Printed Pure Cotton  Co-ords... | Price: Rs. 999
+2025-05-26 07:34:01,332 - myntra - INFO - Product 14: Floral Printed Maxi Dress... | Price: Rs. 1460
+2025-05-26 07:34:01,332 - myntra - INFO - Product 15: Puff Sleeves A-line Midi Dress... | Price: Rs. 1244
+2025-05-26 07:34:01,333 - myntra - INFO - Product 16: Printed Basic Jumpsuit... | Price: Rs. 1376
+2025-05-26 07:34:01,334 - myntra - INFO - Product 17: Puff Sleeves Sheath Dress... | Price: Rs. 1644
+2025-05-26 07:34:01,334 - myntra - INFO - Product 18: Instant Radiance Face Wash... | Price: Rs. 113
+2025-05-26 07:34:01,335 - myntra - INFO - Product 19: Floral Maxi Dress... | Price: Rs. 876
+2025-05-26 07:34:01,335 - myntra - INFO - Product 20: Denim Mini Skirt... | Price: Rs. 524
+2025-05-26 07:34:01,335 - myntra - INFO - Product 21: A-Line Maxi Puff Sleeve Dress... | Price: Rs. 1979
+2025-05-26 07:34:01,336 - myntra - INFO - Product 22: Wrap Knee Length Dress... | Price: Rs. 1499
+2025-05-26 07:34:01,337 - myntra - INFO - Product 23: Lace Insert Midi Wrap Dress... | Price: Rs. 1759
+2025-05-26 07:34:01,337 - myntra - INFO - Product 24: Women Printed A-Line Dress... | Price: Rs. 1715
+2025-05-26 07:34:01,337 - myntra - INFO - Product 25: Self-Design A-Line Midi Dress... | Price: Rs. 1619
+2025-05-26 07:34:01,339 - myntra - INFO - Product 31: Men Contrast Sole Sneakers... | Price: Rs. 819
+2025-05-26 07:34:01,340 - myntra - INFO - Product 32: Schiffli A-Line Midi Dress... | Price: Rs. 1770
+2025-05-26 07:34:01,340 - myntra - INFO - Product 33: Midi Flutter Sleeve Dress... | Price: Rs. 1449
+2025-05-26 07:34:01,341 - myntra - INFO - Product 34: Women Flared-Fit Track Pants... | Price: Rs. 759
+2025-05-26 07:34:01,341 - myntra - INFO - Product 35: Off-Shoulder Bardot Top... | Price: Rs. 492
+2025-05-26 07:34:01,341 - myntra - INFO - Product 36: Unstitched Dress Material... | Price: Rs. 857
+2025-05-26 07:34:01,343 - myntra - INFO - Product 37: Puff Sleeves Tiered Maxi Dress... | Price: Rs. 2199
+2025-05-26 07:34:01,344 - myntra - INFO - Product 38: Embroidered Co-Ords... | Price: Rs. 1699
+2025-05-26 07:34:01,345 - myntra - INFO - Product 39: Floral Printed Casual Shirt... | Price: Rs. 1049
+2025-05-26 07:34:01,345 - myntra - INFO - Product 40: Glitter Wrap Midi Dress... | Price: Rs. 2367
+2025-05-26 07:34:01,346 - myntra - INFO - Product 41: Men Comfort Insole Espadrilles... | Price: Rs. 939
+2025-05-26 07:34:01,346 - myntra - INFO - Product 42: Printed Empire Midi Dress... | Price: Rs. 1538
+2025-05-26 07:34:01,347 - myntra - INFO - Product 43: Round Neck Solid Cotton Top... | Price: Rs. 796
+2025-05-26 07:34:01,347 - myntra - INFO - Product 44: Men  Pack of 2 Trousers... | Price: Rs. 1169
+2025-05-26 07:34:01,348 - myntra - INFO - Product 45: Women Oversized Co-Ords Set... | Price: Rs. 1747
+2025-05-26 07:34:01,349 - myntra - INFO - Product 46: Women Love Muse Deo - 200 ml... | Price: Rs. 134
+2025-05-26 07:34:01,349 - myntra - INFO - Product 47: Women A-Line Midi Dress... | Price: Rs. 1631
+2025-05-26 07:34:01,350 - myntra - INFO - Product 48: Halter Neck Top & Trousers... | Price: Rs. 3493
+2025-05-26 07:34:01,350 - myntra - INFO - Product 49: A-Line Midi Puff Sleeve Dress... | Price: Rs. 1599
+2025-05-26 07:34:01,351 - myntra - INFO - Product 50: Women Floral Embroidery Shirt... | Price: Rs. 899
+2025-05-26 07:34:01,351 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:34:01,352 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:34:01,352 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:34:01] "GET /shop_myntra?query=Styles+for+male+and+female HTTP/1.1" 200 -
+2025-05-26 07:34:02,218 - amazon_test - INFO - Found 26 product items in the page
+2025-05-26 07:34:02,310 - amazon_test - INFO - Successfully scraped 26 products from Amazon
+2025-05-26 07:34:02,311 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:34:02,311 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:34:02] "GET /shop?query=Styles+for+male+and+female+which+are+trending HTTP/1.1" 200 -
+2025-05-26 07:35:12,774 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:35:12,774 - __main__ - INFO - Processing Myntra search for query: white shirt
+2025-05-26 07:35:12,775 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-26 07:35:12,775 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:35:12,870 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:35:12,870 - __main__ - INFO - Processing Amazon search for query: white shirt
+2025-05-26 07:35:12,870 - amazon_test - INFO - Scraping Amazon for query: white shirt
+2025-05-26 07:35:12,871 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:35:13,887 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:35:13,969 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:35:13,994 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:35:14,067 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:35:14,092 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:35:14,164 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:35:15,173 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-26 07:35:15,248 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=white+shirt&ref=nb_sb_noss&sprefix=white+shirt%2Caps%2C283
+2025-05-26 07:35:22,185 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:35:22,186 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:35:22,186 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:35:22,187 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:35:22,187 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:35:22,188 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:35:22,188 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:35:22,189 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:35:22,189 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:35:22,190 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:35:22,191 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:35:22,191 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:35:22,192 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:35:22,192 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:35:22,193 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:35:22,193 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:35:22,194 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:35:22,195 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:35:22,195 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:35:22,196 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:35:22,196 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:35:22,197 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:35:22,197 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:35:22,197 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:35:22,198 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:35:22,198 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:35:22,202 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:35:22,202 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:35:22,203 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:35:22,203 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:35:22,204 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:35:22,204 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:35:22,205 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:35:22,205 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:35:22,206 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:35:22,206 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:35:22,208 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:35:22,208 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:35:22,209 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:35:22,210 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:35:22,210 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:35:22,210 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:35:22,212 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:35:22,212 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:35:22] "GET /shop_myntra?query=white+shirt HTTP/1.1" 200 -
+2025-05-26 07:35:28,410 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:35:28,464 - amazon_test - INFO - Product 15: The White Shirt... | Price: N/A
+2025-05-26 07:35:28,638 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:35:28,640 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:35:28,641 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:35:28] "GET /shop?query=white+shirt HTTP/1.1" 200 -
+2025-05-26 07:39:48,067 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:39:48,067 - __main__ - INFO - Processing Myntra search for query: Cotton crew neck t-shirts (various colors)
+2025-05-26 07:39:48,068 - myntra - INFO - Scraping Myntra for query: Cotton crew neck t-shirts (various colors)
+2025-05-26 07:39:48,068 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:39:48,282 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:39:48,282 - __main__ - INFO - Processing Amazon search for query: Cotton crew neck t-shirts (various colors)
+2025-05-26 07:39:48,282 - amazon_test - INFO - Scraping Amazon for query: Cotton crew neck t-shirts (various colors)
+2025-05-26 07:39:48,282 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:39:49,172 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:39:49,275 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:39:49,371 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:39:49,403 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:39:49,553 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:39:49,702 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:39:50,459 - myntra - INFO - Opening URL: https://www.myntra.com/Cotton+crew+neck+t-shirts+%28various+colors%29?rawQuery=Cotton+crew+neck+t-shirts+%28various+colors%29&sort=popularity
+2025-05-26 07:39:50,834 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Cotton+crew+neck+t-shirts+%28various+colors%29&ref=nb_sb_noss&sprefix=Cotton+crew+neck+t-shirts+%28various+colors%29%2Caps%2C283
+2025-05-26 07:39:58,665 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:39:58,666 - myntra - INFO - Product 1: Men Pack Of 3 T-Shirts... | Price: Rs. 1199
+2025-05-26 07:39:58,667 - myntra - INFO - Product 2: 5-Pack Regular Fit T-shirts... | Price: Rs. 1999
+2025-05-26 07:39:58,667 - myntra - INFO - Product 3: Printed Relaxed Cotton T-shirt... | Price: Rs. 489
+2025-05-26 07:39:58,668 - myntra - INFO - Product 4: Men's Slim Fit Polo T-shirt... | Price: Rs. 679
+2025-05-26 07:39:58,668 - myntra - INFO - Product 5: Men Divide Regular Fit Polo... | Price: Rs. 1539
+2025-05-26 07:39:58,668 - myntra - INFO - Product 6: Men Printed Polo T-shirt... | Price: Rs. 679
+2025-05-26 07:39:58,669 - myntra - INFO - Product 7: 3-Striped Cotton T-shirt... | Price: Rs. 755
+2025-05-26 07:39:58,669 - myntra - INFO - Product 8: Pure Cotton T-shirt... | Price: Rs. 489
+2025-05-26 07:39:58,670 - myntra - INFO - Product 9: Polo Collar Slim Fit T-shirt... | Price: Rs. 914
+2025-05-26 07:39:58,671 - myntra - INFO - Product 10: Polo Collar Pure Cotton Tshirt... | Price: Rs. 1049
+2025-05-26 07:39:58,671 - myntra - INFO - Product 11: 5-Pack Regular Fit T-Shirts... | Price: Rs. 1999
+2025-05-26 07:39:58,672 - myntra - INFO - Product 12: Polo Collar Slim Fit T-shirt... | Price: Rs. 1124
+2025-05-26 07:39:58,672 - myntra - INFO - Product 13: Polo Collar Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 07:39:58,672 - myntra - INFO - Product 14: Polo Collar Slim Fit T-shirt... | Price: Rs. 991
+2025-05-26 07:39:58,673 - myntra - INFO - Product 15: Men Printed Polo T-shirt... | Price: Rs. 679
+2025-05-26 07:39:58,673 - myntra - INFO - Product 16: Women Printed T-shirt... | Price: Rs. 503
+2025-05-26 07:39:58,674 - myntra - INFO - Product 17: Striped Cotton T-shirt... | Price: Rs. 987
+2025-05-26 07:39:58,675 - myntra - INFO - Product 18: Striped Round Neck T-shirt... | Price: Rs. 470
+2025-05-26 07:39:58,675 - myntra - INFO - Product 19: Polo Collar Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 07:39:58,675 - myntra - INFO - Product 20: 5-Pack Regular Fit T-shirts... | Price: Rs. 1999
+2025-05-26 07:39:58,676 - myntra - INFO - Product 21: Mercedes Printed T-Shirt... | Price: Rs. 9599
+2025-05-26 07:39:58,677 - myntra - INFO - Product 22: Printed Cotton T-Shirt... | Price: Rs. 1080
+2025-05-26 07:39:58,677 - myntra - INFO - Product 23: V-Neck Casual T-Shirt... | Price: Rs. 399
+2025-05-26 07:39:58,678 - myntra - INFO - Product 24: Polo Collar Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 07:39:58,679 - myntra - INFO - Product 25: FB Knit TT Printed T-Shirt... | Price: Rs. 8599
+2025-05-26 07:39:58,682 - myntra - INFO - Product 36: Polo Collar Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 07:39:58,682 - myntra - INFO - Product 37: Men Polo Collar T-shirt... | Price: Rs. 2799
+2025-05-26 07:39:58,682 - myntra - INFO - Product 38: 3-Striped Polo T-shirt... | Price: Rs. 1007
+2025-05-26 07:39:58,683 - myntra - INFO - Product 39: Men Slim Fit Polo T-shirt... | Price: Rs. 1754
+2025-05-26 07:39:58,684 - myntra - INFO - Product 40: Printed Oversized T-shirt... | Price: Rs. 299
+2025-05-26 07:39:58,685 - myntra - INFO - Product 41: Men Digiwaves2 Graphic T-Shirt... | Price: Rs. 1103
+2025-05-26 07:39:58,685 - myntra - INFO - Product 42: Striped Polo Collar T-shirt... | Price: Rs. 549
+2025-05-26 07:39:58,686 - myntra - INFO - Product 43: Cotton T-shirt... | Price: Rs. 699
+2025-05-26 07:39:58,686 - myntra - INFO - Product 44: Men Solid Slim Fit T-shirt... | Price: Rs. 1724
+2025-05-26 07:39:58,687 - myntra - INFO - Product 45: Loose Fit Printed T-shirt... | Price: Rs. 799
+2025-05-26 07:39:58,687 - myntra - INFO - Product 46: Regular Fit Round-Neck T-shirt... | Price: Rs. 399
+2025-05-26 07:39:58,687 - myntra - INFO - Product 47: Pure Cotton T-shirt... | Price: Rs. 1194
+2025-05-26 07:39:58,688 - myntra - INFO - Product 48: Adi Trn Mes Training T-Shirt... | Price: Rs. 1039
+2025-05-26 07:39:58,688 - myntra - INFO - Product 49: Women Solid Cotton T-shirt... | Price: Rs. 299
+2025-05-26 07:39:58,689 - myntra - INFO - Product 50: Men Solid Slim Fit T-shirt... | Price: Rs. 1499
+2025-05-26 07:39:58,689 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:39:58,691 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:39:58,691 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:39:58] "GET /shop_myntra?query=Cotton+crew+neck+t-shirts+(various+colors) HTTP/1.1" 200 -
+2025-05-26 07:40:00,640 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:40:01,001 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:40:01,003 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:40:01,003 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:40:01] "GET /shop?query=Cotton+crew+neck+t-shirts+(various+colors) HTTP/1.1" 200 -
+2025-05-26 07:40:39,540 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:40:39,540 - __main__ - INFO - Processing Amazon search for query: white shirt
+2025-05-26 07:40:39,540 - amazon_test - INFO - Scraping Amazon for query: white shirt
+2025-05-26 07:40:39,541 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:40:39,651 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:40:39,651 - __main__ - INFO - Processing Myntra search for query: white shirt
+2025-05-26 07:40:39,651 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-26 07:40:39,651 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:40:40,400 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:40:40,532 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:40:40,547 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:40:40,627 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:40:40,692 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:40:40,774 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:40:41,790 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=white+shirt&ref=nb_sb_noss&sprefix=white+shirt%2Caps%2C283
+2025-05-26 07:40:41,820 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-26 07:40:48,308 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:40:48,679 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:40:48,681 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:40:48,681 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:40:48] "GET /shop?query=white+shirt HTTP/1.1" 200 -
+2025-05-26 07:40:56,384 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:40:56,385 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:40:56,386 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:40:56,386 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:40:56,386 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:40:56,386 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:40:56,387 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:40:56,387 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:40:56,388 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:40:56,388 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:40:56,389 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:40:56,390 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:40:56,390 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:40:56,391 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:40:56,392 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:40:56,392 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:40:56,393 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:40:56,393 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:40:56,394 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:40:56,395 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:40:56,395 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:40:56,395 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:40:56,395 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:40:56,397 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:40:56,397 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:40:56,398 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:40:56,399 - myntra - INFO - Product 31: Men Corduroy Overshirt... | Price: Rs. 1949
+2025-05-26 07:40:56,399 - myntra - INFO - Product 32: Slim Fit Casual Shirt... | Price: Rs. 699
+2025-05-26 07:40:56,400 - myntra - INFO - Product 33: Classic Cotton Formal Shirt... | Price: Rs. 799
+2025-05-26 07:40:56,401 - myntra - INFO - Product 34: Regular Fit Linen-Blend Shirt... | Price: Rs. 2299
+2025-05-26 07:40:56,401 - myntra - INFO - Product 35: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-26 07:40:56,402 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:40:56,402 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:40:56,402 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:40:56,403 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:40:56,404 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:40:56,404 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:40:56,404 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:40:56,405 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:40:56,405 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:40:56,405 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:40:56,406 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:40:56,406 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:40:56,407 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:40:56,407 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:40:56,408 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:40:56,408 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:40:56,409 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:40:56,410 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:40:56] "GET /shop_myntra?query=white+shirt HTTP/1.1" 200 -
+2025-05-26 10:21:06,051 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\test.py', reloading
+2025-05-26 10:21:06,353 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\amazon_test.py', reloading
+2025-05-26 10:21:10,204 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-26 11:17:06,672 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 11:17:06,727 - werkzeug - WARNING -  * Debugger is active!
+2025-05-26 11:17:06,744 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 19:38:14,434 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 19:38:14,434 - __main__ - INFO - Processing Myntra search for query: White sneakers
+2025-05-26 19:38:14,434 - myntra - INFO - Scraping Myntra for query: White sneakers
+2025-05-26 19:38:14,435 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 19:38:14,671 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 19:38:14,671 - __main__ - INFO - Processing Amazon search for query: White sneakers
+2025-05-26 19:38:14,671 - amazon_test - INFO - Scraping Amazon for query: White sneakers
+2025-05-26 19:38:14,671 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 19:38:15,685 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:38:15,778 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:38:15,896 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:38:15,896 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:38:15,990 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 19:38:17,171 - myntra - INFO - Opening URL: https://www.myntra.com/White+sneakers?rawQuery=White+sneakers&sort=popularity
+2025-05-26 19:38:17,300 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 19:38:18,553 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=White+sneakers&ref=nb_sb_noss&sprefix=White+sneakers%2Caps%2C283
+2025-05-26 19:38:23,900 - myntra - INFO - Found 50 product items in the page
+2025-05-26 19:38:23,902 - myntra - INFO - Product 1: Smashic Casual Sneakers... | Price: Rs. 1799
+2025-05-26 19:38:23,904 - myntra - INFO - Product 2: Men Air Max Bolt Sneakers... | Price: Rs. 4097
+2025-05-26 19:38:23,905 - myntra - INFO - Product 3: Men Ebernon Low Sneakers... | Price: Rs. 3547
+2025-05-26 19:38:23,906 - myntra - INFO - Product 4: Men Perforations Sneakers... | Price: Rs. 951
+2025-05-26 19:38:23,906 - myntra - INFO - Product 5: Men Solid Sneakers... | Price: Rs. 2847
+2025-05-26 19:38:23,907 - myntra - INFO - Product 6: Men Perforations Sneakers... | Price: Rs. 2639
+2025-05-26 19:38:23,907 - myntra - INFO - Product 7: Men Colourblocked PU Sneakers... | Price: Rs. 1189
+2025-05-26 19:38:23,909 - myntra - INFO - Product 8: Men COURT VISION Sneakers... | Price: Rs. 4995
+2025-05-26 19:38:23,910 - myntra - INFO - Product 9: Killshot 2 Leather Men's Shoes... | Price: Rs. 6876
+2025-05-26 19:38:23,911 - myntra - INFO - Product 10: Women Carina Slim Sneakers... | Price: Rs. 1799
+2025-05-26 19:38:23,912 - myntra - INFO - Product 11: Round Toe Lace-Ups Sneakers... | Price: Rs. 1119
+2025-05-26 19:38:23,913 - myntra - INFO - Product 12: Men Cross Trainer Low Sneakers... | Price: Rs. 3547
+2025-05-26 19:38:23,913 - myntra - INFO - Product 13: Men Galaxium Sneakers... | Price: Rs. 2639
+2025-05-26 19:38:23,914 - myntra - INFO - Product 14: Women Carina Slim Sneakers... | Price: Rs. 1799
+2025-05-26 19:38:23,915 - myntra - INFO - Product 15: Men Courtismo Sneakers... | Price: Rs. 2639
+2025-05-26 19:38:23,916 - myntra - INFO - Product 16: Men Colourblocked IDP Sneakers... | Price: Rs. 1799
+2025-05-26 19:38:23,917 - myntra - INFO - Product 17: Air Force 1 '07 Men's Shoes... | Price: Rs. 9695
+2025-05-26 19:38:23,918 - myntra - INFO - Product 18: Men Classic Sneakers... | Price: Rs. 1439
+2025-05-26 19:38:23,918 - myntra - INFO - Product 19: Women Carina 2.0 Sneakers... | Price: Rs. 1999
+2025-05-26 19:38:23,919 - myntra - INFO - Product 20: X-Ray 2 Contrast Sole Sneakers... | Price: Rs. 3199
+2025-05-26 19:38:23,920 - myntra - INFO - Product 21: Women PU Sneakers... | Price: Rs. 999
+2025-05-26 19:38:23,921 - myntra - INFO - Product 22: Men Perforations Sneakers... | Price: Rs. 2639
+2025-05-26 19:38:23,922 - myntra - INFO - Product 23: Men PU Sneakers... | Price: Rs. 1206
+2025-05-26 19:38:23,923 - myntra - INFO - Product 24: Blazer Low '77 Vintage Shoes... | Price: Rs. 5756
+2025-05-26 19:38:23,924 - myntra - INFO - Product 25: Men Dunk Leather Sneakers... | Price: Rs. 8295
+2025-05-26 19:38:23,927 - myntra - INFO - Product 31: Men Round Toe Sneakers... | Price: Rs. 1138
+2025-05-26 19:38:23,928 - myntra - INFO - Product 32: Dunk Low Retro Men's Shoes... | Price: Rs. 8695
+2025-05-26 19:38:23,928 - myntra - INFO - Product 33: Men C-Block Sneakers... | Price: Rs. 1799
+2025-05-26 19:38:23,930 - myntra - INFO - Product 34: Men Round Toe Sneakers... | Price: Rs. 1247
+2025-05-26 19:38:23,931 - myntra - INFO - Product 35: C1TY Shoes... | Price: Rs. 8695
+2025-05-26 19:38:23,931 - myntra - INFO - Product 36: Men Colourblocked Sneakers... | Price: Rs. 1206
+2025-05-26 19:38:23,932 - myntra - INFO - Product 37: Men Courtismo Sneakers... | Price: Rs. 2639
+2025-05-26 19:38:23,933 - myntra - INFO - Product 38: Men Colourblocked Sneakers... | Price: Rs. 1138
+2025-05-26 19:38:23,933 - myntra - INFO - Product 39: Men Textured Sneakers... | Price: Rs. 1138
+2025-05-26 19:38:23,934 - myntra - INFO - Product 40: Air Force 1 '07 Essential Shoe... | Price: Rs. 9695
+2025-05-26 19:38:23,935 - myntra - INFO - Product 41: Men Round Toe Sneakers... | Price: Rs. 1119
+2025-05-26 19:38:23,936 - myntra - INFO - Product 42: Men BLAZER MID '77 VNTGl Shoes... | Price: Rs. 7995
+2025-05-26 19:38:23,937 - myntra - INFO - Product 43: Men Grand Court 2.0 Sneakers... | Price: Rs. 3599
+2025-05-26 19:38:23,938 - myntra - INFO - Product 44: Women Round Toe Sneakers... | Price: Rs. 999
+2025-05-26 19:38:23,938 - myntra - INFO - Product 45: Men Slip Resistant Sneakers... | Price: Rs. 1138
+2025-05-26 19:38:23,940 - myntra - INFO - Product 46: Unisex Proctc Leather Sneakers... | Price: Rs. 4499
+2025-05-26 19:38:23,940 - myntra - INFO - Product 47: Men Colourblocked PU Sneakers... | Price: Rs. 1099
+2025-05-26 19:38:23,941 - myntra - INFO - Product 48: Men PU Sneakers... | Price: Rs. 1599
+2025-05-26 19:38:23,942 - myntra - INFO - Product 49: Men C-Block Sneakers... | Price: Rs. 1799
+2025-05-26 19:38:23,943 - myntra - INFO - Product 50: Men Colorblocked Sneakers... | Price: Rs. 2024
+2025-05-26 19:38:23,943 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 19:38:23,945 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 19:38:23,948 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 19:38:23] "GET /shop_myntra?query=White+sneakers HTTP/1.1" 200 -
+2025-05-26 19:38:27,092 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 19:38:27,097 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\logging\\__init__.py', reloading
+2025-05-26 19:38:27,125 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\encodings\\cp1252.py', reloading
+2025-05-26 19:38:27,130 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\amazon_test.py', reloading
+2025-05-26 19:38:27,134 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\test.py', reloading
+2025-05-26 19:38:27,137 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\flask\\app.py', reloading
+2025-05-26 19:38:27,142 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\werkzeug\\debug\\__init__.py', reloading
+2025-05-26 19:38:27,145 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\werkzeug\\serving.py', reloading
+2025-05-26 19:38:27,150 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\http\\server.py', reloading
+2025-05-26 19:38:27,155 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\socketserver.py', reloading
+2025-05-26 19:38:27,158 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\threading.py', reloading
+2025-05-26 19:38:27,357 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 19:38:27,359 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 19:38:27,360 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 19:38:27] "GET /shop?query=White+sneakers HTTP/1.1" 200 -
+2025-05-26 19:38:30,347 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-26 19:38:33,310 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 19:38:33,332 - werkzeug - WARNING -  * Debugger is active!
+2025-05-26 19:38:33,338 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-26 19:40:41,999 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 19:40:41,999 - __main__ - INFO - Processing Amazon search for query: Styles for male and female which are trending
+2025-05-26 19:40:41,999 - amazon_test - INFO - Scraping Amazon for query: Styles for male and female which are trending
+2025-05-26 19:40:41,999 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 19:40:42,320 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 19:40:42,320 - __main__ - INFO - Processing Myntra search for query: Styles for male and female
+2025-05-26 19:40:42,320 - myntra - INFO - Scraping Myntra for query: Styles for male and female
+2025-05-26 19:40:42,320 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 19:40:43,001 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:40:43,154 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:40:43,498 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:40:43,564 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 19:40:43,642 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:40:44,487 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 19:40:44,642 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+male+and+female+which+are+trending&ref=nb_sb_noss&sprefix=Styles+for+male+and+female+which+are+trending%2Caps%2C283
+2025-05-26 19:40:45,567 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+male+and+female?rawQuery=Styles+for+male+and+female&sort=popularity
+2025-05-26 19:40:51,079 - myntra - INFO - Found 50 product items in the page
+2025-05-26 19:40:51,080 - myntra - INFO - Product 1: Women Cotton Jogger... | Price: Rs. 901
+2025-05-26 19:40:51,081 - myntra - INFO - Product 2: Self Design A-Line Midi Dress... | Price: Rs. 1804
+2025-05-26 19:40:51,081 - myntra - INFO - Product 3: PU Shoulder Bag... | Price: Rs. 622
+2025-05-26 19:40:51,082 - myntra - INFO - Product 4: Front Slit Midi A-Line Skirt... | Price: Rs. 675
+2025-05-26 19:40:51,082 - myntra - INFO - Product 5: Set of 3 Radiance Cream... | Price: Rs. 304
+2025-05-26 19:40:51,082 - myntra - INFO - Product 6: Instant Radiance Face Wash... | Price: Rs. 191
+2025-05-26 19:40:51,084 - myntra - INFO - Product 7: V-Neck Wrap Midi Length Dress... | Price: Rs. 1529
+2025-05-26 19:40:51,085 - myntra - INFO - Product 8: Printed Chiffon Peplum Top... | Price: Rs. 485
+2025-05-26 19:40:51,086 - myntra - INFO - Product 9: Women Flared Track Pants... | Price: Rs. 996
+2025-05-26 19:40:51,086 - myntra - INFO - Product 10: V-Neck Fit & Flare Maxi Dress... | Price: Rs. 1851
+2025-05-26 19:40:51,087 - myntra - INFO - Product 11: Interlocked Open Toe Flats... | Price: Rs. 949
+2025-05-26 19:40:51,087 - myntra - INFO - Product 12: Midi Cotton A-Line Dress... | Price: Rs. 2046
+2025-05-26 19:40:51,088 - myntra - INFO - Product 13: Instant Radiance Face Wash... | Price: Rs. 122
+2025-05-26 19:40:51,088 - myntra - INFO - Product 14: Floral Printed Maxi Dress... | Price: Rs. 1460
+2025-05-26 19:40:51,088 - myntra - INFO - Product 15: Printed Pure Cotton  Co-ords... | Price: Rs. 999
+2025-05-26 19:40:51,090 - myntra - INFO - Product 16: Printed Basic Jumpsuit... | Price: Rs. 1376
+2025-05-26 19:40:51,090 - myntra - INFO - Product 17: Puff Sleeves A-line Midi Dress... | Price: Rs. 1244
+2025-05-26 19:40:51,091 - myntra - INFO - Product 18: Floral Maxi Dress... | Price: Rs. 876
+2025-05-26 19:40:51,091 - myntra - INFO - Product 19: Denim Mini Skirt... | Price: Rs. 524
+2025-05-26 19:40:51,092 - myntra - INFO - Product 20: Printed Three Piece Co-Ords... | Price: Rs. 2396
+2025-05-26 19:40:51,092 - myntra - INFO - Product 21: Puff Sleeves Sheath Dress... | Price: Rs. 1644
+2025-05-26 19:40:51,093 - myntra - INFO - Product 22: Embroidered Co-Ords... | Price: Rs. 1699
+2025-05-26 19:40:51,093 - myntra - INFO - Product 23: A-Line Maxi Puff Sleeve Dress... | Price: Rs. 1979
+2025-05-26 19:40:51,093 - myntra - INFO - Product 24: Floral Print Maxi Dress... | Price: Rs. 1424
+2025-05-26 19:40:51,093 - myntra - INFO - Product 25: Women Printed A-Line Dress... | Price: Rs. 1715
+2025-05-26 19:40:51,095 - myntra - INFO - Product 31: Off-Shoulder Bardot Top... | Price: Rs. 492
+2025-05-26 19:40:51,095 - myntra - INFO - Product 32: Floral Maxi Wrap Dress... | Price: Rs. 974
+2025-05-26 19:40:51,097 - myntra - INFO - Product 33: Lace Insert Midi Wrap Dress... | Price: Rs. 1759
+2025-05-26 19:40:51,097 - myntra - INFO - Product 34: Men Contrast Sole Sneakers... | Price: Rs. 819
+2025-05-26 19:40:51,097 - myntra - INFO - Product 35: Pleated Wrap Top... | Price: Rs. 1423
+2025-05-26 19:40:51,098 - myntra - INFO - Product 36: Women Oversized Co-Ords Set... | Price: Rs. 1747
+2025-05-26 19:40:51,098 - myntra - INFO - Product 37: Wrap Knee Length Dress... | Price: Rs. 1499
+2025-05-26 19:40:51,098 - myntra - INFO - Product 38: Men Comfort Insole Espadrilles... | Price: Rs. 939
+2025-05-26 19:40:51,098 - myntra - INFO - Product 39: Off Shoulder Cotton Midi Dress... | Price: Rs. 1375
+2025-05-26 19:40:51,100 - myntra - INFO - Product 40: Women A-Line Midi Dress... | Price: Rs. 1631
+2025-05-26 19:40:51,100 - myntra - INFO - Product 41: Women Floral Embroidery Shirt... | Price: Rs. 899
+2025-05-26 19:40:51,101 - myntra - INFO - Product 42: Puff Sleeves Tiered Maxi Dress... | Price: Rs. 2199
+2025-05-26 19:40:51,101 - myntra - INFO - Product 43: Floral Printed Straight Kurta... | Price: Rs. 799
+2025-05-26 19:40:51,101 - myntra - INFO - Product 44: Belted Shirt Dress... | Price: Rs. 3231
+2025-05-26 19:40:51,102 - myntra - INFO - Product 45: Women Love Muse Deo - 200 ml... | Price: Rs. 134
+2025-05-26 19:40:51,102 - myntra - INFO - Product 46: Round Neck Solid Cotton Top... | Price: Rs. 796
+2025-05-26 19:40:51,103 - myntra - INFO - Product 47: Shibori Printed V-Neck Kurta... | Price: Rs. 799
+2025-05-26 19:40:51,103 - myntra - INFO - Product 48: Women Striped Maxi Dress... | Price: Rs. 1859
+2025-05-26 19:40:51,103 - myntra - INFO - Product 49: Floral Print A-Line Maxi Tie-U... | Price: Rs. 1461
+2025-05-26 19:40:51,104 - myntra - INFO - Product 50: Glitter Wrap Midi Dress... | Price: Rs. 2367
+2025-05-26 19:40:51,104 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 19:40:51,105 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 19:40:51,106 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 19:40:51] "GET /shop_myntra?query=Styles+for+male+and+female HTTP/1.1" 200 -
+2025-05-26 19:40:51,795 - amazon_test - INFO - Found 23 product items in the page
+2025-05-26 19:40:51,905 - amazon_test - INFO - Successfully scraped 23 products from Amazon
+2025-05-26 19:40:51,906 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 19:40:51,907 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 19:40:51] "GET /shop?query=Styles+for+male+and+female+which+are+trending HTTP/1.1" 200 -
+2025-05-26 19:41:18,627 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 19:41:18,627 - __main__ - INFO - Processing Amazon search for query: Boots (brown)
+2025-05-26 19:41:18,627 - amazon_test - INFO - Scraping Amazon for query: Boots (brown)
+2025-05-26 19:41:18,627 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 19:41:18,889 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 19:41:18,889 - __main__ - INFO - Processing Myntra search for query: Boots (brown)
+2025-05-26 19:41:18,889 - myntra - INFO - Scraping Myntra for query: Boots (brown)
+2025-05-26 19:41:18,889 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 19:41:19,668 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:41:19,806 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:41:19,934 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:41:20,019 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:41:20,156 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 19:41:20,469 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 19:41:20,469 - __main__ - INFO - Processing Myntra search for query: Chinos (beige)
+2025-05-26 19:41:20,469 - myntra - INFO - Scraping Myntra for query: Chinos (beige)
+2025-05-26 19:41:20,470 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 19:41:20,737 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 19:41:20,737 - __main__ - INFO - Processing Amazon search for query: Chinos (beige)
+2025-05-26 19:41:20,737 - amazon_test - INFO - Scraping Amazon for query: Chinos (beige)
+2025-05-26 19:41:20,737 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 19:41:21,218 - myntra - INFO - Opening URL: https://www.myntra.com/Boots+%28brown%29?rawQuery=Boots+%28brown%29&sort=popularity
+2025-05-26 19:41:21,675 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:41:21,763 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:41:21,901 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 19:41:22,050 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:41:22,131 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 19:41:23,058 - myntra - INFO - Opening URL: https://www.myntra.com/Chinos+%28beige%29?rawQuery=Chinos+%28beige%29&sort=popularity
+2025-05-26 19:41:25,434 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 19:41:26,140 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 19:41:26,521 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Boots+%28brown%29&ref=nb_sb_noss&sprefix=Boots+%28brown%29%2Caps%2C283
+2025-05-26 19:41:27,277 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Chinos+%28beige%29&ref=nb_sb_noss&sprefix=Chinos+%28beige%29%2Caps%2C283
+2025-05-26 19:41:30,540 - myntra - INFO - Found 50 product items in the page
+2025-05-26 19:41:30,540 - myntra - INFO - Product 1: Slim Fit Chinos... | Price: Rs. 647
+2025-05-26 19:41:30,541 - myntra - INFO - Product 2: Men Regular Fit Chinos... | Price: Rs. 773
+2025-05-26 19:41:30,542 - myntra - INFO - Product 3: Men Chino Trousers... | Price: Rs. 1799
+2025-05-26 19:41:30,542 - myntra - INFO - Product 4: Women Cropped Linen Chinos... | Price: Rs. 2874
+2025-05-26 19:41:30,543 - myntra - INFO - Product 5: Women Formal Cropped Chinos... | Price: Rs. 2274
+2025-05-26 19:41:30,544 - myntra - INFO - Product 6: Men Tapered Fit Chinos Trouser... | Price: Rs. 623
+2025-05-26 19:41:30,544 - myntra - INFO - Product 7: Men Loose Fit Chinos Trousers... | Price: Rs. 1289
+2025-05-26 19:41:30,545 - myntra - INFO - Product 8: Men Tapered Fit Chinos... | Price: Rs. 650
+2025-05-26 19:41:30,545 - myntra - INFO - Product 9: Fit High-Rise Chinos Trousers... | Price: Rs. 1349
+2025-05-26 19:41:30,546 - myntra - INFO - Product 10: Men Cotton Straight Fit Chinos... | Price: Rs. 863
+2025-05-26 19:41:30,547 - myntra - INFO - Product 11: Men B95 Slim Fit Chinos... | Price: Rs. 1895
+2025-05-26 19:41:30,547 - myntra - INFO - Product 12: Men Slim Fit Chinos... | Price: Rs. 1799
+2025-05-26 19:41:30,548 - myntra - INFO - Product 13: Men Smart Chinos Trouser... | Price: Rs. 959
+2025-05-26 19:41:30,548 - myntra - INFO - Product 14: Men Chinos Trousers... | Price: Rs. 1749
+2025-05-26 19:41:30,549 - myntra - INFO - Product 15: Men Slim Fit Chinos Trousers... | Price: Rs. 1799
+2025-05-26 19:41:30,549 - myntra - INFO - Product 16: Men Solid Chinos Trousers... | Price: Rs. 1319
+2025-05-26 19:41:30,550 - myntra - INFO - Product 17: Men Tapered Fit Chinos... | Price: Rs. 2394
+2025-05-26 19:41:30,550 - myntra - INFO - Product 18: Men Poke-2 Regular Fit Trouser... | Price: Rs. 2554
+2025-05-26 19:41:30,551 - myntra - INFO - Product 19: Men Straight Fit Chinos... | Price: Rs. 1319
+2025-05-26 19:41:30,551 - myntra - INFO - Product 20: Women Cotton Chinos Trousers... | Price: Rs. 999
+2025-05-26 19:41:30,555 - myntra - INFO - Product 31: Men Straight Fit Chino Pant... | Price: Rs. 18500
+2025-05-26 19:41:30,556 - myntra - INFO - Product 32: Men Slim Fit Chinos Trousers... | Price: Rs. 1224
+2025-05-26 19:41:30,556 - myntra - INFO - Product 33: Men Regular Fit Chinos... | Price: Rs. 577
+2025-05-26 19:41:30,557 - myntra - INFO - Product 34: Men Daron Regular Fit Trouser... | Price: Rs. 2659
+2025-05-26 19:41:30,558 - myntra - INFO - Product 35: Men Slim Fit Chinos Trousers... | Price: Rs. 1049
+2025-05-26 19:41:30,558 - myntra - INFO - Product 36: Men Slim Fit Chinos Trousers... | Price: Rs. 3749
+2025-05-26 19:41:30,559 - myntra - INFO - Product 37: Men Cotton Regular Fit Chinos... | Price: Rs. 759
+2025-05-26 19:41:30,559 - myntra - INFO - Product 38: Men Loose Fit Chinos Trousers... | Price: Rs. 1399
+2025-05-26 19:41:30,559 - myntra - INFO - Product 39: Men Chinos Trousers... | Price: Rs. 1039
+2025-05-26 19:41:30,561 - myntra - INFO - Product 40: Men Slim Fit Easy Wash Chinos... | Price: Rs. 449
+2025-05-26 19:41:30,561 - myntra - INFO - Product 41: Men Slim Fit Chinos Trousers... | Price: Rs. 929
+2025-05-26 19:41:30,562 - myntra - INFO - Product 42: Men Slim Fit Chinos Trousers... | Price: Rs. 1814
+2025-05-26 19:41:30,562 - myntra - INFO - Product 43: Men Slim Fit Chinos Trousers... | Price: Rs. 869
+2025-05-26 19:41:30,563 - myntra - INFO - Product 44: Men Chinos Trousers... | Price: Rs. 6999
+2025-05-26 19:41:30,563 - myntra - INFO - Product 45: Slim Fit Cotton Chinos... | Price: Rs. 1999
+2025-05-26 19:41:30,564 - myntra - INFO - Product 46: Men Chinos Trousers... | Price: Rs. 1294
+2025-05-26 19:41:30,564 - myntra - INFO - Product 47: Boys Cotton-Linen Trousers... | Price: Rs. 1554
+2025-05-26 19:41:30,565 - myntra - INFO - Product 48: Men Regular Fit Solid Chinos... | Price: Rs. 629
+2025-05-26 19:41:30,565 - myntra - INFO - Product 49: Men Cotton Trousers... | Price: Rs. 4199
+2025-05-26 19:41:30,566 - myntra - INFO - Product 50: Men Straight Fit Trousers... | Price: Rs. 2599
+2025-05-26 19:41:30,566 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 19:41:30,568 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 19:41:30,569 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 19:41:30] "GET /shop_myntra?query=Chinos+(beige) HTTP/1.1" 200 -
+2025-05-26 19:41:32,525 - myntra - INFO - Found 50 product items in the page
+2025-05-26 19:41:32,525 - myntra - INFO - Product 1: Men Heeled Chelsea Boots... | Price: Rs. 928
+2025-05-26 19:41:32,526 - myntra - INFO - Product 2: Men Heeled Leather Boots... | Price: Rs. 999
+2025-05-26 19:41:32,527 - myntra - INFO - Product 3: Men Mid-Top Chelsea Boots... | Price: Rs. 1999
+2025-05-26 19:41:32,528 - myntra - INFO - Product 4: Men Leather Chelsea Boots... | Price: Rs. 1511
+2025-05-26 19:41:32,528 - myntra - INFO - Product 5: Men Leather Chelsea Boots... | Price: Rs. 1799
+2025-05-26 19:41:32,529 - myntra - INFO - Product 6: Men High-Top Chelsea Boots... | Price: Rs. 998
+2025-05-26 19:41:32,530 - myntra - INFO - Product 7: Men Mid-Top Chelsea Boots... | Price: Rs. 1038
+2025-05-26 19:41:32,530 - myntra - INFO - Product 8: Men Block-Heeled Chelsea Boots... | Price: Rs. 844
+2025-05-26 19:41:32,530 - myntra - INFO - Product 9: Men Textured Chelsea Boots... | Price: Rs. 1999
+2025-05-26 19:41:32,532 - myntra - INFO - Product 10: Men Heeled Casual Boots... | Price: Rs. 1099
+2025-05-26 19:41:32,533 - myntra - INFO - Product 11: Men Leather Boots... | Price: Rs. 3119
+2025-05-26 19:41:32,533 - myntra - INFO - Product 12: Men Textured Leather Boots... | Price: Rs. 999
+2025-05-26 19:41:32,535 - myntra - INFO - Product 13: Men Leather Chelsea Boots... | Price: Rs. 1510
+2025-05-26 19:41:32,535 - myntra - INFO - Product 14: Women Casual Regular Boots... | Price: Rs. 2394
+2025-05-26 19:41:32,536 - myntra - INFO - Product 15: Men Leather Regular Boots... | Price: Rs. 1070
+2025-05-26 19:41:32,536 - myntra - INFO - Product 16: Men Leather Chelsea Boots... | Price: Rs. 2214
+2025-05-26 19:41:32,537 - myntra - INFO - Product 17: Women Calf-Length Winter Boots... | Price: Rs. 2518
+2025-05-26 19:41:32,537 - myntra - INFO - Product 18: High-Top Regular Boots... | Price: Rs. 2639
+2025-05-26 19:41:32,538 - myntra - INFO - Product 19: Round Toe Chelsea Boots... | Price: Rs. 1271
+2025-05-26 19:41:32,538 - myntra - INFO - Product 20: Men Leather Chelsea Boots... | Price: Rs. 2719
+2025-05-26 19:41:32,538 - myntra - INFO - Product 21: Textured Casual Chelsea Boots... | Price: Rs. 999
+2025-05-26 19:41:32,540 - myntra - INFO - Product 22: Men High-Top Leather Boots... | Price: Rs. 3490
+2025-05-26 19:41:32,541 - myntra - INFO - Product 23: Block Heeled Boots... | Price: Rs. 2394
+2025-05-26 19:41:32,541 - myntra - INFO - Product 24: Men Casual Chelsea Boots... | Price: Rs. 1615
+2025-05-26 19:41:32,542 - myntra - INFO - Product 25: Men Block-Heeled Regular Boots... | Price: Rs. 995
+2025-05-26 19:41:32,544 - myntra - INFO - Product 31: Men Chelsea Boots... | Price: Rs. 1077
+2025-05-26 19:41:32,545 - myntra - INFO - Product 32: Men Lace-Up Casual Biker Boots... | Price: Rs. 1737
+2025-05-26 19:41:32,545 - myntra - INFO - Product 33: Women Round Toe Heeled Boots... | Price: Rs. 926
+2025-05-26 19:41:32,546 - myntra - INFO - Product 34: Men Leather Chelsea Boots... | Price: Rs. 1999
+2025-05-26 19:41:32,547 - myntra - INFO - Product 35: High-Top Regular Boots... | Price: Rs. 2738
+2025-05-26 19:41:32,548 - myntra - INFO - Product 36: Men Mid-Top Leather Flat Boots... | Price: Rs. 2214
+2025-05-26 19:41:32,548 - myntra - INFO - Product 37: Citytray Men Chelsea Boots... | Price: Rs. 14399
+2025-05-26 19:41:32,548 - myntra - INFO - Product 38: Men Casual Chelsea Boots... | Price: Rs. 1022
+2025-05-26 19:41:32,549 - myntra - INFO - Product 39: Block-Heeled Chelsea Boots... | Price: Rs. 999
+2025-05-26 19:41:32,550 - myntra - INFO - Product 40: Men Formal Loafers... | Price: Rs. 1478
+2025-05-26 19:41:32,550 - myntra - INFO - Product 41: Men Mid Top Chelsea Boots... | Price: Rs. 909
+2025-05-26 19:41:32,552 - myntra - INFO - Product 42: Men Textured Leather Boots... | Price: Rs. 1919
+2025-05-26 19:41:32,553 - myntra - INFO - Product 43: Men Leather Regular Boots... | Price: Rs. 2694
+2025-05-26 19:41:32,553 - myntra - INFO - Product 44: Round Toe Zipper Boots... | Price: Rs. 1088
+2025-05-26 19:41:32,553 - myntra - INFO - Product 45: Men Leather Chelsea Boots... | Price: Rs. 11999
+2025-05-26 19:41:32,554 - myntra - INFO - Product 46: Leather Chelsea Boots... | Price: Rs. 1999
+2025-05-26 19:41:32,555 - myntra - INFO - Product 47: Men Casual Chelsea Boots... | Price: Rs. 999
+2025-05-26 19:41:32,555 - myntra - INFO - Product 48: Men Solid Ankle Casual Boots... | Price: Rs. 1044
+2025-05-26 19:41:32,556 - myntra - INFO - Product 49: Men High-Top Flat Boots... | Price: Rs. 1704
+2025-05-26 19:41:32,557 - myntra - INFO - Product 50: Men Mid-Top Suede Desert Boots... | Price: Rs. 2999
+2025-05-26 19:41:32,557 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 19:41:32,560 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 19:41:32,561 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 19:41:32] "GET /shop_myntra?query=Boots+(brown) HTTP/1.1" 200 -
+2025-05-26 19:41:33,492 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 19:41:33,807 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 19:41:33,811 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 19:41:33,812 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 19:41:33] "GET /shop?query=Boots+(brown) HTTP/1.1" 200 -
+2025-05-26 19:41:40,652 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 19:41:41,029 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 19:41:41,032 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 19:41:41,032 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 19:41:41] "GET /shop?query=Chinos+(beige) HTTP/1.1" 200 -
+2025-05-26 19:43:00,425 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pywhatkit\\__init__.py', reloading
+2025-05-26 19:43:00,434 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pywhatkit\\misc.py', reloading
+2025-05-26 19:43:00,462 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pyttsx3\\__init__.py', reloading
+2025-05-26 19:43:00,570 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\generativeai\\__init__.py', reloading
+2025-05-26 19:43:00,598 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\generativeai\\client.py', reloading
+2025-05-26 19:43:00,662 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\auth\\__init__.py', reloading
+2025-05-26 19:43:00,670 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\auth\\credentials.py', reloading
+2025-05-26 19:43:00,680 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\auth\\_credentials_base.py', reloading
+2025-05-26 19:43:00,686 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\api_core\\__init__.py', reloading
+2025-05-26 19:43:00,689 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\api_core\\client_options.py', reloading
+2025-05-26 19:43:00,693 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\api_core\\gapic_v1\\__init__.py', reloading
+2025-05-26 19:43:00,698 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\api_core\\gapic_v1\\client_info.py', reloading
+2025-05-26 19:43:00,700 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\google\\api_core\\client_info.py', reloading
+2025-05-26 19:43:04,077 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-26 19:43:06,413 - __main__ - INFO - Starting ML service on port 8000
+2025-05-26 19:43:06,429 - werkzeug - WARNING -  * Debugger is active!
+2025-05-26 19:43:06,434 - werkzeug - INFO -  * Debugger PIN: 807-569-661
