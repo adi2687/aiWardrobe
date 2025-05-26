@@ -3782,3 +3782,92 @@
 2025-05-26 06:09:19,627 - amazon_test - INFO - Successfully scraped 60 products from Amazon
 2025-05-26 06:09:19,629 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
 2025-05-26 06:09:19,630 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 06:09:19] "GET /shop?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-26 06:11:01,174 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 06:11:01] "OPTIONS /shop?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-26 06:11:01,175 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 06:11:01] "OPTIONS /shop_myntra?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-26 06:11:01,273 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 06:11:01,273 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-26 06:11:01,273 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-26 06:11:01,273 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 06:11:01,275 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 06:11:01,275 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-26 06:11:01,275 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-26 06:11:01,275 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 06:11:02,323 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 06:11:02,324 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 06:11:02,482 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 06:11:02,634 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 06:11:03,488 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 06:11:03,694 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-26 06:11:04,589 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 06:11:05,736 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-26 06:11:12,440 - myntra - INFO - Found 50 product items in the page
+2025-05-26 06:11:12,441 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-26 06:11:12,443 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-26 06:11:12,443 - myntra - INFO - Product 3: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-26 06:11:12,444 - myntra - INFO - Product 4: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-26 06:11:12,445 - myntra - INFO - Product 5: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-26 06:11:12,445 - myntra - INFO - Product 6: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-26 06:11:12,446 - myntra - INFO - Product 7: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-26 06:11:12,447 - myntra - INFO - Product 8: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-26 06:11:12,447 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-26 06:11:12,448 - myntra - INFO - Product 10: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-26 06:11:12,449 - myntra - INFO - Product 11: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-26 06:11:12,449 - myntra - INFO - Product 12: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-26 06:11:12,449 - myntra - INFO - Product 13: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-26 06:11:12,450 - myntra - INFO - Product 14: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-26 06:11:12,450 - myntra - INFO - Product 15: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-26 06:11:12,452 - myntra - INFO - Product 16: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-26 06:11:12,452 - myntra - INFO - Product 17: Men Checkered Shirt... | Price: Rs. 797
+2025-05-26 06:11:12,452 - myntra - INFO - Product 18: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-26 06:11:12,453 - myntra - INFO - Product 19: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-26 06:11:12,454 - myntra - INFO - Product 20: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-26 06:11:12,454 - myntra - INFO - Product 21: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-26 06:11:12,455 - myntra - INFO - Product 22: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-26 06:11:12,455 - myntra - INFO - Product 23: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-26 06:11:12,456 - myntra - INFO - Product 24: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-26 06:11:12,456 - myntra - INFO - Product 25: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-26 06:11:12,457 - myntra - INFO - Product 26: Self Design Casual Shirt... | Price: Rs. 1439
+2025-05-26 06:11:12,457 - myntra - INFO - Product 27: Men Opaque Casual Shirt... | Price: Rs. 1439
+2025-05-26 06:11:12,458 - myntra - INFO - Product 28: Spread Collar Casual Shirt... | Price: Rs. 1319
+2025-05-26 06:11:12,458 - myntra - INFO - Product 29: Men Opaque Casual Shirt... | Price: Rs. 1319
+2025-05-26 06:11:12,459 - myntra - INFO - Product 30: Opaque Casual Shirt... | Price: Rs. 1874
+2025-05-26 06:11:12,461 - myntra - INFO - Product 36: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 06:11:12,461 - myntra - INFO - Product 37: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 06:11:12,462 - myntra - INFO - Product 38: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-26 06:11:12,463 - myntra - INFO - Product 39: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-26 06:11:12,464 - myntra - INFO - Product 40: Men Checkered Shirt... | Price: Rs. 759
+2025-05-26 06:11:12,464 - myntra - INFO - Product 41: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-26 06:11:12,465 - myntra - INFO - Product 42: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-26 06:11:12,466 - myntra - INFO - Product 43: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-26 06:11:12,466 - myntra - INFO - Product 44: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-26 06:11:12,467 - myntra - INFO - Product 45: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-26 06:11:12,467 - myntra - INFO - Product 46: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-26 06:11:12,468 - myntra - INFO - Product 47: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-26 06:11:12,468 - myntra - INFO - Product 48: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-26 06:11:12,469 - myntra - INFO - Product 49: Striped Casual Shirt... | Price: Rs. 740
+2025-05-26 06:11:12,469 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-26 06:11:12,469 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 06:11:12,472 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 06:11:12,473 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 06:11:12] "GET /shop_myntra?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-26 06:11:17,517 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 06:11:17,886 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 06:11:17,888 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 06:11:17,889 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 06:11:17] "GET /shop?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-26 06:15:34,496 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 06:15:34] "OPTIONS /shop?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-26 06:15:34,498 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 06:15:34] "OPTIONS /shop_myntra?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-26 06:15:34,598 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 06:15:34,598 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-26 06:15:34,598 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-26 06:15:34,598 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 06:15:34,599 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 06:15:34,599 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-26 06:15:34,599 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-26 06:15:34,599 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 06:15:35,502 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 06:15:35,502 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 06:15:35,641 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 06:15:35,739 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 06:15:36,604 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 06:15:36,702 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 06:15:36,795 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-26 06:15:37,846 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
