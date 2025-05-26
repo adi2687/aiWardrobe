@@ -415,6 +415,7 @@ const Profile = () => {
         if (data.status === true) {
           showNotification("Personal info updated successfully!");
           changepersonalinfo(false);
+          window.location.reload()
         } else {
           showNotification("Something went wrong while updating info.");
         }
