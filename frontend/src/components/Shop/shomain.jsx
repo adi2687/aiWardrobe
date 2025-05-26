@@ -1,517 +1,435 @@
 import React, { useState, useEffect } from "react";
-import "./Shop.css"; // Import the CSS file
-import { FaHeart, FaSalesforce, FaCheck, FaSearch, FaShoppingBag, FaAmazon, FaTshirt, FaShoppingCart, FaStore } from "react-icons/fa";
+import "./Shop.css";
+import { FaHeart, FaSearch, FaShoppingBag, FaTshirt, FaSpinner, FaSignInAlt, FaUserPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+
 const Shop = () => {
   const navigate = useNavigate();
-  const [shopData, setShopData] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(0);
-
-  const [loading, setLoading] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [userdetails, setuserdetails] = useState({});
-  const backendurl = import.meta.env.VITE_BACKEND_URL;
-  const mlurl = import.meta.env.VITE_ML_URL;
-
-  const fetchuserdetails = () => {
-    fetch(`${backendurl}/user/getuserdetails`, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setuserdetails(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching user data:", error);
-      });
-  };
-
-  const [input, setInput] = useState("");
-  const [amazon, setamazon] = useState(false);
-  const [myntra, setmyntra] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const [amazonData, setAmazonData] = useState([]);
   const [myntraData, setMyntraData] = useState([]);
   const [amazonLoading, setAmazonLoading] = useState(false);
   const [myntraLoading, setMyntraLoading] = useState(false);
   const [visibleAmazonProducts, setVisibleAmazonProducts] = useState(5);
   const [visibleMyntraProducts, setVisibleMyntraProducts] = useState(5);
-  const [loaded, setloaded] = useState(false);
+  const [userDetails, setUserDetails] = useState({});
+  const [adding, setAdding] = useState(false);
+  const [notification, setNotification] = useState({ show: false, message: "", type: "" });
+  
+  // Authentication states
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authChecking, setAuthChecking] = useState(true);
+  
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const mlUrl = import.meta.env.VITE_ML_URL;
 
+  // Check authentication status
   useEffect(() => {
-    fetchuserdetails();
+    checkAuthentication();
   }, []);
 
-  const amazonSearch = (customInput) => {
-    setloaded(true);
-    console.log(userdetails);
-    const searchQuery =
-      customInput ||
-      input ||
-      `Styles for ${
-        userdetails.gender || "male and female which are trending"
-      }`;
-    console.log("search query is ", searchQuery);
-    setAmazonLoading(true);
-    
-    // Use backend proxy to avoid CORS and HTML parsing issues
-    fetch(
-      `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`,
-      {
+  const checkAuthentication = async () => {
+    try {
+      setAuthChecking(true);
+      const response = await fetch(`${backendUrl}/user/getuserdetails`, {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", // Include cookies for authentication
+        credentials: "include",
+      });
+      
+      if (!response.ok) {
+        if (response.status === 401) {
+          setIsAuthenticated(false);
+          return;
+        }
+        throw new Error(`Server responded with status: ${response.status}`);
       }
-    )
-      .then((response) => {
-        // Check if the response is valid before parsing
-        if (!response.ok) {
-          throw new Error(`API responded with status: ${response.status}`);
+      
+      const data = await response.json();
+      setUserDetails(data);
+      setIsAuthenticated(true);
+    } catch (error) {
+      console.error("Error checking authentication:", error);
+      // Only set isAuthenticated to false for 401 responses
+    } finally {
+      setAuthChecking(false);
+    }
+  };
+
+  // Show notification
+  const showNotification = (message, type = "info") => {
+    setNotification({ show: true, message, type });
+    setTimeout(() => {
+      setNotification({ show: false, message: "", type: "" });
+    }, 3000);
+  };
+
+  // Amazon search
+  const amazonSearch = async () => {
+    if (!searchInput.trim()) {
+      showNotification("Please enter a search term", "error");
+      return;
+    }
+
+    try {
+      setAmazonLoading(true);
+      const query = searchInput || `Styles for ${userDetails.gender || "male and female"}`;
+      
+      const response = await fetch(
+        `${backendUrl}/shop/proxy/amazon?query=${encodeURIComponent(query)}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
         }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Amazon data received:", data);
-        
-        // Handle both array and object responses
-        if (Array.isArray(data)) {
-          setAmazonData(data);
-          // setVisibleAmazonProducts(7);
-        } else if (data.error) {
-          console.error("Error from API:", data.error);
-          setAmazonData([]);
-          alert(`Error from Amazon search: ${data.error}`);
-        } else {
-          // If it's an object but not an error, try to use it
-          const products = Object.values(data).filter(item => 
-            typeof item === 'object' && item.name && item.image_url
-          );
-          
-          if (products.length > 0) {
-            setAmazonData(products);
-            // setVisibleAmazonProducts(7);
-          } else {
-            console.error("Unexpected data format:", data);
-            setAmazonData([]);
-          }
-        }
-        setAmazonLoading(false);
-        setloaded(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching Amazon data:", error);
+      );
+
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      if (Array.isArray(data)) {
+        setAmazonData(data);
+      } else if (data.error) {
+        console.error("Error from API:", data.error);
         setAmazonData([]);
-        setAmazonLoading(false);
-        setloaded(false);
-        alert("Unable to connect to Amazon search service. Please try again later.");
-      });
+        showNotification(`Error from Amazon search: ${data.error}`, "error");
+      } else {
+        // If it's an object but not an error, try to use it
+        const products = Object.values(data).filter(item => 
+          typeof item === 'object' && item.name && item.image_url
+        );
+        
+        if (products.length > 0) {
+          setAmazonData(products);
+        } else {
+          console.error("Unexpected data format:", data);
+          setAmazonData([]);
+          showNotification("Received unexpected data format", "error");
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching Amazon data:", error);
+      setAmazonData([]);
+      showNotification("Unable to connect to Amazon search service", "error");
+    } finally {
+      setAmazonLoading(false);
+    }
   };
 
-  const myntraSearch = (customInput) => {
+  // Myntra search
+  const myntraSearch = async () => {
+    if (!searchInput.trim()) {
+      showNotification("Please enter a search term", "error");
+      return;
+    }
 
-    setloaded(true);
-    const searchQuery =
-      customInput ||
-      input ||
-      `Styles for ${userdetails.gender || "male and female"}`;
+    try {
+      setMyntraLoading(true);
+      const query = searchInput || `Styles for ${userDetails.gender || "male and female"}`;
+      
+      const response = await fetch(
+        `${backendUrl}/shop/proxy/myntra?query=${encodeURIComponent(query)}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
 
-      console.log(`${mlurl}/shop_myntra?query=${encodeURIComponent(searchQuery)}`)
-    setMyntraLoading(true);
-    // Use backend proxy to avoid CORS and HTML parsing issues
-    fetch(
-      `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(
-        searchQuery
-      )}`,
-      {
-        method: "GET",
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      if (Array.isArray(data)) {
+        setMyntraData(data);
+      } else if (data.error) {
+        console.error("Error from API:", data.error);
+        setMyntraData([]);
+        showNotification(`Error from Myntra search: ${data.error}`, "error");
+      } else {
+        // If it's an object but not an error, try to use it
+        const products = Object.values(data).filter(item => 
+          typeof item === 'object' && item.name && item.image_url
+        );
+        
+        if (products.length > 0) {
+          setMyntraData(products);
+        } else {
+          console.error("Unexpected data format:", data);
+          setMyntraData([]);
+          showNotification("Received unexpected data format", "error");
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching Myntra data:", error);
+      setMyntraData([]);
+      showNotification("Unable to connect to Myntra search service", "error");
+    } finally {
+      setMyntraLoading(false);
+    }
+  };
+
+  // Add to wishlist
+  const addToWishlist = async (item) => {
+    if (!isAuthenticated) {
+      showNotification("Please log in to add items to your wishlist", "error");
+      return;
+    }
+
+    try {
+      setAdding(true);
+      const response = await fetch(`${backendUrl}/shop/addtowishlist`, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies for authentication
+        credentials: "include",
+        body: JSON.stringify(item),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`);
       }
-    )
-      .then((response) => {
-        // Check if the response is valid before parsing
-        if (!response.ok) {
-          throw new Error(`API responded with status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Myntra data received:", data);
-        
-        // Handle both array and object responses
-        if (Array.isArray(data)) {
-          setMyntraData(data);
-          setVisibleMyntraProducts(5);
-        } else if (data.error) {
-          console.error("Error from API:", data.error);
-          setMyntraData([]);
-          alert(`Error from Myntra search: ${data.error}`);
-        } else {
-          // If it's an object but not an error, try to use it
-          const products = Object.values(data).filter(item => 
-            typeof item === 'object' && item.name && item.image_url
-          );
-          
-          if (products.length > 0) {
-            setMyntraData(products);
-            setVisibleMyntraProducts(5);
-          } else {
-            console.error("Unexpected data format:", data);
-            setMyntraData([]);
-          }
-        }
-        setMyntraLoading(false);
-        setloaded(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching Myntra data:", error);
-        setMyntraData([]);
-        setMyntraLoading(false);
-        setloaded(false);
-        alert("Unable to connect to Myntra search service. Please try again later.");
-      });
-  };
-const [adding,setadding]=useState(false);
-  const addtowishlist = (item) => {
-    console.log("Wishlist item:", item);
 
-    setadding(true);
-    fetch(`${backendurl}/shop/addtowishlist`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(item),
-      credentials: "include", // Make sure your backend supports cookies
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Server response:", data);
-
-        if (data.status) {
-          alert("Item added to wishlist!");
-          setadding(false);
-        } else if (data.msg === "Already in wishlist") {
-          alert("This item is already in your wishlist.");
-          setadding(false);
-        } else {
-          alert("Failed to add item. Try again.");
-          setadding(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error adding to wishlist:", error);
-        alert("Server error. Please try again later.");
-        setadding(false);
-      });
-
+      const data = await response.json();
+      
+      if (data.status) {
+        showNotification("Item added to wishlist", "success");
+      } else {
+        showNotification("Failed to add item to wishlist", "error");
+      }
+    } catch (error) {
+      console.error("Error adding to wishlist:", error);
+      showNotification("Error adding to wishlist", "error");
+    } finally {
+      setAdding(false);
+    }
   };
 
-  const [usercloths, setuserclothes] = useState("");
-  const userclothes = () => {
-    fetch(`${backendurl}/user/images`, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.Wardrobe.allclothes[0]);
-        setuserclothes(data.Wardrobe.allclothes[0]);
-      })
-      .catch((error) => {
-        console.error("Error fetching user clothes:", error);
-      });
-  };
-
-  const [shoppingsuggestionsmain, setshoppingsuggestions] = useState([]);
-
-  const shoppingsuggestions = () => {
-    setloaded(true);
-    fetch(`${backendurl}/chat/getshoppingsuggestions`, {
-      method: "POST",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const suggestion = data.suggestion;
-        const cloths = [];
-        let item = "";
-
-        for (let i = 0; i < suggestion.length; i++) {
-          if (suggestion[i] === "*") {
-            if (item.trim()) {
-              cloths.push(item.trim());
-              item = "";
-            }
-          } else {
-            item += suggestion[i];
-          }
-        }
-        setloaded(false);
-        console.log("clothssuggestion array", cloths);
-        setshoppingsuggestions(cloths);
-      })
-      .catch((error) => {
-        console.error("Error fetching shopping suggestions:", error);
-      });
+  // Get AI recommendations
+  const getAIRecommendations = async () => {
+    try {
+      showNotification("Getting AI recommendations...", "info");
+      // Implement AI recommendations logic here
+      // This would typically call an endpoint that returns personalized recommendations
+    } catch (error) {
+      console.error("Error getting AI recommendations:", error);
+      showNotification("Error getting AI recommendations", "error");
+    }
   };
 
   return (
     <div className="shop-container">
-      <h2 className="shop-title">Personalized Shopping based on your clothes, age and preferences</h2>
-
-      <div className="search-section">
-        <div className="search-input-container">
-          <input
-            type="text"
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Enter the clothes you want to search for..."
-            className="shop-search-input"
-          />
+      {/* Notification */}
+      {notification.show && (
+        <div className={`notification ${notification.type}`}>
+          {notification.message}
         </div>
-        
-        <div className="button-container">
-          {/* <button
-            onClick={() => {
-              amazonSearch(input);
-            }}
-            className="shop-search-button"
-          >
-            <FaAmazon style={{ marginRight: '8px' }} /> Search Amazon
-          </button>
+      )}
 
-          <button
-            onClick={() => myntraSearch(input)}
-            className="shop-search-button"
-          >
-            <FaStore style={{ marginRight: '8px' }} /> Search Myntra
-          </button> */}
-          
-          <button
-            className="searchonboth"
-            onClick={() => {
-              amazonSearch(input);
-              myntraSearch(input);
-            }}
-          >
-            <FaShoppingBag style={{ marginRight: '8px' }} /> Search on Amazon and Myntra
-          </button>
-          
-          <button
-            className="getairecommendations"
-            onClick={() => {
-              fetchuserdetails();
-              shoppingsuggestions();
-              userclothes();
-            }}
-          >
-            <FaTshirt style={{ marginRight: '8px' }} /> Get AI Recommendations
-          </button>
+      {/* Authentication Check */}
+      {authChecking ? (
+        <div className="loading">
+          <FaSpinner className="spinner" />
+          <p className="loading-message">Checking authentication status...</p>
         </div>
-        <button 
-          className="view-wishlist-button"
-          onClick={()=>navigate("/wishlist")}
-        >
-          <FaHeart style={{ marginRight: '8px' }} /> View Your Wishlist
-        </button>
-      </div>
-
-      <div className="loading">
-        {loaded ? (
-          <div className="loader-wrapper">
-            <div className="loader"></div>
+      ) : !isAuthenticated ? (
+        <div className="auth-required">
+          <h2>Authentication Required</h2>
+          <p>Please log in to access the shopping features and get personalized recommendations.</p>
+          <div className="auth-buttons">
+            <button className="login-button" onClick={() => navigate("/login")}>
+              <FaSignInAlt /> Log In
+            </button>
+            <button className="signup-button" onClick={() => navigate("/signup")}>
+              <FaUserPlus /> Sign Up
+            </button>
           </div>
-        ) : (
-          <div>
-            <h3 className="loading-message">
-              Discover the perfect product or let AI inspire your next outfit choice!
-            </h3>
-            {(!amazonData.length && !myntraData.length) && (
-              <div className="connection-status">
-                <p>We're now using a backend proxy to communicate with the ML service.</p>
-                
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-
-      <div className="suggestion-container">
-        {shoppingsuggestionsmain.length > 0 ? (
-          <div className="pill-wrapper">
-            <div>
-              <h2>
-                AI suggestions for your clothes based on your wardrobe, age, and
-                preferences.
-              </h2>
-              <h4>
-                Click on any button to get search results from Amazon and
-                Myntra.
-              </h4>
-            </div>
-            <div className="suggestion-pill-container">
-              {shoppingsuggestionsmain.map((ele, i) => (
-                <button
-                  key={i}
-                  className="suggestion-pill"
-                  onClick={() => {
-                    setInput(ele);
-                    amazonSearch(ele);
-                    myntraSearch(ele);
-                  }}
-                >
-                  {ele}
-                </button>
-              ))}
+        </div>
+      ) : (
+        <>
+          {/* Shop Content */}
+          <div className="shop-header">
+            <h1>Shop</h1>
+            <p className="shop-subtitle">Discover the perfect product or let AI inspire your next outfit choice!</p>
+            
+            <div className="info-message">
+              <p>We're now using a backend proxy to communicate with the ML service.</p>
             </div>
           </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
 
-      {/* Amazon Results Section */}
-      <div className="search-results-container">
-        {/* Amazon Results Section */}
-        {amazonData.length > 0 && (
-          <div className="amazon-results">
-            {input ? (
-              <h2>Amazon Search Results for "{input}"</h2>
-            ) : (
-              <h2>
-                Amazon Search Results for styles for{" "}
-                <b>{userdetails.gender} </b>
-              </h2>
-            )}
+          {/* Search Section */}
+          <div className="search-section">
+            <div className="search-input-container">
+              <input
+                type="text"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                placeholder="Enter the clothes you want to search for..."
+                className="search-input"
+              />
+            </div>
+            
+            <div className="search-buttons">
+              <button
+                className="search-button"
+                onClick={() => {
+                  amazonSearch();
+                  myntraSearch();
+                }}
+              >
+                <FaSearch /> Search on Amazon and Myntra
+              </button>
+              
+              <button
+                className="ai-recommendation-button"
+                onClick={getAIRecommendations}
+              >
+                <FaTshirt /> Get AI Recommendations
+              </button>
+            </div>
+            
+            <button
+              className="wishlist-button"
+              onClick={() => navigate("/wishlist")}
+            >
+              <FaHeart /> View Your Wishlist
+            </button>
+          </div>
+
+          {/* Results Section */}
+          <div className="results-container">
+            {/* Amazon Results */}
             {amazonLoading ? (
-              <p>Loading Amazon products...</p>
-            ) : (
-              <>
-                <div className="shop-products-grid">
-                  {amazonData
-                    .slice(0, visibleAmazonProducts)
-                    .map((item, index) => (
-                      <div key={index} className="shop-product-card">
-                        <img
-                          src={item.image_url}
-                          alt={item.name}
-                          className="shop-product-image"
-                        />
-                        <h3 className="shop-product-name">
-                          {item.name === "/" ? "Amazon Product" : item.name}
-                        </h3>
-                        <p className="shop-product-price">{item.price}</p>
-                        <div className="product-actions">
-                          <a
-                            href={item.product_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="shop-buy-button"
-                          >
-                            <FaShoppingBag style={{ marginRight: '5px' }} /> Buy Now
-                          </a>
-                          <button
-                            className={`addtowishlist ${adding ? 'loading' : ''}`}
-                            onClick={() => addtowishlist(item)}
-                            aria-label="Add to wishlist"
-                            disabled={adding}
-                          >
-                            <FaHeart /> {adding ? "Adding..." : "Add to wishlist"}
-                          </button>
-                        </div>
+              <div className="loading">
+                <FaSpinner className="spinner" />
+                <p className="loading-message">Searching Amazon products...</p>
+              </div>
+            ) : amazonData.length > 0 ? (
+              <div className="amazon-results">
+                <h2 className="results-header">
+                  Amazon Results for "{searchInput || "Recommended Items"}"
+                </h2>
+                
+                <div className="products-grid">
+                  {amazonData.slice(0, visibleAmazonProducts).map((item, index) => (
+                    <div key={`amazon-${index}`} className="shop-product-card">
+                      <img
+                        src={item.image_url}
+                        alt={item.name}
+                        className="shop-product-image"
+                      />
+                      <h3 className="shop-product-name">{item.name}</h3>
+                      <p className="shop-product-price">{item.price}</p>
+                      
+                      <div className="product-actions">
+                        <a
+                          href={item.product_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shop-buy-button"
+                        >
+                          <FaShoppingBag /> Buy Now
+                        </a>
+                        
+                        <button
+                          className={`add-to-wishlist ${adding ? 'loading' : ''}`}
+                          onClick={() => addToWishlist(item)}
+                          disabled={adding}
+                        >
+                          <FaHeart /> {adding ? "Adding..." : "Add to wishlist"}
+                        </button>
                       </div>
-                    ))}
+                    </div>
+                  ))}
                 </div>
+                
                 {visibleAmazonProducts < amazonData.length && (
                   <button
                     className="load-more"
-                    onClick={() =>
-                      setVisibleAmazonProducts(visibleAmazonProducts + 10)
-                    }
+                    onClick={() => setVisibleAmazonProducts(visibleAmazonProducts + 5)}
                   >
                     Load More
                   </button>
                 )}
-              </>
-            )}
-          </div>
-        )}
+              </div>
+            ) : null}
 
-        {/* Myntra Results Section */}
-        {myntraData.length > 0 && (
-          <div className="myntra-results">
-            {input ? (
-              <h2 className="myntra-results-header">
-                Myntra Results for "{input}"
-              </h2>
-            ) : userdetails.gender ? (
-              <h2 className="myntra-results-header">
-                Myntra Results for {userdetails.gender}'s styles
-              </h2>
-            ) : (
-              <h2 className="myntra-results-header">Myntra Results</h2>
-            )}
-
+            {/* Myntra Results */}
             {myntraLoading ? (
-              <p>Loading Myntra products...</p>
-            ) : (
-              <>
-                <div className="shop-products-grid">
-                  {myntraData
-                    .slice(0, visibleMyntraProducts)
-                    .map((item, index) => (
-                      <div key={index} className="shop-product-card">
-                        <img
-                          src={item.image_url}
-                          alt={item.name}
-                          className="shop-product-image"
-                        />
-                        <h3 className="shop-product-name">{item.name}</h3>
-                        <p className="shop-product-price">{item.price}</p>
-                        <div className="product-actions">
-                          <a
-                            href={item.product_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="shop-buy-button"
-                          >
-                            <FaShoppingBag style={{ marginRight: '5px' }} /> Buy Now
-                          </a>
-                          <button
-                            className={`addtowishlist ${adding ? 'loading' : ''}`}
-                            onClick={() => addtowishlist(item)}
-                            aria-label="Add to wishlist"
-                            disabled={adding}
-                          >
-                            <FaHeart /> {adding ? "Adding..." : "Add to wishlist"}
-                          </button>
-                        </div>
+              <div className="loading">
+                <FaSpinner className="spinner" />
+                <p className="loading-message">Searching Myntra products...</p>
+              </div>
+            ) : myntraData.length > 0 ? (
+              <div className="myntra-results">
+                <h2 className="results-header">
+                  Myntra Results for "{searchInput || "Recommended Items"}"
+                </h2>
+                
+                <div className="products-grid">
+                  {myntraData.slice(0, visibleMyntraProducts).map((item, index) => (
+                    <div key={`myntra-${index}`} className="shop-product-card">
+                      <img
+                        src={item.image_url}
+                        alt={item.name}
+                        className="shop-product-image"
+                      />
+                      <h3 className="shop-product-name">{item.name}</h3>
+                      <p className="shop-product-price">{item.price}</p>
+                      
+                      <div className="product-actions">
+                        <a
+                          href={item.product_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shop-buy-button"
+                        >
+                          <FaShoppingBag /> Buy Now
+                        </a>
+                        
+                        <button
+                          className={`add-to-wishlist ${adding ? 'loading' : ''}`}
+                          onClick={() => addToWishlist(item)}
+                          disabled={adding}
+                        >
+                          <FaHeart /> {adding ? "Adding..." : "Add to wishlist"}
+                        </button>
                       </div>
-                    ))}
+                    </div>
+                  ))}
                 </div>
+                
                 {visibleMyntraProducts < myntraData.length && (
                   <button
                     className="load-more"
-                    onClick={() =>
-                      setVisibleMyntraProducts(visibleMyntraProducts + 10)
-                    }
+                    onClick={() => setVisibleMyntraProducts(visibleMyntraProducts + 5)}
                   >
                     Load More
                   </button>
                 )}
-              </>
+              </div>
+            ) : null}
+
+            {/* Empty State */}
+            {!amazonLoading && !myntraLoading && amazonData.length === 0 && myntraData.length === 0 && (
+              <div className="empty-results">
+                <p>Search for clothes to see results from Amazon and Myntra</p>
+              </div>
             )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 };
 
-
-export default Shop
+export default Shop;

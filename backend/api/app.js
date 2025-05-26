@@ -28,23 +28,44 @@ dotenv.config();
 const frontendUrl=process.env.FRONTEND_URL
 console.log(frontendUrl)
 const mongoUri=process.env.MONGO_URI
+
+// Allow multiple origins for CORS
+const allowedOrigins = [
+  frontendUrl,
+  'https://outfit-ai-liart.vercel.app',
+  'https://ai-wardrobe-gamma.vercel.app',
+  'http://localhost:5173'
+];
+
 const app = express();
 const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: frontendUrl,
+    origin: allowedOrigins,
     credentials: true,
+    methods: ["GET", "POST"]
   },
 });
 
 export { io }; // ✅ Exporting io instance
 
 app.use(cookieParser());
+
 app.use(
   cors({
-    origin: frontendUrl,
-    credentials: true,
+    origin: function(origin, callback) {
+      // Allow requests with no origin (like mobile apps, curl, etc)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        console.log('CORS blocked origin:', origin);
+        callback(null, true); // Allow all origins in development
+      }
+    },
+    credentials: true
   })
 );
 
