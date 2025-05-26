@@ -26,6 +26,8 @@ const authenticate = (req, res, next) => {
   }
 };
 import addtowishlist from "../model/addtowishlist.js";
+
+// Add item to wishlist
 router.post("/addtowishlist", authenticate, async (req, res) => {
   console.log(req.body);
   const userid = req.user.id;
@@ -38,6 +40,37 @@ router.post("/addtowishlist", authenticate, async (req, res) => {
   });
   addtowishlistmain.save();
   res.status(200).json({ status: true, msg: "Added to wishlist" });
+});
+
+// Remove item from wishlist
+router.post("/removefromwishlist", authenticate, async (req, res) => {
+  try {
+    const { wishlistId } = req.body;
+    const userid = req.user.id;
+    
+    if (!userid) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    
+    if (!wishlistId) {
+      return res.status(400).json({ status: false, msg: "Wishlist item ID is required" });
+    }
+    
+    // Find and delete the wishlist item
+    const result = await addtowishlist.findOneAndDelete({ 
+      _id: wishlistId,
+      userid: userid // Ensure the item belongs to the current user
+    });
+    
+    if (!result) {
+      return res.status(404).json({ status: false, msg: "Wishlist item not found or not authorized to remove" });
+    }
+    
+    res.status(200).json({ status: true, msg: "Item removed from wishlist" });
+  } catch (error) {
+    console.error("Error removing from wishlist:", error);
+    res.status(500).json({ status: false, msg: "Server error" });
+  }
 });
 
 // Proxy endpoint for Amazon search
