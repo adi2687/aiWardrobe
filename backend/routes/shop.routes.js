@@ -75,9 +75,22 @@ router.post("/removefromwishlist", authenticate, async (req, res) => {
 
 // Proxy endpoint for Amazon search
 router.get("/proxy/amazon", async (req, res) => {
-  // Add CORS headers - use specific origin when credentials are included
+  // Add CORS headers - allow requests from all frontend domains
   const origin = req.headers.origin;
-  res.header('Access-Control-Allow-Origin', origin || 'http://localhost:5173');
+  // List of allowed origins
+  const allowedOrigins = [
+    'https://outfit-ai-liart.vercel.app',
+    'https://outfit-ai.vercel.app',
+    'https://ai-wardrobe.vercel.app',
+    'http://localhost:5173'
+  ];
+  
+  // Set appropriate CORS headers
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  } else {
+    res.header('Access-Control-Allow-Origin', 'https://outfit-ai-liart.vercel.app');
+  }
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -91,6 +104,7 @@ router.get("/proxy/amazon", async (req, res) => {
     console.log(`Proxying Amazon search request for query: ${query}`);
     
     // Make request to ML service
+    console.log(`Making request to: ${ML_SERVICE_URL}/shop?query=${query}`);
     const response = await axios.get(`${ML_SERVICE_URL}/shop`, {
       params: { query },
       timeout: 30000 // 30 second timeout
@@ -121,9 +135,22 @@ router.get("/proxy/amazon", async (req, res) => {
 
 // Proxy endpoint for Myntra search
 router.get("/proxy/myntra", async (req, res) => {
-  // Add CORS headers - use specific origin when credentials are included
+  // Add CORS headers - allow requests from all frontend domains
   const origin = req.headers.origin;
-  res.header('Access-Control-Allow-Origin', origin || 'http://localhost:5173');
+  // List of allowed origins
+  const allowedOrigins = [
+    'https://outfit-ai-liart.vercel.app',
+    'https://outfit-ai.vercel.app',
+    'https://ai-wardrobe.vercel.app',
+    'http://localhost:5173'
+  ];
+  
+  // Set appropriate CORS headers
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  } else {
+    res.header('Access-Control-Allow-Origin', 'https://outfit-ai-liart.vercel.app');
+  }
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -137,6 +164,7 @@ router.get("/proxy/myntra", async (req, res) => {
     console.log(`Proxying Myntra search request for query: ${query}`);
     
     // Make request to ML service
+    console.log(`Making request to: ${ML_SERVICE_URL}/shop_myntra?query=${query}`);
     const response = await axios.get(`${ML_SERVICE_URL}/shop_myntra`, {
       params: { query },
       timeout: 30000 // 30 second timeout
