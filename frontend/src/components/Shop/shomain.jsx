@@ -234,30 +234,58 @@ const [adding,setadding]=useState(false);
     setloaded(true);
     fetch(`${backendurl}/chat/getshoppingsuggestions`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       credentials: "include",
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
-        const suggestion = data.suggestion;
-        const cloths = [];
-        let item = "";
+        console.log("AI recommendations data:", data);
+        if (data && data.suggestion) {
+          const suggestion = data.suggestion;
+          const cloths = [];
+          let item = "";
 
-        for (let i = 0; i < suggestion.length; i++) {
-          if (suggestion[i] === "*") {
+          // Add the last item if there's no trailing asterisk
+          if (suggestion.indexOf('*') === -1) {
+            cloths.push(suggestion.trim());
+          } else {
+            // Parse the asterisk-separated list
+            for (let i = 0; i < suggestion.length; i++) {
+              if (suggestion[i] === "*") {
+                if (item.trim()) {
+                  cloths.push(item.trim());
+                  item = "";
+                }
+              } else {
+                item += suggestion[i];
+              }
+            }
+            // Add the last item if it wasn't followed by an asterisk
             if (item.trim()) {
               cloths.push(item.trim());
-              item = "";
             }
-          } else {
-            item += suggestion[i];
           }
+          
+          console.log("AI suggestion array:", cloths);
+          setshoppingsuggestions(cloths);
+        } else {
+          console.error("Invalid response format:", data);
+          alert("Could not get AI recommendations. Please try again.");
         }
         setloaded(false);
-        console.log("clothssuggestion array", cloths);
-        setshoppingsuggestions(cloths);
       })
       .catch((error) => {
         console.error("Error fetching shopping suggestions:", error);
+        alert("Error getting AI recommendations: " + error.message);
+        setloaded(false);
+        setshoppingsuggestions([]);
       });
   };
 
