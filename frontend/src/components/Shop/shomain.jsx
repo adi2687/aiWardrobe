@@ -74,47 +74,76 @@ const Shop = () => {
       setAmazonLoading(true);
       const query = searchInput || `Styles for ${userDetails.gender || "male and female"}`;
       
-      const response = await fetch(
-        `${backendUrl}/shop/proxy/amazon?query=${encodeURIComponent(query)}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`API responded with status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      
-      if (Array.isArray(data)) {
-        setAmazonData(data);
-      } else if (data.error) {
-        console.error("Error from API:", data.error);
-        setAmazonData([]);
-        showNotification(`Error from Amazon search: ${data.error}`, "error");
-      } else {
-        // If it's an object but not an error, try to use it
-        const products = Object.values(data).filter(item => 
-          typeof item === 'object' && item.name && item.image_url
+      // Try with the backend proxy first
+      try {
+        const response = await fetch(
+          `${backendUrl}/shop/proxy/amazon?query=${encodeURIComponent(query)}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
         );
+
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+
+        const data = await response.json();
         
-        if (products.length > 0) {
-          setAmazonData(products);
+        if (Array.isArray(data)) {
+          setAmazonData(data);
+          return;
+        } else if (data.error) {
+          console.error("Error from API:", data.error);
+          throw new Error(data.error);
         } else {
-          console.error("Unexpected data format:", data);
-          setAmazonData([]);
-          showNotification("Received unexpected data format", "error");
+          // If it's an object but not an error, try to use it
+          const products = Object.values(data).filter(item => 
+            typeof item === 'object' && item.name && item.image_url
+          );
+          
+          if (products.length > 0) {
+            setAmazonData(products);
+            return;
+          } else {
+            console.error("Unexpected data format:", data);
+            throw new Error("Received unexpected data format");
+          }
+        }
+      } catch (proxyError) {
+        console.warn("Backend proxy failed, trying direct ML service:", proxyError);
+        
+        // If backend proxy fails (likely due to CORS), try direct ML service as fallback
+        // This will only work in development or if ML service has proper CORS headers
+        const mlResponse = await fetch(
+          `${mlUrl}/shop?query=${encodeURIComponent(query)}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!mlResponse.ok) {
+          throw new Error(`ML service responded with status: ${mlResponse.status}`);
+        }
+
+        const mlData = await mlResponse.json();
+        
+        if (Array.isArray(mlData)) {
+          setAmazonData(mlData);
+        } else {
+          throw new Error("Unexpected data format from ML service");
         }
       }
     } catch (error) {
       console.error("Error fetching Amazon data:", error);
       setAmazonData([]);
-      showNotification("Unable to connect to Amazon search service", "error");
+      showNotification(`Unable to fetch Amazon products: ${error.message}`, "error");
     } finally {
       setAmazonLoading(false);
     }
@@ -131,47 +160,76 @@ const Shop = () => {
       setMyntraLoading(true);
       const query = searchInput || `Styles for ${userDetails.gender || "male and female"}`;
       
-      const response = await fetch(
-        `${backendUrl}/shop/proxy/myntra?query=${encodeURIComponent(query)}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`API responded with status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      
-      if (Array.isArray(data)) {
-        setMyntraData(data);
-      } else if (data.error) {
-        console.error("Error from API:", data.error);
-        setMyntraData([]);
-        showNotification(`Error from Myntra search: ${data.error}`, "error");
-      } else {
-        // If it's an object but not an error, try to use it
-        const products = Object.values(data).filter(item => 
-          typeof item === 'object' && item.name && item.image_url
+      // Try with the backend proxy first
+      try {
+        const response = await fetch(
+          `${backendUrl}/shop/proxy/myntra?query=${encodeURIComponent(query)}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
         );
+
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+
+        const data = await response.json();
         
-        if (products.length > 0) {
-          setMyntraData(products);
+        if (Array.isArray(data)) {
+          setMyntraData(data);
+          return;
+        } else if (data.error) {
+          console.error("Error from API:", data.error);
+          throw new Error(data.error);
         } else {
-          console.error("Unexpected data format:", data);
-          setMyntraData([]);
-          showNotification("Received unexpected data format", "error");
+          // If it's an object but not an error, try to use it
+          const products = Object.values(data).filter(item => 
+            typeof item === 'object' && item.name && item.image_url
+          );
+          
+          if (products.length > 0) {
+            setMyntraData(products);
+            return;
+          } else {
+            console.error("Unexpected data format:", data);
+            throw new Error("Received unexpected data format");
+          }
+        }
+      } catch (proxyError) {
+        console.warn("Backend proxy failed, trying direct ML service:", proxyError);
+        
+        // If backend proxy fails (likely due to CORS), try direct ML service as fallback
+        // This will only work in development or if ML service has proper CORS headers
+        const mlResponse = await fetch(
+          `${mlUrl}/myntra?query=${encodeURIComponent(query)}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!mlResponse.ok) {
+          throw new Error(`ML service responded with status: ${mlResponse.status}`);
+        }
+
+        const mlData = await mlResponse.json();
+        
+        if (Array.isArray(mlData)) {
+          setMyntraData(mlData);
+        } else {
+          throw new Error("Unexpected data format from ML service");
         }
       }
     } catch (error) {
       console.error("Error fetching Myntra data:", error);
       setMyntraData([]);
-      showNotification("Unable to connect to Myntra search service", "error");
+      showNotification(`Unable to fetch Myntra products: ${error.message}`, "error");
     } finally {
       setMyntraLoading(false);
     }

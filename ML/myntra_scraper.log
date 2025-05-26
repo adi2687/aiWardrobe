@@ -3240,3 +3240,468 @@
 2025-05-26 07:00:15,986 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
 2025-05-26 07:00:15,987 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
 2025-05-26 07:00:15,987 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:02:07,821 - myntra - INFO - Scraping Myntra for query: ehite shirt
+2025-05-26 07:02:10,403 - myntra - INFO - Opening URL: https://www.myntra.com/ehite+shirt?rawQuery=ehite+shirt&sort=popularity
+2025-05-26 07:02:16,027 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:02:16,028 - myntra - INFO - Product 1: Pure Cotton Formal Shirt... | Price: Rs. 1679
+2025-05-26 07:02:16,029 - myntra - INFO - Product 2: Textured Cotton Formal Shirt... | Price: Rs. 1539
+2025-05-26 07:02:16,030 - myntra - INFO - Product 3: Men Cotton Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,030 - myntra - INFO - Product 4: Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,031 - myntra - INFO - Product 5: Pure Cotton Formal Shirt... | Price: Rs. 2249
+2025-05-26 07:02:16,031 - myntra - INFO - Product 6: Pure Cotton Formal Shirt... | Price: Rs. 2249
+2025-05-26 07:02:16,032 - myntra - INFO - Product 7: Slim Fit Cotton Formal Shirt... | Price: Rs. 1249
+2025-05-26 07:02:16,032 - myntra - INFO - Product 8: Textured Slim Fit Formal Shirt... | Price: Rs. 1874
+2025-05-26 07:02:16,032 - myntra - INFO - Product 9: Spread Collar Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:02:16,033 - myntra - INFO - Product 10: Men Solid Formal Shirt... | Price: Rs. 2999
+2025-05-26 07:02:16,034 - myntra - INFO - Product 11: Men Self Design Formal Shirt... | Price: Rs. 2999
+2025-05-26 07:02:16,034 - myntra - INFO - Product 12: Slim Fit Opaque Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,035 - myntra - INFO - Product 13: Slim Fit Opaque Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,036 - myntra - INFO - Product 14: Opaque Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,036 - myntra - INFO - Product 15: Men Striped Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,037 - myntra - INFO - Product 16: Cotton Opaque Formal Shirt... | Price: Rs. 2249
+2025-05-26 07:02:16,038 - myntra - INFO - Product 17: Slim Fit Cotton Formal Shirt... | Price: Rs. 2249
+2025-05-26 07:02:16,038 - myntra - INFO - Product 18: Spread Collar Formal Shirt... | Price: Rs. 2099
+2025-05-26 07:02:16,038 - myntra - INFO - Product 19: Pure Cotton Formal Shirt... | Price: Rs. 2249
+2025-05-26 07:02:16,039 - myntra - INFO - Product 20: Opaque Formal Shirt... | Price: Rs. 1874
+2025-05-26 07:02:16,049 - myntra - INFO - Product 21: Pure Cotton Formal Shirt... | Price: Rs. 1874
+2025-05-26 07:02:16,062 - myntra - INFO - Product 22: Men Printed Formal Shirt... | Price: Rs. 1874
+2025-05-26 07:02:16,064 - myntra - INFO - Product 23: Spread Collar Formal Shirt... | Price: Rs. 1874
+2025-05-26 07:02:16,066 - myntra - INFO - Product 24: Slim Fit Pure Cotton Shirt... | Price: Rs. 1874
+2025-05-26 07:02:16,066 - myntra - INFO - Product 25: Slim Fit Cotton Formal Shirt... | Price: Rs. 1874
+2025-05-26 07:02:16,071 - myntra - INFO - Product 31: Men Self Design Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,072 - myntra - INFO - Product 32: Opaque Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,073 - myntra - INFO - Product 33: Slim Fit Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,075 - myntra - INFO - Product 34: Pure Cotton Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,076 - myntra - INFO - Product 35: Slim Fit Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,077 - myntra - INFO - Product 36: Slim Fit Cotton Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,078 - myntra - INFO - Product 37: Slim Fit Opaque Formal Shirt... | Price: Rs. 2249
+2025-05-26 07:02:16,079 - myntra - INFO - Product 38: Pure Cotton Formal Shirt... | Price: Rs. 2099
+2025-05-26 07:02:16,079 - myntra - INFO - Product 39: Vertical Stripes Casual Shirt... | Price: Rs. 2099
+2025-05-26 07:02:16,080 - myntra - INFO - Product 40: Slim Fit Opaque Formal Shirt... | Price: Rs. 1874
+2025-05-26 07:02:16,080 - myntra - INFO - Product 41: Opaque Formal Shirt... | Price: Rs. 2999
+2025-05-26 07:02:16,083 - myntra - INFO - Product 42: Formal Shirt... | Price: Rs. 2999
+2025-05-26 07:02:16,085 - myntra - INFO - Product 43: Pure Cotton Formal Shirt... | Price: Rs. 2999
+2025-05-26 07:02:16,086 - myntra - INFO - Product 44: Men Cotton Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,088 - myntra - INFO - Product 45: Opaque Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,090 - myntra - INFO - Product 46: Men Striped Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,091 - myntra - INFO - Product 47: Slim Fit Checked Formal Shirt... | Price: Rs. 2799
+2025-05-26 07:02:16,093 - myntra - INFO - Product 48: Slim Fit Opaque Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,094 - myntra - INFO - Product 49: Slim Fit Opaque Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,095 - myntra - INFO - Product 50: Opaque Formal Shirt... | Price: Rs. 2499
+2025-05-26 07:02:16,096 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:02:36,895 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-26 07:02:39,816 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-26 07:02:47,653 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:02:47,654 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:02:47,655 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:02:47,656 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:02:47,657 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:02:47,657 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:02:47,658 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:02:47,659 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:02:47,659 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:02:47,660 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:02:47,660 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:02:47,661 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:02:47,661 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:02:47,662 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:02:47,662 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:02:47,662 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:02:47,663 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:02:47,664 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:02:47,665 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:02:47,665 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:02:47,666 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:02:47,667 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:02:47,667 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:02:47,667 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:02:47,667 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:02:47,669 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:02:47,672 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:02:47,673 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:02:47,673 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:02:47,674 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:02:47,674 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:02:47,675 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:02:47,675 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:02:47,676 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:02:47,676 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:02:47,677 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:02:47,677 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:02:47,678 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:02:47,679 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:02:47,679 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:02:47,681 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:02:47,681 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:02:59,276 - myntra - INFO - Scraping Myntra for query: white t shirt
+2025-05-26 07:03:01,876 - myntra - INFO - Opening URL: https://www.myntra.com/white+t+shirt?rawQuery=white+t+shirt&sort=popularity
+2025-05-26 07:03:09,429 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:03:09,438 - myntra - INFO - Product 1: Men Pack Of 3 T-Shirts... | Price: Rs. 1199
+2025-05-26 07:03:09,447 - myntra - INFO - Product 2: Men Printed Polo T-shirt... | Price: Rs. 679
+2025-05-26 07:03:09,456 - myntra - INFO - Product 3: Polo Collar Slim Fit T-shirt... | Price: Rs. 991
+2025-05-26 07:03:09,465 - myntra - INFO - Product 4: Polo Collar Slim Fit T-shirt... | Price: Rs. 1184
+2025-05-26 07:03:09,473 - myntra - INFO - Product 5: Cotton Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 07:03:09,483 - myntra - INFO - Product 6: Polo Collar T-shirt... | Price: Rs. 979
+2025-05-26 07:03:09,489 - myntra - INFO - Product 7: Men Polo Collar T-shirt... | Price: Rs. 2799
+2025-05-26 07:03:09,497 - myntra - INFO - Product 8: Pure Cotton T-shirt... | Price: Rs. 1194
+2025-05-26 07:03:09,505 - myntra - INFO - Product 9: Pure Cotton Slim Fit T-shirt... | Price: Rs. 1196
+2025-05-26 07:03:09,512 - myntra - INFO - Product 10: Printed Polo Collar T-Shirt... | Price: Rs. 699
+2025-05-26 07:03:09,519 - myntra - INFO - Product 11: Pure Cotton Slim Fit T-Shirt... | Price: Rs. 1223
+2025-05-26 07:03:09,529 - myntra - INFO - Product 12: Oversized Motif-Detail T-shir... | Price: Rs. 799
+2025-05-26 07:03:09,539 - myntra - INFO - Product 13: Women Printed Loose T-shirt... | Price: Rs. 335
+2025-05-26 07:03:09,547 - myntra - INFO - Product 14: Graphic Printed Slim Fit Tee... | Price: Rs. 599
+2025-05-26 07:03:09,558 - myntra - INFO - Product 15: Cotton T-shirt... | Price: Rs. 1043
+2025-05-26 07:03:09,569 - myntra - INFO - Product 16: Fitted T-shirt... | Price: Rs. 299
+2025-05-26 07:03:09,577 - myntra - INFO - Product 17: Real Madrid 24/25 Home Jersey... | Price: Rs. 4499
+2025-05-26 07:03:09,588 - myntra - INFO - Product 18: Printed Pure Cotton T-Shirt... | Price: Rs. 475
+2025-05-26 07:03:09,599 - myntra - INFO - Product 19: Pure Cotton Polo Pure Cotton T... | Price: Rs. 377
+2025-05-26 07:03:09,607 - myntra - INFO - Product 20: Printed Jersey Top... | Price: Rs. 399
+2025-05-26 07:03:09,618 - myntra - INFO - Product 21: Embroidered Detail T-shirt... | Price: Rs. 989
+2025-05-26 07:03:09,628 - myntra - INFO - Product 22: Cropped Scoop-Neck T-Shirt... | Price: Rs. 399
+2025-05-26 07:03:09,637 - myntra - INFO - Product 23: Fine-Knit Polo Shirt... | Price: Rs. 1299
+2025-05-26 07:03:09,645 - myntra - INFO - Product 24: Printed Pure Cotton T-shirt... | Price: Rs. 599
+2025-05-26 07:03:09,653 - myntra - INFO - Product 25: Printed Pure Cotton T-shirt... | Price: Rs. 571
+2025-05-26 07:03:09,667 - myntra - INFO - Product 36: Solid Slim Fit Pure Cotton T-s... | Price: Rs. 998
+2025-05-26 07:03:09,679 - myntra - INFO - Product 37: Loose Fit Printed T-Shirt... | Price: Rs. 799
+2025-05-26 07:03:09,689 - myntra - INFO - Product 38: Oversized T-Shirt... | Price: Rs. 699
+2025-05-26 07:03:09,698 - myntra - INFO - Product 39: Men Polo Collar T-shirt... | Price: Rs. 663
+2025-05-26 07:03:09,709 - myntra - INFO - Product 40: Solid Lounge T-shirt... | Price: Rs. 356
+2025-05-26 07:03:09,717 - myntra - INFO - Product 41: Cotton Regular Fit T-shirt... | Price: Rs. 584
+2025-05-26 07:03:09,722 - myntra - INFO - Product 42: Openwork Knitted Polo T-shirt... | Price: Rs. 2583
+2025-05-26 07:03:09,732 - myntra - INFO - Product 43: Polo Collar Cricket T-shirt... | Price: Rs. 524
+2025-05-26 07:03:09,739 - myntra - INFO - Product 44: V-Neck Relaxed fit Tshirt... | Price: Rs. 399
+2025-05-26 07:03:09,747 - myntra - INFO - Product 45: Women Polo Collar T-shirt... | Price: Rs. 1231
+2025-05-26 07:03:09,755 - myntra - INFO - Product 46: Polo Collar Slim Fit T-shirt... | Price: Rs. 767
+2025-05-26 07:03:09,763 - myntra - INFO - Product 47: Printed T-shirt... | Price: Rs. 324
+2025-05-26 07:03:09,771 - myntra - INFO - Product 48: Textured Oversized T-Shirt... | Price: Rs. 455
+2025-05-26 07:03:09,781 - myntra - INFO - Product 49: Pure Cotton Polo T-shirt... | Price: Rs. 899
+2025-05-26 07:03:09,790 - myntra - INFO - Product 50: Men Printed Slim Fit T-shirt... | Price: Rs. 974
+2025-05-26 07:03:09,798 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:03:19,568 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-26 07:03:22,226 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-26 07:03:29,002 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:03:29,005 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:03:29,006 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:03:29,006 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:03:29,007 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:03:29,008 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:03:29,009 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:03:29,011 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:03:29,012 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:03:29,012 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:03:29,014 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:03:29,014 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:03:29,016 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:03:29,017 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:03:29,017 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:03:29,019 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:03:29,020 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:03:29,021 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:03:29,022 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:03:29,023 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:03:29,026 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:03:29,027 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:03:29,027 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:03:29,028 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:03:29,028 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:03:29,030 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:03:29,035 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:03:29,036 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:03:29,038 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:03:29,039 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:03:29,041 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:03:29,042 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:03:29,043 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:03:29,043 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:03:29,045 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:03:29,045 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:03:29,046 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:03:29,047 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:03:29,048 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:03:29,050 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:03:29,051 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:03:29,051 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:03:49,217 - myntra - INFO - Scraping Myntra for query: white t shirt 
+2025-05-26 07:03:51,926 - myntra - INFO - Opening URL: https://www.myntra.com/white+t+shirt+?rawQuery=white+t+shirt+&sort=popularity
+2025-05-26 07:03:58,782 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:03:58,783 - myntra - INFO - Product 1: Men Pack Of 3 T-Shirts... | Price: Rs. 1199
+2025-05-26 07:03:58,785 - myntra - INFO - Product 2: Men Printed Polo T-shirt... | Price: Rs. 679
+2025-05-26 07:03:58,786 - myntra - INFO - Product 3: Polo Collar Slim Fit T-shirt... | Price: Rs. 991
+2025-05-26 07:03:58,786 - myntra - INFO - Product 4: Polo Collar Slim Fit T-shirt... | Price: Rs. 1184
+2025-05-26 07:03:58,786 - myntra - INFO - Product 5: Cotton Slim Fit T-shirt... | Price: Rs. 1199
+2025-05-26 07:03:58,788 - myntra - INFO - Product 6: Polo Collar T-shirt... | Price: Rs. 979
+2025-05-26 07:03:58,789 - myntra - INFO - Product 7: Men Polo Collar T-shirt... | Price: Rs. 2799
+2025-05-26 07:03:58,789 - myntra - INFO - Product 8: Pure Cotton T-shirt... | Price: Rs. 1194
+2025-05-26 07:03:58,791 - myntra - INFO - Product 9: Pure Cotton Slim Fit T-shirt... | Price: Rs. 1196
+2025-05-26 07:03:58,792 - myntra - INFO - Product 10: Printed Polo Collar T-Shirt... | Price: Rs. 699
+2025-05-26 07:03:58,793 - myntra - INFO - Product 11: Pure Cotton Slim Fit T-Shirt... | Price: Rs. 1223
+2025-05-26 07:03:58,796 - myntra - INFO - Product 12: Oversized Motif-Detail T-shir... | Price: Rs. 799
+2025-05-26 07:03:58,798 - myntra - INFO - Product 13: Women Printed Loose T-shirt... | Price: Rs. 335
+2025-05-26 07:03:58,799 - myntra - INFO - Product 14: Graphic Printed Slim Fit Tee... | Price: Rs. 599
+2025-05-26 07:03:58,800 - myntra - INFO - Product 15: Cotton T-shirt... | Price: Rs. 1043
+2025-05-26 07:03:58,801 - myntra - INFO - Product 16: Fitted T-shirt... | Price: Rs. 299
+2025-05-26 07:03:58,802 - myntra - INFO - Product 17: Real Madrid 24/25 Home Jersey... | Price: Rs. 4499
+2025-05-26 07:03:58,803 - myntra - INFO - Product 18: Printed Pure Cotton T-Shirt... | Price: Rs. 475
+2025-05-26 07:03:58,804 - myntra - INFO - Product 19: Pure Cotton Polo Pure Cotton T... | Price: Rs. 377
+2025-05-26 07:03:58,805 - myntra - INFO - Product 20: Printed Jersey Top... | Price: Rs. 399
+2025-05-26 07:03:58,806 - myntra - INFO - Product 21: Embroidered Detail T-shirt... | Price: Rs. 989
+2025-05-26 07:03:58,806 - myntra - INFO - Product 22: Cropped Scoop-Neck T-Shirt... | Price: Rs. 399
+2025-05-26 07:03:58,807 - myntra - INFO - Product 23: Fine-Knit Polo Shirt... | Price: Rs. 1299
+2025-05-26 07:03:58,808 - myntra - INFO - Product 24: Printed Pure Cotton T-shirt... | Price: Rs. 599
+2025-05-26 07:03:58,810 - myntra - INFO - Product 25: Printed Pure Cotton T-shirt... | Price: Rs. 571
+2025-05-26 07:03:58,814 - myntra - INFO - Product 31: Polo Collar T-shirt... | Price: Rs. 643
+2025-05-26 07:03:58,816 - myntra - INFO - Product 32: Pure Cotton Slim Fit T-shirt... | Price: Rs. 1196
+2025-05-26 07:03:58,817 - myntra - INFO - Product 33: Teams Cricket Slim Fit T-Shirt... | Price: Rs. 599
+2025-05-26 07:03:58,818 - myntra - INFO - Product 34: Printed Loose Fit T-shirt... | Price: Rs. 519
+2025-05-26 07:03:58,820 - myntra - INFO - Product 35: Slim Fit Pure Cotton T-shirt... | Price: Rs. 798
+2025-05-26 07:03:58,820 - myntra - INFO - Product 36: Solid Slim Fit Pure Cotton T-s... | Price: Rs. 998
+2025-05-26 07:03:58,823 - myntra - INFO - Product 37: Loose Fit Printed T-Shirt... | Price: Rs. 799
+2025-05-26 07:03:58,824 - myntra - INFO - Product 38: Oversized T-Shirt... | Price: Rs. 699
+2025-05-26 07:03:58,825 - myntra - INFO - Product 39: Men Polo Collar T-shirt... | Price: Rs. 663
+2025-05-26 07:03:58,826 - myntra - INFO - Product 40: Solid Lounge T-shirt... | Price: Rs. 356
+2025-05-26 07:03:58,826 - myntra - INFO - Product 41: Cotton Regular Fit T-shirt... | Price: Rs. 584
+2025-05-26 07:03:58,827 - myntra - INFO - Product 42: Openwork Knitted Polo T-shirt... | Price: Rs. 2583
+2025-05-26 07:03:58,828 - myntra - INFO - Product 43: Polo Collar Cricket T-shirt... | Price: Rs. 524
+2025-05-26 07:03:58,828 - myntra - INFO - Product 44: V-Neck Relaxed fit Tshirt... | Price: Rs. 399
+2025-05-26 07:03:58,830 - myntra - INFO - Product 45: Women Polo Collar T-shirt... | Price: Rs. 1231
+2025-05-26 07:03:58,830 - myntra - INFO - Product 46: Polo Collar Slim Fit T-shirt... | Price: Rs. 767
+2025-05-26 07:03:58,832 - myntra - INFO - Product 47: Printed T-shirt... | Price: Rs. 324
+2025-05-26 07:03:58,832 - myntra - INFO - Product 48: Textured Oversized T-Shirt... | Price: Rs. 455
+2025-05-26 07:03:58,833 - myntra - INFO - Product 49: Pure Cotton Polo T-shirt... | Price: Rs. 899
+2025-05-26 07:03:58,834 - myntra - INFO - Product 50: Men Printed Slim Fit T-shirt... | Price: Rs. 974
+2025-05-26 07:03:58,835 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:05:33,401 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-26 07:05:35,964 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-26 07:05:47,604 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:05:47,605 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:05:47,606 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:05:47,606 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:05:47,607 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:05:47,608 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:05:47,609 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:05:47,610 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:05:47,610 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:05:47,612 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:05:47,613 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:05:47,613 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:05:47,614 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:05:47,614 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:05:47,615 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:05:47,616 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:05:47,616 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:05:47,617 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:05:47,617 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:05:47,618 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:05:47,618 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:05:47,619 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:05:47,619 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:05:47,621 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:05:47,621 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:05:47,621 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:05:47,627 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:05:47,628 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:05:47,629 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:05:47,629 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:05:47,630 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:05:47,631 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:05:47,632 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:05:47,632 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:05:47,632 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:05:47,634 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:05:47,634 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:05:47,635 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:05:47,635 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:05:47,636 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:05:47,637 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:05:47,637 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:05:56,088 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-26 07:05:58,628 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-26 07:06:04,544 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:06:04,545 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:06:04,547 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:06:04,547 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:06:04,549 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:06:04,551 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:06:04,552 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:06:04,553 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:06:04,553 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:06:04,554 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:06:04,555 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:06:04,556 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:06:04,557 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:06:04,558 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:06:04,558 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:06:04,559 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:06:04,562 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:06:04,562 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:06:04,563 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:06:04,565 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:06:04,566 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:06:04,567 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:06:04,567 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:06:04,568 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:06:04,569 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:06:04,570 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:06:04,575 - myntra - INFO - Product 31: Men Corduroy Overshirt... | Price: Rs. 1949
+2025-05-26 07:06:04,576 - myntra - INFO - Product 32: Slim Fit Casual Shirt... | Price: Rs. 699
+2025-05-26 07:06:04,577 - myntra - INFO - Product 33: Classic Cotton Formal Shirt... | Price: Rs. 799
+2025-05-26 07:06:04,578 - myntra - INFO - Product 34: Regular Fit Linen-Blend Shirt... | Price: Rs. 2299
+2025-05-26 07:06:04,580 - myntra - INFO - Product 35: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-26 07:06:04,580 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:06:04,582 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:06:04,583 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:06:04,584 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:06:04,585 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:06:04,586 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:06:04,588 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:06:04,589 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:06:04,590 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:06:04,591 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:06:04,592 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:06:04,593 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:06:04,594 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:06:04,596 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:06:04,597 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:06:04,597 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:06:32,386 - myntra - INFO - Scraping Myntra for query: white shirt and blue jeans
+2025-05-26 07:06:35,027 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt+and+blue+jeans?rawQuery=white+shirt+and+blue+jeans&sort=popularity
+2025-05-26 07:06:48,057 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:06:48,058 - myntra - INFO - Product 1: Women Baggy Jeans... | Price: Rs. 698
+2025-05-26 07:06:48,059 - myntra - INFO - Product 2: Women High-Rise Cotton Jeans... | Price: Rs. 659
+2025-05-26 07:06:48,060 - myntra - INFO - Product 3: Women Straight Fit High-Rise J... | Price: Rs. 749
+2025-05-26 07:06:48,061 - myntra - INFO - Product 4: Women Baggy Stretchable Jeans... | Price: Rs. 698
+2025-05-26 07:06:48,061 - myntra - INFO - Product 5: Women Boyfriend Fit High-Rise ... | Price: Rs. 549
+2025-05-26 07:06:48,063 - myntra - INFO - Product 6: Women High-Rise Jeans... | Price: Rs. 744
+2025-05-26 07:06:48,064 - myntra - INFO - Product 7: Women Straight Fit High-Rise J... | Price: Rs. 659
+2025-05-26 07:06:48,065 - myntra - INFO - Product 8: Women High-Rise Jeans... | Price: Rs. 699
+2025-05-26 07:06:48,065 - myntra - INFO - Product 9: Women High-Rise Jeans... | Price: Rs. 699
+2025-05-26 07:06:48,066 - myntra - INFO - Product 10: Women Boyfriend Fit High-Rise ... | Price: Rs. 549
+2025-05-26 07:06:48,067 - myntra - INFO - Product 11: Women Boyfriend Fit High-Rise ... | Price: Rs. 549
+2025-05-26 07:06:48,068 - myntra - INFO - Product 12: Women Bootcut High-Rise Jeans... | Price: Rs. 824
+2025-05-26 07:06:48,068 - myntra - INFO - Product 13: Women Boyfriend Fit High-Rise ... | Price: Rs. 730
+2025-05-26 07:06:48,069 - myntra - INFO - Product 14: Women Boyfriend Fit High-Rise ... | Price: Rs. 549
+2025-05-26 07:06:48,071 - myntra - INFO - Product 15: Women Boyfriend Fit High-Rise ... | Price: Rs. 744
+2025-05-26 07:06:48,072 - myntra - INFO - Product 16: Women Boyfriend Fit Jeans... | Price: Rs. 869
+2025-05-26 07:06:48,073 - myntra - INFO - Product 17: Women Boyfriend Fit High-Rise ... | Price: Rs. 730
+2025-05-26 07:06:48,075 - myntra - INFO - Product 18: Women Wide Leg High-Rise Jeans... | Price: Rs. 599
+2025-05-26 07:06:48,075 - myntra - INFO - Product 19: Women High-Rise Jeans... | Price: Rs. 799
+2025-05-26 07:06:48,077 - myntra - INFO - Product 20: Women High-Rise Jeans... | Price: Rs. 799
+2025-05-26 07:06:48,078 - myntra - INFO - Product 21: Women Straight Fit High-Rise J... | Price: Rs. 799
+2025-05-26 07:06:48,080 - myntra - INFO - Product 22: Women Flared High-Rise Jeans... | Price: Rs. 948
+2025-05-26 07:06:48,081 - myntra - INFO - Product 23: Women Flared High-Rise Jeans... | Price: Rs. 659
+2025-05-26 07:06:48,082 - myntra - INFO - Product 24: Women Wide Leg High-Rise Jeans... | Price: Rs. 920
+2025-05-26 07:06:48,082 - myntra - INFO - Product 25: High-Rise Stretchable Jeans... | Price: Rs. 698
+2025-05-26 07:06:48,092 - myntra - INFO - Product 36: Women High-Rise Jeans... | Price: Rs. 799
+2025-05-26 07:06:48,093 - myntra - INFO - Product 37: High-Rise Straight Fit Jeans... | Price: Rs. 781
+2025-05-26 07:06:48,095 - myntra - INFO - Product 38: Women High-Rise Jeans... | Price: Rs. 799
+2025-05-26 07:06:48,095 - myntra - INFO - Product 39: Wide Leg High-Rise Jeans... | Price: Rs. 799
+2025-05-26 07:06:48,096 - myntra - INFO - Product 40: Women Plus Size Wide Leg Jeans... | Price: Rs. 951
+2025-05-26 07:06:48,097 - myntra - INFO - Product 41: Plus Size Women  Jeans... | Price: Rs. 1124
+2025-05-26 07:06:48,098 - myntra - INFO - Product 42: Women Boyfriend Fit High-Rise ... | Price: Rs. 898
+2025-05-26 07:06:48,098 - myntra - INFO - Product 43: Women Straight Fit Jeans... | Price: Rs. 659
+2025-05-26 07:06:48,100 - myntra - INFO - Product 44: Women Straight Fit Jeans... | Price: Rs. 699
+2025-05-26 07:06:48,101 - myntra - INFO - Product 45: Straight Fit Cargo Jeans... | Price: Rs. 824
+2025-05-26 07:06:48,102 - myntra - INFO - Product 46: Women Straight Fit High-Rise J... | Price: Rs. 559
+2025-05-26 07:06:48,102 - myntra - INFO - Product 47: High-Rise Stretchable Jeans... | Price: Rs. 649
+2025-05-26 07:06:48,105 - myntra - INFO - Product 48: Women Straight Fit High-Rise J... | Price: Rs. 659
+2025-05-26 07:06:48,106 - myntra - INFO - Product 49: Women Flared High-Rise Jeans... | Price: Rs. 789
+2025-05-26 07:06:48,107 - myntra - INFO - Product 50: Men Mid-Rise Stretchable Jeans... | Price: Rs. 3359
+2025-05-26 07:06:48,108 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-26 07:07:05,839 - myntra - INFO - Scraping Myntra for query: whote shirt
+2025-05-26 07:07:08,283 - myntra - INFO - Opening URL: https://www.myntra.com/whote+shirt?rawQuery=whote+shirt&sort=popularity
+2025-05-26 07:07:15,252 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:07:15,253 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:07:15,253 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:07:15,254 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:07:15,254 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:07:15,255 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:07:15,256 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:07:15,256 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:07:15,257 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:07:15,257 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:07:15,258 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:07:15,258 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:07:15,259 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:07:15,259 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:07:15,260 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:07:15,261 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:07:15,262 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:07:15,262 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:07:15,262 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:07:15,263 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:07:15,264 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:07:15,264 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:07:15,265 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:07:15,267 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:07:15,267 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:07:15,268 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:07:15,270 - myntra - INFO - Product 31: Men Corduroy Overshirt... | Price: Rs. 1949
+2025-05-26 07:07:15,271 - myntra - INFO - Product 32: Slim Fit Casual Shirt... | Price: Rs. 699
+2025-05-26 07:07:15,271 - myntra - INFO - Product 33: Classic Cotton Formal Shirt... | Price: Rs. 799
+2025-05-26 07:07:15,272 - myntra - INFO - Product 34: Regular Fit Linen-Blend Shirt... | Price: Rs. 2299
+2025-05-26 07:07:15,273 - myntra - INFO - Product 35: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-26 07:07:15,273 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:07:15,274 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:07:15,274 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:07:15,275 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:07:15,276 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:07:15,277 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:07:15,277 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:07:15,278 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:07:15,278 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:07:15,278 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:07:15,280 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:07:15,280 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:07:15,281 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:07:15,282 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:07:15,282 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:07:15,282 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:10:17,314 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-26 07:10:19,847 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-26 07:10:27,294 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:10:27,298 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:10:27,302 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:10:27,308 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:10:27,312 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:10:27,317 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:10:27,322 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:10:27,326 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:10:27,330 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:10:27,335 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:10:27,341 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:10:27,346 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:10:27,351 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:10:27,358 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:10:27,363 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:10:27,368 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:10:27,372 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:10:27,377 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:10:27,382 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:10:27,386 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:10:27,391 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:10:27,396 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:10:27,404 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:10:27,409 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:10:27,414 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:10:27,419 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:10:27,425 - myntra - INFO - Product 31: Men Corduroy Overshirt... | Price: Rs. 1949
+2025-05-26 07:10:27,430 - myntra - INFO - Product 32: Slim Fit Casual Shirt... | Price: Rs. 699
+2025-05-26 07:10:27,435 - myntra - INFO - Product 33: Classic Cotton Formal Shirt... | Price: Rs. 799
+2025-05-26 07:10:27,439 - myntra - INFO - Product 34: Regular Fit Linen-Blend Shirt... | Price: Rs. 2299
+2025-05-26 07:10:27,444 - myntra - INFO - Product 35: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-26 07:10:27,448 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:10:27,454 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:10:27,457 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:10:27,463 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:10:27,468 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:10:27,473 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:10:27,478 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:10:27,482 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:10:27,487 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:10:27,492 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:10:27,497 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:10:27,503 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:10:27,509 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:10:27,513 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:10:27,514 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:10:27,516 - myntra - INFO - Successfully scraped 45 products from Myntra
