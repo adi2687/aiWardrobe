@@ -7645,3 +7645,152 @@
 2025-05-26 23:51:38,839 - amazon_test - INFO - Successfully scraped 16 products from Amazon
 2025-05-26 23:51:38,841 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
 2025-05-26 23:51:38,842 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 23:51:38] "GET /shop?query=Styles+for+male+and+female+which+are+trending HTTP/1.1" 200 -
+2025-05-27 02:05:56,767 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\amazon_test.py', reloading
+2025-05-27 02:05:56,779 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\backup_scraper.py', reloading
+2025-05-27 02:05:56,781 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\flipkart.py', reloading
+2025-05-27 02:05:56,794 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\myntra.py', reloading
+2025-05-27 02:05:56,929 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\test.py', reloading
+2025-05-27 02:06:40,179 - __main__ - INFO - Starting ML service on port 8000
+2025-05-27 02:06:40,208 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.1.3:8000
+2025-05-27 02:06:40,208 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-27 02:06:40,220 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-27 02:06:41,818 - __main__ - INFO - Starting ML service on port 8000
+2025-05-27 02:06:41,829 - werkzeug - WARNING -  * Debugger is active!
+2025-05-27 02:06:41,834 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-27 02:06:44,924 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 02:06:44] "GET / HTTP/1.1" 200 -
+2025-05-27 02:24:08,138 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\test.py', reloading
+2025-05-27 02:24:08,229 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\amazon_test.py', reloading
+2025-05-27 02:24:08,230 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\myntra.py', reloading
+2025-05-27 02:24:08,230 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\backup_scraper.py', reloading
+2025-05-27 02:24:09,372 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-27 02:24:11,850 - __main__ - INFO - Starting ML service on port 8000
+2025-05-27 02:24:11,863 - werkzeug - WARNING -  * Debugger is active!
+2025-05-27 02:24:11,868 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-27 04:06:17,179 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\flipkart.py', reloading
+2025-05-27 04:06:18,223 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-27 04:06:20,349 - __main__ - INFO - Starting ML service on port 8000
+2025-05-27 04:06:20,363 - werkzeug - WARNING -  * Debugger is active!
+2025-05-27 04:06:20,367 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-27 04:06:38,582 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\setuptools\\dist.py', reloading
+2025-05-27 04:06:38,880 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-27 04:06:41,104 - __main__ - INFO - Starting ML service on port 8000
+2025-05-27 04:06:41,119 - werkzeug - WARNING -  * Debugger is active!
+2025-05-27 04:06:41,124 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-27 04:06:41,905 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\__init__.py', reloading
+2025-05-27 04:06:41,906 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\__init__.py', reloading
+2025-05-27 04:06:41,906 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\fonts.py', reloading
+2025-05-27 04:06:41,907 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\fonts.py', reloading
+2025-05-27 04:06:41,907 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\fpdf.py', reloading
+2025-05-27 04:06:41,908 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\fpdf.py', reloading
+2025-05-27 04:06:41,908 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\html.py', reloading
+2025-05-27 04:06:41,908 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\html.py', reloading
+2025-05-27 04:06:41,908 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\php.py', reloading
+2025-05-27 04:06:41,909 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\php.py', reloading
+2025-05-27 04:06:41,909 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\py3k.py', reloading
+2025-05-27 04:06:41,909 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\py3k.py', reloading
+2025-05-27 04:06:41,910 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\template.py', reloading
+2025-05-27 04:06:41,910 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\template.py', reloading
+2025-05-27 04:06:41,910 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\ttfonts.py', reloading
+2025-05-27 04:06:41,911 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\fpdf\\ttfonts.py', reloading
+2025-05-27 04:06:42,345 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-27 04:06:44,152 - __main__ - INFO - Starting ML service on port 8000
+2025-05-27 04:06:44,164 - werkzeug - WARNING -  * Debugger is active!
+2025-05-27 04:06:44,169 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-27 04:07:26,448 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\amazon_test.py', reloading
+2025-05-27 04:07:26,448 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\myntra.py', reloading
+2025-05-27 04:07:26,449 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\Desktop\\aiWardrobe\\ml\\flipkart.py', reloading
+2025-05-27 04:07:27,204 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-27 04:07:28,920 - __main__ - INFO - Starting ML service on port 8000
+2025-05-27 04:07:28,932 - werkzeug - WARNING -  * Debugger is active!
+2025-05-27 04:07:28,937 - werkzeug - INFO -  * Debugger PIN: 807-569-661
+2025-05-27 04:28:30,615 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 04:28:30,615 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-27 04:28:30,615 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-27 04:28:30,617 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 04:28:30,876 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 04:28:30,877 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-27 04:28:30,877 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-27 04:28:30,877 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 04:28:31,810 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 04:28:31,989 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 04:28:32,043 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 04:28:32,075 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 04:28:32,184 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 04:28:32,309 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 04:28:32,433 - WDM - INFO - WebDriver version 136.0.7103.113 selected
+2025-05-27 04:28:32,437 - WDM - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.113/win32/chromedriver-win32.zip
+2025-05-27 04:28:32,438 - WDM - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.113/win32/chromedriver-win32.zip
+2025-05-27 04:28:32,489 - WDM - INFO - Driver downloading response is 200
+2025-05-27 04:28:32,595 - WDM - INFO - WebDriver version 136.0.7103.113 selected
+2025-05-27 04:28:32,598 - WDM - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.113/win32/chromedriver-win32.zip
+2025-05-27 04:28:32,599 - WDM - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.113/win32/chromedriver-win32.zip
+2025-05-27 04:28:32,657 - WDM - INFO - Driver downloading response is 200
+2025-05-27 04:28:32,751 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 04:28:32,963 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 04:28:32,969 - WDM - INFO - Driver has been saved in cache [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113]
+2025-05-27 04:28:33,144 - WDM - INFO - Driver has been saved in cache [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113]
+2025-05-27 04:28:34,255 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-27 04:28:34,257 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-27 04:28:41,249 - amazon_test - INFO - Found 60 product items in the page
+2025-05-27 04:28:41,272 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\logging\\__init__.py', reloading
+2025-05-27 04:28:41,288 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\encodings\\cp1252.py', reloading
+2025-05-27 04:28:41,295 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\flask\\app.py', reloading
+2025-05-27 04:28:41,301 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\werkzeug\\debug\\__init__.py', reloading
+2025-05-27 04:28:41,309 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\werkzeug\\serving.py', reloading
+2025-05-27 04:28:41,314 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\http\\server.py', reloading
+2025-05-27 04:28:41,323 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\socketserver.py', reloading
+2025-05-27 04:28:41,332 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Aditya Kurani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\threading.py', reloading
+2025-05-27 04:28:41,651 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-27 04:28:41,653 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 04:28:41,655 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 04:28:41] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-27 04:28:42,167 - myntra - INFO - Found 50 product items in the page
+2025-05-27 04:28:42,168 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-27 04:28:42,169 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-27 04:28:42,169 - myntra - INFO - Product 3: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-27 04:28:42,170 - myntra - INFO - Product 4: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-27 04:28:42,171 - myntra - INFO - Product 5: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-27 04:28:42,171 - myntra - INFO - Product 6: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-27 04:28:42,172 - myntra - INFO - Product 7: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-27 04:28:42,172 - myntra - INFO - Product 8: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-27 04:28:42,173 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-27 04:28:42,173 - myntra - INFO - Product 10: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-27 04:28:42,174 - myntra - INFO - Product 11: Opaque Casual Shirt... | Price: Rs. 1874
+2025-05-27 04:28:42,175 - myntra - INFO - Product 12: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-27 04:28:42,176 - myntra - INFO - Product 13: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-27 04:28:42,177 - myntra - INFO - Product 14: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 04:28:42,178 - myntra - INFO - Product 15: Men Checkered Shirt... | Price: Rs. 797
+2025-05-27 04:28:42,180 - myntra - INFO - Product 16: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-27 04:28:42,180 - myntra - INFO - Product 17: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-27 04:28:42,181 - myntra - INFO - Product 18: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-27 04:28:42,182 - myntra - INFO - Product 19: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-27 04:28:42,183 - myntra - INFO - Product 20: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 04:28:42,184 - myntra - INFO - Product 21: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-27 04:28:42,184 - myntra - INFO - Product 22: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-27 04:28:42,185 - myntra - INFO - Product 23: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-27 04:28:42,185 - myntra - INFO - Product 24: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-27 04:28:42,186 - myntra - INFO - Product 25: Self Design Casual Shirt... | Price: Rs. 1439
+2025-05-27 04:28:42,189 - myntra - INFO - Product 36: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-27 04:28:42,190 - myntra - INFO - Product 37: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-27 04:28:42,191 - myntra - INFO - Product 38: Men Checkered Shirt... | Price: Rs. 759
+2025-05-27 04:28:42,192 - myntra - INFO - Product 39: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-27 04:28:42,192 - myntra - INFO - Product 40: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-27 04:28:42,193 - myntra - INFO - Product 41: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-27 04:28:42,194 - myntra - INFO - Product 42: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 04:28:42,195 - myntra - INFO - Product 43: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-27 04:28:42,195 - myntra - INFO - Product 44: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-27 04:28:42,195 - myntra - INFO - Product 45: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-27 04:28:42,197 - myntra - INFO - Product 46: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-27 04:28:42,197 - myntra - INFO - Product 47: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-27 04:28:42,198 - myntra - INFO - Product 48: Striped Casual Shirt... | Price: Rs. 740
+2025-05-27 04:28:42,200 - myntra - INFO - Product 49: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-27 04:28:42,201 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-27 04:28:42,201 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-27 04:28:42,203 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 04:28:42,203 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 04:28:42] "GET /shop_myntra?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-27 04:28:46,685 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-05-27 04:28:48,668 - __main__ - INFO - Starting ML service on port 8000
+2025-05-27 04:28:48,682 - werkzeug - WARNING -  * Debugger is active!
+2025-05-27 04:28:48,687 - werkzeug - INFO -  * Debugger PIN: 807-569-661
