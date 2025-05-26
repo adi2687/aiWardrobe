@@ -44,15 +44,28 @@ const App = () => {
     const token = localStorage.getItem('tokenlogin') || document.cookie.includes('tokenlogin');
     const introComplete = localStorage.getItem('introComplete');
     
+    // Check URL parameters for Google/Facebook login redirect
+    const urlParams = new URLSearchParams(window.location.search);
+    const showIntroParam = urlParams.get('showIntro');
+    const isNewUser = urlParams.get('isNewUser');
+    
     // Check for OAuth login flag
     const checkForNewUser = localStorage.getItem('checkForNewUser');
     
-    // Show intro if user is logged in and hasn't completed intro yet
-    if (token && introComplete !== 'true') {
-      // For all login methods (regular, Google, Facebook)
+    // Show intro if:
+    // 1. User is logged in AND hasn't completed intro yet, OR
+    // 2. URL has showIntro=true parameter (from Google/Facebook redirect)
+    if ((token && introComplete !== 'true') || showIntroParam === 'true') {
+      console.log('Showing intro animation');
       setShowIntro(true);
       
-      // Clear the OA uth flag if it exists
+      // Clear the URL parameters after processing
+      if (showIntroParam) {
+        // Remove query parameters without page reload
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+      
+      // Clear the OAuth flag if it exists
       if (checkForNewUser === 'true') {
         localStorage.removeItem('checkForNewUser');
       }

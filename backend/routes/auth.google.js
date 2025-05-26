@@ -100,7 +100,13 @@ router.get(
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined
     });
-    res.redirect(`${frontendUrl}/profile`);
+    
+    // Check if this is a new user (just created) to determine if we should show intro
+    const isNewUser = req.user.createdAt && (new Date() - new Date(req.user.createdAt) < 60000);
+    
+    // Redirect to home page to trigger the intro animation
+    res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}`);
+    // This will be caught by the App.jsx useEffect that checks for intro completion
   }
 );
 
