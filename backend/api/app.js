@@ -38,10 +38,20 @@ const io = new Server(httpServer, {
   },
 });
 
+// Expanded allowedOrigins array to include all possible frontend URLs
+const expandedAllowedOrigins = [
+  ...allowedOrigins,
+  'https://outfit-ai-liart.vercel.app',
+  'https://outfit-ai.vercel.app',
+  'https://ai-wardrobe.vercel.app',
+  'http://localhost:5173'
+];
+
+// Configure CORS for preflight requests
 app.options('*', cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+    if (expandedAllowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       console.log('Blocked by CORS:', origin);
@@ -49,17 +59,27 @@ app.options('*', cors({
     }
   },
   credentials: true,
-  methods: ['GET', 'POST', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }));
 
 
 export { io }; // ✅ Exporting io instance
 
 app.use(cookieParser());
+
+// Apply CORS middleware to all routes
 app.use(
   cors({
-    origin: frontendUrl,
-    methods: ['GET', 'POST'],
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (expandedAllowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log('Blocked by CORS:', origin);
+        callback(null, false);
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
   })
 );
