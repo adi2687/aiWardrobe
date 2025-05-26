@@ -56,6 +56,8 @@ const Shop = () => {
     setAmazonLoading(true);
     
     // Use backend proxy to avoid CORS and HTML parsing issues
+    console.log(`Making Amazon request to: ${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`);
+    
     fetch(
       `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`,
       {
@@ -63,8 +65,8 @@ const Shop = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        // Don't send credentials for the proxy endpoints
-        credentials: "same-origin",
+        // Include credentials to ensure cookies are sent
+        credentials: "include",
       }
     )
       .then((response) => {
@@ -119,7 +121,7 @@ const Shop = () => {
       input ||
       `Styles for ${userdetails.gender || "male and female"}`;
 
-      console.log(`${mlurl}/shop_myntra?query=${encodeURIComponent(searchQuery)}`)
+    console.log(`Making Myntra request to: ${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`)
     setMyntraLoading(true);
     // Use backend proxy to avoid CORS and HTML parsing issues
     fetch(
@@ -129,8 +131,8 @@ const Shop = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        // Don't send credentials for the proxy endpoints
-        credentials: "same-origin",
+        // Include credentials to ensure cookies are sent
+        credentials: "include",
       }
     )
       .then((response) => {
