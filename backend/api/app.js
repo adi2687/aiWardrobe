@@ -52,6 +52,12 @@ export { io }; // ✅ Exporting io instance
 
 app.use(cookieParser());
 
+app.use(cors({
+  origin: 'https://outfit-ai-liart.vercel.app', // allow only your frontend domain
+  methods: ['GET', 'POST'],
+  credentials: true // if you’re using cookies or auth headers
+}));
+
 app.use(
   cors({
     origin: function(origin, callback) {
