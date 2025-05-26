@@ -5490,3 +5490,73 @@
 2025-05-26 06:56:11,583 - myntra - INFO - Successfully scraped 40 products from Myntra
 2025-05-26 06:56:11,585 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
 2025-05-26 06:56:11,586 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 06:56:11] "GET /shop_myntra?query=black+shirt HTTP/1.1" 200 -
+2025-05-26 07:00:04,898 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:00:04,900 - __main__ - INFO - Processing Amazon search for query: white shirt
+2025-05-26 07:00:04,900 - amazon_test - INFO - Scraping Amazon for query: white shirt
+2025-05-26 07:00:04,900 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-26 07:00:04,900 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:00:04,901 - __main__ - INFO - Processing Myntra search for query: white shirt
+2025-05-26 07:00:04,901 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-26 07:00:04,902 - WDM - INFO - ====== WebDriver manager ======
+2025-05-26 07:00:06,013 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:00:06,018 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:00:06,152 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:00:06,252 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:00:07,167 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-26 07:00:07,324 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-26 07:00:07,336 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=white+shirt&ref=nb_sb_noss&sprefix=white+shirt%2Caps%2C283
+2025-05-26 07:00:08,383 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-26 07:00:15,951 - myntra - INFO - Found 50 product items in the page
+2025-05-26 07:00:15,951 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-26 07:00:15,952 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-26 07:00:15,953 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-26 07:00:15,953 - myntra - INFO - Product 4: Women Formal Shirt... | Price: Rs. 1499
+2025-05-26 07:00:15,954 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-26 07:00:15,955 - myntra - INFO - Product 6: Slim Fit Cotton Casual Shirt... | Price: Rs. 1651
+2025-05-26 07:00:15,956 - myntra - INFO - Product 7: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-26 07:00:15,956 - myntra - INFO - Product 8: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-26 07:00:15,958 - myntra - INFO - Product 9: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-26 07:00:15,959 - myntra - INFO - Product 10: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-26 07:00:15,959 - myntra - INFO - Product 11: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-26 07:00:15,960 - myntra - INFO - Product 12: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:00:15,961 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 998
+2025-05-26 07:00:15,962 - myntra - INFO - Product 14: Men Casual Shirt... | Price: Rs. 584
+2025-05-26 07:00:15,962 - myntra - INFO - Product 15: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-26 07:00:15,963 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-26 07:00:15,963 - myntra - INFO - Product 17: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-26 07:00:15,965 - myntra - INFO - Product 18: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-26 07:00:15,966 - myntra - INFO - Product 19: Cotton Casual Shirt... | Price: Rs. 489
+2025-05-26 07:00:15,966 - myntra - INFO - Product 20: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-26 07:00:15,967 - myntra - INFO - Product 21: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-26 07:00:15,967 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-26 07:00:15,967 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-26 07:00:15,969 - myntra - INFO - Product 24: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-26 07:00:15,969 - myntra - INFO - Product 25: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-26 07:00:15,971 - myntra - INFO - Product 31: Men Corduroy Overshirt... | Price: Rs. 1949
+2025-05-26 07:00:15,972 - myntra - INFO - Product 32: Slim Fit Casual Shirt... | Price: Rs. 699
+2025-05-26 07:00:15,973 - myntra - INFO - Product 33: Classic Cotton Formal Shirt... | Price: Rs. 799
+2025-05-26 07:00:15,975 - myntra - INFO - Product 34: Regular Fit Linen-Blend Shirt... | Price: Rs. 2299
+2025-05-26 07:00:15,975 - myntra - INFO - Product 35: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-26 07:00:15,976 - myntra - INFO - Product 36: Men Casual Shirt... | Price: Rs. 1631
+2025-05-26 07:00:15,976 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-26 07:00:15,977 - myntra - INFO - Product 38: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-26 07:00:15,978 - myntra - INFO - Product 39: Slim Fit Casual Shirt... | Price: Rs. 489
+2025-05-26 07:00:15,978 - myntra - INFO - Product 40: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-26 07:00:15,978 - myntra - INFO - Product 41: Slim Fit Cotton Formal Shirt... | Price: Rs. 1533
+2025-05-26 07:00:15,980 - myntra - INFO - Product 42: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-26 07:00:15,981 - myntra - INFO - Product 43: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-26 07:00:15,982 - myntra - INFO - Product 44: Men Relaxed Fit Cotton Shirt... | Price: Rs. 985
+2025-05-26 07:00:15,983 - myntra - INFO - Product 45: Slim Fit Casual Shirt... | Price: Rs. 479
+2025-05-26 07:00:15,984 - myntra - INFO - Product 46: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-26 07:00:15,985 - myntra - INFO - Product 47: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-26 07:00:15,985 - myntra - INFO - Product 48: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-26 07:00:15,986 - myntra - INFO - Product 49: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-26 07:00:15,987 - myntra - INFO - Product 50: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-26 07:00:15,987 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-26 07:00:15,990 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:00:15,990 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:00:15] "GET /shop_myntra?query=white+shirt HTTP/1.1" 200 -
+2025-05-26 07:00:18,572 - amazon_test - INFO - Found 60 product items in the page
+2025-05-26 07:00:18,680 - amazon_test - INFO - Product 15: The White Shirt... | Price: N/A
+2025-05-26 07:00:19,022 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-26 07:00:19,025 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-26 07:00:19,026 - werkzeug - INFO - 127.0.0.1 - - [26/May/2025 07:00:19] "GET /shop?query=white+shirt HTTP/1.1" 200 -
