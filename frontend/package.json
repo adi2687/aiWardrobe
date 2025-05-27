@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
-    "@react-three/drei": "^10.0.4",
-    "@react-three/fiber": "^9.1.0",
+    "@react-three/drei": "^10.0.8",
+    "@react-three/fiber": "^9.1.2",
     "@readyplayerme/react-avatar-creator": "^0.5.0",
     "@tailwindcss/vite": "^4.0.17",
     "@tensorflow-models/pose-detection": "^2.1.3",

@@ -149,6 +149,10 @@ app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)
 app.use("/facebook",facebookRoutes)
 app.use("/sharetosocial",sharetosocial)
+
+// User avatar route for 3D model storage
+import UserAvatarRoutes from '../routes/user_avatar.js';
+app.use('/ar', UserAvatarRoutes);
 app.get("/", (req, res) => {
   res.send("This is the main page");
 });

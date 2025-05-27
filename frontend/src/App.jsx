@@ -10,6 +10,7 @@ import Wardrobe from "./components/Wardrobe/Wardrobe";
 import Homepage from './components/Homepage/Homepage'
 import Shop from './components/Shop/shomain'
 import AR from './components/AR/main'
+import SavedAvatar from './components/AR/SavedAvatar'
 import Footer from "./components/Footer/Footer";
 import Recommendations from "./components/Recommendations/Recommendations";
 import Chatbot from './components/Chatbot/Chatbot'
@@ -106,6 +107,7 @@ const App = () => {
         <Route path="/developers" element={<DevelopersPage />} />
         <Route path="/social" element={<SocialCollections />} />
         <Route path="/ar-try" element={<AR />} />
+        <Route path="/view-avatar" element={<SavedAvatar />} />
         {/* <Route path="/intro" element={<Intro />} /> */}
         {/* Policy Routes */}
         <Route path="/policies" element={<PoliciesHub />} />

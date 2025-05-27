@@ -1,13 +1,16 @@
-import React from "react";
-import ReadyPlayerMeAvatar from "./AR_try";
-import "./AR.css";
+// src/App.js
+import React from 'react';
+import ReadyPlayerMeAvatar from './AR_try';
+import './AR.css';
 
-function ARMain() {
+const ARComponent = () => {
   return (
     <div className="ar-container">
       <div className="ar-header">
         <h1 className="ar-title">Virtual Try-On</h1>
-        <p className="ar-subtitle">Create your 3D avatar and try on clothes virtually</p>
+        <p className="ar-subtitle">
+          Create your 3D avatar to try on clothing items virtually. This feature allows you to see how different outfits would look on you before making a purchase.
+        </p>
       </div>
       
       <div className="ar-content">
@@ -15,6 +18,6 @@ function ARMain() {
       </div>
     </div>
   );
-}
+};
 
-export default ARMain;
+export default ARComponent;
