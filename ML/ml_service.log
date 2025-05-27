@@ -8283,3 +8283,411 @@
 2025-05-27 05:35:02,585 - amazon_test - INFO - Successfully scraped 60 products from Amazon
 2025-05-27 05:35:02,588 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
 2025-05-27 05:35:02,589 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:35:02] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-27 05:39:09,165 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:39:09,166 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-27 05:39:09,166 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-27 05:39:09,166 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:39:09,413 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:39:09,414 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-27 05:39:09,414 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-27 05:39:09,414 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:39:10,265 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:10,416 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:10,498 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:39:10,510 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:10,662 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:10,795 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:39:11,638 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-27 05:39:11,945 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-27 05:39:19,451 - myntra - INFO - Found 50 product items in the page
+2025-05-27 05:39:19,452 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-27 05:39:19,453 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-27 05:39:19,454 - myntra - INFO - Product 3: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-27 05:39:19,454 - myntra - INFO - Product 4: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-27 05:39:19,455 - myntra - INFO - Product 5: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-27 05:39:19,456 - myntra - INFO - Product 6: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-27 05:39:19,456 - myntra - INFO - Product 7: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-27 05:39:19,457 - myntra - INFO - Product 8: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-27 05:39:19,457 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-27 05:39:19,457 - myntra - INFO - Product 10: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-27 05:39:19,458 - myntra - INFO - Product 11: Opaque Casual Shirt... | Price: Rs. 1874
+2025-05-27 05:39:19,458 - myntra - INFO - Product 12: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-27 05:39:19,459 - myntra - INFO - Product 13: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-27 05:39:19,459 - myntra - INFO - Product 14: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 05:39:19,460 - myntra - INFO - Product 15: Men Checkered Shirt... | Price: Rs. 797
+2025-05-27 05:39:19,460 - myntra - INFO - Product 16: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-27 05:39:19,460 - myntra - INFO - Product 17: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-27 05:39:19,460 - myntra - INFO - Product 18: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-27 05:39:19,461 - myntra - INFO - Product 19: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-27 05:39:19,462 - myntra - INFO - Product 20: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 05:39:19,462 - myntra - INFO - Product 21: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-27 05:39:19,463 - myntra - INFO - Product 22: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-27 05:39:19,464 - myntra - INFO - Product 23: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-27 05:39:19,464 - myntra - INFO - Product 24: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-27 05:39:19,465 - myntra - INFO - Product 25: Self Design Casual Shirt... | Price: Rs. 1439
+2025-05-27 05:39:19,466 - myntra - INFO - Product 31: Relaxed Fit Band Collar Shirt... | Price: Rs. 1272
+2025-05-27 05:39:19,467 - myntra - INFO - Product 32: Relaxed Fit Band Collar Shirt... | Price: Rs. 1234
+2025-05-27 05:39:19,468 - myntra - INFO - Product 33: Relaxed Fit Pattern Shirt... | Price: Rs. 1234
+2025-05-27 05:39:19,468 - myntra - INFO - Product 34: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 05:39:19,468 - myntra - INFO - Product 35: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 05:39:19,469 - myntra - INFO - Product 36: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-27 05:39:19,470 - myntra - INFO - Product 37: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-27 05:39:19,470 - myntra - INFO - Product 38: Men Checkered Shirt... | Price: Rs. 759
+2025-05-27 05:39:19,470 - myntra - INFO - Product 39: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-27 05:39:19,470 - myntra - INFO - Product 40: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-27 05:39:19,470 - myntra - INFO - Product 41: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-27 05:39:19,472 - myntra - INFO - Product 42: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 05:39:19,472 - myntra - INFO - Product 43: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-27 05:39:19,473 - myntra - INFO - Product 44: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-27 05:39:19,473 - myntra - INFO - Product 45: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-27 05:39:19,473 - myntra - INFO - Product 46: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-27 05:39:19,474 - myntra - INFO - Product 47: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-27 05:39:19,474 - myntra - INFO - Product 48: Striped Casual Shirt... | Price: Rs. 740
+2025-05-27 05:39:19,475 - myntra - INFO - Product 49: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-27 05:39:19,475 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-27 05:39:19,475 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-27 05:39:19,477 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:39:19,477 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:39:19] "GET /shop_myntra?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-27 05:39:20,561 - amazon_test - INFO - Found 60 product items in the page
+2025-05-27 05:39:20,837 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-27 05:39:20,840 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:39:20,840 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:39:20] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-27 05:39:24,956 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:39:24,956 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-27 05:39:24,956 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-27 05:39:24,956 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:39:25,025 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:39:25,026 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-27 05:39:25,026 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-27 05:39:25,026 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:39:25,998 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:26,011 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:26,071 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:26,113 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:26,145 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:39:26,191 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:39:27,320 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-27 05:39:27,342 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-27 05:39:33,963 - amazon_test - INFO - Found 60 product items in the page
+2025-05-27 05:39:34,215 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-27 05:39:34,217 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:39:34,217 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:39:34] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-27 05:39:36,165 - myntra - INFO - Found 50 product items in the page
+2025-05-27 05:39:36,166 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-27 05:39:36,167 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-27 05:39:36,167 - myntra - INFO - Product 3: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-27 05:39:36,168 - myntra - INFO - Product 4: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-27 05:39:36,169 - myntra - INFO - Product 5: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-27 05:39:36,170 - myntra - INFO - Product 6: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-27 05:39:36,170 - myntra - INFO - Product 7: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-27 05:39:36,171 - myntra - INFO - Product 8: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-27 05:39:36,171 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-27 05:39:36,171 - myntra - INFO - Product 10: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-27 05:39:36,173 - myntra - INFO - Product 11: Opaque Casual Shirt... | Price: Rs. 1874
+2025-05-27 05:39:36,173 - myntra - INFO - Product 12: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-27 05:39:36,173 - myntra - INFO - Product 13: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-27 05:39:36,174 - myntra - INFO - Product 14: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 05:39:36,175 - myntra - INFO - Product 15: Men Checkered Shirt... | Price: Rs. 797
+2025-05-27 05:39:36,176 - myntra - INFO - Product 16: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-27 05:39:36,176 - myntra - INFO - Product 17: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-27 05:39:36,177 - myntra - INFO - Product 18: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-27 05:39:36,177 - myntra - INFO - Product 19: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-27 05:39:36,177 - myntra - INFO - Product 20: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 05:39:36,178 - myntra - INFO - Product 21: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-27 05:39:36,179 - myntra - INFO - Product 22: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-27 05:39:36,179 - myntra - INFO - Product 23: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-27 05:39:36,180 - myntra - INFO - Product 24: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-27 05:39:36,180 - myntra - INFO - Product 25: Self Design Casual Shirt... | Price: Rs. 1439
+2025-05-27 05:39:36,182 - myntra - INFO - Product 31: Relaxed Fit Band Collar Shirt... | Price: Rs. 1272
+2025-05-27 05:39:36,182 - myntra - INFO - Product 32: Relaxed Fit Band Collar Shirt... | Price: Rs. 1234
+2025-05-27 05:39:36,183 - myntra - INFO - Product 33: Relaxed Fit Pattern Shirt... | Price: Rs. 1234
+2025-05-27 05:39:36,183 - myntra - INFO - Product 34: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 05:39:36,184 - myntra - INFO - Product 35: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 05:39:36,184 - myntra - INFO - Product 36: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-27 05:39:36,184 - myntra - INFO - Product 37: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-27 05:39:36,185 - myntra - INFO - Product 38: Men Checkered Shirt... | Price: Rs. 759
+2025-05-27 05:39:36,186 - myntra - INFO - Product 39: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-27 05:39:36,186 - myntra - INFO - Product 40: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-27 05:39:36,187 - myntra - INFO - Product 41: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-27 05:39:36,187 - myntra - INFO - Product 42: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 05:39:36,187 - myntra - INFO - Product 43: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-27 05:39:36,189 - myntra - INFO - Product 44: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-27 05:39:36,189 - myntra - INFO - Product 45: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-27 05:39:36,189 - myntra - INFO - Product 46: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-27 05:39:36,190 - myntra - INFO - Product 47: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-27 05:39:36,190 - myntra - INFO - Product 48: Striped Casual Shirt... | Price: Rs. 740
+2025-05-27 05:39:36,191 - myntra - INFO - Product 49: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-27 05:39:36,191 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-27 05:39:36,191 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-27 05:39:36,194 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:39:36,194 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:39:36] "GET /shop_myntra?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-27 05:39:55,347 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:39:55,347 - __main__ - INFO - Processing Myntra search for query: white shirt
+2025-05-27 05:39:55,348 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-27 05:39:55,348 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:39:55,481 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:39:55,481 - __main__ - INFO - Processing Amazon search for query: white shirt
+2025-05-27 05:39:55,481 - amazon_test - INFO - Scraping Amazon for query: white shirt
+2025-05-27 05:39:55,482 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:39:56,800 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:56,800 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:56,880 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:56,937 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:39:56,954 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:39:57,084 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:39:58,118 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-27 05:39:58,239 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=white+shirt&ref=nb_sb_noss&sprefix=white+shirt%2Caps%2C283
+2025-05-27 05:40:05,105 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:40:05] "OPTIONS /shop_myntra?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-27 05:40:05,106 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:40:05] "OPTIONS /shop?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-27 05:40:05,460 - myntra - INFO - Found 50 product items in the page
+2025-05-27 05:40:05,460 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-27 05:40:05,461 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-27 05:40:05,462 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 850
+2025-05-27 05:40:05,462 - myntra - INFO - Product 4: Slim Fit Cotton Casual Shirt... | Price: Rs. 1623
+2025-05-27 05:40:05,463 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-27 05:40:05,463 - myntra - INFO - Product 6: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-27 05:40:05,463 - myntra - INFO - Product 7: Women Formal Shirt... | Price: Rs. 1499
+2025-05-27 05:40:05,464 - myntra - INFO - Product 8: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-27 05:40:05,465 - myntra - INFO - Product 9: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-27 05:40:05,465 - myntra - INFO - Product 10: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-27 05:40:05,466 - myntra - INFO - Product 11: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-27 05:40:05,466 - myntra - INFO - Product 12: Men Casual Shirt... | Price: Rs. 584
+2025-05-27 05:40:05,467 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 948
+2025-05-27 05:40:05,467 - myntra - INFO - Product 14: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-27 05:40:05,468 - myntra - INFO - Product 15: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-27 05:40:05,468 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-27 05:40:05,468 - myntra - INFO - Product 17: Cotton Casual Shirt... | Price: Rs. 507
+2025-05-27 05:40:05,469 - myntra - INFO - Product 18: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-27 05:40:05,470 - myntra - INFO - Product 19: Pure Cotton Slim Fit Shirt... | Price: Rs. 1117
+2025-05-27 05:40:05,470 - myntra - INFO - Product 20: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-27 05:40:05,471 - myntra - INFO - Product 21: Men Regular Fit Casual Shirt... | Price: Rs. 683
+2025-05-27 05:40:05,471 - myntra - INFO - Product 22: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-27 05:40:05,471 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-27 05:40:05,472 - myntra - INFO - Product 24: Women Formal Shirt... | Price: Rs. 599
+2025-05-27 05:40:05,472 - myntra - INFO - Product 25: Striped Casual Shirt... | Price: Rs. 647
+2025-05-27 05:40:05,475 - myntra - INFO - Product 36: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-27 05:40:05,477 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 517
+2025-05-27 05:40:05,477 - myntra - INFO - Product 38: Slim Fit Casual Shirt... | Price: Rs. 499
+2025-05-27 05:40:05,477 - myntra - INFO - Product 39: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-27 05:40:05,477 - myntra - INFO - Product 40: Men Casual Shirt... | Price: Rs. 1631
+2025-05-27 05:40:05,477 - myntra - INFO - Product 41: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-27 05:40:05,477 - myntra - INFO - Product 42: Men Corduroy Overshirt... | Price: Rs. 1649
+2025-05-27 05:40:05,479 - myntra - INFO - Product 43: Slim Fit Casual Shirt... | Price: Rs. 503
+2025-05-27 05:40:05,479 - myntra - INFO - Product 44: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-27 05:40:05,480 - myntra - INFO - Product 45: Pure Cotton Solid Casual Shirt... | Price: Rs. 721
+2025-05-27 05:40:05,480 - myntra - INFO - Product 46: Slim Fit Cotton Linen Shirt... | Price: Rs. 1699
+2025-05-27 05:40:05,481 - myntra - INFO - Product 47: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-27 05:40:05,482 - myntra - INFO - Product 48: Men Relaxed Fit Cotton Shirt... | Price: Rs. 1014
+2025-05-27 05:40:05,482 - myntra - INFO - Product 49: Tartan Checked Casual Shirt... | Price: Rs. 594
+2025-05-27 05:40:05,482 - myntra - INFO - Product 50: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-27 05:40:05,483 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-27 05:40:05,484 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:40:05,484 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:40:05] "GET /shop_myntra?query=white+shirt HTTP/1.1" 200 -
+2025-05-27 05:40:12,583 - amazon_test - INFO - Found 60 product items in the page
+2025-05-27 05:40:12,687 - amazon_test - INFO - Product 28: The White Shirt... | Price: N/A
+2025-05-27 05:40:12,859 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-27 05:40:12,862 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:40:12,863 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:40:12] "GET /shop?query=white+shirt HTTP/1.1" 200 -
+2025-05-27 05:40:23,529 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:40:23,529 - __main__ - INFO - Processing Myntra search for query: white shirt
+2025-05-27 05:40:23,529 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-27 05:40:23,529 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:40:23,545 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:40:23,545 - __main__ - INFO - Processing Amazon search for query: white shirt
+2025-05-27 05:40:23,545 - amazon_test - INFO - Scraping Amazon for query: white shirt
+2025-05-27 05:40:23,545 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:40:24,528 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:40:24,542 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:40:24,622 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:40:24,662 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:40:24,695 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:40:24,737 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:40:25,812 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=white+shirt&ref=nb_sb_noss&sprefix=white+shirt%2Caps%2C283
+2025-05-27 05:40:25,904 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirt&sort=popularity
+2025-05-27 05:40:32,389 - myntra - INFO - Found 50 product items in the page
+2025-05-27 05:40:32,389 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-27 05:40:32,390 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-27 05:40:32,391 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 850
+2025-05-27 05:40:32,392 - myntra - INFO - Product 4: Slim Fit Cotton Casual Shirt... | Price: Rs. 1623
+2025-05-27 05:40:32,393 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-27 05:40:32,393 - myntra - INFO - Product 6: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-27 05:40:32,393 - myntra - INFO - Product 7: Women Formal Shirt... | Price: Rs. 1499
+2025-05-27 05:40:32,395 - myntra - INFO - Product 8: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-27 05:40:32,395 - myntra - INFO - Product 9: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-27 05:40:32,396 - myntra - INFO - Product 10: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-27 05:40:32,396 - myntra - INFO - Product 11: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-27 05:40:32,397 - myntra - INFO - Product 12: Men Casual Shirt... | Price: Rs. 584
+2025-05-27 05:40:32,397 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 948
+2025-05-27 05:40:32,398 - myntra - INFO - Product 14: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-27 05:40:32,398 - myntra - INFO - Product 15: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-27 05:40:32,398 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-27 05:40:32,399 - myntra - INFO - Product 17: Cotton Casual Shirt... | Price: Rs. 507
+2025-05-27 05:40:32,399 - myntra - INFO - Product 18: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-27 05:40:32,400 - myntra - INFO - Product 19: Pure Cotton Slim Fit Shirt... | Price: Rs. 1117
+2025-05-27 05:40:32,400 - myntra - INFO - Product 20: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-27 05:40:32,401 - myntra - INFO - Product 21: Men Regular Fit Casual Shirt... | Price: Rs. 683
+2025-05-27 05:40:32,401 - myntra - INFO - Product 22: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-27 05:40:32,402 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-27 05:40:32,403 - myntra - INFO - Product 24: Women Formal Shirt... | Price: Rs. 599
+2025-05-27 05:40:32,403 - myntra - INFO - Product 25: Striped Casual Shirt... | Price: Rs. 647
+2025-05-27 05:40:32,406 - myntra - INFO - Product 31: Pure Cotton Slim Formal Shirt... | Price: Rs. 1599
+2025-05-27 05:40:32,406 - myntra - INFO - Product 32: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-27 05:40:32,407 - myntra - INFO - Product 33: Men Solid Linen Shirt... | Price: Rs. 1461
+2025-05-27 05:40:32,408 - myntra - INFO - Product 34: Men Poseidon Floral Shirt... | Price: Rs. 1719
+2025-05-27 05:40:32,408 - myntra - INFO - Product 35: Slim Fit Casual Shirt... | Price: Rs. 699
+2025-05-27 05:40:32,408 - myntra - INFO - Product 36: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-27 05:40:32,409 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 517
+2025-05-27 05:40:32,410 - myntra - INFO - Product 38: Slim Fit Casual Shirt... | Price: Rs. 499
+2025-05-27 05:40:32,410 - myntra - INFO - Product 39: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-27 05:40:32,410 - myntra - INFO - Product 40: Men Casual Shirt... | Price: Rs. 1631
+2025-05-27 05:40:32,411 - myntra - INFO - Product 41: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-27 05:40:32,412 - myntra - INFO - Product 42: Men Corduroy Overshirt... | Price: Rs. 1649
+2025-05-27 05:40:32,412 - myntra - INFO - Product 43: Slim Fit Casual Shirt... | Price: Rs. 503
+2025-05-27 05:40:32,413 - myntra - INFO - Product 44: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-27 05:40:32,414 - myntra - INFO - Product 45: Pure Cotton Solid Casual Shirt... | Price: Rs. 721
+2025-05-27 05:40:32,414 - myntra - INFO - Product 46: Slim Fit Cotton Linen Shirt... | Price: Rs. 1699
+2025-05-27 05:40:32,415 - myntra - INFO - Product 47: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-27 05:40:32,415 - myntra - INFO - Product 48: Men Relaxed Fit Cotton Shirt... | Price: Rs. 1014
+2025-05-27 05:40:32,416 - myntra - INFO - Product 49: Tartan Checked Casual Shirt... | Price: Rs. 594
+2025-05-27 05:40:32,416 - myntra - INFO - Product 50: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-27 05:40:32,416 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-27 05:40:32,418 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:40:32,418 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:40:32] "GET /shop_myntra?query=white+shirt HTTP/1.1" 200 -
+2025-05-27 05:40:33,642 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:40:33] "OPTIONS /shop?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-27 05:40:33,643 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:40:33] "OPTIONS /shop_myntra?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-27 05:40:39,349 - amazon_test - INFO - Found 60 product items in the page
+2025-05-27 05:40:39,458 - amazon_test - INFO - Product 28: The White Shirt... | Price: N/A
+2025-05-27 05:40:39,586 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-27 05:40:39,587 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:40:39,587 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:40:39] "GET /shop?query=white+shirt HTTP/1.1" 200 -
+2025-05-27 05:41:17,081 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:41:17] "OPTIONS /shop_myntra?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-27 05:41:17,116 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:41:17] "OPTIONS /shop?query=Styles%20for%20Male HTTP/1.1" 200 -
+2025-05-27 05:41:38,355 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:41:38] "GET / HTTP/1.1" 200 -
+2025-05-27 05:41:44,544 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:41:44,545 - __main__ - INFO - Processing Amazon search for query: shirts
+2025-05-27 05:41:44,545 - amazon_test - INFO - Scraping Amazon for query: shirts
+2025-05-27 05:41:44,545 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:41:45,427 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:41:45,569 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:41:45,699 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:41:46,748 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=shirts&ref=nb_sb_noss&sprefix=shirts%2Caps%2C283
+2025-05-27 05:41:55,751 - amazon_test - INFO - Found 60 product items in the page
+2025-05-27 05:41:55,961 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-27 05:41:55,963 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:41:55,964 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:41:55] "GET /shop?query=shirts HTTP/1.1" 200 -
+2025-05-27 05:42:07,865 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:42:07,865 - __main__ - INFO - Processing Myntra search for query: shirts
+2025-05-27 05:42:07,865 - myntra - INFO - Scraping Myntra for query: shirts
+2025-05-27 05:42:07,866 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:42:08,853 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:42:08,935 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:42:09,080 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:42:10,162 - myntra - INFO - Opening URL: https://www.myntra.com/shirts?rawQuery=shirts&sort=popularity
+2025-05-27 05:42:17,258 - myntra - INFO - Found 50 product items in the page
+2025-05-27 05:42:17,445 - myntra - INFO - Product 1: Men Slim Fit Casual Shirt... | Price: Rs. 629
+2025-05-27 05:42:17,446 - myntra - INFO - Product 2: Men Benedict Regular Fit Shirt... | Price: Rs. 1574
+2025-05-27 05:42:17,447 - myntra - INFO - Product 3: Casual Linen Shirt... | Price: Rs. 949
+2025-05-27 05:42:17,447 - myntra - INFO - Product 4: Oversized Casual Shirt... | Price: Rs. 999
+2025-05-27 05:42:17,447 - myntra - INFO - Product 5: Men Benedict Regular Fit Shirt... | Price: Rs. 1644
+2025-05-27 05:42:17,448 - myntra - INFO - Product 6: Women Striped Casual Shirt... | Price: Rs. 671
+2025-05-27 05:42:17,448 - myntra - INFO - Product 7: Men Slim Fit Casual Shirt... | Price: Rs. 599
+2025-05-27 05:42:17,449 - myntra - INFO - Product 8: Men Printed Casual Shirt... | Price: Rs. 1839
+2025-05-27 05:42:17,450 - myntra - INFO - Product 9: Men Painter Abstract Shirt... | Price: Rs. 1503
+2025-05-27 05:42:17,450 - myntra - INFO - Product 10: Slim Fit Cotton Casual Shirt... | Price: Rs. 1919
+2025-05-27 05:42:17,450 - myntra - INFO - Product 11: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-27 05:42:17,452 - myntra - INFO - Product 12: Men Otago Regular Fit Shirt... | Price: Rs. 1919
+2025-05-27 05:42:17,452 - myntra - INFO - Product 13: Blue Solid Casual Shirt... | Price: Rs. 279
+2025-05-27 05:42:17,453 - myntra - INFO - Product 14: Pure Cotton Casual Shirt... | Price: Rs. 850
+2025-05-27 05:42:17,453 - myntra - INFO - Product 15: Spread Collar Casual Shirt... | Price: Rs. 759
+2025-05-27 05:42:17,453 - myntra - INFO - Product 16: Men Benedict Regular Fit Shirt... | Price: Rs. 1854
+2025-05-27 05:42:17,454 - myntra - INFO - Product 17: Relaxed Fit Cotton Shirt... | Price: Rs. 1399
+2025-05-27 05:42:17,455 - myntra - INFO - Product 18: Regular Opaque Casual Shirt... | Price: Rs. 507
+2025-05-27 05:42:17,455 - myntra - INFO - Product 19: Slim Fit Cotton Casual Shirt... | Price: Rs. 1623
+2025-05-27 05:42:17,456 - myntra - INFO - Product 20: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-27 05:42:17,456 - myntra - INFO - Product 21: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-27 05:42:17,456 - myntra - INFO - Product 22: Women Formal Shirt... | Price: Rs. 1499
+2025-05-27 05:42:17,457 - myntra - INFO - Product 23: Men Veniziaa Textured Shirt... | Price: Rs. 1959
+2025-05-27 05:42:17,457 - myntra - INFO - Product 24: Slim Fit Easy-Iron Shirt... | Price: Rs. 1499
+2025-05-27 05:42:17,458 - myntra - INFO - Product 25: Easy Care Men Sustainable Form... | Price: Rs. 635
+2025-05-27 05:42:17,462 - myntra - INFO - Product 36: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-27 05:42:17,462 - myntra - INFO - Product 37: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-27 05:42:17,462 - myntra - INFO - Product 38: Tartan Checked Casual Shirt... | Price: Rs. 1133
+2025-05-27 05:42:17,463 - myntra - INFO - Product 39: Pure Linen Shirt... | Price: Rs. 2199
+2025-05-27 05:42:17,464 - myntra - INFO - Product 40: Slim Fit Cotton Casual Shirt... | Price: Rs. 1065
+2025-05-27 05:42:17,465 - myntra - INFO - Product 41: Women Printed Cotton Shirt... | Price: Rs. 1253
+2025-05-27 05:42:17,466 - myntra - INFO - Product 42: Tartan Checked Shirt... | Price: Rs. 507
+2025-05-27 05:42:17,466 - myntra - INFO - Product 43: Pure Cotton Casual Shirt... | Price: Rs. 791
+2025-05-27 05:42:17,467 - myntra - INFO - Product 44: Opaque Casual Shirt... | Price: Rs. 791
+2025-05-27 05:42:17,472 - myntra - INFO - Product 45: Pure Cotton Slim Fit Shirt... | Price: Rs. 1507
+2025-05-27 05:42:17,473 - myntra - INFO - Product 46: Pure Cotton Slim Fit Shirt... | Price: Rs. 1363
+2025-05-27 05:42:17,473 - myntra - INFO - Product 47: Men Otago Regular Fit Shirt... | Price: Rs. 2079
+2025-05-27 05:42:17,474 - myntra - INFO - Product 48: Slim Fit Cotton Casual Shirt... | Price: Rs. 804
+2025-05-27 05:42:17,476 - myntra - INFO - Product 49: Solid Pure Cotton Casual Shirt... | Price: Rs. 1563
+2025-05-27 05:42:17,477 - myntra - INFO - Product 50: Men Casual Shirt... | Price: Rs. 584
+2025-05-27 05:42:17,477 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-27 05:42:17,478 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:42:17,479 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:42:17] "GET /shop_myntra?query=shirts HTTP/1.1" 200 -
+2025-05-27 05:45:17,838 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:45:17,838 - __main__ - INFO - Processing Amazon search for query: Styles for Male
+2025-05-27 05:45:17,838 - amazon_test - INFO - Scraping Amazon for query: Styles for Male
+2025-05-27 05:45:17,838 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:45:18,091 - __main__ - WARNING - Error reading cache: Expecting value: line 1 column 53 (char 52)
+2025-05-27 05:45:18,091 - __main__ - INFO - Processing Myntra search for query: Styles for Male
+2025-05-27 05:45:18,091 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-27 05:45:18,092 - WDM - INFO - ====== WebDriver manager ======
+2025-05-27 05:45:18,663 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:45:18,803 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:45:18,933 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:45:18,940 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:45:19,016 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-27 05:45:19,147 - WDM - INFO - Driver [C:\Users\Aditya Kurani\.wdm\drivers\chromedriver\win64\136.0.7103.113\chromedriver.exe] found in cache
+2025-05-27 05:45:20,010 - amazon_test - INFO - Opening URL: https://www.amazon.in/s?k=Styles+for+Male&ref=nb_sb_noss&sprefix=Styles+for+Male%2Caps%2C283
+2025-05-27 05:45:20,270 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-27 05:45:28,013 - myntra - INFO - Found 50 product items in the page
+2025-05-27 05:45:28,014 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-27 05:45:28,015 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-27 05:45:28,015 - myntra - INFO - Product 3: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-27 05:45:28,016 - myntra - INFO - Product 4: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-27 05:45:28,017 - myntra - INFO - Product 5: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-27 05:45:28,017 - myntra - INFO - Product 6: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-27 05:45:28,018 - myntra - INFO - Product 7: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-27 05:45:28,019 - myntra - INFO - Product 8: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-27 05:45:28,019 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-27 05:45:28,020 - myntra - INFO - Product 10: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-27 05:45:28,020 - myntra - INFO - Product 11: Opaque Casual Shirt... | Price: Rs. 1874
+2025-05-27 05:45:28,020 - myntra - INFO - Product 12: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-27 05:45:28,020 - myntra - INFO - Product 13: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-27 05:45:28,022 - myntra - INFO - Product 14: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 05:45:28,023 - myntra - INFO - Product 15: Men Checkered Shirt... | Price: Rs. 797
+2025-05-27 05:45:28,023 - myntra - INFO - Product 16: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-27 05:45:28,023 - myntra - INFO - Product 17: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-27 05:45:28,023 - myntra - INFO - Product 18: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-27 05:45:28,025 - myntra - INFO - Product 19: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-27 05:45:28,026 - myntra - INFO - Product 20: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 05:45:28,026 - myntra - INFO - Product 21: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-27 05:45:28,026 - myntra - INFO - Product 22: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-27 05:45:28,026 - myntra - INFO - Product 23: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-27 05:45:28,027 - myntra - INFO - Product 24: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-27 05:45:28,027 - myntra - INFO - Product 25: Self Design Casual Shirt... | Price: Rs. 1439
+2025-05-27 05:45:28,030 - myntra - INFO - Product 36: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-27 05:45:28,030 - myntra - INFO - Product 37: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-27 05:45:28,030 - myntra - INFO - Product 38: Men Checkered Shirt... | Price: Rs. 759
+2025-05-27 05:45:28,031 - myntra - INFO - Product 39: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-27 05:45:28,031 - myntra - INFO - Product 40: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-27 05:45:28,032 - myntra - INFO - Product 41: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-27 05:45:28,033 - myntra - INFO - Product 42: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 05:45:28,033 - myntra - INFO - Product 43: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-27 05:45:28,034 - myntra - INFO - Product 44: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-27 05:45:28,034 - myntra - INFO - Product 45: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-27 05:45:28,035 - myntra - INFO - Product 46: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-27 05:45:28,035 - myntra - INFO - Product 47: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-27 05:45:28,036 - myntra - INFO - Product 48: Striped Casual Shirt... | Price: Rs. 740
+2025-05-27 05:45:28,036 - myntra - INFO - Product 49: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-27 05:45:28,036 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-27 05:45:28,037 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-27 05:45:28,038 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:45:28,038 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:45:28] "GET /shop_myntra?query=Styles+for+Male HTTP/1.1" 200 -
+2025-05-27 05:45:31,571 - amazon_test - INFO - Found 60 product items in the page
+2025-05-27 05:45:31,834 - amazon_test - INFO - Successfully scraped 60 products from Amazon
+2025-05-27 05:45:31,837 - __main__ - WARNING - Error writing to cache: Object of type Response is not JSON serializable
+2025-05-27 05:45:31,838 - werkzeug - INFO - 127.0.0.1 - - [27/May/2025 05:45:31] "GET /shop?query=Styles+for+Male HTTP/1.1" 200 -
