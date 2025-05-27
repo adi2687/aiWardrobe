@@ -10,11 +10,7 @@ import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import streamifier from 'streamifier';
 import Avatar from '../model/avatar.js';
-import gltfPipeline from 'gltf-pipeline';
 import { Buffer } from 'buffer';
-
-// Extract the processGltf function from the CommonJS module
-const { processGltf } = gltfPipeline;
 
 // Configure Cloudinary
 cloudinary.config({
@@ -135,90 +131,26 @@ router.post('/save-avatar', authenticate, async (req, res) => {
       const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
       console.log('Successfully downloaded GLB file, size:', fileSizeInBytes, 'bytes (', fileSizeInMB.toFixed(2), 'MB)');
       
-      // Compress the GLB file if it's larger than 8MB
+      // Check if file exceeds Cloudinary's free tier limit (10MB)
       let processedData = response.data;
       let compressionApplied = false;
       
-      if (fileSizeInBytes > 8 * 1024 * 1024) {
-        try {
-          console.log('File size large, applying compression...');
-          
-          // Convert array buffer to Buffer for gltf-pipeline
-          const glbBuffer = Buffer.from(response.data);
-          
-          // Set compression options
-          const options = {
-            dracoOptions: {
-              compressionLevel: 7, // Higher = more compression but slower (0-10)
-              quantizePositionBits: 14, // Lower = more compression (default 14)
-              quantizeNormalBits: 10, // Lower = more compression (default 10)
-              quantizeTexcoordBits: 12, // Lower = more compression (default 12)
-              quantizeColorBits: 8, // Lower = more compression (default 8)
-              quantizeGenericBits: 12, // Lower = more compression (default 12)
-            },
-            textureCompressionOptions: {
-              targetFormat: 'webp', // Use WebP for textures
-              quality: 80 // Lower = more compression (0-100)
-            },
-            compressMeshes: true,
-            removeNormals: false, // Keep normals for better visual quality
-            skipAnimations: false, // Keep animations
-          };
-          
-          // Process the GLB
-          const results = await processGltf(glbBuffer, options);
-          
-          // Validate the processed data
-          if (!results || !results.glb) {
-            console.error('Compression failed: No valid output from processGltf');
-            throw new Error('Compression failed to produce valid output');
-          }
-          
-          // Get the processed GLB data
-          processedData = results.glb;
-          const compressedSizeInBytes = processedData.length;
-          const compressedSizeInMB = compressedSizeInBytes / (1024 * 1024);
-          const compressionRatio = ((fileSizeInBytes - compressedSizeInBytes) / fileSizeInBytes * 100).toFixed(2);
-          
-          console.log(`Compression successful: ${fileSizeInMB.toFixed(2)}MB → ${compressedSizeInMB.toFixed(2)}MB (${compressionRatio}% reduction)`);
-          compressionApplied = true;
-          
-          // If still too large after compression
-          if (compressedSizeInBytes > 10 * 1024 * 1024) {
-            console.log('Even after compression, file size exceeds Cloudinary limit. Using original URL.');
-            user.avatarUrl = avatarUrl;
-            await user.save();
-            
-            return res.json({
-              success: true,
-              message: `Avatar URL saved. File too large even after compression (${compressionRatio}% reduction).`,
-              avatarUrl: user.avatarUrl,
-              originalSizeMB: fileSizeInMB.toFixed(2),
-              compressedSizeMB: compressedSizeInMB.toFixed(2)
-            });
-          }
-        } catch (compressionError) {
-          console.error('Error compressing GLB file:', compressionError);
-          
-          // If compression fails, use original file if under limit, otherwise just store URL
-          if (fileSizeInBytes > 10 * 1024 * 1024) {
-            console.log('Compression failed and file exceeds size limit. Using original URL only.');
-            user.avatarUrl = avatarUrl;
-            await user.save();
-            
-            return res.json({
-              success: true,
-              message: 'Avatar URL saved. File too large and compression failed.',
-              avatarUrl: user.avatarUrl,
-              fileSizeMB: fileSizeInMB.toFixed(2),
-              error: compressionError.message
-            });
-          }
-          
-          // If under limit, proceed with original data
-          console.log('Compression failed but file size is within limits. Using original file.');
-        }
+      if (fileSizeInBytes > 10 * 1024 * 1024) {
+        console.log('File exceeds Cloudinary size limit. Storing URL reference only.');
+        // Store the URL reference in the user model
+        user.avatarUrl = avatarUrl;
+        await user.save();
+        
+        return res.json({
+          success: true,
+          message: 'Avatar URL saved. File too large for cloud storage.',
+          avatarUrl: user.avatarUrl,
+          fileSizeMB: fileSizeInMB.toFixed(2)
+        });
       }
+      
+      // For files under the limit, we'll upload directly
+      console.log('File size within limits, proceeding with upload.');
       
       // Upload to Cloudinary with optimization options
       const uploadResult = await new Promise((resolve, reject) => {
@@ -246,17 +178,8 @@ router.post('/save-avatar', authenticate, async (req, res) => {
           }
         );
         
-        // Ensure we have valid data to stream
-        const dataToUpload = processedData && processedData.length > 0 ? processedData : response.data;
-        
-        // Validate data before creating stream
-        if (!dataToUpload || dataToUpload.length === 0) {
-          reject(new Error('No valid data to upload'));
-          return;
-        }
-        
         // Convert arraybuffer to stream and pipe to Cloudinary
-        streamifier.createReadStream(dataToUpload).pipe(uploadStream);
+        streamifier.createReadStream(response.data).pipe(uploadStream);
       }).catch(error => {
         console.error('Cloudinary upload failed:', error.message);
         // If upload fails due to size limit, return a specific error
@@ -272,16 +195,12 @@ router.post('/save-avatar', authenticate, async (req, res) => {
       let avatar = await Avatar.findOne({ userId });
       console.log('Looking for existing avatar for user:', userId);
       
-      // Add compression metadata
+      // Add metadata
       const metadata = {
         format: uploadResult.format,
         resourceType: uploadResult.resource_type,
         bytes: uploadResult.bytes,
         originalBytes: fileSizeInBytes,
-        compressionApplied: compressionApplied,
-        compressionRatio: compressionApplied ? 
-          ((fileSizeInBytes - uploadResult.bytes) / fileSizeInBytes * 100).toFixed(2) + '%' : 
-          'N/A',
         updatedAt: new Date()
       };
       
