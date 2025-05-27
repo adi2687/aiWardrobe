@@ -19,7 +19,7 @@ const SavedAvatar = () => {
           method: "GET",
           credentials: "include",
         });
-        
+        console.log('ar is ', response)
         if (response.ok) {
           const data = await response.json();
           if (data.avatarUrl) {

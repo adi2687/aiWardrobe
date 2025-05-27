@@ -26,30 +26,27 @@ cloudinary.config({
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Create temporary directory for processing files if needed
-let tempDir;
-try {
-  tempDir = path.join(__dirname, '../temp');
-  if (!fs.existsSync(tempDir)) {
-    fs.mkdirSync(tempDir, { recursive: true });
-  }
-  console.log('Temporary directory created at:', tempDir);
-} catch (error) {
-  console.warn('Could not create temp directory:', error.message);
-  // In serverless environments, we'll use memory buffers instead of file system
-  tempDir = null;
-}
+// Create temporary directory for processing files if nee
 
 const router = express.Router();
 
 // Add CORS headers to all responses
 router.use((req, res, next) => {
-  // Allow requests from any origin
-  res.header('Access-Control-Allow-Origin', '*');
+  // When using credentials, we need to specify the exact origin instead of wildcard '*'
+  const origin = req.headers.origin;
+  if (origin) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  
+  // Allow credentials
+  res.header('Access-Control-Allow-Credentials', 'true');
+  
   // Allow specific headers
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  
   // Allow specific methods
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -171,6 +168,12 @@ router.post('/save-avatar', authenticate, async (req, res) => {
           // Process the GLB
           const results = await processGltf(glbBuffer, options);
           
+          // Validate the processed data
+          if (!results || !results.glb) {
+            console.error('Compression failed: No valid output from processGltf');
+            throw new Error('Compression failed to produce valid output');
+          }
+          
           // Get the processed GLB data
           processedData = results.glb;
           const compressedSizeInBytes = processedData.length;
@@ -243,9 +246,17 @@ router.post('/save-avatar', authenticate, async (req, res) => {
           }
         );
         
+        // Ensure we have valid data to stream
+        const dataToUpload = processedData && processedData.length > 0 ? processedData : response.data;
+        
+        // Validate data before creating stream
+        if (!dataToUpload || dataToUpload.length === 0) {
+          reject(new Error('No valid data to upload'));
+          return;
+        }
+        
         // Convert arraybuffer to stream and pipe to Cloudinary
-        // Use the compressed data if available, otherwise use original
-        streamifier.createReadStream(processedData).pipe(uploadStream);
+        streamifier.createReadStream(dataToUpload).pipe(uploadStream);
       }).catch(error => {
         console.error('Cloudinary upload failed:', error.message);
         // If upload fails due to size limit, return a specific error
