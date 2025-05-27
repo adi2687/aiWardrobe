@@ -39,26 +39,31 @@ const io = new Server(httpServer, {
 });
 
 // Expanded allowedOrigins array to include all possible frontend URLs
-const expandedAllowedOrigins = [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000',
-  'http://localhost:5173',
-  'https://outfit-ai-liart.vercel.app',
-];
+// const expandedAllowedOrigins = [
+//   'http://localhost:3000',
+//   'http://127.0.0.1:3000',
+//   'http://localhost:5173',
+//   'https://outfit-ai-liart.vercel.app',
+// ];
 
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     console.log('cors origin',origin)
+//     if (!origin) return callback(null, true);  // allow non-browser requests like curl, mobile apps
+//     if (expandedAllowedOrigins.includes(origin)) {
+//       return callback(null, origin);
+//     } else {
+//       return callback(new Error('CORS policy: This origin is not allowed'));
+//     }
+//   },
+//   credentials: true,
+// }));
+// app.use(cors())
+// http://localhost:5173
 app.use(cors({
-  origin: function (origin, callback) {
-    console.log('cors origin',origin)
-    if (!origin) return callback(null, true);  // allow non-browser requests like curl, mobile apps
-    if (expandedAllowedOrigins.includes(origin)) {
-      return callback(null, origin);
-    } else {
-      return callback(new Error('CORS policy: This origin is not allowed'));
-    }
-  },
+  origin: frontendUrl,
   credentials: true,
 }));
-
 // // Configure CORS for preflight requests
 // app.options('*', cors({
 //   origin: function (origin, callback) {
