@@ -1,6 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./Shop.css"; // Import the CSS file
-import { FaHeart, FaSalesforce, FaCheck, FaSearch, FaShoppingBag, FaAmazon, FaTshirt, FaShoppingCart, FaStore } from "react-icons/fa";
+import { 
+  FaHeart, 
+  FaCheck, 
+  FaSearch, 
+  FaShoppingBag, 
+  FaAmazon, 
+  FaTshirt, 
+  FaShoppingCart, 
+  FaStore, 
+  FaSpinner, 
+  FaArrowRight,
+  FaTag,
+  FaExternalLinkAlt,
+  FaMagic,
+  FaTimesCircle,
+  FaInfoCircle,
+  FaLock
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 const Shop = () => {
   const navigate = useNavigate();
@@ -296,133 +313,174 @@ const [adding,setadding]=useState(false);
 
   return (
     <div className="shop-container">
-      <h2 className="shop-title">Personalized Shopping based on your clothes, age and preferences</h2>
+      <header className="shop-header">
+        <h1 className="shop-title">Smart Shopping</h1>
+        <p className="shop-subtitle">Discover perfect additions to your wardrobe with AI-powered recommendations</p>
+      </header>
 
       <div className="search-section">
         <div className="search-input-container">
+          <FaSearch className="search-icon" />
           <input
             type="text"
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Enter the clothes you want to search for..."
+            placeholder="What are you looking for today? (e.g., 'white sneakers', 'black dress')"
             className="shop-search-input"
+            value={input}
           />
+          {input && (
+            <button 
+              className="clear-input" 
+              onClick={() => setInput("")}
+              aria-label="Clear search"
+            >
+              <FaTimesCircle />
+            </button>
+          )}
         </div>
         
         <div className="button-container">
-          {/* <button
-            onClick={() => {
-              amazonSearch(input);
-            }}
-            className="shop-search-button"
-          >
-            <FaAmazon style={{ marginRight: '8px' }} /> Search Amazon
-          </button>
-
           <button
-            onClick={() => myntraSearch(input)}
-            className="shop-search-button"
-          >
-            <FaStore style={{ marginRight: '8px' }} /> Search Myntra
-          </button> */}
-          
-          <button
-            className="searchonboth"
+            className="search-button primary-button"
             onClick={() => {
               amazonSearch(input);
               myntraSearch(input);
             }}
+            disabled={amazonLoading || myntraLoading}
           >
-            <FaShoppingBag style={{ marginRight: '8px' }} /> Search on Amazon and Myntra
+            <FaShoppingBag className="button-icon" /> 
+            {(amazonLoading || myntraLoading) ? (
+              <><FaSpinner className="spinner" /> Searching...</>
+            ) : (
+              "Search Products"
+            )}
           </button>
           
           <button
-            className="getairecommendations"
+            className="ai-button secondary-button"
             onClick={() => {
               fetchuserdetails();
               shoppingsuggestions();
               userclothes();
             }}
+            disabled={loaded}
           >
-            <FaTshirt style={{ marginRight: '8px' }} /> Get AI Recommendations
+            <FaMagic className="button-icon" /> 
+            {loaded ? (
+              <><FaSpinner className="spinner" /> Getting Recommendations...</>
+            ) : (
+              "AI Style Recommendations"
+            )}
+          </button>
+          
+          <button 
+            className="wishlist-button"
+            onClick={() => navigate("/wishlist")}
+          >
+            <FaHeart className="button-icon" /> My Wishlist
           </button>
         </div>
-        <button 
-          className="view-wishlist-button"
-          onClick={()=>navigate("/wishlist")}
-        >
-          <FaHeart style={{ marginRight: '8px' }} /> View Your Wishlist
-        </button>
       </div>
 
-      <div className="loading">
-        {loaded ? (
-          <div className="loader-wrapper">
-            <div className="loader"></div>
-          </div>
-        ) : (
-          <div>
-            <h3 className="loading-message">
-              Discover the perfect product or let AI inspire your next outfit choice!
-            </h3>
-            {(!amazonData.length && !myntraData.length) && (
-              <div className="connection-status">
-                <p>We're now using a backend proxy to communicate with the ML service.</p>
-                
+      {loaded ? (
+        <div className="message-container">
+          <div className="loading-spinner"></div>
+          <p className="loading-message">Finding the perfect items for you...</p>
+          <p className="suggestion-text">This may take a moment as we search multiple platforms</p>
+        </div>
+      ) : (
+        <div className="welcome-container">
+          {(!amazonData.length && !myntraData.length && !shoppingsuggestionsmain.length) && (
+            <div className="welcome-message">
+              <h2 className="welcome-title">Discover Your Perfect Style</h2>
+              <p className="welcome-subtitle">Explore thousands of products from top retailers or get AI-powered recommendations</p>
+              
+              <div className="feature-cards">
+                <div className="feature-card">
+                  <FaSearch className="feature-icon" />
+                  <h3 className="feature-title">Smart Search</h3>
+                  <p className="feature-description">Find items across Amazon and Myntra with a single search query</p>
+                </div>
+                <div className="feature-card">
+                  <FaMagic className="feature-icon" />
+                  <h3 className="feature-title">AI Stylist</h3>
+                  <p className="feature-description">Get personalized recommendations based on your wardrobe and preferences</p>
+                </div>
+                <div className="feature-card">
+                  <FaHeart className="feature-icon" />
+                  <h3 className="feature-title">Wishlist</h3>
+                  <p className="feature-description">Save your favorite items to revisit and purchase later</p>
+                </div>
               </div>
-            )}
-          </div>
-        )}
-      </div>
-
-      <div className="suggestion-container">
-        {shoppingsuggestionsmain.length > 0 ? (
-          <div className="pill-wrapper">
-            <div>
-              <h2>
-                AI suggestions for your clothes based on your wardrobe, age, and
-                preferences.
-              </h2>
-              <h4>
-                Click on any button to get search results from Amazon and
-                Myntra.
-              </h4>
+              
+              <div className="info-banner">
+                <FaInfoCircle className="info-icon" />
+                <p>Start by searching for an item or clicking "AI Style Recommendations" to get personalized suggestions</p>
+              </div>
             </div>
-            <div className="suggestion-pill-container">
-              {shoppingsuggestionsmain.map((ele, i) => (
-                <button
-                  key={i}
-                  className="suggestion-pill"
-                  onClick={() => {
-                    setInput(ele);
-                    amazonSearch(ele);
-                    myntraSearch(ele);
-                  }}
-                >
-                  {ele}
-                </button>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
-      {/* Amazon Results Section */}
+      {shoppingsuggestionsmain.length > 0 && (
+        <div className="suggestion-container">
+          <div className="suggestion-header">
+            <div className="suggestion-title">
+              <FaMagic className="suggestion-icon" />
+              <h2>AI Style Recommendations</h2>
+            </div>
+            <p className="suggestion-subtitle">
+              Personalized for you based on your wardrobe, preferences, and current fashion trends
+            </p>
+          </div>
+          
+          <div className="suggestion-pill-container">
+            {shoppingsuggestionsmain.map((ele, i) => (
+              <button
+                key={i}
+                className="suggestion-pill"
+                onClick={() => {
+                  setInput(ele);
+                  amazonSearch(ele);
+                  myntraSearch(ele);
+                }}
+              >
+                <span className="pill-text">{ele}</span>
+                <FaArrowRight className="pill-icon" />
+              </button>
+            ))}
+          </div>
+          
+          <div className="suggestion-info">
+            <FaInfoCircle className="info-icon" />
+            <p>Click on any suggestion to search for those items across platforms</p>
+          </div>
+        </div>
+      )}
+
       <div className="search-results-container">
         {/* Amazon Results Section */}
         {amazonData.length > 0 && (
-          <div className="amazon-results">
-            {input ? (
-              <h2>Amazon Search Results for "{input}"</h2>
-            ) : (
-              <h2>
-                Amazon Search Results for styles for{" "}
-                <b>{userdetails.gender} </b>
-              </h2>
-            )}
+          <div className="results-section amazon-results">
+            <div className="results-header">
+              <div className="results-title">
+                <FaAmazon className="results-icon amazon-icon" />
+                {input ? (
+                  <h2>Amazon Results for "{input}"</h2>
+                ) : (
+                  <h2>
+                    Amazon Results for {userdetails.gender || "you"}
+                  </h2>
+                )}
+              </div>
+              <div className="results-count">{amazonData.length} items found</div>
+            </div>
+            
             {amazonLoading ? (
-              <p>Loading Amazon products...</p>
+              <div className="results-loading">
+                <FaSpinner className="spinner" />
+                <p>Searching Amazon for the best products...</p>
+              </div>
             ) : (
               <>
                 <div className="shop-products-grid">
@@ -430,32 +488,43 @@ const [adding,setadding]=useState(false);
                     .slice(0, visibleAmazonProducts)
                     .map((item, index) => (
                       <div key={index} className="shop-product-card">
-                        <img
-                          src={item.image_url}
-                          alt={item.name}
-                          className="shop-product-image"
-                        />
-                        <h3 className="shop-product-name">
-                          {item.name === "/" ? "Amazon Product" : item.name}
-                        </h3>
-                        <p className="shop-product-price">{item.price}</p>
-                        <div className="product-actions">
-                          <a
-                            href={item.product_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="shop-buy-button"
-                          >
-                            <FaShoppingBag style={{ marginRight: '5px' }} /> Buy Now
-                          </a>
-                          <button
-                            className={`addtowishlist ${adding ? 'loading' : ''}`}
-                            onClick={() => addtowishlist(item)}
-                            aria-label="Add to wishlist"
-                            disabled={adding}
-                          >
-                            <FaHeart /> {adding ? "Adding..." : "Add to wishlist"}
-                          </button>
+                        <div className="product-image-container">
+                          <img
+                            src={item.image_url}
+                            alt={item.name}
+                            className="shop-product-image"
+                            loading="lazy"
+                          />
+                          <div className="product-source">
+                            <FaAmazon /> Amazon
+                          </div>
+                        </div>
+                        <div className="product-details">
+                          <h3 className="shop-product-name">
+                            {item.name === "/" ? "Amazon Product" : item.name}
+                          </h3>
+                          <p className="shop-product-price">
+                            <FaTag className="price-icon" /> <span className="price-amount">{item.price}</span>
+                          </p>
+                          <div className="product-actions">
+                            <a
+                              href={item.product_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="shop-buy-button"
+                            >
+                              <FaExternalLinkAlt className="button-icon" /> View Product
+                            </a>
+                            <button
+                              className={`addtowishlist ${adding ? 'loading' : ''}`}
+                              onClick={() => addtowishlist(item)}
+                              aria-label="Add to wishlist"
+                              disabled={adding}
+                            >
+                              <FaHeart className="button-icon" /> 
+                              {adding ? <FaSpinner className="spinner" /> : "Save"}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -467,7 +536,7 @@ const [adding,setadding]=useState(false);
                       setVisibleAmazonProducts(visibleAmazonProducts + 10)
                     }
                   >
-                    Load More
+                    Load More Products <FaArrowRight className="button-icon-right" />
                   </button>
                 )}
               </>
@@ -477,21 +546,26 @@ const [adding,setadding]=useState(false);
 
         {/* Myntra Results Section */}
         {myntraData.length > 0 && (
-          <div className="myntra-results">
-            {input ? (
-              <h2 className="myntra-results-header">
-                Myntra Results for "{input}"
-              </h2>
-            ) : userdetails.gender ? (
-              <h2 className="myntra-results-header">
-                Myntra Results for {userdetails.gender}'s styles
-              </h2>
-            ) : (
-              <h2 className="myntra-results-header">Myntra Results</h2>
-            )}
+          <div className="results-section myntra-results">
+            <div className="results-header">
+              <div className="results-title">
+                <FaStore className="results-icon myntra-icon" />
+                {input ? (
+                  <h2>Myntra Results for "{input}"</h2>
+                ) : userdetails.gender ? (
+                  <h2>Myntra Results for {userdetails.gender}</h2>
+                ) : (
+                  <h2>Myntra Results</h2>
+                )}
+              </div>
+              <div className="results-count">{myntraData.length} items found</div>
+            </div>
 
             {myntraLoading ? (
-              <p>Loading Myntra products...</p>
+              <div className="results-loading">
+                <FaSpinner className="spinner" />
+                <p>Searching Myntra for the best products...</p>
+              </div>
             ) : (
               <>
                 <div className="shop-products-grid">
@@ -499,42 +573,53 @@ const [adding,setadding]=useState(false);
                     .slice(0, visibleMyntraProducts)
                     .map((item, index) => (
                       <div key={index} className="shop-product-card">
-                        <img
-                          src={item.image_url}
-                          alt={item.name}
-                          className="shop-product-image"
-                        />
-                        <h3 className="shop-product-name">{item.name}</h3>
-                        <p className="shop-product-price">{item.price}</p>
-                        <div className="product-actions">
-                          <a
-                            href={item.product_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="shop-buy-button"
-                          >
-                            <FaShoppingBag style={{ marginRight: '5px' }} /> Buy Now
-                          </a>
-                          <button
-                            className={`addtowishlist ${adding ? 'loading' : ''}`}
-                            onClick={() => addtowishlist(item)}
-                            aria-label="Add to wishlist"
-                            disabled={adding}
-                          >
-                            <FaHeart /> {adding ? "Adding..." : "Add to wishlist"}
-                          </button>
+                        <div className="product-image-container">
+                          <img
+                            src={item.image_url}
+                            alt={item.name}
+                            className="shop-product-image"
+                            loading="lazy"
+                          />
+                          <div className="product-source myntra-source">
+                            <FaStore /> Myntra
+                          </div>
+                        </div>
+                        <div className="product-details">
+                          <h3 className="shop-product-name">{item.name}</h3>
+                          <p className="shop-product-price">
+                            <FaTag className="price-icon" /> <span className="price-amount">{item.price}</span>
+                          </p>
+                          <div className="product-actions">
+                            <a
+                              href={item.product_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="shop-buy-button myntra-buy"
+                            >
+                              <FaExternalLinkAlt className="button-icon" /> View Product
+                            </a>
+                            <button
+                              className={`addtowishlist ${adding ? 'loading' : ''}`}
+                              onClick={() => addtowishlist(item)}
+                              aria-label="Add to wishlist"
+                              disabled={adding}
+                            >
+                              <FaHeart className="button-icon" /> 
+                              {adding ? <FaSpinner className="spinner" /> : "Save"}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     ))}
                 </div>
                 {visibleMyntraProducts < myntraData.length && (
                   <button
-                    className="load-more"
+                    className="load-more myntra-more"
                     onClick={() =>
                       setVisibleMyntraProducts(visibleMyntraProducts + 10)
                     }
                   >
-                    Load More
+                    Load More Products <FaArrowRight className="button-icon-right" />
                   </button>
                 )}
               </>
@@ -542,6 +627,49 @@ const [adding,setadding]=useState(false);
           </div>
         )}
       </div>
+      
+      {/* No results message */}
+      {!loaded && input && amazonData.length === 0 && myntraData.length === 0 && !amazonLoading && !myntraLoading && (
+        <div className="no-results">
+          <div className="no-results-icon">
+            <FaSearch />
+          </div>
+          <h3>No products found</h3>
+          <p>We couldn't find any products matching "{input}". Try a different search term or check out our AI recommendations.</p>
+          <button 
+            className="try-ai-button"
+            onClick={() => {
+              fetchuserdetails();
+              shoppingsuggestions();
+            }}
+          >
+            <FaMagic className="button-icon" /> Get AI Recommendations
+          </button>
+        </div>
+      )}
+      
+      {/* Authentication required message */}
+      {!userdetails.username && (
+        <div className="auth-required">
+          <div className="auth-icon">
+            <FaLock />
+          </div>
+          <h3 className="auth-title">Sign in for personalized recommendations</h3>
+          <p className="auth-message">Create an account or sign in to get AI-powered recommendations based on your style profile and wardrobe items.</p>
+          <div className="auth-buttons">
+            <button 
+              className="primary-button"
+              onClick={() => navigate("/auth")}
+            >
+              Sign In / Create Account
+            </button>
+          </div>
+        </div>
+      )}
+      
+      <footer className="shop-footer">
+        <p>Powered by AI Wardrobe - Your personal fashion assistant</p>
+      </footer>
     </div>
   );
 };
