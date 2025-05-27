@@ -55,8 +55,8 @@ const Shop = () => {
     console.log("search query is ", searchQuery);
     setAmazonLoading(true);
     
-    // Use backend proxy to avoid CORS and HTML parsing issues
-    console.log(`Making Amazon request to: ${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`);
+    // Go back to using the backend proxy
+    console.log(`Making request through backend proxy: ${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`);
     
     fetch(
       `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`,
@@ -64,8 +64,9 @@ const Shop = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json"
         },
-        // Include credentials to ensure cookies are sent
+        // Use include for credentials to ensure cookies are sent
         credentials: "include",
       }
     )
@@ -121,17 +122,19 @@ const Shop = () => {
       input ||
       `Styles for ${userdetails.gender || "male and female"}`;
 
-    console.log(`Making Myntra request to: ${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`)
+    // Go back to using the backend proxy
+    console.log(`Making request through backend proxy: ${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`);
+    
     setMyntraLoading(true);
-    // Use backend proxy to avoid CORS and HTML parsing issues
     fetch(
       `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json"
         },
-        // Include credentials to ensure cookies are sent
+        // Use include for credentials to ensure cookies are sent
         credentials: "include",
       }
     )
