@@ -791,3 +791,145 @@
 2025-05-27 08:30:11,083 - myntra - INFO - Product 49: Tartan Checked Casual Shirt... | Price: Rs. 594
 2025-05-27 08:30:11,083 - myntra - INFO - Product 50: Women Printed Cotton Shirt... | Price: Rs. 1319
 2025-05-27 08:30:11,083 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-27 19:36:00,151 - myntra - INFO - Scraping Myntra for query: Styles for male and female
+2025-05-27 19:36:03,765 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+male+and+female?rawQuery=Styles+for+male+and+female&sort=popularity
+2025-05-27 19:36:12,894 - myntra - INFO - Found 50 product items in the page
+2025-05-27 19:36:12,897 - myntra - INFO - Product 1: Set of 3 Radiance Cream... | Price: Rs. 367
+2025-05-27 19:36:12,897 - myntra - INFO - Product 2: Instant Radiance Face Wash... | Price: Rs. 139
+2025-05-27 19:36:12,899 - myntra - INFO - Product 3: Women Floral Printed T-shirt... | Price: Rs. 569
+2025-05-27 19:36:12,900 - myntra - INFO - Product 4: Women Cotton Jogger... | Price: Rs. 901
+2025-05-27 19:36:12,900 - myntra - INFO - Product 5: Self Design A-Line Midi Dress... | Price: Rs. 1804
+2025-05-27 19:36:12,901 - myntra - INFO - Product 6: Front Slit Midi A-Line Skirt... | Price: Rs. 675
+2025-05-27 19:36:12,901 - myntra - INFO - Product 7: PU Shoulder Bag... | Price: Rs. 622
+2025-05-27 19:36:12,902 - myntra - INFO - Product 8: Printed Chiffon Peplum Top... | Price: Rs. 485
+2025-05-27 19:36:12,902 - myntra - INFO - Product 9: Women Flared Track Pants... | Price: Rs. 996
+2025-05-27 19:36:12,903 - myntra - INFO - Product 10: Interlocked Open Toe Flats... | Price: Rs. 949
+2025-05-27 19:36:12,903 - myntra - INFO - Product 11: V-Neck Fit & Flare Maxi Dress... | Price: Rs. 1851
+2025-05-27 19:36:12,904 - myntra - INFO - Product 12: Midi Cotton A-Line Dress... | Price: Rs. 2046
+2025-05-27 19:36:12,904 - myntra - INFO - Product 13: Instant Radiance Face Wash... | Price: Rs. 157
+2025-05-27 19:36:12,904 - myntra - INFO - Product 14: Printed Basic Jumpsuit... | Price: Rs. 1376
+2025-05-27 19:36:12,905 - myntra - INFO - Product 15: Printed Pure Cotton  Co-ords... | Price: Rs. 999
+2025-05-27 19:36:12,905 - myntra - INFO - Product 16: Puff Sleeves A-line Midi Dress... | Price: Rs. 1244
+2025-05-27 19:36:12,905 - myntra - INFO - Product 17: Denim Mini Skirt... | Price: Rs. 524
+2025-05-27 19:36:12,906 - myntra - INFO - Product 18: Floral Maxi Dress... | Price: Rs. 876
+2025-05-27 19:36:12,907 - myntra - INFO - Product 19: Puff Sleeves Sheath Dress... | Price: Rs. 1644
+2025-05-27 19:36:12,907 - myntra - INFO - Product 20: Floral Printed Maxi Dress... | Price: Rs. 1460
+2025-05-27 19:36:12,907 - myntra - INFO - Product 21: Printed Three Piece Co-Ords... | Price: Rs. 2396
+2025-05-27 19:36:12,907 - myntra - INFO - Product 22: A-Line Maxi Puff Sleeve Dress... | Price: Rs. 2969
+2025-05-27 19:36:12,908 - myntra - INFO - Product 23: Self-Design A-Line Midi Dress... | Price: Rs. 1619
+2025-05-27 19:36:12,908 - myntra - INFO - Product 24: Embroidered Co-Ords... | Price: Rs. 1699
+2025-05-27 19:36:12,909 - myntra - INFO - Product 25: Floral Printed Casual Shirt... | Price: Rs. 1049
+2025-05-27 19:36:12,912 - myntra - INFO - Product 36: Floral Maxi Wrap Dress... | Price: Rs. 974
+2025-05-27 19:36:12,912 - myntra - INFO - Product 37: Women Striped Maxi Dress... | Price: Rs. 1859
+2025-05-27 19:36:12,912 - myntra - INFO - Product 38: Printed Empire Midi Dress... | Price: Rs. 1538
+2025-05-27 19:36:12,914 - myntra - INFO - Product 39: Floral Print Maxi Dress... | Price: Rs. 1424
+2025-05-27 19:36:12,914 - myntra - INFO - Product 40: Sleeveless Shirt Dress... | Price: Rs. 1495
+2025-05-27 19:36:12,914 - myntra - INFO - Product 41: Shibori Printed V-Neck Kurta... | Price: Rs. 799
+2025-05-27 19:36:12,915 - myntra - INFO - Product 42: A-Line Midi Dress... | Price: Rs. 3599
+2025-05-27 19:36:12,915 - myntra - INFO - Product 43: Wrap Knee Length Dress... | Price: Rs. 1499
+2025-05-27 19:36:12,916 - myntra - INFO - Product 44: 2 Pc EDP & Body Mist... | Price: Rs. 675
+2025-05-27 19:36:12,916 - myntra - INFO - Product 45: Glitter Wrap Midi Dress... | Price: Rs. 2367
+2025-05-27 19:36:12,917 - myntra - INFO - Product 46: Belted Shirt Dress... | Price: Rs. 3231
+2025-05-27 19:36:12,917 - myntra - INFO - Product 47: Women Love Muse Deo - 200 ml... | Price: Rs. 134
+2025-05-27 19:36:12,917 - myntra - INFO - Product 48: Women A-Line Midi Dress... | Price: Rs. 1631
+2025-05-27 19:36:12,918 - myntra - INFO - Product 49: Round Neck Solid Cotton Top... | Price: Rs. 796
+2025-05-27 19:36:12,918 - myntra - INFO - Product 50: Shirt Style Solid Top... | Price: Rs. 1116
+2025-05-27 19:36:12,918 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-27 19:57:37,857 - myntra - INFO - Scraping Myntra for query: Styles for male and female
+2025-05-27 19:57:41,126 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+male+and+female?rawQuery=Styles+for+male+and+female&sort=popularity
+2025-05-27 19:57:55,556 - myntra - INFO - Found 50 product items in the page
+2025-05-27 19:57:55,557 - myntra - INFO - Product 1: Set of 3 Radiance Cream... | Price: Rs. 367
+2025-05-27 19:57:55,557 - myntra - INFO - Product 2: Instant Radiance Face Wash... | Price: Rs. 139
+2025-05-27 19:57:55,558 - myntra - INFO - Product 3: Women Floral Printed T-shirt... | Price: Rs. 569
+2025-05-27 19:57:55,558 - myntra - INFO - Product 4: Women Cotton Jogger... | Price: Rs. 901
+2025-05-27 19:57:55,559 - myntra - INFO - Product 5: Self Design A-Line Midi Dress... | Price: Rs. 1804
+2025-05-27 19:57:55,559 - myntra - INFO - Product 6: Front Slit Midi A-Line Skirt... | Price: Rs. 675
+2025-05-27 19:57:55,559 - myntra - INFO - Product 7: PU Shoulder Bag... | Price: Rs. 622
+2025-05-27 19:57:55,559 - myntra - INFO - Product 8: Printed Chiffon Peplum Top... | Price: Rs. 485
+2025-05-27 19:57:55,561 - myntra - INFO - Product 9: Women Flared Track Pants... | Price: Rs. 996
+2025-05-27 19:57:55,562 - myntra - INFO - Product 10: Interlocked Open Toe Flats... | Price: Rs. 949
+2025-05-27 19:57:55,562 - myntra - INFO - Product 11: V-Neck Fit & Flare Maxi Dress... | Price: Rs. 1851
+2025-05-27 19:57:55,563 - myntra - INFO - Product 12: Midi Cotton A-Line Dress... | Price: Rs. 2046
+2025-05-27 19:57:55,563 - myntra - INFO - Product 13: Instant Radiance Face Wash... | Price: Rs. 157
+2025-05-27 19:57:55,564 - myntra - INFO - Product 14: Printed Basic Jumpsuit... | Price: Rs. 1376
+2025-05-27 19:57:55,564 - myntra - INFO - Product 15: Printed Pure Cotton  Co-ords... | Price: Rs. 999
+2025-05-27 19:57:55,564 - myntra - INFO - Product 16: Puff Sleeves A-line Midi Dress... | Price: Rs. 1244
+2025-05-27 19:57:55,565 - myntra - INFO - Product 17: Denim Mini Skirt... | Price: Rs. 524
+2025-05-27 19:57:55,565 - myntra - INFO - Product 18: Floral Maxi Dress... | Price: Rs. 876
+2025-05-27 19:57:55,565 - myntra - INFO - Product 19: Puff Sleeves Sheath Dress... | Price: Rs. 1644
+2025-05-27 19:57:55,567 - myntra - INFO - Product 20: Floral Printed Maxi Dress... | Price: Rs. 1460
+2025-05-27 19:57:55,567 - myntra - INFO - Product 21: Printed Three Piece Co-Ords... | Price: Rs. 2396
+2025-05-27 19:57:55,568 - myntra - INFO - Product 22: A-Line Maxi Puff Sleeve Dress... | Price: Rs. 2969
+2025-05-27 19:57:55,568 - myntra - INFO - Product 23: Self-Design A-Line Midi Dress... | Price: Rs. 1619
+2025-05-27 19:57:55,569 - myntra - INFO - Product 24: Embroidered Co-Ords... | Price: Rs. 1699
+2025-05-27 19:57:55,569 - myntra - INFO - Product 25: Floral Printed Casual Shirt... | Price: Rs. 1049
+2025-05-27 19:57:55,571 - myntra - INFO - Product 31: High Waisted A-Line Mini Skirt... | Price: Rs. 587
+2025-05-27 19:57:55,572 - myntra - INFO - Product 32: Tissue Saree... | Price: Rs. 2628
+2025-05-27 19:57:55,572 - myntra - INFO - Product 33: Midi Flutter Sleeve Dress... | Price: Rs. 1449
+2025-05-27 19:57:55,572 - myntra - INFO - Product 34: Off-Shoulder Bardot Top... | Price: Rs. 492
+2025-05-27 19:57:55,573 - myntra - INFO - Product 35: Women Oversized Co-Ords Set... | Price: Rs. 1747
+2025-05-27 19:57:55,573 - myntra - INFO - Product 36: Floral Maxi Wrap Dress... | Price: Rs. 974
+2025-05-27 19:57:55,573 - myntra - INFO - Product 37: Women Striped Maxi Dress... | Price: Rs. 1859
+2025-05-27 19:57:55,574 - myntra - INFO - Product 38: Printed Empire Midi Dress... | Price: Rs. 1538
+2025-05-27 19:57:55,575 - myntra - INFO - Product 39: Floral Print Maxi Dress... | Price: Rs. 1424
+2025-05-27 19:57:55,575 - myntra - INFO - Product 40: Sleeveless Shirt Dress... | Price: Rs. 1495
+2025-05-27 19:57:55,576 - myntra - INFO - Product 41: Shibori Printed V-Neck Kurta... | Price: Rs. 799
+2025-05-27 19:57:55,576 - myntra - INFO - Product 42: A-Line Midi Dress... | Price: Rs. 3599
+2025-05-27 19:57:55,576 - myntra - INFO - Product 43: Wrap Knee Length Dress... | Price: Rs. 1499
+2025-05-27 19:57:55,577 - myntra - INFO - Product 44: 2 Pc EDP & Body Mist... | Price: Rs. 675
+2025-05-27 19:57:55,577 - myntra - INFO - Product 45: Glitter Wrap Midi Dress... | Price: Rs. 2367
+2025-05-27 19:57:55,578 - myntra - INFO - Product 46: Belted Shirt Dress... | Price: Rs. 3231
+2025-05-27 19:57:55,578 - myntra - INFO - Product 47: Women Love Muse Deo - 200 ml... | Price: Rs. 134
+2025-05-27 19:57:55,578 - myntra - INFO - Product 48: Women A-Line Midi Dress... | Price: Rs. 1631
+2025-05-27 19:57:55,579 - myntra - INFO - Product 49: Round Neck Solid Cotton Top... | Price: Rs. 796
+2025-05-27 19:57:55,579 - myntra - INFO - Product 50: Shirt Style Solid Top... | Price: Rs. 1116
+2025-05-27 19:57:55,579 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-27 20:00:22,039 - myntra - INFO - Scraping Myntra for query: Styles for male and female
+2025-05-27 20:00:24,902 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+male+and+female?rawQuery=Styles+for+male+and+female&sort=popularity
+2025-05-27 20:00:34,443 - myntra - INFO - Found 50 product items in the page
+2025-05-27 20:00:34,443 - myntra - INFO - Product 1: Set of 3 Radiance Cream... | Price: Rs. 367
+2025-05-27 20:00:34,444 - myntra - INFO - Product 2: Instant Radiance Face Wash... | Price: Rs. 139
+2025-05-27 20:00:34,444 - myntra - INFO - Product 3: Women Floral Printed T-shirt... | Price: Rs. 569
+2025-05-27 20:00:34,445 - myntra - INFO - Product 4: Women Cotton Jogger... | Price: Rs. 901
+2025-05-27 20:00:34,445 - myntra - INFO - Product 5: Self Design A-Line Midi Dress... | Price: Rs. 1804
+2025-05-27 20:00:34,446 - myntra - INFO - Product 6: Front Slit Midi A-Line Skirt... | Price: Rs. 675
+2025-05-27 20:00:34,446 - myntra - INFO - Product 7: PU Shoulder Bag... | Price: Rs. 622
+2025-05-27 20:00:34,446 - myntra - INFO - Product 8: Printed Chiffon Peplum Top... | Price: Rs. 485
+2025-05-27 20:00:34,447 - myntra - INFO - Product 9: Women Flared Track Pants... | Price: Rs. 996
+2025-05-27 20:00:34,447 - myntra - INFO - Product 10: Interlocked Open Toe Flats... | Price: Rs. 949
+2025-05-27 20:00:34,447 - myntra - INFO - Product 11: V-Neck Fit & Flare Maxi Dress... | Price: Rs. 1851
+2025-05-27 20:00:34,449 - myntra - INFO - Product 12: Midi Cotton A-Line Dress... | Price: Rs. 2046
+2025-05-27 20:00:34,449 - myntra - INFO - Product 13: Instant Radiance Face Wash... | Price: Rs. 157
+2025-05-27 20:00:34,450 - myntra - INFO - Product 14: Printed Basic Jumpsuit... | Price: Rs. 1376
+2025-05-27 20:00:34,450 - myntra - INFO - Product 15: Printed Pure Cotton  Co-ords... | Price: Rs. 999
+2025-05-27 20:00:34,450 - myntra - INFO - Product 16: Puff Sleeves A-line Midi Dress... | Price: Rs. 1244
+2025-05-27 20:00:34,451 - myntra - INFO - Product 17: Denim Mini Skirt... | Price: Rs. 524
+2025-05-27 20:00:34,452 - myntra - INFO - Product 18: Floral Maxi Dress... | Price: Rs. 876
+2025-05-27 20:00:34,452 - myntra - INFO - Product 19: Puff Sleeves Sheath Dress... | Price: Rs. 1644
+2025-05-27 20:00:34,453 - myntra - INFO - Product 20: Floral Printed Maxi Dress... | Price: Rs. 1460
+2025-05-27 20:00:34,453 - myntra - INFO - Product 21: Printed Three Piece Co-Ords... | Price: Rs. 2396
+2025-05-27 20:00:34,453 - myntra - INFO - Product 22: A-Line Maxi Puff Sleeve Dress... | Price: Rs. 2969
+2025-05-27 20:00:34,453 - myntra - INFO - Product 23: Self-Design A-Line Midi Dress... | Price: Rs. 1619
+2025-05-27 20:00:34,454 - myntra - INFO - Product 24: Embroidered Co-Ords... | Price: Rs. 1699
+2025-05-27 20:00:34,454 - myntra - INFO - Product 25: Floral Printed Casual Shirt... | Price: Rs. 1049
+2025-05-27 20:00:34,457 - myntra - INFO - Product 31: High Waisted A-Line Mini Skirt... | Price: Rs. 587
+2025-05-27 20:00:34,457 - myntra - INFO - Product 32: Tissue Saree... | Price: Rs. 2628
+2025-05-27 20:00:34,458 - myntra - INFO - Product 33: Midi Flutter Sleeve Dress... | Price: Rs. 1449
+2025-05-27 20:00:34,458 - myntra - INFO - Product 34: Off-Shoulder Bardot Top... | Price: Rs. 492
+2025-05-27 20:00:34,459 - myntra - INFO - Product 35: Women Oversized Co-Ords Set... | Price: Rs. 1747
+2025-05-27 20:00:34,459 - myntra - INFO - Product 36: Floral Maxi Wrap Dress... | Price: Rs. 974
+2025-05-27 20:00:34,459 - myntra - INFO - Product 37: Women Striped Maxi Dress... | Price: Rs. 1859
+2025-05-27 20:00:34,460 - myntra - INFO - Product 38: Printed Empire Midi Dress... | Price: Rs. 1538
+2025-05-27 20:00:34,460 - myntra - INFO - Product 39: Floral Print Maxi Dress... | Price: Rs. 1424
+2025-05-27 20:00:34,461 - myntra - INFO - Product 40: Sleeveless Shirt Dress... | Price: Rs. 1495
+2025-05-27 20:00:34,461 - myntra - INFO - Product 41: Shibori Printed V-Neck Kurta... | Price: Rs. 799
+2025-05-27 20:00:34,462 - myntra - INFO - Product 42: A-Line Midi Dress... | Price: Rs. 3599
+2025-05-27 20:00:34,462 - myntra - INFO - Product 43: Wrap Knee Length Dress... | Price: Rs. 1499
+2025-05-27 20:00:34,463 - myntra - INFO - Product 44: 2 Pc EDP & Body Mist... | Price: Rs. 675
+2025-05-27 20:00:34,464 - myntra - INFO - Product 45: Glitter Wrap Midi Dress... | Price: Rs. 2367
+2025-05-27 20:00:34,464 - myntra - INFO - Product 46: Belted Shirt Dress... | Price: Rs. 3231
+2025-05-27 20:00:34,464 - myntra - INFO - Product 47: Women Love Muse Deo - 200 ml... | Price: Rs. 134
+2025-05-27 20:00:34,465 - myntra - INFO - Product 48: Women A-Line Midi Dress... | Price: Rs. 1631
+2025-05-27 20:00:34,465 - myntra - INFO - Product 49: Round Neck Solid Cotton Top... | Price: Rs. 796
+2025-05-27 20:00:34,466 - myntra - INFO - Product 50: Shirt Style Solid Top... | Price: Rs. 1116
+2025-05-27 20:00:34,466 - myntra - INFO - Successfully scraped 45 products from Myntra
