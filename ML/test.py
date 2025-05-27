@@ -7,7 +7,7 @@ from amazon_test import scrape_amazon
 from myntra import scrape_myntra
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
-
+CORS(app)
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
