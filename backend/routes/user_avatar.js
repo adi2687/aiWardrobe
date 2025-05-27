@@ -22,9 +22,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Create temporary directory for processing files if needed
-const tempDir = path.join(__dirname, '../temp');
-if (!fs.existsSync(tempDir)) {
-  fs.mkdirSync(tempDir, { recursive: true });
+let tempDir;
+try {
+  tempDir = path.join(__dirname, '../temp');
+  if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true });
+  }
+  console.log('Temporary directory created at:', tempDir);
+} catch (error) {
+  console.warn('Could not create temp directory:', error.message);
+  // In serverless environments, we'll use memory buffers instead of file system
+  tempDir = null;
 }
 
 const router = express.Router();
