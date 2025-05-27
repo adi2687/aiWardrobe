@@ -77,12 +77,15 @@ router.post("/removefromwishlist", authenticate, async (req, res) => {
 router.get("/proxy/amazon", async (req, res) => {
   // Add CORS headers - allow requests from all frontend domains
   const origin = req.headers.origin;
-  // List of allowed origins
+  // List of allowed origins - expanded to include all possible frontend URLs
   const allowedOrigins = [
     'https://outfit-ai-liart.vercel.app',
     'https://outfit-ai.vercel.app',
     'https://ai-wardrobe.vercel.app',
-    'http://localhost:5173'
+    'https://ai-wardrobe-gamma.vercel.app',
+    'https://ai-wardrobe-ten.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5000'
   ];
   
   // Set appropriate CORS headers
@@ -137,12 +140,15 @@ router.get("/proxy/amazon", async (req, res) => {
 router.get("/proxy/myntra", async (req, res) => {
   // Add CORS headers - allow requests from all frontend domains
   const origin = req.headers.origin;
-  // List of allowed origins
+  // List of allowed origins - expanded to include all possible frontend URLs
   const allowedOrigins = [
     'https://outfit-ai-liart.vercel.app',
     'https://outfit-ai.vercel.app',
     'https://ai-wardrobe.vercel.app',
-    'http://localhost:5173'
+    'https://ai-wardrobe-gamma.vercel.app',
+    'https://ai-wardrobe-ten.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5000'
   ];
   
   // Set appropriate CORS headers
