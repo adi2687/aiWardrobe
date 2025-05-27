@@ -37,6 +37,21 @@ try {
 
 const router = express.Router();
 
+// Add CORS headers to all responses
+router.use((req, res, next) => {
+  // Allow requests from any origin
+  res.header('Access-Control-Allow-Origin', '*');
+  // Allow specific headers
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  // Allow specific methods
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  next();
+});
+
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin 
   if(!token){
@@ -80,7 +95,8 @@ router.get('/avatar', authenticate, async (req, res) => {
 
 // Save user's avatar URL and upload the GLB model to Cloudinary
 router.post('/save-avatar', authenticate, async (req, res) => {
-  console.log("in the save ", req.body);
+  console.log("in the save-avatar endpoint", req.body);
+  console.log("Request headers:", req.headers);
   try {
     const userId = req.user.id;
     const username = req.user.username;
@@ -100,11 +116,18 @@ router.post('/save-avatar', authenticate, async (req, res) => {
     
     try {
       // Download the GLB file
+      console.log('Attempting to download GLB file from:', avatarUrl);
       const response = await axios({
         method: 'GET',
         url: avatarUrl,
-        responseType: 'arraybuffer' // Use arraybuffer to get binary data
+        responseType: 'arraybuffer', // Use arraybuffer to get binary data
+        timeout: 30000, // 30 second timeout
+        headers: {
+          'Accept': '*/*',
+          'User-Agent': 'AI-Wardrobe-App'
+        }
       });
+      console.log('Successfully downloaded GLB file, size:', response.data.length);
       
       // Upload to Cloudinary
       const uploadResult = await new Promise((resolve, reject) => {

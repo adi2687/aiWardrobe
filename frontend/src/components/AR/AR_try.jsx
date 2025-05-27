@@ -157,19 +157,26 @@ const ReadyPlayerMeAvatar = () => {
   
   // Function to save avatar URL to user profile
   const saveAvatarToProfile = async () => {
-    if (!avatarUrl) return;
+    if (!avatarUrl) {
+      setError("Please create an avatar first");
+      return;
+    }
     
     setSaving(true);
     setError(null);
     
     try {
+      console.log('Saving avatar URL:', avatarUrl);
+      console.log('Backend URL:', backendUrl);
+      
       const response = await fetch(`${backendUrl}/ar/save-avatar`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({ avatarUrl }),
-        credentials: "include",
+        credentials: 'include', // Include cookies for authentication
+        body: JSON.stringify({ avatarUrl })
       });
       
       const data = await response.json();
@@ -191,7 +198,12 @@ const ReadyPlayerMeAvatar = () => {
       }
     } catch (err) {
       console.error("Error saving avatar:", err);
-      setError("Network error. Please try again.",err);
+      // More detailed error message
+      let errorMessage = "Network error. Please try again.";
+      if (err.message) {
+        errorMessage += ` Error details: ${err.message}`;
+      }
+      setError(errorMessage);
     } finally {
       setSaving(false);
     }
