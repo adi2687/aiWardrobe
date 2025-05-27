@@ -654,3 +654,140 @@
 2025-05-27 07:18:15,966 - myntra - INFO - Product 49: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
 2025-05-27 07:18:15,967 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
 2025-05-27 07:18:15,967 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-27 08:29:08,406 - myntra - INFO - Scraping Myntra for query: Chinos (khaki or olive green)
+2025-05-27 08:29:12,002 - myntra - INFO - Opening URL: https://www.myntra.com/Chinos+%28khaki+or+olive+green%29?rawQuery=Chinos+%28khaki+or+olive+green%29&sort=popularity
+2025-05-27 08:29:23,986 - myntra - INFO - Found 50 product items in the page
+2025-05-27 08:29:23,988 - myntra - INFO - Product 1: Men 512 Slim Fit Chinos... | Price: Rs. 1091
+2025-05-27 08:29:23,989 - myntra - INFO - Product 2: Men Tapered Fit Chinos Trouser... | Price: Rs. 527
+2025-05-27 08:29:23,990 - myntra - INFO - Product 3: Men Ankle Length Chinos... | Price: Rs. 573
+2025-05-27 08:29:23,991 - myntra - INFO - Product 4: Men Chino Trousers... | Price: Rs. 1799
+2025-05-27 08:29:23,991 - myntra - INFO - Product 5: Budford Satin Stretch Chinos... | Price: Rs. 702
+2025-05-27 08:29:23,993 - myntra - INFO - Product 6: Men Tapered Fit Chinos Trouser... | Price: Rs. 503
+2025-05-27 08:29:23,994 - myntra - INFO - Product 7: Men Tapered Fit Chinos... | Price: Rs. 526
+2025-05-27 08:29:23,994 - myntra - INFO - Product 8: Men Tapered Fit Chinos Trouser... | Price: Rs. 623
+2025-05-27 08:29:23,996 - myntra - INFO - Product 9: Men Straight Fit Chinos... | Price: Rs. 863
+2025-05-27 08:29:23,997 - myntra - INFO - Product 10: Women Graduated Flare Trousers... | Price: Rs. 679
+2025-05-27 08:29:23,998 - myntra - INFO - Product 11: Men Slim Fit Chinos... | Price: Rs. 1499
+2025-05-27 08:29:23,999 - myntra - INFO - Product 12: Men Slim Fit Chinos... | Price: Rs. 529
+2025-05-27 08:29:24,000 - myntra - INFO - Product 13: Men Slim Fit Chinos Trousers... | Price: Rs. 484
+2025-05-27 08:29:24,001 - myntra - INFO - Product 14: Men Slim Fit Chinos Trousers... | Price: Rs. 999
+2025-05-27 08:29:24,002 - myntra - INFO - Product 15: Men Tapered Chinos Trousers... | Price: Rs. 1474
+2025-05-27 08:29:24,003 - myntra - INFO - Product 16: Men Slim Fit Chinos... | Price: Rs. 1343
+2025-05-27 08:29:24,005 - myntra - INFO - Product 17: Men Slim Fit Chinos... | Price: Rs. 659
+2025-05-27 08:29:24,006 - myntra - INFO - Product 18: Men Regular Fit Chinos... | Price: Rs. 597
+2025-05-27 08:29:24,007 - myntra - INFO - Product 19: Men Cotton Chinos Trousers... | Price: Rs. 699
+2025-05-27 08:29:24,008 - myntra - INFO - Product 20: Men Slim Fit Chinos... | Price: Rs. 1511
+2025-05-27 08:29:24,009 - myntra - INFO - Product 21: Men Slim Fit Chinos Trousers... | Price: Rs. 1946
+2025-05-27 08:29:24,010 - myntra - INFO - Product 22: Men Slim Fit Chinos Trousers... | Price: Rs. 1474
+2025-05-27 08:29:24,011 - myntra - INFO - Product 23: Men Slim Fit Cotton Chinos... | Price: Rs. 449
+2025-05-27 08:29:24,012 - myntra - INFO - Product 24: Men Tapered Fit Chinos... | Price: Rs. 1343
+2025-05-27 08:29:24,013 - myntra - INFO - Product 25: Men Slim Fit Chinos Trousers... | Price: Rs. 4949
+2025-05-27 08:29:24,016 - myntra - INFO - Product 31: Men Slim Fit Chino Trousers... | Price: Rs. 1799
+2025-05-27 08:29:24,017 - myntra - INFO - Product 32: Men Slim-Fit Stretchable  Chin... | Price: Rs. 1790
+2025-05-27 08:29:24,018 - myntra - INFO - Product 33: Men Chinos Trousers... | Price: Rs. 675
+2025-05-27 08:29:24,019 - myntra - INFO - Product 34: Men Slim Fit Chinos Trousers... | Price: Rs. 1649
+2025-05-27 08:29:24,020 - myntra - INFO - Product 35: Men Corduroy Chinos Trousers... | Price: Rs. 1775
+2025-05-27 08:29:24,022 - myntra - INFO - Product 36: Men Woven Pure Cotton Chinos... | Price: Rs. 696
+2025-05-27 08:29:24,023 - myntra - INFO - Product 37: Men Loose Fit Chinos Trousers... | Price: Rs. 1507
+2025-05-27 08:29:24,024 - myntra - INFO - Product 38: Men Chinos Trousers... | Price: Rs. 8999
+2025-05-27 08:29:24,025 - myntra - INFO - Product 39: Men Loose Fit Chinos Trousers... | Price: Rs. 1127
+2025-05-27 08:29:24,026 - myntra - INFO - Product 40: Men Relaxed CottonLinen Chinos... | Price: Rs. 2199
+2025-05-27 08:29:24,026 - myntra - INFO - Product 41: Men Chinos Trousers... | Price: Rs. 1294
+2025-05-27 08:29:24,027 - myntra - INFO - Product 42: Men Mid-Rise Chinos Trousers... | Price: Rs. 914
+2025-05-27 08:29:24,028 - myntra - INFO - Product 43: Men Relaxed Fit Chino Trousers... | Price: Rs. 1294
+2025-05-27 08:29:24,029 - myntra - INFO - Product 44: Chinos Trousers... | Price: Rs. 839
+2025-05-27 08:29:24,031 - myntra - INFO - Product 45: Men Slim Fit Chinos Trousers... | Price: Rs. 998
+2025-05-27 08:29:24,032 - myntra - INFO - Product 46: Men Tapered Fit Chinos... | Price: Rs. 1409
+2025-05-27 08:29:24,032 - myntra - INFO - Product 47: Men Slim Fit Chinos Trousers... | Price: Rs. 1946
+2025-05-27 08:29:24,034 - myntra - INFO - Product 48: Men Slim Fit Chinos Trousers... | Price: Rs. 983
+2025-05-27 08:29:24,035 - myntra - INFO - Product 49: Pleated Chinos Trousers... | Price: Rs. 1002
+2025-05-27 08:29:24,035 - myntra - INFO - Product 50: Relaxed Straight Leg Chinos... | Price: Rs. 1609
+2025-05-27 08:29:24,036 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-27 08:29:33,016 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-27 08:29:35,775 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Male&sort=popularity
+2025-05-27 08:29:42,205 - myntra - INFO - Found 50 product items in the page
+2025-05-27 08:29:42,206 - myntra - INFO - Product 1: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-27 08:29:42,206 - myntra - INFO - Product 2: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-27 08:29:42,206 - myntra - INFO - Product 3: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-27 08:29:42,207 - myntra - INFO - Product 4: Opaque Casual Shirt... | Price: Rs. 503
+2025-05-27 08:29:42,207 - myntra - INFO - Product 5: Textured Resort Collar Shirt... | Price: Rs. 1444
+2025-05-27 08:29:42,208 - myntra - INFO - Product 6: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-27 08:29:42,208 - myntra - INFO - Product 7: Opaque Casual Shirt... | Price: Rs. 759
+2025-05-27 08:29:42,209 - myntra - INFO - Product 8: Men Printed Cotton Shirt... | Price: Rs. 509
+2025-05-27 08:29:42,209 - myntra - INFO - Product 9: Men Printed Cotton Shirt... | Price: Rs. 649
+2025-05-27 08:29:42,210 - myntra - INFO - Product 10: Men Cotton Embroidered Shirt... | Price: Rs. 1319
+2025-05-27 08:29:42,210 - myntra - INFO - Product 11: Opaque Casual Shirt... | Price: Rs. 1874
+2025-05-27 08:29:42,211 - myntra - INFO - Product 12: Men Regular Fit Collar Shirt... | Price: Rs. 1319
+2025-05-27 08:29:42,212 - myntra - INFO - Product 13: Men Printed Cotton Shirt... | Price: Rs. 529
+2025-05-27 08:29:42,212 - myntra - INFO - Product 14: Men Slim Fit Shirt With Pocket... | Price: Rs. 991
+2025-05-27 08:29:42,213 - myntra - INFO - Product 15: Men Checkered Shirt... | Price: Rs. 797
+2025-05-27 08:29:42,213 - myntra - INFO - Product 16: Oversized Fit Shirt... | Price: Rs. 764
+2025-05-27 08:29:42,214 - myntra - INFO - Product 17: Solid Regular Fit Knit Shirt... | Price: Rs. 634
+2025-05-27 08:29:42,214 - myntra - INFO - Product 18: Men Striped Oversized Shirt... | Price: Rs. 629
+2025-05-27 08:29:42,214 - myntra - INFO - Product 19: Men Self Design Casual Shirt... | Price: Rs. 593
+2025-05-27 08:29:42,215 - myntra - INFO - Product 20: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 08:29:42,215 - myntra - INFO - Product 21: Dyed Check Oversized Shirt... | Price: Rs. 1495
+2025-05-27 08:29:42,216 - myntra - INFO - Product 22: Casual Regular Fit Shirt... | Price: Rs. 1391
+2025-05-27 08:29:42,216 - myntra - INFO - Product 23: Pocket Detail Relaxed Shirt... | Price: Rs. 1674
+2025-05-27 08:29:42,216 - myntra - INFO - Product 24: Printed Spread Collar Shirt... | Price: Rs. 1319
+2025-05-27 08:29:42,217 - myntra - INFO - Product 25: Self Design Casual Shirt... | Price: Rs. 1439
+2025-05-27 08:29:42,219 - myntra - INFO - Product 36: Schiffli Resort Collar Shirt... | Price: Rs. 1605
+2025-05-27 08:29:42,220 - myntra - INFO - Product 37: Men Checked Cotton Shirt... | Price: Rs. 839
+2025-05-27 08:29:42,220 - myntra - INFO - Product 38: Men Checkered Shirt... | Price: Rs. 759
+2025-05-27 08:29:42,220 - myntra - INFO - Product 39: Opaque Casual Shirt... | Price: Rs. 949
+2025-05-27 08:29:42,220 - myntra - INFO - Product 40: Self Design Casual Shirt... | Price: Rs. 569
+2025-05-27 08:29:42,221 - myntra - INFO - Product 41: Self Design Casual Shirt... | Price: Rs. 509
+2025-05-27 08:29:42,221 - myntra - INFO - Product 42: Relaxed Checked Casual Shirt... | Price: Rs. 527
+2025-05-27 08:29:42,221 - myntra - INFO - Product 43: Relaxed Checked Casual Shirt... | Price: Rs. 703
+2025-05-27 08:29:42,222 - myntra - INFO - Product 44: Men Self Design Casual Shirt... | Price: Rs. 702
+2025-05-27 08:29:42,222 - myntra - INFO - Product 45: Men Self Design Casual Shirt... | Price: Rs. 1189
+2025-05-27 08:29:42,223 - myntra - INFO - Product 46: Men Self Design Casual Shirt... | Price: Rs. 740
+2025-05-27 08:29:42,223 - myntra - INFO - Product 47: Printed Cotton Casual Shirt... | Price: Rs. 623
+2025-05-27 08:29:42,224 - myntra - INFO - Product 48: Striped Casual Shirt... | Price: Rs. 740
+2025-05-27 08:29:42,224 - myntra - INFO - Product 49: Men Relaxed Fit Printed Shirt... | Price: Rs. 503
+2025-05-27 08:29:42,225 - myntra - INFO - Product 50: Men Striped Cotton Shirt... | Price: Rs. 659
+2025-05-27 08:29:42,225 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-27 08:30:00,851 - myntra - INFO - Scraping Myntra for query: White shirt
+2025-05-27 08:30:02,954 - myntra - INFO - Opening URL: https://www.myntra.com/White+shirt?rawQuery=White+shirt&sort=popularity
+2025-05-27 08:30:11,062 - myntra - INFO - Found 50 product items in the page
+2025-05-27 08:30:11,063 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-27 08:30:11,064 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-27 08:30:11,064 - myntra - INFO - Product 3: Pure Cotton Casual Shirt... | Price: Rs. 850
+2025-05-27 08:30:11,065 - myntra - INFO - Product 4: Slim Fit Cotton Casual Shirt... | Price: Rs. 1623
+2025-05-27 08:30:11,065 - myntra - INFO - Product 5: Opaque Cotton Casual Shirt... | Price: Rs. 791
+2025-05-27 08:30:11,065 - myntra - INFO - Product 6: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-27 08:30:11,066 - myntra - INFO - Product 7: Women Formal Shirt... | Price: Rs. 1499
+2025-05-27 08:30:11,066 - myntra - INFO - Product 8: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-27 08:30:11,067 - myntra - INFO - Product 9: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-27 08:30:11,067 - myntra - INFO - Product 10: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-27 08:30:11,068 - myntra - INFO - Product 11: Opaque Casual Shirt... | Price: Rs. 347
+2025-05-27 08:30:11,068 - myntra - INFO - Product 12: Men Casual Shirt... | Price: Rs. 584
+2025-05-27 08:30:11,068 - myntra - INFO - Product 13: Slim Fit Cotton Casual Shirt... | Price: Rs. 948
+2025-05-27 08:30:11,070 - myntra - INFO - Product 14: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-27 08:30:11,070 - myntra - INFO - Product 15: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-27 08:30:11,071 - myntra - INFO - Product 16: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-27 08:30:11,071 - myntra - INFO - Product 17: Cotton Casual Shirt... | Price: Rs. 507
+2025-05-27 08:30:11,072 - myntra - INFO - Product 18: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-27 08:30:11,072 - myntra - INFO - Product 19: Pure Cotton Slim Fit Shirt... | Price: Rs. 1117
+2025-05-27 08:30:11,072 - myntra - INFO - Product 20: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-27 08:30:11,072 - myntra - INFO - Product 21: Men Regular Fit Casual Shirt... | Price: Rs. 683
+2025-05-27 08:30:11,073 - myntra - INFO - Product 22: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-27 08:30:11,073 - myntra - INFO - Product 23: Striped Casual Shirt... | Price: Rs. 558
+2025-05-27 08:30:11,074 - myntra - INFO - Product 24: Women Formal Shirt... | Price: Rs. 599
+2025-05-27 08:30:11,075 - myntra - INFO - Product 25: Striped Casual Shirt... | Price: Rs. 647
+2025-05-27 08:30:11,078 - myntra - INFO - Product 36: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-27 08:30:11,078 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 517
+2025-05-27 08:30:11,079 - myntra - INFO - Product 38: Slim Fit Casual Shirt... | Price: Rs. 499
+2025-05-27 08:30:11,079 - myntra - INFO - Product 39: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-27 08:30:11,079 - myntra - INFO - Product 40: Men Casual Shirt... | Price: Rs. 1631
+2025-05-27 08:30:11,080 - myntra - INFO - Product 41: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-27 08:30:11,080 - myntra - INFO - Product 42: Men Corduroy Overshirt... | Price: Rs. 1649
+2025-05-27 08:30:11,080 - myntra - INFO - Product 43: Slim Fit Casual Shirt... | Price: Rs. 503
+2025-05-27 08:30:11,081 - myntra - INFO - Product 44: Slim Fit Casual Shirt... | Price: Rs. 1275
+2025-05-27 08:30:11,081 - myntra - INFO - Product 45: Pure Cotton Solid Casual Shirt... | Price: Rs. 721
+2025-05-27 08:30:11,082 - myntra - INFO - Product 46: Slim Fit Cotton Linen Shirt... | Price: Rs. 1699
+2025-05-27 08:30:11,082 - myntra - INFO - Product 47: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-27 08:30:11,083 - myntra - INFO - Product 48: Men Relaxed Fit Cotton Shirt... | Price: Rs. 1014
+2025-05-27 08:30:11,083 - myntra - INFO - Product 49: Tartan Checked Casual Shirt... | Price: Rs. 594
+2025-05-27 08:30:11,083 - myntra - INFO - Product 50: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-27 08:30:11,083 - myntra - INFO - Successfully scraped 40 products from Myntra

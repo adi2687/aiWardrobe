@@ -8,6 +8,9 @@ const userSchema=new mongoose.Schema({
     email:{type:String,required:true,unique:true},
     password:{type:String,required:true},
     profileImageURL:{type:String , default:'./profileImage/default.png'},
+    avatarUrl:{type:String}, // Original 3D avatar URL from Ready Player Me
+    avatarLocalPath:{type:String}, // Local path to downloaded 3D avatar GLB file (deprecated)
+    avatarCloudinaryUrl:{type:String}, // Cloudinary URL for the 3D avatar model
     wardrobe:{type:[String],default: []},
     clothes:{type:[String],default:[]},
     clothessuggestionforweek:{type:String},

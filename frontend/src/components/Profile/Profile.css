@@ -1381,6 +1381,92 @@ font-size: 14px;
   }
 }
 
+/* Avatar Section */
+.avatar-section {
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.avatar-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.avatar-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.avatar-card {
+  background: linear-gradient(135deg, rgba(30, 30, 45, 0.6), rgba(20, 20, 35, 0.8));
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(106, 17, 203, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(106, 17, 203, 0.05);
+}
+
+.avatar-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(106, 17, 203, 0.1);
+}
+
+.avatar-card-icon {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.avatar-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.avatar-card p {
+  color: #aaa;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.avatar-card .action-button {
+  width: 100%;
+  padding: 0.85rem;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.avatar-card .action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
   .profile-container .profile-header {

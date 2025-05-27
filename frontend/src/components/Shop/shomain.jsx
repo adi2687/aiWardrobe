@@ -313,6 +313,9 @@ const [adding,setadding]=useState(false);
 
   return (
     <div className="shop-container">
+
+      {/* heyyy {JSON.stringify(username)} */}
+      {JSON.stringify(userdetails)}
       <header className="shop-header">
         <h1 className="shop-title">Smart Shopping</h1>
         <p className="shop-subtitle">Discover perfect additions to your wardrobe with AI-powered recommendations</p>
@@ -649,7 +652,7 @@ const [adding,setadding]=useState(false);
       )}
       
       {/* Authentication required message */}
-      {!userdetails.username && (
+      {(!userdetails) && (
         <div className="auth-required">
           <div className="auth-icon">
             <FaLock />
