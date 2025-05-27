@@ -191,7 +191,7 @@ const ReadyPlayerMeAvatar = () => {
       }
     } catch (err) {
       console.error("Error saving avatar:", err);
-      setError("Network error. Please try again.");
+      setError("Network error. Please try again.",err);
     } finally {
       setSaving(false);
     }
