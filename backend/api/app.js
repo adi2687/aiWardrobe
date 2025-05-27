@@ -40,35 +40,46 @@ const io = new Server(httpServer, {
 
 // Expanded allowedOrigins array to include all possible frontend URLs
 const expandedAllowedOrigins = [
-  // ...allowedOrigins,
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'http://localhost:5173',
   'https://outfit-ai-liart.vercel.app',
-  'https://outfit-ai.vercel.app',
-  'https://ai-wardrobe.vercel.app',
-  'https://ai-wardrobe-gamma.vercel.app',
-  'https://ai-wardrobe-ten.vercel.app',
 ];
 
-// Configure CORS for preflight requests
-app.options('*', cors({
+app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    // Check if the origin is in our allowed list
+    console.log('cors origin',origin)
+    if (!origin) return callback(null, true);  // allow non-browser requests like curl, mobile apps
     if (expandedAllowedOrigins.includes(origin)) {
-      callback(null, origin); // ✅ Set actual origin, not true
+      return callback(null, origin);
     } else {
-      // For development purposes, allow all origins
-      console.log('Origin not in allowlist but allowing:', origin);
-      callback(null, origin);
-      // In production, you might want to be more restrictive:
-      // console.log('Blocked by CORS:', origin);
-      // callback(new Error('Not allowed by CORS'));
+      return callback(new Error('CORS policy: This origin is not allowed'));
     }
   },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }));
+
+// // Configure CORS for preflight requests
+// app.options('*', cors({
+//   origin: function (origin, callback) {
+//     // Allow requests with no origin (like mobile apps or curl requests)
+//     if (!origin) return callback(null, true);
+    
+//     // Check if the origin is in our allowed list
+//     if (expandedAllowedOrigins.includes(origin)) {
+//       callback(null, origin); // ✅ Set actual origin, not true
+//     } else {
+//       // For development purposes, allow all origins
+//       console.log('Origin not in allowlist but allowing:', origin);
+//       callback(null, origin);
+//       // In production, you might want to be more restrictive:
+//       // console.log('Blocked by CORS:', origin);
+//       // callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+// }));
 
 
 
@@ -77,28 +88,28 @@ export { io }; // ✅ Exporting io instance
 app.use(cookieParser());
 
 // Apply CORS middleware to all routes
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       // Allow requests with no origin (like mobile apps or curl requests)
+//       if (!origin) return callback(null, true);
       
-      // Check if the origin is in our allowed list
-      if (expandedAllowedOrigins.includes(origin)) {
-        callback(null, origin);
-      } else {
-        // For development purposes, allow all origins
-        console.log('Origin not in allowlist but allowing:', origin);
-        callback(null, origin);
-        // In production, you might want to be more restrictive:
-        // console.log('Blocked by CORS:', origin);
-        // callback(null, false);
-      }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true,
-  })
-);
+//       // Check if the origin is in our allowed list
+//       if (expandedAllowedOrigins.includes(origin)) {
+//         callback(null, origin);
+//       } else {
+//         // For development purposes, allow all origins
+//         console.log('Origin not in allowlist but allowing:', origin);
+//         callback(null, origin);
+//         // In production, you might want to be more restrictive:
+//         // console.log('Blocked by CORS:', origin);
+//         // callback(null, false);
+//       }
+//     },
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     credentials: true,
+//   })
+// );
 
 app.use(
   session({
