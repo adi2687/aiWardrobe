@@ -28,7 +28,7 @@ const Shop = () => {
   const [visible, setVisible] = useState(false);
   const [userdetails, setuserdetails] = useState({});
   const backendurl = import.meta.env.VITE_BACKEND_URL;
-  const mlurl = import.meta.env.VITE_ML_URL;
+  // const mlurl = import.meta.env.VITE_ML_URL;
 
   const fetchuserdetails = () => {
     fetch(`${backendurl}/user/getuserdetails`, {
@@ -315,7 +315,7 @@ const [adding,setadding]=useState(false);
     <div className="shop-container">
 
       {/* heyyy {JSON.stringify(username)} */}
-      {JSON.stringify(userdetails)}
+      {/* {JSON.stringify(userdetails)} */}
       <header className="shop-header">
         <h1 className="shop-title">Smart Shopping</h1>
         <p className="shop-subtitle">Discover perfect additions to your wardrobe with AI-powered recommendations</p>
@@ -650,7 +650,7 @@ const [adding,setadding]=useState(false);
           </button>
         </div>
       )}
-      
+       
       {/* Authentication required message */}
       {(!userdetails) && (
         <div className="auth-required">

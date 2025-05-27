@@ -7,7 +7,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 // ML service URL from environment variables
-const ML_SERVICE_URL = process.env.ML_SERVICE_URL || "https://3e2c-103-179-0-241.ngrok-free.app";
+const ML_SERVICE_URL = process.env.ML_SERVICE_URL || "https://ed49-2409-40d4-310b-fcfd-d582-3c98-2170-8b95.ngrok-free.app";
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
 
