@@ -10,6 +10,8 @@ import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import streamifier from 'streamifier';
 import Avatar from '../model/avatar.js';
+import { processGltf } from 'gltf-pipeline';
+import { Buffer } from 'buffer';
 
 // Configure Cloudinary
 cloudinary.config({
@@ -127,25 +129,127 @@ router.post('/save-avatar', authenticate, async (req, res) => {
           'User-Agent': 'AI-Wardrobe-App'
         }
       });
-      console.log('Successfully downloaded GLB file, size:', response.data.length);
       
-      // Upload to Cloudinary
+      // Check file size
+      const fileSizeInBytes = response.data.length;
+      const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
+      console.log('Successfully downloaded GLB file, size:', fileSizeInBytes, 'bytes (', fileSizeInMB.toFixed(2), 'MB)');
+      
+      // Compress the GLB file if it's larger than 8MB
+      let processedData = response.data;
+      let compressionApplied = false;
+      
+      if (fileSizeInBytes > 8 * 1024 * 1024) {
+        try {
+          console.log('File size large, applying compression...');
+          
+          // Convert array buffer to Buffer for gltf-pipeline
+          const glbBuffer = Buffer.from(response.data);
+          
+          // Set compression options
+          const options = {
+            dracoOptions: {
+              compressionLevel: 7, // Higher = more compression but slower (0-10)
+              quantizePositionBits: 14, // Lower = more compression (default 14)
+              quantizeNormalBits: 10, // Lower = more compression (default 10)
+              quantizeTexcoordBits: 12, // Lower = more compression (default 12)
+              quantizeColorBits: 8, // Lower = more compression (default 8)
+              quantizeGenericBits: 12, // Lower = more compression (default 12)
+            },
+            textureCompressionOptions: {
+              targetFormat: 'webp', // Use WebP for textures
+              quality: 80 // Lower = more compression (0-100)
+            },
+            compressMeshes: true,
+            removeNormals: false, // Keep normals for better visual quality
+            skipAnimations: false, // Keep animations
+          };
+          
+          // Process the GLB
+          const results = await processGltf(glbBuffer, options);
+          
+          // Get the processed GLB data
+          processedData = results.glb;
+          const compressedSizeInBytes = processedData.length;
+          const compressedSizeInMB = compressedSizeInBytes / (1024 * 1024);
+          const compressionRatio = ((fileSizeInBytes - compressedSizeInBytes) / fileSizeInBytes * 100).toFixed(2);
+          
+          console.log(`Compression successful: ${fileSizeInMB.toFixed(2)}MB → ${compressedSizeInMB.toFixed(2)}MB (${compressionRatio}% reduction)`);
+          compressionApplied = true;
+          
+          // If still too large after compression
+          if (compressedSizeInBytes > 10 * 1024 * 1024) {
+            console.log('Even after compression, file size exceeds Cloudinary limit. Using original URL.');
+            user.avatarUrl = avatarUrl;
+            await user.save();
+            
+            return res.json({
+              success: true,
+              message: `Avatar URL saved. File too large even after compression (${compressionRatio}% reduction).`,
+              avatarUrl: user.avatarUrl,
+              originalSizeMB: fileSizeInMB.toFixed(2),
+              compressedSizeMB: compressedSizeInMB.toFixed(2)
+            });
+          }
+        } catch (compressionError) {
+          console.error('Error compressing GLB file:', compressionError);
+          
+          // If compression fails, use original file if under limit, otherwise just store URL
+          if (fileSizeInBytes > 10 * 1024 * 1024) {
+            console.log('Compression failed and file exceeds size limit. Using original URL only.');
+            user.avatarUrl = avatarUrl;
+            await user.save();
+            
+            return res.json({
+              success: true,
+              message: 'Avatar URL saved. File too large and compression failed.',
+              avatarUrl: user.avatarUrl,
+              fileSizeMB: fileSizeInMB.toFixed(2),
+              error: compressionError.message
+            });
+          }
+          
+          // If under limit, proceed with original data
+          console.log('Compression failed but file size is within limits. Using original file.');
+        }
+      }
+      
+      // Upload to Cloudinary with optimization options
       const uploadResult = await new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
           {
             folder: 'avatars',
             resource_type: 'raw', // Important for binary files like GLB
             public_id: `avatar_${userId}_${Date.now()}`,
-            format: 'glb'
+            format: 'glb',
+            quality: 'auto', // Use automatic quality
+            fetch_format: 'auto', // Use automatic format
+            flags: 'lossy', // Allow lossy compression if possible
+            transformation: [
+              { fetch_format: 'auto' }
+            ]
           },
           (error, result) => {
-            if (error) reject(error);
-            else resolve(result);
+            if (error) {
+              console.error('Cloudinary upload error:', error);
+              reject(error);
+            } else {
+              console.log('Cloudinary upload success, new size:', result.bytes, 'bytes');
+              resolve(result);
+            }
           }
         );
         
         // Convert arraybuffer to stream and pipe to Cloudinary
-        streamifier.createReadStream(response.data).pipe(uploadStream);
+        // Use the compressed data if available, otherwise use original
+        streamifier.createReadStream(processedData).pipe(uploadStream);
+      }).catch(error => {
+        console.error('Cloudinary upload failed:', error.message);
+        // If upload fails due to size limit, return a specific error
+        if (error.message && error.message.includes('File size too large')) {
+          throw new Error('File size exceeds Cloudinary plan limits. Please upgrade your plan or use smaller files.');
+        }
+        throw error;
       });
       
       console.log('Cloudinary upload result:', uploadResult);
@@ -153,6 +257,19 @@ router.post('/save-avatar', authenticate, async (req, res) => {
       // Create or update avatar document in MongoDB
       let avatar = await Avatar.findOne({ userId });
       console.log('Looking for existing avatar for user:', userId);
+      
+      // Add compression metadata
+      const metadata = {
+        format: uploadResult.format,
+        resourceType: uploadResult.resource_type,
+        bytes: uploadResult.bytes,
+        originalBytes: fileSizeInBytes,
+        compressionApplied: compressionApplied,
+        compressionRatio: compressionApplied ? 
+          ((fileSizeInBytes - uploadResult.bytes) / fileSizeInBytes * 100).toFixed(2) + '%' : 
+          'N/A',
+        updatedAt: new Date()
+      };
       
       if (!avatar) {
         // Create new avatar document
@@ -162,24 +279,14 @@ router.post('/save-avatar', authenticate, async (req, res) => {
           originalUrl: avatarUrl,
           cloudinaryUrl: uploadResult.secure_url,
           cloudinaryPublicId: uploadResult.public_id,
-          metadata: {
-            format: uploadResult.format,
-            resourceType: uploadResult.resource_type,
-            bytes: uploadResult.bytes,
-            createdAt: new Date()
-          }
+          metadata: metadata
         });
       } else {
         // Update existing avatar document
         avatar.originalUrl = avatarUrl;
         avatar.cloudinaryUrl = uploadResult.secure_url;
         avatar.cloudinaryPublicId = uploadResult.public_id;
-        avatar.metadata = {
-          format: uploadResult.format,
-          resourceType: uploadResult.resource_type,
-          bytes: uploadResult.bytes,
-          updatedAt: new Date()
-        };
+        avatar.metadata = metadata;
       }
       
       await avatar.save();
