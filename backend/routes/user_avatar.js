@@ -10,8 +10,11 @@ import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import streamifier from 'streamifier';
 import Avatar from '../model/avatar.js';
-import { processGltf } from 'gltf-pipeline';
+import gltfPipeline from 'gltf-pipeline';
 import { Buffer } from 'buffer';
+
+// Extract the processGltf function from the CommonJS module
+const { processGltf } = gltfPipeline;
 
 // Configure Cloudinary
 cloudinary.config({
