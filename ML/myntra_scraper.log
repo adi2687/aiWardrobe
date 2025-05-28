@@ -1305,3 +1305,246 @@
 2025-05-28 07:00:40,469 - myntra - INFO - Opening URL: https://www.myntra.com/Dress+shoes+%28Oxfords%2C+loafers+in+black+or+brown+leather%29?rawQuery=Dress+shoes+%28Oxfords%2C+loafers+in+black+or+brown+leather%29and gender:$Male&sort=popularity
 2025-05-28 07:00:59,946 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
 2025-05-28 07:01:02,114 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-28 07:12:41,703 - myntra - INFO - Scraping Myntra for query: Brown Suit
+2025-05-28 07:12:44,195 - myntra - INFO - Opening URL: https://www.myntra.com/Brown+Suit?rawQuery=Brown+Suitand gender:$Male&sort=popularity
+2025-05-28 07:12:53,459 - myntra - INFO - Found 50 product items in the page
+2025-05-28 07:12:53,460 - myntra - INFO - Product 1: 2-Piece Slim-Fit Suit... | Price: Rs. 5399
+2025-05-28 07:12:53,460 - myntra - INFO - Product 2: Men Night suit... | Price: Rs. 1007
+2025-05-28 07:12:53,461 - myntra - INFO - Product 3: Bandhgala Two-Piece Suit... | Price: Rs. 3495
+2025-05-28 07:12:53,462 - myntra - INFO - Product 4: Men Pure Cotton Night suit... | Price: Rs. 699
+2025-05-28 07:12:53,462 - myntra - INFO - Product 5: Men Graphic Print Night suit... | Price: Rs. 699
+2025-05-28 07:12:53,463 - myntra - INFO - Product 6: Men Night Suit... | Price: Rs. 979
+2025-05-28 07:12:53,463 - myntra - INFO - Product 7: Men Night suit... | Price: Rs. 1599
+2025-05-28 07:12:53,464 - myntra - INFO - Product 8: Pure Cotton T-Shirt With Short... | Price: Rs. 1427
+2025-05-28 07:12:53,464 - myntra - INFO - Product 9: Men Graphic Print Night suit... | Price: Rs. 699
+2025-05-28 07:12:53,464 - myntra - INFO - Product 10: Men Night suit... | Price: Rs. 979
+2025-05-28 07:12:53,465 - myntra - INFO - Product 11: Men Pure Cotton Night suit... | Price: Rs. 699
+2025-05-28 07:12:53,465 - myntra - INFO - Product 12: Three Pieces Formal Suit... | Price: Rs. 9899
+2025-05-28 07:12:53,466 - myntra - INFO - Product 13: Single-Breasted Two-Piece Suit... | Price: Rs. 3495
+2025-05-28 07:12:53,466 - myntra - INFO - Product 14: Men Two-Piece Formal Suit... | Price: Rs. 6839
+2025-05-28 07:12:53,467 - myntra - INFO - Product 15: Men Three Piece Suit... | Price: Rs. 10199
+2025-05-28 07:12:53,467 - myntra - INFO - Product 16: Men Textured Slim Fit Single-B... | Price: Rs. 5999
+2025-05-28 07:12:53,467 - myntra - INFO - Product 17: Single-Breasted Formal Suits... | Price: Rs. 12799
+2025-05-28 07:12:53,468 - myntra - INFO - Product 18: Three-Piece Formal Suit... | Price: Rs. 7049
+2025-05-28 07:12:53,468 - myntra - INFO - Product 19: Single-Breasted Two-Piece Suit... | Price: Rs. 7019
+2025-05-28 07:12:53,468 - myntra - INFO - Product 20: Slim Fit 3 Piece Formal Suit... | Price: Rs. 9499
+2025-05-28 07:12:53,468 - myntra - INFO - Product 21: Men Solid Single-Breasted 3-Pi... | Price: Rs. 7079
+2025-05-28 07:12:53,469 - myntra - INFO - Product 22: Two-Piece Formal Suit... | Price: Rs. 13999
+2025-05-28 07:12:53,469 - myntra - INFO - Product 23: TShirt With Trouser Nightsuits... | Price: Rs. 1633
+2025-05-28 07:12:53,470 - myntra - INFO - Product 24: Men Slim Formal 2-Piece Suit... | Price: Rs. 2199
+2025-05-28 07:12:53,470 - myntra - INFO - Product 25: 2-Piece Formal Suit... | Price: Rs. 9349
+2025-05-28 07:12:53,472 - myntra - INFO - Product 31: Single-Breasted Two-Piece Suit... | Price: Rs. 13999
+2025-05-28 07:12:53,473 - myntra - INFO - Product 32: Single-Breasted 2-Piece Suits... | Price: Rs. 17999
+2025-05-28 07:12:53,473 - myntra - INFO - Product 33: Single-Breasted Party Suit... | Price: Rs. 11199
+2025-05-28 07:12:53,474 - myntra - INFO - Product 34: Single-Breasted 2 Piece Suit... | Price: Rs. 12999
+2025-05-28 07:12:53,474 - myntra - INFO - Product 35: Single-Breasted 3 Piece Suit... | Price: Rs. 13999
+2025-05-28 07:12:53,474 - myntra - INFO - Product 36: Men Formal Three-Piece Suit... | Price: Rs. 21359
+2025-05-28 07:12:53,475 - myntra - INFO - Product 37: Slim Fit 3-Piece Formal Suit... | Price: Rs. 17799
+2025-05-28 07:12:53,475 - myntra - INFO - Product 38: Men Solid Formal Suit... | Price: Rs. 11049
+2025-05-28 07:12:53,475 - myntra - INFO - Product 39: Single-Breasted Two-Piece Suit... | Price: Rs. 7799
+2025-05-28 07:12:53,476 - myntra - INFO - Product 40: Men Single-Breasted Suits... | Price: Rs. 16019
+2025-05-28 07:12:53,476 - myntra - INFO - Product 41: Single-Breasted 3-Piece Suit... | Price: Rs. 16019
+2025-05-28 07:12:53,476 - myntra - INFO - Product 42: Men Single-Breasted Suits... | Price: Rs. 15129
+2025-05-28 07:12:53,477 - myntra - INFO - Product 43: Single-Breasted 4-Piece Suit... | Price: Rs. 23399
+2025-05-28 07:12:53,477 - myntra - INFO - Product 44: Single-Breasted Two-Piece Suit... | Price: Rs. 16909
+2025-05-28 07:12:53,477 - myntra - INFO - Product 45: Men 3 Pcs Formal Suit... | Price: Rs. 11899
+2025-05-28 07:12:53,478 - myntra - INFO - Product 46: Three Piece Party Suits... | Price: Rs. 11899
+2025-05-28 07:12:53,479 - myntra - INFO - Product 47: Three-Piece Party Suit... | Price: Rs. 10199
+2025-05-28 07:12:53,479 - myntra - INFO - Product 48: Men Single-Breasted Suit... | Price: Rs. 8399
+2025-05-28 07:12:53,480 - myntra - INFO - Product 49: Slim Fit Two Piece Formal Suit... | Price: Rs. 26699
+2025-05-28 07:12:53,480 - myntra - INFO - Product 50: Slim-Fit 3-Piece Formal Suit... | Price: Rs. 17499
+2025-05-28 07:12:53,480 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-28 07:13:11,674 - myntra - INFO - Scraping Myntra for query: Brown Suit
+2025-05-28 07:13:14,496 - myntra - INFO - Opening URL: https://www.myntra.com/Brown+Suit?rawQuery=Brown+Suitand gender:$Male&sort=popularity
+2025-05-28 07:13:23,195 - myntra - INFO - Found 50 product items in the page
+2025-05-28 07:13:23,196 - myntra - INFO - Product 1: 2-Piece Slim-Fit Suit... | Price: Rs. 5399
+2025-05-28 07:13:23,197 - myntra - INFO - Product 2: Men Night suit... | Price: Rs. 1007
+2025-05-28 07:13:23,197 - myntra - INFO - Product 3: Bandhgala Two-Piece Suit... | Price: Rs. 3495
+2025-05-28 07:13:23,198 - myntra - INFO - Product 4: Men Pure Cotton Night suit... | Price: Rs. 699
+2025-05-28 07:13:23,198 - myntra - INFO - Product 5: Men Graphic Print Night suit... | Price: Rs. 699
+2025-05-28 07:13:23,198 - myntra - INFO - Product 6: Men Night Suit... | Price: Rs. 979
+2025-05-28 07:13:23,200 - myntra - INFO - Product 7: Men Night suit... | Price: Rs. 1599
+2025-05-28 07:13:23,201 - myntra - INFO - Product 8: Pure Cotton T-Shirt With Short... | Price: Rs. 1427
+2025-05-28 07:13:23,201 - myntra - INFO - Product 9: Men Graphic Print Night suit... | Price: Rs. 699
+2025-05-28 07:13:23,202 - myntra - INFO - Product 10: Men Night suit... | Price: Rs. 979
+2025-05-28 07:13:23,202 - myntra - INFO - Product 11: Men Pure Cotton Night suit... | Price: Rs. 699
+2025-05-28 07:13:23,203 - myntra - INFO - Product 12: Three Pieces Formal Suit... | Price: Rs. 9899
+2025-05-28 07:13:23,204 - myntra - INFO - Product 13: Single-Breasted Two-Piece Suit... | Price: Rs. 3495
+2025-05-28 07:13:23,205 - myntra - INFO - Product 14: Men Two-Piece Formal Suit... | Price: Rs. 6839
+2025-05-28 07:13:23,205 - myntra - INFO - Product 15: Men Three Piece Suit... | Price: Rs. 10199
+2025-05-28 07:13:23,205 - myntra - INFO - Product 16: Men Textured Slim Fit Single-B... | Price: Rs. 5999
+2025-05-28 07:13:23,207 - myntra - INFO - Product 17: Single-Breasted Formal Suits... | Price: Rs. 12799
+2025-05-28 07:13:23,208 - myntra - INFO - Product 18: Three-Piece Formal Suit... | Price: Rs. 7049
+2025-05-28 07:13:23,208 - myntra - INFO - Product 19: Single-Breasted Two-Piece Suit... | Price: Rs. 7019
+2025-05-28 07:13:23,209 - myntra - INFO - Product 20: Slim Fit 3 Piece Formal Suit... | Price: Rs. 9499
+2025-05-28 07:13:23,209 - myntra - INFO - Product 21: Men Solid Single-Breasted 3-Pi... | Price: Rs. 7079
+2025-05-28 07:13:23,209 - myntra - INFO - Product 22: Two-Piece Formal Suit... | Price: Rs. 13999
+2025-05-28 07:13:23,210 - myntra - INFO - Product 23: TShirt With Trouser Nightsuits... | Price: Rs. 1633
+2025-05-28 07:13:23,211 - myntra - INFO - Product 24: Men Slim Formal 2-Piece Suit... | Price: Rs. 2199
+2025-05-28 07:13:23,211 - myntra - INFO - Product 25: 2-Piece Formal Suit... | Price: Rs. 9349
+2025-05-28 07:13:23,214 - myntra - INFO - Product 31: Single-Breasted Two-Piece Suit... | Price: Rs. 13999
+2025-05-28 07:13:23,215 - myntra - INFO - Product 32: Single-Breasted 2-Piece Suits... | Price: Rs. 17999
+2025-05-28 07:13:23,215 - myntra - INFO - Product 33: Single-Breasted Party Suit... | Price: Rs. 11199
+2025-05-28 07:13:23,215 - myntra - INFO - Product 34: Single-Breasted 2 Piece Suit... | Price: Rs. 12999
+2025-05-28 07:13:23,217 - myntra - INFO - Product 35: Single-Breasted 3 Piece Suit... | Price: Rs. 13999
+2025-05-28 07:13:23,218 - myntra - INFO - Product 36: Men Formal Three-Piece Suit... | Price: Rs. 21359
+2025-05-28 07:13:23,218 - myntra - INFO - Product 37: Slim Fit 3-Piece Formal Suit... | Price: Rs. 17799
+2025-05-28 07:13:23,219 - myntra - INFO - Product 38: Men Solid Formal Suit... | Price: Rs. 11049
+2025-05-28 07:13:23,219 - myntra - INFO - Product 39: Single-Breasted Two-Piece Suit... | Price: Rs. 7799
+2025-05-28 07:13:23,220 - myntra - INFO - Product 40: Men Single-Breasted Suits... | Price: Rs. 16019
+2025-05-28 07:13:23,220 - myntra - INFO - Product 41: Single-Breasted 3-Piece Suit... | Price: Rs. 16019
+2025-05-28 07:13:23,221 - myntra - INFO - Product 42: Men Single-Breasted Suits... | Price: Rs. 15129
+2025-05-28 07:13:23,221 - myntra - INFO - Product 43: Single-Breasted 4-Piece Suit... | Price: Rs. 23399
+2025-05-28 07:13:23,222 - myntra - INFO - Product 44: Single-Breasted Two-Piece Suit... | Price: Rs. 16909
+2025-05-28 07:13:23,223 - myntra - INFO - Product 45: Men 3 Pcs Formal Suit... | Price: Rs. 11899
+2025-05-28 07:13:23,223 - myntra - INFO - Product 46: Three Piece Party Suits... | Price: Rs. 11899
+2025-05-28 07:13:23,223 - myntra - INFO - Product 47: Three-Piece Party Suit... | Price: Rs. 10199
+2025-05-28 07:13:23,224 - myntra - INFO - Product 48: Men Single-Breasted Suit... | Price: Rs. 8399
+2025-05-28 07:13:23,224 - myntra - INFO - Product 49: Slim Fit Two Piece Formal Suit... | Price: Rs. 26699
+2025-05-28 07:13:23,224 - myntra - INFO - Product 50: Slim-Fit 3-Piece Formal Suit... | Price: Rs. 17499
+2025-05-28 07:13:23,226 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-28 07:13:58,529 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-28 07:14:00,937 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirtand gender:$Male&sort=popularity
+2025-05-28 07:14:11,671 - myntra - INFO - Found 50 product items in the page
+2025-05-28 07:14:11,673 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-28 07:14:11,673 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-28 07:14:11,674 - myntra - INFO - Product 3: Slim Fit Cotton Casual Shirt... | Price: Rs. 1511
+2025-05-28 07:14:11,674 - myntra - INFO - Product 4: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-28 07:14:11,675 - myntra - INFO - Product 5: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-28 07:14:11,675 - myntra - INFO - Product 6: Men Slim Fit Casual Shirt... | Price: Rs. 454
+2025-05-28 07:14:11,676 - myntra - INFO - Product 7: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-28 07:14:11,676 - myntra - INFO - Product 8: Men Casual Shirt... | Price: Rs. 584
+2025-05-28 07:14:11,677 - myntra - INFO - Product 9: Slim Fit Cotton Casual Shirt... | Price: Rs. 948
+2025-05-28 07:14:11,677 - myntra - INFO - Product 10: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-28 07:14:11,678 - myntra - INFO - Product 11: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-28 07:14:11,679 - myntra - INFO - Product 12: Cotton Casual Shirt... | Price: Rs. 507
+2025-05-28 07:14:11,679 - myntra - INFO - Product 13: Striped Casual Shirt... | Price: Rs. 558
+2025-05-28 07:14:11,680 - myntra - INFO - Product 14: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-28 07:14:11,680 - myntra - INFO - Product 15: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-28 07:14:11,680 - myntra - INFO - Product 16: Men Regular Fit Casual Shirt... | Price: Rs. 683
+2025-05-28 07:14:11,681 - myntra - INFO - Product 17: Classic Cotton Formal Shirt... | Price: Rs. 799
+2025-05-28 07:14:11,681 - myntra - INFO - Product 18: Slim Fit Casual Shirt... | Price: Rs. 1363
+2025-05-28 07:14:11,682 - myntra - INFO - Product 19: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-28 07:14:11,682 - myntra - INFO - Product 20: Opaque Casual Shirt... | Price: Rs. 735
+2025-05-28 07:14:11,683 - myntra - INFO - Product 21: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-28 07:14:11,683 - myntra - INFO - Product 22: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-28 07:14:11,683 - myntra - INFO - Product 23: Slim Fit Casual Shirt... | Price: Rs. 517
+2025-05-28 07:14:11,685 - myntra - INFO - Product 24: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-28 07:14:11,685 - myntra - INFO - Product 25: Slim Fit Casual Shirt... | Price: Rs. 699
+2025-05-28 07:14:11,690 - myntra - INFO - Product 36: Men Corduroy Overshirt... | Price: Rs. 1649
+2025-05-28 07:14:11,690 - myntra - INFO - Product 37: Tartan Checked Casual Shirt... | Price: Rs. 594
+2025-05-28 07:14:11,691 - myntra - INFO - Product 38: Slim Fit Casual Shirt... | Price: Rs. 1363
+2025-05-28 07:14:11,691 - myntra - INFO - Product 39: Cotton Linen Casual Shirt... | Price: Rs. 719
+2025-05-28 07:14:11,692 - myntra - INFO - Product 40: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-28 07:14:11,692 - myntra - INFO - Product 41: Opaque Casual Shirt... | Price: Rs. 899
+2025-05-28 07:14:11,693 - myntra - INFO - Product 42: Slim Fit Casual Shirt... | Price: Rs. 503
+2025-05-28 07:14:11,693 - myntra - INFO - Product 43: Men Printed Casual Shirt... | Price: Rs. 1655
+2025-05-28 07:14:11,694 - myntra - INFO - Product 44: Self Designed Casual Shirt... | Price: Rs. 1273
+2025-05-28 07:14:11,694 - myntra - INFO - Product 45: Linen Summer Stripe Shirt... | Price: Rs. 2799
+2025-05-28 07:14:11,695 - myntra - INFO - Product 46: Men Relaxed Fit Cotton Shirt... | Price: Rs. 1014
+2025-05-28 07:14:11,695 - myntra - INFO - Product 47: Men Relaxed Fit Printed Shirt... | Price: Rs. 1199
+2025-05-28 07:14:11,695 - myntra - INFO - Product 48: Striped Casual Shirt... | Price: Rs. 619
+2025-05-28 07:14:11,696 - myntra - INFO - Product 49: Opaque Casual Shirt... | Price: Rs. 899
+2025-05-28 07:14:11,696 - myntra - INFO - Product 50: Slim Fit Casual Shirt... | Price: Rs. 1035
+2025-05-28 07:14:11,696 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-28 07:14:27,481 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-28 07:14:30,003 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 07:14:50,258 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 07:14:54,695 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 07:15:09,645 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-28 07:15:12,296 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirtand gender:$Male&sort=popularity
+2025-05-28 07:15:15,299 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 07:15:20,174 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 07:15:21,682 - myntra - INFO - Found 50 product items in the page
+2025-05-28 07:15:21,684 - myntra - INFO - Product 1: Casual Linen Shirt... | Price: Rs. 949
+2025-05-28 07:15:21,685 - myntra - INFO - Product 2: Pure Cotton Solid Casual Shirt... | Price: Rs. 1563
+2025-05-28 07:15:21,686 - myntra - INFO - Product 3: Slim Fit Cotton Casual Shirt... | Price: Rs. 1511
+2025-05-28 07:15:21,687 - myntra - INFO - Product 4: Comfort Cotton Casual Shirt... | Price: Rs. 1899
+2025-05-28 07:15:21,688 - myntra - INFO - Product 5: Pure Cotton Casual Shirts... | Price: Rs. 659
+2025-05-28 07:15:21,689 - myntra - INFO - Product 6: Men Slim Fit Casual Shirt... | Price: Rs. 454
+2025-05-28 07:15:21,690 - myntra - INFO - Product 7: Regular Fit Casual Shirt... | Price: Rs. 1379
+2025-05-28 07:15:21,690 - myntra - INFO - Product 8: Men Casual Shirt... | Price: Rs. 584
+2025-05-28 07:15:21,691 - myntra - INFO - Product 9: Slim Fit Cotton Casual Shirt... | Price: Rs. 948
+2025-05-28 07:15:21,692 - myntra - INFO - Product 10: Slim Fit Opaque Casual Shirt... | Price: Rs. 699
+2025-05-28 07:15:21,693 - myntra - INFO - Product 11: Pure Cotton Half Sleeve Shirts... | Price: Rs. 659
+2025-05-28 07:15:21,694 - myntra - INFO - Product 12: Cotton Casual Shirt... | Price: Rs. 507
+2025-05-28 07:15:21,694 - myntra - INFO - Product 13: Striped Casual Shirt... | Price: Rs. 558
+2025-05-28 07:15:21,695 - myntra - INFO - Product 14: Slim Fit Cotton Casual Shirt... | Price: Rs. 569
+2025-05-28 07:15:21,696 - myntra - INFO - Product 15: Men Checked Pure Cotton Shirt... | Price: Rs. 998
+2025-05-28 07:15:21,696 - myntra - INFO - Product 16: Men Regular Fit Casual Shirt... | Price: Rs. 683
+2025-05-28 07:15:21,697 - myntra - INFO - Product 17: Classic Cotton Formal Shirt... | Price: Rs. 799
+2025-05-28 07:15:21,698 - myntra - INFO - Product 18: Slim Fit Casual Shirt... | Price: Rs. 1363
+2025-05-28 07:15:21,700 - myntra - INFO - Product 19: Original Fit Checked Shirt... | Price: Rs. 386
+2025-05-28 07:15:21,700 - myntra - INFO - Product 20: Opaque Casual Shirt... | Price: Rs. 735
+2025-05-28 07:15:21,701 - myntra - INFO - Product 21: Slim Fit Opaque Casual Shirt... | Price: Rs. 2169
+2025-05-28 07:15:21,702 - myntra - INFO - Product 22: Men Anemo Striped Shirt... | Price: Rs. 1719
+2025-05-28 07:15:21,703 - myntra - INFO - Product 23: Slim Fit Casual Shirt... | Price: Rs. 517
+2025-05-28 07:15:21,704 - myntra - INFO - Product 24: Pure Cotton Formal Shirt... | Price: Rs. 1624
+2025-05-28 07:15:21,705 - myntra - INFO - Product 25: Slim Fit Casual Shirt... | Price: Rs. 699
+2025-05-28 07:15:21,708 - myntra - INFO - Product 31: Slim Fit Casual Shirt... | Price: Rs. 499
+2025-05-28 07:15:21,709 - myntra - INFO - Product 32: Men Striped Casual Shirt... | Price: Rs. 683
+2025-05-28 07:15:21,710 - myntra - INFO - Product 33: Slim Fit Cotton Linen Shirt... | Price: Rs. 1699
+2025-05-28 07:15:21,711 - myntra - INFO - Product 34: Men Oversized Casual Shirt... | Price: Rs. 1400
+2025-05-28 07:15:21,712 - myntra - INFO - Product 35: Men Corduroy Overshirt... | Price: Rs. 1649
+2025-05-28 07:15:21,713 - myntra - INFO - Product 36: Tartan Checked Casual Shirt... | Price: Rs. 594
+2025-05-28 07:15:21,713 - myntra - INFO - Product 37: Slim Fit Casual Shirt... | Price: Rs. 1363
+2025-05-28 07:15:21,715 - myntra - INFO - Product 38: Cotton Linen Casual Shirt... | Price: Rs. 719
+2025-05-28 07:15:21,716 - myntra - INFO - Product 39: Pure Cotton Formal Shirt... | Price: Rs. 1724
+2025-05-28 07:15:21,717 - myntra - INFO - Product 40: Opaque Casual Shirt... | Price: Rs. 899
+2025-05-28 07:15:21,717 - myntra - INFO - Product 41: Slim Fit Casual Shirt... | Price: Rs. 503
+2025-05-28 07:15:21,718 - myntra - INFO - Product 42: Men Printed Casual Shirt... | Price: Rs. 1655
+2025-05-28 07:15:21,719 - myntra - INFO - Product 43: Self Designed Casual Shirt... | Price: Rs. 1273
+2025-05-28 07:15:21,720 - myntra - INFO - Product 44: Linen Summer Stripe Shirt... | Price: Rs. 2799
+2025-05-28 07:15:21,721 - myntra - INFO - Product 45: Slim Fit Shirt... | Price: Rs. 1835
+2025-05-28 07:15:21,722 - myntra - INFO - Product 46: Men Relaxed Fit Cotton Shirt... | Price: Rs. 1014
+2025-05-28 07:15:21,724 - myntra - INFO - Product 47: Men Relaxed Fit Printed Shirt... | Price: Rs. 1199
+2025-05-28 07:15:21,725 - myntra - INFO - Product 48: Striped Casual Shirt... | Price: Rs. 619
+2025-05-28 07:15:21,725 - myntra - INFO - Product 49: Opaque Casual Shirt... | Price: Rs. 899
+2025-05-28 07:15:21,726 - myntra - INFO - Product 50: Slim Fit Casual Shirt... | Price: Rs. 1035
+2025-05-28 07:15:21,727 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-28 07:15:40,181 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 07:15:42,351 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-28 07:15:53,127 - myntra - INFO - Scraping Myntra for query: Styles for male and female
+2025-05-28 07:15:55,923 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+male+and+female?rawQuery=Styles+for+male+and+female&sort=popularity
+2025-05-28 07:16:05,141 - myntra - INFO - Found 50 product items in the page
+2025-05-28 07:16:05,142 - myntra - INFO - Product 1: Set of 3 Radiance Cream... | Price: Rs. 367
+2025-05-28 07:16:05,142 - myntra - INFO - Product 2: Instant Radiance Face Wash... | Price: Rs. 139
+2025-05-28 07:16:05,144 - myntra - INFO - Product 3: Front Slit Midi A-Line Skirt... | Price: Rs. 675
+2025-05-28 07:16:05,145 - myntra - INFO - Product 4: Self Design A-Line Midi Dress... | Price: Rs. 1804
+2025-05-28 07:16:05,146 - myntra - INFO - Product 5: Women Cotton Jogger... | Price: Rs. 901
+2025-05-28 07:16:05,146 - myntra - INFO - Product 6: PU Shoulder Bag... | Price: Rs. 622
+2025-05-28 07:16:05,147 - myntra - INFO - Product 7: Printed Chiffon Peplum Top... | Price: Rs. 485
+2025-05-28 07:16:05,149 - myntra - INFO - Product 8: Women Flared Track Pants... | Price: Rs. 996
+2025-05-28 07:16:05,149 - myntra - INFO - Product 9: Interlocked Open Toe Flats... | Price: Rs. 949
+2025-05-28 07:16:05,150 - myntra - INFO - Product 10: V-Neck Fit & Flare Maxi Dress... | Price: Rs. 1851
+2025-05-28 07:16:05,151 - myntra - INFO - Product 11: Instant Radiance Face Wash... | Price: Rs. 157
+2025-05-28 07:16:05,152 - myntra - INFO - Product 12: Midi Cotton A-Line Dress... | Price: Rs. 2046
+2025-05-28 07:16:05,152 - myntra - INFO - Product 13: Floral Printed Maxi Dress... | Price: Rs. 1460
+2025-05-28 07:16:05,154 - myntra - INFO - Product 14: Floral Maxi Dress... | Price: Rs. 876
+2025-05-28 07:16:05,154 - myntra - INFO - Product 15: Puff Sleeves A-line Midi Dress... | Price: Rs. 1244
+2025-05-28 07:16:05,154 - myntra - INFO - Product 16: Puff Sleeves Sheath Dress... | Price: Rs. 1644
+2025-05-28 07:16:05,155 - myntra - INFO - Product 17: Denim Mini Skirt... | Price: Rs. 524
+2025-05-28 07:16:05,155 - myntra - INFO - Product 18: Printed Pure Cotton  Co-ords... | Price: Rs. 999
+2025-05-28 07:16:05,157 - myntra - INFO - Product 19: Printed Basic Jumpsuit... | Price: Rs. 1376
+2025-05-28 07:16:05,158 - myntra - INFO - Product 20: Women Floral Embroidery Shirt... | Price: Rs. 899
+2025-05-28 07:16:05,160 - myntra - INFO - Product 21: Printed Three Piece Co-Ords... | Price: Rs. 2396
+2025-05-28 07:16:05,160 - myntra - INFO - Product 22: A-Line Maxi Puff Sleeve Dress... | Price: Rs. 2969
+2025-05-28 07:16:05,161 - myntra - INFO - Product 23: Self-Design A-Line Midi Dress... | Price: Rs. 1619
+2025-05-28 07:16:05,162 - myntra - INFO - Product 24: Embroidered Co-Ords... | Price: Rs. 1699
+2025-05-28 07:16:05,163 - myntra - INFO - Product 25: Floral Printed Casual Shirt... | Price: Rs. 1049
+2025-05-28 07:16:05,168 - myntra - INFO - Product 36: 2 Pc EDP & Body Mist... | Price: Rs. 675
+2025-05-28 07:16:05,169 - myntra - INFO - Product 37: Floral Print Maxi Dress... | Price: Rs. 1424
+2025-05-28 07:16:05,170 - myntra - INFO - Product 38: Sleeveless Shirt Dress... | Price: Rs. 1495
+2025-05-28 07:16:05,171 - myntra - INFO - Product 39: Pure Cotton Track Pants... | Price: Rs. 923
+2025-05-28 07:16:05,171 - myntra - INFO - Product 40: Shibori Printed V-Neck Kurta... | Price: Rs. 799
+2025-05-28 07:16:05,173 - myntra - INFO - Product 41: A-Line Midi Dress... | Price: Rs. 3599
+2025-05-28 07:16:05,173 - myntra - INFO - Product 42: Wrap Knee Length Dress... | Price: Rs. 1499
+2025-05-28 07:16:05,175 - myntra - INFO - Product 43: Glitter Wrap Midi Dress... | Price: Rs. 2367
+2025-05-28 07:16:05,175 - myntra - INFO - Product 44: Floral Maxi Wrap Dress... | Price: Rs. 974
+2025-05-28 07:16:05,176 - myntra - INFO - Product 45: Belted Shirt Dress... | Price: Rs. 3231
+2025-05-28 07:16:05,176 - myntra - INFO - Product 46: Round Neck Solid Cotton Top... | Price: Rs. 796
+2025-05-28 07:16:05,177 - myntra - INFO - Product 47: Shirt Style Solid Top... | Price: Rs. 1116
+2025-05-28 07:16:05,179 - myntra - INFO - Product 48: Women Printed A-Line Dress... | Price: Rs. 1715
+2025-05-28 07:16:05,180 - myntra - INFO - Product 49: Floral Print A-Line Maxi Tie-U... | Price: Rs. 1461
+2025-05-28 07:16:05,181 - myntra - INFO - Product 50: Pleated Wrap Top... | Price: Rs. 1423
+2025-05-28 07:16:05,181 - myntra - INFO - Successfully scraped 40 products from Myntra

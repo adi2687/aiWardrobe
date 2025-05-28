@@ -28,63 +28,49 @@ dotenv.config();
 const frontendUrl=process.env.FRONTEND_URL
 console.log(frontendUrl)
 const mongoUri=process.env.MONGO_URI
+// Expanded allowedOrigins array to include all possible frontend URLs
+const expandedAllowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'http://localhost:5173',
+  'https://outfit-ai-liart.vercel.app',
+  'https://outfit-ai.vercel.app',
+  'https://ai-wardrobe.vercel.app',
+  'https://ai-wardrobe-gamma.vercel.app',
+  'https://ai-wardrobe-ten.vercel.app'
+];
+
 const app = express();
 const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: frontendUrl,
+    origin: expandedAllowedOrigins,
     credentials: true,
   },
 });
-
-// Expanded allowedOrigins array to include all possible frontend URLs
-// const expandedAllowedOrigins = [
-//   'http://localhost:3000',
-//   'http://127.0.0.1:3000',
-//   'http://localhost:5173',
-//   'https://outfit-ai-liart.vercel.app',
-// ];
-
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     console.log('cors origin',origin)
-//     if (!origin) return callback(null, true);  // allow non-browser requests like curl, mobile apps
-//     if (expandedAllowedOrigins.includes(origin)) {
-//       return callback(null, origin);
-//     } else {
-//       return callback(new Error('CORS policy: This origin is not allowed'));
-//     }
-//   },
-//   credentials: true,
-// }));
-// app.use(cors())
-// http://localhost:5173
+// Configure CORS middleware with proper settings
 app.use(cors({
-  origin: frontendUrl,
-  credentials: true,
-}));
-// // Configure CORS for preflight requests
-// app.options('*', cors({
-//   origin: function (origin, callback) {
-//     // Allow requests with no origin (like mobile apps or curl requests)
-//     if (!origin) return callback(null, true);
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
     
-//     // Check if the origin is in our allowed list
-//     if (expandedAllowedOrigins.includes(origin)) {
-//       callback(null, origin); // ✅ Set actual origin, not true
-//     } else {
-//       // For development purposes, allow all origins
-//       console.log('Origin not in allowlist but allowing:', origin);
-//       callback(null, origin);
-//       // In production, you might want to be more restrictive:
-//       // console.log('Blocked by CORS:', origin);
-//       // callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true,
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-// }));
+    // Check if the origin is in our allowed list
+    if (expandedAllowedOrigins.includes(origin)) {
+      callback(null, origin);
+    } else {
+      // For development purposes, allow all origins
+      console.log('Origin not in allowlist but allowing:', origin);
+      callback(null, origin);
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+}));
+
+// Configure CORS for preflight OPTIONS requests
+app.options('*', cors());
 
 
 
