@@ -44,11 +44,16 @@ router.post("/", authenticate,async (req, res) => {
   res.json({ id });
 });
 
-router.get("/:id",async (req, res) => {
+router.get("/:id",authenticate,async (req, res) => {
   const shareId = req.params.id;
+  let userid=req.user.id
+  const user=await User.findById(userid)
+  if (!user){
+    return res.json({msg:"user is not logged in at image preview in backend"})
+  }
+// console.log(user)
   const share = await Share.find({ shareId: shareId });
-  res.json({username:share.username,share:share});
+  res.json({username:share.username,share:share,gender:user.gender,age:user.age});
 });
-
 
 export default router;

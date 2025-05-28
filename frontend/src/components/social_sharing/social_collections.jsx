@@ -235,7 +235,7 @@ const SocialCollections = () => {
                                     </p>
                                     {link === collection.shareid && (
                                         <div className="share-link-container">
-                                            <p className="share-link">{`${apiUrl}/share/${link}`}</p>
+                                            <p className="share-link">{`${frontendurl}/share/${link}`}</p>
                                             <button 
                                                 className="copy-link-button"
                                                 onClick={() => {

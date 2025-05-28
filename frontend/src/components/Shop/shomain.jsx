@@ -75,8 +75,12 @@ const Shop = () => {
     // Go back to using the backend proxy
     console.log(`Making request through backend proxy: ${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`);
     
+    // Append gender to query params if available
+    const gender = userdetails.gender ? userdetails.gender : "";
+    const url = `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}${gender ? `&gender=${encodeURIComponent(gender)}` : ""}`;
+  
     fetch(
-      `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`,
+      url,
       {
         method: "GET",
         headers: {
@@ -143,8 +147,12 @@ const Shop = () => {
     console.log(`Making request through backend proxy: ${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`);
     
     setMyntraLoading(true);
+    // Append gender to query params if available
+    const gender = userdetails.gender ? userdetails.gender : "";
+    const url = `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}${gender ? `&gender=${encodeURIComponent(gender)}` : ""}`;
+  
     fetch(
-      `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`,
+      url,
       {
         method: "GET",
         headers: {
@@ -152,7 +160,7 @@ const Shop = () => {
           "Accept": "application/json"
         },
         // Use include for credentials to ensure cookies are sent
-        credentials: "include",
+        credentials: "include"
       }
     )
       .then((response) => {

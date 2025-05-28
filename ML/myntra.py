@@ -35,7 +35,7 @@ if not logger.handlers:
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
 
-def scrape_myntra(query):
+def scrape_myntra(query,gender):
     """Scrape Myntra for products based on the given query.
     
     Args:
@@ -75,6 +75,7 @@ def scrape_myntra(query):
     driver = None
     max_retries = 3
     retry_count = 0
+    if gender:gender=f'and gender:${gender}'
     
     while retry_count < max_retries:
         try:
@@ -85,7 +86,7 @@ def scrape_myntra(query):
             driver.set_page_load_timeout(20)
             
             # Construct Myntra search URL with improved parameters
-            url = f"https://www.myntra.com/{safe_query}?rawQuery={safe_query}&sort=popularity"
+            url = f"https://www.myntra.com/{safe_query}?rawQuery={safe_query}{gender}&sort=popularity"
             logger.info(f"Opening URL: {url}")
             driver.get(url)
             
@@ -248,7 +249,7 @@ def scrape():
     if not query:
         return jsonify({"error": "Query parameter is required"}), 400
 
-    data = scrape_myntra(query)
+    data = scrape_myntra(query,gender)
     return jsonify(data)
 
 # if __name__ == "__main__":

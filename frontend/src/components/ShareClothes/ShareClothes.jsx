@@ -15,6 +15,9 @@ const ShareClothes = () => {
   const [error, setError] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   
+  
+  const [age,setAge]=useState(0)
+  const [gender,setGender]=useState("")
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const frontendUrl = import.meta.env.VITE_FRONTEND_URL;
   const backendurl = import.meta.env.VITE_BACKEND_URL;
@@ -43,9 +46,9 @@ const ShareClothes = () => {
         const response = await fetch(`${apiUrl}/share/${id}`, {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "application/json"
           },
+          credentials: "include" // This will send cookies with the request
         });
 
         if (!response.ok) {
@@ -53,9 +56,12 @@ const ShareClothes = () => {
         }
 
         const data = await response.json();
+        console.log(data)
         if (data && data.share && data.share.length > 0) {
           setSharedCloth(data.share[0].sharecloths);
           setUsername(data.share[0].username + "");
+          setAge(data.age)
+          setGender(data.gender)
         } else {
           setError("No shared clothes found");
         }
@@ -70,18 +76,34 @@ const ShareClothes = () => {
     fetchData();
   }, [id, apiUrl]);
 
+
+
   // Generate the image using the sharecloth data
   const imageGenerate = async () => {
     if (!sharecloth || sharecloth.length === 0) return;
     
     setImageLoading(true);
-
+    // Format user details for the prompt
+    let userDetails = [];
+    
+    if (age) {
+      userDetails.push(`age: ${age}`);
+    }
+    
+    if (gender) {
+      userDetails.push(`gender: ${gender}`);
+    }
+    
+    let userDetailsPrompt = '';
+    if (userDetails.length > 0) {
+      userDetailsPrompt = `Create an outfit appropriate for a person with the following characteristics: ${userDetails.join(', ')}. `;
+    }
     const prompt = `
     Generate an image of a mannequin wearing all of the following outfits:
 
-    ${sharecloth} 
+    ${sharecloth}
     
-    Each outfit should be clearly visible on the mannequin, and the mannequin should be standing in a neutral pose to showcase the different styles.
+    ${userDetailsPrompt}Each outfit should be clearly visible on the mannequin, and the mannequin should be standing in a neutral pose to showcase the different styles.
     `;
 
     try {
@@ -156,15 +178,22 @@ const ShareClothes = () => {
     
     switch(platform) {
       case 'whatsapp':
-        shareLink = `https://wa.me/?text=${encodeURIComponent(`${message} ${shareUrl}`)}`;
+        shareLink = `https://wa.me/?text=${encodeURIComponent(`${message} ${shareUrl}`)}`;        
         break;
       case 'twitter':
-        shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareUrl}`)}`;
+        shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareUrl}`)}`;        
         break;
+      case 'facebook':
+        shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(message)}`;        
+        break;
+      case 'instagram':
+        // Instagram doesn't support direct sharing via URL
+        // Show a message to the user with instructions
+        alert('To share on Instagram: \n1. Copy the link (use the Copy Link button)\n2. Open Instagram\n3. Create a new story or post\n4. Paste the link in your caption or story');
+        copyToClipboard();
+        return;
       case 'email':
-        shareLink = `mailto:?subject=Check out these amazing outfits&body=${encodeURIComponent(`${message}
-
-${shareUrl}`)}`;
+        shareLink = `mailto:?subject=Check out these amazing outfits&body=${encodeURIComponent(`${message}\n\n${shareUrl}`)}`;        
         break;
       default:
         shareLink = shareUrl;
@@ -173,9 +202,6 @@ ${shareUrl}`)}`;
     if (shareLink) {
       window.open(shareLink, '_blank');
     }
-
-
-    
   };  
   const [isSharing, setIsSharing] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);

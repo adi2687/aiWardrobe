@@ -200,6 +200,10 @@ router.post("/getshoppingsuggestions", authenticatemain, async (req, res) => {
   const userid = req.user.id;
   const user = await User.findById(userid);
   const preferrence = user.preferences;
+  let gender=""
+  if (user.gender){
+    gender=`gender is ${user.gender}`
+  }
   if (!user) {
     return res.json({ status: false, msg: "user not found" });
   }
@@ -230,7 +234,7 @@ router.post("/getshoppingsuggestions", authenticatemain, async (req, res) => {
   const promptContent = `You are an expert on the clothes and the clothes are given to you and suggest some clothes that can be searched on 
   
   ecommerce websites and give the response in a list format 
-  ${preferencebyuser} and ${userclothes} give me a list of the clothes you think will be a great additon and gie it like a alist in a dot formatted list and i dont need an explanation just the cloths.`;
+  ${preferencebyuser} and ${userclothes} and ${gender} give me a list of the clothes you think will be a great additon and gie it like a alist in a dot formatted list and i dont need an explanation just the cloths.`;
   const result = await model.generateContent({
     contents: [{ role: "user", parts: [{ text: promptContent }] }],
     generationConfig,

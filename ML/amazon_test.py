@@ -48,7 +48,7 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 OPR/106.0.0.0",
 ]
 
-def scrape_amazon(query):
+def scrape_amazon(query,gender):
     """Scrape Amazon for products based on the given query.
     
     Args:
@@ -69,13 +69,13 @@ def scrape_amazon(query):
     driver = None
     max_retries = 3
     retry_count = 0
-    
+    if gender:gender=f'and gender:${gender}'
     while retry_count < max_retries:
         try:
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
             
             # Construct Amazon search URL with additional parameters for better results
-            url = f"https://www.amazon.in/s?k={safe_query}&ref=nb_sb_noss&sprefix={safe_query}%2Caps%2C283"
+            url = f"https://www.amazon.in/s?k={safe_query}&ref=nb_sb_noss&sprefix={safe_query}{gender}%2Caps%2C283"
             logger.info(f"Opening URL: {url}")
             
             # Set page load timeout
@@ -228,8 +228,8 @@ def scrape_amazon(query):
     # Fallback return in case of unexpected flow
     return {"error": "Unknown error occurred during Amazon scraping"}
 
-# Example usage
+# Example usage main
 if __name__ == '__main__':
     query = "laptop"  # Example search query
-    products = scrape_amazon(query)
+    products = scrape_amazon(query,gender)
     print(products)

@@ -4,6 +4,29 @@ import "./Wardrobe.css";
 import { FaUser, FaTshirt, FaSocks, FaShoppingBag } from "react-icons/fa";
 import { GiTrousers } from "react-icons/gi";
 
+// Helper function to process color values
+const processColor = (colorString) => {
+  if (!colorString) return '#cccccc'; // Default gray for missing colors
+  
+  // Handle colors with slashes or spaces
+  const cleanColor = colorString.toLowerCase().split('/')[0].split(' ')[0];
+  
+  // Handle common color names that might not be recognized by CSS
+  const colorMap = {
+    'navy': 'navy',
+    'maroon': 'maroon',
+    'olive': 'olive',
+    'teal': 'teal',
+    'silver': 'silver',
+    'purple': 'purple',
+    'fuchsia': 'fuchsia',
+    'lime': 'lime',
+    'aqua': 'aqua'
+  };
+  
+  return colorMap[cleanColor] || cleanColor;
+};
+
 const Wardrobe = () => {
   const [user, setUser] = useState(null);
   const [wardrobeImages, setWardrobeImages] = useState([]);
@@ -262,6 +285,7 @@ const Wardrobe = () => {
           {/* Categorized Clothing Display */}
           <div className="categorized-wardrobe">
             {/* Upperwear Section */}
+            <div>
             <div className="category-section">
               <h3>
                 <FaTshirt className="category-header-icon" />
@@ -282,11 +306,13 @@ const Wardrobe = () => {
                         </div>
                         <div className="item-details">
                           <span className="item-name">{itemName}</span>
-                          <div 
-                            className="color-dot" 
-                            style={{ backgroundColor: itemColor.toLowerCase() }}
-                            title={itemColor}
-                          ></div>
+                          <div className="item-meta">
+                            <div 
+                              className="color-dot" 
+                              style={{ backgroundColor: itemColor.toLowerCase().split('/',1)[0].replace(' ','') }}
+                              title={itemColor}
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     );
@@ -318,11 +344,14 @@ const Wardrobe = () => {
                         </div>
                         <div className="item-details">
                           <span className="item-name">{itemName}</span>
-                          <div 
-                            className="color-dot" 
-                            style={{ backgroundColor: itemColor.toLowerCase() }}
-                            title={itemColor}
-                          ></div>
+                          <div className="item-meta">
+                            {/* <span className="item-index">{index + 1}</span> */}
+                            <div 
+                              className="color-dot" 
+                              style={{ backgroundColor: itemColor.toLowerCase().split('/',1)[0].replace(' ','') }}
+                              title={itemColor}
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     );
@@ -332,8 +361,10 @@ const Wardrobe = () => {
                 )}
               </div>
             </div>
-            
+              </div>
+            <br />
             {/* Footwear Section */}
+            <div>
             <div className="category-section">
               <h3>
                 <FaSocks className="category-header-icon" />
@@ -353,12 +384,15 @@ const Wardrobe = () => {
                           <FaSocks />
                         </div>
                         <div className="item-details">
-                          <span className="item-name">{itemName}</span>
-                          <div 
-                            className="color-dot" 
-                            style={{ backgroundColor: itemColor.toLowerCase() }}
-                            title={itemColor}
-                          ></div>
+                          <span className="item-name">{itemColor.split('/',1)[0].replace(' ','')}</span>
+                          <div className="item-meta">
+                            {/* <span className="item-index">{index + 1}</span> */}
+                            <div 
+                              className="color-dot" 
+                              style={{ backgroundColor: itemColor.toLowerCase().split('/',1)[0].replace(' ','') }}
+                              title={itemColor}
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     );
@@ -389,12 +423,15 @@ const Wardrobe = () => {
                           <FaShoppingBag />
                         </div>
                         <div className="item-details">
-                          <span className="item-name">{itemName}</span>
-                          <div 
-                            className="color-dot" 
-                            style={{ backgroundColor: itemColor.toLowerCase() }}
-                            title={itemColor}
-                          ></div>
+                          <span className="item-name">{itemColor.split('/',1)[0].replace(' ','')}</span>
+                          <div className="item-meta">
+                            {/* <span className="item-index">{index + 1}</span> */}
+                            <div 
+                              className="color-dot" 
+                              style={{ backgroundColor: itemColor.toLowerCase().split('/',1)[0].replace(' ','') }}
+                              title={itemColor}
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     );
@@ -405,7 +442,7 @@ const Wardrobe = () => {
               </div>
             </div>
           </div>
-          
+          </div>
           {/* Legacy All Clothes Display */}
           <div className="all-clothes-content">
             {allCloth ? allCloth : "No clothes added yet"}

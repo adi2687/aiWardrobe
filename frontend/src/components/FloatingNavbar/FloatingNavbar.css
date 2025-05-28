@@ -16,7 +16,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(106, 17, 203, 0.1);
   width: auto;
   max-width: 1100px;
-  height: 60px;
+  height: 80px;
   padding: 0 20px;
 }
 
@@ -32,7 +32,7 @@
   position: relative;
   border-radius: 16px;
   min-width: 70px;
-  height: 42px;
+  height: 38px;
   overflow: hidden;
 }
 

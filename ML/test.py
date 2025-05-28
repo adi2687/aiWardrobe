@@ -40,9 +40,10 @@ def main():
 @app.route('/shop_myntra', methods=['GET'])
 def myntra_shop():
     query = request.args.get("query")
-    logger.info(f"Processing Myntra search for query: {query}")
+    gender=request.args.get("gender")
+    logger.info(f"Processing Myntra search for query: {query} and {gender}")
     try:
-        data = scrape_myntra(query)
+        data = scrape_myntra(query,gender)
         return jsonify(data)
     except Exception as e:
         logger.error(f"Error scraping Myntra: {e}")
@@ -51,9 +52,10 @@ def myntra_shop():
 @app.route('/shop', methods=['GET'])
 def amazon_shop():
     query = request.args.get("query")
-    logger.info(f"Processing Amazon search for query: {query}")
+    gender=request.args.get("gender")
+    logger.info(f"Processing Amazon search for query again for: {query} and {gender}")
     try:
-        data = scrape_amazon(query)
+        data = scrape_amazon(query,gender)
         return jsonify(data)
     except Exception as e:
         logger.error(f"Error scraping Amazon: {e}")
