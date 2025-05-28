@@ -9,6 +9,32 @@ dotenv.config()
 
 // ML service URL from environment variables
 const ML_SERVICE_URL = process.env.ML_SERVICE_URL;
+
+// List of allowed origins - expanded to include all possible frontend URLs
+const allowedOrigins = [
+  'https://outfit-ai-liart.vercel.app',
+  'https://outfit-ai.vercel.app',
+  'https://ai-wardrobe.vercel.app',
+  'https://ai-wardrobe-gamma.vercel.app',
+  'https://ai-wardrobe-ten.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:5000'
+];
+
+// Helper function to set CORS headers
+const setCorsHeaders = (req, res) => {
+  const origin = req.headers.origin;
+  
+  // Set appropriate CORS headers
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  } else {
+    res.header('Access-Control-Allow-Origin', 'https://outfit-ai-liart.vercel.app');
+  }
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+};
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
 
@@ -74,26 +100,21 @@ router.post("/removefromwishlist", authenticate, async (req, res) => {
   }
 });
 
+// Handle OPTIONS preflight request for Amazon proxy
+router.options("/proxy/amazon", (req, res) => {
+  setCorsHeaders(req, res);
+  return res.status(204).send();
+});
+
 // Proxy endpoint for Amazon search
 router.get("/proxy/amazon", async (req, res) => {
-  // Add CORS headers - allow requests from all frontend domains
+  // Add CORS headers - ensure all frontend domains are allowed
   const origin = req.headers.origin;
-  // List of allowed origins - expanded to include all possible frontend URLs
-  const allowedOrigins = [
-    'https://outfit-ai-liart.vercel.app',
-    'https://outfit-ai.vercel.app',
-    'https://ai-wardrobe.vercel.app',
-    'https://ai-wardrobe-gamma.vercel.app',
-    'https://ai-wardrobe-ten.vercel.app',
-    'http://localhost:5173',
-    'http://localhost:5000'
-  ];
-  
-  // Set appropriate CORS headers
   if (allowedOrigins.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   } else {
-    res.header('Access-Control-Allow-Origin', 'https://outfit-ai-liart.vercel.app');
+    // Allow any origin in development for easier testing
+    res.header('Access-Control-Allow-Origin', '*');
   }
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -140,26 +161,21 @@ router.get("/proxy/amazon", async (req, res) => {
   }
 });
 
+// Handle OPTIONS preflight request for Myntra proxy
+router.options("/proxy/myntra", (req, res) => {
+  setCorsHeaders(req, res);
+  return res.status(204).send();
+});
+
 // Proxy endpoint for Myntra search
 router.get("/proxy/myntra", async (req, res) => {
-  // Add CORS headers - allow requests from all frontend domains
+  // Add CORS headers - ensure all frontend domains are allowed
   const origin = req.headers.origin;
-  // List of allowed origins - expanded to include all possible frontend URLs
-  const allowedOrigins = [
-    'https://outfit-ai-liart.vercel.app',
-    'https://outfit-ai.vercel.app',
-    'https://ai-wardrobe.vercel.app',
-    'https://ai-wardrobe-gamma.vercel.app',
-    'https://ai-wardrobe-ten.vercel.app',
-    'http://localhost:5173',
-    'http://localhost:5000'
-  ];
-  
-  // Set appropriate CORS headers
   if (allowedOrigins.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   } else {
-    res.header('Access-Control-Allow-Origin', 'https://outfit-ai-liart.vercel.app');
+    // Allow any origin in development for easier testing
+    res.header('Access-Control-Allow-Origin', '*');
   }
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
