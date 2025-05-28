@@ -26,7 +26,6 @@ import DevelopersPage from './components/Developers/Developers'
 import Features from './components/Developers/Features'
 import About from './components/Developers/Aboutus'
 import Wishlist from './components/Wishlist/Wishlist'
-import VirtualTryOn from './components/VirtualTryOn/VirtualTryOn'
 import Download from './components/Download/Download'
 import FloatingNavbar from './components/FloatingNavbar/FloatingNavbar'
 import Intro from './components/Intro/Intro'
@@ -118,7 +117,6 @@ const App = () => {
         <Route path="/aboutus" element={<About />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/download" element={<Download />} />
-        <Route path="/virtual-tryon" element={<VirtualTryOn />} />
       </Routes>
       <FloatingNavbar />
       <Footer />
