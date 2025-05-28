@@ -1,7 +1,7 @@
 import "./Home.css";
 
  function FindYourVibe() {
-  return (
+  return ( 
     <div className="container">
       <h1 className="title">
         <div>FIND</div>

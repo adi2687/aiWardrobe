@@ -12,22 +12,22 @@
 
         <div className="features" >
           <div className="feature-item">
-            <Link to="/recommendations" style={{textDecoration:"none",color:"#f9cd98"}}>AI Outfit Suggestions</Link>
+            <Link to="/recommendations" style={{textDecoration:"none",color:"white"}}>AI Outfit Suggestions</Link>
           </div>
           <div className="feature-item">
-            <Link to="/chatbot" style={{textDecoration:"none",color:"#f9cd98"}}>AI Fashion Chatbot</Link>
+            <Link to="/chatbot" style={{textDecoration:"none",color:"white"}}>AI Fashion Chatbot</Link>
           </div>
           <div className="feature-item">
-            <Link to="/shop" style={{textDecoration:"none",color:"#f9cd98"}}>Personalized Shopping</Link>
+            <Link to="/shop" style={{textDecoration:"none",color:"white"}}>Personalized Shopping</Link>
           </div>
           <div className="feature-item">
-            <Link to="/recommendations" style={{textDecoration:"none",color:"#f9cd98"}}>Weather and Location-Based Recommendations</Link>
+            <Link to="/recommendations" style={{textDecoration:"none",color:"white"}}>Weather and Location-Based Recommendations</Link>
           </div>
           <div className="feature-item">
-            <Link to="/planner" style={{textDecoration:"none",color:"#f9cd98"}}>Daily Outfit Planner</Link>
+            <Link to="/planner" style={{textDecoration:"none",color:"white"}}>Daily Outfit Planner</Link>
           </div>
           <div className="feature-item">
-            <Link to="/sellcloth" style={{textDecoration:"none",color:"#f9cd98"}}>Sell Your Old Clothes</Link>
+            <Link to="/sellcloth" style={{textDecoration:"none",color:"white"}}>Sell Your Old Clothes</Link>
           </div>
         </div>
       </div>
