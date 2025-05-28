@@ -1028,6 +1028,8 @@
     align-items: center;
     text-align: center;
     align-content: center;
+  background-color: #1e1e1e;
+    
   }
   
   .pill-wrapper div:nth-child(2) button{

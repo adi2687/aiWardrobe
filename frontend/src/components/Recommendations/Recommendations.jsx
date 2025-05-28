@@ -261,7 +261,7 @@ const Recommendations = () => {
     <div className="recommendations-container">
       <div className="recommendations-card">
         <div className="recommendations-header">
-          <h1>AI Outfit Recommender</h1>
+          <h1>Outfit-AI Recommender</h1>
           <p className="recommendations-subtitle">
             Get personalized outfit suggestions based on your wardrobe
           </p>

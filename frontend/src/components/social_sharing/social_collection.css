@@ -209,6 +209,8 @@
   align-items: center;
   gap: 5px;
   color: #3498db;
+  width:auto;
+  /* border:1px solid red */
 }
 
 .action-button.thumbs-up:hover:not(:disabled) {

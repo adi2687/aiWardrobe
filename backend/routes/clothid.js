@@ -12,7 +12,7 @@ const genAI = new GoogleGenerativeAI("AIzaSyCvp8svujinl7xbwemSZ-2ay0V2INaBV1E");
 const inputPrompt = `
 List all the clothing items visible in this image.
 Format each item as:
-* Item: Color
+* Item:Shade:Material:Color
 Only list items. Do not describe the background or image style.
 `;
 
@@ -25,9 +25,21 @@ function parseClothingList(text) {
   const lines = text.split("\n");
 
   for (const line of lines) {
-    const match = line.match(/^\*\s*(\w+):\s*(.+)/);
-    if (match) {
-      items.push({ item: match[1].trim(), color: match[2].trim() });
+    // First try to match the new format with Item:Shade:Material:Color
+    const newFormatMatch = line.match(/^\*\s*(\w+):(\w+):(\w+):(.+)/);
+    if (newFormatMatch) {
+      items.push({
+        item: newFormatMatch[1].trim(),
+        shade: newFormatMatch[2].trim(),
+        material: newFormatMatch[3].trim(),
+        color: newFormatMatch[4].trim()
+      });
+    } else {
+      // Fallback to the old format in case AI doesn't follow the new format exactly
+      const oldFormatMatch = line.match(/^\*\s*(\w+):\s*(.+)/);
+      if (oldFormatMatch) {
+        items.push({ item: oldFormatMatch[1].trim(), color: oldFormatMatch[2].trim() });
+      }
     }
   }
   return items;
@@ -82,7 +94,8 @@ router.post("/classify", upload.single("images"), async (req, res) => {
     // console.log("Full AI Result:", result);
 
     // Get the response text by invoking the function
-    const responseText = result.response.text();  // Call the text function
+    const responseText = result.response.text();
+    console.log('cloth identification : ',responseText)  // Call the text function
     if (typeof responseText !== "string") {
       return res.status(500).json({ error: "AI response is not a string" });
     }
@@ -166,10 +179,34 @@ router.post("/classify", upload.single("images"), async (req, res) => {
         const usermain = await user.findById(userId);
         if (usermain) {
           // Map the items to the format expected by the model (array of strings)
-          usermain.upperwear = upperwear.map(item => `${item.item} (${item.color})`);
-          usermain.lowerwear = lowerwear.map(item => `${item.item} (${item.color})`);
-          usermain.footwear = footwear.map(item => `${item.item} (${item.color})`);
-          usermain.accessories = accessories.map(item => `${item.item} (${item.color})`);
+          // Handle both old and new format items
+          usermain.upperwear = upperwear.map(item => {
+            if (item.shade && item.material) {
+              return `${item.item} (${item.shade} ${item.material} ${item.color})`;
+            }
+            return `${item.item} (${item.color})`;
+          });
+          
+          usermain.lowerwear = lowerwear.map(item => {
+            if (item.shade && item.material) {
+              return `${item.item} (${item.shade} ${item.material} ${item.color})`;
+            }
+            return `${item.item} (${item.color})`;
+          });
+          
+          usermain.footwear = footwear.map(item => {
+            if (item.shade && item.material) {
+              return `${item.item} (${item.shade} ${item.material} ${item.color})`;
+            }
+            return `${item.item} (${item.color})`;
+          });
+          
+          usermain.accessories = accessories.map(item => {
+            if (item.shade && item.material) {
+              return `${item.item} (${item.shade} ${item.material} ${item.color})`;
+            }
+            return `${item.item} (${item.color})`;
+          });
           
           await usermain.save();
           console.log('User wardrobe updated successfully');

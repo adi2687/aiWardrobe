@@ -933,3 +933,375 @@
 2025-05-27 20:00:34,465 - myntra - INFO - Product 49: Round Neck Solid Cotton Top... | Price: Rs. 796
 2025-05-27 20:00:34,466 - myntra - INFO - Product 50: Shirt Style Solid Top... | Price: Rs. 1116
 2025-05-27 20:00:34,466 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-28 03:30:18,610 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-28 03:30:58,495 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-28 03:31:01,373 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+MaleMale&sort=popularity
+2025-05-28 03:31:10,359 - myntra - INFO - Found 50 product items in the page
+2025-05-28 03:31:10,361 - myntra - INFO - Product 1: Floral Printed Casual Shirt... | Price: Rs. 1049
+2025-05-28 03:31:10,362 - myntra - INFO - Product 2: Women Floral Embroidery Shirt... | Price: Rs. 899
+2025-05-28 03:31:10,363 - myntra - INFO - Product 3: Extended Sleeves Cotton Shirt... | Price: Rs. 738
+2025-05-28 03:31:10,363 - myntra - INFO - Product 4: Spread Collar Casual Shirt... | Price: Rs. 755
+2025-05-28 03:31:10,364 - myntra - INFO - Product 5: Checked Casual Shirt... | Price: Rs. 747
+2025-05-28 03:31:10,364 - myntra - INFO - Product 6: Plus Size Chiffon Sheer Shirt... | Price: Rs. 971
+2025-05-28 03:31:10,365 - myntra - INFO - Product 7: Oversized Cotton Casual Shirt... | Price: Rs. 849
+2025-05-28 03:31:10,365 - myntra - INFO - Product 8: Self Design Casual Shirt... | Price: Rs. 860
+2025-05-28 03:31:10,367 - myntra - INFO - Product 9: Extended Sleeves Cotton Shirt... | Price: Rs. 721
+2025-05-28 03:31:10,367 - myntra - INFO - Product 10: Striped Casual Shirt... | Price: Rs. 764
+2025-05-28 03:31:10,367 - myntra - INFO - Product 11: Self Design Casual Shirt... | Price: Rs. 809
+2025-05-28 03:31:10,368 - myntra - INFO - Product 12: Regular Fit Casual Shirt... | Price: Rs. 800
+2025-05-28 03:31:10,368 - myntra - INFO - Product 13: Striped Textured Stripe Shirt... | Price: Rs. 1239
+2025-05-28 03:31:10,369 - myntra - INFO - Product 14: Extended Sleeves Cotton Shirt... | Price: Rs. 806
+2025-05-28 03:31:10,370 - myntra - INFO - Product 15: Women Solid Cotton Shirt... | Price: Rs. 831
+2025-05-28 03:31:10,370 - myntra - INFO - Product 16: Women Self Design Cotton Shirt... | Price: Rs. 857
+2025-05-28 03:31:10,371 - myntra - INFO - Product 17: Self Design Casual Shirt... | Price: Rs. 773
+2025-05-28 03:31:10,371 - myntra - INFO - Product 18: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-28 03:31:10,372 - myntra - INFO - Product 19: Women Printed Casual Shirt... | Price: Rs. 783
+2025-05-28 03:31:10,372 - myntra - INFO - Product 20: Oversized Longline Shirt... | Price: Rs. 809
+2025-05-28 03:31:10,373 - myntra - INFO - Product 21: Evening Contrast Lace Shirt... | Price: Rs. 999
+2025-05-28 03:31:10,373 - myntra - INFO - Product 22: Women Oversized Cotton Shirt... | Price: Rs. 1343
+2025-05-28 03:31:10,374 - myntra - INFO - Product 23: Lace Detail Oversized Shirt... | Price: Rs. 654
+2025-05-28 03:31:10,374 - myntra - INFO - Product 24: Opaque Party Shirt... | Price: Rs. 1367
+2025-05-28 03:31:10,375 - myntra - INFO - Product 25: Women Casual Shirt... | Price: Rs. 909
+2025-05-28 03:31:10,377 - myntra - INFO - Product 31: Oversized Fit Casual Shirt... | Price: Rs. 975
+2025-05-28 03:31:10,378 - myntra - INFO - Product 32: Peter Pan Collar Shirt... | Price: Rs. 974
+2025-05-28 03:31:10,378 - myntra - INFO - Product 33: Opaque Casual Shirt... | Price: Rs. 909
+2025-05-28 03:31:10,379 - myntra - INFO - Product 34: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-28 03:31:10,379 - myntra - INFO - Product 35: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-28 03:31:10,379 - myntra - INFO - Product 36: Women Solid Cotton Shirt... | Price: Rs. 818
+2025-05-28 03:31:10,380 - myntra - INFO - Product 37: Women Solid Casual Shirt... | Price: Rs. 509
+2025-05-28 03:31:10,380 - myntra - INFO - Product 38: Women Colourbl Casual Shirt... | Price: Rs. 985
+2025-05-28 03:31:10,381 - myntra - INFO - Product 39: Women Solid Casual Shirt... | Price: Rs. 1224
+2025-05-28 03:31:10,381 - myntra - INFO - Product 40: Women Solid Casual Shirt... | Price: Rs. 629
+2025-05-28 03:31:10,382 - myntra - INFO - Product 41: Striped Casual Shirt... | Price: Rs. 1199
+2025-05-28 03:31:10,383 - myntra - INFO - Product 42: Women Casual Shirt... | Price: Rs. 1189
+2025-05-28 03:31:10,383 - myntra - INFO - Product 43: Women Striped Casual Shirt... | Price: Rs. 1183
+2025-05-28 03:31:10,384 - myntra - INFO - Product 44: Women Solid Cotton Shirt... | Price: Rs. 1154
+2025-05-28 03:31:10,384 - myntra - INFO - Product 45: Women Printed Casual Shirt... | Price: Rs. 713
+2025-05-28 03:31:10,385 - myntra - INFO - Product 46: Slim Fit Opaque Casual Shirt... | Price: Rs. 993
+2025-05-28 03:31:10,385 - myntra - INFO - Product 47: Opaque Casual Shirt... | Price: Rs. 989
+2025-05-28 03:31:10,385 - myntra - INFO - Product 48: Casual Shirt... | Price: Rs. 1333
+2025-05-28 03:31:10,387 - myntra - INFO - Product 49: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-28 03:31:10,387 - myntra - INFO - Product 50: Opaque Casual Shirt... | Price: Rs. 769
+2025-05-28 03:31:10,387 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-28 03:32:32,693 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-28 03:32:35,163 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+MaleMale&sort=popularity
+2025-05-28 03:32:44,908 - myntra - INFO - Found 50 product items in the page
+2025-05-28 03:32:44,910 - myntra - INFO - Product 1: Floral Printed Casual Shirt... | Price: Rs. 1049
+2025-05-28 03:32:44,910 - myntra - INFO - Product 2: Women Floral Embroidery Shirt... | Price: Rs. 899
+2025-05-28 03:32:44,912 - myntra - INFO - Product 3: Extended Sleeves Cotton Shirt... | Price: Rs. 738
+2025-05-28 03:32:44,914 - myntra - INFO - Product 4: Spread Collar Casual Shirt... | Price: Rs. 755
+2025-05-28 03:32:44,915 - myntra - INFO - Product 5: Checked Casual Shirt... | Price: Rs. 747
+2025-05-28 03:32:44,916 - myntra - INFO - Product 6: Plus Size Chiffon Sheer Shirt... | Price: Rs. 971
+2025-05-28 03:32:44,917 - myntra - INFO - Product 7: Oversized Cotton Casual Shirt... | Price: Rs. 849
+2025-05-28 03:32:44,917 - myntra - INFO - Product 8: Self Design Casual Shirt... | Price: Rs. 860
+2025-05-28 03:32:44,919 - myntra - INFO - Product 9: Extended Sleeves Cotton Shirt... | Price: Rs. 721
+2025-05-28 03:32:44,920 - myntra - INFO - Product 10: Striped Casual Shirt... | Price: Rs. 764
+2025-05-28 03:32:44,920 - myntra - INFO - Product 11: Self Design Casual Shirt... | Price: Rs. 809
+2025-05-28 03:32:44,921 - myntra - INFO - Product 12: Regular Fit Casual Shirt... | Price: Rs. 800
+2025-05-28 03:32:44,921 - myntra - INFO - Product 13: Striped Textured Stripe Shirt... | Price: Rs. 1239
+2025-05-28 03:32:44,922 - myntra - INFO - Product 14: Extended Sleeves Cotton Shirt... | Price: Rs. 806
+2025-05-28 03:32:44,923 - myntra - INFO - Product 15: Women Solid Cotton Shirt... | Price: Rs. 831
+2025-05-28 03:32:44,924 - myntra - INFO - Product 16: Women Self Design Cotton Shirt... | Price: Rs. 857
+2025-05-28 03:32:44,924 - myntra - INFO - Product 17: Self Design Casual Shirt... | Price: Rs. 773
+2025-05-28 03:32:44,926 - myntra - INFO - Product 18: Embroidered Relaxed Fit Shirt... | Price: Rs. 1693
+2025-05-28 03:32:44,926 - myntra - INFO - Product 19: Women Printed Casual Shirt... | Price: Rs. 783
+2025-05-28 03:32:44,927 - myntra - INFO - Product 20: Oversized Longline Shirt... | Price: Rs. 809
+2025-05-28 03:32:44,927 - myntra - INFO - Product 21: Evening Contrast Lace Shirt... | Price: Rs. 999
+2025-05-28 03:32:44,928 - myntra - INFO - Product 22: Women Oversized Cotton Shirt... | Price: Rs. 1343
+2025-05-28 03:32:44,929 - myntra - INFO - Product 23: Lace Detail Oversized Shirt... | Price: Rs. 654
+2025-05-28 03:32:44,929 - myntra - INFO - Product 24: Opaque Party Shirt... | Price: Rs. 1367
+2025-05-28 03:32:44,930 - myntra - INFO - Product 25: Women Casual Shirt... | Price: Rs. 909
+2025-05-28 03:32:44,931 - myntra - INFO - Product 31: Oversized Fit Casual Shirt... | Price: Rs. 975
+2025-05-28 03:32:44,933 - myntra - INFO - Product 32: Peter Pan Collar Shirt... | Price: Rs. 974
+2025-05-28 03:32:44,934 - myntra - INFO - Product 33: Opaque Casual Shirt... | Price: Rs. 909
+2025-05-28 03:32:44,935 - myntra - INFO - Product 34: Denim Relaxed Fit Shirt... | Price: Rs. 1681
+2025-05-28 03:32:44,936 - myntra - INFO - Product 35: Checked Relaxed Fit Shirt... | Price: Rs. 530
+2025-05-28 03:32:44,937 - myntra - INFO - Product 36: Women Solid Cotton Shirt... | Price: Rs. 818
+2025-05-28 03:32:44,937 - myntra - INFO - Product 37: Women Solid Casual Shirt... | Price: Rs. 509
+2025-05-28 03:32:44,938 - myntra - INFO - Product 38: Women Colourbl Casual Shirt... | Price: Rs. 985
+2025-05-28 03:32:44,940 - myntra - INFO - Product 39: Women Solid Casual Shirt... | Price: Rs. 1224
+2025-05-28 03:32:44,940 - myntra - INFO - Product 40: Women Solid Casual Shirt... | Price: Rs. 629
+2025-05-28 03:32:44,941 - myntra - INFO - Product 41: Striped Casual Shirt... | Price: Rs. 1199
+2025-05-28 03:32:44,942 - myntra - INFO - Product 42: Women Casual Shirt... | Price: Rs. 1189
+2025-05-28 03:32:44,942 - myntra - INFO - Product 43: Women Striped Casual Shirt... | Price: Rs. 1183
+2025-05-28 03:32:44,943 - myntra - INFO - Product 44: Women Solid Cotton Shirt... | Price: Rs. 1154
+2025-05-28 03:32:44,944 - myntra - INFO - Product 45: Women Printed Casual Shirt... | Price: Rs. 713
+2025-05-28 03:32:44,944 - myntra - INFO - Product 46: Slim Fit Opaque Casual Shirt... | Price: Rs. 993
+2025-05-28 03:32:44,945 - myntra - INFO - Product 47: Opaque Casual Shirt... | Price: Rs. 989
+2025-05-28 03:32:44,946 - myntra - INFO - Product 48: Casual Shirt... | Price: Rs. 1333
+2025-05-28 03:32:44,946 - myntra - INFO - Product 49: Solid Regular Fit Knit Shirt... | Price: Rs. 930
+2025-05-28 03:32:44,947 - myntra - INFO - Product 50: Opaque Casual Shirt... | Price: Rs. 769
+2025-05-28 03:32:44,947 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-28 03:35:04,467 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-28 03:35:07,048 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 03:35:27,331 - myntra - INFO - Scraping Myntra for query: blue t shirt
+2025-05-28 03:35:27,533 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 03:35:29,950 - myntra - INFO - Opening URL: https://www.myntra.com/blue+t+shirt?rawQuery=blue+t+shirtand gender:$Male&sort=popularity
+2025-05-28 03:35:32,276 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 03:35:37,969 - myntra - INFO - Found 50 product items in the page
+2025-05-28 03:35:37,970 - myntra - INFO - Product 1: Polo Collar Slim Fit T-shirt... | Price: Rs. 914
+2025-05-28 03:35:37,971 - myntra - INFO - Product 2: Solid Polo Collar T-shirt... | Price: Rs. 389
+2025-05-28 03:35:37,971 - myntra - INFO - Product 3: Polo Collar Slim Fit T-shirt... | Price: Rs. 1087
+2025-05-28 03:35:37,972 - myntra - INFO - Product 4: Printed Polo Cotton T-shirt... | Price: Rs. 645
+2025-05-28 03:35:37,973 - myntra - INFO - Product 5: Men Digiwaves2 Graphic T-Shirt... | Price: Rs. 1103
+2025-05-28 03:35:37,974 - myntra - INFO - Product 6: Print Detail Sports T-shirt... | Price: Rs. 499
+2025-05-28 03:35:37,974 - myntra - INFO - Product 7: Men Polo Collar Slim Fit T-shi... | Price: Rs. 823
+2025-05-28 03:35:37,976 - myntra - INFO - Product 8: MUFC Printed Away Jersey... | Price: Rs. 4799
+2025-05-28 03:35:37,976 - myntra - INFO - Product 9: Regular Fit Round-Neck T-shirt... | Price: Rs. 399
+2025-05-28 03:35:37,977 - myntra - INFO - Product 10: Pure Cotton Solid T-shirt... | Price: Rs. 1223
+2025-05-28 03:35:37,977 - myntra - INFO - Product 11: Men Striped Polo Collar T-shir... | Price: Rs. 859
+2025-05-28 03:35:37,978 - myntra - INFO - Product 12: Cotton Oversized T-Shirt... | Price: Rs. 539
+2025-05-28 03:35:37,979 - myntra - INFO - Product 13: Polo Collar Slim Fit T-shirt... | Price: Rs. 643
+2025-05-28 03:35:37,980 - myntra - INFO - Product 14: Rcb 2025 Printed Jersey... | Price: Rs. 999
+2025-05-28 03:35:37,981 - myntra - INFO - Product 15: 3-Stripes Training T-shirt... | Price: Rs. 695
+2025-05-28 03:35:37,981 - myntra - INFO - Product 16: Striped Polo Collar T-shirt... | Price: Rs. 1091
+2025-05-28 03:35:37,981 - myntra - INFO - Product 17: Polo Collar Slim Fit T-shirt... | Price: Rs. 1019
+2025-05-28 03:35:37,982 - myntra - INFO - Product 18: Striped Polo Collar Applique S... | Price: Rs. 1429
+2025-05-28 03:35:37,983 - myntra - INFO - Product 19: Men Solid Cotton Polo T-shirt... | Price: Rs. 2879
+2025-05-28 03:35:37,983 - myntra - INFO - Product 20: Printed Pure Cotton T-shirt... | Price: Rs. 1304
+2025-05-28 03:35:37,983 - myntra - INFO - Product 21: Brand Logo Printed T-shirt... | Price: Rs. 809
+2025-05-28 03:35:37,985 - myntra - INFO - Product 22: Striped Regular Fit T-shirt... | Price: Rs. 549
+2025-05-28 03:35:37,985 - myntra - INFO - Product 23: Colourblocked Cotton T-Shirt... | Price: Rs. 497
+2025-05-28 03:35:37,986 - myntra - INFO - Product 24: Polo Collar T-shirt... | Price: Rs. 1299
+2025-05-28 03:35:37,987 - myntra - INFO - Product 25: Men Lightweight Lounge T-shirt... | Price: Rs. 496
+2025-05-28 03:35:37,994 - myntra - INFO - Product 36: Loose Fit Printed T-shirt... | Price: Rs. 799
+2025-05-28 03:35:37,996 - myntra - INFO - Product 37: Men Polo Collar T-shirt... | Price: Rs. 1427
+2025-05-28 03:35:37,997 - myntra - INFO - Product 38: Men Colourblocked T-shirt... | Price: Rs. 987
+2025-05-28 03:35:37,997 - myntra - INFO - Product 39: Pure Cotton Slim Fit T-shirt... | Price: Rs. 719
+2025-05-28 03:35:37,998 - myntra - INFO - Product 40: Ribbed Polo Cotton T-shirt... | Price: Rs. 2394
+2025-05-28 03:35:37,998 - myntra - INFO - Product 41: Men Polo Collar T-shirt... | Price: Rs. 177
+2025-05-28 03:35:38,000 - myntra - INFO - Product 42: Men Solid Slim Fit T-shirt... | Price: Rs. 1724
+2025-05-28 03:35:38,002 - myntra - INFO - Product 43: Printed Pure Cotton T-shirt... | Price: Rs. 428
+2025-05-28 03:35:38,002 - myntra - INFO - Product 44: Pure Cotton Polo T-shirt... | Price: Rs. 1273
+2025-05-28 03:35:38,003 - myntra - INFO - Product 45: Popcorn Texture Polo T-shirt... | Price: Rs. 1799
+2025-05-28 03:35:38,004 - myntra - INFO - Product 46: Men Brand Logo Dri-FIT T-shirt... | Price: Rs. 1695
+2025-05-28 03:35:38,005 - myntra - INFO - Product 47: Jordan Jumpman T-Shirt... | Price: Rs. 1595
+2025-05-28 03:35:38,005 - myntra - INFO - Product 48: Men Cotton Polo Collar T-shirt... | Price: Rs. 340
+2025-05-28 03:35:38,008 - myntra - INFO - Product 49: Men Cabetta Jacquard Polo... | Price: Rs. 1812
+2025-05-28 03:35:38,008 - myntra - INFO - Product 50: Tech Tank Training T-Shirt... | Price: Rs. 1385
+2025-05-28 03:35:38,009 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-28 03:35:52,441 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 03:35:57,489 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 03:36:17,002 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 03:36:19,107 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-28 03:41:33,602 - myntra - INFO - Scraping Myntra for query: white shirt
+2025-05-28 03:41:36,143 - myntra - INFO - Opening URL: https://www.myntra.com/white+shirt?rawQuery=white+shirtand gender:$Female&sort=popularity
+2025-05-28 03:41:45,228 - myntra - INFO - Found 50 product items in the page
+2025-05-28 03:41:45,228 - myntra - INFO - Product 1: Pure Cotton Casual Shirt... | Price: Rs. 758
+2025-05-28 03:41:45,230 - myntra - INFO - Product 2: Embroidered Shirt with Hearts... | Price: Rs. 1674
+2025-05-28 03:41:45,230 - myntra - INFO - Product 3: Women Formal Shirt... | Price: Rs. 1499
+2025-05-28 03:41:45,231 - myntra - INFO - Product 4: Women Striped Casual Shirt... | Price: Rs. 407
+2025-05-28 03:41:45,232 - myntra - INFO - Product 5: Opaque Casual Shirt... | Price: Rs. 349
+2025-05-28 03:41:45,232 - myntra - INFO - Product 6: Women Formal Shirt... | Price: Rs. 599
+2025-05-28 03:41:45,233 - myntra - INFO - Product 7: Striped Casual Shirt... | Price: Rs. 647
+2025-05-28 03:41:45,234 - myntra - INFO - Product 8: Pure Cotton Solid Casual Shirt... | Price: Rs. 721
+2025-05-28 03:41:45,234 - myntra - INFO - Product 9: Women Solid Oversized Shirt... | Price: Rs. 999
+2025-05-28 03:41:45,234 - myntra - INFO - Product 10: Women Printed Cotton Shirt... | Price: Rs. 1319
+2025-05-28 03:41:45,235 - myntra - INFO - Product 11: Linen-Blend Shirt... | Price: Rs. 1899
+2025-05-28 03:41:45,235 - myntra - INFO - Product 12: Casual Shirt... | Price: Rs. 1511
+2025-05-28 03:41:45,236 - myntra - INFO - Product 13: Women Oversized Oxford Shirt... | Price: Rs. 1499
+2025-05-28 03:41:45,236 - myntra - INFO - Product 14: Women Printed Cotton Shirt... | Price: Rs. 699
+2025-05-28 03:41:45,237 - myntra - INFO - Product 15: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-28 03:41:45,237 - myntra - INFO - Product 16: Women Solid Cotton Shirt... | Price: Rs. 1345
+2025-05-28 03:41:45,237 - myntra - INFO - Product 17: Women Solid Shirt... | Price: Rs. 639
+2025-05-28 03:41:45,238 - myntra - INFO - Product 18: Embroidered Pure Cotton Shirt... | Price: Rs. 599
+2025-05-28 03:41:45,238 - myntra - INFO - Product 19: Opaque Casual Shirt... | Price: Rs. 895
+2025-05-28 03:41:45,239 - myntra - INFO - Product 20: Oversized Linen Shirt... | Price: Rs. 2199
+2025-05-28 03:41:45,239 - myntra - INFO - Product 21: Women Solid Casual Shirt... | Price: Rs. 559
+2025-05-28 03:41:45,240 - myntra - INFO - Product 22: Casual Linen Shirt... | Price: Rs. 2274
+2025-05-28 03:41:45,240 - myntra - INFO - Product 23: Asymmetrical Cotton Shirt... | Price: Rs. 1557
+2025-05-28 03:41:45,241 - myntra - INFO - Product 24: Oversized Casual Shirt... | Price: Rs. 647
+2025-05-28 03:41:45,241 - myntra - INFO - Product 25: Linen-Blend Shirt... | Price: Rs. 1899
+2025-05-28 03:41:45,244 - myntra - INFO - Product 36: Spread Collar Formal Shirt... | Price: Rs. 657
+2025-05-28 03:41:45,244 - myntra - INFO - Product 37: Puff Sleeves Formal Shirt... | Price: Rs. 730
+2025-05-28 03:41:45,245 - myntra - INFO - Product 38: Linen-Blend Sleeveless Shirt... | Price: Rs. 1499
+2025-05-28 03:41:45,245 - myntra - INFO - Product 39: Opaque Casual Shirt... | Price: Rs. 527
+2025-05-28 03:41:45,246 - myntra - INFO - Product 40: Opaque Formal Shirt... | Price: Rs. 1821
+2025-05-28 03:41:45,246 - myntra - INFO - Product 41: Pure Linen Casual Shirt... | Price: Rs. 3149
+2025-05-28 03:41:45,247 - myntra - INFO - Product 42: Casual Shirt... | Price: Rs. 899
+2025-05-28 03:41:45,247 - myntra - INFO - Product 43: Linen-Blend Shirt... | Price: Rs. 1899
+2025-05-28 03:41:45,248 - myntra - INFO - Product 44: Regular Cotton Casual Shirt... | Price: Rs. 671
+2025-05-28 03:41:45,249 - myntra - INFO - Product 45: Formal Shirt... | Price: Rs. 1356
+2025-05-28 03:41:45,249 - myntra - INFO - Product 46: Striped Casual Shirt... | Price: Rs. 2249
+2025-05-28 03:41:45,249 - myntra - INFO - Product 47: Smart Formal Shirt... | Price: Rs. 599
+2025-05-28 03:41:45,250 - myntra - INFO - Product 48: Linen-Blend Shirt... | Price: Rs. 1499
+2025-05-28 03:41:45,250 - myntra - INFO - Product 49: Stretchable Casual Shirt... | Price: Rs. 599
+2025-05-28 03:41:45,250 - myntra - INFO - Product 50: Opaque Casual Shirt... | Price: Rs. 299
+2025-05-28 03:41:45,251 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-28 04:40:17,024 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-28 04:40:19,652 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 04:40:39,383 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 04:40:50,155 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 04:41:10,182 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 04:41:14,501 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 04:41:34,508 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 04:41:36,610 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-28 04:42:08,645 - myntra - INFO - Scraping Myntra for query: Belt (Leather, matching shoes)
+2025-05-28 04:42:11,065 - myntra - INFO - Opening URL: https://www.myntra.com/Belt+%28Leather%2C+matching+shoes%29?rawQuery=Belt+%28Leather%2C+matching+shoes%29and gender:$Male&sort=popularity
+2025-05-28 04:42:31,703 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 04:42:35,957 - myntra - INFO - Opening URL: https://www.myntra.com/Belt+%28Leather%2C+matching+shoes%29?rawQuery=Belt+%28Leather%2C+matching+shoes%29and gender:$Male&sort=popularity
+2025-05-28 04:42:55,854 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 04:43:00,162 - myntra - INFO - Opening URL: https://www.myntra.com/Belt+%28Leather%2C+matching+shoes%29?rawQuery=Belt+%28Leather%2C+matching+shoes%29and gender:$Male&sort=popularity
+2025-05-28 04:43:19,942 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 04:43:22,073 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-28 05:21:09,053 - myntra - INFO - Scraping Myntra for query: oneplus red cable
+2025-05-28 05:21:11,654 - myntra - INFO - Opening URL: https://www.myntra.com/oneplus+red+cable?rawQuery=oneplus+red+cableand gender:$Male&sort=popularity
+2025-05-28 05:21:18,405 - myntra - INFO - Found 50 product items in the page
+2025-05-28 05:21:18,407 - myntra - INFO - Product 1: Men Self-Striped Pullover... | Price: Rs. 859
+2025-05-28 05:21:18,408 - myntra - INFO - Product 2: Longline Acrylic Pullover... | Price: Rs. 549
+2025-05-28 05:21:18,409 - myntra - INFO - Product 3: Geometric Textured Pullover... | Price: Rs. 409
+2025-05-28 05:21:18,410 - myntra - INFO - Product 4: Solid Ribbed Pullover... | Price: Rs. 889
+2025-05-28 05:21:18,410 - myntra - INFO - Product 5: Men Acrylic Solid Cardigan... | Price: Rs. 639
+2025-05-28 05:21:18,411 - myntra - INFO - Product 6: Men Solid Mock Collar Pullover... | Price: Rs. 1809
+2025-05-28 05:21:18,412 - myntra - INFO - Product 7: Men Ribbed Sweater... | Price: Rs. 409
+2025-05-28 05:21:18,412 - myntra - INFO - Product 8: Men Colourblocked Pullover... | Price: Rs. 560
+2025-05-28 05:21:18,413 - myntra - INFO - Product 9: Men Self-Striped Pullover... | Price: Rs. 699
+2025-05-28 05:21:18,413 - myntra - INFO - Product 10: Men Solid Pullover Sweater... | Price: Rs. 469
+2025-05-28 05:21:18,414 - myntra - INFO - Product 11: Men Checked Knitted Pullover... | Price: Rs. 899
+2025-05-28 05:21:18,415 - myntra - INFO - Product 12: Men Acrylic Solid Cardigan... | Price: Rs. 799
+2025-05-28 05:21:18,415 - myntra - INFO - Product 13: Men Striped Pullover... | Price: Rs. 1517
+2025-05-28 05:21:18,415 - myntra - INFO - Product 14: Men Speckled Pullover... | Price: Rs. 1249
+2025-05-28 05:21:18,417 - myntra - INFO - Product 15: Cable Knit Woollen Pullover... | Price: Rs. 799
+2025-05-28 05:21:18,418 - myntra - INFO - Product 16: Men Cable Knit Pullover... | Price: Rs. 989
+2025-05-28 05:21:18,418 - myntra - INFO - Product 17: Men Cable Knit Sweater Vest... | Price: Rs. 736
+2025-05-28 05:21:18,418 - myntra - INFO - Product 18: Men Pullover... | Price: Rs. 1376
+2025-05-28 05:21:18,419 - myntra - INFO - Product 19: Knitted Sweater... | Price: Rs. 359
+2025-05-28 05:21:18,420 - myntra - INFO - Product 20: Turtle Neck Pullover Sweaters... | Price: Rs. 3649
+2025-05-28 05:21:18,420 - myntra - INFO - Product 21: Self Design Pullover... | Price: Rs. 339
+2025-05-28 05:21:18,421 - myntra - INFO - Product 22: Men Fare Textured Sweater... | Price: Rs. 2866
+2025-05-28 05:21:18,421 - myntra - INFO - Product 23: Men Ribbed Pullover... | Price: Rs. 399
+2025-05-28 05:21:18,423 - myntra - INFO - Product 24: Men Colourblocked Pullover... | Price: Rs. 14999
+2025-05-28 05:21:18,423 - myntra - INFO - Product 25: Typography Printed Pullover... | Price: Rs. 3999
+2025-05-28 05:21:18,427 - myntra - INFO - Product 31: RDSTR Sweater... | Price: Rs. 799
+2025-05-28 05:21:18,428 - myntra - INFO - Product 32: Ribbed Pure Cotton Pullover... | Price: Rs. 499
+2025-05-28 05:21:18,428 - myntra - INFO - Product 33: Men Self Design Pullover... | Price: Rs. 3285
+2025-05-28 05:21:18,429 - myntra - INFO - Product 34: Men Ribbed Pullover... | Price: Rs. 449
+2025-05-28 05:21:18,430 - myntra - INFO - Product 35: Men Checked Pullover... | Price: Rs. 899
+2025-05-28 05:21:18,430 - myntra - INFO - Product 36: Solid Pullover Sweater... | Price: Rs. 454
+2025-05-28 05:21:18,431 - myntra - INFO - Product 37: Self Design Pullover... | Price: Rs. 369
+2025-05-28 05:21:18,431 - myntra - INFO - Product 38: Woollen Pullover... | Price: Rs. 2155
+2025-05-28 05:21:18,433 - myntra - INFO - Product 39: Solid Front Open Sweater... | Price: Rs. 579
+2025-05-28 05:21:18,433 - myntra - INFO - Product 40: Men Solid Pullover... | Price: Rs. 399
+2025-05-28 05:21:18,434 - myntra - INFO - Product 41: Men Pullover... | Price: Rs. 719
+2025-05-28 05:21:18,435 - myntra - INFO - Product 42: Geometric Textured Pullover... | Price: Rs. 429
+2025-05-28 05:21:18,435 - myntra - INFO - Product 43: Men Solid Cotton Pullover... | Price: Rs. 1499
+2025-05-28 05:21:18,437 - myntra - INFO - Product 44: Men Woollen Pullover... | Price: Rs. 1797
+2025-05-28 05:21:18,438 - myntra - INFO - Product 45: Slim Fit Fine-Knit Jumper... | Price: Rs. 1499
+2025-05-28 05:21:18,438 - myntra - INFO - Product 46: Men Self Design Ribbed Sweater... | Price: Rs. 8749
+2025-05-28 05:21:18,439 - myntra - INFO - Product 47: Men Self Design Ribbed Sweater... | Price: Rs. 8749
+2025-05-28 05:21:18,440 - myntra - INFO - Product 48: Men Ribbed Pullover... | Price: Rs. 399
+2025-05-28 05:21:18,441 - myntra - INFO - Product 49: Men Typography Pullover... | Price: Rs. 2479
+2025-05-28 05:21:18,441 - myntra - INFO - Product 50: Self Designed Pullover Sweater... | Price: Rs. 499
+2025-05-28 05:21:18,441 - myntra - INFO - Successfully scraped 45 products from Myntra
+2025-05-28 06:56:06,417 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-28 06:56:09,327 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 06:56:29,991 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 06:56:34,697 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 06:56:54,626 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 06:56:59,197 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 06:57:12,635 - myntra - INFO - Scraping Myntra for query: Navy Blue Suit
+2025-05-28 06:57:15,474 - myntra - INFO - Opening URL: https://www.myntra.com/Navy+Blue+Suit?rawQuery=Navy+Blue+Suitand gender:$Male&sort=popularity
+2025-05-28 06:57:17,918 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 06:57:20,160 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-28 06:57:24,444 - myntra - INFO - Found 50 product items in the page
+2025-05-28 06:57:24,446 - myntra - INFO - Product 1: Men Single-Breasted Suit... | Price: Rs. 6489
+2025-05-28 06:57:24,446 - myntra - INFO - Product 2: Men Embroidered Kurta with Pyj... | Price: Rs. 1087
+2025-05-28 06:57:24,447 - myntra - INFO - Product 3: Men Night suit... | Price: Rs. 1439
+2025-05-28 06:57:24,447 - myntra - INFO - Product 4: Sequinned Kurta with Pyjamas... | Price: Rs. 1214
+2025-05-28 06:57:24,448 - myntra - INFO - Product 5: Men Embroidered Kurta with Pat... | Price: Rs. 5184
+2025-05-28 06:57:24,448 - myntra - INFO - Product 6: Men Pure Cotton Night Suits... | Price: Rs. 773
+2025-05-28 06:57:24,448 - myntra - INFO - Product 7: Jacquard Kurta Jacket Set... | Price: Rs. 4838
+2025-05-28 06:57:24,450 - myntra - INFO - Product 8: Men Solid Kurta Set... | Price: Rs. 3999
+2025-05-28 06:57:24,450 - myntra - INFO - Product 9: Kurta with Salwar & Dupatta... | Price: Rs. 2162
+2025-05-28 06:57:24,451 - myntra - INFO - Product 10: Men Single-Breasted Suits... | Price: Rs. 11569
+2025-05-28 06:57:24,452 - myntra - INFO - Product 11: Embroidered Cotton Kurta Set... | Price: Rs. 989
+2025-05-28 06:57:24,452 - myntra - INFO - Product 12: Men Embroidered Kurta Set... | Price: Rs. 2449
+2025-05-28 06:57:24,454 - myntra - INFO - Product 13: Slim-Fit Two Piece Formal Suit... | Price: Rs. 9789
+2025-05-28 06:57:24,454 - myntra - INFO - Product 14: Kurta With Pyjamas... | Price: Rs. 3853
+2025-05-28 06:57:24,455 - myntra - INFO - Product 15: Men Slim Fit Wedding Suit... | Price: Rs. 9439
+2025-05-28 06:57:24,455 - myntra - INFO - Product 16: Men Kurta Set... | Price: Rs. 5999
+2025-05-28 06:57:24,455 - myntra - INFO - Product 17: Pure Cotton Kurta & Churidar... | Price: Rs. 1198
+2025-05-28 06:57:24,457 - myntra - INFO - Product 18: Sequinned Kurta With Pyjamas... | Price: Rs. 1234
+2025-05-28 06:57:24,457 - myntra - INFO - Product 19: Pathani Kurta Pyjama... | Price: Rs. 1374
+2025-05-28 06:57:24,458 - myntra - INFO - Product 20: Printed Kurta with Pyjamas... | Price: Rs. 666
+2025-05-28 06:57:24,458 - myntra - INFO - Product 21: Slim Fit Tuxedo Suit... | Price: Rs. 4799
+2025-05-28 06:57:24,459 - myntra - INFO - Product 22: Contemporary Fit 2-Piece Suit... | Price: Rs. 13749
+2025-05-28 06:57:24,459 - myntra - INFO - Product 23: Relaxed Fit Short Set... | Price: Rs. 887
+2025-05-28 06:57:24,460 - myntra - INFO - Product 24: Slim Fit Two-Piece Formal Suit... | Price: Rs. 13349
+2025-05-28 06:57:24,460 - myntra - INFO - Product 25: Straight Kurta With Trouser... | Price: Rs. 6499
+2025-05-28 06:57:24,463 - myntra - INFO - Product 36: Solid Night suit... | Price: Rs. 1799
+2025-05-28 06:57:24,464 - myntra - INFO - Product 37: Embroidered Kurta Set... | Price: Rs. 2612
+2025-05-28 06:57:24,464 - myntra - INFO - Product 38: Embroidered Kurta With Pyjamas... | Price: Rs. 1019
+2025-05-28 06:57:24,465 - myntra - INFO - Product 39: Men Printed Night suit... | Price: Rs. 3499
+2025-05-28 06:57:24,465 - myntra - INFO - Product 40: Straight Kurta With Trousers... | Price: Rs. 1301
+2025-05-28 06:57:24,467 - myntra - INFO - Product 41: Men Doctors Active Scrub suits... | Price: Rs. 1499
+2025-05-28 06:57:24,467 - myntra - INFO - Product 42: Slim-Fit Three Piece Suit... | Price: Rs. 10029
+2025-05-28 06:57:24,468 - myntra - INFO - Product 43: Two Piece Formal Suit... | Price: Rs. 5699
+2025-05-28 06:57:24,468 - myntra - INFO - Product 44: Men Embroidered Kurta with Pyj... | Price: Rs. 3188
+2025-05-28 06:57:24,469 - myntra - INFO - Product 45: Men Pure Cotton Night suit... | Price: Rs. 750
+2025-05-28 06:57:24,470 - myntra - INFO - Product 46: Men Embroidered Kurta with Pyj... | Price: Rs. 1836
+2025-05-28 06:57:24,470 - myntra - INFO - Product 47: Kurta, Pyjamas & Nehru Jacket... | Price: Rs. 2254
+2025-05-28 06:57:24,471 - myntra - INFO - Product 48: Men Night suit... | Price: Rs. 2999
+2025-05-28 06:57:24,471 - myntra - INFO - Product 49: Embroidered Kurta Set... | Price: Rs. 1169
+2025-05-28 06:57:24,471 - myntra - INFO - Product 50: Men 3 Piece Formal Suit... | Price: Rs. 8259
+2025-05-28 06:57:24,473 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-28 06:57:46,860 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-05-28 06:57:49,620 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 06:58:09,556 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 06:58:14,355 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 06:58:34,355 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 06:58:38,735 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
+2025-05-28 06:58:58,432 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 06:59:00,548 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-05-28 06:59:50,065 - myntra - INFO - Scraping Myntra for query: Dress shoes (Oxfords, loafers in black or brown leather)
+2025-05-28 06:59:52,379 - myntra - INFO - Opening URL: https://www.myntra.com/Dress+shoes+%28Oxfords%2C+loafers+in+black+or+brown+leather%29?rawQuery=Dress+shoes+%28Oxfords%2C+loafers+in+black+or+brown+leather%29and gender:$Male&sort=popularity
+2025-05-28 07:00:12,246 - myntra - INFO - Scraping Myntra for query: Dress shirts (white, light blue, pale pink)
+2025-05-28 07:00:12,599 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 07:00:15,002 - myntra - INFO - Opening URL: https://www.myntra.com/Dress+shirts+%28white%2C+light+blue%2C+pale+pink%29?rawQuery=Dress+shirts+%28white%2C+light+blue%2C+pale+pink%29and gender:$Male&sort=popularity
+2025-05-28 07:00:17,478 - myntra - INFO - Opening URL: https://www.myntra.com/Dress+shoes+%28Oxfords%2C+loafers+in+black+or+brown+leather%29?rawQuery=Dress+shoes+%28Oxfords%2C+loafers+in+black+or+brown+leather%29and gender:$Male&sort=popularity
+2025-05-28 07:00:30,912 - myntra - INFO - Found 50 product items in the page
+2025-05-28 07:00:30,913 - myntra - INFO - Product 1: Relaxed-Fit Regular Trousers... | Price: Rs. 839
+2025-05-28 07:00:30,914 - myntra - INFO - Product 2: Men Slim Fit Wrinkle-Resistant... | Price: Rs. 1790
+2025-05-28 07:00:30,915 - myntra - INFO - Product 3: Men Slim Fit Chinos Trousers... | Price: Rs. 1624
+2025-05-28 07:00:30,916 - myntra - INFO - Product 4: Men 511 Slim Fit Chinos... | Price: Rs. 1343
+2025-05-28 07:00:30,916 - myntra - INFO - Product 5: Men Textured Formal Trousers... | Price: Rs. 1931
+2025-05-28 07:00:30,918 - myntra - INFO - Product 6: Men Slim Fit Jeans... | Price: Rs. 1559
+2025-05-28 07:00:30,919 - myntra - INFO - Product 7: Men Mid-Rise Trousers... | Price: Rs. 839
+2025-05-28 07:00:30,919 - myntra - INFO - Product 8: Men Slim Fit Jeans... | Price: Rs. 1469
+2025-05-28 07:00:30,920 - myntra - INFO - Product 9: Trucker Denim Jacket... | Price: Rs. 2069
+2025-05-28 07:00:30,921 - myntra - INFO - Product 10: Men Slim Fit Chinos Trousers... | Price: Rs. 1484
+2025-05-28 07:00:30,921 - myntra - INFO - Product 11: Men 4 way Stretch Knit Trouser... | Price: Rs. 1990
+2025-05-28 07:00:30,923 - myntra - INFO - Product 12: Slim Fit Chinos... | Price: Rs. 1019
+2025-05-28 07:00:30,923 - myntra - INFO - Product 13: Men Mid-Rise Cotton Shorts... | Price: Rs. 1199
+2025-05-28 07:00:30,924 - myntra - INFO - Product 14: Men Joggers... | Price: Rs. 719
+2025-05-28 07:00:30,925 - myntra - INFO - Product 15: Men Mid-Rise Shorts... | Price: Rs. 1527
+2025-05-28 07:00:30,926 - myntra - INFO - Product 16: Men Linen Cotton Shorts... | Price: Rs. 989
+2025-05-28 07:00:30,927 - myntra - INFO - Product 17: Men Stretchable Jeans... | Price: Rs. 479
+2025-05-28 07:00:30,928 - myntra - INFO - Product 18: Men 4 way Stretch Knit Trouser... | Price: Rs. 1990
+2025-05-28 07:00:30,928 - myntra - INFO - Product 19: Men Relaxed Fit Wrinkle-Resist... | Price: Rs. 1890
+2025-05-28 07:00:30,930 - myntra - INFO - Product 20: Men Slim Fit Joggers Trousers... | Price: Rs. 1409
+2025-05-28 07:00:30,937 - myntra - INFO - Product 31: Men Cotton Slim Fit Shorts... | Price: Rs. 645
+2025-05-28 07:00:30,939 - myntra - INFO - Product 32: Men 512 Slim Chinos Trousers... | Price: Rs. 1063
+2025-05-28 07:00:30,940 - myntra - INFO - Product 33: Men Mid-Rise Jeans... | Price: Rs. 598
+2025-05-28 07:00:30,941 - myntra - INFO - Product 34: Men Trousers... | Price: Rs. 1959
+2025-05-28 07:00:30,942 - myntra - INFO - Product 35: Men Slim Fit Distressed Shorts... | Price: Rs. 507
+2025-05-28 07:00:30,942 - myntra - INFO - Product 36: Men Tapered Fit Chinos Trouser... | Price: Rs. 575
+2025-05-28 07:00:30,944 - myntra - INFO - Product 37: Men Relaxed Fit Fade Jeans... | Price: Rs. 1287
+2025-05-28 07:00:30,945 - myntra - INFO - Product 38: Pure Cotton Loose Fit Trousers... | Price: Rs. 758
+2025-05-28 07:00:30,945 - myntra - INFO - Product 39: Cargo Styles Joggers Trousers... | Price: Rs. 901
+2025-05-28 07:00:30,946 - myntra - INFO - Product 40: Men Heavy Fade Jeans... | Price: Rs. 850
+2025-05-28 07:00:30,947 - myntra - INFO - Product 41: Men Slim Fit Low-Rise Trousers... | Price: Rs. 1264
+2025-05-28 07:00:30,949 - myntra - INFO - Product 42: Men Stretchable Cargo Jeans... | Price: Rs. 2200
+2025-05-28 07:00:30,949 - myntra - INFO - Product 43: Men Cotton Baggy Jeans... | Price: Rs. 1812
+2025-05-28 07:00:30,951 - myntra - INFO - Product 44: Men Classic Mid-Rise Trousers... | Price: Rs. 1499
+2025-05-28 07:00:30,952 - myntra - INFO - Product 45: Men Slim Fit Chinos Trousers... | Price: Rs. 1063
+2025-05-28 07:00:30,952 - myntra - INFO - Product 46: Men Slim Fit Chino Shorts... | Price: Rs. 474
+2025-05-28 07:00:30,954 - myntra - INFO - Product 47: Men Tapered Chinos Trousers... | Price: Rs. 1651
+2025-05-28 07:00:30,954 - myntra - INFO - Product 48: Men Printed Denim Shorts... | Price: Rs. 1479
+2025-05-28 07:00:30,955 - myntra - INFO - Product 49: Men Regular Fit Trousers... | Price: Rs. 2199
+2025-05-28 07:00:30,957 - myntra - INFO - Product 50: Pure Cotton Chinos... | Price: Rs. 873
+2025-05-28 07:00:30,958 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-05-28 07:00:36,108 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 07:00:40,469 - myntra - INFO - Opening URL: https://www.myntra.com/Dress+shoes+%28Oxfords%2C+loafers+in+black+or+brown+leather%29?rawQuery=Dress+shoes+%28Oxfords%2C+loafers+in+black+or+brown+leather%29and gender:$Male&sort=popularity
+2025-05-28 07:00:59,946 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
+2025-05-28 07:01:02,114 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping

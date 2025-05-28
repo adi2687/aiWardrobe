@@ -4,10 +4,11 @@ import axios from "axios";
 const router = express.Router();
 import jwt from "jsonwebtoken";
 import dotenv from 'dotenv'
+import process from 'process'
 dotenv.config()
 
 // ML service URL from environment variables
-const ML_SERVICE_URL = process.env.ML_SERVICE_URL || "https://ed49-2409-40d4-310b-fcfd-d582-3c98-2170-8b95.ngrok-free.app";
+const ML_SERVICE_URL = process.env.ML_SERVICE_URL;
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
 
@@ -18,7 +19,7 @@ const authenticate = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.user = decoded;
-// console.log(req.user)
+console.log(req.user)
     next();
   } catch (error) {
     console.log("error");
@@ -107,9 +108,12 @@ router.get("/proxy/amazon", async (req, res) => {
     console.log(`Proxying Amazon search request for query: ${query}`);
     
     // Make request to ML service
-    console.log(`Making request to: ${ML_SERVICE_URL}/shop?query=${query}`);
+    const gender = req.query.gender || "";
+    console.log(`Making request to: ${ML_SERVICE_URL}/shop?query=${query}&gender=${gender}`);
+    console.log('user gender is:', gender)
+    
     const response = await axios.get(`${ML_SERVICE_URL}/shop`, {
-      params: { query },
+      params: { query, gender },
       timeout: 30000 // 30 second timeout
     });
 
@@ -170,9 +174,12 @@ router.get("/proxy/myntra", async (req, res) => {
     console.log(`Proxying Myntra search request for query: ${query}`);
     
     // Make request to ML service
-    console.log(`Making request to: ${ML_SERVICE_URL}/shop_myntra?query=${query}`);
+    const gender = req.query.gender || "";
+    console.log(`Making request to: ${ML_SERVICE_URL}/shop_myntra?query=${query}&gender=${gender}`);
+    console.log('user gender is:', gender)
+
     const response = await axios.get(`${ML_SERVICE_URL}/shop_myntra`, {
-      params: { query },
+      params: { query, gender },
       timeout: 30000 // 30 second timeout
     });
 

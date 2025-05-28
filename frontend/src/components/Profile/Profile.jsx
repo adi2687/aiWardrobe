@@ -18,7 +18,10 @@ import {
   FaTrash,
   FaLink,
   FaClipboard,
-  FaInfoCircle
+  FaInfoCircle,
+  FaWarehouse,
+  FaShoppingCart,
+  FaUserCircle
 } from "react-icons/fa";
 // No modal import needed
 
@@ -511,6 +514,24 @@ const Profile = () => {
             <FaCalendarWeek /> Weekly Plan
           </div>
           <div
+            className={`tab ${activeTab === 'recommendations' ? 'active' : ''}`}
+            onClick={() => {
+              navigate('/recommendations');
+            }}
+          >
+            <FaLightbulb /> Recommendations
+          </div>
+          
+          <div
+            className={`tab ${activeTab === 'wardrobe' ? 'active' : ''}`}
+            onClick={() => {
+              navigate('/wardrobe');
+            }}
+          >
+            <FaWarehouse /> Wardrobe
+          </div>
+          
+          <div
             className={`tab ${activeTab === 'upload' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('upload');
@@ -519,15 +540,7 @@ const Profile = () => {
           >
             <FaUpload /> Upload
           </div>
-          <div
-            className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveTab('settings');
-              navigate('/profile/settings');
-            }}
-          >
-            <FaLock /> Settings
-          </div>
+          
           <button
             className="tab-button logout-button"
             onClick={LogOut}
@@ -609,6 +622,13 @@ const Profile = () => {
                         Update Profile
                       </button>
                       }
+
+                      <div className="wishlist-link" onClick={()=>navigate('/wishlist')}>
+                        <FaShoppingCart className="wishlist-icon"/> View Your Wishlist
+                      </div>
+                      <div className="ar-link" onClick={()=>navigate('/view-avatar')}>
+                        <FaUserCircle className="ar-icon"/> View Your Avatar
+                      </div>
                     </div>
                   )}
                   {(userdetails.age || userdetails.gender || userdetails.preferences) && (
@@ -618,7 +638,7 @@ const Profile = () => {
                         <FaInfoCircle className="info-icon" />
                         <p>This information helps us provide personalized outfit recommendations based on your style preferences and demographics.</p>
                       </div>
-                      
+
                       {userdetails.age && (
                         <p className="profile-info">
                           <span>Age</span> {userdetails.age}
@@ -639,24 +659,7 @@ const Profile = () => {
                 </div>
               </div>
 
-              <div className="profile-actions">
-                <button className="action-button" onClick={navigateToWardrobe}>
-                  <FaTshirt /> My Wardrobe
-                </button>
-                <button className="action-button" onClick={navigateToRecommendations}>
-                  <FaLightbulb /> Get Recommendations
-                </button>
-                <button className="action-button" onClick={navigateToPlanner}>
-                  <FaCalendarWeek /> Weekly Planner
-                </button>
-                <button className="action-button" onClick={handleNav}>
-                  <FaStore /> Sell Clothes
-                </button>
-                {/* <button className="action-button" onClick={navigateToWishlist}>
-                  <FaHeart /> Wishlist
-                </button> */}
-
-              </div>
+              
             </div>
           )}
 
@@ -823,48 +826,72 @@ const Profile = () => {
           {/* Weekly Tab */}
           {activeTab === 'planner' && (
             <div className="weekly-section">
-              <h2>Weekly Outfit Planning</h2>
-
-              <div className="weekly-actions">
-                <button
-                  className="action-button"
-                  onClick={toggleClothesForWeek}
-                >
-                  {isVisible ? (
-                    <>
-                      <FaEyeSlash /> Hide Weekly Outfits
-                    </>
-                  ) : (
-                    <>
-                      <FaEye /> Show Weekly Outfits
-                    </>
-                  )}
-                </button>
-                <button
-                  className="action-button"
-                  onClick={navigateToPlanner}
-                >
-                  <FaCalendarWeek /> Open Weekly Planner
-                </button>
+              <div className="section-header">
+                <h2><FaCalendarWeek className="section-icon" /> Weekly Outfit Planning</h2>
+                <div className="weekly-actions">
+                  <button
+                    className="action-button toggle-button"
+                    onClick={toggleClothesForWeek}
+                  >
+                    {isVisible ? (
+                      <>
+                        <FaEyeSlash /> Hide
+                      </>
+                    ) : (
+                      <>
+                        <FaEye /> Show
+                      </>
+                    )}
+                  </button>
+                  <button
+                    className="action-button primary-button"
+                    onClick={navigateToPlanner}
+                  >
+                    <FaCalendarWeek /> Plan Your Week
+                  </button>
+                </div>
               </div>
 
               {isVisible && (
-                <div className="weekly-outfits">
+                <div className="weekly-outfits-container">
                   {isLoadingClothes ? (
                     <div className="loading-indicator">
                       <div className="loading-spinner"></div>
                       <p>Loading your weekly outfits...</p>
                     </div>
                   ) : clothsForWeek ? (
-                    <div className="weekly-outfit-content">
-                      <h3>Your Weekly Outfit Plan</h3>
-                      <p>{clothsForWeek}</p>
+                    <div className="weekly-outfit-grid">
+                      {/* Parse the clothsForWeek string and display it in a structured way */}
+                      {(() => {
+                        // This is a placeholder - in reality, you would parse the clothsForWeek string
+                        // into a structured format based on how your data is formatted
+                        const days = [
+                          "Monday", "Tuesday", "Wednesday", "Thursday",
+                          "Friday", "Saturday", "Sunday"
+                        ];
+
+                        return days.map((day, index) => (
+                          <div className="day-outfit-card" key={day}>
+                            <div className="day-header">{day}</div>
+                            <div className="outfit-details">
+                              {/* This would be replaced with actual outfit data */}
+                              <p className="outfit-item">
+                                {clothsForWeek.includes(day) ?
+                                  clothsForWeek.split(day)[1]?.split(days[index + 1] || ".")[0] || "No outfit planned" :
+                                  "No outfit planned"}
+                              </p>
+                            </div>
+                          </div>
+                        ));
+                      })()}
                     </div>
                   ) : (
                     <div className="empty-state">
-                      <p>No weekly outfit plan found.</p>
+                      <div className="empty-icon"><FaCalendarWeek /></div>
+                      <h3>No Weekly Plan Yet</h3>
+                      <p>Create a personalized outfit plan for your entire week.</p>
                       <button
-                        className="action-button"
+                        className="action-button primary-button"
                         onClick={navigateToPlanner}
                       >
                         <FaCalendarWeek /> Create Weekly Plan

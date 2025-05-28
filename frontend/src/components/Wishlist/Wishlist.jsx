@@ -80,10 +80,32 @@ const Wishlist = () => {
       
       // Apply search filter
       if (searchTerm) {
-        filtered = filtered.filter(item => {
-          const name = item.wishlistitem.name || "";
-          return name.toLowerCase().includes(searchTerm.toLowerCase());
-        });
+        // Check if it's a price range filter
+        if (searchTerm.includes('Rs')) {
+          filtered = filtered.filter(item => {
+            const priceStr = item.wishlistitem.price || "";
+            // Extract numeric price value
+            const price = parseFloat(priceStr.replace(/[^0-9.]/g, "")) || 0;
+            
+            // Apply price range filters
+            if (searchTerm === "under Rs 200" && price < 200) {
+              return true;
+            } else if (searchTerm === "Rs 200-500" && price >= 200 && price <= 500) {
+              return true;
+            } else if (searchTerm === "Rs 500-1000" && price > 500 && price <= 1000) {
+              return true;
+            } else if (searchTerm === "over Rs 1000" && price > 1000) {
+              return true;
+            }
+            return false;
+          });
+        } else {
+          // Regular text search
+          filtered = filtered.filter(item => {
+            const name = item.wishlistitem.name || "";
+            return name.toLowerCase().includes(searchTerm.toLowerCase());
+          });
+        }
       }
       
       // Apply sorting
@@ -137,6 +159,7 @@ const Wishlist = () => {
 
   // Handle search input change
   const handleSearchChange = (e) => {
+    
     setSearchTerm(e.target.value);
   };
 
@@ -248,10 +271,10 @@ const Wishlist = () => {
               <div className="filter-group">
                 <h3><FaTags /> Price Range</h3>
                 <div className="price-range">
-                  <button className={`filter-tag ${searchTerm.includes("under $50") ? "active" : ""}`} onClick={() => setSearchTerm("under $50")}>Under $50</button>
-                  <button className={`filter-tag ${searchTerm.includes("$50-$100") ? "active" : ""}`} onClick={() => setSearchTerm("$50-$100")}>$50-$100</button>
-                  <button className={`filter-tag ${searchTerm.includes("$100-$200") ? "active" : ""}`} onClick={() => setSearchTerm("$100-$200")}>$100-$200</button>
-                  <button className={`filter-tag ${searchTerm.includes("over $200") ? "active" : ""}`} onClick={() => setSearchTerm("over $200")}>Over $200</button>
+                  <button className={`filter-tag ${searchTerm.includes("under Rs 200") ? "active" : ""}`} onClick={() => setSearchTerm("under Rs 200")}>Under Rs 200</button>
+                  <button className={`filter-tag ${searchTerm.includes("Rs 200-500") ? "active" : ""}`} onClick={() => setSearchTerm("Rs 200-500")}>Rs 200-500</button>
+                  <button className={`filter-tag ${searchTerm.includes("Rs 500-1000") ? "active" : ""}`} onClick={() => setSearchTerm("Rs 500-1000")}>Rs 500-1000</button>
+                  <button className={`filter-tag ${searchTerm.includes("over Rs 1000") ? "active" : ""}`} onClick={() => setSearchTerm("over Rs 1000")}>Over Rs 1000</button>
                 </div>
               </div>
               
@@ -329,14 +352,14 @@ const Wishlist = () => {
                       </div>
                       
                       <div className="wishlist-actions">
-                        <a
+                        {/* <a
                           href={wishlistitem.product_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="wishlist-link view"
                         >
                           <FaExternalLinkAlt /> View Details
-                        </a>
+                        </a> */}
                         <a
                           href={wishlistitem.product_url}
                           target="_blank"
