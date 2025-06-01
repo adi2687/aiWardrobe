@@ -306,10 +306,14 @@ const Wardrobe = () => {
                         </div>
                         <div className="item-details">
                           <span className="item-name">{itemName}</span>
+                          {/* {itemColor.toLowerCase().split(':',1)[0].replace(' ','')} */}
+                          {/* {itemColor.toLowerCase().split('/',1)[0].replace(' ','')} */}
                           <div className="item-meta">
                             <div 
                               className="color-dot" 
-                              style={{ backgroundColor: itemColor.toLowerCase().split('/',1)[0].replace(' ','') }}
+                              style={{ backgroundColor: itemColor.includes(':') ? 
+                                itemColor.split(':')[itemColor.split(':').length - 1].trim().replace(' ','') : 
+                                itemColor.replace(' ','') }}
                               title={itemColor}
                             ></div>
                           </div>
@@ -344,11 +348,15 @@ const Wardrobe = () => {
                         </div>
                         <div className="item-details">
                           <span className="item-name">{itemName}</span>
+                          {/* Extract the last color component */}
+                          
                           <div className="item-meta">
                             {/* <span className="item-index">{index + 1}</span> */}
                             <div 
                               className="color-dot" 
-                              style={{ backgroundColor: itemColor.toLowerCase().split('/',1)[0].replace(' ','') }}
+                              style={{ backgroundColor: itemColor.includes(':') ? 
+                                itemColor.split(':')[itemColor.split(':').length - 1].trim().replace(' ','') : 
+                                itemColor.replace(' ','') }}
                               title={itemColor}
                             ></div>
                           </div>
@@ -384,12 +392,14 @@ const Wardrobe = () => {
                           <FaSocks />
                         </div>
                         <div className="item-details">
-                          <span className="item-name">{itemColor.split('/',1)[0].replace(' ','')}</span>
+                          <span className="item-name">{itemColor.split(':',1)[0].replace(' ','')}</span>
                           <div className="item-meta">
                             {/* <span className="item-index">{index + 1}</span> */}
                             <div 
                               className="color-dot" 
-                              style={{ backgroundColor: itemColor.toLowerCase().split('/',1)[0].replace(' ','') }}
+                              style={{ backgroundColor: itemColor.includes(':') ? 
+                                itemColor.split(':')[itemColor.split(':').length - 1].trim().replace(' ','') : 
+                                itemColor.replace(' ','') }}
                               title={itemColor}
                             ></div>
                           </div>
@@ -423,7 +433,7 @@ const Wardrobe = () => {
                           <FaShoppingBag />
                         </div>
                         <div className="item-details">
-                          <span className="item-name">{itemColor.split('/',1)[0].replace(' ','')}</span>
+                          <span className="item-name">{itemColor.split(':',1)[0].replace(' ','')}</span>
                           <div className="item-meta">
                             {/* <span className="item-index">{index + 1}</span> */}
                             <div 
