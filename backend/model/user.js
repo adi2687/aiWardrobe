@@ -19,7 +19,11 @@ const userSchema=new mongoose.Schema({
     upperwear:{type:[String],default:[]},
     lowerwear:{type:[String],default:[]},
     footwear:{type:[String],default:[]},
-    accessories:{type:[String],default:[]}
+    accessories:{type:[String],default:[]},
+    virtualTryOn:{type:[{
+        imageUrl: {type: String, required: true},
+        createdAt: {type: Date, default: Date.now}
+    }], default: []}
 },{timestamps:true})
 
 const User=mongoose.model('User',userSchema)

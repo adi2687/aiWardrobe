@@ -50,6 +50,7 @@ const Navbar = () => {
         <div className={`navbar-menu ${isOpen ? "active" : ""}`}>
           <Link to="/wardrobe" className="nav-link" onClick={() => setIsOpen(false)}>Wardrobe</Link>
           <Link to="/recommendations" className="nav-link" onClick={() => setIsOpen(false)}>Recommendations</Link>
+          <Link to="/virtual-try-on" className="nav-link" onClick={() => setIsOpen(false)}>Virtual Try-On</Link>
           <Link to="/sellcloth" className="nav-link" onClick={() => setIsOpen(false)}>Sell Clothes</Link>
           <Link to="/shop" className="nav-link" onClick={() => setIsOpen(false)}>Shop</Link>
           <Link to='/Download' className="nav-link" onClick={()=>setIsOpen(false)}>App</Link>
@@ -72,6 +73,7 @@ const Navbar = () => {
       <div className={`navbar-mobile-menu ${isOpen ? "open" : ""}`}>
         <Link to="/wardrobe" className="mobile-link" onClick={() => setIsOpen(false)}>Wardrobe</Link>
         <Link to="/recommendations" className="mobile-link" onClick={() => setIsOpen(false)}>Recommendations</Link>
+        <Link to="/virtual-try-on" className="mobile-link" onClick={() => setIsOpen(false)}>Virtual Try-On</Link>
         <Link to="/sellcloth" className="mobile-link" onClick={() => setIsOpen(false)}>Sell Clothes</Link>
         <Link to="/shop" className="mobile-link" onClick={() => setIsOpen(false)}>Shop</Link>
         <Link to='/Download' className="mobile-link" onClick={()=>setIsOpen(false)}>App</Link>

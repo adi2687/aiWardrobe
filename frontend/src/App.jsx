@@ -30,6 +30,7 @@ import Download from './components/Download/Download'
 import FloatingNavbar from './components/FloatingNavbar/FloatingNavbar'
 import Intro from './components/Intro/Intro'
 import SocialCollections from './components/social_sharing/social_collections'
+import VirtualTryOn from './components/VirtualTryOn/ClothingMapper'
 // Policy pages
 import PrivacyPolicy from './components/Policies/PrivacyPolicy'
 import TermsOfService from './components/Policies/TermsOfService'
@@ -117,6 +118,7 @@ const App = () => {
         <Route path="/aboutus" element={<About />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/download" element={<Download />} />
+        <Route path="/virtual-try-on" element={<VirtualTryOn />} />
       </Routes>
       <FloatingNavbar />
       <Footer />

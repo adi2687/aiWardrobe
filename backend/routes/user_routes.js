@@ -456,4 +456,50 @@ router.post("/cloth/deletefavourite", authenticate, async (req, res) => {
   await user.save();
   res.status(200).json({ favourite: user.favourites });
 });
+
+// Save virtual try-on image
+router.post("/save-virtual-try-on", authenticate, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { imageData } = req.body; // Base64 encoded image data
+    
+    if (!imageData) {
+      return res.status(400).json({ error: "No image data provided" });
+    }
+
+    // Upload the image to Cloudinary
+    const uploadResponse = await cloudinary.uploader.upload(imageData, {
+      folder: "virtual-try-on",
+      resource_type: "image"
+    });
+
+    // Find the user and update their profile
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // If user doesn't have a virtualTryOn array, create one
+    if (!user.virtualTryOn) {
+      user.virtualTryOn = [];
+    }
+
+    // Add the new virtual try-on image to the user's collection
+    user.virtualTryOn.push({
+      imageUrl: uploadResponse.secure_url,
+      createdAt: new Date()
+    });
+
+    await user.save();
+
+    res.status(200).json({
+      message: "Virtual try-on image saved successfully",
+      imageUrl: uploadResponse.secure_url
+    });
+  } catch (error) {
+    console.error("Error saving virtual try-on image:", error);
+    res.status(500).json({ error: "Failed to save virtual try-on image", details: error.message });
+  }
+});
+
 export default router;
