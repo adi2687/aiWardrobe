@@ -1600,3 +1600,25 @@
 2025-05-28 07:30:40,869 - myntra - INFO - Opening URL: https://www.myntra.com/Styles+for+Male?rawQuery=Styles+for+Maleand gender:$Male&sort=popularity
 2025-05-28 07:30:59,355 - myntra - WARNING - Timeout waiting for product grid to load, retrying...
 2025-05-28 07:31:01,463 - myntra - ERROR - Maximum retry attempts reached for Myntra scraping
+2025-06-01 11:48:04,561 - myntra - INFO - Scraping Myntra for query: Oversized hoodies (black, grey, navy)
+2025-06-01 11:48:33,753 - myntra - INFO - Scraping Myntra for query: Chinos (beige, olive green)
+2025-06-01 11:48:49,488 - myntra - INFO - Opening URL: https://www.myntra.com/Chinos+%28beige%2C+olive+green%29?rawQuery=Chinos+%28beige%2C+olive+green%29and gender:$Male&sort=popularity
+2025-06-01 11:48:59,403 - myntra - INFO - Found 17 product items in the page
+2025-06-01 11:48:59,444 - myntra - INFO - Product 1: Slim Fit Cotton Chinos... | Price: Rs. 1599
+2025-06-01 11:48:59,476 - myntra - INFO - Product 2: Men Slim Fit Chinos Trousers... | Price: Rs. 839
+2025-06-01 11:48:59,489 - myntra - INFO - Product 3: Men Chinos Trousers... | Price: Rs. 1899
+2025-06-01 11:48:59,503 - myntra - INFO - Product 4: Men Pack of 2 Chinos Trousers... | Price: Rs. 1289
+2025-06-01 11:48:59,518 - myntra - INFO - Product 5: Pleated Chinos Trousers... | Price: Rs. 2605
+2025-06-01 11:48:59,527 - myntra - INFO - Product 6: Men Chinos Trousers... | Price: Rs. 826
+2025-06-01 11:48:59,535 - myntra - INFO - Product 7: Men Slim Fit Chinos... | Price: Rs. 1799
+2025-06-01 11:48:59,542 - myntra - INFO - Product 8: Men Slim Fit Chinos... | Price: Rs. 839
+2025-06-01 11:48:59,551 - myntra - INFO - Product 9: Men Mid-Rise Chinos... | Price: Rs. 1884
+2025-06-01 11:48:59,564 - myntra - INFO - Product 10: Men Slim Fit Chinos Trousers... | Price: Rs. 1999
+2025-06-01 11:48:59,572 - myntra - INFO - Product 11: Slim Fit Cotton Chinos... | Price: Rs. 1199
+2025-06-01 11:48:59,584 - myntra - INFO - Product 12: Men Tapered Fit Trousers... | Price: Rs. 2190
+2025-06-01 11:48:59,595 - myntra - INFO - Product 13: High-Rise Chinos Trouser... | Price: Rs. 2249
+2025-06-01 11:48:59,609 - myntra - INFO - Product 14: Men Slim Fit Chinos... | Price: Rs. 2299
+2025-06-01 11:48:59,617 - myntra - INFO - Product 15: Men Cotton Chinos Trouser... | Price: Rs. 1169
+2025-06-01 11:48:59,625 - myntra - INFO - Product 16: Men Chinos Trousers... | Price: Rs. 1169
+2025-06-01 11:48:59,637 - myntra - INFO - Product 17: Men Slim Fit Chinos Trousers... | Price: Rs. 1499
+2025-06-01 11:48:59,648 - myntra - INFO - Successfully scraped 17 products from Myntra
