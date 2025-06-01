@@ -15,7 +15,7 @@ const ShareClothes = () => {
   const [error, setError] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   
-  
+  const [skinColor,setskinColor]=useState("")
   const [age,setAge]=useState(0)
   const [gender,setGender]=useState("")
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
@@ -93,7 +93,9 @@ const ShareClothes = () => {
     if (gender) {
       userDetails.push(`gender: ${gender}`);
     }
-    
+    if (skinColor) {
+      userDetails.push(`skinColor: ${skinColor}`);
+    }
     let userDetailsPrompt = '';
     if (userDetails.length > 0) {
       userDetailsPrompt = `Create an outfit appropriate for a person with the following characteristics: ${userDetails.join(', ')}. `;

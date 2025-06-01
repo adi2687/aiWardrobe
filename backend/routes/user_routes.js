@@ -119,12 +119,16 @@ router.post("/updateinfo", authenticate, async (req, res) => {
   const age = req.body.age;
   const gender = req.body.gender;
   const prefference = req.body.preferences;
+  const skinColor = req.body.skinColor;
+
+  console.log(req.body)
   const user = await User.findById(userid);
   console.log(user);
   
   if (age) user.age = age;
   if (gender) user.gender = gender;
   if (prefference) user.preferences = prefference;
+  if (skinColor) user.skinColor = skinColor;
   user.save();
   res.json({ status: true, msg: "Info done" });
 });
@@ -139,6 +143,7 @@ router.get("/getuserdetails", authenticate, async (req, res) => {
     age: user.age,
     preferences: user.preferences,
     gender: user.gender,
+    skinColor:user.skinColor
   });
 });
 

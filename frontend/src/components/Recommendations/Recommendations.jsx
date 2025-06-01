@@ -15,7 +15,7 @@ const Recommendations = () => {
   const [history, setHistory] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
   const [user, setUser] = useState(null);
-  
+  const [skinColor,setskinColor]=useState("")
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -122,13 +122,13 @@ const Recommendations = () => {
         weather = weatherData;
       }
 
-      const response = await fetch(`${apiUrl}/chat/chatbot`, {
+      const response = await fetch(`${apiUrl}/chat/suggestion`, {
         method: "POST",
         credentials: "include",
         headers: { 
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ input, clothes, weather }),
+        body: JSON.stringify({ input, clothes, weather,skinColor }),
       });
 
       const data = await response.json();

@@ -52,6 +52,8 @@ const Profile = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
   // Profile setup state removed
 
+
+  const [skinColor,setSkinColor]=useState("")
   const location = useLocation();
   const { tab } = useParams(); // Get tab from URL parameters
 
@@ -400,7 +402,7 @@ const Profile = () => {
   };
 
   const updatePersonalInfo = () => {
-    if (!age && !gender) {
+    if (!age && !gender && !preferences && !skinColor) {
       showNotification("Please fill in all required fields");
       return;
     }
@@ -410,7 +412,7 @@ const Profile = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ age, preferences, gender }),
+      body: JSON.stringify({ age, preferences, gender,skinColor }),
       credentials: "include",
     })
       .then((response) => response.json())
@@ -615,7 +617,23 @@ const Profile = () => {
                           <option value="Eclectic">Eclectic</option>
                         </select>
                       )}
-                      {(!userdetails.age || !userdetails.gender || !userdetails.preferences) && <button
+                      {!userdetails.skinColor && (
+                        <select
+                          className="profile-input"
+                          value={skinColor || ""}
+                          onChange={(e) => setSkinColor(e.target.value)}
+                        >
+                          <option value="">Select Skin Tone</option>
+                          <option value="Fair">Fair</option>
+                          <option value="Light">Light</option>
+                          <option value="Medium">Medium</option>
+                          <option value="Olive">Olive</option>
+                          <option value="Tan">Tan</option>
+                          <option value="Deep">Deep</option>
+                          <option value="Dark">Dark</option>
+                        </select>
+                      )}
+                      {(!userdetails.age || !userdetails.gender || !userdetails.preferences || !userdetails.skinColor) && <button
                         className="profile-update-btn"
                         onClick={updatePersonalInfo}
                       >
@@ -652,6 +670,11 @@ const Profile = () => {
                       {userdetails.preferences && (
                         <p className="profile-info">
                           <span>Style</span> {userdetails.preferences}
+                        </p>
+                      )}
+                      {userdetails.skinColor && (
+                        <p className="profile-info">
+                          <span>Skin Tone</span> {userdetails.skinColor}
                         </p>
                       )}
                     </div>

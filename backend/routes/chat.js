@@ -45,7 +45,7 @@ const getUserId = (req) => {
   }
 };
 
-router.post("/chatbot", async (req, res) => {
+router.post("/suggestion", async (req, res) => {
   try {
     const userid=getUserId(req)
     console.log(userid)
@@ -53,7 +53,20 @@ router.post("/chatbot", async (req, res) => {
     const prompt = req.body.input;
 
     const clothes = req.body.clothes || "";
-    
+    const skinColor=req.body.skinColor
+    const age=req.body.age
+    const gender=req.body.gender
+
+    let userdetails=''
+    if(skinColor){
+      userdetails+=`skin color is ${skinColor}`
+    }
+    if(age){
+      userdetails+=`age is ${age}`
+    }
+    if(gender){
+      userdetails+=`gender is ${gender}`
+    }
     let clothesfinal = clothes
       ? `I have the following clothes with me: ${clothes}. Suggest me an outfit based on this.`
       : "";
@@ -91,6 +104,7 @@ router.post("/chatbot", async (req, res) => {
             Specifically, I want to understand: ${prompt}.
             ${clothesfinal}
             ${weatherinprompt}
+            ${userdetails}
     
             Please be thorough, precise, and explain in clear terms. 
             Keep responses short, direct, and without unnecessary explanations. Provide only the necessary recommendations.

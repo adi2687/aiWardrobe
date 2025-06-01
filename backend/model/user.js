@@ -1,7 +1,4 @@
-import { Timestamp } from "bson";
 import mongoose from "mongoose";
-import { type } from "os";
-import { number } from "zod";
 
 const userSchema=new mongoose.Schema({
     username:{type:String,required:true},
@@ -18,6 +15,7 @@ const userSchema=new mongoose.Schema({
     age:{type:Number},
     gender:{type:String},
     preferences:{type:String},
+    skinColor:{type:String},
     upperwear:{type:[String],default:[]},
     lowerwear:{type:[String],default:[]},
     footwear:{type:[String],default:[]},
