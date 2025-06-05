@@ -641,11 +641,23 @@ const Profile = () => {
                       </button>
                       }
 
-                      <div className="wishlist-link" onClick={()=>navigate('/wishlist')}>
-                        <FaShoppingCart className="wishlist-icon"/> View Your Wishlist
+                      <div className="shortcutlinks">
+                      <div>
+                      <div className="wishlist-link" onClick={() => navigate('/wishlist')}>
+                        <FaShoppingCart className="wishlist-icon" /> View Your Wishlist
                       </div>
-                      <div className="ar-link" onClick={()=>navigate('/view-avatar')}>
-                        <FaUserCircle className="ar-icon"/> View Your Avatar
+                      <div className="ar-link" onClick={() => navigate('/profile/upload')}>
+                        <FaTshirt className="wishlist-icon" /> Upload clothes images
+                      </div>
+                      </div>
+                      <div>
+                      <div className="wishlist-link" onClick={() => navigate('/recommendations')}>
+                        <FaLightbulb className="wishlist-icon" /> Recommendations
+                      </div>
+                      <div className="wishlist-link" onClick={()=>navigate('/profile/favorites')}>
+                        <FaHeart className="wishlist-icon" /> Favourites
+                      </div>
+                        </div>
                       </div>
                     </div>
                   )}

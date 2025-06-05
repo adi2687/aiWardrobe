@@ -1622,3 +1622,47 @@
 2025-06-01 11:48:59,625 - myntra - INFO - Product 16: Men Chinos Trousers... | Price: Rs. 1169
 2025-06-01 11:48:59,637 - myntra - INFO - Product 17: Men Slim Fit Chinos Trousers... | Price: Rs. 1499
 2025-06-01 11:48:59,648 - myntra - INFO - Successfully scraped 17 products from Myntra
+2025-06-01 19:02:55,144 - myntra - INFO - Scraping Myntra for query: Black sneakers
+2025-06-01 19:03:01,060 - myntra - INFO - Opening URL: https://www.myntra.com/Black+sneakers?rawQuery=Black+sneakersand gender:$Male&sort=popularity
+2025-06-01 19:03:12,048 - myntra - INFO - Found 50 product items in the page
+2025-06-01 19:03:12,094 - myntra - INFO - Product 1: Smashic Casual Sneakers... | Price: Rs. 1664
+2025-06-01 19:03:12,140 - myntra - INFO - Product 2: Men Court Shatter Low Sneakers... | Price: Rs. 2219
+2025-06-01 19:03:12,158 - myntra - INFO - Product 3: SB Heritage Vulc Skate Shoes... | Price: Rs. 5495
+2025-06-01 19:03:12,174 - myntra - INFO - Product 4: Men Samba OG Casual Shoes... | Price: Rs. 10999
+2025-06-01 19:03:12,185 - myntra - INFO - Product 5: Court Shatter Casual Sneakers... | Price: Rs. 2219
+2025-06-01 19:03:12,193 - myntra - INFO - Product 6: Men Colourblocked PU Sneakers... | Price: Rs. 1439
+2025-06-01 19:03:12,202 - myntra - INFO - Product 7: Men Solid PU Sneakers... | Price: Rs. 1064
+2025-06-01 19:03:12,212 - myntra - INFO - Product 8: Unisex Chuck Taylor All Star... | Price: Rs. 4799
+2025-06-01 19:03:12,220 - myntra - INFO - Product 9: Unisex Chuck 70 Sneakers... | Price: Rs. 6399
+2025-06-01 19:03:12,227 - myntra - INFO - Product 10: Men Perforations PU Sneakers... | Price: Rs. 1004
+2025-06-01 19:03:12,233 - myntra - INFO - Product 11: AARON 5.0 Men Loafers... | Price: Rs. 1189
+2025-06-01 19:03:12,242 - myntra - INFO - Product 12: Men D'Lux Walker Pensive... | Price: Rs. 3359
+2025-06-01 19:03:12,252 - myntra - INFO - Product 13: Men Colourblocked Sneakers... | Price: Rs. 1049
+2025-06-01 19:03:12,258 - myntra - INFO - Product 14: Court Shatter Mid Men Sneakers... | Price: Rs. 2589
+2025-06-01 19:03:12,267 - myntra - INFO - Product 15: X-Ray 2 Square Casual Sneakers... | Price: Rs. 2959
+2025-06-01 19:03:12,274 - myntra - INFO - Product 16: Men Colourblocked Sneakers... | Price: Rs. 989
+2025-06-01 19:03:12,282 - myntra - INFO - Product 17: Men Solid Sneakers... | Price: Rs. 944
+2025-06-01 19:03:12,290 - myntra - INFO - Product 18: Men Evoke Layup SL Sneakers... | Price: Rs. 2879
+2025-06-01 19:03:12,299 - myntra - INFO - Product 19: Men Ozweego Sneakers... | Price: Rs. 7409
+2025-06-01 19:03:12,310 - myntra - INFO - Product 20: Comfort Insole Sneakers... | Price: Rs. 1424
+2025-06-01 19:03:12,318 - myntra - INFO - Product 21: Men PU Lace-Ups Sneakers... | Price: Rs. 989
+2025-06-01 19:03:12,328 - myntra - INFO - Product 22: RSL0951 PU Sneakers... | Price: Rs. 1049
+2025-06-01 19:03:12,342 - myntra - INFO - Product 23: Men Leather Sneakers... | Price: Rs. 7825
+2025-06-01 19:03:12,353 - myntra - INFO - Product 24: Men PU Sneakers... | Price: Rs. 974
+2025-06-01 19:03:12,365 - myntra - INFO - Product 25: Caven 2.0 Res Unisex Sneakers... | Price: Rs. 2699
+2025-06-01 19:03:12,400 - myntra - INFO - Product 36: Men Colourblocked PU Sneakers... | Price: Rs. 1064
+2025-06-01 19:03:12,414 - myntra - INFO - Product 37: Unisex SV2 Leather Sneakers... | Price: Rs. 1699
+2025-06-01 19:03:12,424 - myntra - INFO - Product 38: Men Solid Sneakers... | Price: Rs. 1079
+2025-06-01 19:03:12,449 - myntra - INFO - Product 39: Men Air Max 90 Sneakers... | Price: Rs. 9995
+2025-06-01 19:03:12,457 - myntra - INFO - Product 40: Men Colourblocked PU Sneakers... | Price: Rs. 1064
+2025-06-01 19:03:12,467 - myntra - INFO - Product 41: Air Max Nuaxis Men's Shoes... | Price: Rs. 8495
+2025-06-01 19:03:12,481 - myntra - INFO - Product 42: Men DYNAMIGHT Sneakers... | Price: Rs. 2249
+2025-06-01 19:03:12,490 - myntra - INFO - Product 43: Men TERRENEX Sneakers... | Price: Rs. 2364
+2025-06-01 19:03:12,499 - myntra - INFO - Product 44: Men Samba OG Leather Sneakers... | Price: Rs. 10999
+2025-06-01 19:03:12,508 - myntra - INFO - Product 45: Men Mid-Top Evereday Sneakers... | Price: Rs. 1434
+2025-06-01 19:03:12,518 - myntra - INFO - Product 46: Men MIRA Sneakers... | Price: Rs. 5399
+2025-06-01 19:03:12,525 - myntra - INFO - Product 47: Men Fuzor B Sneakers... | Price: Rs. 1934
+2025-06-01 19:03:12,535 - myntra - INFO - Product 48: Men Flynn Slip-On Sneakers... | Price: Rs. 1499
+2025-06-01 19:03:12,541 - myntra - INFO - Product 49: Men Colourblocked PU Sneakers... | Price: Rs. 1019
+2025-06-01 19:03:12,548 - myntra - INFO - Product 50: Men TERRENEX Sneakers... | Price: Rs. 2499
+2025-06-01 19:03:12,555 - myntra - INFO - Successfully scraped 40 products from Myntra

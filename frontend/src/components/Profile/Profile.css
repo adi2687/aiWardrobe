@@ -502,6 +502,72 @@ font-size: 14px;
   margin: 0 0 1rem;
 }
 
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 2rem 0 2.5rem 0;
+  align-items: stretch;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1.1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+  background: linear-gradient(90deg, #23243b 60%, #1e1e2e 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(106,17,203,0.08);
+  letter-spacing: 0.5px;
+}
+
+.profile-action-btn .profile-action-icon {
+  font-size: 1.4rem;
+  margin-right: 0.6rem;
+}
+
+.profile-action-btn.wishlist-btn {
+  background: linear-gradient(90deg, #ff4757 60%, #ff6b81 100%);
+}
+.profile-action-btn.upload-btn {
+  background: linear-gradient(90deg, #6a11cb 60%, #2575fc 100%);
+}
+.profile-action-btn.recommendations-btn {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  color: #23243b;
+}
+.profile-action-btn.favourites-btn {
+  background: linear-gradient(90deg, #ff6a00 0%, #ee0979 100%);
+}
+
+.profile-action-btn:hover {
+  filter: brightness(1.08) saturate(1.2);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(106,17,203,0.12);
+}
+
+@media (max-width: 600px) {
+  .profile-actions {
+    max-width: 99vw;
+    gap: 0.7rem;
+  }
+  .profile-action-btn {
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+  }
+}
+
 .profile-container .profile-info {
   margin: 0.5rem 0;
   color: #bbb;
@@ -1734,8 +1800,23 @@ height:50px
 
 .ar-icon {
   color: white;
-  font-size: 18px;
+  font-size: 28px;
 }
+
+.shortcutlinks{
+  /* display:flex; */
+  width:auto;
+  height:Auto;
+  display: flex;
+  flex-direction: row;
+  gap:20%;
+  width:70%;
+  /* border:2px solid red; */
+}
+.shortcutlinks>div{
+  min-width:120%;
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
   .profile-container .profile-header {
@@ -1802,6 +1883,16 @@ height:50px
   
   .profile-container .auth-required {
     padding: 2rem 1.5rem;
+  }
+  .shortcutlinks{
+    flex-direction: column;
+    /* border:1px solid blue; */
+    width:100%
+  }
+  .shortcutlinks>div>div{
+    /* border:2px solid green; */
+    max-width:75%;
+    /* min-width: 60%; */
   }
 }
 
