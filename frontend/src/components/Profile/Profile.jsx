@@ -1,35 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./Profile.css";
-import {
-  FaShare,
-  FaUser,
-  FaLock,
-  FaSignOutAlt,
-  FaUpload,
-  FaHeart,
-  FaCalendarWeek,
-  FaTshirt,
-  FaStore,
-  FaLightbulb,
-  FaEdit,
-  FaEye,
-  FaEyeSlash,
-  FaTrash,
-  FaLink,
-  FaClipboard,
-  FaInfoCircle,
-  FaWarehouse,
-  FaShoppingCart,
-  FaUserCircle
-} from "react-icons/fa";
+import { FaUser, FaShoppingCart, FaHeart, FaSignOutAlt, FaCog, FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash, FaShareAlt, FaCopy, FaCheck, FaTimes, FaCamera, FaUpload, FaPalette, FaTshirt, FaRedo, FaMagic, FaSave, FaCloudUploadAlt, FaSyncAlt, FaExclamationCircle, FaQuestionCircle, FaInfoCircle, FaSpinner, FaCalendarAlt, FaCalendarCheck, FaCalendarPlus, FaCalendarTimes, FaCalendarWeek, FaListAlt, FaThList,FaLightbulb,FaWarehouse, FaWhatsapp, FaFacebook, FaInstagram, FaClipboard, FaShare   } from 'react-icons/fa';
+import { FiExternalLink } from 'react-icons/fi';
+import { IoMdColorPalette } from "react-icons/io";
+import { GiClothes } from "react-icons/gi";
+import { MdDeleteForever, MdEditSquare } from "react-icons/md";
+import { FaExternalLinkAlt } from "react-icons/fa";
 // No modal import needed
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [wardrobeImages, setWardrobeImages] = useState([]);
-  const [imageFile, setImageFile] = useState(null);
-  const [imageName, setImageName] = useState("No file chosen");
+  const [imageFiles, setImageFiles] = useState([]);
+  const [imageNames, setImageNames] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
   const [zoomedImage, setZoomedImage] = useState(null);
   const [isScanning, setIsScanning] = useState(false);
@@ -49,11 +34,12 @@ const Profile = () => {
   const [personalinfovisible, changepersonalinfo] = useState(false);
   const [activeTab, setActiveTab] = useState("profile");
   const [linkCopied, setLinkCopied] = useState(false);
+  const [shareMessage, setShareMessage] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
   // Profile setup state removed
 
 
-  const [skinColor,setSkinColor]=useState("")
+  const [skinColor, setSkinColor] = useState("")
   const location = useLocation();
   const { tab } = useParams(); // Get tab from URL parameters
 
@@ -142,19 +128,27 @@ const Profile = () => {
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-      setImageName(file.name);
+    const files = Array.from(e.target.files);
+    if (files.length > 0) {
+      setImageFiles(files);
+      setImageNames(files.map(file => file.name));
 
-      // Create image preview
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+      // Create image previews
+      const previews = files.map(file => {
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            resolve(reader.result);
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+
+      Promise.all(previews).then(results => {
+        setImagePreviews(results);
+      });
     } else {
-      setImagePreview(null);
+      setImagePreviews([]);
     }
   };
 
@@ -164,71 +158,72 @@ const Profile = () => {
 
   const handleImageUpload = async (e) => {
     e.preventDefault();
-    if (!imageFile) {
-      showNotification("Please upload an image first!");
+    if (imageFiles.length === 0) {
+      showNotification("Please upload at least one image!");
       return;
     }
 
     setIsScanning(true);
 
-    // Upload to wardrobe
-    const uploadForm = new FormData();
-    uploadForm.append("wardrobeImage", imageFile);
-
     try {
-      const uploadRes = await fetch(`${apiUrl}/user/upload-image`, {
-        method: "POST",
-        credentials: "include",
-        body: uploadForm,
-      });
+      // Upload each image
+      for (const file of imageFiles) {
+        // Upload to wardrobe
+        const uploadForm = new FormData();
+        uploadForm.append("wardrobeImage", file);
 
-      const uploadData = await uploadRes.json();
+        const uploadRes = await fetch(`${apiUrl}/user/upload-image`, {
+          method: "POST",
+          credentials: "include",
+          body: uploadForm,
+        });
 
-      if (!uploadRes.ok) {
-        console.error("Upload failed:", uploadData.error || "Unknown error");
-        setIsScanning(false);
-        showNotification("Upload failed. Please try again.");
-        return;
+        const uploadData = await uploadRes.json();
+
+        if (!uploadRes.ok) {
+          console.error("Upload failed:", uploadData.error || "Unknown error");
+          continue;
+        }
+
+        // Set image in wardrobe state
+        setWardrobeImages((prev) => [...prev, uploadData.imageUrl]);
+
+        // Send to classify
+        const classifyForm = new FormData();
+        classifyForm.append("images", file);
+
+        const classifyRes = await fetch(`${apiUrl}/clothid/classify`, {
+          method: "POST",
+          credentials: "include",
+          body: classifyForm,
+        });
+
+        if (!classifyRes.ok) {
+          throw new Error(`HTTP error! Status: ${classifyRes.status}`);
+        }
+
+        const classifyData = await classifyRes.json();
+        setuserclothes(classifyData.clothing_items);
+        const clothes = classifyData.clothing_items;
+
+        const saveRes = await fetch(`${apiUrl}/user/clothesUpload`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ clothes }),
+        });
+
+        if (!saveRes.ok) {
+          throw new Error(`Http error! status: ${saveRes.status}`);
+        }
       }
-      console.log("done ")
-      // Set image in wardrobe state
-      setWardrobeImages((prev) => [...prev, uploadData.imageUrl]);
-      setImageFile(null);
-      setImageName("No file chosen");
-      // document.getElementById("image-upload-input").value = "";
 
-      // Send to classify
-      const classifyForm = new FormData();
-      classifyForm.append("images", imageFile);
-
-      const classifyRes = await fetch(`${apiUrl}/clothid/classify`, {
-        method: "POST",
-        credentials: "include",  // Add this to send cookies with the request
-        body: classifyForm,
-      });
-
-      if (!classifyRes.ok) {
-        throw new Error(`HTTP error! Status: ${classifyRes.status}`);
-      }
-
-      const classifyData = await classifyRes.json();
-      setuserclothes(classifyData.clothing_items);
-      const clothes = classifyData.clothing_items;
-
-      const saveRes = await fetch(`${apiUrl}/user/clothesUpload`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ clothes }),
-      });
-
-      if (!saveRes.ok) {
-        throw new Error(`Http error! status: ${saveRes.status}`);
-      }
-
-      showNotification("Clothing item successfully added to your wardrobe!");
+      showNotification("Clothing items successfully added to your wardrobe!");
+      setImageFiles([]);
+      setImageNames([]);
+      setImagePreviews([]);
 
       // Wait before redirect
       setTimeout(() => {
@@ -236,9 +231,9 @@ const Profile = () => {
         navigate("/wardrobe");
       }, 3000);
     } catch (error) {
-      console.error("Error processing image:", error);
+      console.error("Error processing images:", error);
       setIsScanning(false);
-      showNotification("Error processing image. Please try again.");
+      showNotification("Error processing images. Please try again.");
     }
   };
 
@@ -297,6 +292,7 @@ const Profile = () => {
   };
 
   const SharetoFriends = async (clothesToShare) => {
+    // console.log(clothesToShare)
     try {
       const res = await fetch(`${apiUrl}/share`, {
         method: "POST",
@@ -306,6 +302,7 @@ const Profile = () => {
       });
       const data = await res.json();
       const shareLink = `${frontedUrl}/share/${data.id}`;
+      console.log(shareLink)
       setshare(shareLink);
     } catch (error) {
       console.error("Error sharing outfit:", error);
@@ -313,12 +310,28 @@ const Profile = () => {
     }
   };
 
-  const copyShareLink = () => {
+  const copyToClipboard = () => {
     if (sharecloths) {
       navigator.clipboard.writeText(sharecloths);
       setLinkCopied(true);
-      setTimeout(() => setLinkCopied(false), 2000);
+      // setShareMessage("Link copied to clipboard!");  
+      setTimeout(() => {
+        setLinkCopied(false);
+        setShareMessage("");
+      }, 2000);
     }
+  };
+
+  const shareToSocial = (platform) => {
+    if (!sharecloths) return;
+
+    const shareUrls = {
+      whatsapp: `https://wa.me/?text=Hey check this outfit I got from outfit-AI${encodeURIComponent(sharecloths)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(sharecloths)}`,
+      instagram: `https://www.instagram.com/?url=${encodeURIComponent(sharecloths)}`
+    };
+
+    window.open(shareUrls[platform], '_blank');
   };
 
   const resetLink = () => {
@@ -412,7 +425,7 @@ const Profile = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ age, preferences, gender,skinColor }),
+      body: JSON.stringify({ age, preferences, gender, skinColor }),
       credentials: "include",
     })
       .then((response) => response.json())
@@ -523,7 +536,7 @@ const Profile = () => {
           >
             <FaLightbulb /> Recommendations
           </div>
-          
+
           <div
             className={`tab ${activeTab === 'wardrobe' ? 'active' : ''}`}
             onClick={() => {
@@ -532,7 +545,7 @@ const Profile = () => {
           >
             <FaWarehouse /> Wardrobe
           </div>
-          
+
           <div
             className={`tab ${activeTab === 'upload' ? 'active' : ''}`}
             onClick={() => {
@@ -542,7 +555,7 @@ const Profile = () => {
           >
             <FaUpload /> Upload
           </div>
-          
+
           <button
             className="tab-button logout-button"
             onClick={LogOut}
@@ -642,21 +655,21 @@ const Profile = () => {
                       }
 
                       <div className="shortcutlinks">
-                      <div>
-                      <div className="wishlist-link" onClick={() => navigate('/wishlist')}>
-                        <FaShoppingCart className="wishlist-icon" /> View Your Wishlist
-                      </div>
-                      <div className="ar-link" onClick={() => navigate('/profile/upload')}>
-                        <FaTshirt className="wishlist-icon" /> Upload clothes images
-                      </div>
-                      </div>
-                      <div>
-                      <div className="wishlist-link" onClick={() => navigate('/recommendations')}>
-                        <FaLightbulb className="wishlist-icon" /> Recommendations
-                      </div>
-                      <div className="wishlist-link" onClick={()=>navigate('/profile/favorites')}>
-                        <FaHeart className="wishlist-icon" /> Favourites
-                      </div>
+                        <div>
+                          <div className="wishlist-link" onClick={() => navigate('/wishlist')}>
+                            <FaShoppingCart className="wishlist-icon" /> View Your Wishlist
+                          </div>
+                          <div className="ar-link" onClick={() => navigate('/profile/upload')}>
+                            <FaTshirt className="wishlist-icon" /> Upload clothes images
+                          </div>
+                        </div>
+                        <div>
+                          <div className="wishlist-link" onClick={() => navigate('/recommendations')}>
+                            <FaLightbulb className="wishlist-icon" /> Recommendations
+                          </div>
+                          <div className="wishlist-link" onClick={() => navigate('/profile/favorites')}>
+                            <FaHeart className="wishlist-icon" /> Favourites
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -694,7 +707,7 @@ const Profile = () => {
                 </div>
               </div>
 
-              
+
             </div>
           )}
 
@@ -712,17 +725,24 @@ const Profile = () => {
                     <div className="file-input-container">
                       <label className="file-upload-label">
                         <span className="upload-icon">👕</span>
-                        <span className="upload-text">Select Clothing Item</span>
+                        <span className="upload-text">Select Clothing Items</span>
                         <input
                           type="file"
                           className="file-input"
                           accept="image/*"
                           onChange={handleImageChange}
                           id="clothing-upload"
+                          multiple
                         />
                       </label>
 
-                      {imageName && <div className="file-name">Selected: {imageName}</div>}
+                      {imageNames.length > 0 && (
+                        <div className="file-names">
+                          {imageNames.map((name, index) => (
+                            <div key={index} className="file-name">Selected: {name}</div>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
                     <div className="upload-instructions">
@@ -737,7 +757,7 @@ const Profile = () => {
                     <button
                       type="submit"
                       className="upload-button"
-                      disabled={isScanning || !imageFile}
+                      disabled={isScanning || imageFiles.length === 0}
                     >
                       {isScanning ? (
                         <>
@@ -754,17 +774,13 @@ const Profile = () => {
                   </div>
 
                   <div className="upload-right">
-                    {imagePreview ? (
-                      <div className="image-preview-container">
-                        <h4>Preview</h4>
-                        <div className="image-preview">
-                          <img src={imagePreview} alt="Preview" />
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="no-preview">
-                        <div className="no-preview-icon">🖼️</div>
-                        <p>Image preview will appear here</p>
+                    {imagePreviews.length > 0 && (
+                      <div className="image-previews">
+                        {imagePreviews.map((preview, index) => (
+                          <div key={index} className="image-preview-item">
+                            <img src={preview} alt={`Preview ${index + 1}`} />
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -774,7 +790,7 @@ const Profile = () => {
               {isScanning && (
                 <div className="scanning-indicator">
                   <div className="scanning-spinner"></div>
-                  <p>Analyzing your clothing item...</p>
+                  <p>Analyzing your clothing items...</p>
                 </div>
               )}
             </div>
@@ -830,28 +846,49 @@ const Profile = () => {
 
               {sharecloths && (
                 <div className="share-link-container">
-                  <h3>Share this outfit</h3>
-                  <div className="share-link-box">
-                    <input
-                      type="text"
-                      value={sharecloths}
-                      readOnly
-                      className="share-link-input"
-                    />
+                  <div className="share-header">
+                    <h3>Share Your Outfit</h3>
                     <button
-                      className="copy-link-button"
-                      onClick={copyShareLink}
-                      title="Copy to clipboard"
-                    >
-                      {linkCopied ? <FaClipboard /> : <FaLink />}
-                    </button>
-                    <button
-                      className="reset-link-button"
+                      className="close-share-button"
                       onClick={resetLink}
                       title="Close"
                     >
                       ×
                     </button>
+                  </div>
+                  <div className="share-content">
+                    <div className="share-link-box">
+                      <input
+                        type="text"
+                        value={sharecloths}
+                        readOnly
+                        className="share-link-input"
+                        placeholder="Share link will appear here"
+                      />
+                      <button
+                        className="copy-link-button"
+                        onClick={copyToClipboard}
+                        title="Copy to clipboard"
+                      >
+                        {linkCopied ? (
+                          <>
+                            <FaClipboard /> Copied!
+                          </>
+                        ) : (
+                          <>
+                            <FaLink /> Copy Link
+                          </>
+                        )}
+                      </button>
+                    </div>
+                    <div className="share-actions">
+                      <button
+                        className="preview-button"
+                        onClick={() => previewOutfit(sharecloths)}
+                      >
+                        <FaEye /> Preview Outfit
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -885,7 +922,55 @@ const Profile = () => {
                     <FaCalendarWeek /> Plan Your Week
                   </button>
                 </div>
+
               </div>
+
+              {sharecloths ? (
+                <div className="sharedweekly">
+                  {/* <h4 className="sharedweekly-title">Your Sharable Outfit</h4> */}
+                  <div className="share-content" >
+                    <a href={sharecloths} target="_blank" rel="noopener noreferrer" className="share-link-anchor">
+                      <div className="share-link-info">
+                        {/* <span className="share-display-name">{'share/'+sharecloths.split('/').pop()}</span> */}
+                        <span className="share-full-url">
+                          <FiExternalLink className="external-link-icon-inline" /> 
+                          {sharecloths}
+                        </span>
+                      </div>
+                    </a>
+                    <div className="share-actions">
+                      <div className="icons">
+                        <FaWhatsapp 
+                          style={{color: "green"}} 
+                          onClick={() => shareToSocial('whatsapp')}
+                          title="Share on WhatsApp"
+                        />
+                        <FaFacebook 
+                          style={{color: "blue"}} 
+                          onClick={() => shareToSocial('facebook')}
+                          title="Share on Facebook"
+                        />
+                        <FaInstagram 
+                          style={{color: "#E1306C"}} 
+                          onClick={() => shareToSocial('instagram')}
+                          title="Share on Instagram"
+                        />
+                      </div>
+                      <div className="copy-section">
+                        <FaClipboard 
+                          onClick={copyToClipboard}
+                          className={linkCopied ? "copied" : ""}
+                          title="Copy to clipboard"
+                        />
+                        {shareMessage && <span className="copy-message" >{shareMessage}</span>}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )}
+
 
               {isVisible && (
                 <div className="weekly-outfits-container">
@@ -901,14 +986,14 @@ const Profile = () => {
                         const parseWeeklyOutfits = (text) => {
                           const outfits = [];
                           const lines = text.split('\n');
-                          
+
                           lines.forEach(line => {
                             const trimmedLine = line.trim();
                             if (!trimmedLine) return;
-                            
+
                             // Match date patterns like "2025-06-05" or "2025-06-06 - 2025-06-11"
                             const dateMatch = trimmedLine.match(/^(\d{4}-\d{2}-\d{2})(?:\s*-\s*(\d{4}-\d{2}-\d{2}))?:\s*(.+)/);
-                            
+
                             if (dateMatch) {
                               const [_, startDate, endDate, outfitDetails] = dateMatch;
                               outfits.push({
@@ -918,7 +1003,7 @@ const Profile = () => {
                               });
                             }
                           });
-                          
+
                           return outfits;
                         };
 
@@ -939,14 +1024,22 @@ const Profile = () => {
 
                           return (
                             <div className="day-outfit-card" key={index}>
+
                               <div className="day-header">{dateRange}</div>
                               <div className="outfit-details">
                                 <div className="outfit-items">
                                   {outfit.details.split(',').map((item, idx) => (
                                     <p key={idx} className="outfit-item">
                                       {item.trim()}
+                                      {/* {item.trim()} */}
                                     </p>
+
                                   ))}
+                                  {/* {outfit.details} */}
+                                  <div className="weeklybuttons">
+                                    <button onClick={() => previewOutfit(outfit.details)} className="previewbuttonweekly">Preview</button>
+                                    <button onClick={() => SharetoFriends(outfit.details)} className="previewbuttonweekly">Share</button>
+                                  </div>
                                 </div>
                               </div>
                             </div>

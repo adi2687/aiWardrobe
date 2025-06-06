@@ -200,6 +200,228 @@ font-size: 14px;
   transition: all 0.4s ease;
 }
 
+/* Styles for Social Sharing Section - Enhanced */
+.sharedweekly-title {
+  font-size: 1.25em; /* Slightly larger title */
+  font-weight: 600;
+  color: #e8e8e8; /* Brighter title color */
+  margin-bottom: 18px; /* Space below title */
+  padding-bottom: 12px; /* Space for border */
+  border-bottom: 1px solid #4a4a5a; /* Separator line */
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.sharedweekly {
+  background-color: #2c2c3e; /* Dark theme card background */
+  border-radius: 12px; /* Slightly more rounded */
+  padding: 25px 30px; /* Adjust padding */
+  margin-top: 30px; /* More margin */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 10px 30px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.06); /* Softer, layered shadow & subtle border */
+  color: #f0f0f0;
+  transition: all 0.3s ease-in-out;
+}
+
+.share-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap */
+}
+
+.share-link-anchor {
+  text-decoration: none; /* Remove default underline */
+  color: inherit; /* Inherit text color from parent */
+  display: block; /* Make the anchor a block element to contain the div properly */
+  border-radius: 6px; /* Match the share-link-info border-radius for hover effect */
+  transition: background-color 0.2s ease-in-out;
+}
+
+.share-link-anchor:hover .share-link-info {
+  background-color: rgba(255, 255, 255, 0.1); /* Darken background on hover */
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.share-link-info {
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle background for the link area */
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Space between display name and full URL */
+  word-break: break-all; /* Prevent overflow for long unbreakable strings */
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out; /* For hover effect */
+  cursor: pointer; /* Indicate it's clickable */
+  margin-bottom: 20px; /* Space before the separator line */
+}
+
+/* .share-display-name-wrapper and .share-display-name styles removed as element is no longer used or commented out */
+
+.external-link-icon-inline {
+  font-size: 0.95em; /* Adjusted size for inline use */
+  color: #b0b0c0;
+  margin-right: 8px; /* Space between icon and URL text */
+  vertical-align: middle; /* Better alignment with text */
+  transition: color 0.2s ease-in-out;
+}
+
+.share-link-anchor:hover .external-link-icon-inline {
+  color: #d0d0d0; /* Brighter on hover */
+}
+
+.share-full-url {
+  font-size: 0.9em; /* Slightly increased for readability */
+  color: #a0a0b0; /* Muted color for full URL */
+  font-family: 'Courier New', Courier, monospace; /* Monospace for URL-like text */
+  display: flex; /* Align icon and text nicely */
+  align-items: center; /* Vertical alignment */
+  word-break: break-all; /* Ensure long URLs wrap or break */
+}
+
+.share-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0; /* Adjusted margin, spacing now above this element */
+  padding-top: 15px; /* Slightly reduced padding */
+  border-top: 1px solid #4a4a5a; /* Slightly lighter separator */
+}
+
+.share-actions .icons {
+  display: flex;
+  gap: 18px; /* Adjusted gap for icon buttons */
+}
+
+.share-actions .icons svg {
+  font-size: 20px; /* Icon size within button */
+  padding: 10px; /* Space around icon to form button */
+  width: 44px; /* Button width */
+  height: 44px; /* Button height */
+  box-sizing: border-box;
+  border-radius: 50%; /* Circular button */
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              opacity 0.2s ease-in-out, 
+              filter 0.2s ease-in-out, 
+              background-color 0.2s ease-in-out, 
+              border-color 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+}
+
+.share-actions .icons svg:hover {
+  transform: scale(1.1); /* Adjusted scale for button */
+  opacity: 1;
+  filter: drop-shadow(0 0 6px currentColor); /* Enhanced glow */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.share-actions .icons svg:active {
+  transform: scale(1.05); /* Subtle pressed effect */
+  opacity: 0.85;
+  background-color: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.copy-section {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Increased gap */
+}
+
+.copy-section .FaClipboard {
+  font-size: 20px; /* Icon size */
+  padding: 10px; /* Space to form button */
+  width: 44px; /* Button width */
+  height: 44px; /* Button height */
+  box-sizing: border-box;
+  border-radius: 50%; /* Circular button */
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  color: #b0b0c0;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, 
+              transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              filter 0.2s ease-in-out, 
+              background-color 0.2s ease-in-out, 
+              border-color 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out;
+}
+
+.copy-section .FaClipboard:hover {
+  color: #79e0a4;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 6px #79e0a4);
+  background-color: rgba(121, 224, 164, 0.1); /* Subtle background matching hover color */
+  border-color: rgba(121, 224, 164, 0.3);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.copy-section .FaClipboard.copied {
+  color: #48bb78;
+  background-color: rgba(72, 187, 120, 0.15); /* Background for copied state */
+  border-color: rgba(72, 187, 120, 0.4);
+  transform: scale(1.05); /* Slight scale for copied state */
+  animation: pulseCopied 0.5s ease-in-out;
+  box-shadow: 0 2px 5px rgba(72,187,120,0.2);
+}
+
+@keyframes pulseCopied {
+  0% { transform: scale(1.1); }
+  50% { transform: scale(1.2); color: #5cdda0; }
+  100% { transform: scale(1.1); }
+}
+
+.copy-message {
+  font-size: 0.95em; /* Slightly larger */
+  font-weight: 500; /* Medium weight */
+  color: #48bb78;
+  animation: fadeInOut 2.5s ease-in-out forwards; /* Ensure it stays at opacity 0 */
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(5px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 480px) {
+  .sharedweekly {
+    padding: 20px;
+  }
+  .share-actions {
+    flex-direction: column;
+    align-items: center; /* Center items when stacked */
+    gap: 20px; /* Increased gap for stacked layout */
+  }
+
+  .share-actions .icons {
+    gap: 18px; /* Adjusted gap */
+    justify-content: center; /* Center icons */
+    width: 100%; /* Make icon group take full width */
+  }
+
+  .share-actions .icons svg {
+    font-size: 26px; /* Adjusted size */
+  }
+
+  .copy-section .FaClipboard {
+    font-size: 24px; /* Adjusted size */
+  }
+  .copy-section {
+    width: 100%; /* Make copy section take full width */
+    justify-content: center; /* Center copy items */
+  }
+}
+
+
 .profile-update-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 7px 20px rgba(106, 17, 203, 0.5);
@@ -1151,59 +1373,145 @@ height:50px
 }
 
 .profile-container .share-link-container {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background-color: #2a2a2a;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  animation: slideUp 0.3s ease-out;
 }
 
-.profile-container .share-link-container h3 {
-  margin-top: 0;
-  color: #fff;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.profile-container .share-link-box {
+.share-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  border-radius: 8px;
-  padding: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
 }
 
-.profile-container .share-link-input {
-  flex: 1;
+.share-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.close-share-button {
+  background: none;
   border: none;
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  color: #ccc;
-  background: transparent;
-}
-
-.profile-container .share-link-input:focus {
-  outline: none;
-}
-
-.profile-container .copy-link-button,
-.profile-container .reset-link-button {
-  background-color: transparent;
-  border: none;
-  color: #aaa;
+  color: #666;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 0.5rem;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 5px;
+  line-height: 1;
+  transition: color 0.2s;
 }
 
-.profile-container .copy-link-button:hover,
-.profile-container .reset-link-button:hover {
-  color: #6a11cb;
+.close-share-button:hover {
+  color: #333;
+}
+
+.share-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.share-link-box {
+  display: flex;
+  gap: 10px;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.share-link-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #333;
+  background: white;
+}
+
+.share-link-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.copy-link-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.copy-link-button:hover {
+  background: #0056b3;
+}
+
+.share-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.preview-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.preview-button:hover {
+  background: #218838;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .share-link-box {
+    flex-direction: column;
+  }
+  
+  .copy-link-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .share-actions {
+    flex-direction: column;
+  }
+  
+  .preview-button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Weekly Section */
@@ -1764,5 +2072,206 @@ height:50px
     /* border:2px solid red; */
     margin-top:40px;
     height:40px
+  }
+}
+
+.file-names {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-name {
+  font-size: 14px;
+  color: #bbb;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: left;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  word-break: break-all;
+}
+
+.image-previews {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.image-preview-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-preview-item:hover {
+  transform: scale(1.05);
+}
+
+.image-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.upload-button:disabled {
+  background: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.upload-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.previewbuttonweekly{
+  padding:10px;
+  border-radius: 20px;
+  width:80px;
+  cursor: pointer;
+  font-weight: 500;
+  border:2px solid transparent;
+  color:whitesmoke;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+display: inline-block;
+}
+.weeklybuttons{
+  display: flex;
+  gap:20px
+}
+
+.sharedweekly {
+  background-color: #fdfdfd;
+  padding: 20px 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  color: #333;
+  max-width: 600px;
+  margin: 24px auto;
+  white-space: pre-line;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  font-weight: bolder;
+  background-color: transparent;
+  color: white;
+}
+
+.sharedweekly .share-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sharedweekly .share-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.sharedweekly .icons {
+  display: flex;
+  gap: 16px;
+  font-size: 30px;
+  justify-content: flex-start;
+}
+
+.sharedweekly .icons svg {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.sharedweekly .icons svg:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.sharedweekly .copy-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sharedweekly .copy-section svg {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.sharedweekly .copy-section svg:hover {
+  color: #007bff;
+}
+
+.sharedweekly .copy-section svg.copied {
+  color: #28a745;
+}
+
+.sharedweekly .copy-message {
+  font-size: 14px;
+  color: #28a745;
+  animation: fadeInOut 2s ease;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .sharedweekly {
+    margin: 16px;
+    padding: 16px;
+  }
+
+  .sharedweekly .share-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sharedweekly .icons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sharedweekly .copy-section {
+    width: 100%;
+    justify-content: center;
   }
 }

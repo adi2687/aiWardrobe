@@ -31,6 +31,7 @@ import FloatingNavbar from './components/FloatingNavbar/FloatingNavbar'
 import Intro from './components/Intro/Intro'
 import SocialCollections from './components/social_sharing/social_collections'
 import VirtualTryOn from './components/VirtualTryOn/ClothingMapper'
+import Test from './components/test/test'
 // Policy pages
 import PrivacyPolicy from './components/Policies/PrivacyPolicy'
 import TermsOfService from './components/Policies/TermsOfService'
@@ -108,6 +109,7 @@ const App = () => {
         <Route path="/social" element={<SocialCollections />} />
         <Route path="/ar-try" element={<AR />} />
         <Route path="/view-avatar" element={<SavedAvatar />} />
+        <Route path="/test" element={<Test />} />
         {/* <Route path="/intro" element={<Intro />} /> */}
         {/* Policy Routes */}
         <Route path="/policies" element={<PoliciesHub />} />
