@@ -378,7 +378,7 @@ router.post("/copytoprofileweekcloths", authenticate, async (req, res) => {
 
   user.clothessuggestionforweek = req.body.clothesforweek;
   await user.save();
-
+console.log('saved')
   res.status(200).json({ message: "Weekly clothing suggestion saved!" });
 });
 
