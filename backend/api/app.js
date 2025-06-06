@@ -22,7 +22,6 @@ import passport from "passport";
 import path from 'path';
 import cors from 'cors';
 import connectCloudinary from '../db/cloudinary.js'
-
 dotenv.config();
 // console.log("GOOGLE_CLIENT from env:", process.env.GOOGLE_CLIENT);
 const frontendUrl=process.env.FRONTEND_URL
@@ -135,7 +134,6 @@ app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)
 app.use("/facebook",facebookRoutes)
 app.use("/sharetosocial",sharetosocial)
-
 // User avatar route for 3D model storage
 import UserAvatarRoutes from '../routes/user_avatar.js';
 app.use('/ar', UserAvatarRoutes);

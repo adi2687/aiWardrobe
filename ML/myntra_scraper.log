@@ -1666,3 +1666,57 @@
 2025-06-01 19:03:12,541 - myntra - INFO - Product 49: Men Colourblocked PU Sneakers... | Price: Rs. 1019
 2025-06-01 19:03:12,548 - myntra - INFO - Product 50: Men TERRENEX Sneakers... | Price: Rs. 2499
 2025-06-01 19:03:12,555 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-06-06 12:59:38,196 - myntra - INFO - Scraping Myntra for query: Flannel Shirt (plaid, in complementary colors to existing shirts):
+2025-06-06 12:59:39,256 - myntra - INFO - Scraping Myntra for query: White Crew Neck T-shirt:
+2025-06-06 12:59:41,392 - myntra - INFO - Opening URL: https://www.myntra.com/Flannel+Shirt+%28plaid%2C+in+complementary+colors+to+existing+shirts%29%3A?rawQuery=Flannel+Shirt+%28plaid%2C+in+complementary+colors+to+existing+shirts%29%3Aand gender:$Male&sort=popularity
+2025-06-06 12:59:41,795 - myntra - INFO - Opening URL: https://www.myntra.com/White+Crew+Neck+T-shirt%3A?rawQuery=White+Crew+Neck+T-shirt%3Aand gender:$Male&sort=popularity
+2025-06-06 12:59:48,259 - myntra - INFO - Found 50 product items in the page
+2025-06-06 12:59:48,302 - myntra - INFO - Product 1: Regular Fit Oxford Shirt... | Price: Rs. 899
+2025-06-06 12:59:48,347 - myntra - INFO - Product 2: Regular Fit Linen-Blend Shirt... | Price: Rs. 1494
+2025-06-06 12:59:48,395 - myntra - INFO - Product 3: Men Benedict Regular Fit Shirt... | Price: Rs. 1504
+2025-06-06 12:59:48,441 - myntra - INFO - Product 4: Slim Fit Casual Shirt... | Price: Rs. 1122
+2025-06-06 12:59:48,489 - myntra - INFO - Product 5: Men Benedict Regular Fit Shirt... | Price: Rs. 1574
+2025-06-06 12:59:48,566 - myntra - INFO - Product 6: Men Slim Fit Casual Shirt... | Price: Rs. 545
+2025-06-06 12:59:48,686 - myntra - INFO - Found 6 product items in the page
+2025-06-06 12:59:48,697 - myntra - INFO - Product 7: Spread Collar Casual Shirt... | Price: Rs. 759
+2025-06-06 12:59:48,700 - myntra - INFO - Product 1: Men Striped Pockets Slim Fit T... | Price: Rs. 1200
+2025-06-06 12:59:48,701 - myntra - INFO - Product 8: Men Benedict Regular Fit Shirt... | Price: Rs. 1749
+2025-06-06 12:59:48,704 - myntra - INFO - Product 2: Men Slim Fit T-shirt... | Price: Rs. 700
+2025-06-06 12:59:48,705 - myntra - INFO - Product 9: Chambray Casual Shirt... | Price: Rs. 569
+2025-06-06 12:59:48,707 - myntra - INFO - Product 3: Men Slim Fit T-shirt... | Price: Rs. 584
+2025-06-06 12:59:48,708 - myntra - INFO - Product 10: Men Otago Regular Fit Shirt... | Price: Rs. 1879
+2025-06-06 12:59:48,711 - myntra - INFO - Product 4: Men Cotton Slim Fit T-shirt... | Price: Rs. 351
+2025-06-06 12:59:48,712 - myntra - INFO - Product 11: Slim Fit Cotton Casual Shirt... | Price: Rs. 1799
+2025-06-06 12:59:48,713 - myntra - INFO - Product 5: Printed Slim Fit T-shirt... | Price: Rs. 609
+2025-06-06 12:59:48,714 - myntra - INFO - Product 12: Regular Fit Textured Shirt... | Price: Rs. 999
+2025-06-06 12:59:48,717 - myntra - INFO - Product 6: Dyed Raw Edge Slim Fit T-shirt... | Price: Rs. 849
+2025-06-06 12:59:48,718 - myntra - INFO - Product 13: Regular Fit Oxford Shirt... | Price: Rs. 1499
+2025-06-06 12:59:48,720 - myntra - INFO - Successfully scraped 6 products from Myntra
+2025-06-06 12:59:48,721 - myntra - INFO - Product 14: Pure Cotton Casual Shirt... | Price: Rs. 944
+2025-06-06 12:59:48,724 - myntra - INFO - Product 15: Pure Cotton Solid Casual Shirt... | Price: Rs. 1379
+2025-06-06 12:59:48,729 - myntra - INFO - Product 16: Men Printed Casual Shirt... | Price: Rs. 1799
+2025-06-06 12:59:48,732 - myntra - INFO - Product 17: Men Painter Abstract Shirt... | Price: Rs. 1471
+2025-06-06 12:59:48,735 - myntra - INFO - Product 18: Slim Fit Flannel Shirt... | Price: Rs. 723
+2025-06-06 12:59:48,737 - myntra - INFO - Product 19: Opaque Cotton Casual Shirt... | Price: Rs. 743
+2025-06-06 12:59:48,741 - myntra - INFO - Product 20: Men Pure Cotton Casual Shirt... | Price: Rs. 723
+2025-06-06 12:59:48,746 - myntra - INFO - Product 21: Slim Fit Casual Shirt... | Price: Rs. 1343
+2025-06-06 12:59:48,748 - myntra - INFO - Product 22: Pure Cotton Slim Formal Shirt... | Price: Rs. 1249
+2025-06-06 12:59:48,753 - myntra - INFO - Product 23: Regular Fit Oxford Shirt... | Price: Rs. 1499
+2025-06-06 12:59:48,756 - myntra - INFO - Product 24: Comfort Cotton Casual Shirt... | Price: Rs. 2089
+2025-06-06 12:59:48,759 - myntra - INFO - Product 25: Striped Typography Print Shirt... | Price: Rs. 1399
+2025-06-06 12:59:48,767 - myntra - INFO - Product 36: Slim Fit Opaque Formal Shirt... | Price: Rs. 1229
+2025-06-06 12:59:48,774 - myntra - INFO - Product 37: Men Casual Shirt... | Price: Rs. 531
+2025-06-06 12:59:48,779 - myntra - INFO - Product 38: Men Slim Fit Casual Shirt... | Price: Rs. 499
+2025-06-06 12:59:48,781 - myntra - INFO - Product 39: Spread Collar Formal Shirt... | Price: Rs. 779
+2025-06-06 12:59:48,784 - myntra - INFO - Product 40: Regular Fit Casual  Linen Cott... | Price: Rs. 839
+2025-06-06 12:59:48,788 - myntra - INFO - Product 41: Men Regular Check Casual Shirt... | Price: Rs. 543
+2025-06-06 12:59:48,790 - myntra - INFO - Product 42: Casual Linen Shirt... | Price: Rs. 1299
+2025-06-06 12:59:48,792 - myntra - INFO - Product 43: Slim Fit Checked Flannel Shirt... | Price: Rs. 723
+2025-06-06 12:59:48,795 - myntra - INFO - Product 44: Slim Fit Cotton Linen Shirt... | Price: Rs. 874
+2025-06-06 12:59:48,799 - myntra - INFO - Product 45: Short-Sleeved Shirt... | Price: Rs. 1399
+2025-06-06 12:59:48,803 - myntra - INFO - Product 46: Men Santhe Checked Shirt... | Price: Rs. 1759
+2025-06-06 12:59:48,806 - myntra - INFO - Product 47: Slim Fit Opaque Casual Shirt... | Price: Rs. 485
+2025-06-06 12:59:48,811 - myntra - INFO - Product 48: Regular Fit Cotton Twill Shirt... | Price: Rs. 1264
+2025-06-06 12:59:48,814 - myntra - INFO - Product 49: Pure Cotton Formal Shirt... | Price: Rs. 1274
+2025-06-06 12:59:48,818 - myntra - INFO - Product 50: Men Casual Cotton Shirt... | Price: Rs. 2089
+2025-06-06 12:59:48,819 - myntra - INFO - Successfully scraped 40 products from Myntra
