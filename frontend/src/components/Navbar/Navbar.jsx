@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
   const location = useLocation();
   const apiUrl = import.meta.env.VITE_BACKEND_URL
-  console.log(apiUrl)
+  // console.log(apiUrl)
   useEffect(() => {
     fetch(`${apiUrl}/user/profile`, {
       method: "GET",
