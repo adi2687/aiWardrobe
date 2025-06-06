@@ -896,28 +896,62 @@ const Profile = () => {
                     </div>
                   ) : clothsForWeek ? (
                     <div className="weekly-outfit-grid">
-                      {/* Parse the clothsForWeek string and display it in a structured way */}
                       {(() => {
-                        // This is a placeholder - in reality, you would parse the clothsForWeek string
-                        // into a structured format based on how your data is formatted
-                        const days = [
-                          "Monday", "Tuesday", "Wednesday", "Thursday",
-                          "Friday", "Saturday", "Sunday"
-                        ];
+                        // Parse the clothsForWeek string into a structured format
+                        const parseWeeklyOutfits = (text) => {
+                          const outfits = [];
+                          const lines = text.split('\n');
+                          
+                          lines.forEach(line => {
+                            const trimmedLine = line.trim();
+                            if (!trimmedLine) return;
+                            
+                            // Match date patterns like "2025-06-05" or "2025-06-06 - 2025-06-11"
+                            const dateMatch = trimmedLine.match(/^(\d{4}-\d{2}-\d{2})(?:\s*-\s*(\d{4}-\d{2}-\d{2}))?:\s*(.+)/);
+                            
+                            if (dateMatch) {
+                              const [_, startDate, endDate, outfitDetails] = dateMatch;
+                              outfits.push({
+                                startDate: new Date(startDate),
+                                endDate: endDate ? new Date(endDate) : new Date(startDate),
+                                details: outfitDetails.trim()
+                              });
+                            }
+                          });
+                          
+                          return outfits;
+                        };
 
-                        return days.map((day, index) => (
-                          <div className="day-outfit-card" key={day}>
-                            <div className="day-header">{day}</div>
-                            <div className="outfit-details">
-                              {/* This would be replaced with actual outfit data */}
-                              <p className="outfit-item">
-                                {clothsForWeek.includes(day) ?
-                                  clothsForWeek.split(day)[1]?.split(days[index + 1] || ".")[0] || "No outfit planned" :
-                                  "No outfit planned"}
-                              </p>
+                        const weeklyOutfits = parseWeeklyOutfits(clothsForWeek);
+
+                        return weeklyOutfits.map((outfit, index) => {
+                          const formatDate = (date) => {
+                            return date.toLocaleDateString('en-US', {
+                              weekday: 'long',
+                              month: 'short',
+                              day: 'numeric'
+                            });
+                          };
+
+                          const dateRange = outfit.startDate.getTime() === outfit.endDate.getTime()
+                            ? formatDate(outfit.startDate)
+                            : `${formatDate(outfit.startDate)} - ${formatDate(outfit.endDate)}`;
+
+                          return (
+                            <div className="day-outfit-card" key={index}>
+                              <div className="day-header">{dateRange}</div>
+                              <div className="outfit-details">
+                                <div className="outfit-items">
+                                  {outfit.details.split(',').map((item, idx) => (
+                                    <p key={idx} className="outfit-item">
+                                      {item.trim()}
+                                    </p>
+                                  ))}
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        ));
+                          );
+                        });
                       })()}
                     </div>
                   ) : (
