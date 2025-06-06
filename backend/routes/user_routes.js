@@ -6,6 +6,8 @@ import User from "../model/user.js";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from 'dotenv'
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 dotenv.config()
 const authenticate = (req, res, next) => {
   const token = req.cookies.tokenlogin;
@@ -155,39 +157,49 @@ router.get("/getwishlist", authenticate, async (req, res) => {
   res.json(wishlist);
 });
 
-// import { fileURLToPath } from "url";
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     const uploadPath = path.join(__dirname, "../uploads");
-//     console.log("Saving file to:", uploadPath);
-//     cb(null, uploadPath);
-//   },
-//   filename: (req, file, cb) => {
-//     const filename = `${Date.now()}-${file.originalname}`;
-//     console.log("Generated filename:", filename);
-//     cb(null, filename);
-//   },
-// });
-
-// const upload = multer({ storage });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const storage = multer.diskStorage({
-  filename: function (req, file, callback) {
-    callback(null, file.originalname);
+  destination: function (req, file, cb) {
+    const uploadPath = path.join(__dirname, "../uploads");
+    // Create directory if it doesn't exist
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
+    }
+    cb(null, uploadPath);
   },
+  filename: function (req, file, cb) {
+    // Create unique filename with timestamp
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + '-' + file.originalname);
+  }
 });
 
-const upload = multer({ storage });
+const upload = multer({ 
+  storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB limit
+    files: 10 // Maximum 10 files
+  },
+  fileFilter: (req, file, cb) => {
+    // Accept only image files
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only image files are allowed!'), false);
+    }
+  }
+});
 
 router.post(
   "/upload-image",
-  upload.single("wardrobeImage"),
+  upload.array("wardrobeImage", 10),
   async (req, res) => {
     try {
-      if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+      if (!req.files || req.files.length === 0) {
+        return res.status(400).json({ error: "No files uploaded" });
+      }
 
       const token = req.cookies.tokenlogin;
       if (!token) return res.status(401).json({ error: "No token provided" });
@@ -200,23 +212,61 @@ router.post(
 
       if (!user.wardrobe) user.wardrobe = [];
 
-      let imageUrl;
-      try {
-        const result = await cloudinary.uploader.upload(req.file.path, {
-          resource_type: "image",
-          folder: "uploads",
-        });
-        imageUrl = result.secure_url;
-        console.log(imageUrl);
-      } catch (error) {
-        console.log("Image upload failed", error);
+      const uploadedUrls = [];
+      const errors = [];
+
+      // Process each file
+      for (const file of req.files) {
+        try {
+          const result = await cloudinary.uploader.upload(file.path, {
+            resource_type: "image",
+            folder: "uploads",
+          });
+          
+          const imageUrl = result.secure_url;
+          user.wardrobe.push(imageUrl);
+          uploadedUrls.push(imageUrl);
+          console.log("Uploaded:", imageUrl);
+
+          // Clean up the temporary file after successful upload
+          fs.unlink(file.path, (err) => {
+            if (err) console.error("Error deleting temporary file:", err);
+          });
+        } catch (error) {
+          console.error("Image upload failed for file:", file.originalname, error);
+          errors.push({
+            filename: file.originalname,
+            error: error.message
+          });
+
+          // Clean up the temporary file after failed upload
+          fs.unlink(file.path, (err) => {
+            if (err) console.error("Error deleting temporary file:", err);
+          });
+        }
       }
-      user.wardrobe.push(imageUrl);
+
       await user.save();
 
-      res.json({ message: "Upload successful", imageUrl });
+      res.json({ 
+        message: "Upload process completed", 
+        uploadedUrls,
+        errors: errors.length > 0 ? errors : undefined,
+        totalUploaded: uploadedUrls.length,
+        totalFailed: errors.length
+      });
     } catch (error) {
       console.error("Upload error:", error);
+      // Handle multer errors specifically
+      if (error.name === 'MulterError') {
+        if (error.code === 'LIMIT_FILE_SIZE') {
+          return res.status(400).json({ error: "File size too large. Maximum size is 5MB." });
+        }
+        if (error.code === 'LIMIT_FILE_COUNT') {
+          return res.status(400).json({ error: "Too many files. Maximum is 10 files." });
+        }
+        return res.status(400).json({ error: "File upload error", details: error.message });
+      }
       res.status(500).json({ error: "Upload failed", details: error.message });
     }
   }
@@ -231,6 +281,7 @@ router.post("/clothesUpload", async (req, res) => {
   }
 
   const uploadclothes = req.body.clothes;
+  console.log('uploading is ',uploadclothes)
   const token = req.cookies.tokenlogin;
 
   // If token is missing, return an error
@@ -253,7 +304,10 @@ router.post("/clothesUpload", async (req, res) => {
     let finalclothestoupload = "";
 
     uploadclothes.map((cloth) => {
-      finalclothestoupload += `${cloth.item} (${cloth.color}), `;
+      // console.log('cloth : ', cloth);
+      const material = cloth.material !== "Unknown" ? `, ${cloth.material}` : "";
+      const shade = cloth.shade !== "Unknown" ? `, ${cloth.shade}` : "";
+      finalclothestoupload += `${cloth.type} (${cloth.color}${material}${shade}), `;
     });
     console.log('final is ', finalclothestoupload)
     user.clothes.push(finalclothestoupload);
