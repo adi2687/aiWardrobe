@@ -7,6 +7,7 @@ import path from "path";
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from 'dotenv'
 import fs from 'fs';
+import os from 'os';
 import { fileURLToPath } from 'url';
 dotenv.config()
 const authenticate = (req, res, next) => {
@@ -162,7 +163,7 @@ const __dirname = path.dirname(__filename);
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadPath = path.join(__dirname, "../uploads");
+    const uploadPath = path.join(os.tmpdir(), "uploads_aiwardrobe");
     // Create directory if it doesn't exist
     if (!fs.existsSync(uploadPath)) {
       fs.mkdirSync(uploadPath, { recursive: true });
