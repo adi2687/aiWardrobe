@@ -572,7 +572,7 @@ const Profile = () => {
                 <div className="profile-avatar">
                   <img
                     src={
-                      user.profilePicture ||
+                      user.profileImageURL ||
                       `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(
                         user.username
                       )}`
