@@ -1,38 +1,29 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import e from "express";
+import { GoogleGenAI } from "@google/genai";
 import ChatMessage from "../model/chatmessage.js";
-// import { authenticate } from "passport";
+import jwt from "jsonwebtoken";
+import User from "../model/user.js";
 
 dotenv.config();
 
-import jwt from "jsonwebtoken";
-// import { authenticate } from "passport";
+const router = express.Router();
+
+// Auth middleware
 const authenticatemain = (req, res, next) => {
   const token = req.cookies.tokenlogin;
-  // console.log("toke is ", token)
-  if (!token) {
-    return res.status(401).json({ msg: "No token, authorization denied" });
-  }
-
+  if (!token) return res.status(401).json({ msg: "No token, authorization denied" });
   try {
-    // console.log(process.en.SECRET_KEY)
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    console.log("suser detail", decoded);
     req.user = decoded;
-    console.log("user is ", req.user); // Attach the user object to the request
     next();
   } catch (error) {
-    console.log("error");
     res.status(401).json({ msg: "Token is not valid" });
   }
 };
 
-const genAI = new GoogleGenerativeAI("AIzaSyB0aSbmzg8eDP9ZCRpzaJQIDlGk_ewBgnU");
-const router = express.Router();
-
+// Get user ID from token
 const getUserId = (req) => {
   try {
     const token = req.cookies.tokenlogin;
@@ -45,95 +36,70 @@ const getUserId = (req) => {
   }
 };
 
-router.post("/suggestion", async (req, res) => {
+// Initialize Gemini client
+const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
+
+// Helper function to generate AI response
+async function generateAIResponse(prompt, model = "gemini-2.5-flash") {
+  if (!prompt) {
+    console.log("No prompt provided");
+    return "";
+  }
   try {
-    const userid=getUserId(req)
-    console.log(userid)
-    const title = "clothes";
-    const prompt = req.body.input;
-
-    const clothes = req.body.clothes || "";
-    const skinColor=req.body.skinColor
-    const age=req.body.age
-    const gender=req.body.gender
-
-    let userdetails=''
-    if(skinColor){
-      userdetails+=`skin color is ${skinColor}`
-    }
-    if(age){
-      userdetails+=`age is ${age}`
-    }
-    if(gender){
-      userdetails+=`gender is ${gender}`
-    }
-    let clothesfinal = clothes
-      ? `I have the following clothes with me: ${clothes}. Suggest me an outfit based on this.`
-      : "";
-// console.log('clotheslist',clothesfinal)
-    let weather = req.body.weather;
-    let weatherinprompt = "";
-    if (weather) {
-      weatherinprompt = `Weather details:
-                - Date: ${weather.date}
-                - Temperature: ${weather.temp}°C (Min: ${weather.temp_min}°C, Max: ${weather.temp_max}°C)
-                - Feels Like: ${weather.feels_like}°C
-                - Condition: ${weather.weather}
-                - Wind Speed: ${weather.wind} m/s
-                - Humidity: ${weather.humidity}%
-                - Rain Probability: ${weather.rain_probability}%
-                - Cloud Cover: ${weather.cloud_cover}%
-                
-                Suggest clothing suitable for these conditions.`;
-    }
-
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-    const generationConfig = {
-      temperature: 0.9,
-      topK: 1,
-      topP: 1,
-      maxOutputTokens: 2048,
-    };
-
-    const promptContent = `
-            You are now operating as the world's foremost expert on ${title}. You possess comprehensive knowledge equivalent to decades of specialized study and practical experience in this field.
-    
-            Drawing on this exceptional expertise, please provide me with:
-            ${prompt}
-            Specifically, I want to understand: ${prompt}.
-            ${clothesfinal}
-            ${weatherinprompt}
-            ${userdetails}
-    
-            Please be thorough, precise, and explain in clear terms. 
-            Keep responses short, direct, and without unnecessary explanations. Provide only the necessary recommendations.
-            `;
-
-    console.log("Final Prompt:", promptContent);
-
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: promptContent }] }],
-      generationConfig,
+    console.log('in the respsone ')
+    const response = await ai.models.generateContent({
+      model,
+      contents: [{ type: "text", text: prompt }],
     });
+    
+    // Correct extraction
+    const output = response?.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
+
+    console.log('AI output:', output);
+    return output;
+  } catch (err) {
+    console.error("Error calling Gemini API:", err);
+    return "";
+  }
+}
 
 
-    const response = result.response;
-    const text = response.text();
-    const cleanedText = text
-      .replace(/\*/g, "")
-      .replace(/<.*?>/g, "")
-      .trim();
-    const chatmessage=await ChatMessage.create({message:prompt,response:cleanedText,userId:userid})
-    await chatmessage.save()
+// Suggestion route
+router.post("/suggestion", async (req, res) => {
+  // console.log('in the suggestion')
+  try {
+    const userid = getUserId(req);
+    if (!userid) return res.status(401).json({ msg: "Unauthorized" });
+
+    const { input: prompt, clothes, skinColor, age, gender, weather } = req.body;
+
+    let userdetails = "";
+    if (skinColor) userdetails += `Skin color: ${skinColor}. `;
+    if (age) userdetails += `Age: ${age}. `;
+    if (gender) userdetails += `Gender: ${gender}. `;
+    let clothesInfo = clothes ? `I have the following clothes: ${clothes}. ` : "";
+
+    let weatherInfo = "";
     if (weather) {
-      res.json({
-        response: `According to weather my recommendation is ${text}`,
-      });
-      weather = "";
-      return;
+      weatherInfo = `Weather details: Date: ${weather.date}, Temp: ${weather.temp}°C, Feels like: ${weather.feels_like}°C, Condition: ${weather.weather}.`;
     }
-    weather = "";
+
+    const finalPrompt = `
+You are the world's foremost expert on clothes.
+the user task is to
+${prompt}
+${clothesInfo}
+${userdetails}
+${weatherInfo}
+Keep the response short, direct, and only include necessary recommendations.
+    `;
+    console.log(finalPrompt)
+    const text = await generateAIResponse(finalPrompt, "gemini-2.5-flash");
+
+    // Save chat
+    const chatmessage = await ChatMessage.create({ message: prompt, response: text, userId: userid });
+    await chatmessage.save();
+
     res.json({ response: text });
   } catch (err) {
     console.error("Server Error:", err);
@@ -141,124 +107,76 @@ router.post("/suggestion", async (req, res) => {
   }
 });
 
+// Weekly suggestion route
 router.post("/suggestionforweek", async (req, res) => {
-  console.log("for week", req.body);
+  try {
+    const { input, clothes, weather } = req.body;
 
-  const weather = req.body.weather;
-  const input = req.body.input;
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-  const clothes = req.body.clothes || "";
-  const generationConfig = {
-    temperature: 0.9,
-    topK: 1,
-    topP: 1,
-    maxOutputTokens: 2048,
-  };
-  const title = "clothes";
-  let weatherinprompt = "";
-  if (Array.isArray(weather)) {
-    weatherinprompt =
-      `The weather conditions for the next seven days are as follows:\n\n` +
-      weather
-        .map((day) => {
-          return `📅 ${day.date}
-    - Weather: ${day.weather}
-    - Temp: ${day.temp}°C (Min: ${day.temp_min}°C, Max: ${day.temp_max}°C)
-    - Feels Like: ${day.feels_like}°C
-    - Humidity: ${day.humidity}%
-    - Rain Probability: ${day.rain_probability}%
-    - Wind Speed: ${day.wind} km/h
-    - Cloud Cover: ${day.cloud_cover}%
-    `;
-        })
+    let weatherInfo = "";
+    if (Array.isArray(weather)) {
+      weatherInfo = weather
+        .map((day) => `Date: ${day.date}, Weather: ${day.weather}, Temp: ${day.temp}°C, Feels like: ${day.feels_like}°C`)
         .join("\n");
+    }
+
+    const clothesInfo = clothes ? `Your wardrobe: ${clothes}` : "";
+
+    const finalPrompt = `
+You are an expert on clothes.
+Suggest outfits for the next week based on:
+${input}
+${weatherInfo}
+${clothesInfo}
+Keep responses short and only necessary recommendations.
+    `;
+
+    const text = await generateAIResponse(finalPrompt, "gemini-2.5-flash");
+
+    res.json({ response: text });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
   }
-
-  let clothesinprompt = ``;
-  if (clothes) {
-    clothesinprompt =
-      `You have the following clothes in your wardrobe:\n\n` + clothes;
-  }
-  const promptContent = `            You are now operating as the world's foremost expert on ${title}. You possess comprehensive knowledge equivalent to decades of specialized study and practical experience in this field.
-      You are to suggest the clothes for the week for the user .
-              Drawing on this exceptional expertise, please provide me with:
-              ${input}
-              ${weatherinprompt}
-              ${clothesinprompt}
-              Please be thorough, precise, and explain in clear terms. 
-              Keep responses short, direct, and without unnecessary explanations. Provide only the necessary recommendations.`;
-  console.log("final prompt", promptContent);
-
-  const result = await model.generateContent({
-    contents: [{ role: "user", parts: [{ text: promptContent }] }],
-    generationConfig,
-  });
-
-  const response = result.response;
-  const text = response.text();
-  //   console.log('result is ', text)
-
-  return res.json({ response: text });
 });
 
+// Chat history
 router.get("/chathistory", authenticatemain, async (req, res) => {
-  const userid = req.user.id;
-  console.log("userid", userid);
-  const chatHistory = await ChatMessage.find({ userId: userid }).sort({
-    createdAt: -1,
-  });
-  res.json({ chatHistory: chatHistory });
+  try {
+    const userid = req.user.id;
+    const chatHistory = await ChatMessage.find({ userId: userid }).sort({ createdAt: -1 });
+    res.json({ chatHistory });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
 });
-import User from "../model/user.js";
+
+// Shopping suggestions
 router.post("/getshoppingsuggestions", authenticatemain, async (req, res) => {
-  const userid = req.user.id;
-  const user = await User.findById(userid);
-  const preferrence = user.preferences;
-  let gender=""
-  if (user.gender){
-    gender=`gender is ${user.gender}`
-  }
-  if (!user) {
-    return res.json({ status: false, msg: "user not found" });
-  }
+  try {
+    const userid = req.user.id;
+    const user = await User.findById(userid);
+    if (!user) return res.json({ status: false, msg: "User not found" });
 
-  console.log("user:", user.preferences);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const { preferences, clothes: userClothes, gender } = user;
+    let genderInfo = gender ? `Gender: ${gender}` : "";
+    let prefInfo = preferences ? `Preferences: ${preferences}` : "";
+    let clothesInfo = userClothes.length ? `User wardrobe: ${userClothes.join(", ")}` : "";
 
-  const generationConfig = {
-    temperature: 0.9,
-    topK: 1,
-    topP: 1,
-    maxOutputTokens: 2048,
-  };
-  const clothes = user.clothes;
-  // console.log(clothes)
-  let cloths = "";
-  for (let i = 0; i < clothes.length; i++) {
-    cloths += clothes[i];
-  }
-  let preferencebyuser = "";
-  if (preferrence) {
-    preferencebyuser = `The preferrnece for the user is ${preferrence}`;
-  }
-  let userclothes = "";
-  if (cloths) {
-    userclothes = `The clothes that user have are ${cloths}`;
-  }
-  const promptContent = `You are an expert on the clothes and the clothes are given to you and suggest some clothes that can be searched on 
-  
-  ecommerce websites and give the response in a list format 
-  ${preferencebyuser} and ${userclothes} and ${gender} give me a list of the clothes you think will be a great additon and gie it like a alist in a dot formatted list and i dont need an explanation just the cloths.`;
-  const result = await model.generateContent({
-    contents: [{ role: "user", parts: [{ text: promptContent }] }],
-    generationConfig,
-  });
+    const finalPrompt = `
+You are an expert on clothes.
+Suggest items the user could buy online based on:
+${prefInfo}, ${clothesInfo}, ${genderInfo}
+Give the response in a simple dot list format without explanations.
+    `;
 
-  console.log(promptContent);
-  const response = result.response;
-  const text = response.text();
-  // console.log(cloths)
-  res.json({ suggestion: text }); // correct JSON
+    const text = await generateAIResponse(finalPrompt, "gemini-2.5-flash");
+
+    res.json({ suggestion: text });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
 });
 
 export default router;

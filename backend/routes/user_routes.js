@@ -282,6 +282,9 @@ router.post("/clothesUpload", async (req, res) => {
   }
 
   const uploadclothes = req.body.clothes;
+  if (uploadclothes.length === 0) {
+    return res.status(400).json({ error: "No clothes data received" });
+  }
   console.log('uploading is ',uploadclothes)
   const token = req.cookies.tokenlogin;
 
@@ -300,7 +303,7 @@ router.post("/clothesUpload", async (req, res) => {
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
-
+    
     console.log("upload clothes:", uploadclothes);
     let finalclothestoupload = "";
 

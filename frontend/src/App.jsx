@@ -30,7 +30,7 @@ import Download from './components/Download/Download'
 import FloatingNavbar from './components/FloatingNavbar/FloatingNavbar'
 import Intro from './components/Intro/Intro'
 import SocialCollections from './components/social_sharing/social_collections'
-import VirtualTryOn from './components/VirtualTryOn/ClothingMapper'
+import VirtualTryOn from './components/VirtualTryOn/VirtualTryOnEnhanced'
 import Test from './components/test/test'
 // Policy pages
 import PrivacyPolicy from './components/Policies/PrivacyPolicy'
