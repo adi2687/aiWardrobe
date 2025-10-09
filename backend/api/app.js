@@ -141,6 +141,8 @@ app.get("/", (req, res) => {
   res.send("This is the main page");
 });
 
+import vision from '../genAi.js'
+app.use('/vision', vision)
 
 
 import clothidentification from '../routes/clothid.js'
