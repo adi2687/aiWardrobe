@@ -30,8 +30,8 @@ const authenticate = (req, res, next) => {
   }
 };
 router.get("/profile", (req, res) => {
-  console.log("Cookies received:", req.cookies);
-  const tokenlogin = req.cookies.tokenlogin;
+  console.log("Cookies received:", req.cookies || req.cookies.connect_sid);
+  const tokenlogin = req.cookies.tokenlogin || req.cookies.connect_sid;
 
   if (!tokenlogin) {
     return res.status(401).json({ error: "No token provided" });
