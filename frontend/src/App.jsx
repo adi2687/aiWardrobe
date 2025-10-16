@@ -42,22 +42,26 @@ const App = () => {
   const [showIntro, setShowIntro] = useState(false);
 
   useEffect(() => {
-    // Check if the user is logged in and should see the intro
-    const token = localStorage.getItem('tokenlogin') || document.cookie.includes('tokenlogin');
-    const introComplete = localStorage.getItem('introComplete');
-    
     // Check URL parameters for Google/Facebook login redirect
     const urlParams = new URLSearchParams(window.location.search);
     const showIntroParam = urlParams.get('showIntro');
     const isNewUser = urlParams.get('isNewUser');
+    const tokenlogin = urlParams.get('tokenlogin'); 
     
-    // Check for OAuth login flag
+    // Only store token if it exists (not null)
+    if (tokenlogin && tokenlogin !== 'null') {
+      localStorage.setItem('tokenlogin', tokenlogin);
+    }
+    
+    // Check if the user is logged in and should see the intro
+    const token = localStorage.getItem('tokenlogin') || document.cookie.includes('tokenlogin');
+    const introComplete = localStorage.getItem('introComplete');
     const checkForNewUser = localStorage.getItem('checkForNewUser');
     
     // Show intro if:
-    // 1. User is logged in AND hasn't completed intro yet, OR
-    // 2. URL has showIntro=true parameter (from Google/Facebook redirect)
-    if ((token && introComplete !== 'true') || showIntroParam === 'true') {
+    // 1. URL has showIntro=true parameter (from OAuth redirect), OR
+    // 2. User is logged in AND hasn't completed intro yet
+    if (showIntroParam === 'true' || (token && introComplete !== 'true')) {
       console.log('Showing intro animation');
       setShowIntro(true);
       

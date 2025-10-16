@@ -136,7 +136,7 @@ router.get(
     const isNewUser = req.user.createdAt && (new Date() - new Date(req.user.createdAt) < 60000);
     
     // Redirect to home page to trigger the intro animation
-    res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}`);
+    res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}&tokenlogin=${token}`);
     // This will be caught by the App.jsx useEffect that checks for intro completion
   }
 );

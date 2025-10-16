@@ -49,12 +49,11 @@ const Intro = ({ onComplete }) => {
 
         if (next === 0 && currentMessage === floatingMessages.length - 1) {
           console.log("Intro sequence completed - navigating to profile")
-          // Use window.location.href instead of navigate to ensure a full page reload
-          window.location.href = "/profile";
-          // No need to call navigate as well, as it will cause conflicts
-          setFadeState('between');
-          completeTimer = setTimeout(() => {
-            handleComplete();
+          // Call handleComplete first to set localStorage before navigation
+          handleComplete();
+          // Use navigate for client-side routing (no page reload)
+          setTimeout(() => {
+            navigate('/profile');
           }, 400);
         } else {
           setNextMessage(next);
