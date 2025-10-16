@@ -118,7 +118,7 @@ router.get(
     res.cookie("tokenlogin", token, { 
       httpOnly: true, 
       secure: true, 
-      sameSite: "lax",
+      sameSite: "none",
       // domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
       path: "/"
     });
