@@ -1,12 +1,11 @@
 import express from "express";
 import axios from "axios";
-
-const router = express.Router();
 import jwt from "jsonwebtoken";
 import dotenv from 'dotenv'
-import process from 'process'
+import Wishlist from '../model/addtowishlist.js'
+import { getTokenFromRequest } from '../utils/tokenHelper.js';
 dotenv.config()
-
+const router = express.Router();
 // ML service URL from environment variables
 const ML_SERVICE_URL = process.env.ML_SERVICE_URL;
 
@@ -36,7 +35,7 @@ const setCorsHeaders = (req, res) => {
   res.header('Access-Control-Allow-Credentials', 'true');
 };
 const authenticate = (req, res, next) => {
-  const token = req.cookies.tokenlogin;
+  const token = getTokenFromRequest(req);
 
   if (!token) {
     return res.status(401).json({ msg: "No token, authorization denied" });
@@ -47,8 +46,7 @@ const authenticate = (req, res, next) => {
     req.user = decoded;
 console.log(req.user)
     next();
-  } catch (error) {
-    console.log("error");
+  } catch (err) {
     res.status(401).json({ msg: "Token is not valid" });
   }
 };

@@ -1,9 +1,10 @@
 import express from 'express';
 import multer from 'multer';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import user from '../model/user.js';
-import jwt from 'jsonwebtoken';
 import vision from '@google-cloud/vision';
+import { getTokenFromRequest } from '../utils/tokenHelper.js';
 
 dotenv.config();
 const router = express.Router();
@@ -14,14 +15,14 @@ const client = new vision.ImageAnnotatorClient();
 
 // Authentication middleware
 const authenticate = (req, res, next) => {
-  const token = req.cookies.tokenlogin;
+  const token = getTokenFromRequest(req);
   if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
 
   try {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.user = decoded;
     next();
-  } catch (error) {
+  } catch (err) {
     res.status(401).json({ msg: 'Token is not valid' });
   }
 };
@@ -32,7 +33,7 @@ router.post('/classify', authenticate,upload.single('images'), async (req, res) 
   if (!file) return res.status(400).json({ error: 'No image uploaded' });
 
   let userId = null;
-  const token = req.cookies.tokenlogin;
+  const token = getTokenFromRequest(req);
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.SECRET_KEY);

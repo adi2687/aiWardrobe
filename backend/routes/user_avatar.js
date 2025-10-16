@@ -1,7 +1,9 @@
 import express from 'express';
-import User from '../model/user.js';
-import message from '../model/message.js';
 import jwt from 'jsonwebtoken';
+import Avatar from '../model/avatar.js';
+import User from '../model/user.js';
+import dotenv from 'dotenv';
+import { getTokenFromRequest } from '../utils/tokenHelper.js';
 import process from 'process';
 import path from 'path';
 import fs from 'fs';
@@ -9,7 +11,6 @@ import axios from 'axios';
 import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import streamifier from 'streamifier';
-import Avatar from '../model/avatar.js';
 import { Buffer } from 'buffer';
 
 // Configure Cloudinary
@@ -51,7 +52,7 @@ router.use((req, res, next) => {
 });
 
 const authenticate = (req, res, next) => {
-  const token = req.cookies.tokenlogin 
+  const token = getTokenFromRequest(req);
   if(!token){
     console.log("no token in ar path")
     return res.status(401).json({ message: 'Authentication required' })

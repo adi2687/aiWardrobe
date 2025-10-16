@@ -2,12 +2,13 @@ import express from "express";
 import { v4 as uuidv4 } from "uuid";
 import Share from "../model/Sharecloths.js";
 import User from '../model/user.js'
-const router = express.Router();
+import { getTokenFromRequest } from '../utils/tokenHelper.js';
 import jwt from "jsonwebtoken"
 import dotenv from 'dotenv'
 dotenv.config()  
+const router = express.Router();
 const authenticate = (req, res, next) => {
-  const token = req.cookies.tokenlogin;
+  const token = getTokenFromRequest(req);
   
   if (!token) {
     return res.status(401).json({ msg: "No token, authorization denied" });

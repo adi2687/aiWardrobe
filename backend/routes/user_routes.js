@@ -1,5 +1,5 @@
 import express from "express";
-import jwt from "jsonwebtoken"; // No need to import SECRET_KEY, as it's already in `server.js` and passed as env
+import jwt from "jsonwebtoken"; 
 import multer from "multer";
 const router = express.Router();
 import User from "../model/user.js";
@@ -9,21 +9,10 @@ import dotenv from 'dotenv'
 import fs from 'fs';
 import os from 'os';
 import { fileURLToPath } from 'url';
+import { getTokenFromRequest } from '../utils/tokenHelper.js';
 dotenv.config()
 const authenticate = (req, res, next) => {
-  // Check for token in cookies first, then Authorization header
-  let token = req.cookies.tokenlogin;
-  
-  // If no cookie, check Authorization header
-  if (!token && req.headers.authorization) {
-    const authHeader = req.headers.authorization;
-    if (authHeader.startsWith('Bearer ')) {
-      token = authHeader.substring(7);
-    }
-  }
-  
-  console.log("Token found:", token ? "Yes" : "No");
-  console.log("Cookies:", req.cookies);
+  const token = getTokenFromRequest(req);
   
   if (!token) {
     return res.status(401).json({ msg: "No token, authorization denied" });
@@ -31,7 +20,6 @@ const authenticate = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    console.log("User authenticated:", decoded.username);
     req.user = decoded;
     next();
   } catch (error) {
@@ -40,17 +28,7 @@ const authenticate = (req, res, next) => {
   }
 };
 router.get("/profile", (req, res) => {
-  console.log("Cookies received:", req.cookies);
-  
-  // Check for token in cookies first, then Authorization header
-  let tokenlogin = req.cookies.tokenlogin;
-  
-  if (!tokenlogin && req.headers.authorization) {
-    const authHeader = req.headers.authorization;
-    if (authHeader.startsWith('Bearer ')) {
-      tokenlogin = authHeader.substring(7);
-    }
-  }
+  const tokenlogin = getTokenFromRequest(req);
 
   if (!tokenlogin) {
     return res.status(401).json({ error: "No token provided" });
@@ -77,12 +55,12 @@ router.post("/logout", (req, res) => {
   res.status(200).json({ message: "Logout successful" });
 });
 router.get("/images", async (req, res) => {
-  const tokenlogin = req.cookies.tokenlogin;
+  const tokenlogin = getTokenFromRequest(req);
   if (!tokenlogin) {
     return res.status(401).json({ error: "No token provided" });
   }
 
-  const decoded = jwt.verify(tokenlogin, process.env.SECRET_KEY); // You can use SECRET_KEY from environment
+  const decoded = jwt.verify(tokenlogin, process.env.SECRET_KEY);
   req.user = decoded;
   // res.send(decoded)
   // console.log(req.user);
@@ -221,7 +199,7 @@ router.post(
         return res.status(400).json({ error: "No files uploaded" });
       }
 
-      const token = req.cookies.tokenlogin;
+      const token = getTokenFromRequest(req);
       if (!token) return res.status(401).json({ error: "No token provided" });
 
       const decoded = jwt.verify(token, process.env.SECRET_KEY);
@@ -305,7 +283,7 @@ router.post("/clothesUpload", async (req, res) => {
     return res.status(400).json({ error: "No clothes data received" });
   }
   console.log('uploading is ',uploadclothes)
-  const token = req.cookies.tokenlogin;
+  const token = getTokenFromRequest(req);
 
   // If token is missing, return an error
   if (!token) {

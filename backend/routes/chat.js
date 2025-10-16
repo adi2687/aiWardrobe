@@ -5,6 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 import ChatMessage from "../model/chatmessage.js";
 import jwt from "jsonwebtoken";
 import User from "../model/user.js";
+import { getTokenFromRequest } from '../utils/tokenHelper.js';
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ const router = express.Router();
 
 // Auth middleware
 const authenticatemain = (req, res, next) => {
-  const token = req.cookies.tokenlogin;
+  const token = getTokenFromRequest(req);
   if (!token) return res.status(401).json({ msg: "No token, authorization denied" });
   try {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
@@ -26,7 +27,7 @@ const authenticatemain = (req, res, next) => {
 // Get user ID from token
 const getUserId = (req) => {
   try {
-    const token = req.cookies.tokenlogin;
+    const token = getTokenFromRequest(req);
     if (!token) return null;
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     return decoded.id;
