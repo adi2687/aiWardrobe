@@ -1,16 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
   assetsInclude: ['**/*.glb'],
   optimizeDeps: {
-    include: ['axios', 'three', 'three-stdlib'], // Add 'three' and 'three-stdlib'
+    include: ['axios', 'three', 'three-stdlib'],
   },
   server: {
+    port: 5173,
     proxy: {
-      '/api': 'https://api.gemini.com', // Adjust this to match your backend API
+      '/api': 'https://api.gemini.com',
     },
   },
 });

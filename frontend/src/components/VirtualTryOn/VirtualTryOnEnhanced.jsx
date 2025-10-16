@@ -335,8 +335,8 @@ const VirtualTryOnEnhanced = () => {
         return kp;
       };
       
-      const leftShoulder = getKeypoint('left_shoulder');
-      const rightShoulder = getKeypoint('right_shoulder');
+      let leftShoulder = getKeypoint('left_shoulder');
+      let rightShoulder = getKeypoint('right_shoulder');
       const leftHip = getKeypoint('left_hip');
       const rightHip = getKeypoint('right_hip');
       const leftElbow = getKeypoint('left_elbow');
