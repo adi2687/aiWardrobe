@@ -3,6 +3,7 @@ import * as poseDetection from '@tensorflow-models/pose-detection';
 import '@tensorflow/tfjs-backend-webgl';
 import * as tf from '@tensorflow/tfjs';
 import { FaUpload, FaTshirt, FaMagic, FaSave, FaUndo, FaExchangeAlt } from 'react-icons/fa';
+import { getAuthHeaders } from '../../utils/auth';
 
 const ClothingMapper = () => {
   // State for the first image (person)
@@ -34,6 +35,7 @@ const ClothingMapper = () => {
     fetch(`${backendUrl}/user/profile`, {
       method: 'GET',
       credentials: 'include',
+      headers: getAuthHeaders(),
     })
       .then((response) => response.json())
       .then((data) => {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getAuthHeaders } from '../../utils/auth';
 
 const Image = () => {
   const [imageUrl, setImageUrl] = useState("");
@@ -16,10 +17,7 @@ const Image = () => {
     try {
       const response = await fetch(`${apiUrl}/getimage`, {
         method: "POST", 
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: getAuthHeaders(),
         credentials: "include",
         body: JSON.stringify({ prompt }),
       });

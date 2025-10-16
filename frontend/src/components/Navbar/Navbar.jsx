@@ -1,10 +1,11 @@
-import { React,useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "/logo_main.png";
 import "./Navbar.css";
 import "./NavDropdown.css";
- 
+import { getAuthHeaders } from '../../utils/auth';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [check, setCheck] = useState(null);
@@ -15,7 +16,7 @@ const Navbar = () => {
   useEffect(() => {
     fetch(`${apiUrl}/user/profile`, {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
+      headers: getAuthHeaders(),
       credentials: "include",
     })
     // console.log(`${apiUrl}/user/profile`)
