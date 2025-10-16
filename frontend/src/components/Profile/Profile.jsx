@@ -110,7 +110,7 @@ const Profile = () => {
     try {
       const response = await fetch(`${apiUrl}/user/logout`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         credentials: "include",
       });
 
@@ -210,9 +210,7 @@ const Profile = () => {
         const saveRes = await fetch(`${apiUrl}/user/clothesUpload`, {
           method: "POST",
           credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: getAuthHeaders(),
           body: JSON.stringify({ clothes }),
         });
 
@@ -238,19 +236,11 @@ const Profile = () => {
     }
   };
 
-  const toggleClothesForWeek = () => {
-    if (!isVisible) {
-      setIsLoadingClothes(true);
-      fetchClothesForWeek(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
   const fetchClothesForWeek = (shouldShow = false) => {
     fetch(`${apiUrl}/user/clothsforweek`, {
       method: "GET",
       credentials: "include",
+      headers: getAuthHeaders(),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -268,6 +258,15 @@ const Profile = () => {
       });
   };
 
+  const toggleClothesForWeek = () => {
+    if (!isVisible) {
+      setIsLoadingClothes(true);
+      fetchClothesForWeek(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
   const toggleFavorites = () => {
     setfavouritevivile(!favoritevisible);
   };
@@ -276,9 +275,7 @@ const Profile = () => {
     fetch(`${apiUrl}/user/cloth/deletefavourite`, {
       method: "POST",
       credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       body: JSON.stringify({ clothsuggestion }),
     })
       .then((response) => response.json())
@@ -297,7 +294,7 @@ const Profile = () => {
     try {
       const res = await fetch(`${apiUrl}/share`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ clothes: clothesToShare }),
         credentials: "include",
       });
@@ -343,7 +340,7 @@ const Profile = () => {
     try {
       const res = await fetch(`${apiUrl}/share`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ clothes: clothesToShare }),
         credentials: "include",
       });
@@ -364,7 +361,7 @@ const Profile = () => {
 
     fetch(`${apiUrl}/user/updatepassword`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: getAuthHeaders(),
       body: JSON.stringify({ newpassword: newPassword }),
       credentials: "include",
     })
@@ -386,9 +383,7 @@ const Profile = () => {
     try {
       const response = await fetch(`${apiUrl}/user/updateinfo`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify(profileData),
         credentials: "include",
       });
@@ -423,9 +418,7 @@ const Profile = () => {
 
     fetch(`${apiUrl}/user/updateinfo`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       body: JSON.stringify({ age, preferences, gender, skinColor }),
       credentials: "include",
     })

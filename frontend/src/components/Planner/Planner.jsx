@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Planner.css";
 import { FiSun, FiCloud, FiCloudRain, FiCloudSnow, FiWind, FiCopy, FiSave, FiRefreshCw } from "react-icons/fi";
+import { getAuthHeaders } from '../../utils/auth';
 
 const DailyWeather = () => {
   const [weatherSummaries, setWeatherSummaries] = useState([]);
@@ -121,7 +122,7 @@ const DailyWeather = () => {
       const response = await fetch(`${apiUrl}/user/images`, {
         method: "GET",
         credentials: "include",
-        headers: { "Content-Type": "application/json" }
+        headers: getAuthHeaders()
       });
       const data = await response.json();
       // console.log(data)
@@ -146,9 +147,7 @@ const DailyWeather = () => {
         {
           method: "POST",
           credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: getAuthHeaders(),
           body: JSON.stringify({ weather: weatherSummaries, input, clothes }),
         }
       );
@@ -194,9 +193,7 @@ const DailyWeather = () => {
     fetch(`${apiUrl}/user/copytoprofileweekcloths`, {
       method: "POST",
       credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       body: JSON.stringify({ clothesforweek: suggestionMain }),
     })
       .then((response) => response.json())

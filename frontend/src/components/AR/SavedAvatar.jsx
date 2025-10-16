@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { FaTshirt, FaArrowRight, FaSpinner } from "react-icons/fa";
+import { getAuthHeaders } from '../../utils/auth';
 import './AR.css';
 
 const SavedAvatar = () => {
@@ -18,6 +19,7 @@ const SavedAvatar = () => {
         const response = await fetch(`${backendUrl}/ar/avatar`, {
           method: "GET",
           credentials: "include",
+          headers: getAuthHeaders(),
         });
         console.log('ar is ', response)
         if (response.ok) {

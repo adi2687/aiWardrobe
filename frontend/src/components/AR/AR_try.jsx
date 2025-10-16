@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { FaSave, FaSpinner, FaCheck, FaArrowRight, FaTshirt, FaLink, FaUserAlt } from "react-icons/fa";
 import { AvatarCreator } from "@readyplayerme/react-avatar-creator";
+import { getAuthHeaders } from '../../utils/auth';
 
 const ReadyPlayerMeAvatar = () => {
   const iframeRef = useRef(null);
@@ -22,6 +23,7 @@ const ReadyPlayerMeAvatar = () => {
         const response = await fetch(`${backendUrl}/ar/avatar`, {
           method: "GET",
           credentials: "include",
+          headers: getAuthHeaders(),
         });
         
         if (response.ok) {

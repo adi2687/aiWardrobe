@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Sellcloth.css";
 import { useNavigate } from "react-router-dom";
 import { FaUpload, FaCheckCircle, FaTimesCircle, FaShoppingBag, FaTag, FaMoneyBillWave, FaCommentAlt, FaUser } from "react-icons/fa";
+import { getAuthHeaders } from '../../utils/auth';
 
 const Sellcloth = () => {
   const [imageFile, setImageFile] = useState(null);
@@ -27,6 +28,7 @@ const Sellcloth = () => {
       const response = await fetch(`${apiUrl}/user/allClothesSell`, {
         method: "GET",
         credentials: "include",
+        headers: getAuthHeaders(),
       });
 
       if (!response.ok) throw new Error("Failed to fetch clothes data");
@@ -49,6 +51,7 @@ const Sellcloth = () => {
     fetch(`${apiUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
+      headers: getAuthHeaders(),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -101,6 +104,7 @@ const Sellcloth = () => {
       const response = await fetch(`${apiUrl}/user/sellcloth`, {
         method: "POST",
         credentials: "include",
+        headers: getAuthHeaders(),
         body: formData,
       });
 
@@ -132,6 +136,7 @@ const Sellcloth = () => {
     fetch(`${apiUrl}/user/soldcloth/delete/${clothid}`, {
       method: "POST",
       credentials: "include",
+      headers: getAuthHeaders(),
       body: JSON.stringify({ clothid: clothid }),
     })
       .then((response) => response.json())
