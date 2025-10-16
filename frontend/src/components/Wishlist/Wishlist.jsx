@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Wishlist.css";
 import { FaHeart, FaTrash, FaExternalLinkAlt, FaShoppingBag, FaSpinner, FaFilter, FaSort, FaSearch, FaShareAlt, FaTags } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { getAuthHeaders } from '../../utils/auth';
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -20,6 +21,7 @@ const Wishlist = () => {
     fetch(`${apiUrl}/user/getwishlist`, {
       method: "GET",
       credentials: "include",
+      headers: getAuthHeaders(),
     })
       .then((response) => {
         if (!response.ok) {
@@ -44,9 +46,7 @@ const Wishlist = () => {
   const removeFromWishlist = (id) => {
     fetch(`${apiUrl}/shop/removefromwishlist`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       credentials: "include",
       body: JSON.stringify({ wishlistId: id }),
     })

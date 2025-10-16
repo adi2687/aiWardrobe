@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Recommendations.css";
 import { FaCloudSun, FaHistory, FaHeart, FaCopy, FaPaperPlane, FaTimes, FaUser } from "react-icons/fa";
+import { getAuthHeaders } from '../../utils/auth';
 
 const Recommendations = () => {
   const [clothes, setClothes] = useState([]);
@@ -24,6 +25,7 @@ const Recommendations = () => {
     fetch(`${apiUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
+      headers: getAuthHeaders(),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -48,6 +50,7 @@ const Recommendations = () => {
       const response = await fetch(`${apiUrl}/user/images`, {
         method: "GET",
         credentials: "include",
+        headers: getAuthHeaders(),
       });
       const data = await response.json();
       setClothes(data.Wardrobe.allclothes);
@@ -125,9 +128,7 @@ const Recommendations = () => {
       const response = await fetch(`${apiUrl}/chat/suggestion`, {
         method: "POST",
         credentials: "include",
-        headers: { 
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ input, clothes, weather,skinColor }),
       });
 
@@ -176,9 +177,7 @@ const Recommendations = () => {
     try {
       const response = await fetch(`${apiUrl}/chat/chathistory`, {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         credentials: "include",
       });
 
@@ -194,9 +193,7 @@ const Recommendations = () => {
   const saveFavoriteSuggestion = (suggestion) => {
     fetch(`${apiUrl}/user/cloth/lovesuggestion/save`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       credentials: "include",
       body: JSON.stringify({ clothsuggestion: suggestion }),
     })

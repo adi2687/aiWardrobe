@@ -19,6 +19,7 @@ import {
   FaLock
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { getAuthHeaders } from '../../utils/auth';
 const Shop = () => {
   const navigate = useNavigate();
   const [shopData, setShopData] = useState([]);
@@ -34,6 +35,7 @@ const Shop = () => {
     fetch(`${backendurl}/user/getuserdetails`, {
       method: "GET",
       credentials: "include",
+      headers: getAuthHeaders(),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -83,11 +85,7 @@ const Shop = () => {
       url,
       {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        // Use include for credentials to ensure cookies are sent
+        headers: getAuthHeaders(),
         credentials: "include",
       }
     )
@@ -155,11 +153,7 @@ const Shop = () => {
       url,
       {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        // Use include for credentials to ensure cookies are sent
+        headers: getAuthHeaders(),
         credentials: "include"
       }
     )
@@ -213,11 +207,9 @@ const [adding,setadding]=useState(false);
     setadding(true);
     fetch(`${backendurl}/shop/addtowishlist`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       body: JSON.stringify(item),
-      credentials: "include", // Make sure your backend supports cookies
+      credentials: "include",
     })
       .then((response) => response.json())
       .then((data) => {
@@ -247,6 +239,7 @@ const [adding,setadding]=useState(false);
     fetch(`${backendurl}/user/images`, {
       method: "GET",
       credentials: "include",
+      headers: getAuthHeaders(),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -264,9 +257,7 @@ const [adding,setadding]=useState(false);
     setloaded(true);
     fetch(`${backendurl}/chat/getshoppingsuggestions`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: getAuthHeaders(),
       credentials: "include",
     })
       .then((response) => {

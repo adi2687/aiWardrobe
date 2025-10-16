@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Chatbot.css";
+import { getAuthHeaders } from '../../utils/auth';
 
 const Chatbot = () => {
   // Initialize with some test messages to demonstrate scrolling
@@ -19,9 +20,7 @@ const Chatbot = () => {
   const userCloths = () => {
     fetch(`${apiUrl}/user/images`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getAuthHeaders(),
       credentials:"include"
     })
       .then((response) => response.json())
@@ -50,9 +49,7 @@ const Chatbot = () => {
 
       const response = await fetch(`${apiUrl}/chat/chatbot`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ input }),
       });
 

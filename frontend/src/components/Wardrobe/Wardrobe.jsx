@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Wardrobe.css";
 import { FaUser, FaTshirt, FaSocks, FaShoppingBag } from "react-icons/fa";
 import { GiTrousers } from "react-icons/gi";
+import { getAuthHeaders } from '../../utils/auth';
 
 // Helper function to process color values
 const processColor = (colorString) => {
@@ -59,6 +60,7 @@ const Wardrobe = () => {
       fetch(`${backendUrl}/user/images`, {
         method: "GET",
         credentials: "include",
+        headers: getAuthHeaders(),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -72,6 +74,7 @@ const Wardrobe = () => {
       fetch(`${backendUrl}/clothid/getitems`, {
         method: "GET",
         credentials: "include",
+        headers: getAuthHeaders(),
       })
         .then((response) => {
           if (!response.ok) {
@@ -95,6 +98,7 @@ const Wardrobe = () => {
     fetch(`${backendUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
+      headers: getAuthHeaders(),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -138,9 +142,7 @@ const Wardrobe = () => {
       const response = await fetch(`${backendUrl}/user/addnewcloths`, {
         method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({
           clothname: newcloth,
         }),
