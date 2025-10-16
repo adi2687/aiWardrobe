@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { FaGoogle, FaFacebook, FaEnvelope, FaLock, FaUser, FaEye, FaEyeSlash, FaTshirt } from "react-icons/fa";
 import Intro from "../Intro/Intro";
+import { storeAuthToken } from '../../utils/auth';
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -73,7 +74,7 @@ const Auth = () => {
         
         // Store token if provided
         if (data.token) {
-          localStorage.setItem('token', data.token);
+          storeAuthToken(data.token, 24); // Store for 24 hours
         }
         
         // Check if intro has been completed before
@@ -132,9 +133,9 @@ const Auth = () => {
         });
         setSignupComplete(true);
         
-        // Store token in localStorage
+        // Store token in localStorage and cookies
         if (data.token) {
-          localStorage.setItem('token', data.token);
+          storeAuthToken(data.token, 24); // Store for 24 hours
         }
         
         // User profile setup flag removed

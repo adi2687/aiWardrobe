@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { storeAuthToken, getAuthToken } from './utils/auth';
 // import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile"
@@ -50,11 +51,11 @@ const App = () => {
     
     // Only store token if it exists (not null)
     if (tokenlogin && tokenlogin !== 'null') {
-      localStorage.setItem('tokenlogin', tokenlogin);
+      storeAuthToken(tokenlogin, 24); // Store for 24 hours
     }
     
     // Check if the user is logged in and should see the intro
-    const token = localStorage.getItem('tokenlogin') || document.cookie.includes('tokenlogin');
+    const token = getAuthToken();
     const introComplete = localStorage.getItem('introComplete');
     const checkForNewUser = localStorage.getItem('checkForNewUser');
     

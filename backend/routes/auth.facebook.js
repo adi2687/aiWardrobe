@@ -115,30 +115,14 @@ router.get(
     );
     console.log('Setting token in Facebook OAuth:', token)
     
-    // Cookie configuration for production (Vercel)
-    const cookieOptions = {
-      httpOnly: true, 
-      secure: process.env.NODE_ENV === "production", 
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      path: "/",
-      maxAge: 24 * 60 * 60 * 1000 // 24 hours
-    };
-    
-    // Only set domain in production if specified
-    if (process.env.NODE_ENV === "production" && process.env.COOKIE_DOMAIN) {
-      cookieOptions.domain = process.env.COOKIE_DOMAIN;
-    }
-    
-    // Set token as cookie
-    res.cookie("tokenlogin", token, cookieOptions);
-    
-    // Log cookie settings for debugging
-    console.log("Cookie settings:", cookieOptions);
+    // Note: Cookies don't work in OAuth redirect chains due to browser security policies
+    // We pass the token via URL parameter instead, which is the recommended approach for serverless/Vercel
     
     // Check if this is a new user (just created) to determine if we should show intro
     const isNewUser = req.user.createdAt && (new Date() - new Date(req.user.createdAt) < 60000);
     
-    // Redirect to home page to trigger the intro animation
+    // Redirect to home page with token in URL
+    // Frontend will extract this token and store it in localStorage
     res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}&tokenlogin=${token}`);
     // This will be caught by the App.jsx useEffect that checks for intro completion
   }
