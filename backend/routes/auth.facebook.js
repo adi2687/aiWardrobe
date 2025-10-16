@@ -113,22 +113,22 @@ router.get(
       SECRET_KEY,
       { expiresIn: "24h" }
     );
-
+    console.log('setitng tooken in fb',token)
     // Set token as cookie and redirect to frontend
     res.cookie("tokenlogin", token, { 
       httpOnly: true, 
-      secure: process.env.NODE_ENV === "production", 
-      sameSite: "none",
-      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
+      secure: true, 
+      sameSite: "lax",
+      // domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
       path: "/"
     });
     
     // Log cookie settings for debugging
     console.log("Setting cookie with options:", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
+      secure: false,
+      sameSite: "lax",
+      // domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
       path: "/"
     });
     
