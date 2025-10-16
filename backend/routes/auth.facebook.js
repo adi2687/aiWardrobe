@@ -113,24 +113,27 @@ router.get(
       SECRET_KEY,
       { expiresIn: "24h" }
     );
-    console.log('setitng tooken in fb',token)
-    // Set token as cookie and redirect to frontend
-    res.cookie("tokenlogin", token, { 
+    console.log('Setting token in Facebook OAuth:', token)
+    
+    // Cookie configuration for production (Vercel)
+    const cookieOptions = {
       httpOnly: true, 
-      secure: true, 
-      sameSite: "none",
-      // domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
-      path: "/"
-    });
+      secure: process.env.NODE_ENV === "production", 
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      path: "/",
+      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    };
+    
+    // Only set domain in production if specified
+    if (process.env.NODE_ENV === "production" && process.env.COOKIE_DOMAIN) {
+      cookieOptions.domain = process.env.COOKIE_DOMAIN;
+    }
+    
+    // Set token as cookie
+    res.cookie("tokenlogin", token, cookieOptions);
     
     // Log cookie settings for debugging
-    console.log("Setting cookie with options:", {
-      httpOnly: true,
-      secure: false,
-      sameSite: "lax",
-      // domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined,
-      path: "/"
-    });
+    console.log("Cookie settings:", cookieOptions);
     
     // Check if this is a new user (just created) to determine if we should show intro
     const isNewUser = req.user.createdAt && (new Date() - new Date(req.user.createdAt) < 60000);

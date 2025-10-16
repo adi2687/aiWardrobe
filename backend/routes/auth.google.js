@@ -93,19 +93,33 @@ router.get(
       SECRET_KEY,
       { expiresIn: "24h" }
     );
-
-    res.cookie("tokenlogin", token, { 
+    console.log('Setting token in Google OAuth:', token)
+    
+    // Cookie configuration for production (Vercel)
+    const cookieOptions = {
       httpOnly: true, 
       secure: process.env.NODE_ENV === "production", 
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      domain: process.env.NODE_ENV === "production" ? process.env.COOKIE_DOMAIN : undefined
-    });
+      path: "/",
+      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    };
+    
+    // Only set domain in production if specified
+    if (process.env.NODE_ENV === "production" && process.env.COOKIE_DOMAIN) {
+      cookieOptions.domain = process.env.COOKIE_DOMAIN;
+    }
+    
+    // Set token as cookie
+    res.cookie("tokenlogin", token, cookieOptions);
+    
+    // Log cookie settings for debugging
+    console.log("Cookie settings:", cookieOptions);
     
     // Check if this is a new user (just created) to determine if we should show intro
     const isNewUser = req.user.createdAt && (new Date() - new Date(req.user.createdAt) < 60000);
     
-    // Redirect to home page to trigger the intro animation
-    res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}`);
+    // Redirect to home page with token in URL (fallback for when cookies don't work)
+    res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}&tokenlogin=${token}`);
     // This will be caught by the App.jsx useEffect that checks for intro completion
   }
 );
