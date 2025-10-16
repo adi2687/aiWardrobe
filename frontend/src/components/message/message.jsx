@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import { getAuthHeaders } from '../../utils/auth';
 import "./messageMain.css";
 
 const Message = () => {
@@ -21,9 +22,7 @@ const Message = () => {
       const response = await fetch(`${apiUrl}/user/message`, {
         method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ recipient: username, message }),
       });
 
@@ -48,7 +47,7 @@ const Message = () => {
         {
           method: "GET",
           credentials: "include",
-          headers: { "Content-Type": "application/json" }
+          headers: getAuthHeaders()
         }
       );
 
@@ -71,7 +70,7 @@ const Message = () => {
         {
           method: "GET",
           credentials: "include",
-          headers: { "Content-Type": "application/json" }
+          headers: getAuthHeaders()
         }
       );
 
@@ -89,6 +88,7 @@ const Message = () => {
     fetch(`${apiUrl}/user/profile`, {
       method: "GET",
       credentials: "include",
+      headers: getAuthHeaders(),
     })
       .then((response) => response.json())
       .then((data) => {

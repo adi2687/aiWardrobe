@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './social_collection.css';
 import { FaUser, FaTshirt, FaHeart, FaShare, FaSpinner, FaExclamationTriangle, FaTimes, FaExpand, FaThumbsUp } from 'react-icons/fa';
+import { getAuthHeaders } from '../../utils/auth';
 
 const SocialCollections = () => {
     const [collections, setCollections] = useState([]);
@@ -35,7 +36,10 @@ const SocialCollections = () => {
     const fetchCollections = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`${apiUrl}/sharetosocial/social`);
+            const response = await fetch(`${apiUrl}/sharetosocial/social`, {
+                headers: getAuthHeaders(),
+                credentials: "include"
+            });
             const data = await response.json();
             
             console.log('Response data:', data);
@@ -113,9 +117,7 @@ const SocialCollections = () => {
         
         fetch(`${apiUrl}/sharetosocial/likecollection`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: getAuthHeaders(),
             credentials:"include",
             body: JSON.stringify({ id: collectionId })
         })

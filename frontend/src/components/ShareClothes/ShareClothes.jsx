@@ -4,6 +4,7 @@ import "./sharecloths.css"; // Import the CSS file
 import { FaWhatsapp, FaTwitter, FaEnvelope, FaShareAlt, FaInstagram, FaFacebook } from "react-icons/fa";
 import { FiCopy, FiCheck, FiLink } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { getAuthHeaders } from '../../utils/auth';
 
 const ShareClothes = () => {
   const { id } = useParams();
@@ -45,10 +46,8 @@ const ShareClothes = () => {
       try {
         const response = await fetch(`${apiUrl}/share/${id}`, {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          credentials: "include" // This will send cookies with the request
+          headers: getAuthHeaders(),
+          credentials: "include"
         });
 
         if (!response.ok) {
@@ -112,11 +111,8 @@ const ShareClothes = () => {
       const response = await fetch(
         `${apiUrl}/imagegenerate/generate-image`,
         {
-          method: "POST",   
-          headers: {    
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
+          method: "POST",
+          headers: getAuthHeaders(),
           credentials: "include",
           body: JSON.stringify({ shareid: id, prompt: prompt }),
         }
@@ -215,9 +211,7 @@ const ShareClothes = () => {
     try {
       const response = await fetch(`${apiUrl}/sharetosocial/sharecollection`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         credentials: "include",
         body: JSON.stringify({ shareurl: id }),
       });
