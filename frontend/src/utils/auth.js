@@ -71,3 +71,21 @@ export const clearAuthToken = () => {
 export const isAuthenticated = () => {
   return !!getAuthToken();
 };
+
+/**
+ * Get headers for authenticated API requests
+ * Includes both Authorization header and ensures credentials are sent
+ * @returns {object} - Headers object for fetch requests
+ */
+export const getAuthHeaders = () => {
+  const token = getAuthToken();
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+  
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+  
+  return headers;
+};

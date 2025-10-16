@@ -11,34 +11,53 @@ import os from 'os';
 import { fileURLToPath } from 'url';
 dotenv.config()
 const authenticate = (req, res, next) => {
-  const token = req.cookies.tokenlogin;
-  // console.log("toke is ", token)
+  // Check for token in cookies first, then Authorization header
+  let token = req.cookies.tokenlogin;
+  
+  // If no cookie, check Authorization header
+  if (!token && req.headers.authorization) {
+    const authHeader = req.headers.authorization;
+    if (authHeader.startsWith('Bearer ')) {
+      token = authHeader.substring(7);
+    }
+  }
+  
+  console.log("Token found:", token ? "Yes" : "No");
+  console.log("Cookies:", req.cookies);
+  
   if (!token) {
     return res.status(401).json({ msg: "No token, authorization denied" });
   }
 
   try {
-    // console.log(process.en.SECRET_KEY)
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    console.log("suser detail", decoded);
+    console.log("User authenticated:", decoded.username);
     req.user = decoded;
-    console.log("user is ", req.user); // Attach the user object to the request
     next();
   } catch (error) {
-    console.log("error");
+    console.log("Token verification error:", error.message);
     res.status(401).json({ msg: "Token is not valid" });
   }
 };
 router.get("/profile", (req, res) => {
   console.log("Cookies received:", req.cookies);
-  const tokenlogin = req.cookies.tokenlogin ;
+  
+  // Check for token in cookies first, then Authorization header
+  let tokenlogin = req.cookies.tokenlogin;
+  
+  if (!tokenlogin && req.headers.authorization) {
+    const authHeader = req.headers.authorization;
+    if (authHeader.startsWith('Bearer ')) {
+      tokenlogin = authHeader.substring(7);
+    }
+  }
 
   if (!tokenlogin) {
     return res.status(401).json({ error: "No token provided" });
   }
 
   try {
-    const decoded = jwt.verify(tokenlogin, process.env.SECRET_KEY); // You can use SECRET_KEY from environment
+    const decoded = jwt.verify(tokenlogin, process.env.SECRET_KEY);
     return res.json({ message: "Success", user: decoded });
   } catch (error) {
     return res.status(401).json({ error: "Invalid or expired token", error });

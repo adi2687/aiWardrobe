@@ -7,6 +7,7 @@ import { IoMdColorPalette } from "react-icons/io";
 import { GiClothes } from "react-icons/gi";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { getAuthHeaders } from '../../utils/auth';
 // No modal import needed
 
 const Profile = () => {
@@ -70,8 +71,7 @@ const Profile = () => {
       const response = await fetch(`${apiUrl}/user/profile`, {
         method: "GET",
         credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        
+        headers: getAuthHeaders(),
       });
       const data = await response.json();
 
