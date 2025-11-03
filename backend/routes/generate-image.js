@@ -76,7 +76,7 @@ async function generate(req, res) {
     } else if (part.inlineData) {
       const imageData = part.inlineData.data;
       const buffer = Buffer.from(imageData, "base64");
-      fs.writeFileSync("photorealistic_example.png", buffer);
+      // fs.writeFileSync("photorealistic_example.png", buffer);
 
       const imageBase64 = buffer.toString("base64");
 

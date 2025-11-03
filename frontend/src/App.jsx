@@ -38,9 +38,11 @@ import PrivacyPolicy from './components/Policies/PrivacyPolicy'
 import TermsOfService from './components/Policies/TermsOfService'
 import DataDeletion from './components/Policies/DataDeletion'
 import PoliciesHub from './components/Policies/PoliciesHub'
+import { useLocation } from 'react-router-dom';
 // import News from './components/profile/News/CelebrityNews'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
+ const location = useLocation();
 
   useEffect(() => {
     // Check URL parameters for Google/Facebook login redirect
@@ -128,7 +130,7 @@ const App = () => {
         <Route path="/virtual-try-on" element={<VirtualTryOn />} />
       </Routes>
       <FloatingNavbar />
-      <Footer />
+      {location.pathname === '/' && <Footer />}
     </>
   );
 };

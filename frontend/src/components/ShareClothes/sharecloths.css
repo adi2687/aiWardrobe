@@ -730,6 +730,28 @@
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-right: 8px;
+  display: inline-block;
+}
+
+/* Small loader for individual images */
+.loader-small {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(102, 126, 234, 0.2);
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.image-loading-placeholder {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
 }
 
 @keyframes spin {
@@ -851,6 +873,11 @@
   }
 
   .selfimages {
+    width: 150px;
+    height: 150px;
+  }
+
+  .image-loading-placeholder {
     width: 150px;
     height: 150px;
   }

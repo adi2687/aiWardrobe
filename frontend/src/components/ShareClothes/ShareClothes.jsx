@@ -258,6 +258,8 @@ const ShareClothes = () => {
   const [generatingImage, setGeneratingImage] = useState(false);
   const [toast, setToast] = useState(null);
   const [viewImageModal, setViewImageModal] = useState(null);
+  const [loadingSelfImages, setLoadingSelfImages] = useState(false);
+  const [imageLoadStates, setImageLoadStates] = useState({});
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
@@ -271,6 +273,7 @@ const ShareClothes = () => {
     setViewImageModal(null);
   };
   const loaddefaultimage = async () => {
+    setLoadingSelfImages(true);
     try {
       const res = await fetch(`${apiUrl}/getselfimages`, {
         method: "GET",
@@ -288,6 +291,8 @@ const ShareClothes = () => {
     } catch (error) {
       console.error("Error loading images:", error);
       showToast("Failed to load your images", "error");
+    } finally {
+      setLoadingSelfImages(false);
     }
   };
   useEffect(() => {
@@ -330,10 +335,10 @@ const ShareClothes = () => {
       // Fetch the image and convert to blob
       const imageResponse = await fetch(selectedimage);
       const imageBlob = await imageResponse.blob();
-      
+       
       formData.append('image', imageBlob, 'selfimage.jpg');
       formData.append('input', sharecloth);
-      formData.append("shareid",id)   
+      formData.append("shareid",id)    
       formData.append("usercloth",selectedimage)
       
       const res = await fetch(`${apiUrl}/generate-image`, {
@@ -411,7 +416,7 @@ const ShareClothes = () => {
             </div>
           </div> 
 
-          {images.length > 0 && (
+          {(images.length > 0 || loadingSelfImages) && (
             <div className="content-card virtual-tryon-card">
               <div className="card-header">
                 <h3>Try This Outfit On Yourself</h3>
@@ -419,6 +424,12 @@ const ShareClothes = () => {
               <p className="instruction-text">
                 Select one of your uploaded photos to see how this outfit would look on you
               </p>
+              {loadingSelfImages ? (
+                <div className="loading-container">
+                  <div className="loader"></div>
+                  <p>Loading your images...</p>
+                </div>
+              ) : (
               <div className="selfimagescontainer"> 
                 {images.map((image, index) => (
                   <div 
@@ -431,12 +442,20 @@ const ShareClothes = () => {
                       padding: selectedimage === image ? '5px' : '0'
                     }}
                   >
+                    {imageLoadStates[index] === false ? (
+                      <div className="image-loading-placeholder">
+                        <div className="loader-small"></div>
+                      </div>
+                    ) : null}
                     <img 
                       src={image} 
                       alt={`Your photo ${index + 1}`} 
                       className="selfimages" 
                       onClick={() => setselectedimage(image)}
                       title="Click to select"
+                      onLoad={() => setImageLoadStates(prev => ({...prev, [index]: true}))}
+                      onError={() => setImageLoadStates(prev => ({...prev, [index]: true}))}
+                      style={{display: imageLoadStates[index] === false ? 'none' : 'block'}}
                     />
                     {image === defaultimage && (
                       <div className="default-badge-share">
@@ -446,14 +465,22 @@ const ShareClothes = () => {
                   </div>
                 ))}
               </div>
-              {selectedimage && (
+              )}
+              {selectedimage && !loadingSelfImages && (
                 <div className="action-buttons-container">
                   <button
                     onClick={generateimage}
                     disabled={generatingImage}
                     className="generate-btn"
                   >
-                    {generatingImage ? '⏳ Generating...' : '🎨 Generate Virtual Try-On'}
+                    {generatingImage ? (
+                      <>
+                        <div className="button-spinner"></div>
+                        Generating...
+                      </>
+                    ) : (
+                      '🎨 Generate Virtual Try-On'
+                    )}
                   </button>
                   <button
                     onClick={() => setdefault(selectedimage)}
