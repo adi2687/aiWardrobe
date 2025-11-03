@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./sharecloths.css"; // Import the CSS file
-import { FaWhatsapp, FaTwitter, FaEnvelope, FaShareAlt, FaInstagram, FaFacebook } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaTwitter,
+  FaEnvelope,
+  FaShareAlt,
+  FaInstagram,
+  FaFacebook,
+} from "react-icons/fa";
 import { FiCopy, FiCheck, FiLink } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { getAuthHeaders } from '../../utils/auth';
+import { getAuthHeaders } from "../../utils/auth";
+import Toast from '../Toast/Toast';
 
 const ShareClothes = () => {
   const { id } = useParams();
@@ -15,10 +23,10 @@ const ShareClothes = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
-  
-  const [skinColor,setskinColor]=useState("")
-  const [age,setAge]=useState(0)
-  const [gender,setGender]=useState("")
+
+  const [skinColor, setskinColor] = useState("");
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState("");
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
   const frontendUrl = import.meta.env.VITE_FRONTEND_URL;
   const backendurl = import.meta.env.VITE_BACKEND_URL;
@@ -47,7 +55,7 @@ const ShareClothes = () => {
         const response = await fetch(`${apiUrl}/share/${id}`, {
           method: "GET",
           headers: getAuthHeaders(),
-          credentials: "include"
+          credentials: "include",
         });
 
         if (!response.ok) {
@@ -55,12 +63,12 @@ const ShareClothes = () => {
         }
 
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         if (data && data.share && data.share.length > 0) {
           setSharedCloth(data.share[0].sharecloths);
           setUsername(data.share[0].username + "");
-          setAge(data.age)
-          setGender(data.gender)
+          setAge(data.age);
+          setGender(data.gender);
         } else {
           setError("No shared clothes found");
         }
@@ -75,29 +83,29 @@ const ShareClothes = () => {
     fetchData();
   }, [id, apiUrl]);
 
-
-
   // Generate the image using the sharecloth data
   const imageGenerate = async () => {
     if (!sharecloth || sharecloth.length === 0) return;
-    
+
     setImageLoading(true);
     // Format user details for the prompt
     let userDetails = [];
-    
+
     if (age) {
       userDetails.push(`age: ${age}`);
     }
-    
+
     if (gender) {
       userDetails.push(`gender: ${gender}`);
     }
     if (skinColor) {
       userDetails.push(`skinColor: ${skinColor}`);
     }
-    let userDetailsPrompt = '';
+    let userDetailsPrompt = "";
     if (userDetails.length > 0) {
-      userDetailsPrompt = `Create an outfit appropriate for a person with the following characteristics: ${userDetails.join(', ')}. `;
+      userDetailsPrompt = `Create an outfit appropriate for a person with the following characteristics: ${userDetails.join(
+        ", "
+      )}. `;
     }
     const prompt = `
     Generate an image of a mannequin wearing all of the following outfits:
@@ -108,15 +116,12 @@ const ShareClothes = () => {
     `;
 
     try {
-      const response = await fetch(
-        `${apiUrl}/imagegenerate/generate-image`,
-        {
-          method: "POST",
-          headers: getAuthHeaders(),
-          credentials: "include",
-          body: JSON.stringify({ shareid: id, prompt: prompt }),
-        }
-      );
+      const response = await fetch(`${apiUrl}/imagegenerate/generate-image`, {
+        method: "POST",
+        headers: getAuthHeaders(),
+        credentials: "include",
+        body: JSON.stringify({ shareid: id, prompt: prompt }),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to generate image");
@@ -154,60 +159,72 @@ const ShareClothes = () => {
       .writeText(shareUrl)
       .then(() => {
         setCopyUrl(true);
+        showToast("Link copied to clipboard!", "success");
         setTimeout(() => {
           setCopyUrl(false);
         }, 2000);
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
-        setError("Failed to copy link. Please try again.");
+        showToast("Failed to copy link", "error");
       });
   };
 
   // Toggle share options dropdown
   const toggleShareOptions = () => {
-    setShowOptions(prev => !prev);
+    setShowOptions((prev) => !prev);
   };
 
   // Share to different platforms
   const shareToSocial = (platform) => {
-    let shareLink = '';
+    let shareLink = "";
     const message = `Check out these amazing outfits shared by ${username}!`;
-    
-    switch(platform) {
-      case 'whatsapp':
-        shareLink = `https://wa.me/?text=${encodeURIComponent(`${message} ${shareUrl}`)}`;        
+
+    switch (platform) {
+      case "whatsapp":
+        shareLink = `https://wa.me/?text=${encodeURIComponent(
+          `${message} ${shareUrl}`
+        )}`;
         break;
-      case 'twitter':
-        shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareUrl}`)}`;        
+      case "twitter":
+        shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          `${message} ${shareUrl}`
+        )}`;
         break;
-      case 'facebook':
-        shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(message)}`;        
+      case "facebook":
+        shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+          shareUrl
+        )}&quote=${encodeURIComponent(message)}`;
         break;
-      case 'instagram':
+      case "instagram":
         // Instagram doesn't support direct sharing via URL
         // Show a message to the user with instructions
-        alert('To share on Instagram: \n1. Copy the link (use the Copy Link button)\n2. Open Instagram\n3. Create a new story or post\n4. Paste the link in your caption or story');
+        showToast(
+          "To share on Instagram: Copy the link and paste it in your Instagram story or post",
+          "info"
+        );
         copyToClipboard();
         return;
-      case 'email':
-        shareLink = `mailto:?subject=Check out these amazing outfits&body=${encodeURIComponent(`${message}\n\n${shareUrl}`)}`;        
+      case "email":
+        shareLink = `mailto:?subject=Check out these amazing outfits&body=${encodeURIComponent(
+          `${message}\n\n${shareUrl}`
+        )}`;
         break;
       default:
         shareLink = shareUrl;
     }
-    
+
     if (shareLink) {
-      window.open(shareLink, '_blank');
+      window.open(shareLink, "_blank");
     }
-  };  
+  };
   const [isSharing, setIsSharing] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);
 
   const shareToSocialcollection = async () => {
     setIsSharing(true);
     setShareSuccess(false);
-    
+
     try {
       const response = await fetch(`${apiUrl}/sharetosocial/sharecollection`, {
         method: "POST",
@@ -215,38 +232,145 @@ const ShareClothes = () => {
         credentials: "include",
         body: JSON.stringify({ shareurl: id }),
       });
-      
+
       const data = await response.json();
       console.log(data);
-      
+
       // Show success state
       setShareSuccess(true);
-      
+      showToast("Collection shared to community!", "success");
+
       // Reset success state after 3 seconds
       setTimeout(() => {
         setShareSuccess(false);
       }, 3000);
-      
     } catch (error) {
       console.error("Error sharing collection:", error);
+      showToast("Failed to share collection", "error");
     } finally {
       setIsSharing(false);
     }
+  };
+  const [images, setImages] = useState([]);
+  const [defaultimage, setdefaultimage] = useState(""); 
+  const [selectedimage, setselectedimage] = useState("");
+  const [generatedImage, setGeneratedImage] = useState("");
+  const [generatingImage, setGeneratingImage] = useState(false);
+  const [toast, setToast] = useState(null);
+  const [viewImageModal, setViewImageModal] = useState(null);
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+  };
+
+  const openImageModal = (imageUrl) => {
+    setViewImageModal(imageUrl);
+  };
+
+  const closeImageModal = () => {
+    setViewImageModal(null);
+  };
+  const loaddefaultimage = async () => {
+    try {
+      const res = await fetch(`${apiUrl}/getselfimages`, {
+        method: "GET",
+        headers: getAuthHeaders(),
+        credentials: "include",
+      });
+      const data = await res.json();
+      console.log(data);
+      if (res.ok) {
+        setImages(data.images || []);
+        setdefaultimage(data.defaultImage || "");
+      } else {
+        showToast(data.msg || "Failed to load images", "error");
+      }
+    } catch (error) {
+      console.error("Error loading images:", error);
+      showToast("Failed to load your images", "error");
+    }
+  };
+  useEffect(() => {
+    loaddefaultimage();
+  }, []); 
+
+  const setdefault = async (image) => { 
+    try {
+      const res = await fetch(`${apiUrl}/defaultimage`, {
+        method: "POST",
+        headers: getAuthHeaders(),
+        credentials: "include",
+        body: JSON.stringify({ image: image || selectedimage }),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (res.ok) {
+        setdefaultimage(image || selectedimage);
+        showToast("Image set as default!", "success");
+      } else {
+        showToast(data.msg || "Failed to set default image", "error");
+      }
+    } catch (error) {
+      console.error("Error setting default:", error);
+      showToast("Failed to set default image", "error");
+    }
+  }  
+
+
+  const generateimage = async () => {
+    if (!selectedimage) {
+      showToast("Please select an image first", "error");
+      return;
+    }
+    
+    setGeneratingImage(true);
+    try {
+      const formData = new FormData();
+      
+      // Fetch the image and convert to blob
+      const imageResponse = await fetch(selectedimage);
+      const imageBlob = await imageResponse.blob();
+      
+      formData.append('image', imageBlob, 'selfimage.jpg');
+      formData.append('input', sharecloth);
+      formData.append("shareid",id)   
+      
+      
+      const res = await fetch(`${apiUrl}/generate-image`, {
+        method: "POST",
+        credentials: "include",
+        body: formData,
+      });
+      
+      const data = await res.json();
+      console.log(data);
+      
+      if (res.ok && data.msg) {
+        setGeneratedImage(data.msg.image || data.image);
+        showToast("Image generated successfully!", "success");
+      } else {
+        showToast(data.msg || "Failed to generate image", "error");
+      }
+    } catch (error) {
+      console.error("Error generating image:", error);
+      showToast("Failed to generate image", "error");
+    } finally {
+      setGeneratingImage(false);
+    }
   }
-
-
-  
   return (
     <div className="share-cloths-container">
       {/* Header with username and decorative elements */}
       <div className="share-header">
         <div className="header-decoration left"></div>
-        <h2>{username}'s <span className="accent-text">Wardrobe</span> Collection</h2>
+        <h2>
+          {username}'s <span className="accent-text">Wardrobe</span> Collection
+        </h2>
         <div className="header-decoration right"></div>
       </div>
-      
+
       {loading ? (
-        <motion.div 
+        <motion.div
           className="loading-container"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -256,7 +380,7 @@ const ShareClothes = () => {
           <p>Loading shared outfits...</p>
         </motion.div>
       ) : error ? (
-        <motion.div 
+        <motion.div
           className="error-message"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -265,7 +389,7 @@ const ShareClothes = () => {
           <p>{error}</p>
         </motion.div>
       ) : (
-        <motion.div 
+        <motion.div
           className="share-content"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -280,17 +404,84 @@ const ShareClothes = () => {
               {sharecloth && sharecloth.length > 0 ? (
                 <div className="outfit-description">{sharecloth}</div>
               ) : (
-                <p className="no-clothes-message">No outfits found in this collection</p>
+                <p className="no-clothes-message">
+                  No outfits found in this collection
+                </p>
               )}
             </div>
-          </div>
-          
+          </div> 
+
+          {images.length > 0 && (
+            <div className="content-card virtual-tryon-card">
+              <div className="card-header">
+                <h3>Try This Outfit On Yourself</h3>
+              </div>
+              <p className="instruction-text">
+                Select one of your uploaded photos to see how this outfit would look on you
+              </p>
+              <div className="selfimagescontainer"> 
+                {images.map((image, index) => (
+                  <div 
+                    key={index} 
+                    className={`image-selection-wrapper ${selectedimage === image ? 'selected' : ''}`}
+                    style={{
+                      position: 'relative',
+                      border: selectedimage === image ? '3px solid #667eea' : 'none',
+                      borderRadius: '12px',
+                      padding: selectedimage === image ? '5px' : '0'
+                    }}
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Your photo ${index + 1}`} 
+                      className="selfimages" 
+                      onClick={() => setselectedimage(image)}
+                      title="Click to select"
+                    />
+                    {image === defaultimage && (
+                      <div className="default-badge-share">
+                        ⭐ Default
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+              {selectedimage && (
+                <div className="action-buttons-container">
+                  <button
+                    onClick={generateimage}
+                    disabled={generatingImage}
+                    className="generate-btn"
+                  >
+                    {generatingImage ? '⏳ Generating...' : '🎨 Generate Virtual Try-On'}
+                  </button>
+                  <button
+                    onClick={() => setdefault(selectedimage)}
+                    className="set-default-btn"
+                  >
+                    ⭐ Set as Default
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {generatedImage && (
+            <div className="content-card generated-result-card">
+              <div className="card-header">
+                <h3>✨ Your Virtual Try-On Result</h3>
+              </div>
+              <div className="image-wrapper-share">
+                <img src={generatedImage} alt="Generated outfit on you" />
+              </div>
+            </div>
+          )}
           {/* Image preview with improved styling */}
           <div className="content-card">
             <div className="card-header">
-              <h3>Outfit Preview</h3>
+              <h3>Mannequin Preview</h3>
             </div>
-            <div className="image-wrapper">
+            <div className="image-wrapper-share">
               {imageLoading ? (
                 <div className="loading-container">
                   <div className="loader"></div>
@@ -311,16 +502,20 @@ const ShareClothes = () => {
               )}
             </div>
           </div>
-          
 
           <div className="content-card share-to-social">
             <div className="card-header">
               <h3>Share to Community Collection</h3>
             </div>
             <div className="share-to-social-content">
-              <p>Add this outfit to the community collections for others to see and like.</p>
-              <button 
-                className={`share-to-social-button ${isSharing ? 'sharing' : ''} ${shareSuccess ? 'success' : ''}`}
+              <p>
+                Add this outfit to the community collections for others to see
+                and like.
+              </p>
+              <button
+                className={`share-to-social-button ${
+                  isSharing ? "sharing" : ""
+                } ${shareSuccess ? "success" : ""}`}
                 onClick={shareToSocialcollection}
                 disabled={isSharing || shareSuccess}
               >
@@ -348,83 +543,88 @@ const ShareClothes = () => {
 
           {/* Share section with improved styling */}
           <div className="content-card share-section">
-
-          
             <div className="card-header">
               <h3>Share This Collection</h3>
             </div>
-            
+
             <div className="share-options">
               {/* Copy link button */}
-              <motion.button 
-                onClick={copyToClipboard} 
+              <motion.button
+                onClick={copyToClipboard}
                 className="copybutton"
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {copyUrl ? (
                   <>
-                    <FiCheck className="icon" style={{ color: 'white' }} /> 
+                    <FiCheck className="icon" style={{ color: "white" }} />
                     <span>Copied!</span>
                   </>
                 ) : (
                   <>
-                    <FiLink className="icon" style={{ color: 'white' }} /> 
+                    <FiLink className="icon" style={{ color: "white" }} />
                     <span>Copy Link</span>
                   </>
                 )}
               </motion.button>
-              
+
               {/* Social share buttons */}
               <div className="social-buttons">
-                <motion.button 
+                <motion.button
                   className="share-btn whatsapp"
-                  onClick={() => shareToSocial('whatsapp')}
+                  onClick={() => shareToSocial("whatsapp")}
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaWhatsapp className="icon" style={{ color: 'white' }} />
+                  <FaWhatsapp className="icon" style={{ color: "white" }} />
                 </motion.button>
-                
-                <motion.button 
+
+                <motion.button
                   className="share-btn twitter"
-                  onClick={() => shareToSocial('twitter')}
+                  onClick={() => shareToSocial("twitter")}
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaTwitter className="icon" style={{ color: 'white' }} />
+                  <FaTwitter className="icon" style={{ color: "white" }} />
                 </motion.button>
-                
-                <motion.button 
+
+                <motion.button
                   className="share-btn facebook"
-                  onClick={() => shareToSocial('facebook')}
+                  onClick={() => shareToSocial("facebook")}
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaFacebook className="icon" style={{ color: 'white' }} />
+                  <FaFacebook className="icon" style={{ color: "white" }} />
                 </motion.button>
-                
-                <motion.button 
+
+                <motion.button
                   className="share-btn instagram"
-                  onClick={() => shareToSocial('instagram')}
+                  onClick={() => shareToSocial("instagram")}
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaInstagram className="icon" style={{ color: 'white' }} />
+                  <FaInstagram className="icon" style={{ color: "white" }} />
                 </motion.button>
-                
-                <motion.button 
+
+                <motion.button
                   className="share-btn email"
-                  onClick={() => shareToSocial('email')}
+                  onClick={() => shareToSocial("email")}
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaEnvelope className="icon" style={{ color: 'white' }} />
+                  <FaEnvelope className="icon" style={{ color: "white" }} />
                 </motion.button>
               </div>
             </div>
           </div>
         </motion.div>
+      )}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
       )}
     </div>
   );

@@ -6,7 +6,7 @@
  */
 export const getTokenFromRequest = (req) => {
   // Check cookies first
-  let token = req.cookies?.tokenlogin;
+  let token = req.cookies?.tokenlogin || req.headers.authorization;
   
   // If no cookie, check Authorization header
   if (!token && req.headers.authorization) {

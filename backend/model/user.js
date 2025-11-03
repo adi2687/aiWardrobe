@@ -23,7 +23,10 @@ const userSchema=new mongoose.Schema({
     virtualTryOn:{type:[{
         imageUrl: {type: String, required: true},
         createdAt: {type: Date, default: Date.now}
-    }], default: []}
+    }], default: []} ,
+    
+    selfimages:{type:[String],default:[]} ,
+    selfimagedefault:{type:String,default:""}
 },{timestamps:true})
 
 const User=mongoose.model('User',userSchema)

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Recommendations.css";
 import { FaCloudSun, FaHistory, FaHeart, FaCopy, FaPaperPlane, FaTimes, FaUser } from "react-icons/fa";
 import { getAuthHeaders } from '../../utils/auth';
+import Toast from '../Toast/Toast';
 
 const Recommendations = () => {
   const [clothes, setClothes] = useState([]);
@@ -17,8 +18,13 @@ const Recommendations = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
   const [user, setUser] = useState(null);
   const [skinColor,setskinColor]=useState("")
+  const [toast, setToast] = useState(null);
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_BACKEND_URL;
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+  };
 
   // Fetch user profile and check authentication
   useEffect(() => {
@@ -152,7 +158,7 @@ const Recommendations = () => {
     e.preventDefault();
 
     if (!userInput.trim()) {
-      alert("Please enter a question.");
+      showToast("Please enter a question.", "error");
       return;
     }
 
@@ -168,7 +174,10 @@ const Recommendations = () => {
   const copyToClipboard = (text, index) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedIndex(index);
+      showToast("Copied to clipboard!", "success");
       setTimeout(() => setCopiedIndex(null), 2000);
+    }).catch(() => {
+      showToast("Failed to copy", "error");
     });
   };
 
@@ -200,9 +209,12 @@ const Recommendations = () => {
       .then((response) => response.json())
       .then((data) => {
         // Show feedback that suggestion was saved
-        alert("Suggestion saved to favorites!");
+        showToast("Suggestion saved to favorites!", "success");
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => {
+        console.error("Error:", error);
+        showToast("Failed to save suggestion", "error");
+      });
   };
 
   // Format date
@@ -400,6 +412,13 @@ const Recommendations = () => {
           )}
         </div>
       </div>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </div>
   );
 };

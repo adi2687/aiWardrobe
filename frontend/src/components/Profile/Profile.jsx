@@ -7,7 +7,9 @@ import { IoMdColorPalette } from "react-icons/io";
 import { GiClothes } from "react-icons/gi";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { getAuthHeaders } from '../../utils/auth';
+import { getAuthHeaders } from '../../utils/auth'; 
+import UploadPhoto from './uploadpgoto';
+import ViewUploads from './ViewUploads';
 // No modal import needed
 
 const Profile = () => {
@@ -37,6 +39,8 @@ const Profile = () => {
   const [linkCopied, setLinkCopied] = useState(false);
   const [shareMessage, setShareMessage] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
+  const [uploading, setUploading] = useState(false);
+  const [viewingUploads, setViewingUploads] = useState(false);
   // Profile setup state removed
 
 
@@ -554,7 +558,7 @@ const Profile = () => {
             className="tab-button logout-button"
             onClick={LogOut}
           >
-            <FaSignOutAlt /> Logout
+            <FaSignOutAlt />
           </button>
         </div>
 
@@ -656,6 +660,9 @@ const Profile = () => {
                           <div className="ar-link" onClick={() => navigate('/profile/upload')}>
                             <FaTshirt className="wishlist-icon" /> Upload clothes images
                           </div>
+                           <div className="wishlist-link" onClick={() => setUploading(true)}>
+                            <FaCalendarWeek className="wishlist-icon" /> Upload your photo
+                          </div>
                         </div>
                         <div>
                           <div className="wishlist-link" onClick={() => navigate('/recommendations')}>
@@ -663,11 +670,16 @@ const Profile = () => {
                           </div>
                           <div className="wishlist-link" onClick={() => navigate('/profile/favorites')}>
                             <FaHeart className="wishlist-icon" /> Favourites
+                          </div> 
+                           <div className="wishlist-link" onClick={() => setViewingUploads(true)}>
+                            <FaShoppingCart className="wishlist-icon" /> View Your Uploads
                           </div>
-                        </div>
+                        </div> 
+                        
                       </div>
                     </div>
                   )}
+                  {uploading && <UploadPhoto onClose={() => setUploading(false)} />}
                   {(userdetails.age || userdetails.gender || userdetails.preferences) && (
                     <div className="profile-details-section">
                       <h3 className="profile-details-title">Personal Information</h3>
@@ -1147,6 +1159,7 @@ const Profile = () => {
           )}
         </div>
       </div>
+      {viewingUploads && <ViewUploads onClose={() => setViewingUploads(false)} />}
     </div>
   );
 };

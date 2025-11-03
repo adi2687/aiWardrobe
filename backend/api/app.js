@@ -17,6 +17,7 @@ import ShareRoutes from '../routes/share.js'
 import ShareToSocialRoutes from '../routes/sharetosocial.js'
 import imageGenerateRoute from '../routes/image.js'
 import sharetosocial from '../routes/sharetosocial.js'
+import generateImage from '../routes/generate-image.js'
 import session from "express-session";
 import passport from "passport";
 import path from 'path';
@@ -134,13 +135,34 @@ app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)
 app.use("/facebook",facebookRoutes)
 app.use("/sharetosocial",sharetosocial)
+// generate-image route
+// app.get("/generate-image", async (req, res) => {
+//   try {
+//     const input = req.query.input;
+//     if (!input) return res.status(400).json({ msg: "No input provided" });
+
+//     console.log("Input:", input);
+//     const response = await generateImage(input,req,res);
+//     res.json({ msg: response });
+//   } catch (err) {
+//     console.error("Error generating image:", err);
+//     res.status(500).json({ msg: "Internal server error" });
+//   }
+// });
+app.use("/generate-image",generateImage)
 // User avatar route for 3D model storage
 import UserAvatarRoutes from '../routes/user_avatar.js';
 app.use('/ar', UserAvatarRoutes);
 app.get("/", (req, res) => {
   res.send("This is the main page");
 });
+import uploadselfimages from '../routes/uploadselfimages.js'
+app.use("/uploadselfimages",uploadselfimages)
 
+import getselfimages from '../routes/getselfimages.js'
+app.use("/getselfimages",getselfimages)
+import defaultimage from '../routes/dewfaultimage.js'
+app.use("/defaultimage",defaultimage)
 // import vision from '../genAi.js'
 // app.use('/vision', vision)
 
