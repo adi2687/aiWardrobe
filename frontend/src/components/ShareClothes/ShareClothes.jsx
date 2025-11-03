@@ -334,7 +334,7 @@ const ShareClothes = () => {
       formData.append('image', imageBlob, 'selfimage.jpg');
       formData.append('input', sharecloth);
       formData.append("shareid",id)   
-      
+      formData.append("usercloth",selectedimage)
       
       const res = await fetch(`${apiUrl}/generate-image`, {
         method: "POST",
