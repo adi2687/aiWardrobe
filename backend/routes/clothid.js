@@ -35,7 +35,8 @@ const authenticate = (req, res, next) => {
 };
 
 // POST /classify
-router.post('/classify', authenticate,upload.single('images'), async (req, res) => {
+router.post('/classify',upload.single('images'), async (req, res) => { 
+  console.log('Classifying image');
   const file = req.file;
   if (!file) return res.status(400).json({ error: 'No image uploaded' });
 

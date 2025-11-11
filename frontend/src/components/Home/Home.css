@@ -76,7 +76,8 @@
 @media (max-width: 768px) {
   .container{
     max-height: 400px;
-    min-height: 80px;
+    min-height: 80px; 
+    margin-top:15%;
   }
   .title {
     font-size: 6rem;

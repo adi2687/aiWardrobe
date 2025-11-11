@@ -1,0 +1,305 @@
+/* Outfit AI Design System - Monochrome Futuristic Theme */
+
+/* ============================================
+   1. COLORS - Monochrome Palette
+   ============================================ */
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-900: #111827;
+  --color-gray-800: #1f2937;
+  --color-gray-700: #374151;
+  --color-gray-600: #4b5563;
+  --color-gray-100: #f3f4f6;
+}
+
+/* Background Colors */
+.bg-black { background-color: var(--color-black); }
+.bg-white { background-color: var(--color-white); }
+.bg-gray-900 { background-color: var(--color-gray-900); }
+.bg-gray-800 { background-color: var(--color-gray-800); }
+.bg-gray-700 { background-color: var(--color-gray-700); }
+
+/* Text Colors */
+.text-white { color: var(--color-white); }
+.text-black { color: var(--color-black); }
+.text-gray-600 { color: var(--color-gray-600); }
+
+/* Border Colors */
+.border-gray-600 { border-color: var(--color-gray-600); }
+.border-white { border-color: var(--color-white); }
+.border-black { border-color: var(--color-black); }
+
+/* Hover States */
+.hover\:bg-gray-100:hover { background-color: var(--color-gray-100); }
+.hover\:bg-white:hover { background-color: var(--color-white); }
+.hover\:bg-black:hover { background-color: var(--color-black); }
+.hover\:text-black:hover { color: var(--color-black); }
+.hover\:text-white:hover { color: var(--color-white); }
+
+/* Gradients */
+.bg-gradient-gray {
+  background: linear-gradient(to right, var(--color-gray-900), var(--color-black), var(--color-gray-800));
+}
+
+/* ============================================
+   2. LAYOUT - Flexbox & Grid
+   ============================================ */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+.grid { display: grid; }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+
+/* Spacing */
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.m-2 { margin: 0.5rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-3xl { border-radius: 1.5rem; }
+.rounded-full { border-radius: 9999px; }
+
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+
+/* ============================================
+   3. CARDS & CONTAINERS
+   ============================================ */
+.card {
+  border-radius: 1rem;
+  background-color: var(--color-gray-900);
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.card-white {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+}
+
+.card-black {
+  background-color: var(--color-black);
+  border: 1px solid var(--color-white);
+}
+
+/* ============================================
+   4. BUTTONS - Futuristic Glass Style
+   ============================================ */
+.btn-glass {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-white);
+  background: transparent;
+  color: var(--color-white);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-glass:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.btn-black {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-black);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-black:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.btn-white {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-black);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-white:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+/* ============================================
+   5. NAVBAR / FLOATING MENU - Glassmorphism
+   ============================================ */
+.navbar-blur {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  padding: 0.75rem;
+  display: flex;
+  gap: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-icon {
+  color: var(--color-white);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-icon:hover {
+  color: #60a5fa; /* blue-400 equivalent */
+  text-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
+  transform: scale(1.1);
+}
+
+/* ============================================
+   6. TYPOGRAPHY - Tech Aesthetic
+   ============================================ */
+.font-sans {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.font-semibold { font-weight: 600; }
+.tracking-wide { letter-spacing: 0.025em; }
+
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+
+/* Glow Text Effect */
+.glow-text {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(170, 170, 170, 0.6);
+}
+
+/* ============================================
+   7. ANIMATIONS & TRANSITIONS
+   ============================================ */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Fade In Animation */
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   8. GLASSMORPHISM EFFECTS
+   ============================================ */
+.glass-panel {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-dark {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   9. SCROLLBAR HIDING
+   ============================================ */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================
+   10. UTILITY CLASSES
+   ============================================ */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+
+.fixed { position: fixed; }
+.absolute { position: absolute; }
+.relative { position: relative; }
+
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-50 { z-index: 50; }
+.z-1000 { z-index: 1000; }
+
+.cursor-pointer { cursor: pointer; }
+.user-select-none { user-select: none; }
+
+/* Hover Glow Effect */
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Focus States */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+

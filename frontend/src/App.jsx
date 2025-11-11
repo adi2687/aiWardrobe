@@ -40,7 +40,7 @@ import DataDeletion from './components/Policies/DataDeletion'
 import PoliciesHub from './components/Policies/PoliciesHub'
 import { useLocation } from 'react-router-dom'; 
 import logo from '../public/logo_main.png'
-import CardNav from './components/Wishlist/newNav/main'
+import CardNav from './components/newNav/main'
 // import News from './components/profile/News/CelebrityNews'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
@@ -112,7 +112,7 @@ const App = () => {
       textColor: '#ffffff',
       links: [
         { label: 'Profile', href: '/profile', ariaLabel: 'Contact me' },
-        { label: 'Favourites', href: '/profile/favorites', ariaLabel: 'View social links' }
+        { label: 'Favorites', href: '/profile/favorites', ariaLabel: 'View social links' }
       ]
     }
   ]
