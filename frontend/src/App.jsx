@@ -38,7 +38,9 @@ import PrivacyPolicy from './components/Policies/PrivacyPolicy'
 import TermsOfService from './components/Policies/TermsOfService'
 import DataDeletion from './components/Policies/DataDeletion'
 import PoliciesHub from './components/Policies/PoliciesHub'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'; 
+import logo from '/logo_main.png'
+import CardNav from './components/Wishlist/newNav/main'
 // import News from './components/profile/News/CelebrityNews'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
@@ -84,11 +86,47 @@ const App = () => {
   const handleIntroComplete = () => {
     setShowIntro(false);
     localStorage.setItem('introComplete', 'true');
-  };
+  }; 
+  const navItems = [
+    {
+      label: 'About',
+      bgColor: '#1a1a1a',
+      textColor: '#ffffff',
+      links: [
+        { label: 'Skills', href: '#about', ariaLabel: 'View my skills' },
+        { label: 'Experience', href: '#experience', ariaLabel: 'View my experience' }
+      ]
+    },
+    {
+      label: 'Projects',
+      bgColor: '#2a2a2a',
+      textColor: '#ffffff',
+      links: [
+        { label: 'Featured', href: '#projects', ariaLabel: 'View featured projects' },
+        { label: 'All Projects', href: '#allprojects', ariaLabel: 'View all projects' }
+      ]
+    },
+    {
+      label: 'Contact',
+      bgColor: '#3a3a3a',
+      textColor: '#ffffff',
+      links: [
+        { label: 'Get in Touch', href: '#contact', ariaLabel: 'Contact me' },
+        { label: 'Social Links', href: '#socialLinks', ariaLabel: 'View social links' }
+      ]
+    }
+  ]
   return (
     <>    
       {showIntro && <Intro onComplete={handleIntroComplete} />}
-      <Navbar /> {/* Always visible */}
+      {/* <Navbar />  */}
+      <CardNav 
+      items={navItems}
+      logo={logo}
+      baseColor="#000000"
+        menuColor="#ffffff"
+        buttonBgColor="#ffffff"
+        buttonTextColor="#000000"/> {/* Always visible */}
       <ChatButton />  
       <Routes> 
         <Route path="/" element={<Homepage />} />
