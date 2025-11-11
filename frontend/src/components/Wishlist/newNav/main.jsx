@@ -3,7 +3,8 @@ import { gsap } from 'gsap';
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from 'react-icons/go';
 import './CardNav.css';
-
+import {useLocation} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 const CardNav = ({
   logo,
   logoAlt = 'Logo',
@@ -19,8 +20,9 @@ const CardNav = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const navRef = useRef(null);
   const cardsRef = useRef([]);
-  const tlRef = useRef(null);
-
+  const tlRef = useRef(null); 
+  const location = useLocation(); 
+  const navigate = useNavigate();
   const calculateHeight = () => {
     const navEl = navRef.current;
     if (!navEl) return 260;
@@ -133,6 +135,10 @@ const CardNav = ({
     if (el) cardsRef.current[i] = el;
   };
 
+  if (location.pathname !== '/') {
+    return null;
+  } 
+  const isloggesin = localStorage.getItem('tokenlogin');
   return (
     <div className={`card-nav-container ${className}`}>
       <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
@@ -156,9 +162,10 @@ const CardNav = ({
           <button
             type="button"
             className="card-nav-cta-button"
-            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }} 
+            onClick={() => {isloggesin ? navigate('/profile') : navigate('/auth')}}
           >
-            Get Started
+            {isloggesin ? 'Profile' : 'Login / Signup'}
           </button>
         </div>
 

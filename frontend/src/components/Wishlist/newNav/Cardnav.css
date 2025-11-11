@@ -1,12 +1,15 @@
 .card-nav-container {
   position: absolute;
-  top: 2em;
+  top: 1em;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   max-width: 800px;
   z-index: 99;
-  box-sizing: border-box;
+  box-sizing: border-box; 
+  position: fixed;
+  min-width: 60%;
+
 }
 
 .card-nav {
@@ -19,8 +22,8 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
-  will-change: height;
-  border:3px solid red;
+  will-change: height; 
+  /* border:3px solid red; */
 
 }
 
@@ -34,7 +37,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 0.45rem 0.55rem 1.1rem;
-  z-index: 2;
+  z-index: 2;  
+  position: absolute;
 }
 
 .hamburger-menu {
@@ -114,7 +118,10 @@
   gap: 12px;
   visibility: hidden;
   pointer-events: none;
-  z-index: 1;
+  z-index: 1; 
+  margin-top:50px;
+  /* border:3px solid green;  */
+
 }
 
 .card-nav.open .card-nav-content {
