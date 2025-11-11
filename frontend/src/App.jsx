@@ -16,7 +16,6 @@ import Footer from "./components/Footer/Footer";
 import Recommendations from "./components/Recommendations/Recommendations";
 import Chatbot from './components/Chatbot/Chatbot'
 import ChatButton from "./components/ChatButton/ChatButton";
-import CelebrityNews from "./components/Profile/News/CelebrityNews";
 import SellCloth from './components/Sellcloth/Sellcloth'
 import Message from './components/message/message'
 import Planner from './components/Planner/Planner'
@@ -143,7 +142,7 @@ const App = () => {
         <Route path="/ar-preview" element={<AR />} />
         <Route path='/recommendations' element={<Recommendations />} />
         <Route path='/chatbot' element={<Chatbot />} />
-        <Route path='/celebrity-news' element={<CelebrityNews />} />
+        {/* <Route path='/celebrity-news' element={<CelebrityNews />} /> */}
         <Route path='/sellcloth' element={<SellCloth />} />
         <Route path='/message/:username/:id' element={<Message />} />
         <Route path='/planner' element={<Planner />} />
