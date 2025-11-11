@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from 'react-icons/go';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './CardNav.css';
+import './newNav.css';
 const CardNav = ({
     logo,
     logoAlt = 'Logo',

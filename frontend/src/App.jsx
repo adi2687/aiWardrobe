@@ -39,8 +39,8 @@ import DataDeletion from './components/Policies/DataDeletion'
 import PoliciesHub from './components/Policies/PoliciesHub'
 import { useLocation } from 'react-router-dom'; 
 import logo from '../public/logo_main.png'
-import CardNav from './components/newNav/main'
-// import News from './components/profile/News/CelebrityNews'
+import CardNav from './components/newNav/main' 
+
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
  const location = useLocation();

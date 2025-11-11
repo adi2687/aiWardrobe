@@ -13,26 +13,23 @@ const upload = multer();
 // Initialize OpenRouter client (using OpenAI SDK with OpenRouter endpoint)
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY || "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",
-  defaultHeaders: {
-    "HTTP-Referer": process.env.SITE_URL || "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
-    "X-Title": process.env.SITE_NAME || "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
-  },
+  apiKey: process.env.OPENROUTER_API_KEY,
+  
 });
 
 // Authentication middleware
-const authenticate = (req, res, next) => {
-  const token = getTokenFromRequest(req);
-  if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
+// const authenticate = (req, res, next) => {
+//   const token = getTokenFromRequest(req);
+//   if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
 
-  try {
-    const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = decoded;
-    next();
-  } catch (err) {
-    res.status(401).json({ msg: 'Token is not valid' });
-  }
-};
+//   try {
+//     const decoded = jwt.verify(token, process.env.SECRET_KEY);
+//     req.user = decoded;
+//     next();
+//   } catch (err) {
+//     res.status(401).json({ msg: 'Token is not valid' });
+//   }
+// };
 
 // POST /classify
 router.post('/classify',upload.single('images'), async (req, res) => { 

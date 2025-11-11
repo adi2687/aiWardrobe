@@ -2048,6 +2048,8 @@ height:50px
   border: 1px solid rgba(106, 17, 203, 0.15);
   color: #fff;
   font-weight: 500;
+  max-height: 50px;
+  min-height: 40px;
 }
 
 .wishlist-link:hover {
@@ -2056,8 +2058,9 @@ height:50px
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.wishlist-icon {
-  color: white;
+.wishlist-link .wishlist-icon,
+.ar-link .wishlist-icon {
+  color: #000000;
   font-size: 18px;
 }
 @media (max-width: 768px) {
