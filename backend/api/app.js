@@ -136,6 +136,12 @@ app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)
 // app.use("/facebook",facebookRoutes)
 app.use("/sharetosocial",sharetosocial)
+
+app.get("/checkcookies", (req, res) => {
+  console.log("Cookies:", req.cookies);
+  res.json(req.cookies);
+});
+
 // generate-image route
 // app.get("/generate-image", async (req, res) => {
 //   try {
