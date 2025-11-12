@@ -5,7 +5,8 @@ const Export = ({
     
 }) => {
 
-    const [items,setItems] = useState([]); 
+    const [items,setItems] = useState([]);
+    const [loading,setLoading] = useState(true); 
     const apiurl = import.meta.env.VITE_BACKEND_URL;
     const getfromapi =async ()=>{
         const response = await fetch(`${apiurl}/menuimages`, { 
@@ -26,6 +27,7 @@ const Export = ({
             }
         })
         setItems(setimages);
+        setLoading(false);
     }
     useEffect(()=>{
         getfromapi();
@@ -42,7 +44,7 @@ const Export = ({
     //   ];
     return (
         <div style={{ height: '600px', position: 'relative' }}> 
-            <InfiniteMenu items={items} />
+            {loading ? <div>Loading...</div> : <InfiniteMenu items={items} />}
             {/* {JSON.stringify(items)} */}
         </div>
     )

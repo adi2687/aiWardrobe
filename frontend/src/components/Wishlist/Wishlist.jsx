@@ -309,14 +309,14 @@ const Wishlist = () => {
                   <div className="wishlist-card-header">
                     <span className="date-added">Added on {dateAdded}</span>
                     <div className="card-actions">
-                      <button 
-                        className="action-button share-button" 
+                      {/* <button 
+                        className=" share-button" 
                         aria-label="Share item"
                       >
                         <FaShareAlt />
-                      </button>
+                      </button> */}
                       <button 
-                        className="action-button remove-button" 
+                        className=" remove-button" 
                         onClick={() => removeFromWishlist(_id)}
                         aria-label="Remove from wishlist"
                       >

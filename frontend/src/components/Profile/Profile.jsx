@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import "./Profile.css";
-import { FaUser, FaShoppingCart, FaHeart, FaSignOutAlt, FaCog, FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash, FaShareAlt, FaCopy, FaCheck, FaTimes, FaCamera, FaUpload, FaPalette, FaTshirt, FaRedo, FaMagic, FaSave, FaCloudUploadAlt, FaSyncAlt, FaExclamationCircle, FaQuestionCircle, FaInfoCircle, FaSpinner, FaCalendarAlt, FaCalendarCheck, FaCalendarPlus, FaCalendarTimes, FaCalendarWeek, FaListAlt, FaThList,FaLightbulb,FaWarehouse, FaWhatsapp, FaFacebook, FaInstagram, FaClipboard, FaShare   } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaHeart, FaSignOutAlt, FaLink , FaCog, FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash, FaShareAlt, FaCopy, FaCheck, FaTimes, FaCamera, FaUpload, FaPalette, FaTshirt, FaRedo, FaMagic, FaSave, FaCloudUploadAlt, FaSyncAlt, FaExclamationCircle, FaQuestionCircle, FaInfoCircle, FaSpinner, FaCalendarAlt, FaCalendarCheck, FaCalendarPlus, FaCalendarTimes, FaCalendarWeek, FaListAlt, FaThList,FaLightbulb,FaWarehouse, FaWhatsapp, FaFacebook, FaInstagram, FaClipboard, FaShare, FaImage   } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import { IoMdColorPalette } from "react-icons/io";
 import { GiClothes } from "react-icons/gi";
@@ -260,7 +260,8 @@ const Profile = () => {
       headers: getAuthHeaders(),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then((data) => { 
+        console.log(data)
         setFavourites(data.favourites || []);
         setClothesForWeek(data.clothforweek || "");
         if (shouldShow) {
@@ -325,15 +326,52 @@ const Profile = () => {
     }
   };
 
-  const copyToClipboard = () => {
-    if (sharecloths) {
-      navigator.clipboard.writeText(sharecloths);
+  const copyToClipboard = async () => {
+    if (!sharecloths) {
+      showNotification("No link available to copy");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(sharecloths);
       setLinkCopied(true);
-      // setShareMessage("Link copied to clipboard!");  
       setTimeout(() => {
         setLinkCopied(false);
         setShareMessage("");
       }, 2000);
+      
+      // Scroll to share link container
+      const shareLinkElement = document.getElementById('shareLink');
+      if (shareLinkElement) {
+        shareLinkElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } catch (error) {
+      console.error("Failed to copy to clipboard:", error);
+      // Fallback for older browsers
+      try {
+        const textArea = document.createElement("textarea");
+        textArea.value = sharecloths;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        setLinkCopied(true);
+        setTimeout(() => {
+          setLinkCopied(false);
+          setShareMessage("");
+        }, 2000);
+        
+        // Scroll to share link container
+        const shareLinkElement = document.getElementById('shareLink');
+        if (shareLinkElement) {
+          shareLinkElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } catch (fallbackError) {
+        console.error("Fallback copy failed:", fallbackError);
+        showNotification("Failed to copy link. Please copy manually.");
+      }
     }
   };
 
@@ -674,7 +712,7 @@ const Profile = () => {
                             <FaTshirt className="wishlist-icon" /> Upload clothes images
                           </div>
                            <div className="wishlist-link" onClick={() => setUploading(true)}>
-                            <FaCalendarWeek className="wishlist-icon" /> Upload your photo
+                            <FaUpload className="wishlist-icon" /> Upload your photo
                           </div>
                         </div>
                         <div>
@@ -685,7 +723,7 @@ const Profile = () => {
                             <FaHeart className="wishlist-icon" /> Favourites
                           </div> 
                            <div className="wishlist-link" onClick={() => setViewingUploads(true)}>
-                            <FaShoppingCart className="wishlist-icon" /> View Your Uploads
+                            <FaImage className="wishlist-icon" /> View Your Uploads
                           </div>
                         </div> 
                         
@@ -855,7 +893,7 @@ const Profile = () => {
                 <div className="empty-state">
                   <p>You haven't saved any favorite outfits yet.</p>
                   <button
-                    className="action-button"
+                    className="weekbutton"
                     onClick={navigateToRecommendations}
                   >
                     <FaLightbulb /> Get Outfit Recommendations
@@ -864,7 +902,7 @@ const Profile = () => {
               )}
 
               {sharecloths && (
-                <div className="share-link-container">
+                <div className="share-link-container" id="shareLink">
                   <div className="share-header">
                     <h3>Share Your Outfit</h3>
                     <button
@@ -921,7 +959,7 @@ const Profile = () => {
                 <h2><FaCalendarWeek className="section-icon" /> Weekly Outfit Planning</h2>
                 <div className="weekly-actions">
                   <button
-                    className="action-button toggle-button"
+                    className="weekbutton"
                     onClick={toggleClothesForWeek}
                   >
                     {isVisible ? (
@@ -935,7 +973,7 @@ const Profile = () => {
                     )}
                   </button>
                   <button
-                    className="action-button primary-button"
+                    className="weekbutton"
                     onClick={navigateToPlanner}
                   >
                     <FaCalendarWeek /> Plan Your Week
@@ -1010,8 +1048,11 @@ const Profile = () => {
                             const trimmedLine = line.trim();
                             if (!trimmedLine) return;
 
-                            // Match date patterns like "2025-06-05" or "2025-06-06 - 2025-06-11"
-                            const dateMatch = trimmedLine.match(/^(\d{4}-\d{2}-\d{2})(?:\s*-\s*(\d{4}-\d{2}-\d{2}))?:\s*(.+)/);
+                            // Match date patterns like:
+                            // "2025-11-12 (Wednesday): T-shirt, Jeans..."
+                            // "2025-06-05: Outfit details"
+                            // "2025-06-06 - 2025-06-11: Outfit details"
+                            const dateMatch = trimmedLine.match(/^(\d{4}-\d{2}-\d{2})(?:\s*\([^)]+\))?(?:\s*-\s*(\d{4}-\d{2}-\d{2}))?:\s*(.+)/);
 
                             if (dateMatch) {
                               const [_, startDate, endDate, outfitDetails] = dateMatch;
@@ -1041,20 +1082,106 @@ const Profile = () => {
                             ? formatDate(outfit.startDate)
                             : `${formatDate(outfit.startDate)} - ${formatDate(outfit.endDate)}`;
 
+                          // Function to get emoji for clothing item
+                          const getClothingEmoji = (item) => {
+                            const lowerItem = item.toLowerCase();
+                            
+                            // Tops
+                            if (lowerItem.includes('shirt') || lowerItem.includes('t-shirt') || lowerItem.includes('tshirt')) return '👕';
+                            if (lowerItem.includes('blouse')) return '👔';
+                            if (lowerItem.includes('sweater') || lowerItem.includes('cardigan')) return '🧥';
+                            if (lowerItem.includes('hoodie')) return '👕';
+                            if (lowerItem.includes('tank top') || lowerItem.includes('crop top')) return '👚';
+                            
+                            // Bottoms
+                            if (lowerItem.includes('jeans')) return '👖';
+                            if (lowerItem.includes('pants') || lowerItem.includes('trousers')) return '👖';
+                            if (lowerItem.includes('shorts')) return '🩳';
+                            if (lowerItem.includes('skirt')) return '👗';
+                            if (lowerItem.includes('leggings')) return '🩱';
+                            
+                            // Dresses
+                            if (lowerItem.includes('dress')) return '👗';
+                            
+                            // Footwear
+                            if (lowerItem.includes('sneakers') || lowerItem.includes('sneaker')) return '👟';
+                            if (lowerItem.includes('shoes') || lowerItem.includes('shoe')) return '👞';
+                            if (lowerItem.includes('boots') || lowerItem.includes('boot')) return '👢';
+                            if (lowerItem.includes('heels') || lowerItem.includes('heel')) return '👠';
+                            if (lowerItem.includes('sandals') || lowerItem.includes('sandal')) return '🩴';
+                            if (lowerItem.includes('flats') || lowerItem.includes('flat')) return '🥿';
+                            
+                            // Outerwear
+                            if (lowerItem.includes('jacket')) return '🧥';
+                            if (lowerItem.includes('coat')) return '🧥';
+                            if (lowerItem.includes('blazer')) return '👔';
+                            
+                            // Accessories
+                            if (lowerItem.includes('watch')) return '⌚';
+                            if (lowerItem.includes('glasses') || lowerItem.includes('sunglasses')) return '👓';
+                            if (lowerItem.includes('hat') || lowerItem.includes('cap')) return '🧢';
+                            if (lowerItem.includes('bag') || lowerItem.includes('purse')) return '👜';
+                            if (lowerItem.includes('belt')) return '👔';
+                            if (lowerItem.includes('scarf')) return '🧣';
+                            if (lowerItem.includes('necklace')) return '💎';
+                            if (lowerItem.includes('bracelet')) return '💍';
+                            if (lowerItem.includes('ring')) return '💍';
+                            
+                            // Default
+                            return '👔';
+                          };
+
+                          // Parse outfit details - split by periods first, then by commas
+                          const parseOutfitDetails = (details) => {
+                            // Split by periods to separate main items from optional items
+                            const parts = details.split('.');
+                            const mainItems = [];
+                            const optionalItems = [];
+                            
+                            parts.forEach(part => {
+                              const trimmed = part.trim();
+                              if (!trimmed) return;
+                              
+                              if (trimmed.includes('(Optional:')) {
+                                // Extract optional items
+                                const optionalMatch = trimmed.match(/\(Optional:\s*(.+)\)/);
+                                if (optionalMatch) {
+                                  optionalItems.push(optionalMatch[1].trim());
+                                }
+                              } else {
+                                // Main items - split by comma
+                                const items = trimmed.split(',').map(item => item.trim()).filter(item => item);
+                                mainItems.push(...items);
+                              }
+                            });
+                            
+                            return { mainItems, optionalItems };
+                          };
+
+                          const { mainItems, optionalItems } = parseOutfitDetails(outfit.details);
+
                           return (
                             <div className="day-outfit-card" key={index}>
-
                               <div className="day-header">{dateRange}</div>
                               <div className="outfit-details">
                                 <div className="outfit-items">
-                                  {outfit.details.split(',').map((item, idx) => (
+                                  {mainItems.map((item, idx) => (
                                     <p key={idx} className="outfit-item">
-                                      {item.trim()}
-                                      {/* {item.trim()} */}
+                                      <span className="outfit-emoji">{getClothingEmoji(item)}</span>
+                                      <span className="outfit-text">{item}</span>
                                     </p>
-
                                   ))}
-                                  {/* {outfit.details} */}
+                                  {optionalItems.length > 0 && (
+                                    <div className="optional-items">
+                                      <p className="optional-label">Optional:</p>
+                                      {optionalItems.map((item, idx) => (
+                                        <p key={idx} className="outfit-item optional">
+                                          <span className="outfit-emoji">{getClothingEmoji(item)}</span>
+                                          <span className="outfit-text">{item}</span>
+                                        </p>
+                                      ))}
+                                    </div>
+                                  )}
                                   <div className="weeklybuttons">
                                     <button onClick={() => previewOutfit(outfit.details)} className="previewbuttonweekly">Preview</button>
                                     <button onClick={() => SharetoFriends(outfit.details)} className="previewbuttonweekly">Share</button>
@@ -1072,7 +1199,7 @@ const Profile = () => {
                       <h3>No Weekly Plan Yet</h3>
                       <p>Create a personalized outfit plan for your entire week.</p>
                       <button
-                        className="action-button primary-button"
+                        className="weekbutton"
                         onClick={navigateToPlanner}
                       >
                         <FaCalendarWeek /> Create Weekly Plan

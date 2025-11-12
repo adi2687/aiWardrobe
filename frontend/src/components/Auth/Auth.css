@@ -19,14 +19,15 @@
 }
 
 .auth-container {
-  min-height: 100vh;
+  max-height: 45vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #121212, #1a1a1a);
+  /* background: linear-gradient(135deg, #121212, #1a1a1a); */
   font-family: 'Poppins', 'Segoe UI', sans-serif;
   padding: 1rem;
-  color: var(--text-color);
+  color: var(--text-color); 
+  margin-top:25vh;
 }
 
 .auth-wrapper {

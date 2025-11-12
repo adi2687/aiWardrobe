@@ -1258,7 +1258,11 @@ height:50px
 
 /* Favorites Section */
 .profile-container .favorites-section {
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.5s ease; 
+  /* border:3px solid red; */
+  max-height: 50vh;
+  overflow-y: auto; 
+  
 }
 
 .profile-container .favorites-section h2 {
@@ -1567,6 +1571,7 @@ height:50px
   font-size: 0.95rem;
   background-color: rgba(42, 42, 42, 0.8);
   color: #ddd;
+  display: none;
 }
 
 .action-button:hover {
@@ -1578,6 +1583,7 @@ height:50px
 .action-button.primary-button {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
+
 }
 
 .action-button.primary-button:hover {
@@ -1661,11 +1667,51 @@ height:50px
   color: #ddd;
   line-height: 1.5;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.outfit-emoji {
+  font-size: 1.25rem;
+  display: inline-block;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.outfit-text {
+  flex: 1;
 }
 
 .outfit-item:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateX(5px);
+}
+
+.optional-items {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.optional-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.outfit-item.optional {
+  background: rgba(75, 85, 99, 0.2);
+  color: #9ca3af;
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.outfit-item.optional:hover {
+  background: rgba(75, 85, 99, 0.3);
+  color: #d1d5db;
 }
 
 .loading-indicator {
@@ -1716,7 +1762,17 @@ height:50px
   font-size: 1.1rem;
   line-height: 1.6;
 }
-
+.weekbutton{
+  padding:10px;
+  border-radius: 10px;
+  font-weight: bold;
+  border:none;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
 @media (max-width: 768px) {
   .weekly-section {
     padding: 1.5rem;
@@ -2060,8 +2116,8 @@ height:50px
 
 .wishlist-link .wishlist-icon,
 .ar-link .wishlist-icon {
-  color: #000000;
-  font-size: 18px;
+  color: white;
+  font-size: 23px;
 }
 @media (max-width: 768px) {
   .wishlist-link {

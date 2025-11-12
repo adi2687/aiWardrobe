@@ -1720,3 +1720,32 @@
 2025-06-06 12:59:48,814 - myntra - INFO - Product 49: Pure Cotton Formal Shirt... | Price: Rs. 1274
 2025-06-06 12:59:48,818 - myntra - INFO - Product 50: Men Casual Cotton Shirt... | Price: Rs. 2089
 2025-06-06 12:59:48,819 - myntra - INFO - Successfully scraped 40 products from Myntra
+2025-11-12 21:54:42,222 - myntra - INFO - Scraping Myntra for query: Styles for Male
+2025-11-12 21:54:46,371 - myntra - ERROR - Unexpected error scraping Myntra: File is not a zip file
+Traceback (most recent call last):
+  File "C:\Users\Aditya Kurani\Desktop\aiWardrobe\aiWardrobe\ml\myntra.py", line 83, in scrape_myntra
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aditya Kurani\AppData\Local\Programs\Python\Python312\Lib\site-packages\webdriver_manager\chrome.py", line 40, in install
+    driver_path = self._get_driver_binary_path(self.driver)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aditya Kurani\AppData\Local\Programs\Python\Python312\Lib\site-packages\webdriver_manager\core\manager.py", line 41, in _get_driver_binary_path
+    binary_path = self._cache_manager.save_file_to_cache(driver, file)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aditya Kurani\AppData\Local\Programs\Python\Python312\Lib\site-packages\webdriver_manager\core\driver_cache.py", line 54, in save_file_to_cache
+    files = self.unpack_archive(archive, path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aditya Kurani\AppData\Local\Programs\Python\Python312\Lib\site-packages\webdriver_manager\core\driver_cache.py", line 49, in unpack_archive
+    return self._file_manager.unpack_archive(archive, path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aditya Kurani\AppData\Local\Programs\Python\Python312\Lib\site-packages\webdriver_manager\core\file_manager.py", line 57, in unpack_archive
+    return self.__extract_zip(archive_file, target_dir)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aditya Kurani\AppData\Local\Programs\Python\Python312\Lib\site-packages\webdriver_manager\core\file_manager.py", line 63, in __extract_zip
+    archive = zip_class(archive_file.file_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aditya Kurani\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py", line 1349, in __init__
+    self._RealGetContents()
+  File "C:\Users\Aditya Kurani\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py", line 1416, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
