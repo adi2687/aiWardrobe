@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 import UserRoutes from '../routes/user_routes.js';
 import AuthRoutes from '../routes/auth_routes.js';
 import GoogleLoginRoutes from '../routes/auth.google.js';
-// import facebookRoutes from '../routes/auth.facebook.js'
+import facebookRoutes from '../routes/auth.facebook.js'
 import PasswordResetRoutes from '../routes/password_reset.js';
 import ShopRoutes from '../routes/shop.routes.js';
 import Chatbot from '../routes/chat.js';
@@ -38,7 +38,9 @@ const expandedAllowedOrigins = [
   'https://outfit-ai.vercel.app',
   'https://ai-wardrobe.vercel.app',
   'https://ai-wardrobe-gamma.vercel.app',
-  'https://ai-wardrobe-ten.vercel.app'
+  'https://ai-wardrobe-ten.vercel.app',
+  'http://*:5173',
+  'http://192.168.108.14:5173'
 ];
 
 const app = express();
@@ -134,7 +136,7 @@ app.use("/password", PasswordResetRoutes);
 app.use("/shop", ShopRoutes);
 app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)
-// app.use("/facebook",facebookRoutes)
+app.use("/facebook",facebookRoutes)
 app.use("/sharetosocial",sharetosocial)
 
 app.get("/checkcookies", (req, res) => {
