@@ -264,6 +264,7 @@ const Profile = () => {
       .then((response) => response.json())
       .then((data) => { 
         console.log(data)
+        // reversing it 
         setFavourites(data.favourites.reverse() || []);
         setClothesForWeek(data.clothforweek || "");
         if (shouldShow) {
