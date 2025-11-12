@@ -37,7 +37,7 @@ passport.use(
             profileImageURL: profilePicture
           });
           await user.save();
-          
+
           // Send welcome email to new user
           try {
             await sendWelcomeEmail(email, profile.displayName);
@@ -94,16 +94,25 @@ router.get(
       { expiresIn: "24h" }
     );
     console.log('Setting token in Google OAuth:', token)
-    
+
     // Note: Cookies don't work in OAuth redirect chains due to browser security policies
     // We pass the token via URL parameter instead, which is the recommended approach for serverless/Vercel
-    
+
     // Check if this is a new user (just created) to determine if we should show intro
     const isNewUser = req.user.createdAt && (new Date() - new Date(req.user.createdAt) < 60000);
-    
+
     // Redirect to home page with token in URL
     // Frontend will extract this token and store it in localStorage
-    res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}&tokenlogin=${token}`);
+    res.cookie("tokenlogin", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      path: "/",
+    });
+    
+    setTimeout(() => {
+      res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}`);
+    }, 1000);
     // This will be caught by the App.jsx useEffect that checks for intro completion
   }
 );
