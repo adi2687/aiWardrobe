@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 import UserRoutes from '../routes/user_routes.js';
 import AuthRoutes from '../routes/auth_routes.js';
 import GoogleLoginRoutes from '../routes/auth.google.js';
-import facebookRoutes from '../routes/auth.facebook.js'
+// import facebookRoutes from '../routes/auth.facebook.js'
 import PasswordResetRoutes from '../routes/password_reset.js';
 import ShopRoutes from '../routes/shop.routes.js';
 import Chatbot from '../routes/chat.js';
@@ -21,6 +21,7 @@ import generateImage from '../routes/generate-image.js'
 import session from "express-session";
 import passport from "passport";
 import path from 'path';
+import { fileURLToPath } from 'url';
 import cors from 'cors';
 import connectCloudinary from '../db/cloudinary.js'
 dotenv.config();
@@ -133,7 +134,7 @@ app.use("/password", PasswordResetRoutes);
 app.use("/shop", ShopRoutes);
 app.use("/share", ShareRoutes);
 app.use("/imagegenerate",imageGenerateRoute)
-app.use("/facebook",facebookRoutes)
+// app.use("/facebook",facebookRoutes)
 app.use("/sharetosocial",sharetosocial)
 // generate-image route
 // app.get("/generate-image", async (req, res) => {
@@ -154,7 +155,12 @@ app.use("/generate-image",generateImage)
 import UserAvatarRoutes from '../routes/user_avatar.js';
 app.use('/ar', UserAvatarRoutes);
 app.get("/", (req, res) => {
-  res.send("This is the main page");
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  // Go up from api/ to backend/, then to status-check.html
+  const filePath = path.join(__dirname, '..', 'status-check.html');
+  res.sendFile(filePath);
+  // res.send("This is the main page");
 });
 import uploadselfimages from '../routes/uploadselfimages.js'
 app.use("/uploadselfimages",uploadselfimages)

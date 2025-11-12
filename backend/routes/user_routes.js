@@ -12,8 +12,8 @@ import { fileURLToPath } from 'url';
 import { getTokenFromRequest } from '../utils/tokenHelper.js';
 dotenv.config() 
 const authenticate = (req, res, next) => {
-  const token = getTokenFromRequest(req);
-  
+  const token =  req.cookies.tokenlogin || req.headers.authorization;
+  console.log("token",token)
   if (!token) {
     return res.status(401).json({ msg: "No token, authorization denied" });
   }
