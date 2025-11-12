@@ -10,6 +10,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { getAuthHeaders } from '../../utils/auth'; 
 import UploadPhoto from './uploadpgoto';
 import ViewUploads from './ViewUploads';
+import Toast from '../Toast/Toast';
 // No modal import needed
 
 const Profile = () => {
@@ -41,6 +42,7 @@ const Profile = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null); // Track authentication status
   const [uploading, setUploading] = useState(false);
   const [viewingUploads, setViewingUploads] = useState(false);
+  const [toast, setToast] = useState(null);
   // Profile setup state removed
 
 
@@ -262,7 +264,7 @@ const Profile = () => {
       .then((response) => response.json())
       .then((data) => { 
         console.log(data)
-        setFavourites(data.favourites || []);
+        setFavourites(data.favourites.reverse() || []);
         setClothesForWeek(data.clothforweek || "");
         if (shouldShow) {
           setIsVisible(true);
@@ -326,31 +328,36 @@ const Profile = () => {
     }
   };
 
-  const copyToClipboard = async () => {
-    if (!sharecloths) {
-      showNotification("No link available to copy");
+  const copyToClipboard = async (textToCopy = null) => {
+    const text = textToCopy || sharecloths;
+    
+    if (!text) {
+      showToast("No content available to copy", "error");
       return;
     }
 
     try {
-      await navigator.clipboard.writeText(sharecloths);
+      await navigator.clipboard.writeText(text);
       setLinkCopied(true);
+      showToast(textToCopy ? "Outfit copied to clipboard!" : "Link copied to clipboard!", "success");
       setTimeout(() => {
         setLinkCopied(false);
         setShareMessage("");
       }, 2000);
       
-      // Scroll to share link container
-      const shareLinkElement = document.getElementById('shareLink');
-      if (shareLinkElement) {
-        shareLinkElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Only scroll to share link container if copying sharecloths (not when copying outfit directly)
+      if (!textToCopy && sharecloths) {
+        const shareLinkElement = document.getElementById('shareLink');
+        if (shareLinkElement) {
+          shareLinkElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       }
     } catch (error) {
       console.error("Failed to copy to clipboard:", error);
       // Fallback for older browsers
       try {
         const textArea = document.createElement("textarea");
-        textArea.value = sharecloths;
+        textArea.value = text;
         textArea.style.position = "fixed";
         textArea.style.left = "-999999px";
         document.body.appendChild(textArea);
@@ -358,19 +365,22 @@ const Profile = () => {
         document.execCommand("copy");
         document.body.removeChild(textArea);
         setLinkCopied(true);
+        showToast(textToCopy ? "Outfit copied to clipboard!" : "Link copied to clipboard!", "success");
         setTimeout(() => {
           setLinkCopied(false);
           setShareMessage("");
         }, 2000);
         
-        // Scroll to share link container
-        const shareLinkElement = document.getElementById('shareLink');
-        if (shareLinkElement) {
-          shareLinkElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Only scroll to share link container if copying sharecloths (not when copying outfit directly)
+        if (!textToCopy && sharecloths) {
+          const shareLinkElement = document.getElementById('shareLink');
+          if (shareLinkElement) {
+            shareLinkElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
         }
       } catch (fallbackError) {
         console.error("Fallback copy failed:", fallbackError);
-        showNotification("Failed to copy link. Please copy manually.");
+        showToast("Failed to copy. Please copy manually.", "error");
       }
     }
   };
@@ -496,6 +506,10 @@ const Profile = () => {
   const showNotification = (message) => {
     // Simple alert for now, could be replaced with a nicer notification system
     alert(message);
+  };
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
   };
 
   // Navigation functions
@@ -862,14 +876,15 @@ const Profile = () => {
                 <div className="favorites-list">
                   {favourites.map((outfit, index) => (
                     <div key={index} className="favorite-item">
-                      <p className="favorite-description">{outfit}</p>
+                      <p className="favorite-description-text">{outfit}</p>
                       <div className="favorite-actions">
                         <button
                           className="favorite-action-button"
-                          onClick={() => SharetoFriends(outfit)}
+                          // onClick={() => SharetoFriends(outfit)} 
+                          onClick={() => copyToClipboard(outfit)}
                           title="Share outfit"
                         >
-                          <FaShare />
+                          <FaClipboard/>
                         </button>
                         <button
                           className="favorite-action-button"
@@ -1300,6 +1315,13 @@ const Profile = () => {
         </div>
       </div>
       {viewingUploads && <ViewUploads onClose={() => setViewingUploads(false)} />}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </div>
   );
 };

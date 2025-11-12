@@ -37,7 +37,7 @@ const Recommendations = () => {
       .then((data) => {
         if (data.message === "Success") {
           setUser(data.user);
-          console.log('a', data.user);
+          console.log('user info', data.user);
           setIsAuthenticated(true);
           fetchUserClothes(); // Only fetch clothes if authenticated
         } else {
@@ -49,7 +49,7 @@ const Recommendations = () => {
         console.error("Error fetching profile:", error);
         setIsAuthenticated(false);
       });
-  }, [apiUrl]);
+  }, []);
 
   const fetchUserClothes = async () => {
     try {
@@ -130,12 +130,12 @@ const Recommendations = () => {
       if (enabled && weatherData) {
         weather = weatherData;
       }
-
+      const userdetails=`Skin color: ${user?.skinColor ? user.skinColor : "Unknown"}. Age: ${user?.age ? user.age : "Unknown"}. Gender: ${user?.gender ? user.gender : "Unknown"}.`;
       const response = await fetch(`${apiUrl}/chat/suggestion`, {
         method: "POST",
         credentials: "include",
         headers: getAuthHeaders(),
-        body: JSON.stringify({ input, clothes, weather,skinColor }),
+        body: JSON.stringify({ input, clothes, weather,userdetails:userdetails }),
       });
 
       const data = await response.json();

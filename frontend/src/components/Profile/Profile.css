@@ -903,6 +903,8 @@ height:50px
   background-color: #2a2a2a;
   transition: all 0.3s ease;
   animation: fadeIn 0.5s ease;
+  /* border:1px solid red; */
+  z-index: 0;
 }
 
 .profile-container .upload-section:hover {
@@ -1333,11 +1335,23 @@ height:50px
   transition: all 0.3s ease;
 }
 
-.profile-container .favorite-item:hover .favorite-description {
+.profile-container .favorite-description:hover {
   background: linear-gradient(90deg, var(--primary-color, #6a11cb), var(--secondary-color, #2575fc));
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; 
+  color:red;
+}
+.favorite-description-text{
+  color:gray;
+  font-size:14px;
+  font-weight: 500;
+}
+.profile-container .favorite-description-text:hover {
+  color:white;
+  /* animation: fadeInOut 2s ease; */
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .profile-container .favorite-actions {

@@ -41,6 +41,7 @@ import { useLocation } from 'react-router-dom';
 import logo from '../public/logo_main.png'
 import CardNav from './components/newNav/main' 
 import Export from './components/menuPics/export'
+import Dock from './components/dock/export'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
  const location = useLocation();
@@ -169,7 +170,8 @@ const App = () => {
         <Route path="/download" element={<Download />} />
         <Route path="/virtual-try-on" element={<VirtualTryOn />} />
       </Routes>
-      <FloatingNavbar />
+      {/* <FloatingNavbar /> */}
+      <Dock />
       {location.pathname === '/' && <Footer />}
     </>
   );

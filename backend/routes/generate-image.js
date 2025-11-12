@@ -58,7 +58,7 @@ async function generate(req, res) {
   });
 
   const prompt = [
-    { text: "the clothes are these put on these on the user in the image " + input },
+    { text: "the clothes are these put on these on the user in the image dont leave any clothes that they are already wearing" + input },
     {
       inlineData: {
         mimeType: "image/png",

@@ -14,7 +14,7 @@ const upload = multer();
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENROUTER_API_KEY,
-  
+
 });
 
 // Authentication middleware
@@ -32,7 +32,7 @@ const openai = new OpenAI({
 // };
 
 // POST /classify
-router.post('/classify',upload.single('images'), async (req, res) => { 
+router.post('/classify', upload.single('images'), async (req, res) => {
   console.log('Classifying image');
   const file = req.file;
   if (!file) return res.status(400).json({ error: 'No image uploaded' });
@@ -50,41 +50,59 @@ router.post('/classify',upload.single('images'), async (req, res) => {
 
   try {
     let clothingItems = [];
-    
+
     // Use OpenRouter API only
     // Convert image buffer to base64 for OpenRouter
     const imageBase64 = file.buffer.toString('base64');
     const imageMimeType = file.mimetype || 'image/jpeg';
 
     console.log('Calling OpenRouter API with model: qwen/qwen3-vl-8b-instruct');
-    
+
     // Call OpenRouter API (matching test.js pattern)
+
     const completion = await openai.chat.completions.create({
-      model: "qwen/qwen3-vl-8b-instruct",
-      max_tokens: 500, // 👈 Add this line
+      model: "z-ai/glm-4.5v",
+      max_tokens: 700,
+      temperature: 0.2,
       messages: [
         {
           role: "user",
           content: [
-            { 
-              type: "text", 
-              text: "Analyze this image and identify all clothing items. List each clothing item you can see, including: shirts, t-shirts, pants, jeans, skirts, dresses, shoes, sneakers, boots, hats, jackets, coats, blouses, sweaters, hoodies, shorts, bags, and any other clothing or accessories. Return a JSON array of objects with 'type' and 'confidence' fields for each clothing item found." 
+            {
+              type: "text",
+              text: `
+    Analyze the image and identify all clothing and accessories you can see.
+    For each item, return an object with:
+    - "type" (e.g., t-shirt, dress, jeans, hat, etc.)
+    - "color" (e.g., red, blue, black)
+    - "material" (e.g., cotton, denim, leather, wool, or "unknown")
+    
+    Output **ONLY** valid JSON in this format:
+    [
+      { "type": "t-shirt", "color": "blue", "material": "cotton" },
+      ...
+    ]
+    No explanations, no markdown, no text — just JSON.
+              `
             },
             {
               type: "image_url",
-              image_url: {
-                url: `data:${imageMimeType};base64,${imageBase64}`,
-              },
-            },
-          ],
-        },
-      ],
+              image_url: { url: `data:${imageMimeType};base64,${imageBase64}` }
+            }
+          ]
+        }
+      ]
     });
+    
+    
+
+    console.log(completion.choices[0]?.message?.content);
+
 
     // Parse OpenRouter response (matching test.js pattern)
     console.log('OpenRouter API response:', completion.choices[0].message);
     const openaiResponse = completion.choices[0].message.content;
-    
+
     // Try to parse JSON from the response
     const jsonMatch = openaiResponse.match(/\[[\s\S]*\]/);
     if (jsonMatch) {
@@ -103,10 +121,10 @@ router.post('/classify',upload.single('images'), async (req, res) => {
     // Categorize
     const upperwear = [], lowerwear = [], footwear = [], accessories = [];
     const categories = {
-      upperwear: ['shirt','t-shirt','blouse','sweater','hoodie','jacket','coat','dress','blazer','tank top','crop top','cardigan'],
-      lowerwear: ['pants','jeans','shorts','skirt','leggings','trousers','joggers'],
-      footwear: ['sneakers','boots','heels','flats','sandals'],
-      accessories: ['hat','cap','bag','belt','scarf','watch','necklace','bracelet']
+      upperwear: ['shirt', 't-shirt', 'blouse', 'sweater', 'hoodie', 'jacket', 'coat', 'dress', 'blazer', 'tank top', 'crop top', 'cardigan'],
+      lowerwear: ['pants', 'jeans', 'shorts', 'skirt', 'leggings', 'trousers', 'joggers'],
+      footwear: ['sneakers', 'boots', 'heels', 'flats', 'sandals'],
+      accessories: ['hat', 'cap', 'bag', 'belt', 'scarf', 'watch', 'necklace', 'bracelet']
     };
 
     clothingItems.forEach(item => {

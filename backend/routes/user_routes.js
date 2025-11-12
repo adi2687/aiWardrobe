@@ -27,7 +27,7 @@ const authenticate = (req, res, next) => {
     res.status(401).json({ msg: "Token is not valid" });
   }
 };
-router.get("/profile", (req, res) => {
+router.get("/profile",async  (req, res) => {
   const tokenlogin =  req.cookies.tokenlogin || req.headers.authorization;
 
   if (!tokenlogin) {
@@ -36,7 +36,8 @@ router.get("/profile", (req, res) => {
 
   try {
     const decoded = jwt.verify(tokenlogin, process.env.SECRET_KEY);
-    return res.json({ message: "Success", user: decoded });
+    const user=await User.findById(decoded.id);
+    return res.json({ message: "Success", user: user });
   } catch (error) {
     return res.status(401).json({ error: "Invalid or expired token", error });
   }
@@ -307,8 +308,8 @@ router.post("/clothesUpload", async (req, res) => {
     uploadclothes.map((cloth) => {
       // console.log('cloth : ', cloth);
       const material = cloth.material !== "Unknown" ? `, ${cloth.material}` : "";
-      const shade = cloth.shade !== "Unknown" ? `, ${cloth.shade}` : "";
-      finalclothestoupload += `${cloth.type} (${cloth.color}${material}${shade}), `;
+      // const shade = cloth.shade !== "Unknown" ? `, ${cloth.shade}` : "";
+      finalclothestoupload += `${cloth.type} (${cloth.color}${material}), `;
     });
     console.log('final is ', finalclothestoupload)
     user.clothes.push(finalclothestoupload);

@@ -72,12 +72,10 @@ router.post("/suggestion", async (req, res) => {
     const userid = getUserId(req);
     if (!userid) return res.status(401).json({ msg: "Unauthorized" });
 
-    const { input: prompt, clothes, skinColor, age, gender, weather } = req.body;
-
-    let userdetails = "";
-    if (skinColor) userdetails += `Skin color: ${skinColor}. `;
-    if (age) userdetails += `Age: ${age}. `;
-    if (gender) userdetails += `Gender: ${gender}. `;
+    const { input: prompt, clothes, userdetails, weather } = req.body;
+    console.log("inpit is ",req.body)
+    let userdetailsInfo = "";
+    if (userdetails) userdetailsInfo += `${userdetails}. `;
     let clothesInfo = clothes ? `I have the following clothes: ${clothes}. ` : "";
 
     let weatherInfo = "";
