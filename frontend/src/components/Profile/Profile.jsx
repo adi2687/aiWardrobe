@@ -96,17 +96,29 @@ const Profile = () => {
   };
 
   const [userdetails, setuserdetails] = useState({})
-  const getuserdetails = () => {
-    fetch(`${apiUrl}/user/getuserdetails`, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setuserdetails(data)
-        console.log(data)
-      })
-  }
+  const getuserdetails = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/user/getuserdetails`, {
+        method: "GET",
+        credentials: "include", // important for sending cookies (JWT/session)
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (!response.ok) {
+        // if status not 200–299, handle accordingly
+        throw new Error(`Error: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      setuserdetails(data);
+      console.log("User details:", data);
+    } catch (error) {
+      console.error("Failed to fetch user details:", error);
+    }
+  };
+  
   useEffect(() => {
     getuserdetails()
   }, [])
