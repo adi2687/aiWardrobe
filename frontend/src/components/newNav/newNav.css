@@ -9,14 +9,13 @@
   box-sizing: border-box; 
   position: fixed;
   min-width: 60%;
-
 }
 
 .card-nav {
   display: block;
   min-height: 70px;
   padding: 0;
-  background-color: white;
+  /* background-color: white; */
   border: 0.5px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -24,7 +23,6 @@
   overflow: hidden;
   will-change: height; 
   /* border:3px solid red; */
-
 }
 
 .card-nav-top {
@@ -39,6 +37,7 @@
   padding: 0.5rem 0.45rem 0.55rem 1.1rem;
   z-index: 2;  
   position: absolute;
+
 }
 
 .hamburger-menu {

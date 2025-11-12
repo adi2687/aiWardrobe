@@ -12,5 +12,6 @@ export default defineConfig({
     proxy: {
       '/api': 'https://api.gemini.com',
     },
+    host: '0.0.0.0',
   },
 });

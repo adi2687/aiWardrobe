@@ -40,7 +40,7 @@ import PoliciesHub from './components/Policies/PoliciesHub'
 import { useLocation } from 'react-router-dom'; 
 import logo from '../public/logo_main.png'
 import CardNav from './components/newNav/main' 
-
+import Export from './components/menuPics/export'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
  const location = useLocation();
@@ -115,6 +115,7 @@ const App = () => {
       ]
     }
   ]
+  
   return (
     <>    
       {showIntro && <Intro onComplete={handleIntroComplete} />}
@@ -131,6 +132,8 @@ const App = () => {
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/profile/favorites' element={<Profile />} />
+        <Route path='/menu' element={<Export 
+        />} />
         <Route path='/profile/planner' element={<Profile />} />
         <Route path='/profile/upload' element={<Profile />} />
         <Route path='/profile/settings' element={<Profile />} />

@@ -165,11 +165,13 @@ import defaultimage from '../routes/dewfaultimage.js'
 app.use("/defaultimage",defaultimage)
 // import vision from '../genAi.js'
 // app.use('/vision', vision)
-
+import menuimages from '../routes/menuimages.js'
+app.use('/menuimages', menuimages)
 
 import clothidentification from '../routes/clothid.js'
 app.use('/clothid', clothidentification)
 const onlineUsers = {};
+
 
 io.on("connection", (socket) => {
   console.log("New user connected");

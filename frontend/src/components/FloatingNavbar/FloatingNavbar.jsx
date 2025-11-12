@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { FaHome, FaUser, FaTshirt, FaStore, FaLightbulb, FaUpload, FaHeart, FaMagic } from 'react-icons/fa';
+import { FaHome, FaUser, FaTshirt, FaStore, FaLightbulb, FaUpload, FaHeart, FaMagic, FaImage } from 'react-icons/fa';
 import { GiHumanTarget } from 'react-icons/gi';
 import './FloatingNavbar.css';
 
@@ -39,7 +39,7 @@ const FloatingNavbar = () => {
     { path: '/view-avatar', icon: <GiHumanTarget />, label: 'My Avatar' },
     { path: '/profile', icon: <FaUser />, label: 'Profile' },
     {path:'/profile/favorites',icon:<FaHeart/>,label:'Favorites'},
-
+    {path :'/menu',icon:<FaImage/>,label:'Menu'},
     { path: '/shop', icon: <FaStore />, label: 'Shop' },
     { path: '/social', icon: <FaMagic />, label: 'Social' }
   ];
