@@ -11,8 +11,22 @@ import os from 'os';
 import { fileURLToPath } from 'url';
 import { getTokenFromRequest } from '../utils/tokenHelper.js';
 dotenv.config() 
-import auth from '../middleware/auth.js'
+const authenticate = (req, res, next) => {
+  const token = getTokenFromRequest(req);
+  
+  if (!token) {
+    return res.status(401).json({ msg: "No token, authorization denied" });
+  }
 
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    console.log("Token verification error:", error.message);
+    res.status(401).json({ msg: "Token is not valid" });
+  }
+};
 router.get("/profile", (req, res) => {
   const tokenlogin =  req.cookies.tokenlogin || req.headers.authorization;
 
