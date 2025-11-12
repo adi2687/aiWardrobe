@@ -58,12 +58,12 @@ app.use(cors({
     
     // Check if the origin is in our allowed list
     if (expandedAllowedOrigins.includes(origin)) {
-      callback(null, origin);
+      callback(null, true); // ✅ must be true
     } else {
-      // For development purposes, allow all origins
-      console.log('Origin not in allowlist but allowing:', origin);
-      callback(null, origin);
+      console.log('Origin not in allowlist but allowing (temp):', origin);
+      callback(null, true); // ✅ allow but don’t echo origin string
     }
+    
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
