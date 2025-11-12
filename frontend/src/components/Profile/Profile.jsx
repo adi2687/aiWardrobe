@@ -78,7 +78,7 @@ const Profile = () => {
         headers: getAuthHeaders(),
       });
       const data = await response.json();
-
+      console.log("logging data",data)
       if (data.message === "Success") {
         setUser(data.user);
         console.log('a', data.user);
