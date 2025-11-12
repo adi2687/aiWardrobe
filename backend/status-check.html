@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Status Check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-black: #000000;
+            --color-white: #ffffff;
+            --color-gray-900: #111827;
+            --color-gray-800: #1f2937;
+            --color-gray-700: #374151;
+            --color-gray-600: #4b5563;
+            --color-gray-100: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(to right, var(--color-gray-900), var(--color-black), var(--color-gray-800));
+            color: var(--color-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+            color: var(--color-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+            font-weight: 500;
+        }
+
+        /* Status Card */
+        .status-card {
+            background-color: var(--color-gray-900);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .status-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .status-label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            color: var(--color-white);
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .status-indicator.active {
+            background-color: var(--color-white);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .status-indicator.inactive {
+            background-color: var(--color-gray-600);
+            box-shadow: 0 0 10px rgba(75, 85, 99, 0.5);
+        }
+
+        .status-indicator.checking {
+            background-color: var(--color-gray-600);
+            box-shadow: 0 0 10px rgba(75, 85, 99, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .status-details {
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+            line-height: 1.6;
+        }
+
+        .status-details strong {
+            color: var(--color-white);
+            font-weight: 600;
+        }
+
+        /* Response Box */
+        .response-box {
+            background-color: var(--color-black);
+            border: 1px solid var(--color-gray-600);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: var(--color-white);
+            word-break: break-all;
+        }
+
+        .error-box {
+            background-color: var(--color-gray-900);
+            border: 1px solid var(--color-gray-600);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--color-gray-600);
+        }
+
+        /* Button */
+        .button {
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            border: 1px solid var(--color-white);
+            background: transparent;
+            color: var(--color-white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            font-size: 1rem;
+            letter-spacing: 0.025em;
+        }
+
+        .button:hover {
+            background-color: var(--color-white);
+            color: var(--color-black);
+            transform: translateY(-2px);
+        }
+
+        /* Endpoint Info Card */
+        .endpoint-info {
+            background-color: var(--color-gray-900);
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            font-size: 0.875rem;
+        }
+
+        .endpoint-info strong {
+            color: var(--color-white);
+            font-weight: 600;
+        }
+
+        .endpoint-info code {
+            background-color: var(--color-black);
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            color: var(--color-white);
+            border: 1px solid var(--color-gray-600);
+        }
+
+        /* Timestamp */
+        .timestamp {
+            color: var(--color-gray-600);
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        /* Glassmorphism effect for main container */
+        .main-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .main-card {
+                padding: 1.5rem;
+            }
+
+            .status-card,
+            .endpoint-info {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="main-card">
+            <div class="header">
+                <h1>Backend Status Check</h1>
+                <p class="subtitle">Monitoring endpoint: GET /</p>
+            </div>
+
+            <div class="status-card">
+                <div class="status-header">
+                    <span class="status-label">Server Status</span>
+                    <div class="status-indicator checking" id="statusIndicator"></div>
+                </div>
+                <div class="status-details" id="statusDetails">
+                    Checking endpoint status...
+                </div>
+                <div id="responseContainer"></div>
+            </div>
+
+            <div class="endpoint-info">
+                <strong>Endpoint:</strong> <code id="endpointUrl">http://localhost:5000/</code><br>
+                <strong>Expected Response:</strong> <code>"This is the main page"</code>
+            </div>
+
+            <button class="button" onclick="checkStatus()">Refresh Status</button>
+            <div class="timestamp" id="timestamp"></div>
+        </div>
+    </div>
+
+    <script>
+        const endpointUrl = window.location.origin.replace(/:\d+$/, ':5000') || 'http://localhost:5000';
+        document.getElementById('endpointUrl').textContent = endpointUrl + '/';
+
+        async function checkStatus() {
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusDetails = document.getElementById('statusDetails');
+            const responseContainer = document.getElementById('responseContainer');
+            const timestamp = document.getElementById('timestamp');
+
+            // Set checking state
+            statusIndicator.className = 'status-indicator checking';
+            statusDetails.innerHTML = 'Checking endpoint status...';
+            responseContainer.innerHTML = '';
+            timestamp.textContent = '';
+
+            try {
+                const startTime = Date.now();
+                const response = await fetch(endpointUrl + '/', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    signal: AbortSignal.timeout(5000)
+                });
+
+                const endTime = Date.now();
+                const responseTime = endTime - startTime;
+                const responseText = await response.text();
+
+                if (response.ok) {
+                    // Success
+                    statusIndicator.className = 'status-indicator active';
+                    statusDetails.innerHTML = `
+                        <strong>Status:</strong> Active ✓<br>
+                        <strong>HTTP Status:</strong> ${response.status} ${response.statusText}<br>
+                        <strong>Response Time:</strong> ${responseTime}ms
+                    `;
+                    
+                    responseContainer.innerHTML = `
+                        <div class="response-box">
+                            <strong>Response:</strong><br>
+                            ${responseText}
+                        </div>
+                    `;
+
+                    timestamp.textContent = `Last checked: ${new Date().toLocaleString()}`;
+                } else {
+                    // Error response
+                    statusIndicator.className = 'status-indicator inactive';
+                    statusDetails.innerHTML = `
+                        <strong>Status:</strong> Error<br>
+                        <strong>HTTP Status:</strong> ${response.status} ${response.statusText}
+                    `;
+                    
+                    responseContainer.innerHTML = `
+                        <div class="error-box">
+                            Server returned an error status code.
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                // Network or other error
+                statusIndicator.className = 'status-indicator inactive';
+                statusDetails.innerHTML = `
+                    <strong>Status:</strong> Inactive ✗<br>
+                    <strong>Error:</strong> ${error.name}
+                `;
+                
+                let errorMessage = 'Unable to connect to the server.';
+                if (error.name === 'TimeoutError') {
+                    errorMessage = 'Request timed out. The server may be slow or unresponsive.';
+                } else if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                    errorMessage = 'Network error. Please check if the server is running and CORS is configured.';
+                }
+
+                responseContainer.innerHTML = `
+                    <div class="error-box">
+                        <strong>Error Details:</strong><br>
+                        ${errorMessage}<br>
+                        <small>${error.message}</small>
+                    </div>
+                `;
+
+                timestamp.textContent = `Last checked: ${new Date().toLocaleString()}`;
+            }
+        }
+
+        // Check status on page load
+        checkStatus();
+
+        // Auto-refresh every 10 seconds
+        setInterval(checkStatus, 10000);
+    </script>
+</body>
+</html>
