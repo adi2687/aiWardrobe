@@ -326,7 +326,7 @@ const Recommendations = () => {
                   <div className="message-actions">
                     {msg.sender === "bot" && (
                       <button
-                        className="action-button like-button"
+                        className="like-button"
                         onClick={() => saveFavoriteSuggestion(msg.text)}
                         title="Save to favorites"
                       >
@@ -334,7 +334,7 @@ const Recommendations = () => {
                       </button>
                     )}
                     <button
-                      className="action-button copy-button"
+                      className="like-button"
                       onClick={() => copyToClipboard(msg.text, index)}
                       title="Copy to clipboard"
                     >
@@ -389,14 +389,14 @@ const Recommendations = () => {
                       <div className="history-actions">
                         <button
                           onClick={() => saveFavoriteSuggestion(msg.response)}
-                          className="action-button like-button"
+                          className="like-button"
                           title="Save to favorites"
                         >
                           <FaHeart />
                         </button>
                         <button 
                           onClick={() => copyToClipboard(msg.response, `history-${i}`)}
-                          className="action-button copy-button"
+                          className="copy-button"
                           title="Copy to clipboard"
                         >
                           {copiedIndex === `history-${i}` ? "Copied!" : <FaCopy />}
