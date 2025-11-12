@@ -3,7 +3,7 @@ import Dock from "./main";
 import { VscHome, VscArchive, VscAccount, VscSettingsGear } from "react-icons/vsc"; // ✅ Added
 import { FaHome, FaUser, FaTshirt, FaStore, FaLightbulb, FaUpload, FaHeart, FaMagic, FaImage } from 'react-icons/fa';
 import { GiHumanTarget } from 'react-icons/gi';
-
+import { useLocation } from "react-router-dom";
 const navItems = [
     { path: '/', icon: <FaHome />, label: 'Home' },
     { path: '/wardrobe', icon: <FaTshirt />, label: 'Wardrobe' },
@@ -17,7 +17,14 @@ const navItems = [
     { path: '/social', icon: <FaMagic />, label: 'Social' }
   ];
 
+  
 const Export = () => {
+
+  const location = useLocation(); 
+  if(location.pathname === '/' || location.pathname === '/auth'){
+    return null;
+  }
+
   return (
     <Dock
       items={navItems}

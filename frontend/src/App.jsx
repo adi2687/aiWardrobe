@@ -37,45 +37,49 @@ import PrivacyPolicy from './components/Policies/PrivacyPolicy'
 import TermsOfService from './components/Policies/TermsOfService'
 import DataDeletion from './components/Policies/DataDeletion'
 import PoliciesHub from './components/Policies/PoliciesHub'
-import { useLocation } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom';
 import logo from '../public/logo_main.png'
-import CardNav from './components/newNav/main' 
+import CardNav from './components/newNav/main'
 import Export from './components/menuPics/export'
 import Dock from './components/dock/export'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
- const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     // Check URL parameters for Google/Facebook login redirect
     const urlParams = new URLSearchParams(window.location.search);
     const showIntroParam = urlParams.get('showIntro');
     const isNewUser = urlParams.get('isNewUser');
-    const tokenlogin = urlParams.get('tokenlogin'); 
-    
+    const tokenlogin = urlParams.get('tokenlogin');
+
     // Only store token if it exists (not null)
     if (tokenlogin && tokenlogin !== 'null') {
-      storeAuthToken(tokenlogin, 24); // Store for 24 hours
+      storeAuthToken(tokenlogin, 24); // Store for 24 hours 
+
     }
-    
+
     // Check if the user is logged in and should see the intro
     const token = getAuthToken();
     const introComplete = localStorage.getItem('introComplete');
     const checkForNewUser = localStorage.getItem('checkForNewUser');
-    
+    if (showIntroParam){
+      localStorage.setItem('isloggedin', true);
+    }
+
     // Show intro if:
     // 1. URL has showIntro=true parameter (from OAuth redirect), OR
     // 2. User is logged in AND hasn't completed intro yet
     if (showIntroParam === 'true' || (token && introComplete !== 'true')) {
       console.log('Showing intro animation');
       setShowIntro(true);
-      
+
       // Clear the URL parameters after processing
       if (showIntroParam) {
         // Remove query parameters without page reload
         window.history.replaceState({}, document.title, window.location.pathname);
       }
-      
+
       // Clear the OAuth flag if it exists
       if (checkForNewUser === 'true') {
         localStorage.removeItem('checkForNewUser');
@@ -86,7 +90,7 @@ const App = () => {
   const handleIntroComplete = () => {
     setShowIntro(false);
     localStorage.setItem('introComplete', 'true');
-  }; 
+  };
   const navItems = [
     {
       label: 'Wardrobe',
@@ -116,24 +120,24 @@ const App = () => {
       ]
     }
   ]
-  
+
   return (
-    <>    
+    <>
       {showIntro && <Intro onComplete={handleIntroComplete} />}
       {/* <Navbar />  */}
-      <CardNav 
-      items={navItems}
-      logo={logo}
-      baseColor="#000000"
+      <CardNav
+        items={navItems}
+        logo={logo}
+        baseColor="#000000"
         menuColor="#ffffff"
         buttonBgColor="#ffffff"
-        buttonTextColor="#000000"/> {/* Always visible */}
-      <ChatButton />  
-      <Routes> 
+        buttonTextColor="#000000" /> {/* Always visible */}
+      {/* <ChatButton />   */}
+      <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/profile/favorites' element={<Profile />} />
-        <Route path='/menu' element={<Export 
+        <Route path='/menu' element={<Export
         />} />
         <Route path='/profile/planner' element={<Profile />} />
         <Route path='/profile/upload' element={<Profile />} />

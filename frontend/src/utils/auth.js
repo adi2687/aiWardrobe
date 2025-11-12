@@ -13,7 +13,6 @@ export const storeAuthToken = (token, expirationHours = 24) => {
 
   // Store in localStorage
   localStorage.setItem('tokenlogin', token);
-
   // Store in cookies with expiration
   const expirationDate = new Date();
   expirationDate.setTime(expirationDate.getTime() + (expirationHours * 60 * 60 * 1000));

@@ -135,9 +135,8 @@ const Profile = () => {
       if (response.ok) {
         console.log("Logout successful");
         // Clear any local storage items if needed
-        localStorage.removeItem("user"); 
-        localStorage.removeItem("tokenlogin");
-        // Redirect to home page 
+        localStorage.clear()
+          // Redirect to home page 
         navigate("/");
       } else {
         console.log("Logout failed");

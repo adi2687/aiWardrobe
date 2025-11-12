@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from 'react-icons/go';
@@ -17,11 +17,20 @@ const CardNav = ({
 }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const navRef = useRef(null);
     const cardsRef = useRef([]);
     const tlRef = useRef(null);
     const location = useLocation();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     const calculateHeight = () => {
         const navEl = navRef.current;
         if (!navEl) return 260;
@@ -137,7 +146,9 @@ const CardNav = ({
     if (location.pathname !== '/') {
         return null;
     }
-    const isloggesin = localStorage.getItem('tokenlogin');
+    const isloggesin = localStorage.getItem('tokenlogin') || localStorage.getItem('isloggedin'); 
+    
+
     return (
         <div className={`card-nav-container ${className}`}>
             <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
@@ -164,7 +175,7 @@ const CardNav = ({
                         style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
                         onClick={() => { isloggesin ? navigate('/profile') : navigate('/auth') }}
                     >
-                        {isloggesin ? 'Profile' : 'Login / Signup'}
+                        {isloggesin ? 'Profile' : (isMobile ? 'Login' : 'Login / Signup')}
                     </button>
                 </div>
 

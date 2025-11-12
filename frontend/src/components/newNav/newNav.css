@@ -151,11 +151,11 @@
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 2px; 
 }
 
 .nav-card-link {
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   text-decoration: none;
   transition: opacity 0.3s ease;
@@ -176,21 +176,30 @@
 
   .card-nav-top {
     padding: 0.5rem 1rem;
-    justify-content: space-between;
-  }
-
-  .hamburger-menu {
-    order: 2;
+    justify-content: flex-start;
+    gap: 1rem;
   }
 
   .logo-container {
     position: static;
     transform: none;
     order: 1;
+    margin-right: 0;
   }
 
   .card-nav-cta-button {
-    display: none;
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    font-size: 14px;
+    height: 36px;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .hamburger-menu {
+    order: 3;
+    margin-left: 0.5rem;
   }
 
   .card-nav-content {
