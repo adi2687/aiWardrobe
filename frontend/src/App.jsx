@@ -63,9 +63,7 @@ const App = () => {
     const token = getAuthToken();
     const introComplete = localStorage.getItem('introComplete');
     const checkForNewUser = localStorage.getItem('checkForNewUser');
-    if (showIntroParam){
-      localStorage.setItem('isloggedin', true);
-    }
+    if (showIntroParam){localStorage.setItem('isloggedin',true)}
 
     // Show intro if:
     // 1. URL has showIntro=true parameter (from OAuth redirect), OR
