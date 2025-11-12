@@ -265,7 +265,7 @@ const Profile = () => {
       .then((data) => { 
         console.log(data)
         // reversing it 
-        setFavourites(data.favourites.reverse() || []);
+        setFavourites(data.favourites ? [...data.favourites].reverse() : []);
         setClothesForWeek(data.clothforweek || "");
         if (shouldShow) {
           setIsVisible(true);
@@ -717,34 +717,33 @@ const Profile = () => {
                         Update Profile
                       </button>
                       }
-
-                      <div className="shortcutlinks">
-                        <div>
-                          <div className="wishlist-link" onClick={() => navigate('/wishlist')}>
-                            <FaShoppingCart className="wishlist-icon" /> View Your Wishlist
-                          </div>
-                          <div className="ar-link" onClick={() => navigate('/profile/upload')}>
-                            <FaTshirt className="wishlist-icon" /> Upload clothes images
-                          </div>
-                           <div className="wishlist-link" onClick={() => setUploading(true)}>
-                            <FaUpload className="wishlist-icon" /> Upload your photo
-                          </div>
-                        </div>
-                        <div>
-                          <div className="wishlist-link" onClick={() => navigate('/recommendations')}>
-                            <FaLightbulb className="wishlist-icon" /> Recommendations
-                          </div>
-                          <div className="wishlist-link" onClick={() => navigate('/profile/favorites')}>
-                            <FaHeart className="wishlist-icon" /> Favourites
-                          </div> 
-                           <div className="wishlist-link" onClick={() => setViewingUploads(true)}>
-                            <FaImage className="wishlist-icon" /> View Your Uploads
-                          </div>
-                        </div> 
-                        
-                      </div>
                     </div>
                   )}
+                  
+                  <div className="shortcutlinks">
+                    <div>
+                      <div className="wishlist-link" onClick={() => navigate('/wishlist')}>
+                        <FaShoppingCart className="wishlist-icon" /> View Your Wishlist
+                      </div>
+                      <div className="ar-link" onClick={() => navigate('/profile/upload')}>
+                        <FaTshirt className="wishlist-icon" /> Upload clothes images
+                      </div>
+                      <div className="wishlist-link" onClick={() => setUploading(true)}>
+                        <FaUpload className="wishlist-icon" /> Upload your photo
+                      </div>
+                    </div>
+                    <div>
+                      <div className="wishlist-link" onClick={() => navigate('/recommendations')}>
+                        <FaLightbulb className="wishlist-icon" /> Recommendations
+                      </div>
+                      <div className="wishlist-link" onClick={() => navigate('/profile/favorites')}>
+                        <FaHeart className="wishlist-icon" /> Favourites
+                      </div> 
+                      <div className="wishlist-link" onClick={() => setViewingUploads(true)}>
+                        <FaImage className="wishlist-icon" /> View Your Uploads
+                      </div>
+                    </div> 
+                  </div>
                   {uploading && <UploadPhoto onClose={() => setUploading(false)} />}
                   {(userdetails.age || userdetails.gender || userdetails.preferences) && (
                     <div className="profile-details-section">
