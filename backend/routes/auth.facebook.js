@@ -123,6 +123,12 @@ router.get(
     
     // Redirect to home page with token in URL
     // Frontend will extract this token and store it in localStorage
+    res.cookie("tokenlogin", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      path: "/",
+    });
     res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}&tokenlogin=${token}`);
     // This will be caught by the App.jsx useEffect that checks for intro completion
   }
