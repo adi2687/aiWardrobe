@@ -1,7 +1,7 @@
 import React from "react";
 import Dock from "./main";
 import { VscHome, VscArchive, VscAccount, VscSettingsGear } from "react-icons/vsc"; // ✅ Added
-import { FaHome, FaUser, FaTshirt, FaStore, FaLightbulb, FaUpload, FaHeart, FaMagic, FaImage } from 'react-icons/fa';
+import { FaHome, FaUser, FaTshirt, FaStore, FaLightbulb, FaUpload, FaHeart, FaMagic, FaImage, FaPinterest } from 'react-icons/fa';
 import { GiHumanTarget } from 'react-icons/gi';
 import { useLocation } from "react-router-dom";
 const navItems = [
@@ -14,6 +14,7 @@ const navItems = [
     {path:'/profile/favorites',icon:<FaHeart/>,label:'Favorites'},
     {path :'/menu',icon:<FaImage/>,label:'Your Looks'},
     { path: '/shop', icon: <FaStore />, label: 'Shop' },
+    {path:'/pinterest',icon:<FaPinterest/>,label:'Pinterest'},
     { path: '/social', icon: <FaMagic />, label: 'Social' }
   ];
 

@@ -8,7 +8,8 @@ import express from "express";
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
 import User from "../model/user.js";
-import Outfitpreview from "../model/outfit-preview.js"; 
+import Outfitpreview from "../model/outfit-preview.js";
+import axios from "axios"; 
 
 const getUserId = (req) => {
   try {
@@ -22,12 +23,18 @@ const getUserId = (req) => {
   }
 };
 const router = express.Router();
+// Make upload optional to support both file and URL methods
 const upload = multer();
 router.post("/", upload.single("image"), async (req, res) => {
   console.log(req.body)
   console.log(req.file)
   const id=req.body.shareid;
   const usercloth=req.body.usercloth 
+
+  // Validate that either file or imageUrl is provided
+  if (!req.file && !req.body.imageUrl) {
+    return res.status(400).json({ msg: "Either image file or imageUrl is required" });
+  }
 
   //clothid is the imageurl
   const existing=await Outfitpreview.findOne({shareid:id , imageid:usercloth})
@@ -49,23 +56,87 @@ async function generate(req, res) {
   if (!input) {
     return res.json({ msg: "No input provided" }).status(404);
   }
-  const imagePath = req.file;
-  const imageData = imagePath.buffer;
-  const base64Image = imageData.toString("base64");
-  console.log(base64Image);
+  
+  let imageData;
+  let base64Image;
+  
+  // Support both file upload and image URL
+  if (req.file) {
+    // Existing file upload path
+    imageData = req.file.buffer;
+    base64Image = imageData.toString("base64");
+  } else if (req.body.imageUrl) {
+    // New: Fetch image from URL (handles CORS issues)
+    try {
+      const imageResponse = await axios({
+        method: 'GET',
+        url: req.body.imageUrl,
+        responseType: 'arraybuffer',
+        timeout: 30000,
+        headers: {
+          'Accept': 'image/*',
+          'User-Agent': 'AI-Wardrobe-App'
+        }
+      });
+      imageData = Buffer.from(imageResponse.data);
+      base64Image = imageData.toString("base64");
+    } catch (error) {
+      console.error("Error fetching image from URL:", error);
+      return res.status(500).json({ error: "Failed to fetch image from URL." });
+    }
+  } else {
+    return res.json({ msg: "No image provided (file or imageUrl required)" }).status(404);
+  }
+  
+  console.log("Image data length:", base64Image?.length);
+  
+  // Fetch clothes image from usercloth URL if provided
+  let clothesImageBase64 = null;
+  if (req.body.usercloth) {
+    try {
+      const clothesResponse = await axios({
+        method: 'GET',
+        url: req.body.usercloth,
+        responseType: 'arraybuffer',
+        timeout: 30000,
+        headers: {
+          'Accept': 'image/*',
+          'User-Agent': 'AI-Wardrobe-App'
+        }
+      });
+      const clothesBuffer = Buffer.from(clothesResponse.data);
+      clothesImageBase64 = clothesBuffer.toString("base64");
+      console.log("Clothes image fetched successfully");
+    } catch (error) {
+      console.error("Error fetching clothes image:", error);
+      // Continue without clothes image if fetch fails
+    }
+  }
+  
   const ai = new GoogleGenAI({
     apiKey: process.env.GOOGLE_GENERATE_KEY,
   });
 
+  // Build prompt with both images: user image (person) and clothes image
   const prompt = [
-    { text: "the clothes are these put on these on the user in the image dont leave any clothes that they are already wearing" + input },
+    { text: "Put the clothes from the second image onto the person in the first image. Don't remove any clothes the person is already wearing, just add the new clothes on top. Make it look natural and realistic." + (input.trim() ? " " + input : "") },
     {
       inlineData: {
         mimeType: "image/png",
-        data: base64Image,
+        data: base64Image, // User image (person)
       },
     },
   ];
+  
+  // Add clothes image if available
+  if (clothesImageBase64) {
+    prompt.push({
+      inlineData: {
+        mimeType: "image/png",
+        data: clothesImageBase64, // Clothes image (Pinterest)
+      },
+    });
+  }
 
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash-image",

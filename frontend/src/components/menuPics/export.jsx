@@ -1,5 +1,6 @@
 import InfiniteMenu from './menu'
-import { useEffect,useState } from 'react'; 
+import { useEffect,useState } from 'react';
+import './export.css'; 
 
 const Export = ({
     
@@ -43,8 +44,19 @@ const Export = ({
         
     //   ];
     return (
-        <div style={{ height: '600px', position: 'relative' }}> 
-            {loading ? <div>Loading...</div> : <InfiniteMenu items={items} />}
+        <div className="export-container"> 
+            {loading ? (
+                <div className="export-loading">
+                    <div className="export-loading-text">
+                        <div className="export-loading-spinner"></div>
+                        Loading...
+                    </div>
+                </div>
+            ) : (
+                <div className="export-content">
+                    <InfiniteMenu items={items} />
+                </div>
+            )}
             {/* {JSON.stringify(items)} */}
         </div>
     )

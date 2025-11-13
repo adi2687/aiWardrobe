@@ -42,6 +42,8 @@ import logo from '../public/logo_main.png'
 import CardNav from './components/newNav/main'
 import Export from './components/menuPics/export'
 import Dock from './components/dock/export'
+import Pinterest from './components/pinterest/pinterest'
+
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
   const location = useLocation();
@@ -62,9 +64,8 @@ const App = () => {
     // Check if the user is logged in and should see the intro
     const token = getAuthToken();
     const introComplete = localStorage.getItem('introComplete');
-    const checkForNewUser = localStorage.getItem('checkForNewUser');
-    if (showIntroParam){localStorage.setItem('isloggedin',true)}
-
+    const checkForNewUser = localStorage.getItem('checkForNewUser'); 
+    if (showIntroParam){localStorage.setItem('isloggedin','true')} 
     // Show intro if:
     // 1. URL has showIntro=true parameter (from OAuth redirect), OR
     // 2. User is logged in AND hasn't completed intro yet
@@ -135,8 +136,8 @@ const App = () => {
         <Route path="/" element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/profile/favorites' element={<Profile />} />
-        <Route path='/menu' element={<Export
-        />} />
+        <Route path='/menu' element={<Export/>} />
+        <Route path='/pinterest' element={<Pinterest/>} />
         <Route path='/profile/planner' element={<Profile />} />
         <Route path='/profile/upload' element={<Profile />} />
         <Route path='/profile/settings' element={<Profile />} />

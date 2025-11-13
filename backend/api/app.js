@@ -186,7 +186,8 @@ import clothidentification from '../routes/clothid.js'
 app.use('/clothid', clothidentification)
 const onlineUsers = {};
 
-
+import pinterest from '../routes/pinterset.js'
+app.use('/pinterest', pinterest)
 io.on("connection", (socket) => {
   console.log("New user connected");
 

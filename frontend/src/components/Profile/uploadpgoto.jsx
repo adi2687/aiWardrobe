@@ -50,6 +50,13 @@ const UploadPhoto = ({ onClose }) => {
             console.log(data);
             if (response.ok) {
                 showToast('Image uploaded successfully!', 'success');
+                let datafromlocal=localStorage.getItem('userimages')
+                if (!datafromlocal){
+                    datafromlocal=[]
+                }
+                console.log(data);
+                datafromlocal.push(data.image)
+                localStorage.setItem('userimages', datafromlocal)
                 setUploading(false);
                 setTimeout(() => {
                     onClose();

@@ -1,0 +1,70 @@
+.export-container {
+  height: 600px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.export-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(2px);
+}
+
+.export-loading-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.export-loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #e0e0e0;
+  border-top-color: #5227ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.export-content {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .export-container {
+    height: 500px;
+  }
+
+  .export-loading-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .export-container {
+    height: 400px;
+  }
+
+  .export-loading-text {
+    font-size: 1rem;
+  }
+}
+

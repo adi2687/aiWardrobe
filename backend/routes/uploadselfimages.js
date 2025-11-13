@@ -17,12 +17,13 @@ router.post("/", authenticate, upload.single("image"), async (req, res) => {
     const imageBase64 = image.toString("base64");
 
     const dataUri = `data:image/jpeg;base64,${imageBase64}`;
-
+    let imageurl;
     try {
       const result = await cloudinary.uploader.upload(dataUri, {
         resource_type: "image",
         folder: "images",
       });
+      imageurl=result.secure_url;
       user.selfimages.push(result.secure_url);
     await user.save();
     } catch (error) {
@@ -30,7 +31,7 @@ router.post("/", authenticate, upload.single("image"), async (req, res) => {
       return res.status(500).json({ error: "Image upload failed." });
     }
     
-    res.json({ msg: "Image uploaded successfully" }).status(200);
+    res.json({ msg: "Image uploaded successfully", image:imageurl}).status(200);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Internal server error" });
