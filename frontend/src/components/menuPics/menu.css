@@ -26,6 +26,7 @@
     border-radius: 50%;
     cursor: pointer;
     border: 5px solid #000;
+    z-index: inherit; 
     
   }
   
@@ -95,7 +96,7 @@
   }
   
   .action-button.active {
-    bottom: 3.8em;
+    bottom: 5.2em;
     transform: translateX(-50%) scale(1);
     opacity: 1;
     pointer-events: auto;

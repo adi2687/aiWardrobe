@@ -16,8 +16,8 @@
 
 .export-container {
   min-height: 600px;
-  height: 100vh;
-  position: relative;
+  /* height: 90vh; */
+  position: fixed;
   width: 100%;
   overflow: hidden;
   background: linear-gradient(135deg, #0a0a0f 0%, #121212 50%, #0f0f1a 100%);
