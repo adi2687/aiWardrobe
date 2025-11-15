@@ -198,20 +198,20 @@ const ShareImage = () => {
 
         switch (platform) {
             case "whatsapp":
-                shareUrl = `https://wa.me/?text=${encodeURIComponent(`${message} ${shareLink}`)}`;
+                shareUrl = `https://wa.me/?text=${encodeURIComponent(`${message} ${shareLink} ${user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT`)}`;
                 break;
             case "twitter":
-                shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareLink}`)}`;
+                shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareLink} ${user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT`)}`;
                 break;
             case "facebook":
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}&quote=${encodeURIComponent(message)}`;
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}&quote=${encodeURIComponent(message)} ${user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT`;
                 break;
             case "instagram":
                 copyToClipboard();
                 alert("To share on Instagram: Copy the link and paste it in your Instagram story or post");
                 return;
             case "email":
-                shareUrl = `mailto:?subject=Check out this amazing outfit&body=${encodeURIComponent(`${message}\n\n${shareLink}`)}`;
+                shareUrl = `mailto:?subject=Check out this amazing outfit&body=${encodeURIComponent(`${message}\n\n${shareLink} ${user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT`)}`;
                 break;
             default:
                 shareUrl = shareLink;
@@ -224,7 +224,7 @@ const ShareImage = () => {
 
     return (
         <div className="share-container">
-            <h1 className="share-title">{user.toUpperCase()} OUTFIT</h1>
+            <h1 className="share-title">{user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT</h1>
 
 
             <img

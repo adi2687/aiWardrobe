@@ -193,7 +193,6 @@ const ShareClothes = () => {
       });
   };
 const copyimageurl = (imageUrl) => {
-  alert(username);
   navigator.clipboard
     .writeText(`${frontendUrl}/shareimage?url=${imageUrl}&user=${username}`)
     .then(() => {

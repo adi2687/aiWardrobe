@@ -1,6 +1,6 @@
-import React, { useState } from 'react'; 
+import React, { useState, useRef, useEffect, useCallback } from 'react'; 
 import { IoClose } from 'react-icons/io5';
-import { FaUpload, FaImage } from 'react-icons/fa';
+import { FaUpload, FaImage, FaCrop, FaCheck, FaTimes } from 'react-icons/fa';
 import { getAuthHeaders } from '../../utils/auth';
 import Toast from '../Toast/Toast';
 import './uploadphoto.css';
@@ -11,6 +11,12 @@ const UploadPhoto = ({ onClose }) => {
     const [uploading, setUploading] = useState(false);
     const [prompt, setPrompt] = useState('');
     const [toast, setToast] = useState(null);
+    const [isCropping, setIsCropping] = useState(false);
+    const [cropStart, setCropStart] = useState(null);
+    const [cropEnd, setCropEnd] = useState(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const imageRef = useRef(null);
+    const containerRef = useRef(null);
     const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
     const handleFileSelect = (e) => {
@@ -20,9 +26,97 @@ const UploadPhoto = ({ onClose }) => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPreview(reader.result);
+                // Reset cropping state when new image is selected
+                setIsCropping(false);
+                setCropStart(null);
+                setCropEnd(null);
             };
             reader.readAsDataURL(file);
         }
+    };
+
+    // Get coordinates relative to image
+    const getImageCoordinates = (e) => {
+        if (!imageRef.current || !containerRef.current) return null;
+        const rect = imageRef.current.getBoundingClientRect();
+        const containerRect = containerRef.current.getBoundingClientRect();
+        return {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        };
+    };
+
+    // Handle mouse down for crop selection
+    const handleMouseDown = (e) => {
+        if (!isCropping) return;
+        const coords = getImageCoordinates(e);
+        if (coords) {
+            setCropStart(coords);
+            setCropEnd(coords);
+            setIsDragging(true);
+        }
+    };
+
+    // Handle mouse move for crop selection
+    const handleMouseMove = (e) => {
+        if (!isCropping || !isDragging || !cropStart) return;
+        const coords = getImageCoordinates(e);
+        if (coords) {
+            setCropEnd(coords);
+        }
+    };
+
+    // Handle mouse up
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    // Handle crop
+    const handleCrop = () => {
+        if (!cropStart || !cropEnd || !preview) {
+            showToast('Please select an area to crop', 'error');
+            return;
+        }
+
+        const img = new Image();
+        img.onload = () => {
+            const scaleX = img.width / imageRef.current.offsetWidth;
+            const scaleY = img.height / imageRef.current.offsetHeight;
+
+            const x = Math.min(cropStart.x, cropEnd.x) * scaleX;
+            const y = Math.min(cropStart.y, cropEnd.y) * scaleY;
+            const width = Math.abs(cropEnd.x - cropStart.x) * scaleX;
+            const height = Math.abs(cropEnd.y - cropStart.y) * scaleY;
+
+            // Create canvas for cropping
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+
+            // Draw cropped portion
+            ctx.drawImage(img, x, y, width, height, 0, 0, width, height);
+
+            // Convert to blob and update
+            canvas.toBlob((blob) => {
+                const newFile = new File([blob], selectedFile.name, { type: selectedFile.type });
+                setSelectedFile(newFile);
+                const newPreview = URL.createObjectURL(blob);
+                setPreview(newPreview);
+                setIsCropping(false);
+                setCropStart(null);
+                setCropEnd(null);
+                showToast('Image cropped successfully!', 'success');
+            }, selectedFile.type || 'image/png');
+        };
+        img.src = preview;
+    };
+
+    // Cancel crop
+    const handleCancelCrop = () => {
+        setIsCropping(false);
+        setCropStart(null);
+        setCropEnd(null);
     };
 
     const showToast = (message, type = 'success') => {
@@ -96,13 +190,82 @@ const UploadPhoto = ({ onClose }) => {
                     <div className="upload-area">
                         {preview ? (
                             <div className="preview-container">
-                                <img src={preview} alt="Preview" className="preview-image" />
-                                <button 
-                                    className="change-image-btn"
-                                    onClick={() => document.getElementById('file-input').click()}
+                                <div 
+                                    ref={containerRef}
+                                    className={`crop-container ${isCropping ? 'cropping' : ''}`}
+                                    onMouseDown={handleMouseDown}
+                                    onMouseMove={handleMouseMove}
+                                    onMouseUp={handleMouseUp}
+                                    onMouseLeave={handleMouseUp}
                                 >
-                                    Change Image
-                                </button>
+                                    <img 
+                                        src={preview} 
+                                        alt="Preview" 
+                                        className="preview-image" 
+                                        ref={imageRef}
+                                        draggable={false}
+                                    />
+                                    {isCropping && cropStart && cropEnd && (
+                                        <>
+                                            <div 
+                                                className="crop-overlay"
+                                                style={{
+                                                    left: `${Math.min(cropStart.x, cropEnd.x)}px`,
+                                                    top: `${Math.min(cropStart.y, cropEnd.y)}px`,
+                                                    width: `${Math.abs(cropEnd.x - cropStart.x)}px`,
+                                                    height: `${Math.abs(cropEnd.y - cropStart.y)}px`,
+                                                }}
+                                            />
+                                            {/* Corner handles */}
+                                            {[0, 1, 2, 3].map((i) => {
+                                                const isTop = i < 2;
+                                                const isLeft = i % 2 === 0;
+                                                return (
+                                                    <div
+                                                        key={i}
+                                                        className="crop-handle"
+                                                        style={{
+                                                            left: isLeft ? `${Math.min(cropStart.x, cropEnd.x) - 8}px` : `${Math.max(cropStart.x, cropEnd.x) - 8}px`,
+                                                            top: isTop ? `${Math.min(cropStart.y, cropEnd.y) - 8}px` : `${Math.max(cropStart.y, cropEnd.y) - 8}px`,
+                                                        }}
+                                                    />
+                                                );
+                                            })}
+                                        </>
+                                    )}
+                                </div>
+                                <div className="preview-actions">
+                                    <button 
+                                        className="change-image-btn"
+                                        onClick={() => document.getElementById('file-input').click()}
+                                    >
+                                        Change Image
+                                    </button>
+                                    {!isCropping ? (
+                                        <button 
+                                            className="crop-image-btn"
+                                            onClick={() => setIsCropping(true)}
+                                            title="Crop your image"
+                                        >
+                                            <FaCrop /> Crop Image
+                                        </button>
+                                    ) : (
+                                        <div className="crop-actions">
+                                            <button 
+                                                className="crop-action-btn cancel"
+                                                onClick={handleCancelCrop}
+                                            >
+                                                <FaTimes /> Cancel
+                                            </button>
+                                            <button 
+                                                className="crop-action-btn apply"
+                                                onClick={handleCrop}
+                                            >
+                                                <FaCheck /> Apply Crop
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         ) : (
                             <label htmlFor="file-input" className="upload-label">

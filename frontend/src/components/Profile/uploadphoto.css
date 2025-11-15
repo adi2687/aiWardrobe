@@ -150,32 +150,335 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .preview-image {
     max-width: 100%;
     max-height: 250px;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+    display: block;
+    object-fit: contain;
+}
+
+.preview-image:hover {
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .change-image-btn {
-    padding: 8px 16px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.change-image-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.preview-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.crop-image-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.crop-image-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Crop Container */
+.crop-container {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+    user-select: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.crop-container.cropping {
+    cursor: crosshair;
+}
+
+.crop-overlay {
+    position: absolute;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 10;
+    border-radius: 4px;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7);
+}
+
+.crop-overlay::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+
+/* Crop corner handles */
+.crop-handle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+    z-index: 11;
+    border-radius: 2px;
+}
+
+.crop-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.crop-action-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.crop-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.crop-action-btn.cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.crop-action-btn.apply {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* Image Editor Styles */
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.editor-canvas {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.editor-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editor-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.editor-control-group label {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.editor-btn {
+    padding: 8px 12px;
     background: rgba(102, 126, 234, 0.2);
     border: 1px solid #667eea;
     color: #667eea;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+}
+
+.editor-btn:hover {
+    background: rgba(102, 126, 234, 0.3);
+    transform: translateY(-2px);
+}
+
+.editor-btn.active {
+    background: rgba(102, 126, 234, 0.5);
+    border-color: #764ba2;
+}
+
+.flip-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.flip-buttons .editor-btn {
+    flex: 1;
+}
+
+.editor-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.editor-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.4);
     transition: all 0.3s ease;
 }
 
-.change-image-btn:hover {
-    background: rgba(102, 126, 234, 0.3);
+.editor-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.6);
+}
+
+.editor-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+}
+
+.editor-slider::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.6);
+}
+
+.editor-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.editor-action-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 100px;
+    justify-content: center;
+}
+
+.editor-action-btn.reset {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.editor-action-btn.reset:hover {
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
+}
+
+.editor-action-btn.cancel {
+    background: rgba(255, 77, 77, 0.2);
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+
+.editor-action-btn.cancel:hover {
+    background: rgba(255, 77, 77, 0.3);
+    transform: translateY(-2px);
+}
+
+.editor-action-btn.save {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.editor-action-btn.save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
 }
 
 .prompt-area {
@@ -224,16 +527,16 @@
 
 .cancel-btn,
 .upload-btn {
-    padding: 10px 24px;
-    border-radius: 8px;
-    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     gap: 6px;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .cancel-btn {
@@ -242,18 +545,21 @@
 }
 
 .cancel-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .upload-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: rgba(255, 255, 255, 0.2);
     color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    font-size: 13px;
 }
 
 .upload-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .upload-btn:disabled,
@@ -312,5 +618,35 @@
     .upload-btn {
         width: 100%;
         justify-content: center;
+    }
+    .preview-actions {
+        flex-direction: column;
+    }
+    .change-image-btn,
+    .crop-image-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .crop-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .crop-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .editor-controls {
+        padding: 12px;
+    }
+    .editor-actions {
+        flex-direction: column;
+    }
+    .editor-action-btn {
+        width: 100%;
+    }
+    .flip-buttons {
+        flex-direction: column;
     }
 }
