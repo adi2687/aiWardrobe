@@ -34,7 +34,7 @@ const UploadPhoto = ({ onClose }) => {
             showToast('Please select an image', 'error');
             return;
         }
-
+        alert('Uploading image...');
         setUploading(true);
         const formData = new FormData();
         formData.append('image', selectedFile);
@@ -50,18 +50,28 @@ const UploadPhoto = ({ onClose }) => {
             console.log(data);
             if (response.ok) {
                 showToast('Image uploaded successfully!', 'success');
-                let datafromlocal=localStorage.getItem('userimages')
-                if (!datafromlocal){
-                    datafromlocal=[]
+            
+                let datafromlocal;
+            
+                try {
+                    datafromlocal = JSON.parse(localStorage.getItem('userimages'));
+                    if (!Array.isArray(datafromlocal)) datafromlocal = []; 
+                } catch {
+                    // If JSON is invalid → reset to empty array
+                    datafromlocal = [];
                 }
-                console.log(data);
-                datafromlocal.push(data.image)
-                localStorage.setItem('userimages', datafromlocal)
+            
+                datafromlocal.push(data.image);
+            
+                localStorage.setItem('userimages', JSON.stringify(datafromlocal));
+            
                 setUploading(false);
                 setTimeout(() => {
                     onClose();
                 }, 1000);
-            } else {
+            }
+             
+            else {
                 showToast(data.msg || 'Upload failed', 'error');
                 setUploading(false);
             }
