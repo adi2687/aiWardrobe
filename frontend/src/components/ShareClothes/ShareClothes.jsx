@@ -9,6 +9,7 @@ import {
   FaInstagram,
   FaFacebook,
   FaUser,
+  FaDownload,
 } from "react-icons/fa";
 import { FiCopy, FiCheck, FiLink } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -139,6 +140,18 @@ const ShareClothes = () => {
 
       if (data.image) {
         setImageUrl(data.image);
+        
+        // Automatically add watermark to the mannequin preview
+        setAddingWatermark(true);
+        try {
+          const watermarkedUrl = await getWatermarkedImage(data.image, 'mannequin-preview');
+          setImageUrlWithWatermark(watermarkedUrl);
+        } catch (error) {
+          console.error("Error adding watermark to preview image:", error);
+          // Don't show error toast, just log it
+        } finally {
+          setAddingWatermark(false);
+        }
       } else {
         throw new Error("No image received from server");
       }
@@ -270,7 +283,10 @@ const ShareClothes = () => {
   const [defaultimage, setdefaultimage] = useState(""); 
   const [selectedimage, setselectedimage] = useState("");
   const [generatedImage, setGeneratedImage] = useState("");
+  const [generatedImageWithWatermark, setGeneratedImageWithWatermark] = useState("");
+  const [imageUrlWithWatermark, setImageUrlWithWatermark] = useState("");
   const [generatingImage, setGeneratingImage] = useState(false);
+  const [addingWatermark, setAddingWatermark] = useState(false);
   const [toast, setToast] = useState(null);
   const [viewImageModal, setViewImageModal] = useState(null);
   const [loadingSelfImages, setLoadingSelfImages] = useState(false);
@@ -390,8 +406,22 @@ const ShareClothes = () => {
       console.log(data);
       
       if (res.ok && data.msg) {
-        setGeneratedImage(data.msg.image || data.image);
+        const imageUrl = data.msg.image || data.image;
+        setGeneratedImage(imageUrl);
+        
+        // Automatically add watermark to the generated image
+        setAddingWatermark(true);
+        try {
+          const watermarkedUrl = await getWatermarkedImage(imageUrl, 'virtual-tryon-result');
+          setGeneratedImageWithWatermark(watermarkedUrl);
         showToast("Image generated successfully!", "success");
+
+        } catch (error) {
+          console.error("Error adding watermark to generated image:", error);
+          // Don't show error toast, just log it - user can still download with watermark
+        } finally {
+          setAddingWatermark(false);
+        }
       } else {
         showToast(data.msg || "Failed to generate image", "error");
       }
@@ -400,6 +430,71 @@ const ShareClothes = () => {
       showToast("Failed to generate image", "error");
     } finally {
       setGeneratingImage(false);
+    }
+  }
+
+  // Get watermarked image URL from backend
+  const getWatermarkedImage = async (imageUrl, filename = 'outfit-image') => {
+    try {
+      const response = await fetch(`${apiUrl}/watermark`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          imageUrl: imageUrl,
+          filename: filename,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || "Failed to add watermark");
+      }
+
+      return data.imageUrl;
+    } catch (error) {
+      console.error("Error getting watermarked image:", error);
+      throw error;
+    }
+  }
+
+  // Download image with logo using backend Sharp processing
+  const downloadImageWithLogo = async (imageUrlParam, filename = 'outfit-image') => {
+    try {
+      showToast("Preparing download...", "info");
+      
+      // Use existing watermarked URL if available, otherwise fetch it
+      let watermarkedUrl = null;
+      if (imageUrlParam === generatedImage && generatedImageWithWatermark) {
+        watermarkedUrl = generatedImageWithWatermark;
+      } else if (imageUrlParam === imageUrl && imageUrlWithWatermark) {
+        watermarkedUrl = imageUrlWithWatermark;
+      }
+      
+      if (!watermarkedUrl) {
+        watermarkedUrl = await getWatermarkedImage(imageUrlParam, filename);
+      }
+
+      // Download the watermarked image
+      const watermarkedResponse = await fetch(watermarkedUrl);
+      const blob = await watermarkedResponse.blob();
+      const url = URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${filename}-with-logo.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      
+      showToast("Image downloaded with logo!", "success");
+    } catch (error) {
+      console.error("Error downloading image with logo:", error);
+      showToast(error.message || "Failed to download image with logo", "error");
     }
   }
   return (
@@ -582,7 +677,28 @@ const ShareClothes = () => {
                 <h3>✨ Your Virtual Try-On Result</h3>
               </div>
               <div className="image-wrapper-share">
-                <img src={generatedImage} alt="Generated outfit on you" />
+                {addingWatermark && !generatedImageWithWatermark ? (
+                  <div className="loading-container">
+                    <div className="loader"></div>
+                    <p>Adding watermark...</p>
+                  </div>
+                ) : (
+                  <img 
+                    src={generatedImageWithWatermark || generatedImage} 
+                    alt="Generated outfit on you" 
+                  />
+                )}
+              </div>
+              <div className="image-download-container">
+                <button
+                  onClick={() => downloadImageWithLogo(generatedImage, 'virtual-tryon-result')}
+                  className="download-image-btn"
+                  title="Download image with logo"
+                  disabled={addingWatermark}
+                >
+                  <FaDownload className="download-icon" />
+                  <span>Download with Logo</span>
+                </button>
               </div>
             </div>
           )}
@@ -598,13 +714,33 @@ const ShareClothes = () => {
                   <p>Generating outfit preview...</p>
                 </div>
               ) : imageUrl ? (
-                <motion.img
-                  src={imageUrl}
-                  alt="Generated Outfit Preview"
-                  loading="lazy"
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                />
+                <>
+                  {addingWatermark && !imageUrlWithWatermark ? (
+                    <div className="loading-container">
+                      <div className="loader"></div>
+                      <p>Adding watermark...</p>
+                    </div>
+                  ) : (
+                    <motion.img
+                      src={imageUrlWithWatermark || imageUrl}
+                      alt="Generated Outfit Preview"
+                      loading="lazy"
+                      whileHover={{ scale: 1.03 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    />
+                  )}
+                  <div className="image-download-container">
+                    <button
+                      onClick={() => downloadImageWithLogo(imageUrl, 'mannequin-preview')}
+                      className="download-image-btn"
+                      title="Download image with logo"
+                      disabled={addingWatermark}
+                    >
+                      <FaDownload className="download-icon" />
+                      <span>Download with Logo</span>
+                    </button>
+                  </div>
+                </>
               ) : (
                 <div className="no-preview">
                   <p>No preview available</p>

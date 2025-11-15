@@ -191,6 +191,9 @@ app.use('/pinterest', pinterest)
 
 import pinterestgenerate from '../routes/pinterestgenerate.js'
 app.use("/pinterestgenerate",pinterestgenerate)
+
+import watermarkRoute from '../routes/watermark.js'
+app.use("/watermark", watermarkRoute)
 io.on("connection", (socket) => {
   console.log("New user connected");
 

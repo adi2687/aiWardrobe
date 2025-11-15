@@ -34,7 +34,7 @@ const UploadPhoto = ({ onClose }) => {
             showToast('Please select an image', 'error');
             return;
         }
-        alert('Uploading image...');
+        // alert('Uploading image...');
         setUploading(true);
         const formData = new FormData();
         formData.append('image', selectedFile);
