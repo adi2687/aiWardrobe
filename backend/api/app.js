@@ -188,6 +188,9 @@ const onlineUsers = {};
 
 import pinterest from '../routes/pinterset.js'
 app.use('/pinterest', pinterest)
+
+import pinterestgenerate from '../routes/pinterestgenerate.js'
+app.use("/pinterestgenerate",pinterestgenerate)
 io.on("connection", (socket) => {
   console.log("New user connected");
 

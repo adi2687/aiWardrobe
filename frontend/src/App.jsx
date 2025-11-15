@@ -42,7 +42,7 @@ import logo from '../public/logo_main.png'
 import CardNav from './components/newNav/main'
 import Export from './components/menuPics/export'
 import Dock from './components/dock/export'
-import Pinterest from './components/pinterest/pinterest'
+import Pinterest from './components/pinterest/test'
 
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
