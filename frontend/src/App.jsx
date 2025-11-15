@@ -43,7 +43,7 @@ import CardNav from './components/newNav/main'
 import Export from './components/menuPics/export'
 import Dock from './components/dock/export'
 import Pinterest from './components/pinterest/test'
-
+import ShareImage from './components/ShareClothes/shareimage'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
   const location = useLocation();
@@ -155,6 +155,7 @@ const App = () => {
         <Route path='/planner' element={<Planner />} />
         <Route path='/Image' element={<Image />} />
         <Route path="/share/:id" element={<ShareClothes />} />
+        <Route path="/shareimage" element={<ShareImage />} />
         <Route path="/discover-trends" element={<DiscoverTrends />} />
         <Route path="/developers" element={<DevelopersPage />} />
         <Route path="/social" element={<SocialCollections />} />

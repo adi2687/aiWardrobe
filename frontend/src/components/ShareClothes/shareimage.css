@@ -1,0 +1,277 @@
+/* -----------------------------
+   CONTAINER
+------------------------------ */
+.share-container {
+    min-height: 100vh;
+    background: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* -----------------------------
+   TITLE
+------------------------------ */
+.share-title {
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 6px;
+    text-align: center;
+    background: linear-gradient(to right, #ffffff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* -----------------------------
+   IMAGE
+------------------------------ */
+.share-img {
+    width: 90%;
+    max-width: 420px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+    margin-bottom: 30px;
+    transition: 0.3s ease;
+}
+
+.share-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+}
+
+/* -----------------------------
+   ACTION BUTTONS
+------------------------------ */
+.share-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Row: copy + download */
+.action-buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Main action base styling */
+.copy-link-btn,
+.download-btn-main {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    width: 48%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    backdrop-filter: blur(6px);
+    transition: 0.25s ease-in-out;
+}
+
+.copy-link-btn:hover,
+.download-btn-main:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+}
+
+.icon {
+    font-size: 1.1rem;
+}
+
+/* -----------------------------
+   SOCIAL SHARE BUTTONS
+------------------------------ */
+.social-share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Social button base */
+.social-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s ease-in-out;
+}
+
+.social-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.18);
+}
+
+/* Optional: brand colors hint (minimal glow) */
+.social-btn.whatsapp:hover { box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
+.social-btn.twitter:hover { box-shadow: 0 0 15px rgba(29, 161, 242, 0.4); }
+.social-btn.facebook:hover { box-shadow: 0 0 15px rgba(24, 119, 242, 0.4); }
+.social-btn.instagram:hover { box-shadow: 0 0 15px rgba(255, 0, 130, 0.4); }
+.social-btn.email:hover { box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); }
+
+/* -----------------------------
+   LOGIN PROMPT
+------------------------------ */
+.share-login-prompt {
+    width: 90%;
+    max-width: 500px;
+    margin-top: 30px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 18px;
+    padding: 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(102, 126, 234, 0.2);
+}
+
+.share-login-prompt-content {
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.share-login-prompt-icon {
+    font-size: 4rem;
+    color: rgba(102, 126, 234, 0.7);
+    margin-bottom: 0.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.share-login-prompt-content h4 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0;
+    font-weight: 600;
+}
+
+.share-login-prompt-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0;
+}
+
+.share-login-prompt-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.share-login-prompt-btn {
+    padding: 0.875rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.share-login-prompt-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.share-login-prompt-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+}
+
+.share-login-prompt-btn.secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(102, 126, 234, 0.5);
+}
+
+.share-login-prompt-btn.secondary:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: rgba(102, 126, 234, 0.7);
+    transform: translateY(-3px);
+}
+
+.share-login-prompt-btn:active {
+    transform: translateY(-1px);
+}
+
+/* -----------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 480px) {
+    .share-title {
+        font-size: 30px;
+        letter-spacing: 4px;
+    }
+
+    .copy-link-btn,
+    .download-btn-main {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .share-login-prompt-content {
+        padding: 1.5rem;
+    }
+
+    .share-login-prompt-icon {
+        font-size: 3rem;
+    }
+
+    .share-login-prompt-content h4 {
+        font-size: 1.25rem;
+    }
+
+    .share-login-prompt-content p {
+        font-size: 0.9rem;
+    }
+
+    .share-login-prompt-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .share-login-prompt-btn {
+        width: 100%;
+    }
+}

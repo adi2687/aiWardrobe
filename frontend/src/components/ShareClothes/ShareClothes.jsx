@@ -10,6 +10,8 @@ import {
   FaFacebook,
   FaUser,
   FaDownload,
+  FaShare,
+  FaEye,
 } from "react-icons/fa";
 import { FiCopy, FiCheck, FiLink } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -190,7 +192,18 @@ const ShareClothes = () => {
         showToast("Failed to copy link", "error");
       });
   };
-
+const copyimageurl = (imageUrl) => {
+  alert(username);
+  navigator.clipboard
+    .writeText(`${frontendUrl}/shareimage?url=${imageUrl}&user=${username}`)
+    .then(() => {
+      showToast("Image URL copied to clipboard!", "success");
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
+      showToast("Failed to copy image URL", "error");
+    });
+}
   // Toggle share options dropdown
   const toggleShareOptions = () => {
     setShowOptions((prev) => !prev);
@@ -485,7 +498,7 @@ const ShareClothes = () => {
       
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${filename}-with-logo.png`;
+      link.download = `${username}-outfit-ai.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -680,7 +693,7 @@ const ShareClothes = () => {
                 {addingWatermark && !generatedImageWithWatermark ? (
                   <div className="loading-container">
                     <div className="loader"></div>
-                    <p>Adding watermark...</p>
+                    <p>Generating image...</p>
                   </div>
                 ) : (
                   <img 
@@ -697,7 +710,21 @@ const ShareClothes = () => {
                   disabled={addingWatermark}
                 >
                   <FaDownload className="download-icon" />
-                  <span>Download with Logo</span>
+                  <span>Download</span>
+                </button>
+                <button className="download-image-btn"
+                onClick={()=>{
+                  copyimageurl(generatedImageWithWatermark)
+                }}>
+                  <FaShare className="download-image-icon" />
+                  <span>Share</span>
+                </button>
+                <button className="download-image-btn"
+                onClick={()=>{
+                  navigate(`/shareimage?url=${generatedImageWithWatermark}&user=${username}`)
+                }}>
+                  <FaEye className="download-image-icon" />
+                  <span>View Image</span>
                 </button>
               </div>
             </div>
@@ -737,7 +764,7 @@ const ShareClothes = () => {
                       disabled={addingWatermark}
                     >
                       <FaDownload className="download-icon" />
-                      <span>Download with Logo</span>
+                      <span>Download</span>
                     </button>
                   </div>
                 </>
