@@ -253,8 +253,10 @@ const Profile = () => {
       showNotification("Error processing images. Please try again.");
     }
   };
-
+  
+  const [favoritesloading,setfavoritesloading] = useState(false);
   const fetchClothesForWeek = (shouldShow = false) => {
+    setfavoritesloading(true);
     fetch(`${apiUrl}/user/clothsforweek`, {
       method: "GET",
       credentials: "include",
@@ -275,6 +277,7 @@ const Profile = () => {
       })
       .finally(() => {
         setIsLoadingClothes(false);
+        setfavoritesloading(false);
       });
   };
 
@@ -867,7 +870,13 @@ const Profile = () => {
           )}
 
           {/* Favorites Tab */}
-          {activeTab === 'favorites' && (
+          {activeTab === 'favorites' && ( 
+            favoritesloading ? (
+              <div className="loading-indicator">
+                <div className="loading-spinner"></div>
+                <p>Loading your favorite outfits...</p>
+              </div>
+            ) : (
             <div className="favorites-section">
               <h2>Your Favorite Outfits</h2>
 
@@ -964,6 +973,7 @@ const Profile = () => {
                 </div>
               )}
             </div>
+            )
           )}
 
           {/* Weekly Tab */}
