@@ -158,7 +158,7 @@ const SocialCollections = () => {
             {viewerOpen && selectedImage && (
                 <div className="image-viewer-modal" onClick={closeImageViewer}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="close-button" onClick={closeImageViewer}>
+                        <button className="close-button" onClick={closeImageViewer} aria-label="Close">
                             <FaTimes />
                         </button>
                         <img src={selectedImage} alt="Expanded view" className="modal-image" />
@@ -167,65 +167,93 @@ const SocialCollections = () => {
             )}
             
             <div className="social-header">
-                <h1>Community Collections</h1>
-                <p>Discover outfit collections shared by the community</p>
+                <div className="header-content">
+                    <h1>Community Collections</h1>
+                    <p>Discover outfit collections shared by the community</p>
+                    {collections.length > 0 && (
+                        <div className="collection-count-badge">
+                            <span>{collections.length} {collections.length === 1 ? 'Collection' : 'Collections'}</span>
+                        </div>
+                    )}
+                </div>
             </div>
             
             {loading ? (
                 <div className="loading-container">
-                    <FaSpinner className="spinner-icon" />
+                    <div className="spinner-wrapper">
+                        <FaSpinner className="spinner-icon" />
+                    </div>
                     <p>Loading amazing collections...</p>
                 </div>
             ) : error ? (
                 <div className="error-container">
-                    <FaExclamationTriangle className="error-icon" />
+                    <div className="error-icon-wrapper">
+                        <FaExclamationTriangle className="error-icon" />
+                    </div>
                     <p>{error}</p>
+                    <button className="retry-button" onClick={fetchCollections}>
+                        Try Again
+                    </button>
                 </div>
             ) : collections.length > 0 ? (
                 <div className="collections-grid">
                     {collections.map((collection, index) => (
-                        <div key={collection._id || index} className="collection-card">
+                        <div 
+                            key={collection._id || index} 
+                            className="collection-card"
+                            style={{ animationDelay: `${index * 0.1}s` }}
+                        >
                             {collection.image ? (
                                 <div className="collection-image" onClick={() => openImageViewer(collection.image)}>
-                                    <img src={collection.image} alt="Outfit Collection" />
+                                    <img src={collection.image} alt="Outfit Collection" loading="lazy" />
                                     <div className="image-overlay">
                                         <FaExpand className="expand-icon" />
+                                        <span className="expand-text">Click to expand</span>
                                     </div>
+                                    <div className="image-gradient-overlay"></div>
                                 </div>
                             ) : (
                                 <div className="collection-image placeholder">
                                     <FaTshirt className="placeholder-icon" />
+                                    <p className="placeholder-text">No Image</p>
                                 </div>
                             )}
                             
                             <div className="collection-info">
                                 <div className="collection-header">
                                     <div className="user-info">
-                                        <FaUser className="user-icon" />
-                                        <h3>{collection.username || 'Unknown User'}</h3>
-                                        {/* <p>{collection.shareid}</p> */}
+                                        <div className="user-avatar">
+                                            <FaUser className="user-icon" />
+                                        </div>
+                                        <div className="user-details">
+                                            <h3>{collection.username || 'Unknown User'}</h3>
+                                            <span className="user-badge">Creator</span>
+                                        </div>
                                     </div>
                                     <div className="collection-actions">
                                         <button 
-                                            className={`action-button thumbs-up ${alreadyLikedCollections.includes(collection.shareid) ? 'already-liked' : ''}`}
+                                            className={`socialbutton thumbs-up ${alreadyLikedCollections.includes(collection.shareid) ? 'already-liked' : ''}`}
                                             onClick={() => likecollection(collection.shareid)}
                                             disabled={alreadyLikedCollections.includes(collection.shareid)}
                                             title={alreadyLikedCollections.includes(collection.shareid) ? 'You already liked this' : 'Like this collection'}
+                                            aria-label="Like collection"
                                         >
                                             <FaThumbsUp/>
                                             <span className="like-count">{collection.like || 0}</span>
                                         </button>
                                         <button 
-                                            className={`action-button like ${likedCollections.includes(collection._id || collection.shareid) ? 'liked' : ''}`}
+                                            className={`socialbuttonlike ${likedCollections.includes(collection._id || collection.shareid) ? 'liked' : ''}`}
                                             onClick={() => handleLike(collection._id || collection.shareid)}
                                             title={likedCollections.includes(collection._id || collection.shareid) ? 'Unlike' : 'Like'}
+                                            aria-label={likedCollections.includes(collection._id || collection.shareid) ? 'Unlike' : 'Like'}
                                         >
                                             <FaHeart />
                                         </button>
                                         <button 
-                                            className="action-button share" 
-                                            onClick={() => setlink(collection.shareid)}
+                                            className={`specialbutton ${link === collection.shareid ? 'active' : ''}`}
+                                            onClick={() => setlink(link === collection.shareid ? "" : collection.shareid)}
                                             title="Share"
+                                            aria-label="Share collection"
                                         >
                                             <FaShare />
                                         </button>
@@ -237,7 +265,10 @@ const SocialCollections = () => {
                                     </p>
                                     {link === collection.shareid && (
                                         <div className="share-link-container">
-                                            <p className="share-link">{`${frontendurl}/share/${link}`}</p>
+                                            <div className="share-link-wrapper">
+                                                <p className="share-link-label">Share this collection:</p>
+                                                <p className="share-link">{`${frontendurl}/share/${link}`}</p>
+                                            </div>
                                             <button 
                                                 className="copy-link-button"
                                                 onClick={() => {
@@ -246,7 +277,16 @@ const SocialCollections = () => {
                                                     setTimeout(() => setCopyNotification(false), 2000);
                                                 }}
                                             >
-                                                {copyNotification && link === collection.shareid ? 'Copied!' : 'Copy'}
+                                                {copyNotification && link === collection.shareid ? (
+                                                    <>
+                                                        <span className="check-icon">✓</span>
+                                                        <span>Copied!</span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <span>Copy Link</span>
+                                                    </>
+                                                )}
                                             </button>
                                             {copyNotification && link === collection.shareid && (
                                                 <div className="copy-notification">
@@ -262,7 +302,9 @@ const SocialCollections = () => {
                 </div>
             ) : (
                 <div className="empty-state">
-                    <FaTshirt className="empty-icon" />
+                    <div className="empty-icon-wrapper">
+                        <FaTshirt className="empty-icon" />
+                    </div>
                     <h2>No collections yet</h2>
                     <p>Be the first to share your outfit collection with the community!</p>
                 </div>
