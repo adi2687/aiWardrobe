@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./sharecloths.css"; // Import the CSS file
 import {
   FaWhatsapp,
@@ -8,6 +8,7 @@ import {
   FaShareAlt,
   FaInstagram,
   FaFacebook,
+  FaUser,
 } from "react-icons/fa";
 import { FiCopy, FiCheck, FiLink } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -16,6 +17,7 @@ import Toast from '../Toast/Toast';
 
 const ShareClothes = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [sharecloth, setSharedCloth] = useState([]);
   const [username, setUsername] = useState("User's");
@@ -23,6 +25,7 @@ const ShareClothes = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(null); // null = checking, true/false = result
 
   const [skinColor, setskinColor] = useState("");
   const [age, setAge] = useState(0);
@@ -58,23 +61,28 @@ const ShareClothes = () => {
           credentials: "include",
         });
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch shared clothes");
-        }
-
         const data = await response.json();
-        console.log(data);
+        console.log("Share data:", data);
+        
+        if (!response.ok) {
+          // Handle specific error messages from backend
+          throw new Error(data.msg || data.error || "Failed to fetch shared clothes");
+        }
+        
         if (data && data.share && data.share.length > 0) {
           setSharedCloth(data.share[0].sharecloths);
-          setUsername(data.share[0].username + "");
-          setAge(data.age);
-          setGender(data.gender);
+          setUsername(data.username || data.share[0].username || "User's");
+          // Only set age/gender if they exist (may be null for non-authenticated users)
+          if (data.age) setAge(data.age);
+          if (data.gender) setGender(data.gender);
+        } else if (data.msg) {
+          setError(data.msg);
         } else {
           setError("No shared clothes found");
         }
       } catch (error) {
         console.error("Error fetching shared clothes:", error);
-        setError("Failed to load shared clothes. Please try again later.");
+        setError(error.message || "Failed to load shared clothes. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -222,6 +230,13 @@ const ShareClothes = () => {
   const [shareSuccess, setShareSuccess] = useState(false);
 
   const shareToSocialcollection = async () => {
+    // Check if user is authenticated
+    if (!isUserAuthenticated) {
+      showToast("Please log in to share to the community collection", "error");
+      navigate('/auth');
+      return;
+    }
+
     setIsSharing(true);
     setShareSuccess(false);
 
@@ -295,9 +310,33 @@ const ShareClothes = () => {
       setLoadingSelfImages(false);
     }
   };
+  // Check authentication status
   useEffect(() => {
-    loaddefaultimage();
-  }, []); 
+    const checkAuth = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/user/profile`, {
+          method: "GET",
+          headers: getAuthHeaders(),
+          credentials: "include",
+        });
+        const data = await response.json();
+        console.log("Auth check response:", data);
+        // Check both response status and message
+        if (response.ok && (data.message === "Success" || data.user)) {
+          setIsUserAuthenticated(true);
+          // Only load images if authenticated
+          loaddefaultimage();
+        } else {
+          setIsUserAuthenticated(false);
+        }
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+        setIsUserAuthenticated(false);
+      }
+    };
+
+    checkAuth();
+  }, [apiUrl]); 
 
   const setdefault = async (image) => { 
     try {
@@ -416,7 +455,8 @@ const ShareClothes = () => {
             </div>
           </div> 
 
-          {(images.length > 0 || loadingSelfImages) && (
+          {/* Virtual Try-On Section - Only show if authenticated */}
+          {isUserAuthenticated === true && (
             <div className="content-card virtual-tryon-card">
               <div className="card-header">
                 <h3>Try This Outfit On Yourself</h3>
@@ -429,7 +469,7 @@ const ShareClothes = () => {
                   <div className="loader"></div>
                   <p>Loading your images...</p>
                 </div>
-              ) : (
+              ) : images.length > 0 ? (
               <div className="selfimagescontainer"> 
                 {images.map((image, index) => (
                   <div 
@@ -465,6 +505,16 @@ const ShareClothes = () => {
                   </div>
                 ))}
               </div>
+              ) : (
+                <div className="no-images-message">
+                  <p>No images uploaded yet. Upload photos in your profile to use the virtual try-on feature.</p>
+                  <button
+                    onClick={() => navigate('/profile/upload')}
+                    className="upload-images-btn"
+                  >
+                    Upload Images
+                  </button>
+                </div>
               )}
               {selectedimage && !loadingSelfImages && (
                 <div className="action-buttons-container">
@@ -490,6 +540,39 @@ const ShareClothes = () => {
                   </button>
                 </div>
               )}
+            </div>
+          )}
+
+          {/* Login prompt for non-authenticated users */}
+          {isUserAuthenticated === false && (
+            <div className="content-card login-prompt-card">
+              <div className="card-header">
+                <h3>Try This Outfit On Yourself</h3>
+              </div>
+              <div className="login-prompt-content">
+                <FaUser className="login-prompt-icon" />
+                <h4>Login Required</h4>
+                <p>
+                  Sign in to upload your photos and see how this outfit would look on you with our virtual try-on feature.
+                </p>
+                <div className="login-prompt-buttons">
+                  <button
+                    onClick={() => navigate('/auth')}
+                    className="login-prompt-btn primary"
+                  >
+                    Log In
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigate('/auth');
+                      localStorage.setItem('showSignup', 'true');
+                    }}
+                    className="login-prompt-btn secondary"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </div>
             </div>
           )}
 
@@ -530,43 +613,46 @@ const ShareClothes = () => {
             </div>
           </div>
 
-          <div className="content-card share-to-social">
-            <div className="card-header">
-              <h3>Share to Community Collection</h3>
-            </div>
-            <div className="share-to-social-content">
-              <p>
-                Add this outfit to the community collections for others to see
-                and like.
-              </p>
-              <button
-                className={`share-to-social-button ${
-                  isSharing ? "sharing" : ""
-                } ${shareSuccess ? "success" : ""}`}
-                onClick={shareToSocialcollection}
-                disabled={isSharing || shareSuccess}
-              >
-                {isSharing ? (
-                  <>
-                    <div className="button-spinner"></div> Sharing...
-                  </>
-                ) : shareSuccess ? (
-                  <>
-                    <i className="fas fa-check"></i> Shared Successfully!
-                  </>
-                ) : (
-                  <>
-                    <i className="fas fa-users"></i> Share to Community
-                  </>
+          {/* Share to Community Collection - Only for authenticated users */}
+          {isUserAuthenticated === true && (
+            <div className="content-card share-to-social">
+              <div className="card-header">
+                <h3>Share to Community Collection</h3>
+              </div>
+              <div className="share-to-social-content">
+                <p>
+                  Add this outfit to the community collections for others to see
+                  and like.
+                </p>
+                <button
+                  className={`share-to-social-button ${
+                    isSharing ? "sharing" : ""
+                  } ${shareSuccess ? "success" : ""}`}
+                  onClick={shareToSocialcollection}
+                  disabled={isSharing || shareSuccess}
+                >
+                  {isSharing ? (
+                    <>
+                      <div className="button-spinner"></div> Sharing...
+                    </>
+                  ) : shareSuccess ? (
+                    <>
+                      <i className="fas fa-check"></i> Shared Successfully!
+                    </>
+                  ) : (
+                    <>
+                      <i className="fas fa-users"></i> Share to Community
+                    </>
+                  )}
+                </button>
+                {shareSuccess && (
+                  <div className="share-success-message">
+                    Your outfit has been shared to the community collection!
+                  </div>
                 )}
-              </button>
-              {shareSuccess && (
-                <div className="share-success-message">
-                  Your outfit has been shared to the community collection!
-                </div>
-              )}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Share section with improved styling */}
           <div className="content-card share-section">

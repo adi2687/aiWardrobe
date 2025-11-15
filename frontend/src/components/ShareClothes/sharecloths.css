@@ -1,4 +1,4 @@
-/* ShareCloths.css - Modern UI with Glassmorphism */
+/* ShareCloths.css - Modern Enhanced UI with Glassmorphism */
 
 :root {
   --primary-color: #2d2d2d;
@@ -20,23 +20,40 @@
   --facebook: #4267B2;
   --instagram: #E1306C;
   --email: #FF6F61;
+  --purple-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  --green-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
 }
 
 /* Container for the main component */
 .share-cloths-container {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--background-color);
-  background-image: radial-gradient(circle at top right, rgba(50, 50, 50, 0.1), transparent 70%), 
-                    radial-gradient(circle at bottom left, rgba(253, 121, 168, 0.1), transparent 70%);
-  padding: 20px 15px;
-  max-width: 700px;
-  margin: 20px auto;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0a0a0f 0%, #121212 50%, #0f0f1a 100%);
+  background-attachment: fixed;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   min-height: 100vh;
   color: var(--text-color);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  z-index: 0;
+}
+
+.share-cloths-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(106, 17, 203, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(37, 117, 252, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 20%, rgba(253, 121, 168, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Header styling with decorative elements */
@@ -44,18 +61,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   position: relative;
+  z-index: 1;
 }
 
 .share-header h2 {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: var(--text-color);
   text-align: center;
   font-weight: 700;
   position: relative;
   margin: 0 20px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+  letter-spacing: -0.02em;
 }
 
 .share-header h2::after {
@@ -64,10 +83,10 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 4px;
   background: var(--accent-gradient);
-  border-radius: 3px;
-  box-shadow: 0 2px 10px rgba(253, 121, 168, 0.3);
+  border-radius: 4px;
+  box-shadow: 0 2px 15px rgba(253, 121, 168, 0.5);
 }
 
 .accent-text {
@@ -76,6 +95,13 @@
   background-clip: text;
   color: transparent;
   font-weight: 800;
+  animation: gradientShift 3s ease infinite;
+  background-size: 200% auto;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .header-decoration {
@@ -86,34 +112,70 @@
 }
 
 .header-decoration.left {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
+  background: linear-gradient(90deg, transparent, rgba(253, 121, 168, 0.3));
 }
 
 .header-decoration.right {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, rgba(253, 121, 168, 0.3), transparent);
 }
 
 /* Card styling for content sections */
 .content-card {
-  background-color: rgba(40, 40, 40, 0.7);
+  background: linear-gradient(135deg, rgba(30, 30, 45, 0.9), rgba(20, 20, 35, 0.95));
   backdrop-filter: blur(10px);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 2rem;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(253, 121, 168, 0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .content-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(253, 121, 168, 0.2);
+  border-color: rgba(253, 121, 168, 0.3);
+}
+
+.content-card:hover::before {
+  opacity: 1;
 }
 
 .card-header {
-  background: linear-gradient(135deg, rgba(253, 121, 168, 0.8), rgba(255, 107, 157, 0.8));
-  padding: 10px 15px;
+  background: var(--accent-gradient);
+  padding: 1.25rem 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.card-header:hover::before {
+  left: 100%;
 }
 
 .card-header h3 {
@@ -121,133 +183,158 @@
   color: var(--text-color);
   margin: 0;
   font-weight: 600;
+  position: relative;
+  z-index: 1;
 }
 
 /* Share content wrapper */
 .share-content {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Outfit details styling */
 .share-cloths-list {
-  padding: 25px;
+  padding: 2rem;
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--light-text);
 }
 
 .outfit-description {
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(20, 20, 30, 0.4));
+  padding: 1.5rem;
   border-radius: 12px;
-  border-left: 3px solid #444;
+  border-left: 4px solid var(--accent-color);
   white-space: pre-line;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.outfit-description:hover {
+  border-left-color: #ff6b9d;
+  box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.3);
 }
 
 .no-clothes-message {
   font-size: 1.1rem;
   color: var(--muted-text);
   text-align: center;
-  padding: 30px;
+  padding: 3rem;
   font-style: italic;
 }
 
 /* Image styling */
 .image-wrapper-share {
-  padding: 1.25rem;
+  padding: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin: 1rem;
 }
 
 .image-wrapper-share img {
   max-width: 100%;
   height: auto;
   border-radius: var(--border-radius);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  border: 3px solid rgba(50, 50, 50, 0.3);
-  object-fit: cover;
-} 
-.selfimages {
-  max-width: 100%;  
-  height: 200px;
-  width: 200px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   border: 2px solid rgba(255, 255, 255, 0.1);
   object-fit: cover;
-  cursor: pointer; 
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper-share img:hover {
+  transform: scale(1.02);
+}
+
+/* Self Images Styling */
+.selfimages {
+  max-width: 100%;
+  height: 200px;
+  width: 200px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-} 
+}
 
 .selfimages:hover {
-  transform: scale(1.05) translateY(-5px); 
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
-  border-color: rgba(102, 126, 234, 0.6);
+  transform: scale(1.08) translateY(-8px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+  border-color: rgba(102, 126, 234, 0.7);
 }
 
 .selfimagescontainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  gap: 1.5rem;
+  padding: 1.5rem;
   justify-items: center;
 }
 
 /* Virtual Try-On Section Styling */
 .virtual-tryon-card {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
   border: 2px solid rgba(102, 126, 234, 0.3);
 }
 
 .virtual-tryon-card .card-header {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
 }
 
 .image-selection-wrapper {
   position: relative;
   transition: all 0.3s ease;
+  border-radius: 16px;
 }
 
 .image-selection-wrapper.selected {
-  transform: scale(1.02);
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.6);
 }
 
 .default-badge-share {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: var(--accent-gradient);
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.5);
   z-index: 10;
   text-transform: uppercase;
   animation: pulse 2s infinite;
+  backdrop-filter: blur(10px);
 }
 
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.5);
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(245, 87, 108, 0.6);
+    box-shadow: 0 6px 20px rgba(245, 87, 108, 0.7);
   }
 }
 
 .action-buttons-container {
   display: flex;
-  gap: 12px;
-  margin-top: 20px;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0 1.5rem 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -255,18 +342,22 @@
 .generate-btn {
   flex: 1;
   min-width: 200px;
-  padding: 14px 28px;
+  padding: 1rem 2rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .generate-btn::before {
@@ -286,7 +377,7 @@
 
 .generate-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 10px 35px rgba(102, 126, 234, 0.6);
 }
 
 .generate-btn:active {
@@ -301,22 +392,39 @@
 }
 
 .set-default-btn {
-  padding: 14px 28px;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 1rem 2rem;
+  background: var(--accent-gradient);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.3);
+  box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.set-default-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.set-default-btn:hover::before {
+  left: 100%;
 }
 
 .set-default-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(245, 87, 108, 0.5);
+  box-shadow: 0 10px 35px rgba(245, 87, 108, 0.6);
 }
 
 .set-default-btn:active {
@@ -324,22 +432,22 @@
 }
 
 .instruction-text {
-  margin-bottom: 20px;
-  color: #bbb;
-  font-size: 14px;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
   line-height: 1.6;
   text-align: center;
-  padding: 0 10px;
+  padding: 0 1.5rem;
 }
 
 .generated-result-card {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
   border: 2px solid rgba(16, 185, 129, 0.3);
   animation: slideIn 0.5s ease;
 }
 
 .generated-result-card .card-header {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.9) 0%, rgba(5, 150, 105, 0.9) 100%);
+  background: var(--green-gradient);
 }
 
 @keyframes slideIn {
@@ -352,15 +460,16 @@
     transform: translateY(0);
   }
 }
+
 .no-preview {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 300px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(20, 20, 30, 0.4));
   border-radius: var(--border-radius);
-  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
 }
 
 .no-preview p {
@@ -369,35 +478,75 @@
   font-size: 1.1rem;
 }
 
+/* No Images Message */
+.no-images-message {
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.no-images-message p {
+  color: var(--muted-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.upload-images-btn {
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.upload-images-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+}
+
+.upload-images-btn:active {
+  transform: translateY(-1px);
+}
+
 /* Button styling */
 .copybutton {
   background: var(--primary-gradient);
   border: none;
-  border-radius: var(--border-radius);
-  padding: 16px 30px;
+  border-radius: 12px;
+  padding: 1rem 2rem;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   width: 100%;
   max-width: 300px;
   font-size: 1.1rem;
-  gap: 12px;
+  gap: 0.75rem;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .copybutton:hover {
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   filter: brightness(1.1);
+  transform: translateY(-2px);
 }
 
 .copybutton:active {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.98);
 }
 
 .copybutton::before {
@@ -415,6 +564,10 @@
   left: 100%;
 }
 
+.copybutton .icon {
+  font-size: 1.2rem;
+}
+
 /* Social share buttons */
 .share-btn {
   width: 60px;
@@ -427,7 +580,7 @@
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -450,135 +603,40 @@
 }
 
 .share-btn:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.share-btn:active {
+  transform: translateY(-2px) scale(1.02);
 }
 
 /* Social button colors */
-.share-btn.whatsapp { background-color: var(--whatsapp); }
-.share-btn.twitter { background-color: var(--twitter); }
-.share-btn.facebook { background-color: var(--facebook); }
-.share-btn.instagram { background-color: var(--instagram); }
-.share-btn.email { background-color: var(--email); }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.share-btn.whatsapp { 
+  background: linear-gradient(135deg, var(--whatsapp), #20c55e);
 }
 
-.share-dropdown button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  background: none;
-  border: none;
-  padding: 12px 16px;
-  font-size: 1rem;
-  color: var(--light-text);
-  cursor: pointer;
-  transition: var(--transition);
-  margin: 0;
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  min-width: 140px;
-  gap: 8px;
+.share-btn.twitter { 
+  background: linear-gradient(135deg, var(--twitter), #0d8bd9);
 }
 
-.share-dropdown button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+.share-btn.facebook { 
+  background: linear-gradient(135deg, var(--facebook), #365899);
 }
 
-.share-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border: none;
-  padding: 12px 18px;
-  border-radius: var(--border-radius);
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: var(--transition);
-  min-width: 140px;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.share-btn.instagram { 
+  background: linear-gradient(135deg, var(--instagram), #c13584);
 }
 
-.share-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transform: translateX(-100%);
-  transition: 0.6s;
-}
-
-.share-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.share-btn:hover::before {
-  transform: translateX(100%);
+.share-btn.email { 
+  background: linear-gradient(135deg, var(--email), #ff5252);
 }
 
 .share-btn .icon {
   font-size: 1.5rem;
   color: white;
-  
-}
-
-.copybutton {
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: var(--border-radius);
-  padding: 14px 24px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  box-shadow: var(--shadow);
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 300px;
-  font-size: 1.1rem;
-  gap: 10px;
-}
-
-.copybutton::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transform: translateX(-100%);
-  transition: 0.6s;
-}
-
-.copybutton:hover::before {
-  transform: translateX(100%);
-}
-
-.copybutton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 /* Loading spinner */
@@ -587,28 +645,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
-  background-color: rgba(0, 0, 0, 0.2);
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(20, 20, 30, 0.4));
   border-radius: var(--border-radius);
-  margin: 0;
+  margin: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 100%;
+  width: calc(100% - 2rem);
 }
 
 .loading-container .loader {
   width: 60px;
   height: 60px;
   border: 4px solid rgba(255, 255, 255, 0.1);
-  border-top: 4px solid var(--primary-color);
+  border-top: 4px solid var(--accent-color);
   border-left: 4px solid var(--accent-color);
   border-radius: 50%;
   animation: spin 1.2s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+  filter: drop-shadow(0 0 10px rgba(253, 121, 168, 0.5));
 }
 
 .loading-container p {
-  margin-top: 20px;
+  margin-top: 1.5rem;
   color: var(--muted-text);
   font-size: 1.1rem;
+  font-weight: 500;
 }
 
 @keyframes spin {
@@ -618,97 +678,117 @@
 
 /* Error message */
 .error-message {
-  background-color: rgba(211, 47, 47, 0.15);
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.2), rgba(198, 40, 40, 0.15));
   color: #ff6b6b;
-  padding: 25px;
+  padding: 2rem;
   border-radius: var(--border-radius);
-  margin: 30px 0;
+  margin: 2rem 0;
   font-weight: 500;
   box-shadow: var(--shadow);
   border-left: 4px solid #ff6b6b;
   text-align: center;
+  backdrop-filter: blur(10px);
 }
 
 /* Share section styling */
 .share-section {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 
 .share-options {
-  padding: 12px;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 1.5rem;
 }
 
 .social-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 1rem;
   width: 100%;
   max-width: 500px;
-  margin-top: 10px;
+  margin-top: 0.5rem;
 }
 
 .share-to-social {
   margin-bottom: 2rem;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(20, 20, 30, 0.4));
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(106, 17, 203, 0.3);
 }
 
 .share-to-social .card-header {
-  background: linear-gradient(135deg, rgba(106, 17, 203, 0.8) 0%, rgba(37, 117, 252, 0.8) 100%);
-  padding: 1rem;
+  background: var(--purple-gradient);
+  padding: 1.25rem 1.5rem;
   color: white;
 }
 
 .share-to-social .card-header h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
 .share-to-social-content {
-  padding: 0.75rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .share-to-social-content p {
   margin: 0;
-  color: #ddd;
-  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .share-to-social-button {
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  background: var(--purple-gradient);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  align-self: flex-end;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  gap: 0.75rem;
+  align-self: flex-start;
+  box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.share-to-social-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.share-to-social-button:hover::before {
+  left: 100%;
 }
 
 .share-to-social-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(106, 17, 203, 0.5);
 }
 
 .share-to-social-button:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
 }
 
 .share-to-social-button.sharing {
@@ -718,18 +798,17 @@
 }
 
 .share-to-social-button.success {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: var(--green-gradient);
   cursor: default;
 }
 
 .button-spinner {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-top: 2px solid white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-right: 8px;
   display: inline-block;
 }
 
@@ -749,38 +828,137 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  border: 2px dashed rgba(255, 255, 255, 0.1);
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(20, 20, 30, 0.5));
+  border-radius: 16px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
 }
 
 .share-success-message {
   margin-top: 1rem;
-  padding: 0.75rem;
-  background: rgba(16, 185, 129, 0.1);
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15));
   border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 6px;
+  border-radius: 12px;
   color: #10b981;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   text-align: center;
   animation: fadeIn 0.5s ease;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Login Prompt Card */
+.login-prompt-card {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.login-prompt-card .card-header {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+}
+
+.login-prompt-content {
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.login-prompt-icon {
+  font-size: 4rem;
+  color: rgba(102, 126, 234, 0.7);
+  margin-bottom: 0.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.login-prompt-content h4 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.login-prompt-content p {
+  color: var(--muted-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0;
+}
+
+.login-prompt-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.login-prompt-btn {
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.login-prompt-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.login-prompt-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+}
+
+.login-prompt-btn.secondary {
+  background: transparent;
+  color: var(--text-color);
+  border: 2px solid rgba(102, 126, 234, 0.5);
+}
+
+.login-prompt-btn.secondary:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.7);
+  transform: translateY(-3px);
+}
+
+.login-prompt-btn:active {
+  transform: translateY(-1px);
 }
 
 /* Responsive styles */
 @media (max-width: 780px) {
   .share-header h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .share-cloths-container {
-    padding: 25px 15px;
-    margin: 10px;
-    width: auto;
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
   }
 
   .card-header h3 {
@@ -788,40 +966,41 @@
   }
 
   .social-buttons {
-    gap: 10px;
+    gap: 0.75rem;
   }
 
   .share-btn {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     font-size: 1.3rem;
   }
 
   .copybutton {
     font-size: 1rem;
-    padding: 14px 20px;
+    padding: 0.875rem 1.5rem;
   }
 
   .outfit-description {
     font-size: 1rem;
-    padding: 15px;
+    padding: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
   .share-header {
     flex-direction: column;
-    gap: 10px;
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
 
   .header-decoration {
     width: 80%;
-    height: 1px;
+    height: 2px;
   }
 
   .share-header h2 {
-    font-size: 1.5rem;
-    margin: 10px 0;
+    font-size: 1.75rem;
+    margin: 0.5rem 0;
   }
 
   .card-header h3 {
@@ -829,47 +1008,34 @@
   }
 
   .share-options {
-    padding: 20px 15px;
+    padding: 1.25rem 1rem;
   }
 
   .social-buttons {
-    gap: 8px;
+    gap: 0.5rem;
   }
 
   .share-btn {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     font-size: 1.2rem;
-  }
-
-  .imagecontainer img {
-    max-width: 100%;
   }
 
   .copybutton {
     width: 100%;
     margin: 1rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .share-cloths-container h3 {
-    font-size: 1.2rem;
+    max-width: 100%;
   }
 
   .share-cloths-list {
     font-size: 1rem;
-  }
-
-  .share-button, .copybutton {
-    padding: 10px 16px;
-    font-size: 0.9rem;
+    padding: 1.5rem;
   }
 
   .selfimagescontainer {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-    padding: 15px;
+    gap: 1rem;
+    padding: 1rem;
   }
 
   .selfimages {
@@ -884,6 +1050,7 @@
 
   .action-buttons-container {
     flex-direction: column;
+    padding: 0 1rem 1rem;
   }
 
   .generate-btn, .set-default-btn {
@@ -892,6 +1059,38 @@
   }
 
   .instruction-text {
-    font-size: 13px;
+    font-size: 0.875rem;
+    padding: 0 1rem;
+  }
+
+  .share-to-social-button {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .login-prompt-content {
+    padding: 1.5rem;
+  }
+
+  .login-prompt-icon {
+    font-size: 3rem;
+  }
+
+  .login-prompt-content h4 {
+    font-size: 1.3rem;
+  }
+
+  .login-prompt-content p {
+    font-size: 0.9rem;
+  }
+
+  .login-prompt-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .login-prompt-btn {
+    width: 100%;
+    min-width: unset;
   }
 }

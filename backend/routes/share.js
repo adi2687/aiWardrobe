@@ -45,16 +45,46 @@ router.post("/", authenticate,async (req, res) => {
   res.json({ id });
 });
 
-router.get("/:id",authenticate,async (req, res) => {
-  const shareId = req.params.id;
-  let userid=req.user.id
-  const user=await User.findById(userid)
-  if (!user){
-    return res.json({msg:"user is not logged in at image preview in backend"})
+router.get("/:id", async (req, res) => {
+  try {
+    const shareId = req.params.id;
+    
+    // Find the shared clothes
+    const share = await Share.find({ shareId: shareId });
+    
+    if (!share || share.length === 0) {
+      return res.status(404).json({ msg: "Shared clothes not found" });
+    }
+
+    // Try to get user data if authenticated (optional)
+    let gender = null;
+    let age = null;
+    
+    const token = getTokenFromRequest(req);
+    if (token) {
+      try {
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        const user = await User.findById(decoded.id);
+        if (user) {
+          gender = user.gender || null;
+          age = user.age || null;
+        }
+      } catch (error) {
+        // Token invalid or user not found - continue without user data
+        console.log("Optional auth failed, continuing without user data");
+      }
+    }
+
+    res.json({
+      username: share[0].username,
+      share: share,
+      gender: gender,
+      age: age
+    });
+  } catch (error) {
+    console.error("Error fetching shared clothes:", error);
+    res.status(500).json({ msg: "Failed to fetch shared clothes", error: error.message });
   }
-// console.log(user)
-  const share = await Share.find({ shareId: shareId });
-  res.json({username:share.username,share:share,gender:user.gender,age:user.age});
 });
 
 export default router;
