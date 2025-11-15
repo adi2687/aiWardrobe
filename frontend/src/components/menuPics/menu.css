@@ -17,7 +17,7 @@
     position: absolute;
     left: 50%;
     z-index: 10;
-    width: 60px;
+    width: 50px;
     height: 60px;
     display: grid;
     place-items: center;
@@ -26,6 +26,7 @@
     border-radius: 50%;
     cursor: pointer;
     border: 5px solid #000;
+    
   }
   
   .face-title {
@@ -108,7 +109,13 @@
     pointer-events: none;
     transition: 0.1s ease;
   }
-  
+  .action-button:hover {
+    background-color: #333;
+  }
+  .action-button p{
+    font-size: 36px;
+    margin-top: 0px;
+  }
   @media (max-width: 1500px) {
     .face-title,
     .face-description {

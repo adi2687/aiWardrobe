@@ -119,7 +119,7 @@ const Export = ({
                             className="export-auth-btn primary" 
                             onClick={() => navigate('/auth')}
                         >
-                            Log In
+                            <span>Log In</span>
                         </button>
                         <button 
                             className="export-auth-btn secondary" 
@@ -128,7 +128,7 @@ const Export = ({
                                 localStorage.setItem('showSignup', 'true');
                             }}
                         >
-                            Sign Up
+                            <span>Sign Up</span>
                         </button>
                     </div>
                 </div>
@@ -151,7 +151,7 @@ const Export = ({
                             getfromapi();
                         }}
                     >
-                        Retry
+                        <span>Retry</span>
                     </button>
                 </div>
             </div>

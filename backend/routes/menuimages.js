@@ -14,7 +14,7 @@ router.get('/', auth, async (req, res) => {
     let randoms=[]
     let menucounter=0 
     let previewcounter=0 
-    console.log("menuimages",menuimages.length,previews.length)
+    // console.log("menuimages",menuimages.length,previews.length)
     for (let i=0;i<menuimages.length+previews.length;i++){
         let random=Math.floor(Math.random()*2)
         if (random===0){
@@ -47,6 +47,7 @@ router.get('/', auth, async (req, res) => {
         count++;
         randoms.push({image:`https://picsum.photos/${count*100}/300?grayscale`})
     }
-    res.status(200).json({randoms})
+    // console.log("randoms",randoms.length)
+    res.status(200).json({randoms:randoms.reverse()})
 })
 export default router
