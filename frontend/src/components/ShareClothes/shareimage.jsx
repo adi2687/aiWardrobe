@@ -150,7 +150,7 @@ const ShareImage = () => {
     }, [apiUrl]);
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(shareLink)
+        navigator.clipboard.writeText(`${shareLink}&user=${user.toUpperCase() ? user.split(" ").join("%20").toUpperCase() : "USER"}`)
             .then(() => {
                 setCopied(true);
                 showToast("Link copied to clipboard!", "success");
@@ -198,20 +198,20 @@ const ShareImage = () => {
 
         switch (platform) {
             case "whatsapp":
-                shareUrl = `https://wa.me/?text=${encodeURIComponent(`${message} ${shareLink} ${user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT`)}`;
+                shareUrl = `https://wa.me/?text=${encodeURIComponent(`${message} ${shareLink}&user=${user.toUpperCase() ? user.split(" ").join("%20").toUpperCase() : "USER"}`)}&medium=WhatsApp`;
                 break;
             case "twitter":
-                shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareLink} ${user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT`)}`;
+                shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${message} ${shareLink}&user=${user.toUpperCase() ? user.split(" ").join("%20").toUpperCase() : "USER"}`)}&medium=Twitter`;
                 break;
             case "facebook":
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}&quote=${encodeURIComponent(message)} ${user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT`;
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}&quote=${encodeURIComponent(message)}&user=${user.toUpperCase() ? user.split(" ").join("%20").toUpperCase() : "USER"}&medium=Facebook`;
                 break;
             case "instagram":
                 copyToClipboard();
                 alert("To share on Instagram: Copy the link and paste it in your Instagram story or post");
                 return;
             case "email":
-                shareUrl = `mailto:?subject=Check out this amazing outfit&body=${encodeURIComponent(`${message}\n\n${shareLink} ${user.toUpperCase() ? user.toUpperCase() : "USER"} OUTFIT`)}`;
+                shareUrl = `mailto:?subject=Check out this amazing outfit&body=${encodeURIComponent(`${message}\n\n${shareLink}`)}&user=${user.toUpperCase()? user.split(" ").join("%20").toUpperCase() : "USER"}&medium=Email`;
                 break;
             default:
                 shareUrl = shareLink;
