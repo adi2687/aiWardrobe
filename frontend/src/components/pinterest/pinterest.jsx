@@ -380,7 +380,7 @@
                         {fetchingImages ? '⟳' : '↻'}
                     </button>
                 </div>
-                <p>upload full body pics from pinterest to review on yourselve or upload any image and get the best theme for that</p>
+                <p className='description'>upload full body pics from pinterest to review on yourselve or upload any image and get the best theme for that</p>
                 <div className="pinterest-input-section">
                    
                     <div className="input-group">

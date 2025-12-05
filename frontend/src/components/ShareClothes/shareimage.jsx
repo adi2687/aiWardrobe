@@ -252,7 +252,7 @@ const ShareImage = () => {
                                 </>
                             )}
                         </button>
-                        <button className="download-btn-main" 
+                        <button className="copy-link-btn" 
                         onClick={() => {
                             if (navigator.share) {
                                 navigator.share({
