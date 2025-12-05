@@ -43,7 +43,7 @@
     user-select: none;
     position: relative;
     color: #fff;
-    top: 2px;
+    top: 10px;
     font-size: 26px;
   }
   
@@ -93,10 +93,13 @@
   .action-button {
     position: absolute;
     left: 50%;
+    display: flex;
+    justify-content: center;align-items: center;
+    padding:30px
   }
   
   .action-button.active {
-    bottom: 5.2em;
+    bottom: 8.2em;
     transform: translateX(-50%) scale(1);
     opacity: 1;
     pointer-events: auto;

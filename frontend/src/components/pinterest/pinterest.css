@@ -77,15 +77,16 @@
      border-bottom: 1px solid var(--border-color);
    }
    
-   .pinterest-header h1 {
-     font-size: 2.5rem;
-     font-weight: 700;
-     letter-spacing: -0.05em;
-     background: linear-gradient(to right, #fff, #999);
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     margin: 0;
-   }
+  .pinterest-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    background: linear-gradient(to right, #fff, #999);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
    
    .refresh-button {
      width: 40px;
@@ -101,11 +102,16 @@
      transition: var(--transition-smooth);
    }
    
-   .refresh-button:hover:not(:disabled) {
-     background: var(--color-white);
-     color: var(--color-black);
-     transform: rotate(180deg);
-   }
+  .refresh-button:hover:not(:disabled) {
+    background: var(--color-white);
+    color: var(--color-black);
+    transform: rotate(180deg);
+  }
+
+  .refresh-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
    
    /* =========================================
       5. Input Section (Search & Upload)
@@ -308,11 +314,21 @@
      transition: var(--transition-fast);
    }
    
-   .set-default-button:hover,
-   .clear-selection-button:hover {
-     background: var(--glass-bg-hover);
-     border-color: var(--color-white);
-   }
+  .set-default-button:hover,
+  .clear-selection-button:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--color-white);
+  }
+
+  .set-default-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .set-default-button:disabled:hover {
+    background: transparent;
+    border-color: var(--border-color);
+  }
    
    /* =========================================
       8. Dialog / Modal Styles
@@ -449,10 +465,25 @@
      transition: var(--transition-smooth);
    }
    
-   .dialog-submit:disabled {
-     opacity: 0.7;
-     cursor: not-allowed;
-   }
+  .dialog-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .dialog-close:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .dialog-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
    
    /* =========================================
       9. Generated Image Result (Overlay)
@@ -473,15 +504,37 @@
      margin-bottom: 1.5rem;
    }
    
-   .generated-image-header h2 {
-     font-size: 2rem;
-     background: linear-gradient(to right, #fff, #aaa);
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     margin: 0;
-     /* Glow effect */
-     text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-   }
+  .generated-image-header h2 {
+    font-size: 2rem;
+    background: linear-gradient(to right, #fff, #aaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    /* Glow effect */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  .close-generated-button {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+  }
+
+  .close-generated-button:hover {
+    background: var(--color-white);
+    color: var(--color-black);
+    transform: rotate(90deg);
+  }
    
    .generated-image-container {
      display: flex;
@@ -509,20 +562,28 @@
      transition: var(--transition-smooth);
    }
    
-   .download-button {
-     background: var(--color-white);
-     color: var(--color-black);
-   }
-   
-   .share-button {
-     background: transparent;
-     border: 1px solid var(--color-white);
-     color: var(--color-white);
-   }
-   
-   .share-button:hover {
-     background: var(--glass-bg);
-   }
+  .download-button {
+    background: var(--color-white);
+    color: var(--color-black);
+  }
+
+  .download-button:hover {
+    background: #e5e5e5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  }
+
+  .share-button {
+    background: transparent;
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+  }
+
+  .share-button:hover {
+    background: var(--glass-bg);
+    border-color: var(--color-white);
+    transform: translateY(-2px);
+  }
    
    /* =========================================
       10. Utilities & Loading
@@ -553,15 +614,53 @@
      color: var(--text-muted);
    }
    
-   .loading-spinner {
-     width: 40px;
-     height: 40px;
-     border: 3px solid var(--glass-bg);
-     border-top: 3px solid var(--color-white);
-     border-radius: 50%;
-     animation: spin 1s linear infinite;
-     margin-bottom: 1rem;
-   }
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--glass-bg);
+    border-top: 3px solid var(--color-white);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  .loading-container p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* No Images State */
+  .no-images {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-muted);
+  }
+
+  .no-images p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .refresh-button-large {
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-full);
+    background: var(--color-white);
+    color: var(--color-black);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+  }
+
+  .refresh-button-large:hover:not(:disabled) {
+    background: #e5e5e5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  }
+
+  .refresh-button-large:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
    
    /* =========================================
       11. Animations
@@ -612,10 +711,42 @@
        align-items: flex-start;
      }
      
-     .selection-info {
-       width: 100%;
-       flex-wrap: wrap;
-       justify-content: center;
-       padding: 1rem;
-     }
-   }
+    .selection-info {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .generated-image-section {
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .generated-image-header h2 {
+      font-size: 1.5rem;
+    }
+
+    .generated-image-container img {
+      max-height: 50vh;
+    }
+
+    .generated-image-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .download-button,
+    .share-button {
+      width: 100%;
+    }
+
+    .featured-image {
+      max-width: 100%;
+      padding: 1rem;
+    }
+
+    .no-images {
+      padding: 2rem 1rem;
+    }
+  }
