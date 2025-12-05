@@ -252,12 +252,13 @@ const ShareImage = () => {
                                 </>
                             )}
                         </button>
-                        <button onClick={() => {
+                        <button className="copy-link-btn" 
+                        onClick={() => {
                             if (navigator.share) {
                                 navigator.share({
                                     title: 'Generated Outfit',
                                     text: 'Check out my AI-generated outfit!',
-                                    url: `${shareLink}?url=${url}&user=${user ? user  : "user"}`
+                                    url: `${shareLink}?url=${url}&user=${user ? user  : "us"}`
                                 });
                             } else {
                                 navigator.clipboard.writeText(generatedImage);
