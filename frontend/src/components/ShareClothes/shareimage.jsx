@@ -211,7 +211,7 @@ const ShareImage = () => {
                 alert("To share on Instagram: Copy the link and paste it in your Instagram story or post");
                 return;
             case "email":
-                shareUrl = `mailto:?subject=Check out this amazing outfit&body=${encodeURIComponent(`${message}\n\n${shareLink}`)}&user=${user.toUpperCase()? user.split(" ").join("%20").toUpperCase() : "USER"}&medium=Email`;
+                shareUrl = `mailto:?subject=Check out this amazing outfit&body=${encodeURIComponent(`${message}\n\n${shareLink}`)}&user=${user.toUpperCase() ? user.split(" ").join("%20").toUpperCase() : "USER"}&medium=Email`;
                 break;
             default:
                 shareUrl = shareLink;
@@ -251,6 +251,20 @@ const ShareImage = () => {
                                     <span>Copy Link</span>
                                 </>
                             )}
+                        </button>
+                        <button onClick={() => {
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: 'Generated Outfit',
+                                    text: 'Check out my AI-generated outfit!',
+                                    url: `${shareLink}?url=${url}&user=${user ? user  : "user"}`
+                                });
+                            } else {
+                                navigator.clipboard.writeText(generatedImage);
+                                alert('Image URL copied to clipboard!');
+                            }
+                        }}>
+                            Share
                         </button>
                         <button
                             onClick={downloadImageWithLogo}
@@ -299,48 +313,53 @@ const ShareImage = () => {
                         </button>
                     </div>
                 </div>
-            )}
+            )
+            }
 
             {/* {imageUrlWithWatermark} */}
-           
+
             {/* Login prompt for non-authenticated users */}
-            {isUserAuthenticated === false && (
-                <div className="share-login-prompt">
-                    <div className="share-login-prompt-content">
-                        <FaUser className="share-login-prompt-icon" />
-                        <h4>Login Required</h4>
-                        <p>
-                            Sign in to access additional features .
-                        </p>
-                        <div className="share-login-prompt-buttons">
-                            <button
-                                onClick={() => navigate('/auth')}
-                                className="share-login-prompt-btn primary"
-                            >
-                                Log In
-                            </button>
-                            <button
-                                onClick={() => {
-                                    navigate('/auth');
-                                    localStorage.setItem('showSignup', 'true');
-                                }}
-                                className="share-login-prompt-btn secondary"
-                            >
-                                Sign Up
-                            </button>
+            {
+                isUserAuthenticated === false && (
+                    <div className="share-login-prompt">
+                        <div className="share-login-prompt-content">
+                            <FaUser className="share-login-prompt-icon" />
+                            <h4>Login Required</h4>
+                            <p>
+                                Sign in to access additional features .
+                            </p>
+                            <div className="share-login-prompt-buttons">
+                                <button
+                                    onClick={() => navigate('/auth')}
+                                    className="share-login-prompt-btn primary"
+                                >
+                                    Log In
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        navigate('/auth');
+                                        localStorage.setItem('showSignup', 'true');
+                                    }}
+                                    className="share-login-prompt-btn secondary"
+                                >
+                                    Sign Up
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
 
-            {toast && (
-                <Toast
-                    message={toast.message}
-                    type={toast.type}
-                    onClose={() => setToast(null)}
-                />
-            )}
-        </div>
+            {
+                toast && (
+                    <Toast
+                        message={toast.message}
+                        type={toast.type}
+                        onClose={() => setToast(null)}
+                    />
+                )
+            }
+        </div >
     );
 };
 

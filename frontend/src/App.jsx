@@ -23,7 +23,6 @@ import Image from './components/Image/Image'
 import ShareClothes from './components/ShareClothes/ShareClothes'
 import DiscoverTrends from "./components/DiscoverTrends/DiscoverTrends";
 import DevelopersPage from './components/Developers/Developers'
-import Features from './components/Developers/Features'
 import About from './components/Developers/Aboutus'
 import Wishlist from './components/Wishlist/Wishlist'
 import Download from './components/Download/Download'
@@ -42,7 +41,7 @@ import logo from '../public/logo_main.png'
 import CardNav from './components/newNav/main'
 import Export from './components/menuPics/export'
 import Dock from './components/dock/export'
-import Pinterest from './components/pinterest/test'
+import Pinterest from './components/pinterest/pinterest'
 import ShareImage from './components/ShareClothes/shareimage'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
@@ -168,7 +167,6 @@ const App = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/data-deletion" element={<DataDeletion />} />
-        <Route path="/features" element={<Features />} />
         <Route path="/aboutus" element={<About />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/download" element={<Download />} />

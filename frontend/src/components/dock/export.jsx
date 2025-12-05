@@ -14,7 +14,7 @@ const navItems = [
     {path:'/profile/favorites',icon:<FaHeart/>,label:'Favorites'},
     {path :'/menu',icon:<FaImage/>,label:'Your Looks'},
     { path: '/shop', icon: <FaStore />, label: 'Shop' },
-    // {path:'/pinterest',icon:<FaPinterest/>,label:'Pinterest'},
+    {path:'/pinterest',icon:<FaPinterest/>,label:'Pinterest'},
     { path: '/social', icon: <FaMagic />, label: 'Social' }
   ];
 

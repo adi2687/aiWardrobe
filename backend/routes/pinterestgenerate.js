@@ -4,6 +4,8 @@ import multer from "multer";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
 import { v2 as cloudinary } from "cloudinary";
+import OpenAI from "openai";
+import axios from "axios";
 
 dotenv.config();
 
@@ -72,251 +74,111 @@ async function callGenerateContentWithRetry({ model, contents, maxRetries = 3 })
   throw lastErr;
 }
 
-/* ===========================
-   STEP 1: /extract
-   Accepts: form-data file "image1" (model)
-   Returns: clothing description text
-   =========================== */
-router.post("/extract", upload.single("image1"), async (req, res) => {
-  try {
-    if (!req.file) return res.status(400).json({ error: "image1 file required (form-data key: image1)" });
-
-    const image = req.file;
-    const base64 = image.buffer.toString("base64");
-
-    // Strong extraction prompt (structured)
-    const extractionPrompt = `
-You are a fashion extraction engine. Analyze the clothing in IMAGE 1 and output a COMPLETE pixel-level clothing specification.
-Return ONLY plain text in this exact structured format (do not include extra commentary):
-
-[Garment Overview]
-- Name:
-- Gender style:
-- Category:
-
-[Color Information]
-- Base color:
-- Secondary colors:
-- Color gradients:
-- Shadows / lighting nuances:
-
-[Fabric Details]
-- Fabric type:
-- Texture description:
-- Material properties (shine/matte/elasticity):
-- Thickness:
-
-[Pattern & Design]
-- Pattern type:
-- Pattern complexity:
-- Logos/prints:
-- Embroidery/stitching details:
-
-[Shape & Fit]
-- Fit (tight/regular/oversized):
-- Silhouette:
-- Collar:
-- Sleeves:
-- Hem length:
-
-[Structural Elements]
-- Buttons:
-- Zippers:
-- Pockets:
-- Straps:
-- Other details:
-
-[Wrinkles & Shadows]
-- Wrinkle locations:
-- Shadow directions and intensity:
-
-[Perspective & Deformation]
-- Visible angles:
-- Distortions from pose/camera:
-
-IMPORTANT: Describe ONLY the clothing. Do NOT include any information about the person's face, identity, or body.
-`;
-
-    const contents = [
-      { inlineData: { mimeType: image.mimetype || "image/jpeg", data: base64 } },
-      { text: extractionPrompt }
-    ];
-
-    // Use a high-fidelity text-capable model for extraction (Pro preview recommended)
-    const response = await callGenerateContentWithRetry({
-      model: "models/gemini-2.5-pro-preview-03-25",
-      contents
-    });
-
-    // extract text from response (support different response shapes)
-    let extractedText = "";
-    if (response?.parts) {
-      for (const p of response.parts) if (p.text) extractedText += p.text;
-    } else if (response?.candidates?.[0]?.content?.parts) {
-      for (const p of response.candidates[0].content.parts) if (p.text) extractedText += p.text;
-    } else if (response?.response?.candidates?.[0]?.content?.parts) {
-      for (const p of response.response.candidates[0].content.parts) if (p.text) extractedText += p.text;
-    }
-
-    extractedText = extractedText.trim();
-    if (!extractedText) return res.status(500).json({ error: "Extraction returned empty text", debug: response });
-
-    return res.json({ clothingDescription: extractedText });
-  } catch (err) {
-    console.error("extract error:", err);
-    return res.status(500).json({ error: "Extraction failed", details: err?.message || err });
-  }
-});
 
 /* ===========================
    STEP 2: /apply
    Accepts: form-data file "image2" (user) and field "clothingDescription" (text from /extract)
    Returns: uploaded image url
-   =========================== */
-router.post("/apply", upload.single("image2"), async (req, res) => {
+   =========================== */ 
+
+router.post("/identify", multer().none(), async (req,res)=>{ 
   try {
-    if (!req.file) return res.status(400).json({ error: "image2 file required (form-data key: image2)" });
-    if (!req.body?.clothingDescription) return res.status(400).json({ error: "clothingDescription text required" });
-
-    const image = req.file;
-    const base64 = image.buffer.toString("base64");
-    const clothingSpec = req.body.clothingDescription;
-
-    const applyPrompt = `
-Using the exact clothing specification below, recreate the SAME outfit on the person in IMAGE 2.
-
-[CLOTHING SPECIFICATION]
-${clothingSpec}
-
-STRICT RULES:
-1) Do NOT change the person's face, hair, skin tone, identity, pose, or body proportions.
-2) Keep the original background unchanged.
-3) Replace ONLY the clothing. Preserve fabric texture, pattern scale, color, and structural elements.
-4) Adjust fit to the person's pose naturally. Maintain realistic shadows, folds, perspective.
-5) No hallucinated accessories or new logos. No face or limb distortions.
-
-Output ONLY the final image.
-`;
-
-    const contents = [
-      { inlineData: { mimeType: image.mimetype || "image/jpeg", data: base64 } },
-      { text: applyPrompt }
-    ];
-
-    // Use image-capable model (flash or pro-preview image). Try pro-preview first for quality.
-    const response = await callGenerateContentWithRetry({
-      model: "models/gemini-2.5-pro-preview-03-25",
-      contents
-    });
-
-    // Extract image bytes
-    const parts =
-      response.parts ||
-      response.candidates?.[0]?.content?.parts ||
-      response.response?.candidates?.[0]?.content?.parts ||
-      [];
-
-    let generatedBase64 = null;
-    for (const p of parts) {
-      if (p.inlineData?.data) {
-        generatedBase64 = p.inlineData.data;
-        break;
+    console.log("in the identify route")
+    console.log(req.file,req.body)
+    const imageurl = req.body.imageurl  
+    const userimage = req.body.userimage   
+    if(!imageurl || !userimage) {
+      console.log("imageurl and userimage are required");
+      return res.status(400).json({error: "imageurl and userimage are required"});
+    }
+    
+    // Helper function to convert URL or base64 to base64 string
+    async function getBase64Image(input) {
+      // If it's already a base64 string (no http/https), use it directly
+      if (!input.startsWith('http://') && !input.startsWith('https://')) {
+        // Remove data URL prefix if present
+        return input.includes(',') ? input.split(',')[1] : input;
+      }
+      
+      // If it's a URL, fetch and convert to base64
+      try {
+        const response = await axios.get(input, { responseType: 'arraybuffer' });
+        const buffer = Buffer.from(response.data);
+        return buffer.toString('base64');
+      } catch (error) {
+        console.error('Error fetching image from URL:', error);
+        throw new Error('Failed to fetch image from URL');
       }
     }
-
-    if (!generatedBase64) return res.status(500).json({ error: "AI did not return an image", debug: parts });
-
-    const dataUri = `data:image/jpeg;base64,${generatedBase64}`;
-
-    const uploaded = await cloudinary.uploader.upload(dataUri, { folder: "tryon_images" });
-    return res.json({ image: uploaded.secure_url });
-  } catch (err) {
-    console.error("apply error:", err);
-    return res.status(500).json({ error: "Apply failed", details: err?.message || err });
-  }
-});
-
-/* ===========================
-   COMBINED: /transfer
-   Accepts: form-data files "image1" and "image2"
-   Runs extract -> apply and returns final url
-   =========================== */
-router.post("/transfer", upload.fields([{ name: "image1" }, { name: "image2" }]), async (req, res) => {
-  try {
-    if (!req.files?.image1?.[0] || !req.files?.image2?.[0]) {
-      return res.status(400).json({ error: "Both image1 and image2 required" });
-    }
-
-    // Step 1: extract
-    const img1 = req.files.image1[0];
-    const b64img1 = img1.buffer.toString("base64");
-    const extractionContents = [
-      { inlineData: { mimeType: img1.mimetype || "image/jpeg", data: b64img1 } },
-      { text: `
-You are a fashion extraction engine. Output clothing description only in structured format:
-
-[Garment Overview] ...
-(Use the same extraction format used in /extract)
-` }
-    ];
-
-    const extractResp = await callGenerateContentWithRetry({
-      model: "models/gemini-2.5-pro-preview-03-25",
-      contents: extractionContents
+    
+    const base64imageurl = await getBase64Image(imageurl);
+    // userimage is not used in the API call but is required for validation
+    const base64userimage = await getBase64Image(userimage);
+    
+    console.log('Base64 images prepared');
+    const openai = new OpenAI({
+      baseURL: "https://openrouter.ai/api/v1",
+      apiKey: process.env.OPENROUTER_API_KEY,
     });
-
-    // parse extraction text
-    let extractedText = "";
-    if (extractResp?.parts) {
-      for (const p of extractResp.parts) if (p.text) extractedText += p.text;
-    } else if (extractResp?.candidates?.[0]?.content?.parts) {
-      for (const p of extractResp.candidates[0].content.parts) if (p.text) extractedText += p.text;
-    }
-    extractedText = extractedText.trim();
-    if (!extractedText) return res.status(500).json({ error: "Extraction returned empty text", debug: extractResp });
-
-    // Step 2: apply on image2
-    const img2 = req.files.image2[0];
-    const b64img2 = img2.buffer.toString("base64");
-    const applyPrompt = `
-Using the exact clothing specification below, recreate the SAME outfit on the person in IMAGE 2.
-
-[CLOTHING SPECIFICATION]
-${extractedText}
-
-STRICT RULES:
-1) Do NOT change the person's face, hair, skin tone, identity, pose, or body proportions.
-2) Keep the original background unchanged.
-3) Replace ONLY the clothing. Preserve fabric texture, pattern scale, color, and structural elements.
-4) Adjust fit to the person's pose naturally. Maintain realistic shadows, folds, perspective.
-5) No hallucinated accessories or new logos.
-Output ONLY the final image.
-`;
-
-    const applyContents = [
-      { inlineData: { mimeType: img2.mimetype || "image/jpeg", data: b64img2 } },
-      { text: applyPrompt }
-    ];
-
-    const applyResp = await callGenerateContentWithRetry({
-      model: "models/gemini-2.5-pro-preview-03-25",
-      contents: applyContents
-    });
-
-    const applyParts = applyResp.parts || applyResp.candidates?.[0]?.content?.parts || [];
-    let finalBase64 = null;
-    for (const p of applyParts) if (p.inlineData?.data) { finalBase64 = p.inlineData.data; break; }
-
-    if (!finalBase64) return res.status(500).json({ error: "Apply stage returned no image", debug: applyResp });
-
-    const dataUri = `data:image/jpeg;base64,${finalBase64}`;
-    const uploaded = await cloudinary.uploader.upload(dataUri, { folder: "tryon_images" });
-
-    return res.json({ image: uploaded.secure_url });
-  } catch (err) {
-    console.error("transfer error:", err);
-    return res.status(500).json({ error: "Transfer failed", details: err?.message || err });
+    const response = await openai.chat.completions.create({
+      model: "z-ai/glm-4.5v",
+      messages: [
+        {role: "user", content: [
+          {type: "text", text: "Identify the clothing in the image which is to a model if there is no model present just identify the them from the image and suggets some clothes in the image dont give any other response just the clothing description."},
+          {type: "image_url", image_url: {url: `data:image/jpeg;base64,${base64imageurl}`}}
+        ]}
+      ]
+    })
+    const applyingurl = await applyclothes(base64userimage,response.choices[0].message.content);
+    return res.json({response: applyingurl});
+  } catch (error) {
+    console.error('Error in /identify route:', error);
+    return res.status(500).json({error: error.message || 'Internal server error'});
   }
-});
+})
+const applyclothes=async (userimage,clothes)=>{
+  if (!userimage || !clothes) {
+    console.log("userimage and clothes are required");
+    return null;
+  }
+  console.log("userimage and clothes are required", clothes);
+  const googlebanana = new GoogleGenAI({
+    apiKey: process.env.GOOGLE_GENERATE_KEY,
+  });
+  const response = await googlebanana.models.generateContent({
+    model: "gemini-2.5-flash-image",
+    contents: [
+      {text: "Apply the clothes to the user in the image" + clothes},
+      {inlineData: {
+        mimeType: "image/jpeg",
+        data: userimage,
+      }},
+    ]
+  }) 
+  console.log("response", response);
+  for (const part of response.candidates[0].content.parts) {
+    if (part.text) {
+    } else if (part.inlineData) {
+      const imageData = part.inlineData.data;
+      const buffer = Buffer.from(imageData, "base64");
+      // fs.writeFileSync("photorealistic_example.png", buffer);
 
+      const imageBase64 = buffer.toString("base64");
+
+      const dataUri = `data:image/jpeg;base64,${imageBase64}`;
+      let imageurl;
+      try {
+        const result = await cloudinary.uploader.upload(dataUri, {
+          resource_type: "image",
+          folder: "images",
+        });
+        imageurl=result.secure_url
+      } catch (error) {
+        console.error("Image upload to Cloudinary failed:", error);
+        return null;
+      } 
+      return imageurl;
+    }
+  }
+}
 export default router;
