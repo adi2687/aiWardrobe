@@ -16,20 +16,60 @@ import {
   FaMagic,
   FaTimesCircle,
   FaInfoCircle,
-  FaLock
+  FaLock,
+  FaExclamationTriangle,
+  FaTimes
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { getAuthHeaders } from '../../utils/auth';
+
+// Toast Component
+const Toast = ({ message, type, onClose }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  const icons = {
+    success: <FaCheck />,
+    error: <FaExclamationTriangle />,
+    info: <FaInfoCircle />
+  };
+
+  return (
+    <div className={`toast toast-${type}`}>
+      <div className="toast-icon">{icons[type]}</div>
+      <div className="toast-message">{message}</div>
+      <button className="toast-close" onClick={onClose}>
+        <FaTimes />
+      </button>
+    </div>
+  );
+};
+
 const Shop = () => {
   const navigate = useNavigate();
   const [shopData, setShopData] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState(0);
-
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [userdetails, setuserdetails] = useState({});
   const backendurl = import.meta.env.VITE_BACKEND_URL;
-  // const mlurl = import.meta.env.VITE_ML_URL;
+  
+  // Toast state
+  const [toasts, setToasts] = useState([]);
+
+  // Toast helper function
+  const showToast = (message, type = 'info') => {
+    const id = Date.now();
+    setToasts(prev => [...prev, { id, message, type }]);
+  };
+
+  const removeToast = (id) => {
+    setToasts(prev => prev.filter(toast => toast.id !== id));
+  };
 
   const fetchuserdetails = () => {
     fetch(`${backendurl}/user/getuserdetails`, {
@@ -44,6 +84,7 @@ const Shop = () => {
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
+        showToast("Error loading user details", "error");
       });
   };
 
@@ -74,23 +115,13 @@ const Shop = () => {
     console.log("search query is ", searchQuery);
     setAmazonLoading(true);
     
-    // Go back to using the backend proxy
-    console.log(`Making request through backend proxy: ${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}`);
-    
-    // Append gender to query params if available
-    const gender = userdetails.gender ? userdetails.gender : "";
-    // const url = `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}${gender ? `&gender=${encodeURIComponent(gender)}` : ""}`;
     const url = `${backendurl}/amazon?clothes=${encodeURIComponent(searchQuery)}`;
-    fetch(
-      url,
-      {
-        method: "POST",
-        headers: getAuthHeaders(),
-        credentials: "include",
-      }
-    )
+    fetch(url, {
+      method: "POST",
+      headers: getAuthHeaders(),
+      credentials: "include",
+    })
       .then((response) => {
-        // Check if the response is valid before parsing
         if (!response.ok) {
           throw new Error(`API responded with status: ${response.status}`);
         }
@@ -99,13 +130,11 @@ const Shop = () => {
       .then((data) => {
         console.log("Amazon data received:", data);
         
-        // Handle the new Amazon API response format
         if (data.error) {
           console.error("Error from API:", data.error);
           setAmazonData([]);
-          alert(`Error from Amazon search: ${data.error}`);
+          showToast(`Error from Amazon search: ${data.error}`, "error");
         } else if (data.products && Array.isArray(data.products)) {
-          // Map the new format to the expected format
           const mappedProducts = data.products.map(product => ({
             name: product.title || "Product",
             image_url: product.image || null,
@@ -114,12 +143,11 @@ const Shop = () => {
             rating: product.rating || null,
             reviews: product.reviews || null,
             asin: product.asin || null,
-            // Keep original fields for reference
             original: product
           }));
           setAmazonData(mappedProducts);
+          showToast(`Found ${mappedProducts.length} products on Amazon`, "success");
         } else if (Array.isArray(data)) {
-          // Fallback: if it's already an array, map it
           const mappedProducts = data.map(product => ({
             name: product.title || product.name || "Product",
             image_url: product.image || product.image_url || null,
@@ -131,9 +159,11 @@ const Shop = () => {
             original: product
           }));
           setAmazonData(mappedProducts);
+          showToast(`Found ${mappedProducts.length} products on Amazon`, "success");
         } else {
           console.error("Unexpected data format:", data);
           setAmazonData([]);
+          showToast("No products found on Amazon", "info");
         }
         setAmazonLoading(false);
         setloaded(false);
@@ -143,36 +173,25 @@ const Shop = () => {
         setAmazonData([]);
         setAmazonLoading(false);
         setloaded(false);
-        alert("Unable to connect to Amazon search service. Please try again later.");
+        showToast("Unable to connect to Amazon search service", "error");
       });
   };
 
   const myntraSearch = (customInput) => {
-
     setloaded(true);
     const searchQuery =
       customInput ||
       input ||
       `Styles for ${userdetails.gender || "male and female"}`;
-
-    // Go back to using the backend proxy
-    // console.log(`Making request through backend proxy: ${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`);
     
     setMyntraLoading(true);
-    // Append gender to query params if available
-    const gender = userdetails.gender ? userdetails.gender : "";
-    // const url = `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}${gender ? `&gender=${encodeURIComponent(gender)}` : ""}`;
     const url = `${backendurl}/myntra?clothes=${encodeURIComponent(searchQuery)}`;
-    fetch(
-      url,
-      {
-        method: "GET",
-        headers: getAuthHeaders(),
-        credentials: "include"
-      }
-    )
+    fetch(url, {
+      method: "GET",
+      headers: getAuthHeaders(),
+      credentials: "include"
+    })
       .then((response) => {
-        // Check if the response is valid before parsing
         if (!response.ok) {
           throw new Error(`API responded with status: ${response.status}`);
         }
@@ -181,15 +200,12 @@ const Shop = () => {
       .then((data) => {
         console.log("Myntra data received:", data);
         
-        // Handle the new Myntra API response format
         if (data.error) {
           console.error("Error from API:", data.error);
           setMyntraData([]);
-          alert(`Error from Myntra search: ${data.error}`);
+          showToast(`Error from Myntra search: ${data.error}`, "error");
         } else if (data.products && Array.isArray(data.products)) {
-          // Map the new format to the expected format
           const mappedProducts = data.products.map(product => {
-            // Format price with MRP and discount for display
             let priceDisplay = `₹${product.price}`;
             if (product.mrp && product.mrp > product.price) {
               priceDisplay += ` ₹${product.mrp}`;
@@ -209,13 +225,12 @@ const Shop = () => {
               mrp: product.mrp || null,
               discount: product.discount || null,
               id: product.id || null,
-              // Keep original fields for reference
               original: product
             };
           });
           setMyntraData(mappedProducts);
+          showToast(`Found ${mappedProducts.length} products on Myntra`, "success");
         } else if (Array.isArray(data)) {
-          // Fallback: if it's already an array, map it
           const mappedProducts = data.map(product => {
             const price = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
             const mrp = typeof product.mrp === 'number' ? product.mrp : parseFloat(product.mrp) || null;
@@ -243,9 +258,11 @@ const Shop = () => {
             };
           });
           setMyntraData(mappedProducts);
+          showToast(`Found ${mappedProducts.length} products on Myntra`, "success");
         } else {
           console.error("Unexpected data format:", data);
           setMyntraData([]);
+          showToast("No products found on Myntra", "info");
         }
         setMyntraLoading(false);
         setloaded(false);
@@ -255,14 +272,15 @@ const Shop = () => {
         setMyntraData([]);
         setMyntraLoading(false);
         setloaded(false);
-        alert("Unable to connect to Myntra search service. Please try again later.");
+        showToast("Unable to connect to Myntra search service", "error");
       });
   };
-const [adding,setadding]=useState(false);
+
+  const [adding, setadding] = useState(false);
   const addtowishlist = (item) => {
     console.log("Wishlist item:", item);
-
     setadding(true);
+    
     fetch(`${backendurl}/shop/addtowishlist`, {
       method: "POST",
       headers: getAuthHeaders(),
@@ -274,22 +292,21 @@ const [adding,setadding]=useState(false);
         console.log("Server response:", data);
 
         if (data.status) {
-          alert("Item added to wishlist!");
+          showToast("Item added to wishlist!", "success");
           setadding(false);
         } else if (data.msg === "Already in wishlist") {
-          alert("This item is already in your wishlist.");
+          showToast("This item is already in your wishlist", "info");
           setadding(false);
         } else {
-          alert("Failed to add item. Try again.");
+          showToast("Failed to add item. Try again.", "error");
           setadding(false);
         }
       })
       .catch((error) => {
         console.error("Error adding to wishlist:", error);
-        alert("Server error. Please try again later.");
+        showToast("Server error. Please try again later.", "error");
         setadding(false);
       });
-
   };
 
   const [usercloths, setuserclothes] = useState("");
@@ -306,6 +323,7 @@ const [adding,setadding]=useState(false);
       })
       .catch((error) => {
         console.error("Error fetching user clothes:", error);
+        showToast("Error loading wardrobe", "error");
       });
   };
 
@@ -331,11 +349,9 @@ const [adding,setadding]=useState(false);
           const cloths = [];
           let item = "";
 
-          // Add the last item if there's no trailing asterisk
           if (suggestion.indexOf('*') === -1) {
             cloths.push(suggestion.trim());
           } else {
-            // Parse the asterisk-separated list
             for (let i = 0; i < suggestion.length; i++) {
               if (suggestion[i] === "*") {
                 if (item.trim()) {
@@ -346,7 +362,6 @@ const [adding,setadding]=useState(false);
                 item += suggestion[i];
               }
             }
-            // Add the last item if it wasn't followed by an asterisk
             if (item.trim()) {
               cloths.push(item.trim());
             }
@@ -354,15 +369,16 @@ const [adding,setadding]=useState(false);
           
           console.log("AI suggestion array:", cloths);
           setshoppingsuggestions(cloths);
+          showToast("AI recommendations generated!", "success");
         } else {
           console.error("Invalid response format:", data);
-          alert("Could not get AI recommendations. Please try again.");
+          showToast("Could not get AI recommendations", "error");
         }
         setloaded(false);
       })
       .catch((error) => {
         console.error("Error fetching shopping suggestions:", error);
-        alert("Error getting AI recommendations: " + error.message);
+        showToast("Error getting AI recommendations", "error");
         setloaded(false);
         setshoppingsuggestions([]);
       });
@@ -370,9 +386,18 @@ const [adding,setadding]=useState(false);
 
   return (
     <div className="shop-container">
+      {/* Toast Container */}
+      <div className="toast-container">
+        {toasts.map(toast => (
+          <Toast
+            key={toast.id}
+            message={toast.message}
+            type={toast.type}
+            onClose={() => removeToast(toast.id)}
+          />
+        ))}
+      </div>
 
-      {/* heyyy {JSON.stringify(username)} */}
-      {/* {JSON.stringify(userdetails)} */}
       <header className="shop-header">
         <h1 className="shop-title">Smart Shopping</h1>
         <p className="shop-subtitle">Discover perfect additions to your wardrobe with AI-powered recommendations</p>
@@ -404,7 +429,7 @@ const [adding,setadding]=useState(false);
             className="search-button primary-button"
             onClick={() => {
               amazonSearch(input);
-              // myntraSearch(input);
+              myntraSearch(input);
             }}
             disabled={amazonLoading || myntraLoading}
           >
@@ -800,5 +825,4 @@ const [adding,setadding]=useState(false);
   );
 };
 
-
-export default Shop
+export default Shop;
