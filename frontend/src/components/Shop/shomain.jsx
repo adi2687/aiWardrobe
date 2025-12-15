@@ -79,12 +79,12 @@ const Shop = () => {
     
     // Append gender to query params if available
     const gender = userdetails.gender ? userdetails.gender : "";
-    const url = `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}${gender ? `&gender=${encodeURIComponent(gender)}` : ""}`;
-  
+    // const url = `${backendurl}/shop/proxy/amazon?query=${encodeURIComponent(searchQuery)}${gender ? `&gender=${encodeURIComponent(gender)}` : ""}`;
+    const url = `${backendurl}/amazon?clothes=${encodeURIComponent(searchQuery)}`;
     fetch(
       url,
       {
-        method: "GET",
+        method: "POST",
         headers: getAuthHeaders(),
         credentials: "include",
       }
@@ -99,27 +99,41 @@ const Shop = () => {
       .then((data) => {
         console.log("Amazon data received:", data);
         
-        // Handle both array and object responses
-        if (Array.isArray(data)) {
-          setAmazonData(data);
-          // setVisibleAmazonProducts(7);
-        } else if (data.error) {
+        // Handle the new Amazon API response format
+        if (data.error) {
           console.error("Error from API:", data.error);
           setAmazonData([]);
           alert(`Error from Amazon search: ${data.error}`);
+        } else if (data.products && Array.isArray(data.products)) {
+          // Map the new format to the expected format
+          const mappedProducts = data.products.map(product => ({
+            name: product.title || "Product",
+            image_url: product.image || null,
+            product_url: product.url || `https://www.amazon.in/dp/${product.asin || ''}`,
+            price: product.price ? `₹${product.price}` : "Price not available",
+            rating: product.rating || null,
+            reviews: product.reviews || null,
+            asin: product.asin || null,
+            // Keep original fields for reference
+            original: product
+          }));
+          setAmazonData(mappedProducts);
+        } else if (Array.isArray(data)) {
+          // Fallback: if it's already an array, map it
+          const mappedProducts = data.map(product => ({
+            name: product.title || product.name || "Product",
+            image_url: product.image || product.image_url || null,
+            product_url: product.url || product.product_url || `https://www.amazon.in/dp/${product.asin || ''}`,
+            price: product.price ? `₹${product.price}` : "Price not available",
+            rating: product.rating || null,
+            reviews: product.reviews || null,
+            asin: product.asin || null,
+            original: product
+          }));
+          setAmazonData(mappedProducts);
         } else {
-          // If it's an object but not an error, try to use it
-          const products = Object.values(data).filter(item => 
-            typeof item === 'object' && item.name && item.image_url
-          );
-          
-          if (products.length > 0) {
-            setAmazonData(products);
-            // setVisibleAmazonProducts(7);
-          } else {
-            console.error("Unexpected data format:", data);
-            setAmazonData([]);
-          }
+          console.error("Unexpected data format:", data);
+          setAmazonData([]);
         }
         setAmazonLoading(false);
         setloaded(false);
@@ -142,13 +156,13 @@ const Shop = () => {
       `Styles for ${userdetails.gender || "male and female"}`;
 
     // Go back to using the backend proxy
-    console.log(`Making request through backend proxy: ${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`);
+    // console.log(`Making request through backend proxy: ${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}`);
     
     setMyntraLoading(true);
     // Append gender to query params if available
     const gender = userdetails.gender ? userdetails.gender : "";
-    const url = `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}${gender ? `&gender=${encodeURIComponent(gender)}` : ""}`;
-  
+    // const url = `${backendurl}/shop/proxy/myntra?query=${encodeURIComponent(searchQuery)}${gender ? `&gender=${encodeURIComponent(gender)}` : ""}`;
+    const url = `${backendurl}/myntra?clothes=${encodeURIComponent(searchQuery)}`;
     fetch(
       url,
       {
@@ -167,27 +181,71 @@ const Shop = () => {
       .then((data) => {
         console.log("Myntra data received:", data);
         
-        // Handle both array and object responses
-        if (Array.isArray(data)) {
-          setMyntraData(data);
-          setVisibleMyntraProducts(5);
-        } else if (data.error) {
+        // Handle the new Myntra API response format
+        if (data.error) {
           console.error("Error from API:", data.error);
           setMyntraData([]);
           alert(`Error from Myntra search: ${data.error}`);
+        } else if (data.products && Array.isArray(data.products)) {
+          // Map the new format to the expected format
+          const mappedProducts = data.products.map(product => {
+            // Format price with MRP and discount for display
+            let priceDisplay = `₹${product.price}`;
+            if (product.mrp && product.mrp > product.price) {
+              priceDisplay += ` ₹${product.mrp}`;
+            }
+            if (product.discount) {
+              priceDisplay += ` ${product.discount}`;
+            }
+            
+            return {
+              name: product.title || "Product",
+              image_url: product.image || null,
+              product_url: product.url || null,
+              price: priceDisplay,
+              currentPrice: product.price,
+              rating: product.rating ? `${product.rating.toFixed(1)} ⭐` : null,
+              brand: product.brand || null,
+              mrp: product.mrp || null,
+              discount: product.discount || null,
+              id: product.id || null,
+              // Keep original fields for reference
+              original: product
+            };
+          });
+          setMyntraData(mappedProducts);
+        } else if (Array.isArray(data)) {
+          // Fallback: if it's already an array, map it
+          const mappedProducts = data.map(product => {
+            const price = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
+            const mrp = typeof product.mrp === 'number' ? product.mrp : parseFloat(product.mrp) || null;
+            
+            let priceDisplay = `₹${price}`;
+            if (mrp && mrp > price) {
+              priceDisplay += ` ₹${mrp}`;
+            }
+            if (product.discount) {
+              priceDisplay += ` ${product.discount}`;
+            }
+            
+            return {
+              name: product.title || product.name || "Product",
+              image_url: product.image || product.image_url || null,
+              product_url: product.url || product.product_url || null,
+              price: priceDisplay,
+              currentPrice: price,
+              rating: product.rating ? `${typeof product.rating === 'number' ? product.rating.toFixed(1) : product.rating} ⭐` : null,
+              brand: product.brand || null,
+              mrp: mrp,
+              discount: product.discount || null,
+              id: product.id || null,
+              original: product
+            };
+          });
+          setMyntraData(mappedProducts);
         } else {
-          // If it's an object but not an error, try to use it
-          const products = Object.values(data).filter(item => 
-            typeof item === 'object' && item.name && item.image_url
-          );
-          
-          if (products.length > 0) {
-            setMyntraData(products);
-            setVisibleMyntraProducts(5);
-          } else {
-            console.error("Unexpected data format:", data);
-            setMyntraData([]);
-          }
+          console.error("Unexpected data format:", data);
+          setMyntraData([]);
         }
         setMyntraLoading(false);
         setloaded(false);
@@ -346,7 +404,7 @@ const [adding,setadding]=useState(false);
             className="search-button primary-button"
             onClick={() => {
               amazonSearch(input);
-              myntraSearch(input);
+              // myntraSearch(input);
             }}
             disabled={amazonLoading || myntraLoading}
           >
@@ -491,12 +549,22 @@ const [adding,setadding]=useState(false);
                     .map((item, index) => (
                       <div key={index} className="shop-product-card">
                         <div className="product-image-container">
-                          <img
-                            src={item.image_url}
-                            alt={item.name}
-                            className="shop-product-image"
-                            loading="lazy"
-                          />
+                          {item.image_url ? (
+                            <img
+                              src={item.image_url}
+                              alt={item.name}
+                              className="shop-product-image"
+                              loading="lazy"
+                              onError={(e) => {
+                                e.target.src = 'https://via.placeholder.com/300x300?text=No+Image';
+                              }}
+                            />
+                          ) : (
+                            <div className="no-image-placeholder">
+                              <FaTshirt className="placeholder-icon" />
+                              <p>No Image</p>
+                            </div>
+                          )}
                           <div className="product-source">
                             <FaAmazon /> Amazon
                           </div>
@@ -508,15 +576,41 @@ const [adding,setadding]=useState(false);
                           <p className="shop-product-price">
                             <FaTag className="price-icon" /> <span className="price-amount">{item.price}</span>
                           </p>
+                          {(item.rating || item.reviews) && (
+                            <div className="product-rating-info">
+                              {item.rating && (
+                                <span className="product-rating">
+                                  {item.rating.includes("out of") 
+                                    ? item.rating.split("out of")[0].trim() 
+                                    : item.rating} ⭐
+                                </span>
+                              )}
+                              {item.reviews && (
+                                <span className="product-reviews">
+                                  {item.reviews}
+                                </span>
+                              )}
+                            </div>
+                          )}
                           <div className="product-actions">
-                            <a
-                              href={item.product_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="shop-buy-button"
-                            >
-                              <FaExternalLinkAlt className="button-icon" /> View Product
-                            </a>
+                            {item.product_url ? (
+                              <a
+                                href={item.product_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="shop-buy-button"
+                              >
+                                <FaExternalLinkAlt className="button-icon" /> View Product
+                              </a>
+                            ) : (
+                              <button
+                                className="shop-buy-button"
+                                disabled
+                                title="Product URL not available"
+                              >
+                                <FaExternalLinkAlt className="button-icon" /> URL Unavailable
+                              </button>
+                            )}
                             <button
                               className={`addtowishlist ${adding ? 'loading' : ''}`}
                               onClick={() => addtowishlist(item)}
@@ -576,30 +670,60 @@ const [adding,setadding]=useState(false);
                     .map((item, index) => (
                       <div key={index} className="shop-product-card">
                         <div className="product-image-container">
-                          <img
-                            src={item.image_url}
-                            alt={item.name}
-                            className="shop-product-image"
-                            loading="lazy"
-                          />
+                          {item.image_url ? (
+                            <img
+                              src={item.image_url}
+                              alt={item.name}
+                              className="shop-product-image"
+                              loading="lazy"
+                              onError={(e) => {
+                                e.target.src = 'https://via.placeholder.com/300x300?text=No+Image';
+                              }}
+                            />
+                          ) : (
+                            <div className="no-image-placeholder">
+                              <FaTshirt className="placeholder-icon" />
+                              <p>No Image</p>
+                            </div>
+                          )}
                           <div className="product-source myntra-source">
                             <FaStore /> Myntra
                           </div>
                         </div>
                         <div className="product-details">
+                          {item.brand && (
+                            <p className="product-brand">{item.brand}</p>
+                          )}
                           <h3 className="shop-product-name">{item.name}</h3>
                           <p className="shop-product-price">
                             <FaTag className="price-icon" /> <span className="price-amount">{item.price}</span>
                           </p>
+                          {item.rating && (
+                            <div className="product-rating-info">
+                              <span className="product-rating">
+                                {item.rating}
+                              </span>
+                            </div>
+                          )}
                           <div className="product-actions">
-                            <a
-                              href={item.product_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="shop-buy-button myntra-buy"
-                            >
-                              <FaExternalLinkAlt className="button-icon" /> View Product
-                            </a>
+                            {item.product_url ? (
+                              <a
+                                href={item.product_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="shop-buy-button myntra-buy"
+                              >
+                                <FaExternalLinkAlt className="button-icon" /> View Product
+                              </a>
+                            ) : (
+                              <button
+                                className="shop-buy-button myntra-buy"
+                                disabled
+                                title="Product URL not available"
+                              >
+                                <FaExternalLinkAlt className="button-icon" /> URL Unavailable
+                              </button>
+                            )}
                             <button
                               className={`addtowishlist ${adding ? 'loading' : ''}`}
                               onClick={() => addtowishlist(item)}

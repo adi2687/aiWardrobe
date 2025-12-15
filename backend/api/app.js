@@ -193,7 +193,14 @@ import pinterestgenerate from '../routes/pinterestgenerate.js'
 app.use("/pinterestgenerate",pinterestgenerate)
 
 import watermarkRoute from '../routes/watermark.js'
-app.use("/watermark", watermarkRoute)
+app.use("/watermark", watermarkRoute) 
+
+import amazon from '../routes/amazon.js'
+app.use("/amazon", amazon) 
+
+import myntra from '../routes/myntra.js'
+app.use("/myntra", myntra)
+
 io.on("connection", (socket) => {
   console.log("New user connected");
 

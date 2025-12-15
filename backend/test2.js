@@ -1,11 +1,15 @@
 import { GoogleGenAI } from "@google/genai";
 import * as fs from "node:fs";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function main() {
 
-  const ai = new GoogleGenAI({});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GOOGLE_GENERATE_KEY,
+  });
 
-  const imagePath = "backend/image.png";
+  const imagePath = "./image.png";
   const imageData = fs.readFileSync(imagePath);
   const base64Image = imageData.toString("base64");
 
