@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     // const { clothes } = req.body ? req.body : req.url;
-    const clothes = req.url?.split("?")[1].split("=")[1]
+    const clothes = req.query.clothes;
     console.log(clothes);
     if (!clothes) {
       return res.status(400).json({ error: "clothes is required" });
