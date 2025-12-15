@@ -13,6 +13,10 @@ router.get("/test", (req, res) => {
 });
 
 router.get("/", async (req, res) => {
+  // Set response headers early to prevent Vercel timeout
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-cache');
+  
   try {
     const { clothes } = req.query;
     console.log("Myntra Search:", clothes);
@@ -34,6 +38,9 @@ router.get("/", async (req, res) => {
     console.log("Fetching from URL:", url);
     console.log("Alternative URL:", searchUrl);
 
+    // Vercel has 10s timeout, so use 8s to be safe
+    const TIMEOUT = 8000;
+    
     let html;
     let usedUrl = url;
     
@@ -47,7 +54,7 @@ router.get("/", async (req, res) => {
           Referer: "https://www.myntra.com/",
           "Accept-Encoding": "gzip, deflate, br",
         },
-        timeout: 15000,
+        timeout: TIMEOUT,
         validateStatus: function (status) {
           return status < 500; // Don't throw for 4xx errors
         },
@@ -66,7 +73,7 @@ router.get("/", async (req, res) => {
             "Accept-Language": "en-IN,en;q=0.9",
             Referer: "https://www.myntra.com/",
           },
-          timeout: 15000,
+          timeout: TIMEOUT,
         });
         html = searchResponse.data;
         usedUrl = searchUrl;
@@ -83,31 +90,43 @@ router.get("/", async (req, res) => {
             "Accept-Language": "en-IN,en;q=0.9",
             Referer: "https://www.myntra.com/",
           },
-          timeout: 15000,
+          timeout: TIMEOUT,
         });
         html = searchResponse.data;
         usedUrl = searchUrl;
       } catch (secondError) {
-        throw new Error(`Failed to fetch from both URL formats: ${firstError.message}, ${secondError.message}`);
+        // If both fail, return empty results instead of throwing
+        console.error("Both URL formats failed:", firstError.message, secondError.message);
+        return res.json({
+          success: true,
+          count: 0,
+          products: [],
+          message: "Unable to fetch products from Myntra. Please try again later.",
+          error: "Myntra request failed"
+        });
       }
     }
 
     // Check if we got a valid HTML response
     if (!html || typeof html !== 'string') {
       console.error("Invalid HTML response from Myntra");
-      return res.status(500).json({ 
-        success: false,
-        error: "Invalid response from Myntra",
-        message: "Myntra returned an invalid response. Please try again later."
+      return res.json({ 
+        success: true,
+        count: 0,
+        products: [],
+        message: "Myntra returned an invalid response. Please try again later.",
+        error: "Invalid response from Myntra"
       });
     }
 
     if (html.length < 1000) {
       console.error("Response too short, might be an error page");
-      return res.status(500).json({ 
-        success: false,
-        error: "Invalid response from Myntra",
-        message: "Myntra returned an unexpected response. The page might be blocked or changed."
+      return res.json({ 
+        success: true,
+        count: 0,
+        products: [],
+        message: "Myntra returned an unexpected response. The page might be blocked or changed.",
+        error: "Response too short"
       });
     }
 
@@ -137,10 +156,12 @@ router.get("/", async (req, res) => {
     if (start === -1) {
       console.error("No Myntra data structure found in response");
       console.log("Response preview:", html.substring(0, 500));
-      return res.status(500).json({ 
-        success: false,
-        error: "Myntra data structure not found",
-        message: "Myntra page structure may have changed. Please try a different search term or check if Myntra is accessible."
+      return res.json({ 
+        success: true,
+        count: 0,
+        products: [],
+        message: "Myntra page structure may have changed. Please try a different search term.",
+        error: "Myntra data structure not found"
       });
     }
 
@@ -148,10 +169,12 @@ router.get("/", async (req, res) => {
     const jsonStart = sliced.indexOf("{");
 
     if (jsonStart === -1) {
-      return res.status(500).json({ 
-        success: false,
-        error: "Failed to locate JSON data",
-        message: "Could not parse Myntra data structure"
+      return res.json({ 
+        success: true,
+        count: 0,
+        products: [],
+        message: "Could not parse Myntra data structure",
+        error: "Failed to locate JSON data"
       });
     }
 
@@ -169,10 +192,12 @@ router.get("/", async (req, res) => {
     }
 
     if (jsonEnd === -1) {
-      return res.status(500).json({ 
-        success: false,
-        error: "Failed to parse Myntra JSON",
-        message: "Could not extract complete JSON data from Myntra"
+      return res.json({ 
+        success: true,
+        count: 0,
+        products: [],
+        message: "Could not extract complete JSON data from Myntra",
+        error: "Failed to parse Myntra JSON"
       });
     }
 
@@ -182,11 +207,12 @@ router.get("/", async (req, res) => {
       myxData = JSON.parse(jsonString);
     } catch (parseError) {
       console.error("JSON parse error:", parseError.message);
-      return res.status(500).json({ 
-        success: false,
-        error: "Failed to parse Myntra JSON",
-        message: "Invalid JSON structure from Myntra",
-        details: parseError.message
+      return res.json({ 
+        success: true,
+        count: 0,
+        products: [],
+        message: "Invalid JSON structure from Myntra. Please try again.",
+        error: "Failed to parse Myntra JSON"
       });
     }
 
@@ -238,27 +264,34 @@ router.get("/", async (req, res) => {
     
     // Provide more specific error messages
     let errorMessage = "Failed to fetch Myntra products";
-    let errorDetails = {};
+    let userMessage = "Please try again later or use a different search term.";
     
     if (err.code === 'ECONNABORTED') {
       errorMessage = "Request timeout. Myntra took too long to respond.";
+      userMessage = "The request timed out. This might be due to Myntra blocking automated requests or network issues.";
     } else if (err.code === 'ENOTFOUND' || err.code === 'ECONNREFUSED') {
-      errorMessage = "Cannot connect to Myntra. Please check your internet connection.";
+      errorMessage = "Cannot connect to Myntra.";
+      userMessage = "Unable to connect to Myntra. Please check your internet connection.";
     } else if (err.response) {
-      errorMessage = `Myntra returned error: ${err.response.status} ${err.response.statusText}`;
-      errorDetails.status = err.response.status;
+      errorMessage = `Myntra returned error: ${err.response.status}`;
+      userMessage = `Myntra returned an error (${err.response.status}). They may be blocking automated requests.`;
     } else if (err.message) {
-      errorMessage = `Error: ${err.message}`;
-      errorDetails.message = err.message;
+      errorMessage = err.message;
     }
     
-    res.status(500).json({
-      success: false,
+    // Return success: true with empty products to prevent frontend errors
+    // This allows the UI to handle it gracefully
+    res.json({
+      success: true,
+      count: 0,
+      products: [],
+      message: userMessage,
       error: errorMessage,
-      message: "Please try again later or use a different search term.",
       ...(process.env.NODE_ENV === 'development' && { 
-        details: errorDetails,
-        stack: err.stack?.split('\n').slice(0, 5)
+        details: {
+          code: err.code,
+          stack: err.stack?.split('\n').slice(0, 5)
+        }
       })
     });
   }

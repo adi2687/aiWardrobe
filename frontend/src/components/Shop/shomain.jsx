@@ -200,7 +200,18 @@ const Shop = () => {
       .then((data) => {
         console.log("Myntra data received:", data);
         
-        if (data.error) {
+        // Handle empty products with error message (graceful degradation)
+        if (data.success && data.products && Array.isArray(data.products)) {
+          if (data.products.length === 0 && data.message) {
+            setMyntraData([]);
+            showToast(data.message, "info");
+            setMyntraLoading(false);
+            setloaded(false);
+            return;
+          }
+        }
+        
+        if (data.error && !data.success) {
           console.error("Error from API:", data.error);
           setMyntraData([]);
           showToast(`Error from Myntra search: ${data.error}`, "error");
@@ -229,7 +240,11 @@ const Shop = () => {
             };
           });
           setMyntraData(mappedProducts);
-          showToast(`Found ${mappedProducts.length} products on Myntra`, "success");
+          if (mappedProducts.length > 0) {
+            showToast(`Found ${mappedProducts.length} products on Myntra`, "success");
+          } else {
+            showToast("No products found on Myntra", "info");
+          }
         } else if (Array.isArray(data)) {
           const mappedProducts = data.map(product => {
             const price = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
@@ -258,7 +273,11 @@ const Shop = () => {
             };
           });
           setMyntraData(mappedProducts);
-          showToast(`Found ${mappedProducts.length} products on Myntra`, "success");
+          if (mappedProducts.length > 0) {
+            showToast(`Found ${mappedProducts.length} products on Myntra`, "success");
+          } else {
+            showToast("No products found on Myntra", "info");
+          }
         } else {
           console.error("Unexpected data format:", data);
           setMyntraData([]);
