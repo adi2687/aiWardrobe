@@ -117,7 +117,7 @@ const Shop = () => {
     
     const url = `${backendurl}/amazon?clothes=${encodeURIComponent(searchQuery)}`;
     fetch(url, {
-      method: "POST",
+      method: "GET",
       headers: getAuthHeaders(),
       credentials: "include",
     })
