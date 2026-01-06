@@ -47,24 +47,49 @@ const AINavPopup = ({ isOpen, onClose }) => {
             setError('');
             setResponse('');
             
-            // Build enhanced prompt with context
-            const enhancedPrompt = `${prompt}\n\n${JSON.stringify(context)}\n\nThis is the route and context. Based on the user's question, provide me a valid path from the above routes and context. Return only the path, nothing else.`;
+            // Build natural language prompt with route mappings
+            const routeMappings = Object.entries(context.routes || {})
+                .map(([path, keywords]) => `Path: ${path} - Keywords: ${keywords.join(', ')}`)
+                .join('\n');
+            
+            const enhancedPrompt = `You are a navigation assistant. The user said: "${prompt}"
+
+Available routes and their keywords:
+${routeMappings}
+
+Based on the user's request, return ONLY the matching path (e.g., "/wardrobe"). If no match, return "/".`;
             
             // Call Gemini API
             const result = await getGeminiSuggestion(enhancedPrompt, options);
             console.log("AI Navigation result:", result);
             
             // Extract path from response (clean it up)
-            const cleanPath = result.trim().replace(/['"]/g, '').split('\n')[0].trim();
+            let cleanPath = result.trim()
+                .replace(/['"]/g, '')
+                .split('\n')[0]
+                .trim()
+                .split(' ')[0]; // Take first word/path
+            
+            // Remove any markdown or extra text
+            cleanPath = cleanPath.replace(/[^\w\/\-:]/g, '');
+            
+            // If path doesn't start with /, try to find it in context
+            if (!cleanPath.startsWith('/')) {
+                // Try to find matching route by keyword
+                for (const [path, keywords] of Object.entries(context.routes || {})) {
+                    const lowerPrompt = prompt.toLowerCase();
+                    if (keywords.some(keyword => lowerPrompt.includes(keyword.toLowerCase()))) {
+                        cleanPath = path;
+                        break;
+                    }
+                }
+            }
             
             // Validate path exists in context
-            const allRoutes = [
-                ...Object.values(context.navigation || {}).map(item => item.url),
-                ...(context.routes?.public || []),
-                ...(context.routes?.protected || [])
-            ];
+            const allRoutes = Object.keys(context.routes || {});
             
-            const isValidPath = allRoutes.some(route => cleanPath === route || cleanPath.startsWith(route));
+            const isValidPath = allRoutes.includes(cleanPath) || 
+                               allRoutes.some(route => cleanPath.startsWith(route.split(':')[0]));
             
             if (isValidPath) {
                 setResponse(`Navigating to: ${cleanPath}`);

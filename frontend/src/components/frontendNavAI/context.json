@@ -1,141 +1,24 @@
 {
-    "navigation": {
-        "home": {
-            "description": "Home",
-            "url": "/",
-            "icon": "home",
-            "requiresAuth": false
-        },
-        "profile": {
-            "description": "Profile",
-            "url": "/profile",
-            "icon": "user",
-            "requiresAuth": true
-        },
-        "menu": {
-            "description": "Menu",
-            "url": "/menu",
-            "icon": "menu",
-            "requiresAuth": false
-        },
-        "wardrobe": {
-            "description": "Wardrobe",
-            "url": "/wardrobe",
-            "icon": "wardrobe",
-            "requiresAuth": true
-        },
-        "shop": {
-            "description": "Shop",
-            "url": "/shop",
-            "icon": "shopping",
-            "requiresAuth": false
-        },
-        "recommendations": {
-            "description": "Recommendations",
-            "url": "/recommendations",
-            "icon": "recommendations",
-            "requiresAuth": true
-        },
-        "chatbot": {
-            "description": "AI Assistant",
-            "url": "/chatbot",
-            "icon": "chat",
-            "requiresAuth": true
-        },
-        "planner": {
-            "description": "Planner",
-            "url": "/planner",
-            "icon": "calendar",
-            "requiresAuth": true
-        },
-        "wishlist": {
-            "description": "Wishlist",
-            "url": "/wishlist",
-            "icon": "heart",
-            "requiresAuth": true
-        },
-        "pinterest": {
-            "description": "Pinterest",
-            "url": "/pinterest",
-            "icon": "pinterest",
-            "requiresAuth": true
-        },
-        "virtual-try-on": {
-            "description": "Virtual Try-On",
-            "url": "/virtual-try-on",
-            "icon": "try-on",
-            "requiresAuth": true
-        },
-        "ar-try": {
-            "description": "AR Preview",
-            "url": "/ar-try",
-            "icon": "ar",
-            "requiresAuth": true
-        },
-        "discover-trends": {
-            "description": "Discover Trends",
-            "url": "/discover-trends",
-            "icon": "trends",
-            "requiresAuth": false
-        },
-        "social": {
-            "description": "Social",
-            "url": "/social",
-            "icon": "social",
-            "requiresAuth": false
-        },
-        "developers": {
-            "description": "Developers",
-            "url": "/developers",
-            "icon": "developers",
-            "requiresAuth": false
-        },
-        "policies": {
-            "description": "Policies",
-            "url": "/policies",
-            "icon": "policies",
-            "requiresAuth": false
-        }
-    },
     "routes": {
-        "public": [
-            "/",
-            "/auth",
-            "/reset-password/:token",
-            "/shop",
-            "/discover-trends",
-            "/developers",
-            "/social",
-            "/policies",
-            "/privacy-policy",
-            "/terms-of-service",
-            "/data-deletion",
-            "/aboutus",
-            "/download",
-            "/share/:id",
-            "/shareimage"
-        ],
-        "protected": [
-            "/profile",
-            "/profile/favorites",
-            "/profile/planner",
-            "/profile/upload",
-            "/profile/settings",
-            "/wardrobe",
-            "/recommendations",
-            "/chatbot",
-            "/planner",
-            "/wishlist",
-            "/pinterest",
-            "/menu",
-            "/nav",
-            "/sellcloth",
-            "/message/:username/:id",
-            "/Image",
-            "/ar-preview",
-            "/ar-try",
-            "/view-avatar",
-            "/virtual-try-on"
-        ]
+        "/": ["home", "main page", "landing", "start"],
+        "/wardrobe": ["wardrobe", "my clothes", "closet", "clothing", "my wardrobe", "wardrobe items"],
+        "/shop": ["shop", "shopping", "buy", "store", "marketplace", "products", "buy clothes"],
+        "/profile": ["profile", "my profile", "account", "user", "settings", "my account"],
+        "/recommendations": ["recommendations", "outfits", "suggestions", "outfit ideas", "style recommendations", "what to wear"],
+        "/planner": ["planner", "outfit planner", "weekly planner", "plan outfits", "schedule"],
+        "/wishlist": ["wishlist", "favorites", "saved items", "wish list", "my favorites"],
+        "/chatbot": ["chatbot", "ai assistant", "chat", "help", "assistant", "fashion assistant"],
+        "/pinterest": ["pinterest", "pinterest style", "pinterest outfits"],
+        "/virtual-try-on": ["virtual try on", "try on", "virtual fitting", "try clothes"],
+        "/ar-try": ["ar", "ar preview", "augmented reality", "ar try on"],
+        "/social": ["social", "social media", "share", "community", "collections"],
+        "/discover-trends": ["trends", "discover trends", "fashion trends", "trending"],
+        "/menu": ["menu", "your looks", "my looks", "gallery"],
+        "/sellcloth": ["sell", "sell clothes", "marketplace", "sell items"],
+        "/profile/upload": ["upload", "upload photos", "add photos", "upload images"],
+        "/profile/favorites": ["favorites", "my favorites", "saved", "liked items"],
+        "/view-avatar": ["avatar", "my avatar", "3d avatar", "character"],
+        "/developers": ["developers", "about us", "team"],
+        "/policies": ["policies", "privacy", "terms", "legal"]
     }
 }
