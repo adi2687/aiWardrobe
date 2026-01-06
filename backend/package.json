@@ -12,6 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@aws-sdk/client-sqs": "^3.955.0",
         "@fortawesome/fontawesome-free": "^6.7.2",
         "@google-cloud/vision": "^5.3.3",
         "@google/genai": "^1.21.0",

@@ -39,7 +39,6 @@ const expandedAllowedOrigins = [
   'https://ai-wardrobe.vercel.app',
   'https://ai-wardrobe-gamma.vercel.app',
   'https://ai-wardrobe-ten.vercel.app',
-  'http://*:5173',
   'http://192.168.108.14:5173'
 ];
 
@@ -80,7 +79,6 @@ app.options('*', cors());
 export { io }; // ✅ Exporting io instance
 
 app.use(cookieParser());
-
 // Apply CORS middleware to all routes
 // app.use(
 //   cors({
@@ -143,7 +141,9 @@ app.get("/checkcookies", (req, res) => {
   console.log("Cookies:", req.cookies);
   res.json(req.cookies);
 });
-
+app.get("/health", (req, res) => {
+  res.send("OK");
+});
 // generate-image route
 // app.get("/generate-image", async (req, res) => {
 //   try {

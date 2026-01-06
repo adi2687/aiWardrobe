@@ -1,15 +1,37 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const ai = new GoogleGenerativeAI("AIzaSyDvwNuMi9JNEdEo8gsQh_UnO4KcGrccfeI",{
-  apiEndpoint: "https://us-central1-generativelanguage.googleapis.com"
-
+import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
+import dotenv from 'dotenv'
+dotenv.config()
+if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY){
+  console.log("oops not there")
+  console.log(process.env.AWS_ACCESS_KEY_ID)
+}
+const client = new SQSClient({
+  region: "us-east-1", // change if needed
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    sessionToken:process.env.AWS_SESSION_TOKEN
+  },
 });
-async function main() {
-  const model = ai.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-  const res = await model.generateContent("Explain AI in a few words");
+const QUEUE_URL = "https://sqs.us-east-1.amazonaws.com/557690613141/eob2erav2-input";
 
-  console.log(res.response.text());
+async function testSQS() {
+  try {
+    const command = new SendMessageCommand({
+      QueueUrl: QUEUE_URL,
+      MessageBody: JSON.stringify({
+        test: "hello from SQS",
+        time: new Date().toISOString(),
+        webHookUrl : "https://nonatomically-transformational-melida.ngrok-free.dev/api/knowledge-base-sqs-upload"
+      }),
+    });
+
+    const res = await client.send(command);
+    console.log("✅ Message sent:", res.MessageId);
+  } catch (err) {
+    console.error("❌ SQS error:", err);
+  }
 }
 
-main();
+testSQS();

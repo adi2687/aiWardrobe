@@ -42,9 +42,12 @@ import CardNav from './components/newNav/main'
 import Export from './components/menuPics/export'
 import Dock from './components/dock/export'
 import Pinterest from './components/pinterest/pinterest'
-import ShareImage from './components/ShareClothes/shareimage'
+import ShareImage from './components/ShareClothes/shareimage' 
+import Nav from './components/frontendNavAI/nav'
+import AINavPopup from './components/frontendNavAI/AINavPopup'
 const App = () => {
   const [showIntro, setShowIntro] = useState(false);
+  const [showAINavPopup, setShowAINavPopup] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -136,6 +139,7 @@ const App = () => {
         <Route path='/profile' element={<Profile />} />
         <Route path='/profile/favorites' element={<Profile />} />
         <Route path='/menu' element={<Export/>} />
+        <Route path='/nav' element={<Nav/>} />
         <Route path='/pinterest' element={<Pinterest/>} />
         <Route path='/profile/planner' element={<Profile />} />
         <Route path='/profile/upload' element={<Profile />} />
@@ -173,7 +177,15 @@ const App = () => {
         <Route path="/virtual-try-on" element={<VirtualTryOn />} />
       </Routes>
       {/* <FloatingNavbar /> */}
-      <Dock />
+      <Dock onAINavClick={() => {
+        setShowAINavPopup(true);
+      }} />
+      <AINavPopup 
+        isOpen={showAINavPopup} 
+        onClose={() => {
+          setShowAINavPopup(false);
+        }} 
+      />
       {location.pathname === '/' && <Footer />}
     </>
   );

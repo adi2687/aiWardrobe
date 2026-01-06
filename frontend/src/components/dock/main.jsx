@@ -115,7 +115,17 @@ export default function Dock({
         {items.map((item, index) => (
           <DockItem
             key={index}
-            onClick={()=>{navigate(item.path)}}
+            onClick={(e) => {
+              if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+              if (item.onClick) {
+                item.onClick();
+              } else {
+                navigate(item.path);
+              }
+            }}
             className={item.className}
             mouseX={mouseX}
             spring={spring}
