@@ -43,6 +43,7 @@ const AINavPopup = ({ isOpen, onClose }) => {
 
     const aicall = async (prompt, options = {}) => {
         try {
+            
             setLoading(true);
             setError('');
             setResponse('');
