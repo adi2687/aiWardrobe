@@ -107,7 +107,7 @@ const mapProduct = (p) => ({
 });
 
 // Test endpoint to verify route is working
-router.get("/test", (req, res) => {
+router.get("/test", (_req, res) => {
   res.json({
     success: true,
     message: "Myntra route is working",
