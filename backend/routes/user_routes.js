@@ -12,8 +12,7 @@ import { fileURLToPath } from 'url';
 import { getTokenFromRequest } from '../utils/tokenHelper.js';
 dotenv.config() 
 const authenticate = (req, res, next) => {
-  const token =  req.cookies.tokenlogin || req.headers.authorization;
-  console.log("token",token)
+  const token = getTokenFromRequest(req);
   if (!token) {
     return res.status(401).json({ msg: "No token, authorization denied" });
   }
@@ -28,7 +27,7 @@ const authenticate = (req, res, next) => {
   }
 };
 router.get("/profile",async  (req, res) => {
-  const tokenlogin =  req.cookies.tokenlogin || req.headers.authorization;
+  const tokenlogin = getTokenFromRequest(req);
 
   if (!tokenlogin) {
     return res.status(401).json({ error: "No token provided" });

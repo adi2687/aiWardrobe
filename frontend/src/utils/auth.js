@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // Authentication utility functions
 
 /**
@@ -87,4 +89,47 @@ export const getAuthHeaders = () => {
   }
   
   return headers;
+};
+
+/**
+ * Attach the stored token as an Authorization header on every request to the
+ * backend. Browsers like Brave/Safari block the cross-site `tokenlogin` cookie
+ * (frontend and backend live on different *.vercel.app sites), so the header
+ * is what keeps the user logged in there.
+ * Call once at startup.
+ */
+let authInterceptorInstalled = false;
+export const installAuthInterceptor = () => {
+  if (authInterceptorInstalled) return;
+  authInterceptorInstalled = true;
+
+  const backendUrl = (import.meta.env.VITE_BACKEND_URL || '').replace(/\/+$/, '');
+  if (!backendUrl) return;
+  const isBackendUrl = (url) => typeof url === 'string' && url.startsWith(backendUrl);
+
+  // fetch
+  const originalFetch = window.fetch.bind(window);
+  window.fetch = (input, init = {}) => {
+    const url = typeof input === 'string' ? input : input?.url;
+    const token = getAuthToken();
+    if (token && isBackendUrl(url)) {
+      const headers = new Headers(init.headers || (input instanceof Request ? input.headers : undefined));
+      if (!headers.has('Authorization')) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+      init = { ...init, headers };
+    }
+    return originalFetch(input, init);
+  };
+
+  // axios (default instance)
+  axios.interceptors.request.use((config) => {
+    const token = getAuthToken();
+    const url = `${config.baseURL || ''}${config.url || ''}`;
+    if (token && isBackendUrl(url) && !config.headers?.Authorization) {
+      config.headers = config.headers || {};
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
 };

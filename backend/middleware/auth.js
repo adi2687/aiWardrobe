@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
 import User from '../model/user.js';
+import { getTokenFromRequest } from '../utils/tokenHelper.js';
 
 const auth = async (req, res, next) => {
   try {
     // Get token from cookies
     console.log("in auth middleware")
-    const token = req.cookies.tokenlogin || req.headers.authorization;
+    const token = getTokenFromRequest(req);
 
     if (!token) {
       return res.status(401).json({ error: 'Authentication required' });

@@ -5,18 +5,16 @@
  * @returns {string|null} - JWT token or null
  */
 export const getTokenFromRequest = (req) => {
-  // Check cookies first
-  let token = req.cookies?.tokenlogin || req.headers.authorization;
-  
-  // If no cookie, check Authorization header
-  if (!token && req.headers.authorization) {
-    const authHeader = req.headers.authorization;
-    if (authHeader.startsWith('Bearer ')) {
-      token = authHeader.substring(7);
-    }
+  // Authorization header first (works when third-party cookies are blocked),
+  // accepts both "Bearer <token>" and the raw token
+  const authHeader = req.headers?.authorization;
+  if (authHeader) {
+    const token = authHeader.startsWith('Bearer ') ? authHeader.substring(7) : authHeader;
+    if (token && token !== 'null' && token !== 'undefined') return token;
   }
-  
-  return token || null;
+
+  // Fall back to the cookie
+  return req.cookies?.tokenlogin || null;
 };
 
 /**

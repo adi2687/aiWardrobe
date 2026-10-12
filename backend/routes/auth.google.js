@@ -111,7 +111,7 @@ router.get(
     });
     
     setTimeout(() => {
-      res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}`);
+      res.redirect(`${frontendUrl}?showIntro=true&isNewUser=${isNewUser}&tokenlogin=${token}`);
     }, 1000);
     // This will be caught by the App.jsx useEffect that checks for intro completion
   }
