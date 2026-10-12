@@ -3,298 +3,183 @@ import axios from "axios";
 
 const router = express.Router();
 
+// Myntra sits behind Akamai bot protection. Requests that only send a
+// User-Agent are accepted at TCP/TLS level and then never answered (they hang
+// until the client times out). A complete, consistent set of browser headers
+// is what gets a real response.
+const BROWSER_HEADERS = {
+  "User-Agent":
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+  Accept:
+    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+  "Accept-Language": "en-IN,en;q=0.9",
+  "Accept-Encoding": "gzip, deflate",
+  "Cache-Control": "max-age=0",
+  "Sec-Ch-Ua": '"Chromium";v="131", "Not_A Brand";v="24"',
+  "Sec-Ch-Ua-Mobile": "?0",
+  "Sec-Ch-Ua-Platform": '"Windows"',
+  "Sec-Fetch-Dest": "document",
+  "Sec-Fetch-Mode": "navigate",
+  "Sec-Fetch-Site": "none",
+  "Sec-Fetch-User": "?1",
+  "Upgrade-Insecure-Requests": "1",
+};
+
+// Vercel functions are killed at 10s on the hobby plan, so stay under that
+const TIMEOUT = 8000;
+
+const emptyResult = (res, message, error) =>
+  res.json({ success: true, count: 0, products: [], message, error });
+
+// Myntra's direct listing URLs are hyphenated slugs: "black tshirt" -> "black-tshirt"
+const toSlug = (query) =>
+  query
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+// Pull the `window.__myx = {...}` object out of the page, respecting strings
+// so braces inside product names/descriptions can't end the object early.
+const extractMyx = (html) => {
+  const marker = html.indexOf("window.__myx =");
+  if (marker === -1) return null;
+
+  const start = html.indexOf("{", marker);
+  if (start === -1) return null;
+
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  let quote = "";
+
+  for (let i = start; i < html.length; i++) {
+    const c = html[i];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (c === "\\") escaped = true;
+      else if (c === quote) inString = false;
+      continue;
+    }
+    if (c === '"' || c === "'") {
+      inString = true;
+      quote = c;
+    } else if (c === "{") {
+      depth++;
+    } else if (c === "}") {
+      depth--;
+      if (depth === 0) return JSON.parse(html.slice(start, i + 1));
+    }
+  }
+  return null;
+};
+
+const fetchPage = async (url) => {
+  const response = await axios.get(url, {
+    headers: BROWSER_HEADERS,
+    timeout: TIMEOUT,
+    maxRedirects: 3,
+    responseType: "text",
+    validateStatus: (status) => status < 500,
+  });
+  if (response.status >= 400 || typeof response.data !== "string") {
+    throw Object.assign(new Error(`Myntra returned ${response.status}`), {
+      status: response.status,
+    });
+  }
+  return response.data;
+};
+
+const toHttps = (url) => (url ? url.replace(/^http:\/\//i, "https://") : null);
+
+const mapProduct = (p) => ({
+  id: p.productId || p.id || null,
+  title: p.productName || p.product || p.title || "Product",
+  brand: p.brand || null,
+  price: p.price ?? null,
+  mrp: p.mrp ?? null,
+  discount: p.discountDisplayLabel || p.discount || null,
+  // searchImage is already an absolute URL on assets.myntassets.com
+  image: toHttps(p.searchImage || p.image || null),
+  url: p.landingPageUrl
+    ? `https://www.myntra.com/${p.landingPageUrl}`
+    : p.url || null,
+  rating: p.rating || null,
+});
+
 // Test endpoint to verify route is working
 router.get("/test", (req, res) => {
-  res.json({ 
+  res.json({
     success: true,
     message: "Myntra route is working",
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
 router.get("/", async (req, res) => {
-  // Set response headers early to prevent Vercel timeout
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Cache-Control', 'no-cache');
-  
-  try {
-    const { clothes } = req.query;
-    console.log("Myntra Search:", clothes);
+  res.setHeader("Cache-Control", "no-cache");
 
-    if (!clothes) {
-      return res.status(400).json({ 
-        success: false,
-        error: "clothes parameter is required" 
-      });
-    }
+  const clothes = (req.query.clothes || "").trim();
+  console.log("Myntra Search:", clothes);
 
-    // Construct proper Myntra search URL
-    // Myntra uses format: https://www.myntra.com/search?q=query
-    const searchQuery = encodeURIComponent(clothes);
-    // Try both formats: direct path and search query
-    const url = `https://www.myntra.com/${searchQuery}`;
-    const searchUrl = `https://www.myntra.com/search?q=${searchQuery}`;
+  if (!clothes) {
+    return res
+      .status(400)
+      .json({ success: false, error: "clothes parameter is required" });
+  }
 
-    console.log("Fetching from URL:", url);
-    console.log("Alternative URL:", searchUrl);
+  const slug = toSlug(clothes);
+  if (!slug) {
+    return res
+      .status(400)
+      .json({ success: false, error: "clothes parameter is not searchable" });
+  }
 
-    // Vercel has 10s timeout, so use 8s to be safe
-    const TIMEOUT = 8000;
-    
-    let html;
-    let usedUrl = url;
-    
+  const candidates = [
+    `https://www.myntra.com/${slug}`,
+    `https://www.myntra.com/search?q=${encodeURIComponent(clothes)}`,
+  ];
+
+  let lastError = null;
+
+  for (const url of candidates) {
     try {
-      const response = await axios.get(url, {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-          Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-          "Accept-Language": "en-IN,en;q=0.9",
-          Referer: "https://www.myntra.com/",
-          "Accept-Encoding": "gzip, deflate, br",
-        },
-        timeout: TIMEOUT,
-        validateStatus: function (status) {
-          return status < 500; // Don't throw for 4xx errors
-        },
-      });
-      
-      html = response.data;
-      
-      // If we got a redirect or error, try the search URL format
-      if (response.status >= 400 || !html || html.length < 1000) {
-        console.log("First URL failed, trying search URL format...");
-        const searchResponse = await axios.get(searchUrl, {
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Accept-Language": "en-IN,en;q=0.9",
-            Referer: "https://www.myntra.com/",
-          },
-          timeout: TIMEOUT,
-        });
-        html = searchResponse.data;
-        usedUrl = searchUrl;
+      const html = await fetchPage(url);
+      const myx = extractMyx(html);
+      const raw = myx?.searchData?.results?.products || myx?.results?.products;
+
+      if (!Array.isArray(raw)) {
+        lastError = new Error("Myntra data structure not found");
+        continue;
       }
-    } catch (firstError) {
-      // If first URL fails, try search URL format
-      console.log("First URL failed, trying search URL format...", firstError.message);
-      try {
-        const searchResponse = await axios.get(searchUrl, {
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Accept-Language": "en-IN,en;q=0.9",
-            Referer: "https://www.myntra.com/",
-          },
-          timeout: TIMEOUT,
-        });
-        html = searchResponse.data;
-        usedUrl = searchUrl;
-      } catch (secondError) {
-        // If both fail, return empty results instead of throwing
-        console.error("Both URL formats failed:", firstError.message, secondError.message);
-        return res.json({
-          success: true,
-          count: 0,
-          products: [],
-          message: "Unable to fetch products from Myntra. Please try again later.",
-          error: "Myntra request failed"
-        });
-      }
-    }
 
-    // Check if we got a valid HTML response
-    if (!html || typeof html !== 'string') {
-      console.error("Invalid HTML response from Myntra");
-      return res.json({ 
-        success: true,
-        count: 0,
-        products: [],
-        message: "Myntra returned an invalid response. Please try again later.",
-        error: "Invalid response from Myntra"
-      });
-    }
-
-    if (html.length < 1000) {
-      console.error("Response too short, might be an error page");
-      return res.json({ 
-        success: true,
-        count: 0,
-        products: [],
-        message: "Myntra returned an unexpected response. The page might be blocked or changed.",
-        error: "Response too short"
-      });
-    }
-
-    // 🔐 SAFE extraction of window.__myx
-    let start = html.indexOf("window.__myx =");
-    let dataKey = "window.__myx";
-    
-    if (start === -1) {
-      console.log("window.__myx not found, trying alternative data structures...");
-      // Try alternative data structure
-      start = html.indexOf("window.__INITIAL_STATE__");
-      if (start !== -1) {
-        dataKey = "window.__INITIAL_STATE__";
-      } else {
-        start = html.indexOf("window.__PRELOADED_STATE__");
-        if (start !== -1) {
-          dataKey = "window.__PRELOADED_STATE__";
-        } else {
-          start = html.indexOf("__myx");
-          if (start !== -1) {
-            dataKey = "__myx";
-          }
-        }
-      }
-    }
-    
-    if (start === -1) {
-      console.error("No Myntra data structure found in response");
-      console.log("Response preview:", html.substring(0, 500));
-      return res.json({ 
-        success: true,
-        count: 0,
-        products: [],
-        message: "Myntra page structure may have changed. Please try a different search term.",
-        error: "Myntra data structure not found"
-      });
-    }
-
-    const sliced = html.slice(start);
-    const jsonStart = sliced.indexOf("{");
-
-    if (jsonStart === -1) {
-      return res.json({ 
-        success: true,
-        count: 0,
-        products: [],
-        message: "Could not parse Myntra data structure",
-        error: "Failed to locate JSON data"
-      });
-    }
-
-    let braceCount = 0;
-    let jsonEnd = -1;
-
-    for (let i = jsonStart; i < sliced.length; i++) {
-      if (sliced[i] === "{") braceCount++;
-      if (sliced[i] === "}") braceCount--;
-
-      if (braceCount === 0) {
-        jsonEnd = i + 1;
-        break;
-      }
-    }
-
-    if (jsonEnd === -1) {
-      return res.json({ 
-        success: true,
-        count: 0,
-        products: [],
-        message: "Could not extract complete JSON data from Myntra",
-        error: "Failed to parse Myntra JSON"
-      });
-    }
-
-    let myxData;
-    try {
-      const jsonString = sliced.slice(jsonStart, jsonEnd);
-      myxData = JSON.parse(jsonString);
-    } catch (parseError) {
-      console.error("JSON parse error:", parseError.message);
-      return res.json({ 
-        success: true,
-        count: 0,
-        products: [],
-        message: "Invalid JSON structure from Myntra. Please try again.",
-        error: "Failed to parse Myntra JSON"
-      });
-    }
-
-    const productsRaw =
-      myxData?.searchData?.results?.products || 
-      myxData?.results?.products ||
-      [];
-
-    if (productsRaw.length === 0) {
+      const products = raw.map(mapProduct).filter((p) => p.title && p.image);
       return res.json({
         success: true,
-        count: 0,
-        products: [],
-        message: "No products found for this search"
+        count: products.length,
+        products,
+        ...(products.length === 0 && {
+          message: "No products found for this search",
+        }),
       });
+    } catch (err) {
+      console.error(`Myntra fetch failed for ${url}:`, err.code || err.message);
+      lastError = err;
     }
-
-    const products = productsRaw.map((p) => ({
-      id: p.productId || p.id || null,
-      title: p.productName || p.title || "Product",
-      brand: p.brand || null,
-      price: p.price || null,
-      mrp: p.mrp || null,
-      discount: p.discountDisplayLabel || p.discount || null,
-      image: p.searchImage 
-        ? `https://assets.myntassets.com/w_412,q_60/${p.searchImage}`
-        : p.image || null,
-      url: p.landingPageUrl 
-        ? `https://www.myntra.com/${p.landingPageUrl}`
-        : p.url || null,
-      rating: p.rating || null,
-    })).filter(p => p.title && p.image); // Filter out invalid products
-
-    res.json({
-      success: true,
-      count: products.length,
-      products,
-    });
-  } catch (err) {
-    console.error("=== MYNTRA SCRAPE ERROR ===");
-    console.error("Error message:", err.message);
-    console.error("Error code:", err.code);
-    console.error("Error stack:", err.stack);
-    if (err.response) {
-      console.error("Response status:", err.response.status);
-      console.error("Response data:", err.response.data?.substring(0, 200));
-    }
-    console.error("===========================");
-    
-    // Provide more specific error messages
-    let errorMessage = "Failed to fetch Myntra products";
-    let userMessage = "Please try again later or use a different search term.";
-    
-    if (err.code === 'ECONNABORTED') {
-      errorMessage = "Request timeout. Myntra took too long to respond.";
-      userMessage = "The request timed out. This might be due to Myntra blocking automated requests or network issues.";
-    } else if (err.code === 'ENOTFOUND' || err.code === 'ECONNREFUSED') {
-      errorMessage = "Cannot connect to Myntra.";
-      userMessage = "Unable to connect to Myntra. Please check your internet connection.";
-    } else if (err.response) {
-      errorMessage = `Myntra returned error: ${err.response.status}`;
-      userMessage = `Myntra returned an error (${err.response.status}). They may be blocking automated requests.`;
-    } else if (err.message) {
-      errorMessage = err.message;
-    }
-    
-    // Return success: true with empty products to prevent frontend errors
-    // This allows the UI to handle it gracefully
-    res.json({
-      success: true,
-      count: 0,
-      products: [],
-      message: userMessage,
-      error: errorMessage,
-      ...(process.env.NODE_ENV === 'development' && { 
-        details: {
-          code: err.code,
-          stack: err.stack?.split('\n').slice(0, 5)
-        }
-      })
-    });
   }
+
+  // Both URL formats failed. Return an empty list so the UI degrades gracefully.
+  const blocked =
+    lastError?.code === "ECONNABORTED" ||
+    lastError?.status === 403 ||
+    lastError?.status === 429;
+
+  return emptyResult(
+    res,
+    blocked
+      ? "Myntra didn't respond (it may be blocking automated requests). Please try again later."
+      : "Couldn't read products from Myntra. Please try a different search term.",
+    lastError?.message || "Myntra request failed"
+  );
 });
 
 export default router;
